@@ -16,6 +16,7 @@
 - Driver/CUDA from `nvidia-smi`: driver `570.133.07`, CUDA `12.8`.
 - Existing `contractkv` environment has `torch 2.11.0+cu130`; CUDA is not available from PyTorch there.
 - Repair strategy: create `contractkv-cu128`; do not mutate the old `contractkv` environment.
+- Environment location: `/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-cu128`, so CUDA/vLLM packages do not fill the system disk.
 - Phase 0-2 model matrix: `Qwen3-4B`, `Qwen3-8B`, `Llama-3.1-8B-Instruct`.
 - `Qwen3-14B` is allowed to remain incomplete until its download finishes.
 - `Qwen3-Coder-30B-A3B-Instruct` is removed from the current matrix.
@@ -27,4 +28,3 @@
 - Both devices are reported as RTX 3090.
 - vLLM API server help exits normally.
 - `Qwen3-4B`, `Qwen3-8B`, and `Llama-3.1-8B-Instruct` pass model integrity checks.
-

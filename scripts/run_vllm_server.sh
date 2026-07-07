@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ENV_NAME="${ENV_NAME:-contractkv-cu128}"
+ENV_PREFIX="${ENV_PREFIX:-/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-cu128}"
 CONDA_SH="${CONDA_SH:-$HOME/miniconda3/etc/profile.d/conda.sh}"
 PHASE=""
 MODEL_PATH=""
@@ -54,7 +55,11 @@ fi
 
 # shellcheck source=/dev/null
 source "$CONDA_SH"
-conda activate "$ENV_NAME"
+if [[ -x "$ENV_PREFIX/bin/python" ]]; then
+  conda activate "$ENV_PREFIX"
+else
+  conda activate "$ENV_NAME"
+fi
 
 echo "phase=${PHASE}" > "$LOG_PATH"
 echo "started_at=$(date -Iseconds)" >> "$LOG_PATH"
@@ -91,4 +96,3 @@ done
 
 echo "Timed out waiting for vLLM readiness. See $LOG_PATH" >&2
 exit 13
-
