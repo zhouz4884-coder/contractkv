@@ -1,4 +1,4 @@
-# contract kv
+# contractkv
 
 ## Research Goal
 
@@ -15,4 +15,3 @@ Record the next research topic here before experiments start.
 - `docs/`: notes, paper reading, and analysis records
 - `configs/`: experiment settings
 - `results/`: small summarized result tables or ledgers
-
