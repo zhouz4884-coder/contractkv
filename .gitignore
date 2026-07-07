@@ -17,6 +17,7 @@ env/
 Thumbs.db
 
 # Logs and temporary files
+logs/
 *.log
 *.tmp
 *.bak
@@ -28,3 +29,23 @@ checkpoints/
 outputs/
 runs/
 
+# Keep only lightweight audited experiment records in Git.
+results/*
+!results/env/
+!results/baselines/
+!results/manifests/
+results/env/*
+results/baselines/*
+results/manifests/*
+!results/env/.gitkeep
+!results/baselines/.gitkeep
+!results/manifests/.gitkeep
+!results/env/*.json
+!results/env/*.txt
+!results/env/*.csv
+!results/baselines/*.csv
+!results/baselines/*.jsonl
+!results/manifests/*.yaml
+
+# Local worktree isolation.
+.worktrees/
