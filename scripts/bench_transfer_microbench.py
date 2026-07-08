@@ -6,10 +6,14 @@ from __future__ import annotations
 import argparse
 import csv
 import statistics
+import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+if __package__ in (None, ""):
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.bench_openai_ttft_tpot import current_commit
 
