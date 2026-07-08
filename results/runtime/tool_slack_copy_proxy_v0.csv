@@ -1,0 +1,13 @@
+mode,kv_size_mb,copy_ms,decode_like_compute_ms,observed_latency_ms,estimated_stall_ms,slack_window_ms,bandwidth_gbps,interference_note,error_type,error_message
+no_copy,128,0.01536,0.162187,0.162187,0.0,10.0,8138.02071,cuda_pinned_stream_proxy,none,
+copy_on_critical_path,128,10.198773,0.14848,10.347253,10.198773,10.0,12.256376,cuda_pinned_stream_proxy,none,
+copy_in_tool_slack_window,128,10.172789,10.245899,10.245899,0.172789,10.0,12.287682,cuda_pinned_stream_proxy,none,
+no_copy,256,0.015083,0.156288,0.156288,0.0,10.0,16575.318264,cuda_pinned_stream_proxy,none,
+copy_on_critical_path,256,20.35392,0.15456,20.50848,20.35392,10.0,12.282646,cuda_pinned_stream_proxy,none,
+copy_in_tool_slack_window,256,20.366539,20.439521,20.439521,10.366539,10.0,12.275036,cuda_pinned_stream_proxy,none,
+no_copy,512,0.014048,0.236352,0.236352,0.0,10.0,35592.255464,cuda_pinned_stream_proxy,none,
+copy_on_critical_path,512,40.665536,0.228405,40.893941,40.665536,10.0,12.295424,cuda_pinned_stream_proxy,none,
+copy_in_tool_slack_window,512,40.639285,40.70318,40.70318,30.639285,10.0,12.303366,cuda_pinned_stream_proxy,none,
+no_copy,1024,0.014677,0.406539,0.406539,0.0,10.0,68132.267434,cuda_pinned_stream_proxy,none,
+copy_on_critical_path,1024,81.340469,0.434013,81.774483,81.340469,10.0,12.294003,cuda_pinned_stream_proxy,none,
+copy_in_tool_slack_window,1024,81.269941,81.368716,81.368716,71.269941,10.0,12.304672,cuda_pinned_stream_proxy,none,
