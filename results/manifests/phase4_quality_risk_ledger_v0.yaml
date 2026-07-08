@@ -1,0 +1,25 @@
+phase: phase4
+artifact: quality_risk_ledger_v0
+status: success
+evidence_type: proxy_heuristic_v0
+input_file: results/datasets/sample_prompts.jsonl
+output_file: results/risk_ledger/quality_risk_ledger_v0.csv
+report_file: docs/phase4_quality_risk_ledger_v0_report.md
+max_samples_per_dataset: 20
+datasets:
+  RULER: 20
+  LongBench: 20
+  RepoBench: 20
+actions:
+  - fp16_baseline
+  - segment_eviction
+  - context_truncation
+  - shifted_position_proxy
+  - boundary_corruption
+  - boundary_repair_proxy
+row_count: 1080
+risk_distribution:
+  low: 429
+  medium: 480
+  high: 171
+notes: "Proxy risk ledger for experiment planning only; not an official benchmark score."

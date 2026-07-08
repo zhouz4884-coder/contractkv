@@ -1,0 +1,9 @@
+model,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types
+llama3-8b,8192,4096,4114,ruler_haystack,synthetic_haystack,1,3,3,52.884,51.236,56.377,32.286,32.261,32.357,117.458,21.299,none
+llama3-8b,8192,4096,4114,longbench_hotpotqa,real_text_qa,1,3,3,57.788,58.707,59.903,21.435,21.428,21.463,2780.004,21.299,none
+llama3-8b,16384,8192,8192,ruler_haystack,synthetic_haystack,1,3,3,81.855,81.379,83.329,33.67,33.613,33.797,149.195,21.299,none
+llama3-8b,16384,8192,8192,longbench_hotpotqa,real_text_qa,1,3,3,80.58,81.006,83.146,22.271,22.282,22.34,2908.907,21.299,none
+llama3-8b,32768,16384,16384,ruler_haystack,synthetic_haystack,1,3,3,110.096,105.847,123.393,35.7,35.7,35.781,181.496,21.299,none
+llama3-8b,32768,16384,16384,longbench_hotpotqa,real_text_qa,1,3,3,118.642,118.879,119.819,24.547,24.556,24.575,977.804,21.299,none
+llama3-8b,33792,32768,32768,ruler_haystack,synthetic_haystack,1,3,3,185.984,184.119,192.411,40.074,40.187,40.228,266.133,21.299,none
+llama3-8b,33792,32768,32768,longbench_hotpotqa,real_text_qa,1,3,3,193.785,192.766,196.705,27.331,27.346,27.356,1205.045,21.299,none

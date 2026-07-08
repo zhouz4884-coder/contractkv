@@ -260,6 +260,7 @@ def main() -> int:
     parser.add_argument("--prompt-source")
     parser.add_argument("--log-path", default="")
     parser.add_argument("--gpu-monitor-dir", default="logs/gpu_monitor")
+    parser.add_argument("--gpu-monitor-prefix", default="phase2_5_qwen3_8b")
     parser.add_argument("--vllm-kv-capacity", default="")
     parser.add_argument("--commit-hash", default=None)
     args = parser.parse_args()
@@ -278,7 +279,7 @@ def main() -> int:
             measured = index >= args.warmup
             run_id = f"{prompt['prompt_source']}_{prompt['target_tokens']}_run{index - args.warmup + 1}" if measured else "warmup"
             monitor_path = Path(args.gpu_monitor_dir) / (
-                f"phase2_5_qwen3_8b_{prompt['target_tokens']}_{prompt['prompt_source']}_{run_id}.csv"
+                f"{args.gpu_monitor_prefix}_{prompt['target_tokens']}_{prompt['prompt_source']}_{run_id}.csv"
             )
             monitor = start_gpu_monitor(monitor_path, 0.5) if measured else None
             try:

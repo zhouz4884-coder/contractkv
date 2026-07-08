@@ -1,0 +1,27 @@
+phase: phase3
+model: Llama-3.1-8B-Instruct
+model_path: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct
+served_model_name: llama3-8b
+backend: vllm
+gpu_ids: "0"
+tensor_parallel_size: 1
+dtype: float16
+gpu_memory_utilization: 0.88
+max_num_seqs: 1
+temperature: 0
+warmup: 1
+repeat: 3
+target_tokens:
+  - 4096
+  - 8192
+  - 16384
+  - 32768
+prompt_sources:
+  - ruler_haystack
+  - longbench_hotpotqa
+status: success
+raw_result_file: results/baselines/llama3_8b_actual_context_scaling_raw.csv
+summary_result_file: results/baselines/llama3_8b_actual_context_scaling_summary.csv
+prompt_file: configs/llama3_8b_actual_context_prompts.jsonl
+report_file: docs/phase3_llama3_8b_cross_model_report.md
+notes: "Lightweight cross-model actual-context scaling check; all 24 raw runs completed with error_type=none."

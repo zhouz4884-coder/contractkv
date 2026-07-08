@@ -1,5 +1,5 @@
 batch: characterization_batch_001
-status: completed_with_dataset_download_gaps
+status: completed
 code_commits:
   actual_context_scaling: 28a7528
   hardware_microbench: 2fc7ecd
@@ -8,9 +8,12 @@ includes:
   - phase2_5_actual_context_scaling
   - phase2_6_hardware_microbench
   - phase2_7_dataset_readiness
+  - phase3_llama3_cross_model_lightweight
+  - phase4_quality_risk_ledger_v0
 models:
   primary: Qwen3-8B
   debug: Qwen3-4B
+  cross_model: Llama-3.1-8B-Instruct
 datasets:
   - RULER
   - LongBench
@@ -24,6 +27,28 @@ result_files:
   - results/hardware/p2p_bandwidth.csv
   - results/hardware/copy_decode_interference.csv
   - results/datasets/dataset_readiness.csv
+  - results/datasets/longbench_readiness.csv
+  - results/datasets/repobench_readiness.csv
   - results/datasets/sample_prompts.jsonl
+  - results/datasets/longbench_samples.jsonl
+  - results/datasets/repobench_samples.jsonl
   - results/datasets/segment_examples.jsonl
-notes: "RULER ready with 20 samples; LongBench and RepoBench source repos uploaded/extracted but HuggingFace downloads failed with connection resets."
+  - results/baselines/llama3_8b_actual_context_scaling_raw.csv
+  - results/baselines/llama3_8b_actual_context_scaling_summary.csv
+  - configs/llama3_8b_actual_context_prompts.jsonl
+  - docs/phase3_llama3_8b_cross_model_report.md
+  - results/manifests/phase3_llama3_8b_cross_model.yaml
+  - results/risk_ledger/quality_risk_ledger_v0.csv
+  - docs/phase4_quality_risk_ledger_v0_report.md
+  - results/manifests/phase4_quality_risk_ledger_v0.yaml
+dataset_bundle:
+  local_zip: E:/Downloads/contractkv_datasets.zip
+  remote_zip: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/sources/contractkv_datasets.zip
+  remote_extract_dir: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/contractkv_datasets
+  hf_cache_dir: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/contractkv_datasets/hf_cache
+dataset_readiness:
+  RULER: ready_20
+  LongBench: ready_100_offline_bundle
+  RepoBench: ready_20_offline_bundle
+  BFCL: missing_optional
+notes: "Server-side HuggingFace access failed earlier, but LongBench and RepoBench were prepared locally and uploaded as contractkv_datasets.zip. Lightweight normalized artifacts are tracked in results/datasets."
