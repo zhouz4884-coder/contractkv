@@ -18,6 +18,7 @@ from scripts.run_recompute_policy_pressure_eval import aggregate_pressure_metric
 from scripts.evaluate_recompute_policy_quality import compute_policy_quality_summary
 from scripts.send_stream_probe_requests import make_prompt as make_stream_prompt
 from scripts.build_phase10_5c_tier0_eval import build_policy_row
+from scripts.build_phase10_5c_repeat_eval import build_repeat_rows, compute_slo_sweep_rows
 
 
 class Phase105AnchorPlannerTests(unittest.TestCase):
@@ -321,6 +322,8 @@ class Phase105SuffixFreeAuditTests(unittest.TestCase):
             self.assertEqual(install_anchor_probe(scheduler), "installed")
             patched = scheduler.read_text(encoding="utf-8")
             self.assertIn("CONTRACTKV_ANCHOR_RECOMPUTE_PROBE", patched)
+            self.assertIn("CONTRACTKV_ANCHOR_RECOMPUTE_MAX_EVENTS", patched)
+            self.assertIn("_contractkv_anchor_recompute_seen_request_ids", patched)
             self.assertIn("_contractkv_anchor_recompute_once", patched)
             self.assertIn("anchor_token_end", patched)
 
@@ -356,6 +359,37 @@ class Phase105PressureEvalTests(unittest.TestCase):
         self.assertEqual(row["anchored_recompute_tokens"], 1024)
         self.assertEqual(row["recompute_tokens_saved_vs_full"], 1024)
         self.assertFalse(row["slo_violation"])
+
+    def test_build_repeat_rows_pairs_stream_rows_with_events(self):
+        streams = [
+            {"success": True, "ttft_ms": 2100, "tpot_ms": 20, "total_latency_ms": 2300, "error_type": "none"},
+            {"success": True, "ttft_ms": 2200, "tpot_ms": 21, "total_latency_ms": 2400, "error_type": "none"},
+        ]
+        events = [
+            {"suffix_blocks_freed": 64, "prefix_blocks_retained": 64, "anchor_token_end": 1024, "boundary_guard_tokens": 32, "block_size": 16, "before_free_gpu_blocks": 10, "after_free_gpu_blocks": 74},
+            {"suffix_blocks_freed": 64, "prefix_blocks_retained": 64, "anchor_token_end": 1024, "boundary_guard_tokens": 32, "block_size": 16, "before_free_gpu_blocks": 20, "after_free_gpu_blocks": 84},
+        ]
+
+        rows = build_repeat_rows("contractkv-rar-exact", streams, events, "qwen3-8b", 2500)
+
+        self.assertEqual(len(rows), 2)
+        self.assertEqual(rows[0]["run_id"], 0)
+        self.assertEqual(rows[1]["blocks_freed"], 64)
+        self.assertEqual(rows[1]["recompute_tokens_saved_vs_full"], 1024)
+        self.assertFalse(rows[0]["slo_violation"])
+
+    def test_compute_slo_sweep_rows_recomputes_goodput(self):
+        raw_rows = [
+            {"policy": "vllm-default", "completed": True, "ttft_ms": 1900, "tpot_ms": 20, "blocks_freed": 0, "free_gpu_blocks_before": 0, "free_gpu_blocks_after": 0, "full_recompute_tokens": 0, "anchored_recompute_tokens": 0, "error_type": "none"},
+            {"policy": "vllm-default", "completed": True, "ttft_ms": 2600, "tpot_ms": 20, "blocks_freed": 0, "free_gpu_blocks_before": 0, "free_gpu_blocks_after": 0, "full_recompute_tokens": 0, "anchored_recompute_tokens": 0, "error_type": "none"},
+        ]
+
+        sweep = compute_slo_sweep_rows(raw_rows, [2000, 3000], duration_sec=2.0)
+        by_slo = {row["slo_ttft_ms"]: row for row in sweep if row["policy"] == "vllm-default"}
+
+        self.assertEqual(by_slo[2000]["slo_compliant_requests"], 1)
+        self.assertEqual(by_slo[3000]["slo_compliant_requests"], 2)
+        self.assertEqual(by_slo[3000]["slo_compliant_req_per_sec"], 1.0)
 
     def test_stream_probe_prompt_scales_with_target_words(self):
         prompt = make_stream_prompt(target_words=128, request_index=3)

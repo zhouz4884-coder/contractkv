@@ -1,0 +1,5 @@
+policy,attempted_requests,completed_requests,slo_compliant_requests,capacity_failures,completion_rate,slo_compliant_req_per_sec,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,total_blocks_freed,mean_block_headroom_gain,total_recompute_tokens_saved_vs_full,completion_lift_vs_default,capacity_failure_reduction,slo_goodput_delta_vs_default
+vllm-default,10,10,10,0,1.0,1.0,1484.49567,1999.50449,22.847231,23.508652,0,0.0,0,0,0,0.0
+full-recompute,10,10,10,0,1.0,1.0,1470.952111,1937.759438,22.778028,23.327564,1280,128.0,0,0,0,0.0
+greedy-rar-exact,10,10,10,0,1.0,1.0,1824.469942,2297.351902,22.759775,23.205068,960,96.0,5120,0,0,0.0
+contractkv-rar-exact,10,10,10,0,1.0,1.0,1711.136766,2180.280984,22.938835,24.737219,640,64.0,10240,0,0,0.0

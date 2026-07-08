@@ -148,6 +148,8 @@ class Phase104ActuatorAuditTests(unittest.TestCase):
 
             self.assertEqual(status, "installed")
             self.assertIn("CONTRACTKV_RECOMPUTE_PROBE", patched)
+            self.assertIn("CONTRACTKV_RECOMPUTE_MAX_EVENTS", patched)
+            self.assertIn("_contractkv_recompute_seen_request_ids", patched)
             self.assertIn("_contractkv_force_preempt_once", patched)
             self.assertIn("# First, schedule the RUNNING requests.", patched)
 

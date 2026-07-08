@@ -23,8 +23,17 @@ def _contractkv_anchor_recompute_once(scheduler, scheduled_timestamp):
 
     if os.environ.get("CONTRACTKV_ANCHOR_RECOMPUTE_PROBE") != "1":
         return []
-    if getattr(scheduler, "_contractkv_anchor_recompute_probe_done", False):
+    try:
+        max_events = int(os.environ.get("CONTRACTKV_ANCHOR_RECOMPUTE_MAX_EVENTS", "1"))
+    except ValueError:
+        max_events = 1
+    event_count = int(getattr(scheduler, "_contractkv_anchor_recompute_event_count", 0) or 0)
+    if event_count >= max_events:
         return []
+    seen_request_ids = getattr(scheduler, "_contractkv_anchor_recompute_seen_request_ids", None)
+    if seen_request_ids is None:
+        seen_request_ids = set()
+        scheduler._contractkv_anchor_recompute_seen_request_ids = seen_request_ids
     running = list(getattr(scheduler, "running", []))
     if not running:
         return []
@@ -43,7 +52,10 @@ def _contractkv_anchor_recompute_once(scheduler, scheduled_timestamp):
 
     selected = None
     for request in running:
-        if target_request_id and getattr(request, "request_id", "") != target_request_id:
+        request_id = getattr(request, "request_id", "")
+        if request_id in seen_request_ids:
+            continue
+        if target_request_id and request_id != target_request_id:
             continue
         if int(getattr(request, "num_computed_tokens", 0) or 0) >= anchor_token_end:
             selected = request
@@ -118,7 +130,8 @@ def _contractkv_anchor_recompute_once(scheduler, scheduled_timestamp):
     if getattr(scheduler, "log_stats", False):
         selected.record_event(EngineCoreEventType.PREEMPTED, scheduled_timestamp)
     scheduler.waiting.prepend_request(selected)
-    scheduler._contractkv_anchor_recompute_probe_done = True
+    seen_request_ids.add(selected.request_id)
+    scheduler._contractkv_anchor_recompute_event_count = event_count + 1
 
     after_free_gpu_blocks = _free_blocks()
     event = {{
@@ -161,7 +174,10 @@ def _backup_path(path: Path) -> Path:
 def install(scheduler_path: Path) -> str:
     text = scheduler_path.read_text(encoding="utf-8")
     if MARKER_BEGIN in text:
-        return "already_installed"
+        start = text.index(MARKER_BEGIN)
+        end = text.index(MARKER_END) + len(MARKER_END)
+        scheduler_path.write_text(text[:start] + HELPER.strip() + text[end:], encoding="utf-8", newline="\n")
+        return "updated"
     backup = _backup_path(scheduler_path)
     if not backup.exists():
         shutil.copy2(scheduler_path, backup)
