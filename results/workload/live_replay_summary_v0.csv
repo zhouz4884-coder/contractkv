@@ -1,0 +1,10 @@
+policy,copy_mode,dataset,num_requests,admission_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,mean_total_latency_ms,quality_budget_violation_rate,slo_violation_rate,mean_copy_residual_stall_ms,mean_controller_overhead_ms
+ContractKV-Indep,critical_path,LongBench,100,0.0,254.453103,311.340584,21.437547,404.683526,1.0,0.94,40.665536,0.314902
+ContractKV-Indep,critical_path,RULER,20,0.0,278.195212,282.141952,21.40365,428.184308,1.0,1.0,40.665536,0.176521
+ContractKV-Indep,critical_path,RepoBench,20,0.0,279.166113,310.959232,21.534843,430.061257,1.0,1.0,40.665536,0.157646
+ContractKV-Joint,slack_window,LongBench,100,1.0,225.892455,274.55619,21.456793,376.257005,0.0,0.77,12.126282,0.907563
+ContractKV-Joint,slack_window,RULER,20,1.0,254.182467,283.181237,21.425392,404.329532,0.0,1.0,14.266214,0.52566
+ContractKV-Joint,slack_window,RepoBench,20,1.0,251.204286,299.30606,21.416552,401.286687,0.0,0.9,10.699661,0.515366
+No-Contract,no_copy,LongBench,100,1.0,211.594047,267.763422,21.471893,362.058819,0.0,0.62,0.0,0.0
+No-Contract,no_copy,RULER,20,1.0,259.84341,263.518999,21.423065,409.965787,0.0,1.0,0.0,0.0
+No-Contract,no_copy,RepoBench,20,1.0,235.925678,268.342942,21.3899,385.814309,0.0,0.9,0.0,0.0
