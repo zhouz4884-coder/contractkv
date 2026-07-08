@@ -139,12 +139,18 @@ def _transfer_row(direction: str, src: str, dst: str, block_mb: int, pinned: Any
     }
 
 
-def _decode_proxy_ms(torch: Any, iters: int, copy: str | None = None, block_mb: int = 64) -> float:
+def _decode_proxy_ms(torch: Any, iters: int, copy: str | None = None, block_mb: int = 64, warmup: int = 5) -> float:
     a = torch.randn((2048, 2048), device="cuda:0", dtype=torch.float16)
     b = torch.randn((2048, 2048), device="cuda:0", dtype=torch.float16)
     elements = block_mb * 1024 * 1024 // 4
     host = torch.empty(elements, dtype=torch.float32, pin_memory=True)
     dev = torch.empty(elements, dtype=torch.float32, device="cuda:0")
+    for _ in range(warmup):
+        _ = a @ b
+        if copy == "h2d":
+            dev.copy_(host, non_blocking=True)
+        elif copy == "d2h":
+            host.copy_(dev, non_blocking=True)
     torch.cuda.synchronize()
     started = time.perf_counter()
     for _ in range(iters):
