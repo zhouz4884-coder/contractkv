@@ -2,8 +2,17 @@
 set -euo pipefail
 
 ENV_NAME="${ENV_NAME:-contractkv-cu128}"
-ENV_PREFIX="${ENV_PREFIX:-/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-cu128}"
+CONTRACTKV_DISK_ROOT="${CONTRACTKV_DISK_ROOT:-/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9}"
+ENV_PREFIX="${ENV_PREFIX:-${CONTRACTKV_DISK_ROOT}/envs/contractkv-cu128}"
 CONDA_SH="${CONDA_SH:-$HOME/miniconda3/etc/profile.d/conda.sh}"
+TMPDIR="${TMPDIR:-${CONTRACTKV_DISK_ROOT}/tmp/contractkv-runtime}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/xdg}"
+HF_HOME="${HF_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/huggingface}"
+HF_HUB_CACHE="${HF_HUB_CACHE:-${HF_HOME}/hub}"
+TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/transformers}"
+TORCH_HOME="${TORCH_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/torch}"
+TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/triton}"
+VLLM_CACHE_ROOT="${VLLM_CACHE_ROOT:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/vllm}"
 PHASE=""
 MODEL_PATH=""
 SERVED_MODEL_NAME=""
@@ -41,7 +50,11 @@ if [[ -z "$MODEL_PATH" || -z "$SERVED_MODEL_NAME" || -z "$PORT" || -z "$MAX_MODE
 fi
 
 PID_PATH="${PID_PATH:-${LOG_PATH%.log}.pid}"
-mkdir -p "$(dirname "$LOG_PATH")" "$(dirname "$PID_PATH")"
+mkdir -p "$(dirname "$LOG_PATH")" "$(dirname "$PID_PATH")" "$TMPDIR" \
+  "$XDG_CACHE_HOME" "$HF_HOME" "$HF_HUB_CACHE" "$TRANSFORMERS_CACHE" \
+  "$TORCH_HOME" "$TRITON_CACHE_DIR" "$VLLM_CACHE_ROOT"
+export TMPDIR XDG_CACHE_HOME HF_HOME HF_HUB_CACHE TRANSFORMERS_CACHE
+export TORCH_HOME TRITON_CACHE_DIR VLLM_CACHE_ROOT
 
 if command -v lsof >/dev/null 2>&1 && lsof -i ":${PORT}" >/dev/null 2>&1; then
   echo "Port ${PORT} is already in use." | tee -a "$LOG_PATH" >&2
@@ -66,6 +79,9 @@ echo "started_at=$(date -Iseconds)" >> "$LOG_PATH"
 echo "model_path=${MODEL_PATH}" >> "$LOG_PATH"
 echo "served_model_name=${SERVED_MODEL_NAME}" >> "$LOG_PATH"
 echo "port=${PORT}" >> "$LOG_PATH"
+echo "contractkv_disk_root=${CONTRACTKV_DISK_ROOT}" >> "$LOG_PATH"
+echo "xdg_cache_home=${XDG_CACHE_HOME}" >> "$LOG_PATH"
+echo "vllm_cache_root=${VLLM_CACHE_ROOT}" >> "$LOG_PATH"
 
 CUDA_VISIBLE_DEVICES="$GPU_IDS" nohup python -m vllm.entrypoints.openai.api_server \
   --model "$MODEL_PATH" \

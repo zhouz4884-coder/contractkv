@@ -1,0 +1,15 @@
+phase: phase1
+status: success
+model: Qwen3-4B
+served_model: qwen3-4b
+model_path: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-4B
+backend: vllm
+port: 8000
+max_model_len: 8192
+max_num_seqs: 4
+gpu_ids: "0"
+git_commit: e774db9
+env_file: results/env/torch_env.json
+log_file: logs/phase1/qwen3_4b_8192.log
+result_file: results/baselines/qwen3_4b_smoke.jsonl
+feasibility_file: results/baselines/model_feasibility.csv
