@@ -1,0 +1,5 @@
+policy,dataset,trace_id,model,configured_max_model_len,max_num_seqs,completed,slo_violation,latency_ms,ttft_ms,tpot_ms,blocks_freed,free_gpu_blocks_before,free_gpu_blocks_after,full_recompute_tokens,anchored_recompute_tokens,recompute_events,error_type,error_message,recompute_tokens_saved_vs_full,boundary_guard_tokens
+vllm-default,phase10_5_long_probe,phase10_5_long_context_probe,qwen3-8b,8192,2,True,True,2077.526631,1938.703127,23.016901,0,0,0,0,0,0,none,,0,0
+full-recompute,phase10_5_long_probe,phase10_5_long_context_probe,qwen3-8b,8192,2,True,True,2083.866036,1944.163956,23.143809,128,2257,2385,2048,2048,1,none,,0,0
+greedy-rar-exact,phase10_5_long_probe,phase10_5_long_context_probe,qwen3-8b,8192,2,True,True,2425.699359,2286.198424,23.12578,96,2257,2353,2048,1536,1,none,,512,32
+contractkv-rar-exact,phase10_5_long_probe,phase10_5_long_context_probe,qwen3-8b,8192,2,True,True,2318.87861,2179.320382,23.121424,64,2257,2321,2048,1024,1,none,,1024,32

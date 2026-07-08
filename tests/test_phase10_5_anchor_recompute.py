@@ -15,6 +15,9 @@ from scripts.build_anchor_recompute_probe_summary import summarize_anchor_probe
 from scripts.install_vllm_v1_anchor_recompute_probe import install as install_anchor_probe
 from scripts.install_vllm_v1_anchor_recompute_probe import uninstall as uninstall_anchor_probe
 from scripts.run_recompute_policy_pressure_eval import aggregate_pressure_metrics
+from scripts.evaluate_recompute_policy_quality import compute_policy_quality_summary
+from scripts.send_stream_probe_requests import make_prompt as make_stream_prompt
+from scripts.build_phase10_5c_tier0_eval import build_policy_row
 
 
 class Phase105AnchorPlannerTests(unittest.TestCase):
@@ -326,6 +329,41 @@ class Phase105SuffixFreeAuditTests(unittest.TestCase):
 
 
 class Phase105PressureEvalTests(unittest.TestCase):
+    def test_build_policy_row_combines_stream_and_actuator_event(self):
+        stream = {
+            "success": True,
+            "ttft_ms": 100.0,
+            "tpot_ms": 10.0,
+            "total_latency_ms": 150.0,
+            "error_type": "none",
+            "error_message": "",
+        }
+        event = {
+            "free_gpu_blocks_delta": 64,
+            "suffix_blocks_freed": 64,
+            "prefix_blocks_retained": 64,
+            "anchor_token_end": 1024,
+            "boundary_guard_tokens": 32,
+            "before_free_gpu_blocks": 10,
+            "after_free_gpu_blocks": 74,
+        }
+
+        row = build_policy_row("contractkv-rar-exact", stream, event, "qwen3-8b", 200)
+
+        self.assertTrue(row["completed"])
+        self.assertEqual(row["blocks_freed"], 64)
+        self.assertEqual(row["full_recompute_tokens"], 2048)
+        self.assertEqual(row["anchored_recompute_tokens"], 1024)
+        self.assertEqual(row["recompute_tokens_saved_vs_full"], 1024)
+        self.assertFalse(row["slo_violation"])
+
+    def test_stream_probe_prompt_scales_with_target_words(self):
+        prompt = make_stream_prompt(target_words=128, request_index=3)
+
+        self.assertIn("Pressure request 3", prompt)
+        self.assertGreaterEqual(len(prompt.split()), 128)
+        self.assertTrue(prompt.endswith("Answer OK."))
+
     def test_aggregate_pressure_metrics_reports_block_headroom_and_deltas(self):
         rows = [
             {
@@ -333,6 +371,8 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "completed": True,
                 "slo_violation": False,
                 "latency_ms": 100.0,
+                "ttft_ms": 100.0,
+                "tpot_ms": 10.0,
                 "blocks_freed": 0,
                 "free_gpu_blocks_before": 10,
                 "free_gpu_blocks_after": 10,
@@ -345,6 +385,8 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "completed": False,
                 "slo_violation": True,
                 "latency_ms": 0.0,
+                "ttft_ms": 300.0,
+                "tpot_ms": 30.0,
                 "blocks_freed": 0,
                 "free_gpu_blocks_before": 10,
                 "free_gpu_blocks_after": 10,
@@ -357,6 +399,8 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "completed": True,
                 "slo_violation": False,
                 "latency_ms": 120.0,
+                "ttft_ms": 120.0,
+                "tpot_ms": 12.0,
                 "blocks_freed": 64,
                 "free_gpu_blocks_before": 10,
                 "free_gpu_blocks_after": 74,
@@ -369,6 +413,8 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "completed": True,
                 "slo_violation": False,
                 "latency_ms": 130.0,
+                "ttft_ms": 130.0,
+                "tpot_ms": 14.0,
                 "blocks_freed": 32,
                 "free_gpu_blocks_before": 10,
                 "free_gpu_blocks_after": 42,
@@ -390,6 +436,29 @@ class Phase105PressureEvalTests(unittest.TestCase):
         self.assertEqual(contract["completion_lift_vs_default"], 1)
         self.assertEqual(contract["capacity_failure_reduction"], 1)
         self.assertEqual(contract["slo_goodput_delta_vs_default"], 0.5)
+        self.assertEqual(contract["mean_ttft_ms"], 125.0)
+        self.assertEqual(contract["p95_ttft_ms"], 130.0)
+        self.assertEqual(contract["mean_tpot_ms"], 13.0)
+        self.assertEqual(contract["p95_tpot_ms"], 14.0)
+
+
+class Phase105QualityEvalTests(unittest.TestCase):
+    def test_quality_summary_compares_exact_recompute_to_default(self):
+        rows = [
+            {"policy": "vllm-default", "dataset": "RULER", "score": 1.0, "error_type": "none"},
+            {"policy": "full-recompute", "dataset": "RULER", "score": 0.99, "error_type": "none"},
+            {"policy": "contractkv-rar-exact", "dataset": "RULER", "score": 0.98, "error_type": "none"},
+            {"policy": "eviction-truncation", "dataset": "RULER", "score": 0.2, "error_type": "none"},
+        ]
+
+        summary = compute_policy_quality_summary(rows)
+        by_policy = {row["policy"]: row for row in summary}
+
+        self.assertAlmostEqual(by_policy["contractkv-rar-exact"]["quality_drop"], 0.02)
+        self.assertAlmostEqual(by_policy["full-recompute"]["quality_drop"], 0.01)
+        self.assertAlmostEqual(by_policy["eviction-truncation"]["quality_drop"], 0.8)
+        self.assertTrue(by_policy["contractkv-rar-exact"]["quality_close_to_default"])
+        self.assertTrue(by_policy["full-recompute"]["quality_close_to_default"])
 
 
 if __name__ == "__main__":

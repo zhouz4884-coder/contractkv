@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import statistics
 from pathlib import Path
 from typing import Any
 
@@ -46,6 +47,10 @@ SUMMARY_FIELDS = [
     "capacity_failures",
     "completion_rate",
     "slo_compliant_req_per_sec",
+    "mean_ttft_ms",
+    "p95_ttft_ms",
+    "mean_tpot_ms",
+    "p95_tpot_ms",
     "total_blocks_freed",
     "mean_block_headroom_gain",
     "total_recompute_tokens_saved_vs_full",
@@ -75,6 +80,14 @@ def _int(value: Any) -> int:
         return 0
 
 
+def percentile(values: list[float], q: float) -> float:
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    index = int(round((len(ordered) - 1) * q))
+    return ordered[max(0, min(index, len(ordered) - 1))]
+
+
 def aggregate_pressure_metrics(rows: list[dict[str, Any]], duration_sec: float) -> list[dict[str, Any]]:
     grouped: dict[str, list[dict[str, Any]]] = {}
     for row in rows:
@@ -96,6 +109,8 @@ def aggregate_pressure_metrics(rows: list[dict[str, Any]], duration_sec: float) 
             max(0, _int(item.get("full_recompute_tokens")) - _int(item.get("anchored_recompute_tokens")))
             for item in items
         ]
+        ttft = [_float(item.get("ttft_ms")) for item in completed if _float(item.get("ttft_ms")) > 0]
+        tpot = [_float(item.get("tpot_ms")) for item in completed if _float(item.get("tpot_ms")) > 0]
         raw_summaries.append({
             "policy": policy,
             "attempted_requests": len(items),
@@ -104,6 +119,10 @@ def aggregate_pressure_metrics(rows: list[dict[str, Any]], duration_sec: float) 
             "capacity_failures": len(capacity_failures),
             "completion_rate": round(len(completed) / len(items), 6) if items else 0.0,
             "slo_compliant_req_per_sec": round(len(slo_ok) / duration_sec, 6) if duration_sec > 0 else 0.0,
+            "mean_ttft_ms": round(statistics.mean(ttft), 6) if ttft else 0.0,
+            "p95_ttft_ms": round(percentile(ttft, 0.95), 6) if ttft else 0.0,
+            "mean_tpot_ms": round(statistics.mean(tpot), 6) if tpot else 0.0,
+            "p95_tpot_ms": round(percentile(tpot, 0.95), 6) if tpot else 0.0,
             "total_blocks_freed": sum(_int(item.get("blocks_freed")) for item in items),
             "mean_block_headroom_gain": round(sum(headroom) / len(headroom), 6) if headroom else 0.0,
             "total_recompute_tokens_saved_vs_full": sum(token_savings),
