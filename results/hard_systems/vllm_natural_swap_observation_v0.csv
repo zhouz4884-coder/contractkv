@@ -1,0 +1,3 @@
+model,server_config,num_events,num_requests_observed,observed_swap_events,observed_preemptions,min_free_gpu_blocks,max_used_gpu_blocks,actual_behavior
+qwen3-4b,"{""model"":""qwen3-4b"",""swap_space"":""default"",""gpu_memory_utilization"":0.45,""max_model_len"":8192,""max_num_seqs"":8,""num_concurrent_requests"":6,""context_length_words"":7000}",188,12,0,4,6,1299,preemption_or_recompute_without_swap
+qwen3-8b,"{""model"":""qwen3-8b"",""swap_space"":""default"",""gpu_memory_utilization"":0.88,""max_model_len"":8192,""max_num_seqs"":2,""num_concurrent_requests"":3,""context_length_words"":6000}",94,6,0,0,1535,851,no_swap_or_preemption_observed
