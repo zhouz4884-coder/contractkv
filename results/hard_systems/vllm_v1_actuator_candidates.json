@@ -1,0 +1,1101 @@
+{
+  "schema_version": "phase10_4_vllm_v1_actuator_candidates_v0",
+  "python_executable": "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+  "vllm_root": "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/vllm",
+  "vllm_version": "0.10.2",
+  "focus_files": [
+    "v1/core/sched/scheduler.py",
+    "v1/core/kv_cache_manager.py",
+    "v1/core/block_pool.py",
+    "v1/worker/gpu_model_runner.py",
+    "engine/async_llm_engine.py",
+    "worker/worker.py"
+  ],
+  "scanned_files": {
+    "v1/core/sched/scheduler.py": {
+      "exists": true,
+      "hits": {
+        "swap": [],
+        "preemption": [
+          {
+            "line": 203,
+            "text": "# requests so that they can free the cached states for those requests."
+          },
+          {
+            "line": 267,
+            "text": "preempted_reqs: list[Request] = []"
+          },
+          {
+            "line": 334,
+            "text": "# Preempt the lowest-priority request."
+          },
+          {
+            "line": 336,
+            "text": "preempted_req = max("
+          },
+          {
+            "line": 340,
+            "text": "self.running.remove(preempted_req)"
+          },
+          {
+            "line": 341,
+            "text": "if preempted_req in scheduled_running_reqs:"
+          },
+          {
+            "line": 342,
+            "text": "scheduled_running_reqs.remove(preempted_req)"
+          },
+          {
+            "line": 344,
+            "text": "preempted_req = self.running.pop()"
+          },
+          {
+            "line": 346,
+            "text": "self.kv_cache_manager.free(preempted_req)"
+          },
+          {
+            "line": 347,
+            "text": "self.encoder_cache_manager.free(preempted_req)"
+          },
+          {
+            "line": 348,
+            "text": "preempted_req.status = RequestStatus.PREEMPTED"
+          },
+          {
+            "line": 349,
+            "text": "preempted_req.num_computed_tokens = 0"
+          }
+        ],
+        "prefix": [
+          {
+            "line": 244,
+            "text": "enable_caching=self.cache_config.enable_prefix_caching,"
+          },
+          {
+            "line": 261,
+            "text": "# chunked prefills, prefix caching, speculative decoding,"
+          },
+          {
+            "line": 605,
+            "text": "# Count the number of prefix cached tokens."
+          },
+          {
+            "line": 632,
+            "text": "# Get the longest common prefix among all requests in the running queue."
+          },
+          {
+            "line": 634,
+            "text": "num_common_prefix_blocks = [0] * len("
+          },
+          {
+            "line": 638,
+            "text": "num_common_prefix_blocks = ("
+          },
+          {
+            "line": 639,
+            "text": "self.kv_cache_manager.get_num_common_prefix_blocks("
+          },
+          {
+            "line": 665,
+            "text": "num_common_prefix_blocks=num_common_prefix_blocks,"
+          },
+          {
+            "line": 892,
+            "text": "# Because of prefix caching, num_computed_tokens is greater"
+          },
+          {
+            "line": 1248,
+            "text": "def reset_prefix_cache(self) -> bool:"
+          },
+          {
+            "line": 1249,
+            "text": "return self.kv_cache_manager.reset_prefix_cache()"
+          },
+          {
+            "line": 1257,
+            "text": "prefix_cache_stats = self.kv_cache_manager.make_prefix_cache_stats()"
+          }
+        ],
+        "admission": [
+          {
+            "line": 146,
+            "text": "self.max_num_running_reqs = self.scheduler_config.max_num_seqs"
+          },
+          {
+            "line": 198,
+            "text": "self.waiting = create_request_queue(self.policy)"
+          },
+          {
+            "line": 199,
+            "text": "self.running: list[Request] = []"
+          },
+          {
+            "line": 266,
+            "text": "scheduled_running_reqs: list[Request] = []"
+          },
+          {
+            "line": 281,
+            "text": "# First, schedule the RUNNING requests."
+          },
+          {
+            "line": 283,
+            "text": "while req_index < len(self.running) and token_budget > 0:"
+          },
+          {
+            "line": 284,
+            "text": "request = self.running[req_index]"
+          },
+          {
+            "line": 337,
+            "text": "self.running,"
+          },
+          {
+            "line": 340,
+            "text": "self.running.remove(preempted_req)"
+          },
+          {
+            "line": 341,
+            "text": "if preempted_req in scheduled_running_reqs:"
+          },
+          {
+            "line": 342,
+            "text": "scheduled_running_reqs.remove(preempted_req)"
+          },
+          {
+            "line": 344,
+            "text": "preempted_req = self.running.pop()"
+          }
+        ],
+        "worker_copy": [],
+        "block_control": [
+          {
+            "line": 645,
+            "text": "req, req_to_new_blocks[req.request_id].get_block_ids())"
+          },
+          {
+            "line": 773,
+            "text": "req_to_new_blocks[req_id].get_block_ids(allow_none=True))"
+          },
+          {
+            "line": 1225,
+            "text": "delay_free_blocks, kv_xfer_params = self._connector_finished(request)"
+          },
+          {
+            "line": 1232,
+            "text": "if not delay_free_blocks:"
+          },
+          {
+            "line": 1233,
+            "text": "self._free_blocks(request)"
+          },
+          {
+            "line": 1237,
+            "text": "def _free_blocks(self, request: Request):"
+          },
+          {
+            "line": 1308,
+            "text": "(block_ids, ) = self.kv_cache_manager.get_block_ids(request.request_id)"
+          },
+          {
+            "line": 1328,
+            "text": "(block_ids, ) = self.kv_cache_manager.get_block_ids(request.request_id)"
+          },
+          {
+            "line": 1365,
+            "text": "self._free_blocks(self.requests[req_id])"
+          }
+        ]
+      }
+    },
+    "v1/core/kv_cache_manager.py": {
+      "exists": true,
+      "hits": {
+        "swap": [],
+        "preemption": [
+          {
+            "line": 129,
+            "text": "self.block_pool = self.coordinator.block_pool"
+          },
+          {
+            "line": 139,
+            "text": "return self.block_pool.get_usage()"
+          },
+          {
+            "line": 173,
+            "text": "# NOTE: When all tokens hit the cache, we must recompute the last token"
+          },
+          {
+            "line": 246,
+            "text": "# Free the blocks that are skipped during the attention computation"
+          },
+          {
+            "line": 249,
+            "text": "# insufficient free blocks."
+          },
+          {
+            "line": 270,
+            "text": "if num_blocks_to_allocate > self.block_pool.get_num_free_blocks():"
+          },
+          {
+            "line": 276,
+            "text": "self.block_pool.touch(new_computed_block_list)"
+          },
+          {
+            "line": 305,
+            "text": "def free(self, request: Request) -> None:"
+          },
+          {
+            "line": 306,
+            "text": "\"\"\"Free the blocks allocated for the request."
+          },
+          {
+            "line": 307,
+            "text": "We free the blocks in reverse order so that the tail blocks are evicted"
+          },
+          {
+            "line": 311,
+            "text": "request: The request to free the blocks."
+          },
+          {
+            "line": 313,
+            "text": "self.coordinator.free(request.request_id)"
+          }
+        ],
+        "prefix": [
+          {
+            "line": 12,
+            "text": "from vllm.v1.metrics.stats import PrefixCacheStats"
+          },
+          {
+            "line": 101,
+            "text": "# FIXME: make prefix cache stats conditional on log_stats"
+          },
+          {
+            "line": 102,
+            "text": "self.prefix_cache_stats = PrefixCacheStats() if log_stats else None"
+          },
+          {
+            "line": 141,
+            "text": "def make_prefix_cache_stats(self) -> Optional[PrefixCacheStats]:"
+          },
+          {
+            "line": 142,
+            "text": "\"\"\"Get (and reset) the prefix cache stats."
+          },
+          {
+            "line": 145,
+            "text": "The current prefix caching stats, or None if logging is disabled."
+          },
+          {
+            "line": 149,
+            "text": "stats = self.prefix_cache_stats"
+          },
+          {
+            "line": 150,
+            "text": "self.prefix_cache_stats = PrefixCacheStats()"
+          },
+          {
+            "line": 166,
+            "text": "# Prefix caching is disabled or"
+          },
+          {
+            "line": 167,
+            "text": "# When the request requires prompt logprobs, we skip prefix caching."
+          },
+          {
+            "line": 174,
+            "text": "# to obtain logits. Thus, set max_cache_hit_length to prompt_length - 1."
+          },
+          {
+            "line": 179,
+            "text": "max_cache_hit_length = request.num_tokens - 1"
+          }
+        ],
+        "admission": [
+          {
+            "line": 252,
+            "text": "self.coordinator.remove_skipped_blocks(request.request_id,"
+          },
+          {
+            "line": 264,
+            "text": "request_id=request.request_id,"
+          },
+          {
+            "line": 284,
+            "text": "self.coordinator.save_new_computed_blocks(request.request_id,"
+          },
+          {
+            "line": 288,
+            "text": "request.request_id, num_tokens_need_slot, num_encoder_tokens)"
+          },
+          {
+            "line": 313,
+            "text": "self.coordinator.free(request.request_id)"
+          },
+          {
+            "line": 334,
+            "text": "num_running_requests: int,"
+          },
+          {
+            "line": 337,
+            "text": "in the RUNNING state for each kv cache group."
+          },
+          {
+            "line": 341,
+            "text": "`ref_cnt` equals the total number of requests in the RUNNING state."
+          },
+          {
+            "line": 343,
+            "text": "NOTE(woosuk): The number of requests in the RUNNING state is **greater"
+          },
+          {
+            "line": 345,
+            "text": "This is because the RUNNING state only indicates that:"
+          },
+          {
+            "line": 349,
+            "text": "While all scheduled requests must be in the RUNNING state, the inverse"
+          },
+          {
+            "line": 350,
+            "text": "is not necessarily true. There may be RUNNING requests that are not"
+          }
+        ],
+        "worker_copy": [],
+        "block_control": [
+          {
+            "line": 41,
+            "text": "def get_block_ids("
+          },
+          {
+            "line": 48,
+            "text": "def get_block_ids("
+          },
+          {
+            "line": 54,
+            "text": "def get_block_ids("
+          },
+          {
+            "line": 270,
+            "text": "if num_blocks_to_allocate > self.block_pool.get_num_free_blocks():"
+          },
+          {
+            "line": 386,
+            "text": "def get_block_ids(self, request_id: str) -> tuple[list[int], ...]:"
+          },
+          {
+            "line": 388,
+            "text": "return self.get_blocks(request_id).get_block_ids()"
+          }
+        ]
+      }
+    },
+    "v1/core/block_pool.py": {
+      "exists": true,
+      "hits": {
+        "swap": [],
+        "preemption": [
+          {
+            "line": 13,
+            "text": "FreeKVCacheBlockQueue, KVCacheBlock,"
+          },
+          {
+            "line": 24,
+            "text": "It provides methods to allocate, free and cache the kv cache blocks. The"
+          },
+          {
+            "line": 25,
+            "text": "free_block_queue stores the free blocks in eviction order to enable"
+          },
+          {
+            "line": 26,
+            "text": "allocation, free, and cache eviction. The cached_block_hash_to_block"
+          },
+          {
+            "line": 49,
+            "text": "# Free block queue that constructs and manipulates a doubly linked"
+          },
+          {
+            "line": 50,
+            "text": "# list of free blocks (including eviction candidates when caching is"
+          },
+          {
+            "line": 52,
+            "text": "self.free_block_queue = FreeKVCacheBlockQueue(self.blocks)"
+          },
+          {
+            "line": 57,
+            "text": "# free_block_queue that could potentially be evicted."
+          },
+          {
+            "line": 68,
+            "text": "# avoid freeing it."
+          },
+          {
+            "line": 69,
+            "text": "self.null_block = self.free_block_queue.popleft()"
+          },
+          {
+            "line": 171,
+            "text": "\"\"\"Get new blocks from the free block pool."
+          },
+          {
+            "line": 181,
+            "text": "if num_blocks > self.get_num_free_blocks():"
+          }
+        ],
+        "prefix": [
+          {
+            "line": 32,
+            "text": "enable_caching: Whether to enable prefix caching."
+          },
+          {
+            "line": 55,
+            "text": "# a full block with a block hash that can be used for prefix caching."
+          },
+          {
+            "line": 110,
+            "text": "\"\"\"Cache a list of full blocks for prefix caching."
+          },
+          {
+            "line": 239,
+            "text": "another request with the same prefix."
+          },
+          {
+            "line": 269,
+            "text": "def reset_prefix_cache(self) -> bool:"
+          },
+          {
+            "line": 270,
+            "text": "\"\"\"Reset prefix cache. This function may be used in RLHF"
+          },
+          {
+            "line": 271,
+            "text": "flows to invalid prefix caching after the weights are updated,"
+          },
+          {
+            "line": 272,
+            "text": "or used for resetting prefix caching status for benchmarking."
+          },
+          {
+            "line": 275,
+            "text": "bool: True if the prefix cache is successfully reset,"
+          },
+          {
+            "line": 281,
+            "text": "\"Failed to reset prefix cache because some \""
+          },
+          {
+            "line": 292,
+            "text": "logger.info(\"Successfully reset prefix cache\")"
+          }
+        ],
+        "admission": [
+          {
+            "line": 56,
+            "text": "# The cached block may be used by running requests or in the"
+          }
+        ],
+        "worker_copy": [],
+        "block_control": [
+          {
+            "line": 25,
+            "text": "free_block_queue stores the free blocks in eviction order to enable"
+          },
+          {
+            "line": 52,
+            "text": "self.free_block_queue = FreeKVCacheBlockQueue(self.blocks)"
+          },
+          {
+            "line": 57,
+            "text": "# free_block_queue that could potentially be evicted."
+          },
+          {
+            "line": 69,
+            "text": "self.null_block = self.free_block_queue.popleft()"
+          },
+          {
+            "line": 181,
+            "text": "if num_blocks > self.get_num_free_blocks():"
+          },
+          {
+            "line": 185,
+            "text": "ret: list[KVCacheBlock] = self.free_block_queue.popleft_n(num_blocks)"
+          },
+          {
+            "line": 249,
+            "text": "self.free_block_queue.remove(block)"
+          },
+          {
+            "line": 252,
+            "text": "def free_blocks(self, ordered_blocks: Iterable[KVCacheBlock]) -> None:"
+          },
+          {
+            "line": 264,
+            "text": "self.free_block_queue.append_n(["
+          },
+          {
+            "line": 278,
+            "text": "num_used_blocks = self.num_gpu_blocks - self.get_num_free_blocks()"
+          },
+          {
+            "line": 299,
+            "text": "def get_num_free_blocks(self) -> int:"
+          },
+          {
+            "line": 305,
+            "text": "return self.free_block_queue.num_free_blocks"
+          }
+        ]
+      }
+    },
+    "v1/worker/gpu_model_runner.py": {
+      "exists": true,
+      "hits": {
+        "swap": [],
+        "preemption": [
+          {
+            "line": 460,
+            "text": "# Attention free models have zero kv_cache_goups, however models"
+          },
+          {
+            "line": 461,
+            "text": "# like Mamba are also attention free but use the kv_cache for"
+          },
+          {
+            "line": 464,
+            "text": "# for self.model_config.is_attention_free."
+          },
+          {
+            "line": 513,
+            "text": "# Free the cached encoder outputs."
+          },
+          {
+            "line": 514,
+            "text": "for mm_hash in scheduler_output.free_encoder_mm_hashes:"
+          },
+          {
+            "line": 518,
+            "text": "# NOTE(woosuk): The unscheduled requests are either preempted requests"
+          },
+          {
+            "line": 584,
+            "text": "resumed_from_preemption = req_data.resumed_from_preemption[i]"
+          },
+          {
+            "line": 606,
+            "text": "if not resumed_from_preemption:"
+          },
+          {
+            "line": 614,
+            "text": "# The request is resumed from preemption."
+          },
+          {
+            "line": 621,
+            "text": "# The request was either preempted and resumed later, or was not"
+          },
+          {
+            "line": 3056,
+            "text": "start_free_gpu_memory = torch.cuda.mem_get_info()[0]"
+          },
+          {
+            "line": 3059,
+            "text": "def freeze_gc():"
+          }
+        ],
+        "prefix": [
+          {
+            "line": 1027,
+            "text": "num_common_prefix_blocks = 0"
+          },
+          {
+            "line": 1037,
+            "text": "num_common_prefix_blocks = ("
+          },
+          {
+            "line": 1039,
+            "text": "num_common_prefix_blocks[kv_cache_group_id])"
+          },
+          {
+            "line": 1065,
+            "text": "common_prefix_len = 0"
+          },
+          {
+            "line": 1068,
+            "text": "common_prefix_len = self._compute_cascade_attn_prefix_len("
+          },
+          {
+            "line": 1070,
+            "text": "num_common_prefix_blocks,"
+          },
+          {
+            "line": 1085,
+            "text": "common_prefix_len=common_prefix_len,"
+          },
+          {
+            "line": 1100,
+            "text": "def _compute_cascade_attn_prefix_len("
+          },
+          {
+            "line": 1103,
+            "text": "num_common_prefix_blocks: int,"
+          },
+          {
+            "line": 1107,
+            "text": "\"\"\"Compute the length of the common prefix for cascade attention."
+          },
+          {
+            "line": 1109,
+            "text": "NOTE(woosuk): The common prefix length returned by this function"
+          },
+          {
+            "line": 1113,
+            "text": "requests share common tokens. Additionally, the common prefix length is"
+          }
+        ],
+        "admission": [
+          {
+            "line": 197,
+            "text": "self.max_num_reqs = scheduler_config.max_num_seqs"
+          },
+          {
+            "line": 519,
+            "text": "# or running requests that are not scheduled in this step. We remove"
+          },
+          {
+            "line": 577,
+            "text": "# Update the states of the running/resumed requests."
+          },
+          {
+            "line": 661,
+            "text": "self.input_batch.add_request(request)"
+          },
+          {
+            "line": 1580,
+            "text": "if req_id in scheduler_output.structured_output_request_ids:"
+          },
+          {
+            "line": 1591,
+            "text": "seq = sorted(scheduler_output.structured_output_request_ids.items(),"
+          },
+          {
+            "line": 2675,
+            "text": "# Set num_scheduled_tokens based on num_tokens and max_num_seqs"
+          },
+          {
+            "line": 2679,
+            "text": "max_num_reqs = self.scheduler_config.max_num_seqs"
+          },
+          {
+            "line": 2881,
+            "text": "\"`max_num_seqs` or `gpu_memory_utilization` when \""
+          },
+          {
+            "line": 2920,
+            "text": "max_num_reqs = self.scheduler_config.max_num_seqs"
+          },
+          {
+            "line": 2960,
+            "text": "\"lowering `max_num_seqs` or `gpu_memory_utilization` when \""
+          },
+          {
+            "line": 3093,
+            "text": "max_num_tokens = self.scheduler_config.max_num_seqs * \\"
+          }
+        ],
+        "worker_copy": [],
+        "block_control": [
+          {
+            "line": 630,
+            "text": "self.input_batch.block_table.append_row("
+          },
+          {
+            "line": 880,
+            "text": "self.input_batch.block_table.commit_block_table(num_reqs)"
+          },
+          {
+            "line": 924,
+            "text": "self.input_batch.block_table.compute_slot_mapping("
+          },
+          {
+            "line": 926,
+            "text": "self.input_batch.block_table.commit_slot_mapping("
+          },
+          {
+            "line": 1029,
+            "text": "blk_table = self.input_batch.block_table[kv_cache_group_id]"
+          },
+          {
+            "line": 1051,
+            "text": "block_table_tensor=blk_table_tensor,"
+          },
+          {
+            "line": 2745,
+            "text": "block_table_tensor=self.input_batch.block_table["
+          },
+          {
+            "line": 2748,
+            "text": "block_table[kv_cache_group_id].slot_mapping[:num_tokens],"
+          }
+        ]
+      }
+    },
+    "engine/async_llm_engine.py": {
+      "exists": true,
+      "hits": {
+        "swap": [
+          {
+            "line": 323,
+            "text": "blocks_to_swap_in=scheduler_outputs.blocks_to_swap_in,"
+          },
+          {
+            "line": 324,
+            "text": "blocks_to_swap_out=scheduler_outputs.blocks_to_swap_out,"
+          }
+        ],
+        "preemption": [],
+        "prefix": [
+          {
+            "line": 1011,
+            "text": "async def reset_prefix_cache(self,"
+          },
+          {
+            "line": 1013,
+            "text": "self.engine.reset_prefix_cache(device)"
+          },
+          {
+            "line": 1016,
+            "text": "await self.reset_prefix_cache()"
+          }
+        ],
+        "admission": [
+          {
+            "line": 79,
+            "text": "def __init__(self, request_id: str, cancel: Callable[[str], None]) -> None:"
+          },
+          {
+            "line": 80,
+            "text": "self.request_id = request_id"
+          },
+          {
+            "line": 112,
+            "text": "self._cancel(self.request_id)"
+          },
+          {
+            "line": 140,
+            "text": "request_id: Optional[str] = None) -> None:"
+          },
+          {
+            "line": 142,
+            "text": "(all if request_id is None).\"\"\""
+          },
+          {
+            "line": 143,
+            "text": "if request_id is not None:"
+          },
+          {
+            "line": 144,
+            "text": "self.abort_request(request_id, exception=exc)"
+          },
+          {
+            "line": 146,
+            "text": "# NB: tuple() used here because self.abort_request pops the stream"
+          },
+          {
+            "line": 149,
+            "text": "self.abort_request(rid, exception=exc)"
+          },
+          {
+            "line": 156,
+            "text": "request_id = request_output.request_id"
+          },
+          {
+            "line": 160,
+            "text": "stream = self._request_streams.pop(request_id, None)"
+          },
+          {
+            "line": 162,
+            "text": "stream = self._request_streams.get(request_id)"
+          }
+        ],
+        "worker_copy": [
+          {
+            "line": 323,
+            "text": "blocks_to_swap_in=scheduler_outputs.blocks_to_swap_in,"
+          },
+          {
+            "line": 324,
+            "text": "blocks_to_swap_out=scheduler_outputs.blocks_to_swap_out,"
+          }
+        ],
+        "block_control": []
+      }
+    },
+    "worker/worker.py": {
+      "exists": true,
+      "hits": {
+        "swap": [
+          {
+            "line": 320,
+            "text": "num_cpu_blocks = 0"
+          },
+          {
+            "line": 323,
+            "text": "num_cpu_blocks = int(self.cache_config.swap_space_bytes //"
+          },
+          {
+            "line": 326,
+            "text": "num_cpu_blocks = max(num_cpu_blocks, 0)"
+          },
+          {
+            "line": 331,
+            "text": "return num_gpu_blocks, num_cpu_blocks"
+          },
+          {
+            "line": 346,
+            "text": "num_cpu_blocks: int) -> None:"
+          },
+          {
+            "line": 358,
+            "text": "self.cache_config.num_cpu_blocks = num_cpu_blocks"
+          },
+          {
+            "line": 487,
+            "text": "# `blocks_to_swap_in` and `blocks_to_swap_out` are cpu tensors."
+          },
+          {
+            "line": 489,
+            "text": "blocks_to_swap_in = torch.tensor(execute_model_req.blocks_to_swap_in,"
+          },
+          {
+            "line": 492,
+            "text": "blocks_to_swap_out = torch.tensor(execute_model_req.blocks_to_swap_out,"
+          },
+          {
+            "line": 504,
+            "text": "blocks_to_swap_in=blocks_to_swap_in,"
+          },
+          {
+            "line": 505,
+            "text": "blocks_to_swap_out=blocks_to_swap_out,"
+          },
+          {
+            "line": 515,
+            "text": "if (worker_input.blocks_to_swap_in is not None"
+          }
+        ],
+        "preemption": [
+          {
+            "line": 138,
+            "text": "free_bytes_before_sleep = torch.cuda.mem_get_info()[0]"
+          },
+          {
+            "line": 150,
+            "text": "free_bytes_after_sleep, total = torch.cuda.mem_get_info()"
+          },
+          {
+            "line": 151,
+            "text": "freed_bytes = free_bytes_after_sleep - free_bytes_before_sleep"
+          },
+          {
+            "line": 152,
+            "text": "used_bytes = total - free_bytes_after_sleep"
+          },
+          {
+            "line": 153,
+            "text": "assert freed_bytes >= 0, \"Memory usage increased after sleeping.\""
+          },
+          {
+            "line": 155,
+            "text": "\"Sleep mode freed %.2f GiB memory, \""
+          },
+          {
+            "line": 156,
+            "text": "\"%.2f GiB memory is still in use.\", freed_bytes / GiB_bytes,"
+          },
+          {
+            "line": 173,
+            "text": "# torch.distributed.all_reduce does not free the input tensor until"
+          },
+          {
+            "line": 242,
+            "text": "f\"Initial free memory \""
+          },
+          {
+            "line": 243,
+            "text": "f\"{GiB(self.baseline_snapshot.free_memory):.2f} \""
+          },
+          {
+            "line": 249,
+            "text": "\"size. If OOM'ed, check the difference of initial free \""
+          },
+          {
+            "line": 300,
+            "text": "that can be allocated with the remaining free memory."
+          }
+        ],
+        "prefix": [],
+        "admission": [
+          {
+            "line": 531,
+            "text": "finished_request_ids: List[str]) -> List[SequenceGroupMetadata]:"
+          },
+          {
+            "line": 537,
+            "text": "a given `finished_request_ids`."
+          },
+          {
+            "line": 541,
+            "text": "request_id = metadata_or_delta.request_id"
+          },
+          {
+            "line": 542,
+            "text": "if request_id not in self._seq_group_metadata_cache:"
+          },
+          {
+            "line": 545,
+            "text": "self._seq_group_metadata_cache[request_id] = metadata_or_delta"
+          },
+          {
+            "line": 549,
+            "text": "self._seq_group_metadata_cache[request_id].apply_delta("
+          },
+          {
+            "line": 557,
+            "text": "request_id] = metadata_or_delta"
+          },
+          {
+            "line": 560,
+            "text": "self._seq_group_metadata_cache[request_id])"
+          },
+          {
+            "line": 563,
+            "text": "for finished_id in finished_request_ids:"
+          }
+        ],
+        "worker_copy": [
+          {
+            "line": 487,
+            "text": "# `blocks_to_swap_in` and `blocks_to_swap_out` are cpu tensors."
+          },
+          {
+            "line": 489,
+            "text": "blocks_to_swap_in = torch.tensor(execute_model_req.blocks_to_swap_in,"
+          },
+          {
+            "line": 492,
+            "text": "blocks_to_swap_out = torch.tensor(execute_model_req.blocks_to_swap_out,"
+          },
+          {
+            "line": 504,
+            "text": "blocks_to_swap_in=blocks_to_swap_in,"
+          },
+          {
+            "line": 505,
+            "text": "blocks_to_swap_out=blocks_to_swap_out,"
+          },
+          {
+            "line": 515,
+            "text": "if (worker_input.blocks_to_swap_in is not None"
+          },
+          {
+            "line": 516,
+            "text": "and worker_input.blocks_to_swap_in.numel() > 0):"
+          },
+          {
+            "line": 517,
+            "text": "self.cache_engine[virtual_engine].swap_in("
+          },
+          {
+            "line": 518,
+            "text": "worker_input.blocks_to_swap_in)"
+          },
+          {
+            "line": 519,
+            "text": "if (worker_input.blocks_to_swap_out is not None"
+          },
+          {
+            "line": 520,
+            "text": "and worker_input.blocks_to_swap_out.numel() > 0):"
+          },
+          {
+            "line": 521,
+            "text": "self.cache_engine[virtual_engine].swap_out("
+          }
+        ],
+        "block_control": []
+      }
+    }
+  },
+  "actuators": {
+    "active_swap": {
+      "actuator": "active_swap",
+      "files": [
+        "engine/async_llm_engine.py",
+        "worker/worker.py"
+      ],
+      "call_path": "scheduler swap fields -> executor/worker cache copy path -> KV cache manager",
+      "can_observe": false,
+      "can_trigger": "blocked",
+      "risk": "high",
+      "minimum_probe": "Locate a real worker cache copy interface before attempting active swap_out/swap_in.",
+      "decision": "blocked"
+    },
+    "preemption_recompute": {
+      "actuator": "preemption_recompute",
+      "files": [
+        "v1/core/block_pool.py",
+        "v1/core/kv_cache_manager.py",
+        "v1/core/sched/scheduler.py",
+        "v1/worker/gpu_model_runner.py",
+        "worker/worker.py"
+      ],
+      "call_path": "scheduler pressure/preemption decision -> kv_cache_manager free/recompute state -> block_pool counters",
+      "can_observe": true,
+      "can_trigger": "unknown",
+      "risk": "medium",
+      "minimum_probe": "Add a guarded request-level preemption/recompute marker and verify free_gpu_blocks increases while the request completes.",
+      "decision": "probe_next"
+    },
+    "prefix_cache_layout": {
+      "actuator": "prefix_cache_layout",
+      "files": [
+        "v1/core/sched/scheduler.py",
+        "v1/core/kv_cache_manager.py",
+        "v1/core/block_pool.py",
+        "v1/worker/gpu_model_runner.py",
+        "engine/async_llm_engine.py"
+      ],
+      "call_path": "OpenAI request prompt layout -> vLLM prefix cache -> prefill TTFT",
+      "can_observe": true,
+      "can_trigger": "yes",
+      "risk": "low",
+      "minimum_probe": "Replay raw-order and canonical-layout prompts with prefix caching enabled and compare TTFT/p95/output score.",
+      "decision": "fallback_probe"
+    },
+    "admission_gate": {
+      "actuator": "admission_gate",
+      "files": [
+        "v1/core/sched/scheduler.py",
+        "v1/core/kv_cache_manager.py",
+        "v1/core/block_pool.py",
+        "v1/worker/gpu_model_runner.py",
+        "engine/async_llm_engine.py",
+        "worker/worker.py"
+      ],
+      "call_path": "OpenAI request wrapper -> ContractKV risk/block-pressure gate -> vLLM add_request/defer",
+      "can_observe": true,
+      "can_trigger": "yes",
+      "risk": "low",
+      "minimum_probe": "Use real risk summary and observed block pressure to admit or defer before forwarding to vLLM.",
+      "decision": "auxiliary"
+    }
+  },
+  "decisions": {
+    "active_swap": "blocked",
+    "active_recompute_preemption": "open",
+    "prefix_cache_layout": "open",
+    "admission_gate": "open"
+  },
+  "recommended_10_4b_probe": "preemption_recompute"
+}
