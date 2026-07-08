@@ -5,7 +5,9 @@ ENV_NAME="${ENV_NAME:-contractkv-cu128}"
 CONTRACTKV_DISK_ROOT="${CONTRACTKV_DISK_ROOT:-/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9}"
 ENV_PREFIX="${ENV_PREFIX:-${CONTRACTKV_DISK_ROOT}/envs/contractkv-cu128}"
 CONDA_SH="${CONDA_SH:-$HOME/miniconda3/etc/profile.d/conda.sh}"
-TMPDIR="${TMPDIR:-${CONTRACTKV_DISK_ROOT}/tmp/contractkv-runtime}"
+RUNTIME_TMP_REAL="${RUNTIME_TMP_REAL:-${CONTRACTKV_DISK_ROOT}/tmp/contractkv-runtime}"
+RUNTIME_TMP_LINK="${RUNTIME_TMP_LINK:-/tmp/contractkv-runtime}"
+TMPDIR="${TMPDIR:-${RUNTIME_TMP_LINK}}"
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/xdg}"
 HF_HOME="${HF_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/huggingface}"
 HF_HUB_CACHE="${HF_HUB_CACHE:-${HF_HOME}/hub}"
@@ -50,9 +52,13 @@ if [[ -z "$MODEL_PATH" || -z "$SERVED_MODEL_NAME" || -z "$PORT" || -z "$MAX_MODE
 fi
 
 PID_PATH="${PID_PATH:-${LOG_PATH%.log}.pid}"
-mkdir -p "$(dirname "$LOG_PATH")" "$(dirname "$PID_PATH")" "$TMPDIR" \
+mkdir -p "$(dirname "$LOG_PATH")" "$(dirname "$PID_PATH")" "$RUNTIME_TMP_REAL" \
   "$XDG_CACHE_HOME" "$HF_HOME" "$HF_HUB_CACHE" "$TRANSFORMERS_CACHE" \
   "$TORCH_HOME" "$TRITON_CACHE_DIR" "$VLLM_CACHE_ROOT"
+if [[ "$TMPDIR" == "$RUNTIME_TMP_LINK" && ! -e "$TMPDIR" ]]; then
+  ln -s "$RUNTIME_TMP_REAL" "$TMPDIR"
+fi
+mkdir -p "$TMPDIR"
 export TMPDIR XDG_CACHE_HOME HF_HOME HF_HUB_CACHE TRANSFORMERS_CACHE
 export TORCH_HOME TRITON_CACHE_DIR VLLM_CACHE_ROOT
 
@@ -80,6 +86,7 @@ echo "model_path=${MODEL_PATH}" >> "$LOG_PATH"
 echo "served_model_name=${SERVED_MODEL_NAME}" >> "$LOG_PATH"
 echo "port=${PORT}" >> "$LOG_PATH"
 echo "contractkv_disk_root=${CONTRACTKV_DISK_ROOT}" >> "$LOG_PATH"
+echo "tmpdir=${TMPDIR}" >> "$LOG_PATH"
 echo "xdg_cache_home=${XDG_CACHE_HOME}" >> "$LOG_PATH"
 echo "vllm_cache_root=${VLLM_CACHE_ROOT}" >> "$LOG_PATH"
 

@@ -77,33 +77,47 @@ def _token_count(tokenizer: Any, text: str) -> int:
 
 
 def _fit_text_to_target(tokenizer: Any, base_text: str, target_tokens: int, tolerance: float) -> str:
-    low, high = 1, max(2, target_tokens // max(1, _token_count(tokenizer, base_text)) + 8)
-    while _token_count(tokenizer, base_text * high) < target_tokens:
-        high *= 2
+    overhead = count_chat_template_tokens(tokenizer, [{"role": "user", "content": ""}])
+    content_target = max(1, target_tokens - overhead)
+    base_ids = tokenizer.encode(base_text, add_special_tokens=False)
+    if not base_ids:
+        raise ValueError("base_text produced no tokenizer ids")
+    search_margin = max(4096, int(target_tokens * 0.25))
+    repeats = ((content_target + search_margin) // len(base_ids)) + 4
+    repeated_ids = (base_ids * repeats)[: content_target + search_margin]
 
-    best = base_text
-    best_error = float("inf")
-    for _ in range(32):
-        mid = (low + high) // 2
-        text = base_text * max(1, mid)
-        messages = [{"role": "user", "content": text}]
-        actual = count_chat_template_tokens(tokenizer, messages)
+    best = tokenizer.decode(repeated_ids[:content_target])
+    best_error = abs(count_chat_template_tokens(tokenizer, [{"role": "user", "content": best}]) - target_tokens)
+    lower = max(1, content_target - search_margin)
+    upper = min(len(repeated_ids), content_target + search_margin)
+
+    lo, hi = lower, upper
+    pivot = content_target
+    for _ in range(24):
+        mid = (lo + hi) // 2
+        text = tokenizer.decode(repeated_ids[:mid])
+        actual = count_chat_template_tokens(tokenizer, [{"role": "user", "content": text}])
         error = abs(actual - target_tokens)
         if error < best_error:
             best = text
             best_error = error
+            pivot = mid
         if within_token_tolerance(actual, target_tokens, tolerance):
             return text
         if actual < target_tokens:
-            low = mid + 1
+            lo = mid + 1
         else:
-            high = max(1, mid - 1)
+            hi = mid - 1
 
-    # Fine trim by tokenizer tokens when repetition lands just above the target.
-    ids = tokenizer.encode(best, add_special_tokens=False)
-    for length in range(max(1, len(ids) - 256), len(ids) + 1):
-        text = tokenizer.decode(ids[:length])
+    scan_lower = max(lower, pivot - 512)
+    scan_upper = min(upper, pivot + 512)
+    for length in range(scan_lower, scan_upper + 1):
+        text = tokenizer.decode(repeated_ids[:length])
         actual = count_chat_template_tokens(tokenizer, [{"role": "user", "content": text}])
+        error = abs(actual - target_tokens)
+        if error < best_error:
+            best = text
+            best_error = error
         if within_token_tolerance(actual, target_tokens, tolerance):
             return text
     return best

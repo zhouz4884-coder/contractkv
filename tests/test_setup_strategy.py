@@ -49,6 +49,14 @@ class SetupStrategyTests(unittest.TestCase):
         self.assertIn("contractkv-runtime", script)
         self.assertIn("export TMPDIR XDG_CACHE_HOME", script)
 
+    def test_run_vllm_uses_short_tmpdir_for_zmq_ipc(self):
+        script = Path("scripts/run_vllm_server.sh").read_text(encoding="utf-8")
+
+        self.assertIn("RUNTIME_TMP_REAL", script)
+        self.assertIn("RUNTIME_TMP_LINK", script)
+        self.assertIn("/tmp/contractkv-runtime", script)
+        self.assertIn("ln -s", script)
+
 
 if __name__ == "__main__":
     unittest.main()
