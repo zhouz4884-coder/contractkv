@@ -17,8 +17,10 @@ from scripts.install_vllm_v1_anchor_recompute_probe import uninstall as uninstal
 from scripts.run_recompute_policy_pressure_eval import aggregate_pressure_metrics
 from scripts.evaluate_recompute_policy_quality import compute_policy_quality_summary
 from scripts.send_stream_probe_requests import make_prompt as make_stream_prompt
+from scripts.send_stream_probe_requests import parse_stream_chunks
 from scripts.build_phase10_5c_tier0_eval import build_policy_row
 from scripts.build_phase10_5c_repeat_eval import build_repeat_rows, compute_slo_sweep_rows
+from scripts.build_phase10_5c_tier2_eval import aggregate_tier2_rows, build_slo_sweep_rows
 
 
 class Phase105AnchorPlannerTests(unittest.TestCase):
@@ -391,12 +393,66 @@ class Phase105PressureEvalTests(unittest.TestCase):
         self.assertEqual(by_slo[3000]["slo_compliant_requests"], 2)
         self.assertEqual(by_slo[3000]["slo_compliant_req_per_sec"], 1.0)
 
+    def test_aggregate_tier2_rows_keeps_scenario_dimensions(self):
+        rows = [
+            {"policy": "vllm-default", "concurrent_requests": 2, "completed": True, "slo_violation": False, "ttft_ms": 1000, "tpot_ms": 20, "blocks_freed": 0, "free_gpu_blocks_before": 0, "free_gpu_blocks_after": 0, "full_recompute_tokens": 0, "anchored_recompute_tokens": 0, "error_type": "none"},
+            {"policy": "contractkv-rar-exact", "concurrent_requests": 2, "completed": True, "slo_violation": False, "ttft_ms": 1200, "tpot_ms": 20, "blocks_freed": 64, "free_gpu_blocks_before": 10, "free_gpu_blocks_after": 74, "full_recompute_tokens": 2048, "anchored_recompute_tokens": 1024, "error_type": "none"},
+            {"policy": "contractkv-rar-exact", "concurrent_requests": 2, "completed": True, "slo_violation": True, "ttft_ms": 2600, "tpot_ms": 20, "blocks_freed": 64, "free_gpu_blocks_before": 10, "free_gpu_blocks_after": 74, "full_recompute_tokens": 2048, "anchored_recompute_tokens": 1024, "error_type": "none"},
+        ]
+
+        summary = aggregate_tier2_rows(rows, duration_sec_by_key={("vllm-default", 2): 1.0, ("contractkv-rar-exact", 2): 2.0})
+        by_policy = {row["policy"]: row for row in summary}
+
+        self.assertEqual(by_policy["contractkv-rar-exact"]["concurrent_requests"], 2)
+        self.assertEqual(by_policy["contractkv-rar-exact"]["completed_requests"], 2)
+        self.assertEqual(by_policy["contractkv-rar-exact"]["slo_compliant_requests"], 1)
+        self.assertEqual(by_policy["contractkv-rar-exact"]["total_blocks_freed"], 128)
+        self.assertEqual(by_policy["contractkv-rar-exact"]["total_recompute_tokens_saved_vs_full"], 2048)
+
+    def test_build_slo_sweep_rows_recomputes_tier2_slo_buckets(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "phase10_5c3_vllm_default_c2_qwen3_8b.jsonl").write_text(
+                '{"request_id":"req-default","success":true,"ttft_ms":2100,"tpot_ms":20,"total_latency_ms":2400,"error_type":"none"}\n',
+                encoding="utf-8",
+            )
+            (root / "phase10_5c3_contractkv_rar_exact_c2_qwen3_8b.jsonl").write_text(
+                '{"request_id":"req-rar","success":true,"ttft_ms":2600,"tpot_ms":20,"total_latency_ms":3000,"error_type":"none"}\n',
+                encoding="utf-8",
+            )
+            (root / "phase10_5c3_contractkv_rar_exact_c2_qwen3_8b_events.jsonl").write_text(
+                '{"request_id":"req-rar","block_size":16,"prefix_blocks_retained":64,"suffix_blocks_freed":64,"anchor_token_end":1024,"before_free_gpu_blocks":10,"after_free_gpu_blocks":74}\n',
+                encoding="utf-8",
+            )
+
+            sweep = build_slo_sweep_rows(root, "qwen3-8b", 2, [2500, 3000])
+
+        by_key = {(row["slo_ttft_ms"], row["policy"], row["concurrent_requests"]): row for row in sweep}
+
+        self.assertEqual(by_key[(2500, "vllm-default", 2)]["slo_compliant_requests"], 1)
+        self.assertEqual(by_key[(2500, "contractkv-rar-exact", 2)]["slo_compliant_requests"], 0)
+        self.assertEqual(by_key[(3000, "contractkv-rar-exact", 2)]["slo_compliant_requests"], 1)
+        self.assertEqual(by_key[(3000, "contractkv-rar-exact", 2)]["total_recompute_tokens_saved_vs_full"], 1024)
+
     def test_stream_probe_prompt_scales_with_target_words(self):
         prompt = make_stream_prompt(target_words=128, request_index=3)
 
         self.assertIn("Pressure request 3", prompt)
         self.assertGreaterEqual(len(prompt.split()), 128)
         self.assertTrue(prompt.endswith("Answer OK."))
+
+    def test_stream_parser_captures_request_id(self):
+        chunks = [
+            {"id": "chatcmpl-1", "choices": [{"delta": {"content": "O"}}]},
+            {"id": "chatcmpl-1", "choices": [{"delta": {"content": "K"}}]},
+        ]
+
+        parsed = parse_stream_chunks(chunks, started=1.0, token_times=[1.2, 1.4], ended=1.5)
+
+        self.assertEqual(parsed["request_id"], "chatcmpl-1")
+        self.assertEqual(parsed["output_text"], "OK")
+        self.assertEqual(parsed["output_tokens"], 2)
+        self.assertEqual(parsed["ttft_ms"], 200.0)
 
     def test_aggregate_pressure_metrics_reports_block_headroom_and_deltas(self):
         rows = [

@@ -30,6 +30,34 @@ def _iter_sse(response: Any):
         yield json.loads(payload)
 
 
+def parse_stream_chunks(chunks: list[dict[str, Any]], started: float, token_times: list[float], ended: float) -> dict[str, Any]:
+    output_chunks = []
+    request_id = ""
+    for chunk in chunks:
+        request_id = request_id or str(chunk.get("id", ""))
+        content = chunk.get("choices", [{}])[0].get("delta", {}).get("content") or ""
+        if content:
+            output_chunks.append(content)
+    first_token = token_times[0] if token_times else None
+    last_token = token_times[-1] if token_times else None
+    output_tokens = len(output_chunks)
+    ttft_ms = (first_token - started) * 1000.0 if first_token is not None else 0.0
+    tpot_ms = ((last_token - first_token) * 1000.0 / max(output_tokens - 1, 1)) if first_token and last_token and output_tokens > 1 else 0.0
+    output_text = "".join(output_chunks)
+    return {
+        "request_id": request_id,
+        "success": bool(output_text),
+        "ttft_ms": round(ttft_ms, 6),
+        "tpot_ms": round(tpot_ms, 6),
+        "total_latency_ms": round((ended - started) * 1000.0, 6),
+        "output_tokens": output_tokens,
+        "response_bytes": len(output_text.encode("utf-8")),
+        "output_text": output_text,
+        "error_type": "none" if output_text else "bad_output",
+        "error_message": "",
+    }
+
+
 def send_one(base_url: str, model: str, prompt: str, max_tokens: int, timeout: float, request_index: int) -> dict[str, Any]:
     payload = {
         "model": model,
@@ -46,9 +74,8 @@ def send_one(base_url: str, model: str, prompt: str, max_tokens: int, timeout: f
     )
     started = time.perf_counter()
     first_token = None
-    last_token = None
-    output_tokens = 0
-    output_chunks: list[str] = []
+    token_times: list[float] = []
+    chunks: list[dict[str, Any]] = []
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             for chunk in _iter_sse(response):
@@ -58,25 +85,12 @@ def send_one(base_url: str, model: str, prompt: str, max_tokens: int, timeout: f
                 now = time.perf_counter()
                 if first_token is None:
                     first_token = now
-                last_token = now
-                output_tokens += 1
-                output_chunks.append(content)
+                token_times.append(now)
+                chunks.append(chunk)
         ended = time.perf_counter()
-        ttft_ms = (first_token - started) * 1000.0 if first_token is not None else 0.0
-        tpot_ms = ((last_token - first_token) * 1000.0 / max(output_tokens - 1, 1)) if first_token and last_token and output_tokens > 1 else 0.0
-        output_text = "".join(output_chunks)
-        return {
-            "request_index": request_index,
-            "success": bool(output_text),
-            "ttft_ms": round(ttft_ms, 6),
-            "tpot_ms": round(tpot_ms, 6),
-            "total_latency_ms": round((ended - started) * 1000.0, 6),
-            "output_tokens": output_tokens,
-            "response_bytes": len(output_text.encode("utf-8")),
-            "output_text": output_text,
-            "error_type": "none" if output_text else "bad_output",
-            "error_message": "",
-        }
+        row = parse_stream_chunks(chunks, started, token_times, ended)
+        row["request_index"] = request_index
+        return row
     except Exception as exc:
         ended = time.perf_counter()
         return {
