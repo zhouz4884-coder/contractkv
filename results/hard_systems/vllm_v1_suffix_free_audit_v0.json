@@ -1,0 +1,48 @@
+{
+  "schema_version": "phase10_5_suffix_free_audit_v0",
+  "files": {
+    "v1/core/kv_cache_manager.py": {
+      "exists": true,
+      "has_get_block_ids": true,
+      "has_request_free": true,
+      "has_coordinator_free": true,
+      "has_block_pool_free": true,
+      "has_num_computed_tokens": true,
+      "has_block_table": true
+    },
+    "v1/core/block_pool.py": {
+      "exists": true,
+      "has_get_block_ids": false,
+      "has_request_free": false,
+      "has_coordinator_free": false,
+      "has_block_pool_free": true,
+      "has_num_computed_tokens": false,
+      "has_block_table": false
+    },
+    "v1/core/sched/scheduler.py": {
+      "exists": true,
+      "has_get_block_ids": true,
+      "has_request_free": false,
+      "has_coordinator_free": false,
+      "has_block_pool_free": true,
+      "has_num_computed_tokens": true,
+      "has_block_table": true
+    }
+  },
+  "suffix_free_gate": "open_for_probe",
+  "runtime_invariants": [
+    "prefix_blocks_retained_exact",
+    "suffix_blocks_freed_exact",
+    "free_gpu_blocks_delta_gte_suffix_blocks_freed",
+    "num_computed_tokens_after_equals_anchor_token_end",
+    "request_completed",
+    "response_non_empty",
+    "duplicate_block_id_not_detected",
+    "block_table_consistency"
+  ],
+  "minimum_probe": "Verify prefix physical block ids stay unchanged, suffix physical block ids return to the block pool, free_gpu_blocks_delta >= suffix_blocks_freed, num_computed_tokens_after == anchor_token_end, and request completion.",
+  "notes": "source_gate_only_runtime_invariants_still_required",
+  "vllm_root": "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/vllm",
+  "vllm_version": "0.10.2",
+  "python_executable": "/home/user/miniconda3/envs/contractkv-cu128/bin/python"
+}

@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Connect the real Qwen3-8B quality-risk matrix from Phase 10.2B with the real vLLM V1 recompute actuator from Phase 10.4B, and test whether risk-anchored prefix residency plus suffix recompute improves pressure handling without quality collapse.
+**Goal:** Connect the real Qwen3-8B quality-risk matrix from Phase 10.2B with the real vLLM V1 recompute actuator from Phase 10.4B, and test whether Risk-Anchored Recompute (RAR) improves block headroom, pressure completion, and SLO goodput without quality collapse.
 
-**Architecture:** Phase 10.5 uses a conservative prefix-anchored design: choose an anchor boundary, keep the high-risk contiguous prefix resident, and release/recompute only the suffix. Arbitrary middle-segment hole punching and MiniPIC-style stitching are explicitly out of scope for this phase because they violate vLLM's contiguous computed-prefix assumption and belong to a later Phase 11.
+**Architecture:** Phase 10.5 uses a conservative prefix-anchored design: choose an anchor boundary, keep the high-risk contiguous prefix resident, and release/recompute only the suffix. The planner distinguishes text that cannot be dropped from KV residency that can be released and reconstructed; `USER_QUERY` is reconstructable in the suffix, not a reason to reject suffix recompute. Arbitrary middle-segment hole punching and MiniPIC-style stitching are explicitly out of scope for this phase because they violate vLLM's contiguous computed-prefix assumption and belong to a later Phase 11.
 
 **Tech Stack:** Python 3.10, unittest, vLLM 0.10.2 V1 scheduler/KV cache internals, OpenAI-compatible vLLM API, local CSV/JSONL artifacts under `results/hard_systems/`, reports under `docs/`.
 
@@ -64,6 +64,66 @@ Phase 10.5 must proceed through gates:
 5. `10.5D`: real output quality does not collapse.
 
 Do not claim system benefit until `10.5C` and `10.5D` both produce positive evidence.
+
+Supplemental constraints from the Phase 10.5 review:
+
+```text
+method name: Risk-Anchored Recompute (RAR)
+MUST_RESIDENT_TYPES = {"SYS_PROMPT", "TOOL_SCHEMA"}
+MUST_RECONSTRUCT_TYPES = {"USER_QUERY"}
+DROP_FORBIDDEN_TYPES = {"SYS_PROMPT", "TOOL_SCHEMA", "USER_QUERY"}
+```
+
+RAR is not "dropping low-risk text." It releases suffix KV residency and later reconstructs the suffix from retained text. The anchor optimizer should maximize reclaimed blocks under real quality-risk, recompute-cost, SLO/slack, and boundary-safety constraints:
+
+```text
+maximize reclaimed_blocks(anchor)
+
+subject to:
+  quality_risk(anchor) <= epsilon
+  estimated_recompute_ms(anchor) <= slack_or_SLO_margin
+  boundary_safety(anchor) = true
+  must_reconstruct_segments are preserved as text
+```
+
+Planner records must include:
+
+```text
+reclaimed_blocks
+estimated_recompute_ms
+slack_ms
+slo_margin_ms
+slack_feasible
+anchor_utility = reclaimed_blocks / max(estimated_recompute_ms, 1)
+boundary_guard_tokens
+recompute_start_token
+decision_reason
+recomputed_segment_types
+dropped_segment_types
+```
+
+Runtime POC success must require all invariants:
+
+```text
+prefix_blocks_retained_exact
+suffix_blocks_freed_exact
+free_gpu_blocks_delta >= suffix_blocks_freed
+request.num_computed_tokens_after == anchor_token_end
+request_completed
+response non-empty
+```
+
+Pressure evaluation must report:
+
+```text
+mean_block_headroom_gain
+total_recompute_tokens_saved_vs_full
+capacity_failures
+completion_lift_vs_default
+slo_goodput_delta_vs_default
+```
+
+These supplemental constraints override any older code snippet below that treats `USER_QUERY` as a suffix-release blocker or describes the action as dropping `released_segment_types`. Implementation should use `recomputed_segment_types` and `dropped_segment_types`; suffix text is preserved and reconstructed.
 
 ---
 
