@@ -12,8 +12,8 @@ from typing import Any
 POLICIES = [
     "vllm-default",
     "full-recompute",
-    "budget-aware-greedy-recompute",
-    "contractkv-anchored-recompute",
+    "greedy-rar-exact",
+    "contractkv-rar-exact",
 ]
 
 RAW_FIELDS = [

@@ -86,6 +86,47 @@ subject to:
   must_reconstruct_segments are preserved as text
 ```
 
+After the Phase 10.5 planner review, risk must be action-conditioned:
+
+```text
+Risk(segment, drop)            = Phase 10.2 eviction/truncation risk
+Risk(segment, truncate)        = Phase 10.2 eviction/truncation risk
+Risk(segment, exact_recompute) = boundary / implementation risk, default 0.01
+Risk(segment, offload)         = quality risk 0, latency/bandwidth cost nonzero
+Risk(segment, quantize)        = low-bit measured risk, not used in Phase 10.5 main table
+```
+
+This changes the meaning of the original low-coverage planner result. `eviction_strict` is a fail-closed baseline, not the main ContractKV policy. The Phase 10.5C main policy is `ContractKV-RAR-exact`:
+
+```text
+suffix text preserved
+suffix KV freed
+suffix exactly recomputed
+quality risk = boundary risk, not eviction risk
+```
+
+The current planner artifacts are:
+
+```text
+results/hard_systems/anchor_residency_plan_v0.jsonl                 # eviction_strict
+results/hard_systems/anchor_residency_plan_v1_rar_exact.jsonl       # RAR-exact
+results/hard_systems/anchor_residency_plan_comparison_v0.csv
+```
+
+Observed candidate coverage:
+
+```text
+eviction_strict: 0 / 140 release candidates
+RAR-exact: 122 / 140 release candidates
+```
+
+This is the design-space claim for Phase 10.5:
+
+```text
+traditional eviction view turns "cannot delete" into "cannot release";
+ContractKV recoverability view turns "cannot delete" into "can release if exactly reconstructed."
+```
+
 Planner records must include:
 
 ```text
@@ -1026,8 +1067,8 @@ Policies:
 POLICIES = [
     "vllm-default",
     "full-recompute",
-    "budget-aware-greedy-recompute",
-    "contractkv-anchored-recompute",
+    "greedy-rar-exact",
+    "contractkv-rar-exact",
 ]
 ```
 
@@ -1123,6 +1164,7 @@ Does ContractKV release real GPU KV blocks under pressure?
 Does it complete/admit more requests than vLLM-default?
 Does it improve SLO-compliant req/s by at least 10%?
 Does full-recompute suffer avoidable latency compared with anchored recompute?
+Does RAR-exact save recompute tokens relative to full recompute?
 ```
 
 - [ ] **Step 6: Commit**

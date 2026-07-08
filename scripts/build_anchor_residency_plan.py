@@ -15,6 +15,7 @@ MUST_RECONSTRUCT_TYPES = {"USER_QUERY"}
 DROP_FORBIDDEN_TYPES = MUST_RESIDENT_TYPES | MUST_RECONSTRUCT_TYPES
 LOW_RISK_DEFAULT = 0.01
 HIGH_RISK_DEFAULT = 1.0
+BOUNDARY_RISK_DEFAULT = 0.01
 
 
 def compute_segment_block_span(token_start: int, token_count: int, block_size: int) -> dict[str, int]:
@@ -37,6 +38,35 @@ def _segment_risk(segment: dict[str, Any], risk_by_segment_type: dict[str, float
     if seg_type in MUST_RECONSTRUCT_TYPES:
         return 0.0
     return float(risk_by_segment_type.get(seg_type, LOW_RISK_DEFAULT))
+
+
+def estimate_action_conditioned_risk(
+    segment: dict[str, Any],
+    risk_by_segment_type: dict[str, float],
+    action_type: str,
+    boundary_risk: float = BOUNDARY_RISK_DEFAULT,
+    quantize_risk: float = 0.01,
+) -> float:
+    """Return Risk(segment, action), separating semantic loss from exact recovery.
+
+    Phase 10.2 eviction/truncation risks describe semantic deletion. RAR-exact
+    preserves text and only releases KV residency, so its quality risk is the
+    implementation/boundary risk, not the deletion risk.
+    """
+    action = action_type.lower()
+    if action in {"drop", "evict", "eviction", "truncate", "context_truncation"}:
+        if str(segment.get("type", "UNKNOWN")) in DROP_FORBIDDEN_TYPES:
+            return HIGH_RISK_DEFAULT
+        return _segment_risk(segment, risk_by_segment_type)
+    if action in {"exact_recompute", "rar_exact", "recompute"}:
+        if str(segment.get("type", "UNKNOWN")) in MUST_RESIDENT_TYPES:
+            return HIGH_RISK_DEFAULT
+        return float(boundary_risk)
+    if action in {"offload", "swap", "host_offload"}:
+        return 0.0
+    if action in {"quantize", "low_bit_quantize", "kivi"}:
+        return float(quantize_risk)
+    return _segment_risk(segment, risk_by_segment_type)
 
 
 def annotate_segments(
@@ -76,9 +106,13 @@ def _keep_full_request(annotated: list[dict[str, Any]], block_size: int, boundar
         "estimated_recompute_ms": 0.0,
         "slack_ms": 0.0,
         "slo_margin_ms": 0.0,
+        "recompute_feasible": False,
         "slack_feasible": False,
         "anchor_utility": 0.0,
         "estimated_quality_risk": max([float(item["real_quality_risk"]) for item in annotated] or [0.0]),
+        "eviction_quality_risk": max([float(item["real_quality_risk"]) for item in annotated] or [0.0]),
+        "action_type": "none",
+        "planner_mode": "none",
         "boundary_guard_tokens": boundary_guard_tokens,
         "recompute_start_token": max(0, anchor_token_end - boundary_guard_tokens),
         "decision_reason": reason,
@@ -97,12 +131,17 @@ def choose_anchor_boundary(
     slo_margin_ms: float = 0.0,
     recompute_ms_per_token: float = 0.005,
     boundary_guard_blocks: int = 2,
+    planner_mode: str = "eviction_strict",
+    boundary_risk: float = BOUNDARY_RISK_DEFAULT,
 ) -> dict[str, Any]:
     annotated = annotate_segments(segments, risk_by_segment_type, block_size)
     if not annotated:
-        return _keep_full_request([], block_size, boundary_guard_blocks, "empty_request")
+        row = _keep_full_request([], block_size, boundary_guard_blocks, "empty_request")
+        row["planner_mode"] = planner_mode
+        return row
 
     best: dict[str, Any] | None = None
+    action_type = "exact_recompute" if planner_mode == "rar_exact" else "drop"
     boundary_guard_tokens = boundary_guard_blocks * block_size
     for anchor_index, anchor in enumerate(annotated):
         prefix = annotated[: anchor_index + 1]
@@ -111,16 +150,26 @@ def choose_anchor_boundary(
             continue
         if any(item["type"] in MUST_RESIDENT_TYPES for item in suffix):
             continue
-        if not any(item["type"] not in MUST_RECONSTRUCT_TYPES for item in suffix):
+        if planner_mode == "eviction_strict" and any(item["type"] in DROP_FORBIDDEN_TYPES for item in suffix):
             continue
         suffix_blocks = sum(int(item["block_count"]) for item in suffix)
         suffix_tokens = sum(int(item["token_count"]) for item in suffix)
-        suffix_risk = max([float(item["real_quality_risk"]) for item in suffix if item["type"] not in MUST_RECONSTRUCT_TYPES] or [0.0])
+        suffix_risk = max([
+            estimate_action_conditioned_risk(
+                item,
+                risk_by_segment_type,
+                action_type=action_type,
+                boundary_risk=boundary_risk,
+            )
+            for item in suffix
+        ] or [0.0])
+        eviction_quality_risk = max([float(item["real_quality_risk"]) for item in suffix] or [0.0])
         if suffix_blocks < min_suffix_blocks or suffix_risk > risk_threshold:
             continue
         estimated_recompute_ms = round(suffix_tokens * recompute_ms_per_token, 6)
         feasible_budget = max(float(slack_ms), float(slo_margin_ms))
-        slack_feasible = feasible_budget <= 0 or estimated_recompute_ms <= feasible_budget
+        recompute_feasible = feasible_budget <= 0 or estimated_recompute_ms <= feasible_budget
+        slack_feasible = recompute_feasible
         utility = round(suffix_blocks / max(estimated_recompute_ms, 1.0), 6)
         candidate = {
             "candidate_anchor_id": str(anchor["segment_id"]),
@@ -134,9 +183,13 @@ def choose_anchor_boundary(
             "estimated_recompute_ms": estimated_recompute_ms,
             "slack_ms": float(slack_ms),
             "slo_margin_ms": float(slo_margin_ms),
+            "recompute_feasible": recompute_feasible,
             "slack_feasible": slack_feasible,
             "anchor_utility": utility if slack_feasible else 0.0,
             "estimated_quality_risk": suffix_risk,
+            "eviction_quality_risk": eviction_quality_risk,
+            "action_type": action_type,
+            "planner_mode": planner_mode,
             "boundary_guard_tokens": boundary_guard_tokens,
             "recompute_start_token": max(0, int(anchor["token_end"]) - boundary_guard_tokens),
             "decision_reason": "high_block_yield_with_safe_recompute" if slack_feasible else "recompute_budget_exceeded",
@@ -150,7 +203,10 @@ def choose_anchor_boundary(
             best = candidate
     if best is not None:
         return best
-    return _keep_full_request(annotated, block_size, boundary_guard_blocks, "no_safe_recompute_suffix")
+    row = _keep_full_request(annotated, block_size, boundary_guard_blocks, "no_safe_recompute_suffix")
+    row["planner_mode"] = planner_mode
+    row["action_type"] = action_type
+    return row
 
 
 def make_anchor_residency_record(
@@ -165,6 +221,8 @@ def make_anchor_residency_record(
     slo_margin_ms: float = 0.0,
     recompute_ms_per_token: float = 0.005,
     boundary_guard_blocks: int = 2,
+    planner_mode: str = "eviction_strict",
+    boundary_risk: float = BOUNDARY_RISK_DEFAULT,
 ) -> dict[str, Any]:
     annotated = annotate_segments(segments, risk_by_segment_type, block_size)
     decision = choose_anchor_boundary(
@@ -175,6 +233,8 @@ def make_anchor_residency_record(
         slo_margin_ms=slo_margin_ms,
         recompute_ms_per_token=recompute_ms_per_token,
         boundary_guard_blocks=boundary_guard_blocks,
+        planner_mode=planner_mode,
+        boundary_risk=boundary_risk,
     )
     return {
         "trace_id": trace_id,
@@ -191,9 +251,13 @@ def make_anchor_residency_record(
         "estimated_recompute_ms": decision["estimated_recompute_ms"],
         "slack_ms": decision["slack_ms"],
         "slo_margin_ms": decision["slo_margin_ms"],
+        "recompute_feasible": decision["recompute_feasible"],
         "slack_feasible": decision["slack_feasible"],
         "anchor_utility": decision["anchor_utility"],
         "estimated_quality_risk": decision["estimated_quality_risk"],
+        "eviction_quality_risk": decision["eviction_quality_risk"],
+        "action_type": decision["action_type"],
+        "planner_mode": decision["planner_mode"],
         "boundary_guard_tokens": decision["boundary_guard_tokens"],
         "recompute_start_token": decision["recompute_start_token"],
         "decision_reason": decision["decision_reason"],
@@ -229,8 +293,43 @@ def load_risk_by_segment_type(path: Path) -> dict[str, float]:
     return risks
 
 
+def summarize_residency_plan(rows: list[dict[str, Any]], planner_mode: str) -> dict[str, Any]:
+    total = len(rows)
+    release = [row for row in rows if row.get("residency_decision") == "release_suffix_candidate"]
+    by_dataset: dict[str, int] = {}
+    for row in release:
+        dataset = str(row.get("dataset", "unknown"))
+        by_dataset[dataset] = by_dataset.get(dataset, 0) + 1
+    release_by_dataset = ";".join(f"{key}:{by_dataset[key]}" for key in sorted(by_dataset))
+    total_reclaimed = sum(int(row.get("reclaimed_blocks") or 0) for row in rows)
+    total_reclaimed_release = sum(int(row.get("reclaimed_blocks") or 0) for row in release)
+    estimated_saved = sum(
+        max(0, int(row.get("anchor_token_end") or 0) - int(row.get("boundary_guard_tokens") or 0))
+        for row in release
+    )
+    return {
+        "planner_mode": planner_mode,
+        "total_traces": total,
+        "release_candidates": len(release),
+        "keep_full_request": total - len(release),
+        "candidate_coverage": round(len(release) / total, 6) if total else 0.0,
+        "release_by_dataset": release_by_dataset,
+        "average_reclaimed_blocks_all": round(total_reclaimed / total, 6) if total else 0.0,
+        "average_reclaimed_blocks_release": round(total_reclaimed_release / len(release), 6) if release else 0.0,
+        "estimated_recompute_tokens_saved_vs_full": estimated_saved,
+    }
+
+
 def load_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -248,6 +347,9 @@ def main() -> int:
     parser.add_argument("--block-size", type=int, default=16)
     parser.add_argument("--recompute-ms-per-token", type=float, default=0.005)
     parser.add_argument("--boundary-guard-blocks", type=int, default=2)
+    parser.add_argument("--planner-mode", choices=["eviction_strict", "rar_exact"], default="eviction_strict")
+    parser.add_argument("--boundary-risk", type=float, default=BOUNDARY_RISK_DEFAULT)
+    parser.add_argument("--summary-output", type=Path)
     args = parser.parse_args()
     risk_by_segment_type = load_risk_by_segment_type(args.risk_summary)
     rows = []
@@ -265,9 +367,14 @@ def main() -> int:
                 slo_margin_ms=float(trace.get("slo_ttft_ms") or 0.0),
                 recompute_ms_per_token=args.recompute_ms_per_token,
                 boundary_guard_blocks=args.boundary_guard_blocks,
+                planner_mode=args.planner_mode,
+                boundary_risk=args.boundary_risk,
             )
         )
     write_jsonl(args.output, rows)
+    if args.summary_output:
+        summary = summarize_residency_plan(rows, args.planner_mode)
+        write_csv(args.summary_output, [summary], list(summary.keys()))
     print(f"anchor_plan_rows={len(rows)}")
     return 0 if rows else 1
 

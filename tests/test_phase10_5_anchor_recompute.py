@@ -5,8 +5,10 @@ from pathlib import Path
 from scripts.build_anchor_residency_plan import (
     choose_anchor_boundary,
     compute_segment_block_span,
+    estimate_action_conditioned_risk,
     load_risk_by_segment_type,
     make_anchor_residency_record,
+    summarize_residency_plan,
 )
 from scripts.audit_vllm_v1_suffix_free import audit_suffix_free_path
 from scripts.build_anchor_recompute_probe_summary import summarize_anchor_probe
@@ -49,15 +51,81 @@ class Phase105AnchorPlannerTests(unittest.TestCase):
             slo_margin_ms=180,
             recompute_ms_per_token=0.005,
             boundary_guard_blocks=2,
+            planner_mode="rar_exact",
         )
 
         self.assertEqual(decision["residency_decision"], "release_suffix_candidate")
-        self.assertEqual(decision["anchor_segment_index"], 1)
+        self.assertEqual(decision["anchor_segment_index"], 0)
+        self.assertIn("RAG_CHUNK", decision["recomputed_segment_types"])
         self.assertIn("USER_QUERY", decision["recomputed_segment_types"])
         self.assertNotIn("USER_QUERY", decision["dropped_segment_types"])
         self.assertEqual(decision["boundary_guard_tokens"], 32)
         self.assertEqual(decision["recompute_start_token"], decision["anchor_token_end"] - 32)
         self.assertGreater(decision["anchor_utility"], 0)
+        self.assertTrue(decision["slack_feasible"])
+
+    def test_action_conditioned_risk_separates_drop_from_exact_recompute(self):
+        segment = {"type": "RAG_CHUNK", "token_count": 2048}
+        risks = {"RAG_CHUNK": 0.8}
+
+        drop_risk = estimate_action_conditioned_risk(segment, risks, "drop")
+        truncate_risk = estimate_action_conditioned_risk(segment, risks, "truncate")
+        recompute_risk = estimate_action_conditioned_risk(segment, risks, "exact_recompute")
+        offload_risk = estimate_action_conditioned_risk(segment, risks, "offload")
+
+        self.assertEqual(drop_risk, 0.8)
+        self.assertEqual(truncate_risk, 0.8)
+        self.assertLessEqual(recompute_risk, 0.01)
+        self.assertEqual(offload_risk, 0.0)
+
+    def test_eviction_strict_keeps_high_risk_suffix_fail_closed(self):
+        segments = [
+            {"type": "SYS_PROMPT", "text": "system", "token_count": 64},
+            {"type": "RAG_CHUNK", "text": "evidence", "token_count": 2048},
+            {"type": "USER_QUERY", "text": "question", "token_count": 64},
+        ]
+
+        decision = choose_anchor_boundary(
+            segments=segments,
+            risk_by_segment_type={"RAG_CHUNK": 0.8, "USER_QUERY": 1.0},
+            block_size=16,
+            risk_threshold=0.05,
+            min_suffix_blocks=64,
+            planner_mode="eviction_strict",
+            slack_ms=200,
+            slo_margin_ms=200,
+        )
+
+        self.assertEqual(decision["residency_decision"], "keep_full_request")
+        self.assertEqual(decision["decision_reason"], "no_safe_recompute_suffix")
+
+    def test_rar_exact_releases_high_eviction_risk_suffix_when_recompute_feasible(self):
+        segments = [
+            {"type": "SYS_PROMPT", "text": "system", "token_count": 64},
+            {"type": "RAG_CHUNK", "text": "evidence", "token_count": 2048},
+            {"type": "USER_QUERY", "text": "question", "token_count": 64},
+        ]
+
+        decision = choose_anchor_boundary(
+            segments=segments,
+            risk_by_segment_type={"RAG_CHUNK": 0.8, "USER_QUERY": 1.0},
+            block_size=16,
+            risk_threshold=0.05,
+            min_suffix_blocks=64,
+            planner_mode="rar_exact",
+            slack_ms=200,
+            slo_margin_ms=200,
+            recompute_ms_per_token=0.005,
+        )
+
+        self.assertEqual(decision["residency_decision"], "release_suffix_candidate")
+        self.assertEqual(decision["action_type"], "exact_recompute")
+        self.assertEqual(decision["anchor_segment_index"], 0)
+        self.assertIn("RAG_CHUNK", decision["recomputed_segment_types"])
+        self.assertIn("USER_QUERY", decision["recomputed_segment_types"])
+        self.assertEqual(decision["dropped_segment_types"], [])
+        self.assertLessEqual(decision["estimated_quality_risk"], 0.01)
+        self.assertTrue(decision["recompute_feasible"])
         self.assertTrue(decision["slack_feasible"])
 
     def test_anchor_boundary_keeps_full_request_when_no_reclaimable_suffix(self):
@@ -94,6 +162,7 @@ class Phase105AnchorPlannerTests(unittest.TestCase):
             tool_slack_ms=100,
             slo_margin_ms=180,
             boundary_guard_blocks=2,
+            planner_mode="rar_exact",
         )
 
         for field in [
@@ -110,8 +179,11 @@ class Phase105AnchorPlannerTests(unittest.TestCase):
             "estimated_recompute_ms",
             "slack_ms",
             "slo_margin_ms",
+            "recompute_feasible",
             "slack_feasible",
             "anchor_utility",
+            "action_type",
+            "planner_mode",
             "boundary_guard_tokens",
             "recompute_start_token",
             "decision_reason",
@@ -139,6 +211,36 @@ class Phase105AnchorPlannerTests(unittest.TestCase):
         self.assertEqual(risks["RAG_CHUNK"], 0.5)
         self.assertEqual(risks["REPO_CONTEXT"], 0.2)
         self.assertEqual(risks["SYNTHETIC_CONTEXT"], 1.0)
+
+    def test_summarize_residency_plan_reports_candidate_coverage(self):
+        rows = [
+            {
+                "planner_mode": "rar_exact",
+                "dataset": "RULER",
+                "residency_decision": "release_suffix_candidate",
+                "reclaimed_blocks": 64,
+                "anchor_token_end": 1024,
+                "boundary_guard_tokens": 32,
+            },
+            {
+                "planner_mode": "rar_exact",
+                "dataset": "LongBench",
+                "residency_decision": "keep_full_request",
+                "reclaimed_blocks": 0,
+                "anchor_token_end": 0,
+                "boundary_guard_tokens": 32,
+            },
+        ]
+
+        summary = summarize_residency_plan(rows, "rar_exact")
+
+        self.assertEqual(summary["planner_mode"], "rar_exact")
+        self.assertEqual(summary["total_traces"], 2)
+        self.assertEqual(summary["release_candidates"], 1)
+        self.assertEqual(summary["keep_full_request"], 1)
+        self.assertEqual(summary["candidate_coverage"], 0.5)
+        self.assertEqual(summary["release_by_dataset"], "RULER:1")
+        self.assertEqual(summary["estimated_recompute_tokens_saved_vs_full"], 992)
 
 
 class Phase105SuffixFreeAuditTests(unittest.TestCase):
@@ -251,7 +353,7 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "error_type": "capacity_failure",
             },
             {
-                "policy": "contractkv-anchored-recompute",
+                "policy": "contractkv-rar-exact",
                 "completed": True,
                 "slo_violation": False,
                 "latency_ms": 120.0,
@@ -263,7 +365,7 @@ class Phase105PressureEvalTests(unittest.TestCase):
                 "error_type": "none",
             },
             {
-                "policy": "contractkv-anchored-recompute",
+                "policy": "contractkv-rar-exact",
                 "completed": True,
                 "slo_violation": False,
                 "latency_ms": 130.0,
@@ -279,7 +381,7 @@ class Phase105PressureEvalTests(unittest.TestCase):
         summary = aggregate_pressure_metrics(rows, duration_sec=2.0)
         by_policy = {row["policy"]: row for row in summary}
 
-        contract = by_policy["contractkv-anchored-recompute"]
+        contract = by_policy["contractkv-rar-exact"]
         self.assertEqual(contract["completed_requests"], 2)
         self.assertEqual(contract["slo_compliant_requests"], 2)
         self.assertEqual(contract["total_blocks_freed"], 96)
