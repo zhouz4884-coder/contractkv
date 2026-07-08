@@ -1,0 +1,29 @@
+batch: characterization_batch_001
+status: completed_with_dataset_download_gaps
+code_commits:
+  actual_context_scaling: 28a7528
+  hardware_microbench: 2fc7ecd
+includes:
+  - phase0_2_closeout
+  - phase2_5_actual_context_scaling
+  - phase2_6_hardware_microbench
+  - phase2_7_dataset_readiness
+models:
+  primary: Qwen3-8B
+  debug: Qwen3-4B
+datasets:
+  - RULER
+  - LongBench
+  - RepoBench
+  - BFCL
+result_files:
+  - results/baselines/qwen3_8b_actual_context_scaling_raw.csv
+  - results/baselines/qwen3_8b_actual_context_scaling_summary.csv
+  - results/hardware/h2d_bandwidth.csv
+  - results/hardware/d2h_bandwidth.csv
+  - results/hardware/p2p_bandwidth.csv
+  - results/hardware/copy_decode_interference.csv
+  - results/datasets/dataset_readiness.csv
+  - results/datasets/sample_prompts.jsonl
+  - results/datasets/segment_examples.jsonl
+notes: "RULER ready with 20 samples; LongBench and RepoBench source repos uploaded/extracted but HuggingFace downloads failed with connection resets."

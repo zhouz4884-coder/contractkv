@@ -52,7 +52,7 @@ conda install -p "$ENV_PREFIX" -y --override-channels -c defaults \
   "triton=3.4=*cuda128py310*"
 
 python -m pip install --upgrade pip
-python -m pip install --no-cache-dir "vllm==${VLLM_VERSION}" "transformers==4.55.2"
+python -m pip install --no-cache-dir "vllm==${VLLM_VERSION}" "transformers==4.55.2" "datasets==5.0.0"
 
 python - <<'PY'
 import importlib.metadata as metadata

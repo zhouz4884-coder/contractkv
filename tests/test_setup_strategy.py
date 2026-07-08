@@ -35,6 +35,7 @@ class SetupStrategyTests(unittest.TestCase):
         script = Path("scripts/setup_contractkv_cu128.sh").read_text(encoding="utf-8")
 
         self.assertIn("transformers==4.55.2", script)
+        self.assertIn("datasets==5.0.0", script)
         self.assertNotIn("transformers==5", script)
 
     def test_run_vllm_keeps_runtime_caches_on_large_disk(self):

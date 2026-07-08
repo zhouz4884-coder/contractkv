@@ -1,0 +1,17 @@
+model,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types
+qwen3-8b,8192,4096,4084,synthetic_repeat,low_entropy_repeat,1,5,5,60.662,60.634,63.247,22.218,22.21,22.264,2882.431,21.26,none
+qwen3-8b,8192,4096,4100,ruler_haystack,synthetic_haystack,1,5,5,56.395,56.585,61.654,22.247,22.259,22.343,2881.82,21.26,none
+qwen3-8b,8192,4096,4167,longbench_hotpotqa,real_text_qa,1,5,5,63.242,64.469,68.693,22.214,22.197,22.277,2884.431,21.262,none
+qwen3-8b,8192,4096,4100,repobench_code,real_code,1,5,5,57.509,56.159,61.017,22.222,22.195,22.337,2879.682,21.262,none
+qwen3-8b,16384,8192,8161,synthetic_repeat,low_entropy_repeat,1,5,5,73.574,74.101,77.202,23.093,23.092,23.123,3006.357,21.26,none
+qwen3-8b,16384,8192,8192,ruler_haystack,synthetic_haystack,1,5,5,81.956,82.008,87.408,23.119,23.091,23.259,3018.045,21.26,none
+qwen3-8b,16384,8192,8326,longbench_hotpotqa,real_text_qa,1,5,5,85.698,85.926,87.097,23.121,23.096,23.238,3022.041,21.26,none
+qwen3-8b,16384,8192,8192,repobench_code,real_code,1,5,5,86.999,88.711,90.586,23.121,23.117,23.152,3023.382,21.26,none
+qwen3-8b,32768,16384,16321,synthetic_repeat,low_entropy_repeat,1,5,5,111.766,111.374,116.491,24.696,24.673,24.783,3248.147,21.26,none
+qwen3-8b,32768,16384,16384,ruler_haystack,synthetic_haystack,1,5,5,121.407,120.865,126.15,24.893,24.877,24.988,3282.8,21.26,none
+qwen3-8b,32768,16384,16652,longbench_hotpotqa,real_text_qa,1,5,5,131.118,130.125,139.032,24.953,24.904,25.071,3300.119,21.26,none
+qwen3-8b,32768,16384,16384,repobench_code,real_code,1,5,5,124.261,123.726,131.082,24.935,24.929,24.955,3290.963,21.26,none
+qwen3-8b,33792,32768,32641,synthetic_repeat,low_entropy_repeat,1,5,5,179.876,181.656,185.479,28.058,28.06,28.069,3743.292,21.26,none
+qwen3-8b,33792,32768,32768,ruler_haystack,synthetic_haystack,1,5,5,197.839,197.101,203.259,28.141,28.134,28.249,3771.744,21.26,none
+qwen3-8b,33792,32768,33304,longbench_hotpotqa,real_text_qa,1,5,5,217.871,216.741,222.566,28.642,28.627,28.748,3855.449,21.26,none
+qwen3-8b,33792,32768,32768,repobench_code,real_code,1,5,5,204.367,204.087,211.811,28.292,28.245,28.486,3797.397,21.26,none
