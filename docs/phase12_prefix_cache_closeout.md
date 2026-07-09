@@ -229,3 +229,75 @@ Phase 12F: real vLLM CAPOSC replay
   compare boolean-guarded / static POSC / CAPOSC
   measure real TTFT, TPOT, request latency, and any observable prefix-cache stats
 ```
+
+## Phase 12F Update
+
+Phase 12F ran the same 36-turn CAPOSC workload on real vLLM/Qwen3-8B with prefix cache enabled:
+
+```text
+180 real streamed policy requests
+36 oracle-best-layout analysis rows
+error_type none = 180 / 180
+quality_bad = 0 / 180
+```
+
+At SLO = 300 ms:
+
+```text
+boolean-guarded:
+  mean TTFT = 49.602 ms
+  p95 TTFT = 91.970 ms
+  SLO req/s = 3.431
+
+CAPOSC:
+  mean TTFT = 49.947 ms
+  p95 TTFT = 76.871 ms
+  SLO req/s = 3.427
+
+CAPOSC + rebase:
+  mean TTFT = 42.278 ms
+  p95 TTFT = 48.697 ms
+  SLO req/s = 3.524
+
+oracle-best-layout:
+  mean TTFT = 41.137 ms
+  p95 TTFT = 46.890 ms
+  SLO req/s = 3.538
+```
+
+This means:
+
+```text
+CAPOSC reduces p95 TTFT by 16.4% versus boolean-guarded.
+CAPOSC + rebase reduces mean TTFT by 14.8% and p95 TTFT by 47.1% versus boolean-guarded.
+CAPOSC + rebase is within 1.141 ms mean TTFT and 1.807 ms p95 TTFT of oracle-best-layout.
+```
+
+vLLM still did not expose cached-token usage through the tested OpenAI stream path:
+
+```text
+cached_tokens_observable_rate = 0.0
+```
+
+But real timing provides indirect calibration:
+
+```text
+estimated_new_prefill_tokens vs real_TTFT:
+  workload Pearson r = 0.390593
+  workload Spearman r = 0.402107
+```
+
+Phase 12F closes the key Phase 12E gap:
+
+```text
+CAPOSC is no longer only a ledger-model compiler objective.
+It produces real vLLM tail-latency improvement while preserving marker/order quality sanity.
+```
+
+The next missing step is concurrent replay:
+
+```text
+Phase 12G:
+  concurrency = 1 / 2 / 4
+  evaluate SLO-compliant req/s under queue pressure
+```

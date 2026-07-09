@@ -1,0 +1,13 @@
+policy,x_metric,y_metric,n,pearson_r,spearman_r,claim_boundary
+boolean-guarded,estimated_lcp_tokens,real_ttft_ms,36,0.169424,-0.028486,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+boolean-guarded,estimated_new_prefill_tokens,real_ttft_ms,36,0.011358,0.383277,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+cache-aware-posc,estimated_lcp_tokens,real_ttft_ms,36,0.526152,0.641551,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+cache-aware-posc,estimated_new_prefill_tokens,real_ttft_ms,36,-0.200851,-0.007231,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+cache-aware-posc-rebase,estimated_lcp_tokens,real_ttft_ms,36,0.165545,0.078493,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+cache-aware-posc-rebase,estimated_new_prefill_tokens,real_ttft_ms,36,0.186546,0.352229,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+posc,estimated_lcp_tokens,real_ttft_ms,36,-0.327625,-0.293984,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+posc,estimated_new_prefill_tokens,real_ttft_ms,36,0.782082,0.687896,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+raw-order,estimated_lcp_tokens,real_ttft_ms,36,-0.604419,-0.76595,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+raw-order,estimated_new_prefill_tokens,real_ttft_ms,36,0.59393,0.964257,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+all-non-oracle,estimated_lcp_tokens,real_ttft_ms,180,-0.304888,-0.05231,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+all-non-oracle,estimated_new_prefill_tokens,real_ttft_ms,180,0.390593,0.402107,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
