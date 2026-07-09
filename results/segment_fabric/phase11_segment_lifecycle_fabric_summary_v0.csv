@@ -1,0 +1,4 @@
+experiment,num_rows,primary_metric,primary_value,secondary_metric,secondary_value,claim_boundary
+phase11a_segment_forest_canonical_slots,140,mean_prefill_tokens_saved,8831.878571,mean_canonical_hit_rate,0.955169,same-slot canonical reuse estimate; arbitrary KV grafting not claimed
+phase11b_sspp_tool_slack,105,mean_hidden_fraction_hit_rate_1,0.788991,num_prepare_actions,7,tool-slack preparation model using measured/proxy action costs
+phase11c_action_conditioned_backend_stub,700,safe_contractkv_rows,280,mean_contractkv_memory_saving_mb,83.556057,control-plane backend stub; not real KIVI or LMCache integration
