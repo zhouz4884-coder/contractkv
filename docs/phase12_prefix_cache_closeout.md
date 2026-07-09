@@ -357,3 +357,43 @@ single-stream:
 concurrent replay:
   CAPOSC remains quality-safe and improves SLO-compliant req/s under queue pressure.
 ```
+
+## Phase 13A Overhead And Rebase Accounting Note
+
+Phase 13A measured CAPOSC compiler overhead on the same 36-turn trace with 1000 repeats:
+
+```text
+num compiles = 36000
+compile mean = 0.388654 ms
+compile p95 = 0.818500 ms
+ledger lookup mean = 0.248554 ms
+candidate eval mean = 0.159045 ms
+candidate count = 5
+```
+
+Relative to Phase 12F real CAPOSC+rebase timing:
+
+```text
+compiler mean / mean TTFT = 0.92%
+compiler p95 / p95 TTFT = 1.68%
+```
+
+This supports:
+
+```text
+CAPOSC compiler overhead is sub-millisecond and small relative to TTFT.
+```
+
+However, Phase 13A also found:
+
+```text
+rebase_triggered_count = 0 / 36000
+rebase_hidden_by_slack_count = 0 / 36000
+```
+
+So the Phase 12F/12G `CAPOSC + rebase` label should not be described as proof that an explicit rebase actuator fired on this workload. The safe wording is:
+
+```text
+CAPOSC rebase accounting is implemented, but the current heuristic did not trigger on the Phase 12 trace.
+Rebase needs a separate stress workload before being claimed as an active mechanism.
+```
