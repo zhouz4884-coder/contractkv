@@ -301,3 +301,59 @@ Phase 12G:
   concurrency = 1 / 2 / 4
   evaluate SLO-compliant req/s under queue pressure
 ```
+
+## Phase 12G Update
+
+Phase 12G ran real vLLM concurrent replay with an unrecorded warmup pass:
+
+```text
+concurrency = 1 / 2 / 4
+432 deployed-policy requests
+108 oracle-best analysis rows
+error_type none = 432 / 432
+quality_bad = 0 / 432
+```
+
+At SLO = 300 ms:
+
+```text
+concurrency 1:
+  boolean SLO req/s = 3.510
+  CAPOSC + rebase SLO req/s = 3.516
+  CAPOSC + rebase p95 TTFT = 48.283 ms
+
+concurrency 2:
+  boolean SLO req/s = 6.785
+  CAPOSC + rebase SLO req/s = 6.826
+  CAPOSC + rebase p95 TTFT = 51.285 ms
+
+concurrency 4:
+  boolean SLO req/s = 4.445
+  CAPOSC SLO req/s = 4.864
+  CAPOSC + rebase SLO req/s = 4.849
+```
+
+At concurrency 4, p95 TTFT is scheduler-dominated because client concurrency exceeds `max_num_seqs=2`:
+
+```text
+boolean p95 = 319.221 ms
+CAPOSC p95 = 320.962 ms
+CAPOSC + rebase p95 = 325.132 ms
+```
+
+So the concurrency result is not "CAPOSC always lowers p95." The correct claim is:
+
+```text
+CAPOSC + rebase is best or near-oracle at concurrency 1/2.
+Under queue pressure, CAPOSC improves SLO-compliant req/s while p95 is dominated by scheduler saturation.
+```
+
+This closes Phase 12's serving story:
+
+```text
+single-stream:
+  CAPOSC reduces real p95 TTFT.
+
+concurrent replay:
+  CAPOSC remains quality-safe and improves SLO-compliant req/s under queue pressure.
+```
