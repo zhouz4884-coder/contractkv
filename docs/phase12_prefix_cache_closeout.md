@@ -71,15 +71,60 @@ cached-token count improvement, because vLLM did not expose cached-token usage t
 production SLO goodput improvement
 ```
 
+## Phase 12B/12C Update
+
+Phase 12B extended the result to concurrent replay with mixed RULER, LongBench, and RepoBench contexts.
+
+At SLO = 700 ms:
+
+```text
+concurrency 1:
+  raw-order SLO req/s = 0.958
+  canonical-slot SLO req/s = 3.547
+
+concurrency 2:
+  raw-order SLO req/s = 1.025
+  canonical-slot SLO req/s = 6.325
+
+concurrency 4:
+  raw-order SLO req/s = 0.466
+  canonical-slot SLO req/s = 6.639
+
+concurrency 6:
+  raw-order SLO req/s = 0.348
+  canonical-slot SLO req/s = 6.846
+```
+
+Phase 12C checked real-task quality sanity. RULER and the tested LongBench subset stayed within the <= 0.03 quality-drop threshold, but RepoBench showed a large drop:
+
+```text
+RULER niah_single_1 drop = 0.000000
+LongBench hotpotqa drop = 0.000000
+LongBench qasper drop = 0.015670
+LongBench narrativeqa drop = 0.000000
+RepoBench python_repository_completion drop = 0.333333
+```
+
+This adds a layout guard:
+
+```text
+canonicalize only when the segment contract allows reordering;
+otherwise preserve raw order.
+```
+
 ## Decision
 
-Phase 12A is a strong positive result.
+Phase 12A and Phase 12B are strong positive serving results.
+
+Phase 12C shows canonical-slot is safe for the tested RULER/LongBench cases but not universally safe for RepoBench code completion.
 
 Recommended next step:
 
 ```text
-Phase 12B: concurrent canonical-slot replay
-Phase 12C: real LongBench / RepoBench prompt layout quality check
+Phase 13: guarded canonical-slot compiler
+  enable canonical slots for reorder-safe segments
+  preserve raw order for code / order-sensitive segments
+  evaluate mixed guarded workloads
 ```
 
 The paper narrative should now lead with:
