@@ -121,10 +121,44 @@ Phase 12C shows canonical-slot is safe for the tested RULER/LongBench cases but 
 Recommended next step:
 
 ```text
-Phase 13: guarded canonical-slot compiler
-  enable canonical slots for reorder-safe segments
-  preserve raw order for code / order-sensitive segments
-  evaluate mixed guarded workloads
+Phase 13: larger POSC compiler evaluation
+  extend POSC from 30 mixed-agent sanity cases to larger real agent traces
+  learn/select when structural anchors are worth their token overhead
+  report coverage, violated_edges, SLO req/s, and real task quality
+```
+
+## Phase 12D Update
+
+Phase 12D implemented the guarded compiler as a Partial-Order Segment Contract system rather than a boolean task guard.
+
+The key real vLLM mixed-agent result:
+
+```text
+canonical-all:
+  quality score = 0.666667
+  violated edge cases = 10
+
+boolean-guarded:
+  quality score = 1.000000
+  canonicalized fraction = 0.333333
+
+POSC:
+  quality score = 1.000000
+  canonicalized fraction = 1.000000
+  violated edge cases = 0
+
+POSC + anchors:
+  quality score = 1.000000
+  canonicalized fraction = 1.000000
+  violated edge cases = 0
+```
+
+This is the clean Phase 12 conclusion:
+
+```text
+canonical-slot is useful, but only as a compiler output.
+The compiler must preserve semantic partial orders.
+POSC is stronger than if-else layout guards because it enables partial-canonical layouts.
 ```
 
 The paper narrative should now lead with:

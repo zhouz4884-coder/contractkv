@@ -1,0 +1,16 @@
+workload,case_type,policy,num_requests,quality_score_mean,raw_quality_score_mean,quality_drop_vs_raw,violated_edge_cases,canonicalized_fraction,mean_canonicalized_tokens
+Mixed-Agent,code_tool,boolean-guarded,10,1.0,1.0,0.0,0,0.0,0.0
+Mixed-Agent,code_tool,canonical-all,10,0.0,1.0,1.0,10,0.0,25.0
+Mixed-Agent,code_tool,posc,10,1.0,1.0,0.0,0,1.0,25.0
+Mixed-Agent,code_tool,posc-anchors,10,1.0,1.0,0.0,0,1.0,43.0
+Mixed-Agent,code_tool,raw-order,10,1.0,1.0,0.0,0,0.0,0.0
+Mixed-Agent,rag_tool,boolean-guarded,10,1.0,1.0,0.0,0,1.0,24.0
+Mixed-Agent,rag_tool,canonical-all,10,1.0,1.0,0.0,0,1.0,24.0
+Mixed-Agent,rag_tool,posc,10,1.0,1.0,0.0,0,1.0,24.0
+Mixed-Agent,rag_tool,posc-anchors,10,1.0,1.0,0.0,0,1.0,36.0
+Mixed-Agent,rag_tool,raw-order,10,1.0,1.0,0.0,0,0.0,0.0
+Mixed-Agent,repo_doc_tool,boolean-guarded,10,1.0,1.0,0.0,0,0.0,0.0
+Mixed-Agent,repo_doc_tool,canonical-all,10,1.0,1.0,0.0,0,1.0,20.0
+Mixed-Agent,repo_doc_tool,posc,10,1.0,1.0,0.0,0,1.0,20.0
+Mixed-Agent,repo_doc_tool,posc-anchors,10,1.0,1.0,0.0,0,1.0,38.0
+Mixed-Agent,repo_doc_tool,raw-order,10,1.0,1.0,0.0,0,0.0,0.0
