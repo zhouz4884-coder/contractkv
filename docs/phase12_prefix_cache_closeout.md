@@ -168,3 +168,64 @@ ContractKV is a segment lifecycle fabric.
 RAR is one actuator, not the whole system.
 Canonical slots provide the first clear low-load serving benefit.
 ```
+
+## Phase 12E Update
+
+Phase 12E explains why static POSC can still be slower than a coarse boolean guard:
+
+```text
+static POSC optimizes the current prompt DAG,
+but boolean-guarded may accidentally preserve a de facto cached prefix from the previous turn.
+```
+
+The fix is Cache-Aware POSC (CAPOSC):
+
+```text
+POSC:
+  semantic partial-order safety constraint
+
+CAPOSC:
+  state-aware candidate selector over raw / boolean / POSC / cache-preserving layouts
+```
+
+Phase 12E added:
+
+```text
+scripts/phase12e_cache_aware_posc.py
+scripts/phase12e_multiturn_trajectory_builder.py
+scripts/phase12e_multiturn_replay.py
+docs/phase12e_cache_aware_posc_report.md
+results/prefix_cache/phase12e_multiturn_replay_summary_v0.csv
+results/prefix_cache/phase12e_multiturn_case_summary_v0.csv
+```
+
+The 36-turn, 180-record ledger-model replay shows:
+
+```text
+boolean-guarded:
+  mean LCP = 247.056 tokens
+  mean TTFT = 81.510 ms
+  p95 TTFT = 156.808 ms
+
+CAPOSC:
+  mean LCP = 342.333 tokens
+  mean TTFT = 70.186 ms
+  p95 TTFT = 116.198 ms
+```
+
+Quality sanity stays at:
+
+```text
+1.000000 for all evaluated policies
+```
+
+This is not yet a real vLLM cached-token measurement. It is a deterministic segment-ledger replay that validates the compiler objective and produces the exact workload for the next real vLLM A/B.
+
+The next step is:
+
+```text
+Phase 12F: real vLLM CAPOSC replay
+  use the same multi-turn trajectories
+  compare boolean-guarded / static POSC / CAPOSC
+  measure real TTFT, TPOT, request latency, and any observable prefix-cache stats
+```
