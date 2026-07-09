@@ -1,0 +1,72 @@
+== prefix_on head ==
+phase=phase12_prefix_cache_on
+started_at=2026-07-09T17:16:47+08:00
+model_path=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B
+served_model_name=qwen3-8b
+port=8001
+contractkv_disk_root=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9
+tmpdir=/tmp/contractkv-runtime
+xdg_cache_home=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/cache/contractkv-runtime/xdg
+vllm_cache_root=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/cache/contractkv-runtime/vllm
+extra_vllm_args=--enable-prefix-caching
+pid=843419
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 07-09 17:16:52 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(APIServer pid=843419)[0;0m INFO 07-09 17:16:53 [api_server.py:1896] vLLM API server version 0.10.2
+[1;36m(APIServer pid=843419)[0;0m INFO 07-09 17:16:53 [utils.py:328] non-default args: {'port': 8001, 'model': '/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', 'dtype': 'float16', 'max_model_len': 8192, 'served_model_name': ['qwen3-8b'], 'gpu_memory_utilization': 0.88, 'enable_prefix_caching': True, 'max_num_seqs': 2}
+[1;36m(APIServer pid=843419)[0;0m INFO 07-09 17:17:01 [__init__.py:742] Resolved architecture: Qwen3ForCausalLM
+[1;36m(APIServer pid=843419)[0;0m WARNING 07-09 17:17:01 [__init__.py:2767] Casting torch.bfloat16 to torch.float16.
+[1;36m(APIServer pid=843419)[0;0m INFO 07-09 17:17:01 [__init__.py:1815] Using max model len 8192
+[1;36m(APIServer pid=843419)[0;0m INFO 07-09 17:17:01 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=2048.
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 07-09 17:17:07 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=843764)[0;0m INFO 07-09 17:17:08 [core.py:654] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=843764)[0;0m INFO 07-09 17:17:08 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', speculative_config=None, tokenizer='/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=qwen3-8b, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":4,"local_cache_dir":null}
+[W709 17:17:11.252793386 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=843764)[0;0m INFO 07-09 17:17:11 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=843764)[0;0m WARNING 07-09 17:17:11 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=843764)[0;0m INFO 07-09 17:17:12 [gpu_model_runner.py:2338] Starting to load model /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B...
+== prefix_off head ==
+phase=phase12_prefix_cache_off
+started_at=2026-07-09T17:18:13+08:00
+model_path=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B
+served_model_name=qwen3-8b
+port=8001
+contractkv_disk_root=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9
+tmpdir=/tmp/contractkv-runtime
+xdg_cache_home=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/cache/contractkv-runtime/xdg
+vllm_cache_root=/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/cache/contractkv-runtime/vllm
+extra_vllm_args=--no-enable-prefix-caching
+pid=844293
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 07-09 17:18:18 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(APIServer pid=844293)[0;0m INFO 07-09 17:18:20 [api_server.py:1896] vLLM API server version 0.10.2
+[1;36m(APIServer pid=844293)[0;0m INFO 07-09 17:18:20 [utils.py:328] non-default args: {'port': 8001, 'model': '/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', 'dtype': 'float16', 'max_model_len': 8192, 'served_model_name': ['qwen3-8b'], 'gpu_memory_utilization': 0.88, 'enable_prefix_caching': False, 'max_num_seqs': 2}
+[1;36m(APIServer pid=844293)[0;0m INFO 07-09 17:18:28 [__init__.py:742] Resolved architecture: Qwen3ForCausalLM
+[1;36m(APIServer pid=844293)[0;0m WARNING 07-09 17:18:28 [__init__.py:2767] Casting torch.bfloat16 to torch.float16.
+[1;36m(APIServer pid=844293)[0;0m INFO 07-09 17:18:28 [__init__.py:1815] Using max model len 8192
+[1;36m(APIServer pid=844293)[0;0m INFO 07-09 17:18:28 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=2048.
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 07-09 17:18:34 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(EngineCore_DP0 pid=844639)[0;0m INFO 07-09 17:18:35 [core.py:654] Waiting for init message from front-end.
+[1;36m(EngineCore_DP0 pid=844639)[0;0m INFO 07-09 17:18:35 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', speculative_config=None, tokenizer='/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=qwen3-8b, enable_prefix_caching=False, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":4,"local_cache_dir":null}
+[W709 17:18:38.902794626 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[1;36m(EngineCore_DP0 pid=844639)[0;0m INFO 07-09 17:18:38 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+[1;36m(EngineCore_DP0 pid=844639)[0;0m WARNING 07-09 17:18:38 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+[1;36m(EngineCore_DP0 pid=844639)[0;0m INFO 07-09 17:18:38 [gpu_model_runner.py:2338] Starting to load model /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B...

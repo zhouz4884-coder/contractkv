@@ -58,6 +58,13 @@ class SetupStrategyTests(unittest.TestCase):
         self.assertIn("/tmp/contractkv-runtime", script)
         self.assertIn("ln -s", script)
 
+    def test_run_vllm_allows_extra_vllm_args_for_prefix_cache_ab(self):
+        script = Path("scripts/run_vllm_server.sh").read_text(encoding="utf-8")
+
+        self.assertIn("EXTRA_VLLM_ARGS", script)
+        self.assertIn("EXTRA_ARGS_ARRAY", script)
+        self.assertIn('"${EXTRA_ARGS_ARRAY[@]}"', script)
+
 
 if __name__ == "__main__":
     unittest.main()

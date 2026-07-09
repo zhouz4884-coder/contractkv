@@ -15,6 +15,7 @@ TRANSFORMERS_CACHE="${TRANSFORMERS_CACHE:-${HF_HOME}/transformers}"
 TORCH_HOME="${TORCH_HOME:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/torch}"
 TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/triton}"
 VLLM_CACHE_ROOT="${VLLM_CACHE_ROOT:-${CONTRACTKV_DISK_ROOT}/cache/contractkv-runtime/vllm}"
+EXTRA_VLLM_ARGS="${EXTRA_VLLM_ARGS:-}"
 PHASE=""
 MODEL_PATH=""
 SERVED_MODEL_NAME=""
@@ -89,6 +90,13 @@ echo "contractkv_disk_root=${CONTRACTKV_DISK_ROOT}" >> "$LOG_PATH"
 echo "tmpdir=${TMPDIR}" >> "$LOG_PATH"
 echo "xdg_cache_home=${XDG_CACHE_HOME}" >> "$LOG_PATH"
 echo "vllm_cache_root=${VLLM_CACHE_ROOT}" >> "$LOG_PATH"
+echo "extra_vllm_args=${EXTRA_VLLM_ARGS}" >> "$LOG_PATH"
+
+EXTRA_ARGS_ARRAY=()
+if [[ -n "$EXTRA_VLLM_ARGS" ]]; then
+  # shellcheck disable=SC2206
+  EXTRA_ARGS_ARRAY=($EXTRA_VLLM_ARGS)
+fi
 
 CUDA_VISIBLE_DEVICES="$GPU_IDS" nohup python -m vllm.entrypoints.openai.api_server \
   --model "$MODEL_PATH" \
@@ -98,7 +106,8 @@ CUDA_VISIBLE_DEVICES="$GPU_IDS" nohup python -m vllm.entrypoints.openai.api_serv
   --gpu-memory-utilization "$GPU_MEMORY_UTILIZATION" \
   --max-model-len "$MAX_MODEL_LEN" \
   --max-num-seqs "$MAX_NUM_SEQS" \
-  --port "$PORT" >> "$LOG_PATH" 2>&1 &
+  --port "$PORT" \
+  "${EXTRA_ARGS_ARRAY[@]}" >> "$LOG_PATH" 2>&1 &
 
 PID=$!
 echo "$PID" > "$PID_PATH"
