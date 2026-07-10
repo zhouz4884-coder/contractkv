@@ -43,7 +43,32 @@ It reuses real Qwen3-8B outputs from the existing RULER `niah_single_1`, LongBen
 
 `vllm-raw-order` and `contractkv-caposc` are directly scored from real model outputs. `contractkv-caposc-sspp` and `contractkv-caposc-sspp-rar` are explicitly marked `projected_from_real_caposc_output`: these execution layers do not change prompt text or answer semantics, so their quality is inherited from the real CAPOSC output. They are not falsely presented as independent generations.
 
-The prior real-task subset found RULER and the tested LongBench tasks within the 0.03 sanity-drop bound, while RepoBench showed a 0.333333 drop for unrestricted canonical layout. This is why RepoBench remains an order-sensitive guard case; Phase 13B performance rows must not override that quality evidence.
+The superseded Phase 12C projection showed a 0.333333 RepoBench drop for unrestricted canonical-slot. That value must not be attributed to CAPOSC. The direct provenance is now corrected to `reused_phase12c_real_qwen3_8b_output`, and the fresh policy-aligned replay below is the Phase 13B quality result.
+
+## Phase 13B-Q fresh policy-aligned replay
+
+The fresh replay uses the same 15 real task samples and regenerates four layouts against Qwen3-8B:
+
+```text
+raw-order
+canonical-all (unsafe analysis baseline)
+static-posc
+contractkv-caposc (actual cache-aware compiler output)
+```
+
+Artifacts:
+
+```text
+results/end_to_end/phase13bq_fresh_quality_raw_v1.jsonl
+results/end_to_end/phase13bq_fresh_quality_summary_v1.csv
+scripts/phase13b_fresh_policy_quality_replay.py
+```
+
+The replay uses a 2600-word context-safe subset so LongBench failures are not confused with the vLLM 8K capacity boundary. RepoBench repository context is modeled as an ordered supernode: the tool observation may move only as a whole around the code component, while code-internal order is preserved.
+
+Fresh results show that raw-order, static-POSC, and CAPOSC choose the same RepoBench layout and have identical mean score (`0.074074` on this three-sample sanity subset). Their quality drop versus raw is `0.000000`. `canonical-all` produces dependency violations on all three RepoBench samples, but this small subset does not show a score drop; therefore the result is a semantic-safety warning, not evidence of quality collapse. The earlier `0.333333` number remains a valid Phase 12C unrestricted-canonical observation, but is not a Phase 13B CAPOSC result.
+
+For LongBench hotpotqa, CAPOSC preserves raw-order score (`0.083333`) while canonical-all reaches `0.333333` on this subset. This reinforces that canonical-all and CAPOSC are different policies; CAPOSC is not allowed to claim canonical-all's quality or speed behavior.
 
 ## Interpretation and boundaries
 

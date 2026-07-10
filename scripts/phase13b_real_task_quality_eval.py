@@ -110,7 +110,7 @@ def build_quality_rows(source_rows: list[dict[str, Any]]) -> list[dict[str, Any]
                 "task": source.get("task", ""),
                 "sample_id": source.get("sample_id", ""),
                 "source_layout": layout,
-                "scoring_provenance": "fresh_real_qwen3_8b_output" if direct else "projected_from_real_caposc_output",
+                "scoring_provenance": "reused_phase12c_real_qwen3_8b_output" if direct else "projected_from_reused_caposc_output",
                 "success": source.get("success", False),
                 **scores,
                 "prompt_tokens": source.get("prompt_tokens", ""),
@@ -144,7 +144,7 @@ def summarize_quality_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         mean_score = statistics.mean(scores) if scores else 0.0
         baseline = baselines.get((dataset, task), mean_score)
         drop = max(0.0, baseline - mean_score) if policy != "vllm-raw-order" else 0.0
-        provenance = "fresh_real_qwen3_8b_output" if policy in {"vllm-raw-order", "contractkv-caposc"} else "projected_from_real_caposc_output"
+        provenance = "reused_phase12c_real_qwen3_8b_output" if policy in {"vllm-raw-order", "contractkv-caposc"} else "projected_from_reused_caposc_output"
         row = {
             "policy": policy,
             "dataset": dataset,

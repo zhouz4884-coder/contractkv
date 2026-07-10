@@ -27,10 +27,10 @@ class Phase13BRealTaskQualityTests(unittest.TestCase):
         ]
         rows = build_quality_rows(source)
         provenance = {row["policy"]: row["scoring_provenance"] for row in rows}
-        self.assertEqual(provenance["vllm-raw-order"], "fresh_real_qwen3_8b_output")
-        self.assertEqual(provenance["contractkv-caposc"], "fresh_real_qwen3_8b_output")
-        self.assertEqual(provenance["contractkv-caposc-sspp"], "projected_from_real_caposc_output")
-        self.assertEqual(provenance["contractkv-caposc-sspp-rar"], "projected_from_real_caposc_output")
+        self.assertEqual(provenance["vllm-raw-order"], "reused_phase12c_real_qwen3_8b_output")
+        self.assertEqual(provenance["contractkv-caposc"], "reused_phase12c_real_qwen3_8b_output")
+        self.assertEqual(provenance["contractkv-caposc-sspp"], "projected_from_reused_caposc_output")
+        self.assertEqual(provenance["contractkv-caposc-sspp-rar"], "projected_from_reused_caposc_output")
 
     def test_quality_drop_uses_raw_policy_baseline(self):
         source = [
