@@ -1,0 +1,9 @@
+policy,x_metric,y_metric,n,pearson_r,spearman_r,claim_boundary
+cache-aware-posc,estimated_lcp_tokens,real_ttft_ms,36,0.505909,0.600734,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+cache-aware-posc,estimated_new_prefill_tokens,real_ttft_ms,36,-0.198254,0.130149,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+posc,estimated_lcp_tokens,real_ttft_ms,36,-0.298019,-0.385821,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+posc,estimated_new_prefill_tokens,real_ttft_ms,36,0.833677,0.832282,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+raw-order,estimated_lcp_tokens,real_ttft_ms,36,-0.814322,-0.75962,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+raw-order,estimated_new_prefill_tokens,real_ttft_ms,36,0.981876,0.973549,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+all-non-oracle,estimated_lcp_tokens,real_ttft_ms,108,-0.50645,-0.237058,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.
+all-non-oracle,estimated_new_prefill_tokens,real_ttft_ms,108,0.752781,0.614939,correlation between ContractKV ledger estimate and real vLLM timing; not direct cached-token observation.

@@ -1,0 +1,31 @@
+phase: phase14b
+status: completed
+model: Qwen3-8B
+backend: vLLM 0.10.2 V1
+server_config:
+  max_model_len: 8192
+  max_num_seqs: 8
+  gpu_memory_utilization: 0.78
+  prefix_cache_enabled: true
+instrumentation:
+  scheduler_probe: CONTRACTKV_PREFIX_METRICS
+  read_only: true
+  request_join_key: server-issued chatcmpl request_id
+workload:
+  turns: 36
+  policies:
+    - raw-order
+    - posc
+    - cache-aware-posc
+  live_requests: 108
+results:
+  join_success_rate: 1.0
+  caposc_mean_ttft_ms: 46.637099
+  raw_mean_ttft_ms: 113.14716
+  caposc_mean_observed_new_prefill_tokens: 49.333333
+  raw_mean_observed_new_prefill_tokens: 344.555556
+unavailable_metrics:
+  - prefix_cache_evictions
+  - prefill_gpu_ms
+  - decode_gpu_ms
+claim_boundary: Read-only scheduler observation validates prompt-work reuse, not worker-level kernel timing or physical block ownership.
