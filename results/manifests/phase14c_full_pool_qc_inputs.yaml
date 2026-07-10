@@ -1,0 +1,26 @@
+phase: phase14c_full_pool_qc_inputs
+status: complete
+input_full_pool: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/workload/phase14d_full_pool_v0.jsonl
+used_partitions:
+  - calibration
+  - held_out_quality
+excluded_partitions:
+  - live_serving
+feature_file: results/end_to_end/phase14c_full_pool_qc_features_v0.csv
+job_file: results/end_to_end/phase14c_full_pool_quality_jobs_v0.jsonl
+summary_file: results/end_to_end/phase14c_full_pool_qc_feature_summary_v0.csv
+feature_sha256: acbb7eab4a1ea2df521426b7d48476f9fcc9e96449b759347a1edb76fa2884e8
+job_sha256: dc09b8a92716e210ceca86fc5dabc883851c03d434aaff5d64be0bc15f9747d5
+summary_sha256: 6fd6a42eeb4b8174a1658d5bc1664193046249a9ba45457c1ffd80b425a74743
+features: 537
+fresh_quality_jobs: 1074
+policies:
+  - raw-order
+  - contractkv-caposc
+partition_counts:
+  calibration: 283
+  held_out_quality: 254
+claim_boundary: >
+  Full-pool structural QC input and fresh-quality job manifest only. This is not
+  a calibrated final QC gate and does not yet establish false-safe or quality
+  drop metrics.
