@@ -1,0 +1,39 @@
+phase: phase14d_full_pool
+status: complete
+seed: 14014
+workspace: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv
+hf_cache_dir: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/contractkv_datasets/hf_cache
+full_pool_file: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/workload/phase14d_full_pool_v0.jsonl
+summary_file: results/workload/phase14d_full_pool_summary_v0.csv
+full_pool_sha256: cbfb9592b74ac0d577fe71de3c1b8ee197bbe985b0d79fc5cfde976a179f9b97
+summary_sha256: 5fff675f73adb61636231c1acb362c566e0db30d38badb8144cf994ea4093f94
+total_samples: 1300
+partitions:
+  calibration: 283
+  held_out_quality: 254
+  live_serving: 763
+sources:
+  - dataset: RULER
+    task: niah_single_1
+    count: 200
+    source: deterministic_contractkv_synthetic_builder
+  - dataset: LongBench
+    task: hotpotqa
+    count: 200
+    source: local_cached_jsonl
+  - dataset: LongBench
+    task: qasper
+    count: 200
+    source: local_cached_jsonl
+  - dataset: LongBench
+    task: narrativeqa
+    count: 200
+    source: local_cached_jsonl
+  - dataset: RepoBench
+    task: python_v1.1
+    count: 500
+    source: local_cached_parquet
+claim_boundary: >
+  Full-pool construction and deterministic partition audit only. Live vLLM
+  performance, prefix-cache metrics, and held-out quality scoring remain Phase
+  14D/14E execution work.
