@@ -1,0 +1,22 @@
+phase: phase14c_quality_runner
+status: smoke_complete
+runner: scripts/phase14c_run_full_pool_quality_jobs.py
+input_full_pool: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/workload/phase14d_full_pool_v0.jsonl
+job_manifest: results/end_to_end/phase14c_full_pool_quality_jobs_v0.jsonl
+feature_file: results/end_to_end/phase14c_full_pool_qc_features_v0.csv
+planned_jobs: 1074
+policies:
+  - raw-order
+  - contractkv-caposc
+smoke:
+  endpoint: http://localhost:8001/v1
+  model: qwen3-8b
+  max_jobs: 4
+  raw_output_remote: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/end_to_end/phase14c_full_pool_quality_raw_smoke.jsonl
+  labels_output_remote: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/end_to_end/phase14c_full_pool_quality_labels_smoke.csv
+  summary_file: results/end_to_end/phase14c_full_pool_qc_calibration_summary_smoke.csv
+  new_rows: 4
+  paired_labels: 2
+claim_boundary: >
+  Runner and live smoke only. The full 1074-job quality labeling run and final
+  false-safe/safe-coverage gate remain required before Phase 14C completion.
