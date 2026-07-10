@@ -1,0 +1,34 @@
+phase: phase14c_full_pool_qc_calibration
+status: held_out_gate_passed
+model: qwen3-8b
+endpoint: http://localhost:8001/v1
+jobs_completed: 1074
+paired_labels: 537
+input_jobs: results/end_to_end/phase14c_full_pool_quality_jobs_v0.jsonl
+input_features: results/end_to_end/phase14c_full_pool_qc_features_v0.csv
+raw_outputs_remote: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/end_to_end/phase14c_full_pool_quality_raw_v1.jsonl
+labels_file: results/end_to_end/phase14c_full_pool_quality_labels_v1.csv
+summary_file: results/end_to_end/phase14c_full_pool_qc_calibration_summary_v1.csv
+raw_outputs_sha256: afe11f86098e092eaecb6a11fdc6ddd269c136ff189778a4c244784dd83ad1e1
+labels_sha256: f70efa6a00da90e3ef63bec83670e24229956d64df0ba196d270f2e6b2e94706
+summary_sha256: bb830eaf1907984c145319ad33f0c0a6450deed5be4feac05e1ee5d99cded574
+held_out_quality:
+  requests: 254
+  unsafe_requests: 5
+  fallback_rate: 0.149606
+  false_safe_rate: 0.009259
+  safe_optimization_coverage: 0.859438
+  unsafe_caught_rate: 0.6
+  mean_quality_drop: 0.003317
+calibration:
+  requests: 283
+  unsafe_requests: 10
+  fallback_rate: 0.162544
+  false_safe_rate: 0.037975
+  safe_optimization_coverage: 0.835165
+  unsafe_caught_rate: 0.1
+  mean_quality_drop: 0.01176
+claim_boundary: >
+  Full-pool fresh Qwen3-8B task-sanity QC calibration. Held-out gate passes
+  false-safe and safe-coverage targets, but this is not official benchmark
+  scoring and raw model outputs remain on the 8T server.

@@ -21,7 +21,7 @@ from scripts.phase12_prefix_cache_ab import approximate_prompt_tokens, send_chat
 from scripts.phase12_task_quality_sanity import score_answer
 from scripts.phase12e_cache_aware_posc import SegmentPrefixLedger
 from scripts.phase12f_real_vllm_caposc_replay import _ordered_text
-from scripts.phase13b_fresh_policy_quality_replay import _compile, _messages, build_case
+from scripts.phase13b_fresh_policy_quality_replay import _compile, build_case
 
 
 RAW_FIELDS = [
@@ -162,6 +162,12 @@ def _success(row: dict[str, Any] | None) -> bool:
     return row is not None and (row.get("success") is True or str(row.get("success", "")).lower() == "true")
 
 
+def quality_messages(case: dict[str, Any], compiled_text: str) -> list[dict[str, str]]:
+    namespace = f"PHASE14C:{case['dataset']}:{case['task']}:{case['sample_id']}"
+    system = "/no_think Answer the task using only the provided context. Return the shortest correct answer or code completion."
+    return [{"role": "system", "content": namespace + "\n" + system}, {"role": "user", "content": compiled_text}]
+
+
 def build_output_row(
     job: dict[str, Any],
     sample: dict[str, Any],
@@ -174,7 +180,7 @@ def build_output_row(
     case = build_case(sample, stable_word_limit=stable_word_limit)
     compiled = _compile(str(job["policy"]), case, SegmentPrefixLedger())
     text = _ordered_text(compiled["topological_order"], case["segments"])
-    messages = _messages(case, text, str(job["policy"]))
+    messages = quality_messages(case, text)
     prompt_hash = hashlib.sha256(json.dumps(messages, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:16]
     result = send_chat_stream(
         base_url,
@@ -261,6 +267,47 @@ def run_jobs(
         row["claim_boundary"] += f" runner_index={index}; runner_wall_ms={(time.perf_counter() - started) * 1000.0:.3f}"
         rows.append(row)
     return rows
+
+
+def iter_job_rows(
+    full_pool: list[dict[str, Any]],
+    jobs: list[dict[str, Any]],
+    existing_raw: list[dict[str, Any]],
+    base_url: str,
+    model: str,
+    max_tokens: int,
+    timeout: float,
+    stable_word_limit: int,
+    partitions: set[str] | None = None,
+    policies: set[str] | None = None,
+    max_jobs: int | None = None,
+):
+    samples = index_samples(full_pool)
+    pending = select_pending_jobs(jobs, completed_job_ids(existing_raw), partitions, policies, max_jobs)
+    for index, job in enumerate(pending, start=1):
+        key = str(job.get("sample_key", ""))
+        if key not in samples:
+            yield {
+                **{field: "" for field in RAW_FIELDS},
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "job_id": job.get("job_id", ""),
+                "sample_key": key,
+                "partition": job.get("partition", ""),
+                "dataset": job.get("dataset", ""),
+                "task": job.get("task", ""),
+                "sample_id": job.get("sample_id", ""),
+                "policy": job.get("policy", ""),
+                "model": model,
+                "success": False,
+                "error_type": "sample_missing",
+                "error_message": "sample_key not found in full pool",
+                "claim_boundary": "Failed before model call.",
+            }
+            continue
+        started = time.perf_counter()
+        row = build_output_row(job, samples[key], base_url, model, max_tokens, timeout, stable_word_limit)
+        row["claim_boundary"] += f" runner_index={index}; runner_wall_ms={(time.perf_counter() - started) * 1000.0:.3f}"
+        yield row
 
 
 def _feature_by_key(features: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -357,6 +404,7 @@ def main() -> int:
     parser.add_argument("--partitions", default="")
     parser.add_argument("--policies", default="")
     parser.add_argument("--max-jobs", type=int, default=0)
+    parser.add_argument("--flush-every", type=int, default=10)
     parser.add_argument("--raw-output", type=Path, default=Path("results/end_to_end/phase14c_full_pool_quality_raw_v0.jsonl"))
     parser.add_argument("--labels-output", type=Path, default=Path("results/end_to_end/phase14c_full_pool_quality_labels_v0.csv"))
     parser.add_argument("--summary-output", type=Path, default=Path("results/end_to_end/phase14c_full_pool_qc_calibration_summary_v0.csv"))
@@ -364,9 +412,14 @@ def main() -> int:
     existing = load_jsonl(args.raw_output)
     partitions = {item.strip() for item in args.partitions.split(",") if item.strip()} or None
     policies = {item.strip() for item in args.policies.split(",") if item.strip()} or None
-    new_rows = run_jobs(
-        load_jsonl(args.full_pool),
-        load_jsonl(args.jobs),
+    full_pool = load_jsonl(args.full_pool)
+    jobs = load_jsonl(args.jobs)
+    new_rows: list[dict[str, Any]] = []
+    all_rows = existing.copy()
+    features = list(csv.DictReader(args.features.open("r", encoding="utf-8", newline=""))) if args.features.exists() else []
+    for row in iter_job_rows(
+        full_pool,
+        jobs,
         existing,
         args.base_url,
         args.model,
@@ -376,11 +429,14 @@ def main() -> int:
         partitions=partitions,
         policies=policies,
         max_jobs=args.max_jobs or None,
-    )
-    if new_rows:
-        write_jsonl(args.raw_output, new_rows, append=True)
-    all_rows = existing + new_rows
-    features = list(csv.DictReader(args.features.open("r", encoding="utf-8", newline=""))) if args.features.exists() else []
+    ):
+        write_jsonl(args.raw_output, [row], append=True)
+        new_rows.append(row)
+        all_rows.append(row)
+        if args.flush_every > 0 and len(new_rows) % args.flush_every == 0:
+            labels = build_labels(all_rows, features)
+            write_csv(args.labels_output, labels, LABEL_FIELDS)
+            write_csv(args.summary_output, summarize_labels(labels), SUMMARY_FIELDS)
     labels = build_labels(all_rows, features)
     write_csv(args.labels_output, labels, LABEL_FIELDS)
     write_csv(args.summary_output, summarize_labels(labels), SUMMARY_FIELDS)

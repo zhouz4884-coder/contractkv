@@ -5,6 +5,7 @@ import unittest
 from scripts.phase14c_run_full_pool_quality_jobs import (
     build_labels,
     completed_job_ids,
+    quality_messages,
     select_pending_jobs,
     summarize_labels,
 )
@@ -44,6 +45,14 @@ class Phase14CFullPoolQualityRunnerTests(unittest.TestCase):
         self.assertEqual(all_row["requests"], 2)
         self.assertEqual(all_row["unsafe_requests"], 1)
         self.assertEqual(all_row["false_safe_rate"], 0.0)
+
+    def test_quality_messages_do_not_include_policy_name(self):
+        case = {"dataset": "LongBench", "task": "hotpotqa", "sample_id": "0"}
+        messages = quality_messages(case, "compiled text")
+        joined = "\n".join(message["content"] for message in messages)
+        self.assertIn("PHASE14C:LongBench:hotpotqa:0", joined)
+        self.assertNotIn("raw-order", joined)
+        self.assertNotIn("contractkv-caposc", joined)
 
 
 if __name__ == "__main__":
