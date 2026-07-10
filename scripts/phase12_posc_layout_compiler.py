@@ -100,6 +100,45 @@ def raw_order(segments: list[dict[str, Any]]) -> list[str]:
     return [str(segment["segment_id"]) for segment in segments]
 
 
+def enumerate_legal_topological_orders(
+    segments: list[dict[str, Any]],
+    max_orders: int = 64,
+) -> list[list[str]]:
+    """Enumerate deterministic legal layouts, capped for larger prompt DAGs.
+
+    Phase 14 uses this as a real legal-oracle candidate set.  The cap keeps
+    independent RAG chunks from creating a factorial quality-scoring manifest.
+    Known compiler layouts are added separately by the caller, so truncation
+    here cannot silently remove the deployed candidate.
+    """
+
+    if max_orders <= 0:
+        return []
+    by_id = _segment_by_id(segments)
+    dependents = _dependents(segments)
+    remaining_deps = {sid: set(_deps(segment)) for sid, segment in by_id.items()}
+    output: list[list[str]] = []
+
+    def visit(order: list[str], deps: dict[str, set[str]]) -> None:
+        if len(output) >= max_orders:
+            return
+        if len(order) == len(by_id):
+            output.append(list(order))
+            return
+        ready = [sid for sid in by_id if sid not in order and not deps[sid]]
+        ready.sort(key=lambda sid: (-_score(by_id[sid]), sid))
+        for sid in ready:
+            next_deps = {key: set(value) for key, value in deps.items()}
+            for child in dependents.get(sid, []):
+                next_deps[child].discard(sid)
+            visit(order + [sid], next_deps)
+            if len(output) >= max_orders:
+                return
+
+    visit([], remaining_deps)
+    return output
+
+
 def boolean_guard_order(segments: list[dict[str, Any]]) -> list[str]:
     if any(str(segment.get("segment_type", "")).startswith("REPO_") or segment.get("segment_type") == "REPO_CONTEXT" for segment in segments):
         return raw_order(segments)

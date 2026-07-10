@@ -18,6 +18,11 @@ def _length_bucket(text:str)->str:
  if n<1000:return "short"
  if n<4000:return "medium"
  return "long"
+def _answer_length_bucket(answer:Any)->str:
+ n=len(str(answer).split())
+ if n<4:return "short"
+ if n<16:return "medium"
+ return "long"
 def _stratified_rows(rows:list[dict[str,Any]],count:int,seed:int,key_fn)->list[dict[str,Any]]:
  groups=defaultdict(list)
  for row in rows:groups[key_fn(row)].append(row)
@@ -48,7 +53,7 @@ def _longbench(task:str,count:int,cache:str,seed:int)->list[dict[str,Any]]:
  data=[json.loads(line) for line in path.read_text(encoding="utf8").splitlines() if line.strip()]
  out=[]
  indexed=[dict(row, _source_index=i) for i,row in enumerate(data)]
- sampled=_stratified_rows(indexed,count,seed+_stable_int(task)%997,lambda r:(_length_bucket(r.get("context","")),str(r.get("answers",[""])[0])[:16],int(r.get("_source_index",0))%17))
+ sampled=_stratified_rows(indexed,count,seed+_stable_int(task)%997,lambda r:(_length_bucket(r.get("context","")),_answer_length_bucket((r.get("answers") or [""])[0])))
  for i,row in enumerate(sampled):
   source_group=f"{task}:doc:{row.get('_source_index',i)}"
   seg=[_segment("SYS_PROMPT","Answer only from the supplied context.",None),_segment("RAG_CHUNK",str(row.get("context","")),None),_segment("USER_QUERY",str(row.get("input","")),None)]
@@ -61,8 +66,13 @@ def _repo(count:int,cache:str,seed:int)->list[dict[str,Any]]:
  data=pq.read_table(files[0]).to_pylist()
  out=[]
  def repo_id(row):
-  for field in ("repository","repo","repo_name","repo_id","file_path","path"):
-   if row.get(field):return str(row.get(field)).split("/")[0]
+  for field in ("repository","repo","repo_name","repo_id"):
+   if row.get(field):return str(row.get(field)).strip("/\\") or "unknown"
+  for field in ("file_path","path"):
+   if row.get(field):
+    parts=[part for part in str(row.get(field)).replace("\\","/").split("/") if part and part not in {".",".."}]
+    if len(parts)>=2:return "/".join(parts[:2])
+    if parts:return parts[0]
   return str(row.get("task_id") or row.get("id") or "unknown")
  indexed=[dict(row, _source_index=i, _repo_group=repo_id(row)) for i,row in enumerate(data)]
  sampled=_stratified_rows(indexed,count,seed+431,lambda r:(_length_bucket(" ".join(str(r.get(k,"")) for k in ("cropped_code","code","context"))),r.get("_repo_group","unknown")))
@@ -84,6 +94,28 @@ def write_summary(path:Path,rows:list[dict[str,Any]],seed:int):
  with path.open('w',newline='',encoding='utf8') as f:
   w=csv.DictWriter(f,fieldnames=['dataset','task','partition','count','seed','claim_boundary']);w.writeheader()
   for (d,t,p),n in sorted(c.items()):w.writerow({'dataset':d,'task':t,'partition':p,'count':n,'seed':seed,'claim_boundary':'Full local-cache pool manifest; live serving and held-out quality partitions are disjoint.'})
+def write_audit(path:Path,rows:list[dict[str,Any]]):
+ path.parent.mkdir(parents=True,exist_ok=True)
+ fields=['dataset','task','partition','samples','unique_source_groups','largest_group_size','empty_or_unknown_groups','groups_crossing_partitions','context_tokens_p50','context_tokens_p95','answer_words_p50','answer_words_p95','claim_boundary']
+ grouped=defaultdict(list)
+ group_partitions=defaultdict(set)
+ for row in rows:
+  meta=row.get('metadata',{});group=str(meta.get('source_group_id',''))
+  grouped[(row['dataset'],row['task'],meta.get('phase14_partition',''))].append(row)
+  group_partitions[(row['dataset'],row['task'],group)].add(meta.get('phase14_partition',''))
+ def percentile(values,p):
+  values=sorted(values)
+  return values[min(len(values)-1,int((len(values)-1)*p))] if values else 0
+ with path.open('w',newline='',encoding='utf8') as f:
+  w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
+  for (dataset,task,part),group_rows in sorted(grouped.items()):
+   ids=[str(r.get('metadata',{}).get('source_group_id','')) for r in group_rows]
+   sizes=Counter(ids);context_tokens=[];answer_words=[]
+   for row in group_rows:
+    context_tokens.append(sum(int(seg.get('token_count') or 0) for seg in row.get('segments',[]) if seg.get('type') not in {'SYS_PROMPT','USER_QUERY'}))
+    answer_words.append(len(str(row.get('answer','')).split()))
+   crossing=sum(len(parts)>1 for (d,t,_),parts in group_partitions.items() if d==dataset and t==task)
+   w.writerow({'dataset':dataset,'task':task,'partition':part,'samples':len(group_rows),'unique_source_groups':len(set(ids)),'largest_group_size':max(sizes.values()) if sizes else 0,'empty_or_unknown_groups':sum(value in {'','unknown'} for value in ids),'groups_crossing_partitions':crossing,'context_tokens_p50':percentile(context_tokens,.5),'context_tokens_p95':percentile(context_tokens,.95),'answer_words_p50':percentile(answer_words,.5),'answer_words_p95':percentile(answer_words,.95),'claim_boundary':'Deterministic split audit; zero cross-partition source groups is required.'})
 def main():
- p=argparse.ArgumentParser();p.add_argument('--hf-cache-dir',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--summary',type=Path,required=True);p.add_argument('--seed',type=int,default=14014);a=p.parse_args();rows=build(a.hf_cache_dir,a.seed);write_jsonl(a.output,rows);write_summary(a.summary,rows,a.seed);print('full_pool_rows=',len(rows));print(Counter(r['metadata']['phase14_partition'] for r in rows))
+ p=argparse.ArgumentParser();p.add_argument('--hf-cache-dir',required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--summary',type=Path,required=True);p.add_argument('--audit-output',type=Path,default=Path('results/workload/phase14d_full_pool_audit.csv'));p.add_argument('--seed',type=int,default=14014);a=p.parse_args();rows=build(a.hf_cache_dir,a.seed);write_jsonl(a.output,rows);write_summary(a.summary,rows,a.seed);write_audit(a.audit_output,rows);print('full_pool_rows=',len(rows));print(Counter(r['metadata']['phase14_partition'] for r in rows))
 if __name__=='__main__':main()

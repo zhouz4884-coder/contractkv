@@ -8,6 +8,7 @@ class Phase14RQCCandidateCalibrationTests(unittest.TestCase):
         features = [
             {
                 "sample_key": "LongBench::hotpotqa::0",
+                "candidate_id": "c0",
                 "partition": "calibration",
                 "dataset": "LongBench",
                 "task": "hotpotqa",
@@ -24,6 +25,7 @@ class Phase14RQCCandidateCalibrationTests(unittest.TestCase):
             },
             {
                 "sample_key": "LongBench::qasper::1",
+                "candidate_id": "c1",
                 "partition": "calibration",
                 "dataset": "LongBench",
                 "task": "qasper",
@@ -40,12 +42,13 @@ class Phase14RQCCandidateCalibrationTests(unittest.TestCase):
             },
         ]
         labels = [
-            {"sample_key": "LongBench::hotpotqa::0", "partition": "calibration", "unsafe_quality_drop": False, "quality_drop_vs_raw": "0.0"},
-            {"sample_key": "LongBench::qasper::1", "partition": "calibration", "unsafe_quality_drop": True, "quality_drop_vs_raw": "0.1"},
+            {"sample_key": "LongBench::hotpotqa::0", "candidate_id": "c0", "partition": "calibration", "unsafe_quality_drop": False, "quality_drop_vs_raw": "0.0"},
+            {"sample_key": "LongBench::qasper::1", "candidate_id": "c1", "partition": "calibration", "unsafe_quality_drop": True, "quality_drop_vs_raw": "0.1"},
         ]
         scores, summary, model = calibrate(features, labels, target_false_safe=0.02)
         self.assertEqual(len(scores), 2)
         self.assertIn("threshold", model)
+        self.assertEqual(model["threshold_objective"], "maximize_safe_expected_prefix_gain_subject_to_wilson95_upper")
         self.assertTrue(summary)
         self.assertIn("false_safe_wilson95_upper", summary[0])
 

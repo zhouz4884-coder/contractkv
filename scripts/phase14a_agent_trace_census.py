@@ -17,7 +17,8 @@ if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.phase12e_cache_aware_posc import SegmentPrefixLedger, cache_aware_posc_compile, estimate_lcp_tokens
-from scripts.phase12_posc_layout_compiler import prefix_max_topological_order, raw_order
+from scripts.phase12_posc_layout_compiler import enumerate_legal_topological_orders, prefix_max_topological_order, raw_order
+from scripts.phase12f_real_vllm_caposc_replay import _ordered_text
 
 
 FAMILIES = ["code_agent", "rag_agent", "structured_document_qa", "tool_function_agent", "mixed_long_history_agent"]
@@ -25,15 +26,18 @@ DISCOURSE_CUES = re.compile(r"(?i)\b(this paper|we propose|we present|our method
 HEADING_CUES = re.compile(r"(?im)^\s*(abstract|introduction|background|method|methods|results|discussion|conclusion|related work|experiments?)s?\b")
 
 RAW_FIELDS = [
-    "trace_id", "turn_id", "workload_family", "source_dataset", "source_task", "stable_segment_tokens",
+    "trace_id", "turn_id", "turns_per_session", "workload_family", "source_dataset", "source_task", "stable_segment_tokens",
     "volatile_segment_tokens", "raw_prefix_reuse_tokens", "best_legal_lcp_tokens", "selected_caposc_lcp_tokens",
     "caposc_expected_prefix_gain", "caposc_regret_tokens",
+    "raw_actual_prompt_tokens_after_chat_template", "caposc_actual_prompt_tokens_after_chat_template",
+    "max_model_len", "context_truncated",
     "partial_canonical", "hard_order_sensitive", "hard_edge_valid", "adjacency_preservation_ratio",
     "relative_order_edit_distance", "ordered_document_cue_count", "qc_risk_bucket", "qc_decision",
     "raw_fallback", "caposc_selected_policy", "claim_boundary",
 ]
 SUMMARY_FIELDS = [
-    "workload_family", "turns", "optimization_opportunity_coverage", "safe_canonicalization_coverage",
+    "workload_family", "turns_per_session", "turns", "optimization_opportunity_coverage",
+    "warm_turn_opportunity_coverage", "session_level_opportunity_coverage", "safe_canonicalization_coverage",
     "median_potential_reusable_prefix_gain", "high_risk_fallback_rate", "raw_fallback_rate", "partial_canonical_rate",
     "hard_order_sensitive_fraction", "mean_stable_segment_tokens", "mean_volatile_segment_tokens", "claim_boundary",
 ]
@@ -171,17 +175,68 @@ def _risk(segments: list[dict[str, Any]], raw: list[str], candidate: list[str]) 
     return "low", False, hard_sensitive, adjacency, edit
 
 
-def census(traces: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _chat_tokens(tokenizer: Any | None, segments: list[dict[str, Any]], order: list[str]) -> int:
+    if tokenizer is None:
+        return sum(int(segment.get("token_count") or 0) for segment in segments)
+    text = _ordered_text(order, segments)
+    messages = [
+        {"role": "system", "content": "/no_think Follow the segment contract."},
+        {"role": "user", "content": text},
+    ]
+    return len(tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True))
+
+
+def _retokenize_and_truncate(
+    segments: list[dict[str, Any]],
+    tokenizer: Any | None,
+    max_input_tokens: int,
+) -> tuple[list[dict[str, Any]], bool]:
+    if tokenizer is None:
+        return segments, False
+    copied = [dict(segment) for segment in segments]
+    for segment in copied:
+        segment["token_count"] = len(tokenizer.encode(str(segment.get("text", "")), add_special_tokens=False))
+    truncated = False
+    raw = raw_order(copied)
+    while _chat_tokens(tokenizer, copied, raw) > max_input_tokens:
+        candidates = [
+            segment for segment in copied
+            if segment.get("segment_type") not in {"SYS_PROMPT", "USER_QUERY", "TOOL_OBS"}
+            and int(segment.get("token_count") or 0) > 64
+        ]
+        if not candidates:
+            break
+        target = max(candidates, key=lambda item: int(item.get("token_count") or 0))
+        overflow = _chat_tokens(tokenizer, copied, raw) - max_input_tokens
+        ids = tokenizer.encode(str(target.get("text", "")), add_special_tokens=False)
+        keep = max(64, len(ids) - max(overflow, 32))
+        target["text"] = tokenizer.decode(ids[:keep], skip_special_tokens=True)
+        target["token_count"] = len(tokenizer.encode(target["text"], add_special_tokens=False))
+        truncated = True
+    return copied, truncated
+
+
+def census(
+    traces: list[dict[str, Any]],
+    tokenizer: Any | None = None,
+    max_model_len: int = 8192,
+    generation_reserve: int = 128,
+) -> list[dict[str, Any]]:
     raw_ledgers: dict[str, SegmentPrefixLedger] = defaultdict(SegmentPrefixLedger)
     caposc_ledgers: dict[str, SegmentPrefixLedger] = defaultdict(SegmentPrefixLedger)
     output = []
     for item in traces:
-        segments = item["segments"]
+        segments, context_truncated = _retokenize_and_truncate(
+            item["segments"], tokenizer, max(1, max_model_len - generation_reserve)
+        )
         raw = raw_order(segments)
         raw_lcp = estimate_lcp_tokens(raw, segments, raw_ledgers[item["trace_id"]], session_id=item["trace_id"])
         posc = prefix_max_topological_order(segments)
         caposc = cache_aware_posc_compile(segments, caposc_ledgers[item["trace_id"]], item["trace_id"], int(item["turn_id"]), 100.0)
-        candidate_orders = [raw, posc, caposc["topological_order"]]
+        candidate_orders = enumerate_legal_topological_orders(segments, max_orders=64)
+        for known in (raw, posc, caposc["topological_order"]):
+            if known not in candidate_orders:
+                candidate_orders.append(known)
         candidate_lcps = [
             estimate_lcp_tokens(order, segments, caposc_ledgers[item["trace_id"]], session_id=item["trace_id"])["matched_tokens"]
             for order in candidate_orders
@@ -195,13 +250,17 @@ def census(traces: list[dict[str, Any]]) -> list[dict[str, Any]]:
         volatile = sum(int(segment.get("token_count") or 0) for segment in segments if float(segment.get("volatility") or 0) >= 0.5)
         gain = max(0, selected_lcp - int(raw_lcp["matched_tokens"]))
         row = {
-            "trace_id": item["trace_id"], "turn_id": item["turn_id"], "workload_family": item["workload_family"],
+            "trace_id": item["trace_id"], "turn_id": item["turn_id"], "turns_per_session": item.get("census_turns_per_session", ""), "workload_family": item["workload_family"],
             "source_dataset": item["source_dataset"], "source_task": item["source_task"], "stable_segment_tokens": stable,
             "volatile_segment_tokens": volatile, "raw_prefix_reuse_tokens": raw_lcp["matched_tokens"],
             "best_legal_lcp_tokens": best_legal_lcp,
             "selected_caposc_lcp_tokens": selected_lcp,
             "caposc_expected_prefix_gain": gain,
             "caposc_regret_tokens": max(0, best_legal_lcp - selected_lcp),
+            "raw_actual_prompt_tokens_after_chat_template": _chat_tokens(tokenizer, segments, raw),
+            "caposc_actual_prompt_tokens_after_chat_template": _chat_tokens(tokenizer, segments, caposc["topological_order"]),
+            "max_model_len": max_model_len,
+            "context_truncated": context_truncated,
             "partial_canonical": caposc["topological_order"] != raw and not caposc.get("violated_edges"), "hard_order_sensitive": hard_sensitive,
             "hard_edge_valid": not caposc.get("violated_edges"), "adjacency_preservation_ratio": round(adjacency, 6),
             "relative_order_edit_distance": edit, "ordered_document_cue_count": _ordered_document_cues(segments),
@@ -224,9 +283,18 @@ def summarize(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         gains = [float(row["caposc_expected_prefix_gain"]) for row in group]
         opportunity = [row for row in group if float(row["caposc_expected_prefix_gain"]) > 0 and row["hard_edge_valid"]]
         safe = [row for row in opportunity if not row["raw_fallback"]]
+        warm = [row for row in group if int(row["turn_id"]) > 0]
+        warm_opportunity = [row for row in warm if float(row["caposc_expected_prefix_gain"]) > 0 and row["hard_edge_valid"]]
+        sessions = defaultdict(list)
+        for row in group:
+            sessions[str(row["trace_id"])].append(row)
+        session_hits = sum(any(float(row["caposc_expected_prefix_gain"]) > 0 and row["hard_edge_valid"] for row in session) for session in sessions.values())
+        turns_per_session = max((int(row["turn_id"]) for row in group), default=-1) + 1
         high = [row for row in group if row["qc_risk_bucket"] == "high"]
         output.append({
-            "workload_family": family, "turns": len(group), "optimization_opportunity_coverage": round(len(opportunity) / len(group), 6),
+            "workload_family": family, "turns_per_session": turns_per_session, "turns": len(group), "optimization_opportunity_coverage": round(len(opportunity) / len(group), 6),
+            "warm_turn_opportunity_coverage": round(len(warm_opportunity) / max(1, len(warm)), 6),
+            "session_level_opportunity_coverage": round(session_hits / max(1, len(sessions)), 6),
             "safe_canonicalization_coverage": round(len(safe) / len(group), 6), "median_potential_reusable_prefix_gain": round(statistics.median(gains), 6),
             "high_risk_fallback_rate": round(sum(bool(row["raw_fallback"]) for row in high) / len(high), 6) if high else 0.0,
             "raw_fallback_rate": round(sum(bool(row["raw_fallback"]) for row in group) / len(group), 6),
@@ -243,15 +311,34 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--samples", type=Path, default=Path("results/datasets/sample_prompts.jsonl"))
     parser.add_argument("--turns-per-trace", type=int, default=5)
+    parser.add_argument("--turn-counts", default="")
+    parser.add_argument("--tokenizer", default="")
+    parser.add_argument("--max-model-len", type=int, default=8192)
+    parser.add_argument("--generation-reserve", type=int, default=128)
     parser.add_argument("--traces-output", type=Path, default=Path("results/workload/phase14a_agent_traces_v0.jsonl"))
     parser.add_argument("--raw-output", type=Path, default=Path("results/workload/phase14a_opportunity_census_raw_v0.csv"))
     parser.add_argument("--summary-output", type=Path, default=Path("results/workload/phase14a_opportunity_census_summary_v0.csv"))
     args = parser.parse_args()
-    traces = build_traces(load_jsonl(args.samples), args.turns_per_trace)
-    rows = census(traces)
+    tokenizer = None
+    if args.tokenizer:
+        from transformers import AutoTokenizer
+        tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, trust_remote_code=True)
+    turn_counts = [int(value) for value in args.turn_counts.split(",") if value.strip()] or [args.turns_per_trace]
+    traces = []
+    rows = []
+    summaries = []
+    samples = load_jsonl(args.samples)
+    for turns in turn_counts:
+        current_traces = build_traces(samples, turns)
+        for trace in current_traces:
+            trace["census_turns_per_session"] = turns
+        current_rows = census(current_traces, tokenizer, args.max_model_len, args.generation_reserve)
+        traces.extend(current_traces)
+        rows.extend(current_rows)
+        summaries.extend(summarize(current_rows))
     write_jsonl(args.traces_output, traces)
     write_csv(args.raw_output, rows, RAW_FIELDS)
-    write_csv(args.summary_output, summarize(rows), SUMMARY_FIELDS)
+    write_csv(args.summary_output, summaries, SUMMARY_FIELDS)
     print(f"traces={len(traces)} census_rows={len(rows)}")
     return 0 if len(traces) >= 500 else 1
 

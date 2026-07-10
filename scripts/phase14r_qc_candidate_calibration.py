@@ -31,12 +31,18 @@ FEATURE_NAMES = [
     "ordered_discourse_signal",
     "low_adjacency_signal",
     "cross_reference_signal",
+    "code_internal_order_changed",
+    "code_component_crossings",
+    "tool_code_dependency_violation",
     "expected_prefix_gain_k",
     "context_segment_tokens_k",
 ]
 
 SCORE_FIELDS = [
     "sample_key",
+    "candidate_id",
+    "order_hash",
+    "prompt_hash",
     "partition",
     "dataset",
     "task",
@@ -81,10 +87,6 @@ def _bool(value: Any) -> bool:
     return value is True or str(value).lower() == "true"
 
 
-def _base_key(sample_key: str) -> str:
-    return "::".join(str(sample_key).split("::")[:3])
-
-
 def _feature_vector(row: dict[str, Any]) -> list[float]:
     adjacency = _float(row.get("adjacency_preservation"))
     return [
@@ -95,6 +97,9 @@ def _feature_vector(row: dict[str, Any]) -> list[float]:
         1.0 if _bool(row.get("ordered_discourse_signal")) else 0.0,
         1.0 if _bool(row.get("low_adjacency_signal")) else 0.0,
         _float(row.get("cross_reference_signal")),
+        _float(row.get("code_internal_order_changed")),
+        _float(row.get("code_component_crossings")),
+        _float(row.get("tool_code_dependency_violation")),
         _float(row.get("expected_prefix_gain")) / 1000.0,
         _float(row.get("context_segment_tokens")) / 1000.0,
     ]
@@ -136,21 +141,29 @@ def predict(weights: list[float], x: list[float]) -> float:
     return _sigmoid(weights[0] + sum(w * v for w, v in zip(weights[1:], x)))
 
 
-def choose_threshold(rows: list[dict[str, Any]], target_false_safe: float = 0.02) -> float:
+def choose_threshold(rows: list[dict[str, Any]], target_false_safe: float = 0.03) -> float:
     risks = sorted({_float(row["predicted_risk"]) for row in rows})
     if not risks:
         return 1.0
-    best = 1.0
-    best_coverage = -1.0
+    best = min(risks) - 1e-12
+    best_gain = 0.0
+    best_coverage = 0.0
     for threshold in risks + [1.0]:
         accepted = [row for row in rows if _float(row["predicted_risk"]) <= threshold]
         if not accepted:
             continue
-        false_safe = sum(_bool(row["unsafe_quality_drop"]) for row in accepted) / max(1, len(accepted))
+        false_safe_count = sum(_bool(row["unsafe_quality_drop"]) for row in accepted)
+        upper = _wilson_upper(false_safe_count, len(accepted))
         safe = [row for row in rows if not _bool(row["unsafe_quality_drop"])]
         coverage = sum((not _bool(row["unsafe_quality_drop"])) and _float(row["predicted_risk"]) <= threshold for row in rows) / max(1, len(safe))
-        if false_safe <= target_false_safe and coverage > best_coverage:
+        retained_gain = sum(
+            max(0.0, _float(row.get("expected_prefix_gain")))
+            for row in accepted
+            if not _bool(row.get("unsafe_quality_drop"))
+        )
+        if upper <= target_false_safe and (retained_gain, coverage, -threshold) > (best_gain, best_coverage, -best):
             best = threshold
+            best_gain = retained_gain
             best_coverage = coverage
     return best
 
@@ -170,15 +183,17 @@ def calibrate(
     labels: list[dict[str, Any]],
     target_false_safe: float,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
-    by_key = {_base_key(row["sample_key"]): row for row in features}
+    by_key = {
+        (str(row.get("sample_key", "")), str(row.get("candidate_id", ""))): row
+        for row in features
+    }
     labeled = []
     for label in labels:
-        key = _base_key(str(label.get("sample_key", "")))
+        key = (str(label.get("sample_key", "")), str(label.get("candidate_id", "")))
         feature = by_key.get(key)
         if not feature:
             continue
         row = {**feature, **label}
-        row["candidate_policy"] = "contractkv-caposc"
         labeled.append(row)
     train = [row for row in labeled if str(row.get("partition")) == "calibration"]
     xs = [_feature_vector(row) for row in train]
@@ -197,6 +212,9 @@ def calibrate(
         unsafe = _bool(row.get("unsafe_quality_drop"))
         record = {
             "sample_key": row.get("sample_key", ""),
+            "candidate_id": row.get("candidate_id", ""),
+            "order_hash": row.get("order_hash", ""),
+            "prompt_hash": row.get("prompt_hash", ""),
             "partition": row.get("partition", ""),
             "dataset": row.get("dataset", ""),
             "task": row.get("task", ""),
@@ -211,8 +229,31 @@ def calibrate(
             "claim_boundary": "Candidate-level QC-v2 calibration over completed paired labels; task-sanity labels, not official benchmark scoring.",
         }
         output.append(record)
-    model = {"intercept": weights[0], "weights": dict(zip(FEATURE_NAMES, weights[1:])), "threshold": threshold}
-    return output, summarize(output, threshold), model
+    calibration_rows = [row for row in output if str(row.get("partition")) == "calibration"]
+    accepted = [row for row in calibration_rows if not _bool(row.get("qc_fallback_v2"))]
+    false_safe_count = sum(_bool(row.get("false_safe_v2")) for row in accepted)
+    summary_rows = summarize(output, threshold)
+    held = next((row for row in summary_rows if row["split"] == "held_out_quality"), {})
+    model = {
+        "intercept": weights[0],
+        "weights": dict(zip(FEATURE_NAMES, weights[1:])),
+        "threshold": threshold,
+        "threshold_objective": "maximize_safe_expected_prefix_gain_subject_to_wilson95_upper",
+        "target_false_safe_wilson95_upper": target_false_safe,
+        "calibration_false_safe_wilson95_upper": _wilson_upper(false_safe_count, len(accepted)),
+        "deployment_gate_open": bool(
+            held
+            and _float(held.get("false_safe_wilson95_upper")) <= target_false_safe
+            and _float(held.get("safe_optimization_coverage")) >= 0.80
+            and _float(held.get("unsafe_caught_rate")) >= 0.80
+        ),
+        "deployment_gate_requirements": {
+            "held_out_false_safe_wilson95_upper_lte": target_false_safe,
+            "held_out_safe_optimization_coverage_gte": 0.80,
+            "held_out_unsafe_caught_rate_gte": 0.80,
+        },
+    }
+    return output, summary_rows, model
 
 
 def summarize(rows: list[dict[str, Any]], threshold: float) -> list[dict[str, Any]]:
@@ -234,7 +275,7 @@ def summarize(rows: list[dict[str, Any]], threshold: float) -> list[dict[str, An
                 "threshold": round(threshold, 6),
                 "fallback_rate": round(sum(_bool(row.get("qc_fallback_v2")) for row in group) / max(1, len(group)), 6),
                 "false_safe_rate": round(false_safe_count / max(1, len(accepted)), 6),
-                "false_safe_wilson95_upper": round(_wilson_upper(false_safe_count, max(1, len(accepted))), 6),
+                "false_safe_wilson95_upper": round(_wilson_upper(false_safe_count, len(accepted)), 6),
                 "safe_optimization_coverage": round(sum(_bool(row.get("safe_optimization_v2")) for row in group) / max(1, len(safe)), 6),
                 "unsafe_caught_rate": round(sum(_bool(row.get("qc_fallback_v2")) for row in unsafe) / max(1, len(unsafe)), 6),
                 "mean_quality_drop": round(sum(drops) / max(1, len(drops)), 6),
@@ -256,7 +297,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--features", type=Path, default=Path("results/end_to_end/phase14c_full_pool_qc_features_v0.csv"))
     parser.add_argument("--labels", type=Path, default=Path("results/end_to_end/phase14c_full_pool_quality_labels_v1.csv"))
-    parser.add_argument("--target-false-safe", type=float, default=0.02)
+    parser.add_argument("--target-false-safe", type=float, default=0.03)
     parser.add_argument("--scores-output", type=Path, default=Path("results/end_to_end/phase14r_qc_v2_scores.csv"))
     parser.add_argument("--summary-output", type=Path, default=Path("results/end_to_end/phase14r_qc_v2_summary.csv"))
     parser.add_argument("--model-output", type=Path, default=Path("results/end_to_end/phase14r_qc_v2_model.json"))

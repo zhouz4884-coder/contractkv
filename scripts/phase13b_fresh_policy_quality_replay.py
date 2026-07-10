@@ -152,6 +152,7 @@ def build_case(sample: dict[str, Any], stable_word_limit: int = 2600) -> dict[st
     # Raw input is intentionally the agent-like middle insertion.  The
     # compiler can move this only when the dependency contract allows it.
     segments = [sys_segment, tool] + base + [query_segment]
+    query_segment["dependencies"] = list(dict.fromkeys(query_segment["dependencies"] + [tool["segment_id"]]))
     if sample.get("dataset") == "RepoBench":
         tool["dependencies"] = ["s0"]
         for index, context in enumerate(base):

@@ -1,0 +1,16 @@
+dataset,task,partition,samples,unique_source_groups,largest_group_size,empty_or_unknown_groups,groups_crossing_partitions,context_tokens_p50,context_tokens_p95,answer_words_p50,answer_words_p95,claim_boundary
+LongBench,hotpotqa,calibration,35,35,1,0,0,11046,12055,2,4,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,hotpotqa,held_out_quality,47,47,1,0,0,9320,11923,2,5,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,hotpotqa,live_serving,118,118,1,0,0,9795,12172,2,8,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,narrativeqa,calibration,38,38,1,0,0,22755,31685,4,13,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,narrativeqa,held_out_quality,44,44,1,0,0,17485,36401,4,9,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,narrativeqa,live_serving,118,118,1,0,0,17485,31685,4,11,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,qasper,calibration,38,38,1,0,0,3535,5318,11,39,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,qasper,held_out_quality,49,49,1,0,0,3542,4846,10,70,Deterministic split audit; zero cross-partition source groups is required.
+LongBench,qasper,live_serving,113,113,1,0,0,3233,6381,14,61,Deterministic split audit; zero cross-partition source groups is required.
+RULER,niah_single_1,calibration,48,48,1,0,0,700,700,1,1,Deterministic split audit; zero cross-partition source groups is required.
+RULER,niah_single_1,held_out_quality,45,45,1,0,0,700,700,1,1,Deterministic split audit; zero cross-partition source groups is required.
+RULER,niah_single_1,live_serving,107,107,1,0,0,700,700,1,1,Deterministic split audit; zero cross-partition source groups is required.
+RepoBench,python_v1.1,calibration,99,93,2,0,0,2435,9196,3,13,Deterministic split audit; zero cross-partition source groups is required.
+RepoBench,python_v1.1,held_out_quality,96,80,2,0,0,3196,8632,3,8,Deterministic split audit; zero cross-partition source groups is required.
+RepoBench,python_v1.1,live_serving,305,275,2,0,0,3079,10046,3,9,Deterministic split audit; zero cross-partition source groups is required.

@@ -19,15 +19,18 @@ if __package__ is None or __package__ == "":
 
 from scripts.phase12_prefix_cache_ab import approximate_prompt_tokens, send_chat_stream
 from scripts.phase12_task_quality_sanity import score_answer
-from scripts.phase12e_cache_aware_posc import SegmentPrefixLedger
 from scripts.phase12f_real_vllm_caposc_replay import _ordered_text
-from scripts.phase13b_fresh_policy_quality_replay import _compile, build_case
+from scripts.phase13b_fresh_policy_quality_replay import build_case
+from scripts.phase14c_full_pool_qc_inputs import _retokenize_case, candidate_identity
+from scripts.phase12_posc_layout_compiler import validate_topological_order
 
 
 RAW_FIELDS = [
     "timestamp",
     "job_id",
     "sample_key",
+    "candidate_id",
+    "order_hash",
     "partition",
     "dataset",
     "task",
@@ -60,6 +63,11 @@ RAW_FIELDS = [
 
 LABEL_FIELDS = [
     "sample_key",
+    "candidate_id",
+    "order_hash",
+    "prompt_hash",
+    "candidate_rank",
+    "topological_order",
     "partition",
     "dataset",
     "task",
@@ -177,10 +185,24 @@ def build_output_row(
     max_tokens: int,
     timeout: float,
     stable_word_limit: int,
+    tokenizer: Any | None = None,
+    max_model_len: int = 8192,
 ) -> dict[str, Any]:
-    case = build_case(sample, stable_word_limit=stable_word_limit)
-    compiled = _compile(str(job["policy"]), case, SegmentPrefixLedger())
-    text = _ordered_text(compiled["topological_order"], case["segments"])
+    case = _retokenize_case(
+        build_case(sample, stable_word_limit=stable_word_limit), tokenizer, max_model_len
+    )
+    order_value = job.get("topological_order", "[]")
+    order = json.loads(order_value) if isinstance(order_value, str) else list(order_value)
+    order = [str(item) for item in order]
+    violations = validate_topological_order(order, case["segments"])
+    if violations:
+        raise ValueError(f"job contains illegal topological order: {violations}")
+    identity = candidate_identity(case, order)
+    for field in ("candidate_id", "order_hash", "prompt_hash"):
+        expected = str(job.get(field, ""))
+        if expected and expected != identity[field]:
+            raise ValueError(f"job {field} mismatch: expected={expected} actual={identity[field]}")
+    text = _ordered_text(order, case["segments"])
     messages = quality_messages(case, text)
     prompt_hash = hashlib.sha256(json.dumps(messages, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:16]
     result = send_chat_stream(
@@ -196,17 +218,19 @@ def build_output_row(
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "job_id": job.get("job_id", ""),
         "sample_key": job.get("sample_key", sample_key(sample)),
+        "candidate_id": identity["candidate_id"],
+        "order_hash": identity["order_hash"],
         "partition": job.get("partition", ""),
         "dataset": job.get("dataset", sample.get("dataset", "")),
         "task": job.get("task", sample.get("task", "")),
         "sample_id": str(job.get("sample_id", sample.get("sample_id", ""))),
         "policy": job.get("policy", ""),
         "model": model,
-        "selected_layout_policy": compiled.get("selected_policy", job.get("policy", "")),
-        "layout_decision": compiled.get("layout_decision", ""),
-        "topological_order": json.dumps(compiled.get("topological_order", [])),
-        "dependency_edges": json.dumps(compiled.get("dependency_edges", [])),
-        "violated_edges": json.dumps(compiled.get("violated_edges", [])),
+        "selected_layout_policy": job.get("candidate_policy", job.get("policy", "")),
+        "layout_decision": "raw_order" if str(job.get("candidate_policy")) == "raw-order" else "partial_canonical",
+        "topological_order": json.dumps(order),
+        "dependency_edges": json.dumps([[dep, segment["segment_id"]] for segment in case["segments"] for dep in segment.get("dependencies", [])]),
+        "violated_edges": json.dumps(violations),
         "prompt_hash": prompt_hash,
         "prompt_tokens": approximate_prompt_tokens(messages),
         "success": result.get("success", False),
@@ -234,6 +258,8 @@ def run_jobs(
     max_tokens: int,
     timeout: float,
     stable_word_limit: int,
+    tokenizer: Any | None = None,
+    max_model_len: int = 8192,
     partitions: set[str] | None = None,
     policies: set[str] | None = None,
     max_jobs: int | None = None,
@@ -264,7 +290,7 @@ def run_jobs(
             )
             continue
         started = time.perf_counter()
-        row = build_output_row(job, samples[key], base_url, model, max_tokens, timeout, stable_word_limit)
+        row = build_output_row(job, samples[key], base_url, model, max_tokens, timeout, stable_word_limit, tokenizer, max_model_len)
         row["claim_boundary"] += f" runner_index={index}; runner_wall_ms={(time.perf_counter() - started) * 1000.0:.3f}"
         rows.append(row)
     return rows
@@ -279,6 +305,8 @@ def iter_job_rows(
     max_tokens: int,
     timeout: float,
     stable_word_limit: int,
+    tokenizer: Any | None = None,
+    max_model_len: int = 8192,
     partitions: set[str] | None = None,
     policies: set[str] | None = None,
     max_jobs: int | None = None,
@@ -306,33 +334,37 @@ def iter_job_rows(
             }
             continue
         started = time.perf_counter()
-        row = build_output_row(job, samples[key], base_url, model, max_tokens, timeout, stable_word_limit)
+        row = build_output_row(job, samples[key], base_url, model, max_tokens, timeout, stable_word_limit, tokenizer, max_model_len)
         row["claim_boundary"] += f" runner_index={index}; runner_wall_ms={(time.perf_counter() - started) * 1000.0:.3f}"
         yield row
 
 
-def _base_sample_key(key: str) -> str:
-    return "::".join(str(key).split("::")[:3])
-
-
-def _feature_by_key(features: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    return {_base_sample_key(str(row.get("sample_key", ""))): row for row in features}
+def _feature_by_key(features: list[dict[str, Any]]) -> dict[tuple[str, str], dict[str, Any]]:
+    return {
+        (str(row.get("sample_key", "")), str(row.get("candidate_id", ""))): row
+        for row in features
+        if row.get("sample_key") and row.get("candidate_id")
+    }
 
 
 def build_labels(raw_rows: list[dict[str, Any]], features: list[dict[str, Any]], eps: float = 0.03) -> list[dict[str, Any]]:
-    grouped: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in raw_rows:
-        grouped[str(row.get("sample_key", ""))][str(row.get("policy", ""))] = row
+        grouped[str(row.get("sample_key", ""))].append(row)
     features_by_key = _feature_by_key(features)
     output = []
-    for key, policies in sorted(grouped.items()):
-        raw = policies.get("raw-order")
+    for key, candidates in sorted(grouped.items()):
+        raw = next((row for row in candidates if str(row.get("policy", "")) == "raw-order"), None)
         if raw is None:
             continue
-        feature = features_by_key.get(_base_sample_key(key), {})
         raw_score = _score_float(raw)
-        for candidate_policy, candidate in sorted(policies.items()):
-            if candidate_policy == "raw-order":
+        for candidate in sorted(candidates, key=lambda row: str(row.get("candidate_id", ""))):
+            candidate_policy = str(candidate.get("policy", ""))
+            candidate_id = str(candidate.get("candidate_id", ""))
+            if candidate_id == str(raw.get("candidate_id", "")):
+                continue
+            feature = features_by_key.get((key, candidate_id), {})
+            if not feature:
                 continue
             candidate_score = _score_float(candidate)
             drop = max(0.0, raw_score - candidate_score)
@@ -340,6 +372,11 @@ def build_labels(raw_rows: list[dict[str, Any]], features: list[dict[str, Any]],
             unsafe = drop > eps
             row = {
                 "sample_key": key,
+                "candidate_id": candidate_id,
+                "order_hash": candidate.get("order_hash", feature.get("order_hash", "")),
+                "prompt_hash": candidate.get("prompt_hash", feature.get("prompt_hash", "")),
+                "candidate_rank": feature.get("candidate_rank", ""),
+                "topological_order": candidate.get("topological_order", feature.get("topological_order", "")),
                 "partition": raw.get("partition", feature.get("partition", "")),
                 "dataset": raw.get("dataset", feature.get("dataset", "")),
                 "task": raw.get("task", feature.get("task", "")),
@@ -409,6 +446,8 @@ def main() -> int:
     parser.add_argument("--max-tokens", type=int, default=96)
     parser.add_argument("--timeout", type=float, default=240.0)
     parser.add_argument("--stable-word-limit", type=int, default=2600)
+    parser.add_argument("--tokenizer", default="")
+    parser.add_argument("--max-model-len", type=int, default=8192)
     parser.add_argument("--partitions", default="")
     parser.add_argument("--policies", default="")
     parser.add_argument("--max-jobs", type=int, default=0)
@@ -425,6 +464,10 @@ def main() -> int:
     new_rows: list[dict[str, Any]] = []
     all_rows = existing.copy()
     features = list(csv.DictReader(args.features.open("r", encoding="utf-8", newline=""))) if args.features.exists() else []
+    tokenizer = None
+    if args.tokenizer:
+        from transformers import AutoTokenizer
+        tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, trust_remote_code=True)
     for row in iter_job_rows(
         full_pool,
         jobs,
@@ -434,6 +477,8 @@ def main() -> int:
         args.max_tokens,
         args.timeout,
         args.stable_word_limit,
+        tokenizer,
+        args.max_model_len,
         partitions=partitions,
         policies=policies,
         max_jobs=args.max_jobs or None,

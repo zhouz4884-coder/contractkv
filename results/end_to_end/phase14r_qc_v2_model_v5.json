@@ -1,0 +1,27 @@
+{
+  "calibration_false_safe_wilson95_upper": 0.0,
+  "deployment_gate_open": false,
+  "deployment_gate_requirements": {
+    "held_out_false_safe_wilson95_upper_lte": 0.03,
+    "held_out_safe_optimization_coverage_gte": 0.8,
+    "held_out_unsafe_caught_rate_gte": 0.8
+  },
+  "intercept": -0.5965862882030722,
+  "target_false_safe_wilson95_upper": 0.03,
+  "threshold": 0.04239418518524622,
+  "threshold_objective": "maximize_safe_expected_prefix_gain_subject_to_wilson95_upper",
+  "weights": {
+    "adjacency_loss": -0.5543720271945627,
+    "code_component_crossings": 0.0,
+    "code_internal_order_changed": 0.0,
+    "context_segment_tokens_k": -0.4075262663719769,
+    "cross_reference_signal": 0.03393161708534587,
+    "expected_prefix_gain_k": 0.3798934095557384,
+    "low_adjacency_signal": 0.0,
+    "moved_segment_count": 0.2578226931025419,
+    "ordered_discourse_signal": 0.0,
+    "relative_order_edit_distance": 0.2578226931025419,
+    "tool_code_dependency_violation": 0.0,
+    "violated_edge_count": 0.0
+  }
+}

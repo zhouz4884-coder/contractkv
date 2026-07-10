@@ -1,0 +1,4 @@
+policy,cells,requests,completion_rate,quality_sanity_rate,join_success_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,mean_observed_new_prefill_tokens,ttft_reduction_vs_raw_pct,p95_ttft_reduction_vs_raw_pct,new_prefill_reduction_vs_raw_pct,direction_consistent_replicates,claim_boundary
+cache-aware-posc,5,90,1.0,1.0,1.0,119.440477,448.045611,21.671795,244.888889,17.40603,8.532716,30.186886,5/5,Real isolated vLLM prefix-cache replication; no worker-level kernel timing claim.
+raw-order,5,90,1.0,1.0,1.0,144.611619,489.842479,21.709752,350.777778,0.0,0.0,0.0,5/5,Real isolated vLLM prefix-cache replication; no worker-level kernel timing claim.
+static-posc,5,90,1.0,1.0,1.0,126.80794,448.196095,21.672769,274.333333,12.311375,8.501995,21.792841,5/5,Real isolated vLLM prefix-cache replication; no worker-level kernel timing claim.

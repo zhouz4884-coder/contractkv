@@ -26,11 +26,14 @@ class Phase14CFullPoolQualityRunnerTests(unittest.TestCase):
 
     def test_build_labels_computes_drop_and_false_safe(self):
         raw_rows = [
-            {"sample_key": "s", "policy": "raw-order", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "r"},
-            {"sample_key": "s", "policy": "contractkv-caposc", "score": 0.9, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "c"},
-            {"sample_key": "s", "policy": "static-posc", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "p"},
+            {"sample_key": "s", "candidate_id": "raw", "policy": "raw-order", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "r"},
+            {"sample_key": "s", "candidate_id": "cap", "policy": "contractkv-caposc", "score": 0.9, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "c"},
+            {"sample_key": "s", "candidate_id": "posc", "policy": "static-posc", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "p"},
         ]
-        features = [{"sample_key": "s", "qc_prelabel_fallback": False, "partition": "calibration"}]
+        features = [
+            {"sample_key": "s", "candidate_id": "cap", "qc_prelabel_fallback": False, "partition": "calibration"},
+            {"sample_key": "s", "candidate_id": "posc", "qc_prelabel_fallback": False, "partition": "calibration"},
+        ]
         labels = build_labels(raw_rows, features, eps=0.03)
         self.assertEqual(len(labels), 2)
         caposc = next(row for row in labels if row["candidate_policy"] == "contractkv-caposc")

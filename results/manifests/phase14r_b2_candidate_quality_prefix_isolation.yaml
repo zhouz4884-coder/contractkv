@@ -1,0 +1,35 @@
+phase: phase14r_b2
+status: completed_with_phase14d_gate_closed
+model: Qwen3-8B
+backend: vLLM 0.10.2 V1
+candidate_contract:
+  identity_fields:
+    - sample_key
+    - candidate_id
+    - order_hash
+    - prompt_hash
+  source_samples: 539
+  unique_legal_layout_jobs: 1273
+  paired_non_raw_labels: 734
+quality:
+  successful_jobs: 1273
+  failed_jobs: 0
+  unsafe_candidates: 34
+  quality_drop_epsilon: 0.03
+  target_false_safe_wilson95_upper: 0.03
+  deployment_gate_open: false
+  reason: current generic structural model satisfies safety only by falling back on every candidate
+prefix_isolation:
+  fresh_process_cells: 15
+  requests: 270
+  join_success_rate: 1.0
+  quality_sanity_rate: 1.0
+  caposc_mean_ttft_reduction_pct: 17.40603
+  caposc_p95_ttft_reduction_pct: 8.532716
+  caposc_observed_new_prefill_reduction_pct: 30.186886
+  direction_consistent_replicates: 5/5
+phase14d:
+  smoke_requests: 20
+  formal_run_launched: false
+  gate: qc_deployment_gate_closed
+claim_boundary: Prefix isolation is real vLLM serving evidence; quality labels are fresh task-sanity scores, and no formal Phase 14D goodput claim is made.
