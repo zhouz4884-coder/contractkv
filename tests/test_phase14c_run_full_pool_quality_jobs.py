@@ -28,12 +28,14 @@ class Phase14CFullPoolQualityRunnerTests(unittest.TestCase):
         raw_rows = [
             {"sample_key": "s", "policy": "raw-order", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "r"},
             {"sample_key": "s", "policy": "contractkv-caposc", "score": 0.9, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "c"},
+            {"sample_key": "s", "policy": "static-posc", "score": 1.0, "success": True, "partition": "calibration", "dataset": "LongBench", "task": "qasper", "sample_id": "0", "request_id": "p"},
         ]
         features = [{"sample_key": "s", "qc_prelabel_fallback": False, "partition": "calibration"}]
         labels = build_labels(raw_rows, features, eps=0.03)
-        self.assertEqual(len(labels), 1)
-        self.assertTrue(labels[0]["unsafe_quality_drop"])
-        self.assertTrue(labels[0]["false_safe"])
+        self.assertEqual(len(labels), 2)
+        caposc = next(row for row in labels if row["candidate_policy"] == "contractkv-caposc")
+        self.assertTrue(caposc["unsafe_quality_drop"])
+        self.assertTrue(caposc["false_safe"])
 
     def test_summary_reports_gate_metrics_over_completed_labels(self):
         labels = [

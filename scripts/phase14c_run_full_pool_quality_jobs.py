@@ -64,6 +64,7 @@ LABEL_FIELDS = [
     "dataset",
     "task",
     "sample_id",
+    "candidate_policy",
     "raw_score",
     "candidate_score",
     "quality_drop_vs_raw",
@@ -310,8 +311,12 @@ def iter_job_rows(
         yield row
 
 
+def _base_sample_key(key: str) -> str:
+    return "::".join(str(key).split("::")[:3])
+
+
 def _feature_by_key(features: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    return {str(row.get("sample_key", "")): row for row in features}
+    return {_base_sample_key(str(row.get("sample_key", ""))): row for row in features}
 
 
 def build_labels(raw_rows: list[dict[str, Any]], features: list[dict[str, Any]], eps: float = 0.03) -> list[dict[str, Any]]:
@@ -322,35 +327,38 @@ def build_labels(raw_rows: list[dict[str, Any]], features: list[dict[str, Any]],
     output = []
     for key, policies in sorted(grouped.items()):
         raw = policies.get("raw-order")
-        candidate = policies.get("contractkv-caposc")
-        if raw is None or candidate is None:
+        if raw is None:
             continue
-        feature = features_by_key.get(key, {})
+        feature = features_by_key.get(_base_sample_key(key), {})
         raw_score = _score_float(raw)
-        candidate_score = _score_float(candidate)
-        drop = max(0.0, raw_score - candidate_score)
-        fallback = feature.get("qc_prelabel_fallback") is True or str(feature.get("qc_prelabel_fallback", "")).lower() == "true"
-        unsafe = drop > eps
-        row = {
-            "sample_key": key,
-            "partition": raw.get("partition", feature.get("partition", "")),
-            "dataset": raw.get("dataset", feature.get("dataset", "")),
-            "task": raw.get("task", feature.get("task", "")),
-            "sample_id": raw.get("sample_id", feature.get("sample_id", "")),
-            "raw_score": round(raw_score, 6),
-            "candidate_score": round(candidate_score, 6),
-            "quality_drop_vs_raw": round(drop, 6),
-            "unsafe_quality_drop": unsafe,
-            "qc_prelabel_fallback": fallback,
-            "safe_optimization": (not fallback) and (not unsafe) and _success(raw) and _success(candidate),
-            "false_safe": (not fallback) and unsafe,
-            "raw_success": _success(raw),
-            "candidate_success": _success(candidate),
-            "raw_request_id": raw.get("request_id", ""),
-            "candidate_request_id": candidate.get("request_id", ""),
-            "claim_boundary": "Paired fresh Qwen3-8B task-sanity label; not official benchmark scoring.",
-        }
-        output.append({field: row.get(field, "") for field in LABEL_FIELDS})
+        for candidate_policy, candidate in sorted(policies.items()):
+            if candidate_policy == "raw-order":
+                continue
+            candidate_score = _score_float(candidate)
+            drop = max(0.0, raw_score - candidate_score)
+            fallback = feature.get("qc_prelabel_fallback") is True or str(feature.get("qc_prelabel_fallback", "")).lower() == "true"
+            unsafe = drop > eps
+            row = {
+                "sample_key": key,
+                "partition": raw.get("partition", feature.get("partition", "")),
+                "dataset": raw.get("dataset", feature.get("dataset", "")),
+                "task": raw.get("task", feature.get("task", "")),
+                "sample_id": raw.get("sample_id", feature.get("sample_id", "")),
+                "candidate_policy": candidate_policy,
+                "raw_score": round(raw_score, 6),
+                "candidate_score": round(candidate_score, 6),
+                "quality_drop_vs_raw": round(drop, 6),
+                "unsafe_quality_drop": unsafe,
+                "qc_prelabel_fallback": fallback,
+                "safe_optimization": (not fallback) and (not unsafe) and _success(raw) and _success(candidate),
+                "false_safe": (not fallback) and unsafe,
+                "raw_success": _success(raw),
+                "candidate_success": _success(candidate),
+                "raw_request_id": raw.get("request_id", ""),
+                "candidate_request_id": candidate.get("request_id", ""),
+                "claim_boundary": "Paired fresh Qwen3-8B task-sanity candidate label; not official benchmark scoring.",
+            }
+            output.append({field: row.get(field, "") for field in LABEL_FIELDS})
     return output
 
 

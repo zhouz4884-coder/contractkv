@@ -153,10 +153,9 @@ def build_case(sample: dict[str, Any], stable_word_limit: int = 2600) -> dict[st
     # compiler can move this only when the dependency contract allows it.
     segments = [sys_segment, tool] + base + [query_segment]
     if sample.get("dataset") == "RepoBench":
-        first_context = base[0] if base else query_segment
         tool["dependencies"] = ["s0"]
         for index, context in enumerate(base):
-            context["dependencies"] = ["s0", tool["segment_id"]] if index == 0 else [base[index - 1]["segment_id"]]
+            context["dependencies"] = ["s0"] if index == 0 else [base[index - 1]["segment_id"]]
         query_segment["dependencies"] = ([base[-1]["segment_id"]] if base else ["s0"]) + [tool["segment_id"]]
     return {
         "trajectory_id": f"{sample.get('dataset', '')}:{sample.get('task', '')}:{sample.get('sample_id', '')}",

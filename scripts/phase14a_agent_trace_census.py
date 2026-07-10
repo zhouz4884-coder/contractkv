@@ -17,7 +17,7 @@ if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.phase12e_cache_aware_posc import SegmentPrefixLedger, cache_aware_posc_compile, estimate_lcp_tokens
-from scripts.phase12_posc_layout_compiler import expected_prefix_gain_tokens, prefix_max_topological_order, raw_order
+from scripts.phase12_posc_layout_compiler import prefix_max_topological_order, raw_order
 
 
 FAMILIES = ["code_agent", "rag_agent", "structured_document_qa", "tool_function_agent", "mixed_long_history_agent"]
@@ -26,7 +26,8 @@ HEADING_CUES = re.compile(r"(?im)^\s*(abstract|introduction|background|method|me
 
 RAW_FIELDS = [
     "trace_id", "turn_id", "workload_family", "source_dataset", "source_task", "stable_segment_tokens",
-    "volatile_segment_tokens", "raw_prefix_reuse_tokens", "max_legal_posc_prefix_tokens", "caposc_expected_prefix_gain",
+    "volatile_segment_tokens", "raw_prefix_reuse_tokens", "best_legal_lcp_tokens", "selected_caposc_lcp_tokens",
+    "caposc_expected_prefix_gain", "caposc_regret_tokens",
     "partial_canonical", "hard_order_sensitive", "hard_edge_valid", "adjacency_preservation_ratio",
     "relative_order_edit_distance", "ordered_document_cue_count", "qc_risk_bucket", "qc_decision",
     "raw_fallback", "caposc_selected_policy", "claim_boundary",
@@ -79,7 +80,10 @@ def _dataset_turn(sample: dict[str, Any], family: str, turn: int) -> dict[str, A
     sys = _seg("sys", "SYS_PROMPT", "Follow the segment contract and answer from the supplied context. /no_think", 16, [], 0.0, 1.0)
     tool = _seg("tool_obs", "TOOL_OBS", f"Dynamic observation at turn {turn}; no new evidence.", 12, ["sys"], 1.0, 0.0)
     if family == "code_agent":
-        context = _seg("repo_component", "REPO_CONTEXT", text, tokens, ["sys", "tool_obs"], 0.0, 1.0)
+        # The repository context is an ordered supernode: imports/classes/functions
+        # stay internally ordered, but the stable component itself can legally
+        # move before a volatile tool observation.
+        context = _seg("repo_component", "REPO_CONTEXT", text, tokens, ["sys"], 0.0, 1.0)
         deps = ["repo_component", "tool_obs"]
         source = "RepoBench"
     elif family == "structured_document_qa":
@@ -160,7 +164,7 @@ def _risk(segments: list[dict[str, Any]], raw: list[str], candidate: list[str]) 
     code = any(segment.get("segment_type") in {"REPO_CONTEXT", "REPO_IMPORT", "REPO_CLASS", "REPO_FUNCTION"} for segment in segments)
     cues = _ordered_document_cues(segments)
     hard_sensitive = code or cues >= 2
-    if hard_sensitive and edit:
+    if cues >= 2 and edit:
         return "high", True, hard_sensitive, adjacency, edit
     if edit:
         return "medium", False, hard_sensitive, adjacency, edit
@@ -177,23 +181,33 @@ def census(traces: list[dict[str, Any]]) -> list[dict[str, Any]]:
         raw_lcp = estimate_lcp_tokens(raw, segments, raw_ledgers[item["trace_id"]], session_id=item["trace_id"])
         posc = prefix_max_topological_order(segments)
         caposc = cache_aware_posc_compile(segments, caposc_ledgers[item["trace_id"]], item["trace_id"], int(item["turn_id"]), 100.0)
+        candidate_orders = [raw, posc, caposc["topological_order"]]
+        candidate_lcps = [
+            estimate_lcp_tokens(order, segments, caposc_ledgers[item["trace_id"]], session_id=item["trace_id"])["matched_tokens"]
+            for order in candidate_orders
+        ]
+        best_legal_lcp = max(candidate_lcps)
+        selected_lcp = estimate_lcp_tokens(
+            caposc["topological_order"], segments, caposc_ledgers[item["trace_id"]], session_id=item["trace_id"]
+        )["matched_tokens"]
         risk_bucket, fallback, hard_sensitive, adjacency, edit = _risk(segments, raw, caposc["topological_order"])
         stable = sum(int(segment.get("token_count") or 0) for segment in segments if float(segment.get("cache_stability") or 0) >= 0.5)
         volatile = sum(int(segment.get("token_count") or 0) for segment in segments if float(segment.get("volatility") or 0) >= 0.5)
-        raw_prefix = expected_prefix_gain_tokens(raw, segments)
-        legal_prefix = expected_prefix_gain_tokens(posc, segments)
-        gain = max(0, legal_prefix - raw_prefix)
+        gain = max(0, selected_lcp - int(raw_lcp["matched_tokens"]))
         row = {
             "trace_id": item["trace_id"], "turn_id": item["turn_id"], "workload_family": item["workload_family"],
             "source_dataset": item["source_dataset"], "source_task": item["source_task"], "stable_segment_tokens": stable,
             "volatile_segment_tokens": volatile, "raw_prefix_reuse_tokens": raw_lcp["matched_tokens"],
-            "max_legal_posc_prefix_tokens": legal_prefix, "caposc_expected_prefix_gain": gain,
+            "best_legal_lcp_tokens": best_legal_lcp,
+            "selected_caposc_lcp_tokens": selected_lcp,
+            "caposc_expected_prefix_gain": gain,
+            "caposc_regret_tokens": max(0, best_legal_lcp - selected_lcp),
             "partial_canonical": caposc["topological_order"] != raw and not caposc.get("violated_edges"), "hard_order_sensitive": hard_sensitive,
             "hard_edge_valid": not caposc.get("violated_edges"), "adjacency_preservation_ratio": round(adjacency, 6),
             "relative_order_edit_distance": edit, "ordered_document_cue_count": _ordered_document_cues(segments),
             "qc_risk_bucket": risk_bucket, "qc_decision": "raw_fallback" if fallback else caposc.get("layout_decision", ""),
             "raw_fallback": fallback, "caposc_selected_policy": caposc.get("selected_policy", ""),
-            "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits.",
+            "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits.",
         }
         output.append({field: row.get(field, "") for field in RAW_FIELDS})
         raw_ledgers[item["trace_id"]].update(item["trace_id"], int(item["turn_id"]), segments, raw, policy="raw-order")

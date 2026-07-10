@@ -29,6 +29,8 @@ class Phase14ACensusTests(unittest.TestCase):
         code_rows = [row for row in census(build_traces(samples, 5)) if row["workload_family"] == "code_agent"]
         self.assertTrue(all(bool(row["raw_fallback"]) for row in code_rows) is False)
         self.assertTrue(all(bool(row["hard_order_sensitive"]) for row in code_rows))
+        self.assertTrue(any(float(row["caposc_expected_prefix_gain"]) > 0 for row in code_rows))
+        self.assertTrue(all("best_legal_lcp_tokens" in row for row in code_rows))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,52 @@
+phase: phase14r_repair_before_scale
+status: complete
+purpose: repair Phase 14 implementation and inputs before large-scale live serving
+code_changes:
+  - scripts/phase14a_agent_trace_census.py
+  - scripts/phase14d_full_pool_builder.py
+  - scripts/phase14c_full_pool_qc_inputs.py
+  - scripts/phase14c_run_full_pool_quality_jobs.py
+  - scripts/phase13b_fresh_policy_quality_replay.py
+  - scripts/phase12_prefix_cache_ab.py
+  - scripts/phase14r_qc_candidate_calibration.py
+  - scripts/phase14r_prefix_isolation_plan.py
+tracked_outputs:
+  - docs/phase14r_repair_before_scale_report.md
+  - results/workload/phase14a_opportunity_census_summary_v1.csv
+  - results/workload/phase14d_full_pool_summary_v1.csv
+  - results/end_to_end/phase14r_qc_features_v2.csv
+  - results/end_to_end/phase14r_qc_feature_summary_v2.csv
+  - results/end_to_end/phase14r_qc_candidate_features_v2.csv
+  - results/end_to_end/phase14r_quality_jobs_v2.jsonl
+  - results/end_to_end/phase14r_qc_v2_scores.csv
+  - results/end_to_end/phase14r_qc_v2_summary.csv
+  - results/end_to_end/phase14r_qc_v2_model.json
+  - results/prefix_cache/phase14r_prefix_isolation_plan_v1.csv
+server_only_outputs:
+  - /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/workload/phase14d_full_pool_v1.jsonl
+server_only_hashes:
+  phase14d_full_pool_v1_jsonl: 272c88e8068735b09a0a852d41e1a32b26c773deab6181d427961d6fcd79030c
+hashes:
+  phase14a_opportunity_census_summary_v1_csv: d0b613cf959870f9198aad1833bfb1dbe91c55f0d7c8edefe9520e4bdb66242a
+  phase14d_full_pool_summary_v1_csv: e1b1ac0cc9590113f0df0e723476ebd3b064c94250a1c0bfd6ebca501d58daaa
+  phase14r_qc_candidate_features_v2_csv: 146bfea3998045240dee126b79312fe2ee0203f560adb73f49d9c2f957f16a44
+  phase14r_quality_jobs_v2_jsonl: 275fe43a5d3515a52e2d7dd4520a2d51d757928e5c3c898b7bbc5d77d0b9d01d
+  phase14r_prefix_isolation_plan_v1_csv: 13fcd019487b2fd3fe3d49d81f6ce76fed111c0e68570058ab68f21deaa9b634
+key_results:
+  phase14a_code_agent_safe_opportunity: 0.8
+  phase14a_families_with_nonzero_opportunity: 5
+  full_pool_v1_total_samples: 1300
+  full_pool_v1_calibration_samples: 252
+  full_pool_v1_held_out_quality_samples: 289
+  full_pool_v1_live_serving_samples: 759
+  qc_candidate_features_v2_rows: 2705
+  qc_quality_jobs_v2_rows: 2164
+  repobench_raw_mean_expected_prefix_gain: 1.0
+  repobench_caposc_candidate_mean_expected_prefix_gain: 3399.832487
+  qc_v2_diagnostic_heldout_false_safe_point_estimate: 0.017621
+  qc_v2_diagnostic_heldout_false_safe_wilson95_upper: 0.044424
+claim_boundary:
+  Phase 14R repairs implementation and regenerates auditable inputs. It does
+  not claim final Phase 14D live serving speedup or final QC-CAPOSC-v2 safety
+  until the repaired 2164 fresh quality jobs and isolated prefix-cache
+  replications are run.

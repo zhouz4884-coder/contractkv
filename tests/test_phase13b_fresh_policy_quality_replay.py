@@ -21,7 +21,10 @@ class Phase13BFreshPolicyReplayTests(unittest.TestCase):
         case = build_case(sample)
         raw = _compile("raw-order", case, SegmentPrefixLedger())["topological_order"]
         caposc = _compile("contractkv-caposc", case, SegmentPrefixLedger())["topological_order"]
-        self.assertEqual(raw, caposc)
+        self.assertNotEqual(raw, caposc)
+        self.assertLess(caposc.index("s1"), caposc.index("s2"))
+        self.assertLess(caposc.index("s2"), caposc.index("s4"))
+        self.assertLess(caposc.index("s4"), caposc.index("s3"))
 
     def test_fresh_policy_set_is_explicit(self):
         self.assertEqual(POLICIES, ["raw-order", "canonical-all", "static-posc", "contractkv-caposc"])

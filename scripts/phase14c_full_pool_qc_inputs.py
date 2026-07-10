@@ -23,7 +23,7 @@ from scripts.phase12f_real_vllm_caposc_replay import compile_for_real_replay
 
 
 PARTITIONS = {"calibration", "held_out_quality"}
-DEFAULT_POLICIES = ("raw-order", "contractkv-caposc")
+DEFAULT_POLICIES = ("raw-order", "canonical-all", "static-posc", "contractkv-caposc")
 
 HEADING_RE = re.compile(
     r"(?im)^\s*(abstract|introduction|background|method|methods|results|discussion|conclusion|related work|experiments?)s?\b"
@@ -92,6 +92,13 @@ SUMMARY_FIELDS = [
     "ordered_discourse_rate",
     "low_adjacency_rate",
     "claim_boundary",
+]
+
+CANDIDATE_FEATURE_FIELDS = FEATURE_FIELDS + [
+    "candidate_policy",
+    "candidate_rank",
+    "candidate_estimated_lcp_tokens",
+    "candidate_estimated_new_prefill_tokens",
 ]
 
 
@@ -198,6 +205,52 @@ def build_feature(sample: dict[str, Any], stable_word_limit: int = 2600) -> dict
     }
 
 
+def build_candidate_features(sample: dict[str, Any], stable_word_limit: int = 2600) -> list[dict[str, Any]]:
+    case = build_case(sample, stable_word_limit=stable_word_limit)
+    compiled = compile_for_real_replay("cache-aware-posc", case, SegmentPrefixLedger())
+    base = build_feature(sample, stable_word_limit=stable_word_limit)
+    rows: list[dict[str, Any]] = []
+    for rank, candidate in enumerate(compiled.get("candidates", [])):
+        order = [str(item) for item in candidate.get("topological_order", [])]
+        raw = _raw_order(case)
+        adjacency = adjacency_preservation(raw, order)
+        edit_distance = sum(a != b for a, b in zip(raw, order)) + abs(len(raw) - len(order))
+        violated_edges = candidate.get("violated_edges", [])
+        heading = int(base["heading_signal"])
+        discourse = int(base["discourse_cue_signal"])
+        ordered_discourse_signal = int((heading + discourse) >= 2 and edit_distance > 0)
+        low_adjacency_signal = int(adjacency < 0.75 and edit_distance > 0)
+        high_risk = bool(violated_edges) or bool(ordered_discourse_signal)
+        row = dict(base)
+        row.update(
+            {
+                "sample_key": f"{base['sample_key']}::{candidate.get('policy','')}",
+                "hard_edge_valid": not bool(violated_edges),
+                "violated_edge_count": len(violated_edges),
+                "adjacency_preservation": round(adjacency, 6),
+                "relative_order_edit_distance": edit_distance,
+                "moved_segment_count": sum(1 for i, sid in enumerate(order) if i >= len(raw) or raw[i] != sid),
+                "selected_policy": candidate.get("selected_policy", candidate.get("policy", "")),
+                "layout_decision": candidate.get("layout_decision", ""),
+                "expected_prefix_gain": expected_prefix_gain_tokens(order, case["segments"]),
+                "estimated_lcp_tokens": candidate.get("estimated_lcp_tokens", 0),
+                "estimated_new_prefill_tokens": candidate.get("estimated_new_prefill_tokens", base.get("total_segment_tokens", 0)),
+                "ordered_discourse_signal": ordered_discourse_signal,
+                "low_adjacency_signal": low_adjacency_signal,
+                "risk_bucket": "structural_fallback_candidate" if high_risk else "needs_label_low_structure",
+                "risk_ucb": 0.05 if high_risk else 0.0,
+                "qc_prelabel_fallback": high_risk,
+                "candidate_policy": candidate.get("policy", ""),
+                "candidate_rank": rank,
+                "candidate_estimated_lcp_tokens": candidate.get("estimated_lcp_tokens", 0),
+                "candidate_estimated_new_prefill_tokens": candidate.get("estimated_new_prefill_tokens", 0),
+                "claim_boundary": "Candidate-level QC feature; risk must be calibrated from paired labels before deployment.",
+            }
+        )
+        rows.append(row)
+    return rows
+
+
 def build_features(samples: list[dict[str, Any]], stable_word_limit: int = 2600) -> list[dict[str, Any]]:
     return [
         build_feature(sample, stable_word_limit=stable_word_limit)
@@ -268,6 +321,7 @@ def main() -> int:
     parser.add_argument("--policies", default=",".join(DEFAULT_POLICIES))
     parser.add_argument("--model", default="qwen3-8b")
     parser.add_argument("--stable-word-limit", type=int, default=2600)
+    parser.add_argument("--candidate-feature-output", type=Path, default=Path("results/end_to_end/phase14r_qc_candidate_features_v0.csv"))
     args = parser.parse_args()
     policies = [item.strip() for item in args.policies.split(",") if item.strip()]
     features = build_features(load_jsonl(args.full_pool), stable_word_limit=args.stable_word_limit)
@@ -279,6 +333,11 @@ def main() -> int:
         str(args.feature_output),
     )
     write_csv(args.feature_output, features, FEATURE_FIELDS)
+    candidate_features = []
+    for sample in load_jsonl(args.full_pool):
+        if _partition(sample) in PARTITIONS:
+            candidate_features.extend(build_candidate_features(sample, stable_word_limit=args.stable_word_limit))
+    write_csv(args.candidate_feature_output, candidate_features, CANDIDATE_FEATURE_FIELDS)
     write_jsonl(args.jobs_output, jobs)
     write_csv(args.summary_output, summarize(features, policies), SUMMARY_FIELDS)
     print(f"features={len(features)} jobs={len(jobs)} policies={','.join(policies)}")

@@ -141,12 +141,15 @@ def send_chat_stream(
     max_tokens: int,
     timeout: float,
     request_tag: str,
+    seed: int = 14014,
 ) -> dict[str, Any]:
     payload = {
         "model": model,
         "messages": messages,
         "max_tokens": max_tokens,
         "temperature": 0,
+        "top_p": 1,
+        "seed": seed,
         "stream": True,
         "stream_options": {"include_usage": True},
     }
