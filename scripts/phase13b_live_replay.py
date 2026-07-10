@@ -32,6 +32,7 @@ PHASE13B_RAW_FIELDS = [
     "case_type",
     "concurrency",
     "policy",
+    "cache_namespace",
     "sspp_mode",
     "slo_ttft_ms",
     "request_id",
@@ -42,6 +43,7 @@ PHASE13B_RAW_FIELDS = [
     "real_ttft_ms",
     "real_tpot_ms",
     "real_latency_ms",
+    "batch_wall_time_ms",
     "output_tokens",
     "output_text",
     "compiler_overhead_ms",
@@ -117,6 +119,20 @@ def _sspp_mode_for_policy(policy: str, sspp_mode: str) -> str:
     return sspp_mode if policy in {"contractkv-caposc-sspp", "contractkv-caposc-sspp-rar"} else "disabled"
 
 
+def _isolate_cache_cell(
+    messages: list[dict[str, str]], policy: str, concurrency: int, run_id: str
+) -> tuple[list[dict[str, str]], str]:
+    """Prevent one policy/concurrency cell from warming another cell's prefix cache."""
+    namespace = f"{run_id}-{policy}-c{concurrency}"
+    marker = f"[CONTRACTKV_CACHE_NAMESPACE:{namespace}]\n"
+    isolated = [dict(message) for message in messages]
+    if isolated and isolated[0].get("role") == "system":
+        isolated[0]["content"] = marker + isolated[0].get("content", "")
+    else:
+        isolated.insert(0, {"role": "system", "content": marker.rstrip()})
+    return isolated, namespace
+
+
 def _lightweight_prepare(messages: list[dict[str, str]], enabled: bool) -> tuple[float, str]:
     if not enabled:
         return 0.0, ""
@@ -143,7 +159,12 @@ def _planned_rar(job: dict[str, Any], concurrency: int) -> dict[str, Any]:
     }
 
 
-def build_live_jobs(workload: list[dict[str, Any]], concurrency: int, sspp_mode: str = "real_lightweight") -> list[dict[str, Any]]:
+def build_live_jobs(
+    workload: list[dict[str, Any]],
+    concurrency: int,
+    sspp_mode: str = "real_lightweight",
+    run_id: str = "phase13b-default",
+) -> list[dict[str, Any]]:
     ledgers = {policy: SegmentPrefixLedger() for policy in PHASE13B_POLICIES}
     jobs: list[dict[str, Any]] = []
     ordered = sorted(workload, key=lambda item: (str(item["trajectory_id"]), int(item["turn_id"]), str(item["case_type"])))
@@ -155,7 +176,9 @@ def build_live_jobs(workload: list[dict[str, Any]], concurrency: int, sspp_mode:
             compiled = compile_for_real_replay(compile_policy, case, ledger)
             compiler_ms = round((time.perf_counter() - started) * 1000.0, 6)
             text = _ordered_text(compiled["topological_order"], case["segments"])
-            messages = _messages_for_case(case, text)
+            messages, cache_namespace = _isolate_cache_cell(
+                _messages_for_case(case, text), policy=policy, concurrency=concurrency, run_id=run_id
+            )
             mode = _sspp_mode_for_policy(policy, sspp_mode)
             prepare_ms, prepare_hash = _lightweight_prepare(messages, enabled=mode == "real_lightweight")
             accounting_prepare_ms = min(100.0, max(8.0, float(compiled.get("estimated_future_stable_tokens", 0)) * 0.18))
@@ -171,6 +194,7 @@ def build_live_jobs(workload: list[dict[str, Any]], concurrency: int, sspp_mode:
                 "case_type": case["case_type"],
                 "concurrency": concurrency,
                 "policy": policy,
+                "cache_namespace": cache_namespace,
                 "sspp_mode": mode,
                 "messages": messages,
                 "expected_answer": case.get("expected_answer", ""),
@@ -256,6 +280,7 @@ def _run_job(
             "case_type": job["case_type"],
             "concurrency": job["concurrency"],
             "policy": job["policy"],
+            "cache_namespace": job["cache_namespace"],
             "sspp_mode": job["sspp_mode"],
             "slo_ttft_ms": float(slo),
             "request_id": result.get("request_id", tag),
@@ -266,6 +291,7 @@ def _run_job(
             "real_ttft_ms": result.get("ttft_ms", 0.0),
             "real_tpot_ms": result.get("tpot_ms", 0.0),
             "real_latency_ms": result.get("total_latency_ms", 0.0),
+            "batch_wall_time_ms": 0.0,
             "output_tokens": result.get("output_tokens", 0),
             "output_text": result.get("output_text", ""),
             "compiler_overhead_ms": job["compiler_overhead_ms"],
@@ -300,19 +326,31 @@ def run_phase13b_live_replay(
     model: str,
     max_tokens: int = 24,
     timeout: float = 240.0,
+    policies: list[str] | None = None,
+    run_id: str = "phase13b-default",
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
+    selected_policies = policies or PHASE13B_POLICIES
+    unknown = sorted(set(selected_policies) - set(PHASE13B_POLICIES))
+    if unknown:
+        raise ValueError(f"unknown Phase 13B policies: {','.join(unknown)}")
     for concurrency in concurrencies:
-        jobs = build_live_jobs(workload, concurrency=concurrency, sspp_mode=sspp_mode)
-        for policy in PHASE13B_POLICIES:
+        jobs = build_live_jobs(workload, concurrency=concurrency, sspp_mode=sspp_mode, run_id=run_id)
+        for policy in selected_policies:
             policy_jobs = [job for job in jobs if job["policy"] == policy]
+            batch_started = time.perf_counter()
+            policy_rows: list[dict[str, Any]] = []
             with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as pool:
                 futures = [
                     pool.submit(_run_job, job, base_url, model, max_tokens, timeout, slo_buckets_ms, sender)
                     for job in policy_jobs
                 ]
                 for future in concurrent.futures.as_completed(futures):
-                    rows.extend(future.result())
+                    policy_rows.extend(future.result())
+            batch_wall_time_ms = round((time.perf_counter() - batch_started) * 1000.0, 6)
+            for row in policy_rows:
+                row["batch_wall_time_ms"] = batch_wall_time_ms
+            rows.extend(policy_rows)
     return rows
 
 
@@ -335,7 +373,7 @@ def summarize_phase13b_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         ttft = [_float(row.get("real_ttft_ms")) for row in successes]
         tpot = [_float(row.get("real_tpot_ms")) for row in successes]
         latency = [_float(row.get("real_latency_ms")) for row in successes]
-        total_latency_sec = max(sum(latency) / 1000.0, 1e-9)
+        batch_wall_time_sec = max(max(_float(row.get("batch_wall_time_ms")) for row in group) / 1000.0, 1e-9)
         compliant = [row for row in successes if _float(row.get("real_ttft_ms")) <= slo and _bool(row.get("quality_sanity"))]
         record = {
             "phase13b_tier": tier,
@@ -354,7 +392,7 @@ def summarize_phase13b_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "mean_real_tpot_ms": round(statistics.mean(tpot), 6) if tpot else 0.0,
             "mean_real_latency_ms": round(statistics.mean(latency), 6) if latency else 0.0,
             "slo_compliant_requests": len(compliant),
-            "slo_compliant_req_per_sec": round(len(compliant) / total_latency_sec, 6),
+            "slo_compliant_req_per_sec": round(len(compliant) / batch_wall_time_sec, 6),
             "compiler_overhead_ms_mean": round(statistics.mean(_float(row.get("compiler_overhead_ms")) for row in group), 6) if group else 0.0,
             "sspp_prepare_ms_mean": round(statistics.mean(_float(row.get("sspp_prepare_ms")) for row in group), 6) if group else 0.0,
             "sspp_hidden_fraction_mean": round(statistics.mean(_float(row.get("sspp_hidden_fraction")) for row in group), 6) if group else 0.0,
@@ -386,6 +424,8 @@ def main() -> int:
     parser.add_argument("--concurrencies", default="1,2,4")
     parser.add_argument("--slo-buckets-ms", default="300,500,700")
     parser.add_argument("--sspp-mode", choices=["real_lightweight", "accounting"], default="real_lightweight")
+    parser.add_argument("--policies", default=",".join(PHASE13B_POLICIES))
+    parser.add_argument("--run-id", default=f"phase13b-{int(time.time())}")
     parser.add_argument("--max-tokens", type=int, default=24)
     parser.add_argument("--timeout", type=float, default=240.0)
     parser.add_argument("--raw-output", type=Path, default=Path("results/end_to_end/phase13b_live_replay_mock_raw_v0.csv"))
@@ -394,6 +434,7 @@ def main() -> int:
     workload = build_phase13_workload(args.trajectories_per_type, args.turns)
     concurrencies = [int(item) for item in args.concurrencies.split(",") if item.strip()]
     slos = [float(item) for item in args.slo_buckets_ms.split(",") if item.strip()]
+    policies = [item.strip() for item in args.policies.split(",") if item.strip()]
     sender = mock_live_sender if args.mock else real_live_sender
     rows = run_phase13b_live_replay(
         workload,
@@ -405,6 +446,8 @@ def main() -> int:
         model=args.model,
         max_tokens=args.max_tokens,
         timeout=args.timeout,
+        policies=policies,
+        run_id=args.run_id,
     )
     summary = summarize_phase13b_rows(rows)
     write_csv(args.raw_output, rows, PHASE13B_RAW_FIELDS)
