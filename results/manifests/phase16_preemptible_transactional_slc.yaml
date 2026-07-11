@@ -1,0 +1,69 @@
+phase: phase16
+name: preemptible_transactional_slc
+status: complete_with_boundaries
+date: 2026-07-11
+scope:
+  - phase16a_scheduler_only_microchunk_model
+  - phase16b_ephemeral_kv_transaction_correctness
+  - phase16c_in_situ_margin_verifier_design
+  - phase16d_drift_budget_lifecycle_calibration
+headline_results:
+  phase16a:
+    naive_shadow_p95_penalty_ms: 444.842
+    idle_only_16_p95_penalty_ms_2s_slack: 2.686
+    idle_only_32_p95_penalty_ms_2s_slack: 4.158
+    idle_only_64_p95_penalty_ms_2s_slack: 8.193
+    idle_only_128_p95_penalty_ms_2s_slack: 14.003
+    safe_chunk_candidates: [16, 32, 64]
+    claim_boundary: Scheduler-only executable model, not a vLLM source-level actuator.
+  phase16b:
+    cycles: 1000
+    block_leak_count: 0
+    stale_hash_pointer_count: 0
+    cache_table_inconsistency_count: 0
+    promotion_p95_ms: 0.23729
+    rollback_p95_ms: 0.1455
+    gate_pass: true
+    claim_boundary: In-memory transactional KV namespace model, not yet installed inside vLLM block_pool.
+  phase16c:
+    status: design_target
+    baseline_slc_v2_certificate_issue_rate: 0.6608
+    baseline_slc_v2_unsafe_rejection_rate: 0.9412
+    claim_boundary: No new vLLM in-situ verifier result yet.
+  phase16d:
+    calibration_calibrated_coverage: 0.50
+    calibration_calibrated_wilson95: 0.028924
+    heldout_calibrated_coverage: 0.565
+    heldout_calibrated_wilson95: 0.038963
+    heldout_conservative_full_native_coverage: 0.46
+    heldout_conservative_full_native_wilson95: 0.014023
+    gate_pass: false
+    claim_boundary: Synthetic drift calibration shows protocol need; not deployable threshold evidence.
+claim_boundaries:
+  - Micro-chunk scheduling only bounds interference to one chunk in the model; it does not prove sub-ms or zero interference.
+  - Ephemeral commit and rollback are O(B), where B is the number of physical blocks.
+  - Residency pressure is separate from semantic certificate validity.
+  - Drift-budget thresholds require real answer-changing future-turn calibration plus in-situ margin signals.
+artifacts:
+  docs:
+    - docs/phase16a_microchunk_scheduler_report.md
+    - docs/phase16b_ephemeral_kv_transaction_report.md
+    - docs/phase16c_in_situ_margin_verifier_design.md
+    - docs/phase16d_drift_budget_lifecycle_report.md
+    - docs/phase16_preemptible_transactional_slc_closeout.md
+  results:
+    - results/runtime/phase16a_microchunk_scheduler_raw_v0.csv
+    - results/runtime/phase16a_microchunk_scheduler_summary_v0.csv
+    - results/runtime/phase16b_ephemeral_kv_transaction_events_v0.jsonl
+    - results/runtime/phase16b_ephemeral_kv_transaction_summary_v0.csv
+    - results/runtime/phase16d_drift_budget_raw_v0.csv
+    - results/runtime/phase16d_drift_budget_summary_v0.csv
+  scripts:
+    - scripts/phase16a_microchunk_scheduler.py
+    - scripts/phase16b_ephemeral_kv_transaction.py
+    - scripts/phase16d_drift_budget_lifecycle.py
+tests:
+  command:
+    - python -m unittest discover -s tests -v
+    - git diff --check
+  status: passed
