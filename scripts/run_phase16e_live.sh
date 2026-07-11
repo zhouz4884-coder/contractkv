@@ -44,12 +44,19 @@ bash scripts/run_vllm_server.sh \
   --log-path logs/phase16/phase16e_qwen3_4b_server_final.log \
   --pid-path logs/phase16/phase16e_qwen3_4b_server.pid
 
-"$PYTHON_BIN" scripts/phase16e_live_transactional_slc.py \
+if [[ "${SKIP_PHASE16E_LIVE:-0}" != "1" ]]; then
+  "$PYTHON_BIN" scripts/phase16e_live_transactional_slc.py \
+    --base-url "http://127.0.0.1:${PORT}/v1" \
+    --model "$MODEL_NAME" \
+    --prefix-metrics-log results/hard_systems/phase16e_qwen3_4b_prefix_events_v0.jsonl \
+    --interference-raw results/hard_systems/phase16e_qwen3_4b_live_interference_raw_v0.csv \
+    --interference-summary results/hard_systems/phase16e_qwen3_4b_live_interference_summary_v0.csv \
+    --transaction-output results/hard_systems/phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv
+fi
+
+"$PYTHON_BIN" scripts/phase16c_vllm_teacher_forced_probe.py \
   --base-url "http://127.0.0.1:${PORT}/v1" \
   --model "$MODEL_NAME" \
-  --prefix-metrics-log results/hard_systems/phase16e_qwen3_4b_prefix_events_v0.jsonl \
-  --interference-raw results/hard_systems/phase16e_qwen3_4b_live_interference_raw_v0.csv \
-  --interference-summary results/hard_systems/phase16e_qwen3_4b_live_interference_summary_v0.csv \
-  --transaction-output results/hard_systems/phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv
+  --output results/hard_systems/phase16c_vllm_teacher_forced_probe_v0.csv
 
 kill "$(cat logs/phase16/phase16e_qwen3_4b_server.pid)" 2>/dev/null || true

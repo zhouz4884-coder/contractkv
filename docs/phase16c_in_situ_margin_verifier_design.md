@@ -12,7 +12,24 @@ pipeline. The design moves verification closer to the serving path:
   degradation bounds
 - abort early and roll back the ephemeral transaction on failure
 
-## Current Evidence From SLC v2
+## Same-Backend Minimal Probe
+
+Phase 16E adds a minimal Qwen3-4B probe through the same vLLM 0.10.2 Chat API.
+For each case it generates a raw answer, appends that answer to a candidate
+layout, requests `prompt_logprobs=2`, and checks the rank of every answer token.
+
+Across 12 marker cases:
+
+- raw generation success: 12 / 12
+- prompt-logprob verification success: 12 / 12
+- answer tokens checked: 146
+- candidate top-1 matches: 146 / 146
+- minimum top1-vs-runner-up margin: 8.56 logprob units
+
+This closes the narrow same-backend top-1 smoke target. It also confirms that
+the answer slice is non-empty; the result is not an empty-slice pass.
+
+## Existing Evidence From SLC v2
 
 The current valid implementation is still external teacher-forced verification.
 It already establishes the need for an in-situ verifier:
@@ -24,8 +41,8 @@ It already establishes the need for an in-situ verifier:
 - two held-out false-safe cases remain
 
 Those two false-safe cases motivate adding raw/candidate margin consistency and
-backend-aligned verification. However, Phase 16C is not implemented as a vLLM
-request mode yet.
+backend-aligned verification. The dedicated scheduler-internal verifier request
+mode is still not implemented.
 
 ## Required Request Fields
 
@@ -52,11 +69,14 @@ dependency edges, and output contract compatibility.
 
 ## Boundary
 
-This document is a design and integration target. It should not be cited as a
-new measured result beyond the existing SLC v2 evidence in
-`docs/phase15d_task_bearing_certification_report.md`.
+The new result is a real same-vLLM-backend teacher-forcing smoke, but it uses
+marker cases and does not yet check EOS/stop consistency, absolute deployment
+thresholds on real tasks, early abort, or atomic commit-after-verification. The
+734-candidate SLC v2 remains the broader quality evidence.
 
 ## Artifacts
 
 - `scripts/phase14slc_teacher_forced_verify.py`
+- `scripts/phase16c_vllm_teacher_forced_probe.py`
 - `results/end_to_end/phase15_slc_teacher_forced_summary_v2.csv`
+- `results/hard_systems/phase16c_vllm_teacher_forced_probe_v0.csv`

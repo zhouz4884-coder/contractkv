@@ -62,6 +62,8 @@ committed prefix. Both shadow and foreground outputs passed marker sanity.
 - abort prevents failed shadow work from polluting the prefix cache;
 - commit publishes verified stable-prefix blocks that a later request can hit;
 - IDLE_ONLY token slicing removes most, but not all, active-tenant interference.
+- the same vLLM backend exposes candidate teacher-forced top-1 ranks; the
+  companion 12-case probe matched all 146 answer tokens.
 
 ## Boundary
 
@@ -75,6 +77,8 @@ gate remains failed by 0.96-1.91 ms and must not be reported as zero-cost.
 - `scripts/install_vllm_v1_ephemeral_shadow_hook.py`
 - `scripts/phase16e_live_transactional_slc.py`
 - `scripts/run_phase16e_live.sh`
+- `scripts/phase16c_vllm_teacher_forced_probe.py`
+- `results/hard_systems/phase16c_vllm_teacher_forced_probe_v0.csv`
 - `results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk16_interference_raw_v0.csv`
 - `results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk32_interference_raw_v0.csv`
 - `results/hard_systems/phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv`

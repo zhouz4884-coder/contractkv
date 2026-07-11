@@ -7,6 +7,7 @@ scope:
   - phase16b_ephemeral_kv_transaction_correctness
   - phase16c_in_situ_margin_verifier_design
   - phase16d_drift_budget_lifecycle_calibration
+  - phase16e_live_vllm_transactional_shadow
 headline_results:
   phase16a:
     naive_shadow_p95_penalty_ms: 444.842
@@ -28,10 +29,14 @@ headline_results:
     gate_pass: true
     claim_boundary: In-memory transactional KV namespace model, not yet installed inside vLLM block_pool.
   phase16c:
-    status: design_target
+    status: same_backend_top1_smoke_complete
     baseline_slc_v2_certificate_issue_rate: 0.6608
     baseline_slc_v2_unsafe_rejection_rate: 0.9412
-    claim_boundary: No new vLLM in-situ verifier result yet.
+    marker_cases: 12
+    answer_tokens_checked: 146
+    top1_matches: 146
+    minimum_top1_margin: 8.5625
+    claim_boundary: Same-vLLM-backend prompt-logprob smoke; no EOS stop gate or real-task deployment threshold.
   phase16d:
     synthetic_metric: unrenewed_answer_change_exposure
     heldout_calibrated_coverage: 0.5325
@@ -80,6 +85,7 @@ artifacts:
     - results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk16_interference_summary_v0.csv
     - results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk32_interference_summary_v0.csv
     - results/hard_systems/phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv
+    - results/hard_systems/phase16c_vllm_teacher_forced_probe_v0.csv
   scripts:
     - scripts/phase16a_microchunk_scheduler.py
     - scripts/phase16b_ephemeral_kv_transaction.py
@@ -88,6 +94,7 @@ artifacts:
     - scripts/install_vllm_v1_ephemeral_shadow_hook.py
     - scripts/phase16e_live_transactional_slc.py
     - scripts/run_phase16e_live.sh
+    - scripts/phase16c_vllm_teacher_forced_probe.py
 tests:
   command:
     - python -m unittest discover -s tests -v

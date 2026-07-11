@@ -10,6 +10,7 @@ from scripts.phase16d_drift_budget_lifecycle import (
     wilson_upper,
 )
 from scripts.phase16d_real_divergence_reanalysis import reanalyze
+from scripts.phase16c_vllm_teacher_forced_probe import token_rank_and_margin
 
 
 class Phase16MicroChunkSchedulerTests(unittest.TestCase):
@@ -85,6 +86,17 @@ class Phase16DriftBudgetTests(unittest.TestCase):
         self.assertEqual(result["covered_future_turns"], 2)
         self.assertEqual(result["raw_candidate_divergences"], 1)
         self.assertEqual(result["conditional_divergence_rate"], 0.5)
+
+
+class Phase16SameBackendVerifierTests(unittest.TestCase):
+    def test_actual_token_rank_and_margin_uses_prompt_logprob_entry(self) -> None:
+        entry = {
+            "42": {"logprob": -0.1, "rank": 1, "decoded_token": "answer"},
+            "7": {"logprob": -2.1, "rank": 2, "decoded_token": "other"},
+        }
+        rank, margin = token_rank_and_margin(entry, 42)
+        self.assertEqual(rank, 1)
+        self.assertAlmostEqual(margin, 2.0)
 
 
 if __name__ == "__main__":

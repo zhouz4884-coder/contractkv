@@ -53,11 +53,12 @@ the strongest new hard-system result in this closeout.
 
 ## C. Verifier Plane
 
-Phase 16C is a design target rather than a new measured run. It should turn SLC
-v2 into an in-situ verifier with raw margin capture, candidate teacher-forced
-verification, early abort, and transaction commit/rollback. The existing SLC v2
-evidence remains the measured baseline: 66.08% certificate issue rate and
-94.12% unsafe rejection, with two held-out false-safe cases.
+Phase 16C now has a minimal same-vLLM-backend prompt-logprob probe: 12/12 marker
+cases passed and all 146 answer tokens remained candidate top-1, with minimum
+top1 margin 8.56. This is a real backend-alignment smoke, while the existing SLC
+v2 evidence remains the broader baseline: 66.08% certificate issue rate and
+94.12% unsafe rejection, with two held-out false-safe cases. EOS/stop checks,
+real-task thresholds, early abort, and atomic commit-after-verification remain.
 
 ## D. Certificate Lifecycle
 
@@ -90,7 +91,7 @@ Not yet supported:
 
 - zero-cost or sub-10-ms vLLM shadow scheduling
 - concurrent/partial-block transactional promotion
-- production in-situ margin verifier
+- production in-situ verifier with stop checks and real-task thresholds
 - deployable drift thresholds on real answer-changing workloads
 
 ## Artifacts
