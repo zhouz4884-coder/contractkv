@@ -1,0 +1,28 @@
+phase: phase15
+title: paper_grade_closure
+model: Qwen3-8B
+backend: vLLM 0.10.2 V1
+storage: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9
+completed:
+  - phase15a_fair_fresh_process_replication
+  - phase15b_shared_context_finite_capacity_lower_bound
+partially_completed:
+  - phase15d_slc_alignment_and_stop_certificate_repair
+pending:
+  - phase15c_physical_cache_state_conflict_and_churn
+  - phase15d_task_bearing_certified_caposc_replay
+  - phase15d_epoch_transfer_125_future_pairs
+claims:
+  natural_mixed_fair_content_match: passed
+  natural_mixed_fresh_process_replication: passed
+  concurrent_physical_dedup: passed
+  shared_capacity_lower_bound: 112x
+  exact_caposc_capacity_knee: pending_higher_rate_scan
+  cache_aware_selector_necessity: pending_conflict_experiment
+  deployable_task_quality_certificate: pending_task_bearing_evaluation
+artifacts:
+  - docs/phase15a_fair_replication_report.md
+  - docs/phase15b_shared_capacity_report.md
+  - results/hard_systems/phase15a_natural_fair_summary_v0.csv
+  - results/hard_systems/phase15a_physical_fair_summary_v0.csv
+  - results/hard_systems/phase15b_shared_capacity_summary_v0.csv

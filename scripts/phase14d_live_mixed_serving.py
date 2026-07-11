@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import csv
+import hashlib
 import json
 import math
 import random
@@ -45,6 +46,7 @@ RAW_FIELDS = [
     "compiler_overhead_ms", "predicted_risk", "qc_fallback", "selected_layout_policy",
     "layout_decision", "actual_prompt_tokens", "estimated_lcp_tokens",
     "estimated_new_prefill_tokens", "prefix_hit_tokens", "observed_new_prefill_tokens",
+    "segment_multiset_sha256",
     "metric_join_success", "error_type", "error_message", "batch_wall_time_ms",
     "claim_boundary",
 ]
@@ -72,6 +74,24 @@ def _float(value: Any) -> float:
         return float(value)
     except (TypeError, ValueError):
         return 0.0
+
+
+def _segment_multiset_sha256(segments: list[dict[str, Any]]) -> str:
+    """Order-insensitive identity used to audit fair layout comparisons."""
+    pieces = sorted(
+        json.dumps(
+            {
+                "segment_id": segment.get("segment_id", ""),
+                "segment_type": segment.get("segment_type", ""),
+                "text": segment.get("text", ""),
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        for segment in segments
+    )
+    return hashlib.sha256("\x1f".join(pieces).encode("utf-8")).hexdigest()
 
 
 def _write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None:
@@ -222,9 +242,8 @@ def _run_session(
         compile_started = time.perf_counter()
         job = _compile_job(policy, entry, ledger, qc_model, tokenizer, max_model_len)
         compiler_overhead_ms = (time.perf_counter() - compile_started) * 1000.0
-        messages = [dict(message) for message in job["messages"]]
-        messages[0]["content"] = f"[CACHE_CELL:{cell_id}]\n" + messages[0]["content"]
-        job["messages"] = messages
+        # Cell and policy IDs are sidecar metadata.  Keeping them out of the
+        # messages makes every policy receive the same token multiset.
         compiled = job["compiled"]
         case = entry["case"]
         result = send_chat_stream(base_url, model, job["messages"], max_tokens, timeout, f"{cell_id}-{case['trajectory_id']}-{case['turn_id']}")
@@ -240,6 +259,7 @@ def _run_session(
             "qc_fallback": job["qc_fallback"], "selected_layout_policy": compiled.get("selected_policy", compiled.get("policy", "")),
             "layout_decision": compiled.get("layout_decision", ""), "actual_prompt_tokens": compiled.get("actual_prompt_tokens", 0),
             "estimated_lcp_tokens": compiled.get("estimated_lcp_tokens", 0), "estimated_new_prefill_tokens": compiled.get("estimated_new_prefill_tokens", 0),
+            "segment_multiset_sha256": _segment_multiset_sha256(case["segments"]),
             "prefix_hit_tokens": "", "observed_new_prefill_tokens": "", "metric_join_success": False,
             "error_type": result.get("error_type", ""), "error_message": result.get("error_message", ""), "batch_wall_time_ms": 0,
             "claim_boundary": "Fresh live vLLM mixed-agent request; QC uses calibration-only model and marker sanity is not official task scoring.",

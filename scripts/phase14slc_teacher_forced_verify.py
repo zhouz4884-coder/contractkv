@@ -27,7 +27,7 @@ RAW_FIELDS = [
     "timestamp", "sample_key", "candidate_id", "partition", "dataset", "task",
     "sample_id", "unsafe_quality_drop", "quality_drop_vs_raw", "answer_tokens",
     "matched_answer_tokens", "token_path_match_rate", "all_token_top1_match",
-    "minimum_logit_margin", "mean_logit_margin", "eos_consistency",
+    "minimum_logit_margin", "mean_logit_margin", "raw_finish_reason", "stop_top1_token_id", "eos_consistency",
     "certificate_issued", "expected_prefix_gain", "verification_ms",
     "prompt_tokens", "error_type", "error_message", "claim_boundary",
 ]
@@ -84,11 +84,19 @@ def build_prompt_ids(job: dict[str, Any], sample: dict[str, Any], tokenizer: Any
     )
 
 
+def answer_logit_slice(prompt_tokens: int, answer_tokens: int) -> slice:
+    """Causal-LM logits at i predict input token i+1."""
+    if prompt_tokens <= 0 or answer_tokens <= 0:
+        raise ValueError("prompt and answer token counts must be positive")
+    return slice(prompt_tokens - 1, prompt_tokens - 1 + answer_tokens)
+
+
 def verify_token_path(
     model: Any,
     tokenizer: Any,
     prompt_ids: list[int],
     raw_output_text: str,
+    raw_finish_reason: str,
     margin_threshold: float,
 ) -> dict[str, Any]:
     import torch
@@ -104,7 +112,7 @@ def verify_token_path(
             use_cache=False,
             logits_to_keep=len(answer_ids) + 1,
         )
-        prediction_logits = output.logits[0, :len(answer_ids), :].float()
+        prediction_logits = output.logits[0, answer_logit_slice(len(prompt_ids), len(answer_ids)), :].float()
         targets = torch.tensor(answer_ids, device=prediction_logits.device)
         top2_values, top2_ids = prediction_logits.topk(2, dim=-1)
         top1_ids = top2_ids[:, 0]
@@ -114,11 +122,16 @@ def verify_token_path(
         )
         margins = raw_logits - best_other
         matches = top1_ids == targets
+        stop_logits = output.logits[0, len(prompt_ids) + len(answer_ids) - 1, :].float()
+        stop_top1 = int(stop_logits.argmax().item())
     elapsed_ms = (time.perf_counter() - started) * 1000.0
     matched = int(matches.sum().item())
     minimum_margin = float(margins.min().item())
     all_match = matched == len(answer_ids)
-    eos_consistency = True
+    eos_id = getattr(tokenizer, "eos_token_id", None)
+    # A generation stopped by max length is not an output-stop certificate.
+    # Missing legacy metadata also fails closed rather than being assumed safe.
+    eos_consistency = bool(raw_finish_reason == "stop" and eos_id is not None and stop_top1 == int(eos_id))
     certificate = all_match and eos_consistency and minimum_margin >= margin_threshold
     return {
         "answer_tokens": len(answer_ids),
@@ -127,6 +140,8 @@ def verify_token_path(
         "all_token_top1_match": all_match,
         "minimum_logit_margin": minimum_margin,
         "mean_logit_margin": float(margins.mean().item()),
+        "raw_finish_reason": raw_finish_reason,
+        "stop_top1_token_id": stop_top1,
         "eos_consistency": eos_consistency,
         "certificate_issued": certificate,
         "verification_ms": elapsed_ms,
@@ -189,7 +204,7 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
             "expected_prefix_gain": features.get(identity, {}).get("expected_prefix_gain", 0),
             "error_type": "none",
             "error_message": "",
-            "claim_boundary": "Single-turn teacher-forced greedy token-path certificate; future-turn transfer requires Phase 14SLC-B.",
+            "claim_boundary": "Single-turn teacher-forced greedy token-path and stop-token certificate; future-turn transfer requires Phase 14SLC-B.",
         }
         try:
             if sample is None or raw is None or label is None:
@@ -197,6 +212,7 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
             prompt_ids = build_prompt_ids(job, sample, tokenizer, args.max_model_len)
             row.update(verify_token_path(
                 model, tokenizer, prompt_ids, str(raw.get("output_text", "")),
+                str(raw.get("finish_reason", "")),
                 args.margin_threshold,
             ))
         except Exception as exc:

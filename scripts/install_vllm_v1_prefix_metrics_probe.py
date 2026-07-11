@@ -138,6 +138,26 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
                                     - int(block_pool.get_num_free_blocks())) if block_pool is not None else None,
                 "cached_physical_entries": sum(len(blocks) for blocks in block_pool.cached_block_hash_to_block.values()) if block_pool is not None else None,
             })
+        if os.environ.get("CONTRACTKV_PREFIX_CONCURRENT_SNAPSHOTS") == "1":
+            # The snapshot is intentionally scheduler-local: a shared ID is
+            # counted only when it is present in multiple *currently active*
+            # request block tables, ruling out temporal ID reuse.
+            active = getattr(scheduler, "requests", {}) or {}
+            owners = {}
+            for active_request_id in active:
+                for block_id in _contractkv_prefix_metrics_block_ids(scheduler, active_request_id):
+                    owners.setdefault(int(block_id), set()).add(str(active_request_id))
+            shared_ids = sorted(block_id for block_id, request_ids in owners.items() if len(request_ids) > 1)
+            refcounts, _, _ = _contractkv_prefix_metrics_block_state(scheduler, shared_ids)
+            _contractkv_prefix_metrics_write({
+                "event": "prefix_cache_concurrent_snapshot",
+                "active_request_count": len(active),
+                "shared_block_ids": shared_ids[:4096],
+                "shared_block_request_counts": [len(owners[block_id]) for block_id in shared_ids[:4096]],
+                "shared_block_refcounts": refcounts[:4096],
+                "free_gpu_blocks": int(block_pool.get_num_free_blocks()) if block_pool is not None else None,
+                "total_gpu_blocks": int(getattr(block_pool, "num_gpu_blocks", 0) or 0) if block_pool is not None else None,
+            })
     except Exception as exc:
         _contractkv_prefix_metrics_write({"event": "prefix_cache_probe_error", "error": repr(exc)})
 # CONTRACTKV_PREFIX_METRICS_HELPER_END

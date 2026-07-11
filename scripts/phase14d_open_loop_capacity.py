@@ -38,7 +38,9 @@ SUMMARY_FIELDS = [
     "slo_ttft_ms", "slo_compliant_requests", "slo_compliant_req_per_sec",
     "mean_scheduler_wait_ms", "second_half_wait_slope_sec_per_sec",
     "end_backlog", "mean_prefix_hit_tokens", "mean_observed_new_prefill_tokens",
-    "used_block_high_water", "minimum_free_blocks", "capacity_stable", "claim_boundary",
+    "used_block_high_water", "minimum_free_blocks", "primer_latency_ms",
+    "cold_start_amortized_latency_ms", "min_completed_required",
+    "min_second_half_samples_required", "capacity_stable", "claim_boundary",
 ]
 
 
@@ -145,7 +147,7 @@ def join_metrics(rows: list[dict[str, Any]], events: list[dict[str, Any]]) -> li
     return output
 
 
-def summarize(rows: list[dict[str, Any]], args: argparse.Namespace) -> dict[str, Any]:
+def summarize(rows: list[dict[str, Any]], args: argparse.Namespace, primer_latency_ms: float = 0.0) -> dict[str, Any]:
     successes = [row for row in rows if row.get("success")]
     ttft = [float(row.get("ttft_ms") or 0.0) for row in successes]
     waits = [float(row.get("scheduler_wait_ms") or 0.0) for row in successes if row.get("scheduler_wait_ms") not in ("", None)]
@@ -156,7 +158,9 @@ def summarize(rows: list[dict[str, Any]], args: argparse.Namespace) -> dict[str,
     compliant = [row for row in successes if row.get("quality_sanity") and float(row.get("ttft_ms") or 0.0) <= args.slo_ttft_ms]
     end_backlog = args.offered_requests - len(successes)
     stable = (
-        len(successes) / max(1, args.offered_requests) >= .99
+        len(successes) >= getattr(args, "min_completed", 0)
+        and len(second_half) >= getattr(args, "min_second_half_samples", 0)
+        and len(successes) / max(1, args.offered_requests) >= .99
         and percentile(ttft, .95) <= args.slo_ttft_ms
         and queue_slope <= .02
         and end_backlog == 0
@@ -179,6 +183,13 @@ def summarize(rows: list[dict[str, Any]], args: argparse.Namespace) -> dict[str,
         "mean_observed_new_prefill_tokens": statistics.mean(float(row.get("observed_new_prefill_tokens") or 0.0) for row in successes) if successes else 0.0,
         "used_block_high_water": max((int(row.get("used_gpu_blocks") or 0) for row in successes), default=0),
         "minimum_free_blocks": min((int(row.get("free_gpu_blocks") or 0) for row in successes), default=0),
+        "primer_latency_ms": primer_latency_ms,
+        "cold_start_amortized_latency_ms": (
+            statistics.mean(float(row.get("latency_ms") or 0.0) for row in successes) + primer_latency_ms / len(successes)
+            if successes else 0.0
+        ),
+        "min_completed_required": getattr(args, "min_completed", 0),
+        "min_second_half_samples_required": getattr(args, "min_second_half_samples", 0),
         "capacity_stable": stable,
         "claim_boundary": "Real vLLM open-loop offered-load measurement. Capacity requires the documented completion, SLO, queue-stability, and drain conditions.",
     }
@@ -209,6 +220,8 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=180.0)
     parser.add_argument("--slo-ttft-ms", type=float, default=2000.0)
     parser.add_argument("--seed", type=int, default=14014)
+    parser.add_argument("--min-completed", type=int, default=0)
+    parser.add_argument("--min-second-half-samples", type=int, default=0)
     parser.add_argument("--cell-id", required=True)
     parser.add_argument("--raw-output", type=Path, required=True)
     parser.add_argument("--summary-output", type=Path, required=True)
@@ -217,16 +230,18 @@ def main() -> int:
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, trust_remote_code=True)
     shared = fit_shared_text(tokenizer, args.shared_target_tokens)
     offset = args.metrics_events.stat().st_size if args.metrics_events.exists() else 0
+    primer_latency_ms = 0.0
     if args.policy != "raw-order":
         primer = send_chat_stream(args.base_url, args.model, messages_for(args.policy, shared, -1, "MPRIMERX", args.cell_id), args.max_tokens, args.timeout, f"{args.cell_id}-primer")
         if not primer.get("success"):
             raise SystemExit(f"prefix primer failed: {primer.get('error_message')}")
+        primer_latency_ms = float(primer.get("total_latency_ms") or 0.0)
     rows = asyncio.run(run_open_loop(args, shared))
     time.sleep(.5)
     joined = join_metrics(rows, load_events_since(args.metrics_events, offset))
     for row in joined:
         row.update({"cell_id": args.cell_id, "policy": args.policy, "arrival_rate_rps": args.arrival_rate_rps, "seed": args.seed})
-    summary = summarize(joined, args)
+    summary = summarize(joined, args, primer_latency_ms)
     write_csv(args.raw_output, joined, RAW_FIELDS)
     write_csv(args.summary_output, [summary], SUMMARY_FIELDS)
     print(json.dumps(summary, ensure_ascii=False, indent=2))

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import csv
+import hashlib
 import json
 import statistics
 import sys
@@ -28,6 +29,7 @@ RAW_FIELDS = [
     "reused_physical_blocks", "newly_allocated_blocks", "physical_block_ids",
     "physical_block_refcounts",
     "used_gpu_blocks", "free_gpu_blocks", "scheduler_wait_ms", "primer",
+    "content_multiset_sha256",
     "error_type", "error_message",
 ]
 
@@ -37,6 +39,9 @@ SUMMARY_FIELDS = [
     "p95_ttft_ms", "mean_prefix_hit_tokens", "logical_reused_prefix_blocks",
     "unique_reused_physical_blocks", "dedup_factor", "shared_block_fraction",
     "unique_physical_blocks_effective", "effective_dedup_factor",
+    "peak_concurrent_shared_blocks", "peak_concurrent_logical_refs",
+    "peak_concurrent_unique_blocks", "peak_concurrent_dedup_factor",
+    "peak_concurrent_refcount_match_rate",
     "used_block_high_water", "minimum_free_blocks", "mean_scheduler_wait_ms",
     "primer_latency_ms", "preemption_count", "claim_boundary",
 ]
@@ -57,7 +62,13 @@ def fit_shared_text(tokenizer: Any, target_tokens: int) -> str:
 
 
 def messages_for(policy: str, shared: str, index: int, marker: str, cell_id: str = "") -> list[dict[str, str]]:
-    system = f"ContractKV Phase14M cache cell {cell_id}; policy {policy}. Follow the user exactly."
+    """Build token-identical A/B prompts except for the legal segment order.
+
+    ``policy`` and ``cell_id`` remain API-side metadata only.  They must never
+    appear in prompt text because that would make a prefix-cache A/B comparison
+    differ in content as well as layout.
+    """
+    system = "Follow the user exactly."
     observation = f"[UNIQUE_TOOL_OBS] tenant={index}; marker={marker}."
     query = "Return exactly the marker from UNIQUE_TOOL_OBS. /no_think"
     if policy == "raw-order":
@@ -76,6 +87,9 @@ def run_request(args: argparse.Namespace, policy: str, shared: str, index: int, 
     result["session_index"] = index
     result["quality_sanity"] = marker in str(result.get("output_text", ""))
     result["primer"] = primer
+    # This signature is deliberately order-insensitive and policy-neutral.
+    parts = sorted(["Follow the user exactly.", shared, f"[UNIQUE_TOOL_OBS] tenant={index}; marker={marker}.", "Return exactly the marker from UNIQUE_TOOL_OBS. /no_think"])
+    result["content_multiset_sha256"] = hashlib.sha256("\x1f".join(parts).encode("utf-8")).hexdigest()
     return result
 
 
@@ -106,7 +120,45 @@ def join_events(results: list[dict[str, Any]], events: list[dict[str, Any]]) -> 
     return rows
 
 
-def summarize(rows: list[dict[str, Any]], args: argparse.Namespace, primer_latency: float) -> dict[str, Any]:
+def concurrent_snapshot_stats(events: list[dict[str, Any]]) -> dict[str, float]:
+    """Return peak same-snapshot sharing facts emitted by the guarded probe."""
+    snapshots = [event for event in events if event.get("event") == "prefix_cache_concurrent_snapshot"]
+    best = {
+        "peak_concurrent_shared_blocks": 0.0,
+        "peak_concurrent_logical_refs": 0.0,
+        "peak_concurrent_unique_blocks": 0.0,
+        "peak_concurrent_dedup_factor": 0.0,
+        "peak_concurrent_refcount_match_rate": 0.0,
+    }
+    for snapshot in snapshots:
+        counts = [int(value) for value in snapshot.get("shared_block_request_counts", [])]
+        refcounts = [int(value) for value in snapshot.get("shared_block_refcounts", [])]
+        if not counts:
+            continue
+        logical = sum(counts)
+        unique = len(counts)
+        factor = logical / unique if unique else 0.0
+        matched = sum(1 for count, refcount in zip(counts, refcounts) if refcount >= count)
+        match_rate = matched / unique if unique else 0.0
+        candidate = (factor, logical, unique)
+        current = (best["peak_concurrent_dedup_factor"], best["peak_concurrent_logical_refs"], best["peak_concurrent_unique_blocks"])
+        if candidate > current:
+            best = {
+                "peak_concurrent_shared_blocks": float(unique),
+                "peak_concurrent_logical_refs": float(logical),
+                "peak_concurrent_unique_blocks": float(unique),
+                "peak_concurrent_dedup_factor": float(factor),
+                "peak_concurrent_refcount_match_rate": float(match_rate),
+            }
+    return best
+
+
+def summarize(
+    rows: list[dict[str, Any]],
+    args: argparse.Namespace,
+    primer_latency: float,
+    concurrent_stats: dict[str, float] | None = None,
+) -> dict[str, Any]:
     measured = [row for row in rows if not row.get("primer")]
     successful = [row for row in measured if row.get("success")]
     reused_ids = []
@@ -144,6 +196,7 @@ def summarize(rows: list[dict[str, Any]], args: argparse.Namespace, primer_laten
         "shared_block_fraction": logical / total_blocks if total_blocks else 0.0,
         "unique_physical_blocks_effective": effective_unique,
         "effective_dedup_factor": total_blocks / effective_unique if effective_unique else 0.0,
+        **(concurrent_stats or concurrent_snapshot_stats([])),
         "used_block_high_water": max((int(row.get("used_gpu_blocks") or 0) for row in successful), default=0),
         "minimum_free_blocks": min((int(row.get("free_gpu_blocks") or 0) for row in successful), default=0),
         "mean_scheduler_wait_ms": statistics.mean(float(row.get("scheduler_wait_ms") or 0) for row in successful) if successful else 0.0,
@@ -192,14 +245,19 @@ def main() -> int:
         results = list(pool.map(lambda index: run_request(args, fanout_policy, shared, index), range(args.sessions)))
     time.sleep(.5)
     all_results = ([primer_result] if primer_result else []) + results
-    rows = join_events(all_results, load_new_events(args.metrics_events, start_size))
+    new_events = load_new_events(args.metrics_events, start_size)
+    rows = join_events(all_results, new_events)
     for row in rows:
         row.update({
             "experiment": args.experiment, "cell_id": args.cell_id,
             "policy": args.policy, "shared_target_tokens": args.shared_target_tokens,
             "sessions": args.sessions,
         })
-    summary = summarize(rows, args, float(primer_result.get("total_latency_ms") or 0) if primer_result else 0.0)
+    summary = summarize(
+        rows, args,
+        float(primer_result.get("total_latency_ms") or 0) if primer_result else 0.0,
+        concurrent_snapshot_stats(new_events),
+    )
     write_csv(args.raw_output, rows, RAW_FIELDS, args.append)
     write_csv(args.summary_output, [summary], SUMMARY_FIELDS, args.append)
     print(json.dumps(summary, ensure_ascii=False, indent=2))

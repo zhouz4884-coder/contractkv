@@ -28,6 +28,7 @@ RAW_FIELDS = [
     "prompt_tokens",
     "cached_tokens",
     "cached_tokens_observable",
+    "finish_reason",
     "output_tokens",
     "output_text",
     "error_type",
@@ -163,12 +164,16 @@ def send_chat_stream(
     chunks: list[dict[str, Any]] = []
     token_times: list[float] = []
     usage: dict[str, Any] | None = None
+    finish_reason = ""
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             for chunk in _iter_sse(response):
                 if chunk.get("usage"):
                     usage = chunk.get("usage")
                 content = chunk_delta_content(chunk)
+                choices = chunk.get("choices") or []
+                if choices and choices[0].get("finish_reason"):
+                    finish_reason = str(choices[0]["finish_reason"])
                 if content:
                     chunks.append(chunk)
                     token_times.append(time.perf_counter())
@@ -188,6 +193,7 @@ def send_chat_stream(
             "output_text": output,
             "cached_tokens": cached,
             "cached_tokens_observable": observable,
+            "finish_reason": finish_reason,
             "error_type": "none" if output else "bad_output",
             "error_message": "",
         }
@@ -203,6 +209,7 @@ def send_chat_stream(
             "output_text": "",
             "cached_tokens": "",
             "cached_tokens_observable": False,
+            "finish_reason": "",
             "error_type": type(exc).__name__,
             "error_message": str(exc)[:300],
         }

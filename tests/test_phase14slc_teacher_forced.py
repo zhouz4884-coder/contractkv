@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from scripts.phase14slc_teacher_forced_verify import summarize
+from scripts.phase14slc_teacher_forced_verify import answer_logit_slice, summarize
 
 
 class Phase14SLCTeacherForcedTest(unittest.TestCase):
@@ -15,6 +15,14 @@ class Phase14SLCTeacherForcedTest(unittest.TestCase):
         self.assertEqual(total["unsafe_rejection_rate"], 1.0)
         self.assertEqual(total["safe_certificate_coverage"], 1.0)
         self.assertEqual(total["retained_prefix_gain_fraction"], 1.0)
+
+    def test_answer_logits_start_at_final_prompt_position(self) -> None:
+        window = answer_logit_slice(12, 4)
+        self.assertEqual((window.start, window.stop), (11, 15))
+
+    def test_answer_logit_slice_rejects_empty_sequences(self) -> None:
+        with self.assertRaises(ValueError):
+            answer_logit_slice(0, 1)
 
 
 if __name__ == "__main__":
