@@ -25,7 +25,8 @@ RAW_FIELDS = [
     "position_drift",
     "source_drift",
     "margin_drift",
-    "future_mismatch",
+    "answer_changed",
+    "unrenewed_answer_change_exposure",
     "retained_prefix_gain",
     "renewal_cost_ms",
     "decision",
@@ -36,10 +37,11 @@ SUMMARY_FIELDS = [
     "policy",
     "sessions",
     "future_turns",
+    "covered_turns",
     "certificate_coverage",
     "renewal_rate",
-    "future_mismatch_rate",
-    "future_mismatch_wilson95_upper",
+    "unrenewed_answer_change_exposure_rate",
+    "unrenewed_answer_change_wilson95_upper",
     "mean_retained_prefix_gain",
     "mean_renewal_cost_ms",
     "objective",
@@ -242,7 +244,7 @@ def run_policy(policy: Policy, sessions: list[tuple[int, str, Certificate, list[
             cert_age += 1
             score, parts, hard = update_certificate(cert, turn, policy, cert_age)
             valid = cert.semantic_state == "VALID"
-            mismatch = valid and turn.answer_changed
+            exposure = valid and turn.answer_changed
             decision = "use_caposc" if valid else "renew_or_raw"
             rows.append(
                 {
@@ -259,7 +261,8 @@ def run_policy(policy: Policy, sessions: list[tuple[int, str, Certificate, list[
                     "position_drift": round(parts["position"], 6),
                     "source_drift": round(parts["source"], 6),
                     "margin_drift": round(parts["margin"], 6),
-                    "future_mismatch": mismatch,
+                    "answer_changed": turn.answer_changed,
+                    "unrenewed_answer_change_exposure": exposure,
                     "retained_prefix_gain": round(turn.retained_prefix_gain if valid else 0.0, 6),
                     "renewal_cost_ms": 450.0 if not valid else 0.0,
                     "decision": decision,
@@ -278,28 +281,29 @@ def summarize(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
         rs = [row for row in rows if row["policy"] == policy and row["partition"] == partition]
         sessions = len({row["session_id"] for row in rs})
         future = len(rs)
-        mismatches = sum(1 for row in rs if row["future_mismatch"] in {True, "True", "true"})
         covered = [row for row in rs if row["decision"] == "use_caposc"]
+        exposures = sum(1 for row in covered if row["unrenewed_answer_change_exposure"] in {True, "True", "true"})
         renewals = [row for row in rs if row["decision"] != "use_caposc"]
         gains = [float(row["retained_prefix_gain"]) for row in rs]
         renewal_cost = [float(row["renewal_cost_ms"]) for row in rs]
         objective = (sum(gains) / max(future, 1)) - 0.0005 * (sum(renewal_cost) / max(future, 1))
-        upper = wilson_upper(mismatches, future)
+        upper = wilson_upper(exposures, len(covered))
         out.append(
             {
                 "policy": policy,
                 "partition": partition,
                 "sessions": sessions,
                 "future_turns": future,
+                "covered_turns": len(covered),
                 "certificate_coverage": round(len(covered) / max(future, 1), 6),
                 "renewal_rate": round(len(renewals) / max(future, 1), 6),
-                "future_mismatch_rate": round(mismatches / max(future, 1), 6),
-                "future_mismatch_wilson95_upper": round(upper, 6),
+                "unrenewed_answer_change_exposure_rate": round(exposures / max(len(covered), 1), 6),
+                "unrenewed_answer_change_wilson95_upper": round(upper, 6),
                 "mean_retained_prefix_gain": round(sum(gains) / max(future, 1), 6),
                 "mean_renewal_cost_ms": round(sum(renewal_cost) / max(future, 1), 6),
                 "objective": round(objective, 6),
-                "gate_pass": upper <= 0.03 and len(covered) / max(future, 1) >= 0.50,
-                "claim_boundary": "Synthetic answer-changing drift calibration pool; thresholds require real future-turn validation before deployment.",
+                "gate_pass": False,
+                "claim_boundary": "Synthetic unrenewed-answer-change exposure diagnostic; not raw-vs-candidate output divergence and not a semantic safety gate.",
             }
         )
     return out
@@ -346,11 +350,11 @@ def run(args: argparse.Namespace) -> None:
 def metric_tuple(rows: list[dict[str, Any]]) -> tuple[float, float, float, float, float]:
     total = len(rows)
     covered = [row for row in rows if row["decision"] == "use_caposc"]
-    mismatches = sum(1 for row in rows if row["future_mismatch"] in {True, "True", "true"})
+    exposures = sum(1 for row in covered if row["unrenewed_answer_change_exposure"] in {True, "True", "true"})
     gains = sum(float(row["retained_prefix_gain"]) for row in rows) / max(total, 1)
     costs = sum(float(row["renewal_cost_ms"]) for row in rows) / max(total, 1)
     objective = gains - 0.0005 * costs
-    return len(covered) / max(total, 1), mismatches / max(total, 1), wilson_upper(mismatches, total), gains, objective
+    return len(covered) / max(total, 1), exposures / max(len(covered), 1), wilson_upper(exposures, len(covered)), gains, objective
 
 
 def select_calibrated_policy(sessions: list[tuple[int, str, Certificate, list[TurnEvidence]]]) -> Policy:

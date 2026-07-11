@@ -1,0 +1,3 @@
+model,condition,active_requests,active_success_rate,shadow_requests,shadow_success_rate,active_mean_ttft_ms,active_p95_ttft_ms,active_p99_ttft_ms,active_mean_latency_ms,active_p95_latency_ms,p95_penalty_ms,p95_penalty_fraction,gate_pass,claim_boundary
+qwen3-4b,baseline,90,1.0,0,1.0,32.37640429288149,37.68738731741905,41.007716497406356,129.60591898817154,136.64968442171812,0.0,0.0,True,Fresh live vLLM V1 endpoint with source-level IDLE_ONLY micro-chunk hook.
+qwen3-4b,idle_only_shadow,90,1.0,6,1.0,41.11842883026434,49.59267487283796,71.23019042890519,156.40628301124605,172.35168588813394,11.905287555418909,0.31589580501156955,False,Fresh live vLLM V1 endpoint with source-level IDLE_ONLY micro-chunk hook.

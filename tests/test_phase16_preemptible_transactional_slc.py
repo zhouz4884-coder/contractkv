@@ -9,6 +9,7 @@ from scripts.phase16d_drift_budget_lifecycle import (
     jaccard_distance,
     wilson_upper,
 )
+from scripts.phase16d_real_divergence_reanalysis import reanalyze
 
 
 class Phase16MicroChunkSchedulerTests(unittest.TestCase):
@@ -32,11 +33,13 @@ class Phase16EphemeralKVTests(unittest.TestCase):
         self.assertEqual(freed, 2)
         self.assertTrue(pool.cache_resident("h0"))
         self.assertTrue(pool.cache_resident("h1"))
+        self.assertNotIn("txn", pool.shadow_txns)
 
         txn2 = pool.begin_txn("txn2", "req2", 64)
         pool.allocate_ephemeral(txn2.txn_id, ["x0", "x1"])
         before = len(pool.cached_block_hash_to_block)
         pool.abort(txn2.txn_id)
+        self.assertNotIn("txn2", pool.shadow_txns)
         self.assertEqual(before, len(pool.cached_block_hash_to_block))
         self.assertEqual(pool.leak_count(), 0)
         self.assertEqual(pool.stale_hash_pointers(), 0)
@@ -71,6 +74,17 @@ class Phase16DriftBudgetTests(unittest.TestCase):
         self.assertFalse(hard_invalidated(cert, turn))
         self.assertAlmostEqual(jaccard_distance(cert.issued_sources, turn.source_ids), 2 / 3)
         self.assertLess(wilson_upper(0, 400), 0.01)
+
+    def test_real_divergence_denominator_is_only_covered_future_turns(self) -> None:
+        rows = [
+            {"turn_id": "1", "certificate_active": "True", "deployed_policy": "contractkv-caposc", "output_contract_match": "False"},
+            {"turn_id": "2", "certificate_active": "True", "deployed_policy": "contractkv-caposc", "output_contract_match": "True"},
+            {"turn_id": "3", "certificate_active": "False", "deployed_policy": "raw-order", "output_contract_match": "False"},
+        ]
+        result = reanalyze(rows)
+        self.assertEqual(result["covered_future_turns"], 2)
+        self.assertEqual(result["raw_candidate_divergences"], 1)
+        self.assertEqual(result["conditional_divergence_rate"], 0.5)
 
 
 if __name__ == "__main__":

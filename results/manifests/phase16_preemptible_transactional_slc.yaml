@@ -1,6 +1,6 @@
 phase: phase16
 name: preemptible_transactional_slc
-status: complete_with_boundaries
+status: complete_with_live_transaction_and_scheduler_boundary
 date: 2026-07-11
 scope:
   - phase16a_scheduler_only_microchunk_model
@@ -21,8 +21,10 @@ headline_results:
     block_leak_count: 0
     stale_hash_pointer_count: 0
     cache_table_inconsistency_count: 0
-    promotion_p95_ms: 0.23729
-    rollback_p95_ms: 0.1455
+    transaction_metadata_leak_count: 0
+    active_transaction_count_after_run: 0
+    promotion_p95_ms: 0.21908
+    rollback_p95_ms: 0.1366
     gate_pass: true
     claim_boundary: In-memory transactional KV namespace model, not yet installed inside vLLM block_pool.
   phase16c:
@@ -31,19 +33,34 @@ headline_results:
     baseline_slc_v2_unsafe_rejection_rate: 0.9412
     claim_boundary: No new vLLM in-situ verifier result yet.
   phase16d:
-    calibration_calibrated_coverage: 0.50
-    calibration_calibrated_wilson95: 0.028924
-    heldout_calibrated_coverage: 0.565
-    heldout_calibrated_wilson95: 0.038963
-    heldout_conservative_full_native_coverage: 0.46
-    heldout_conservative_full_native_wilson95: 0.014023
+    synthetic_metric: unrenewed_answer_change_exposure
+    heldout_calibrated_coverage: 0.5325
+    heldout_calibrated_exposure_wilson95: 0.02611
+    real_covered_future_turns: 203
+    real_raw_candidate_divergences: 1
+    real_conditional_divergence_rate: 0.004926108
+    real_conditional_divergence_wilson95: 0.027371129
     gate_pass: false
-    claim_boundary: Synthetic drift calibration shows protocol need; not deployable threshold evidence.
+    claim_boundary: Synthetic exposure is diagnostic; real divergence uses Phase 15D covered Qwen3-8B turns.
+  phase16e:
+    model: Qwen3-4B
+    foreground_requests_per_chunk: 90
+    shadow_requests_per_chunk: 6
+    chunk16_p95_penalty_ms: 10.957183
+    chunk32_p95_penalty_ms: 11.905288
+    microchunk_gate_pass: false
+    abort_cache_reuse_fraction: 0.004764741
+    commit_cache_reuse_fraction: 0.998484083
+    committed_full_blocks: 246
+    commit_operation_ms: 0.396096
+    transaction_gate_pass: true
+    claim_boundary: Real vLLM V1 whole-shadow-request stable-prefix transaction; no concurrent atomicity claim.
 claim_boundaries:
   - Micro-chunk scheduling only bounds interference to one chunk in the model; it does not prove sub-ms or zero interference.
   - Ephemeral commit and rollback are O(B), where B is the number of physical blocks.
   - Residency pressure is separate from semantic certificate validity.
   - Drift-budget thresholds require real answer-changing future-turn calibration plus in-situ margin signals.
+  - The real micro-chunk hook removes most interference but does not pass the strict 10 ms p95 gate.
 artifacts:
   docs:
     - docs/phase16a_microchunk_scheduler_report.md
@@ -51,6 +68,7 @@ artifacts:
     - docs/phase16c_in_situ_margin_verifier_design.md
     - docs/phase16d_drift_budget_lifecycle_report.md
     - docs/phase16_preemptible_transactional_slc_closeout.md
+    - docs/phase16e_vllm_transactional_shadow_report.md
   results:
     - results/runtime/phase16a_microchunk_scheduler_raw_v0.csv
     - results/runtime/phase16a_microchunk_scheduler_summary_v0.csv
@@ -58,10 +76,18 @@ artifacts:
     - results/runtime/phase16b_ephemeral_kv_transaction_summary_v0.csv
     - results/runtime/phase16d_drift_budget_raw_v0.csv
     - results/runtime/phase16d_drift_budget_summary_v0.csv
+    - results/runtime/phase16d_real_divergence_reanalysis_v0.csv
+    - results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk16_interference_summary_v0.csv
+    - results/hard_systems/phase16e_qwen3_4b_fair_fullcap_chunk32_interference_summary_v0.csv
+    - results/hard_systems/phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv
   scripts:
     - scripts/phase16a_microchunk_scheduler.py
     - scripts/phase16b_ephemeral_kv_transaction.py
     - scripts/phase16d_drift_budget_lifecycle.py
+    - scripts/phase16d_real_divergence_reanalysis.py
+    - scripts/install_vllm_v1_ephemeral_shadow_hook.py
+    - scripts/phase16e_live_transactional_slc.py
+    - scripts/run_phase16e_live.sh
 tests:
   command:
     - python -m unittest discover -s tests -v

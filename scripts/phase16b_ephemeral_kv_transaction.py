@@ -25,6 +25,7 @@ EVENT_FIELDS = [
     "global_cache_size_after",
     "leak_detected",
     "stale_hash_pointer",
+    "transaction_metadata_leak",
     "operation_ms",
     "notes",
 ]
@@ -40,6 +41,8 @@ SUMMARY_FIELDS = [
     "promotion_p95_ms",
     "rollback_p95_ms",
     "cache_table_inconsistency_count",
+    "transaction_metadata_leak_count",
+    "active_transaction_count_after_run",
     "gate_pass",
     "claim_boundary",
 ]
@@ -122,6 +125,7 @@ class BlockPool:
                 freed += 1
         txn.state = "COMMITTED"
         self.cache_epoch += 1
+        self.shadow_txns.pop(txn_id, None)
         return promoted, freed
 
     def abort(self, txn_id: str) -> int:
@@ -133,6 +137,7 @@ class BlockPool:
                 self._free_ephemeral(block_id)
                 freed += 1
         self.cache_epoch += 1
+        self.shadow_txns.pop(txn_id, None)
         return freed
 
     def _free_ephemeral(self, block_id: int) -> None:
@@ -184,6 +189,7 @@ def run_cycle(pool: BlockPool, cycle: int, rng: random.Random) -> dict[str, Any]
     elapsed = (time.perf_counter() - started) * 1000.0
     leak = pool.leak_count()
     stale = pool.stale_hash_pointers()
+    metadata_leak = txn_id in pool.shadow_txns
     visible_after_commit = state == "COMMITTED" and promoted > 0
     clean_abort = state == "ABORTED" and before == len(pool.cached_block_hash_to_block)
     notes = []
@@ -193,6 +199,8 @@ def run_cycle(pool: BlockPool, cycle: int, rng: random.Random) -> dict[str, Any]
         notes.append("commit_not_visible")
     if state == "ABORTED" and not clean_abort:
         notes.append("abort_changed_global_cache")
+    if metadata_leak:
+        notes.append("transaction_metadata_leak")
     return {
         "cycle": cycle,
         "case": case,
@@ -204,17 +212,19 @@ def run_cycle(pool: BlockPool, cycle: int, rng: random.Random) -> dict[str, Any]
         "global_cache_size_after": len(pool.cached_block_hash_to_block),
         "leak_detected": leak,
         "stale_hash_pointer": stale,
+        "transaction_metadata_leak": metadata_leak,
         "operation_ms": round(elapsed, 6),
         "notes": ";".join(notes),
     }
 
 
-def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def summarize(rows: list[dict[str, Any]], active_transaction_count: int = 0) -> dict[str, Any]:
     promotions = [float(row["operation_ms"]) for row in rows if row["state"] == "COMMITTED"]
     rollbacks = [float(row["operation_ms"]) for row in rows if row["state"] == "ABORTED"]
     block_leaks = sum(1 for row in rows if int(row["leak_detected"]) != 0)
     stale = sum(1 for row in rows if int(row["stale_hash_pointer"]) != 0)
     inconsistent = sum(1 for row in rows if row["notes"])
+    metadata_leaks = sum(1 for row in rows if row.get("transaction_metadata_leak"))
     return {
         "cycles": len(rows),
         "commit_cases": sum(1 for row in rows if row["case"] == "commit"),
@@ -226,7 +236,9 @@ def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "promotion_p95_ms": round(percentile(promotions, 0.95), 6),
         "rollback_p95_ms": round(percentile(rollbacks, 0.95), 6),
         "cache_table_inconsistency_count": inconsistent,
-        "gate_pass": block_leaks == 0 and stale == 0 and inconsistent == 0 and percentile(promotions, 0.95) < 1.0 and percentile(rollbacks, 0.95) < 1.0,
+        "transaction_metadata_leak_count": metadata_leaks,
+        "active_transaction_count_after_run": active_transaction_count,
+        "gate_pass": block_leaks == 0 and stale == 0 and inconsistent == 0 and metadata_leaks == 0 and active_transaction_count == 0 and percentile(promotions, 0.95) < 1.0 and percentile(rollbacks, 0.95) < 1.0,
         "claim_boundary": "In-memory transactional KV namespace model; not yet installed inside vLLM block_pool.",
     }
 
@@ -254,7 +266,7 @@ def run(args: argparse.Namespace) -> None:
     rng = random.Random(args.seed)
     pool = BlockPool(total_blocks=args.total_blocks)
     rows = [run_cycle(pool, cycle, rng) for cycle in range(args.cycles)]
-    write_csv(args.summary_output, [summarize(rows)], SUMMARY_FIELDS)
+    write_csv(args.summary_output, [summarize(rows, len(pool.shadow_txns))], SUMMARY_FIELDS)
     args.events_output.parent.mkdir(parents=True, exist_ok=True)
     with args.events_output.open("w", encoding="utf-8") as handle:
         for row in rows:

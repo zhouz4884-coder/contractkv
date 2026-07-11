@@ -43,6 +43,14 @@ while 128-token chunks are too large. The correct next step is a vLLM source-
 level scheduler hook, not a claim that the model already proves production
 behavior.
 
+Phase 16E subsequently tested 16 and 32 tokens in vLLM V1 with both initial
+admission and running rounds capped. Under a fair warm protocol, their p95
+penalties were 10.96 ms and 11.91 ms. The modeled candidates were directionally
+useful and reduced the earlier ordinary-shadow penalty substantially, but both
+narrowly miss the strict 10 ms gate. The executable model therefore
+underestimated fixed scheduler/kernel overhead and is not used as the paper's
+runtime number.
+
 ## Artifacts
 
 - `scripts/phase16a_microchunk_scheduler.py`

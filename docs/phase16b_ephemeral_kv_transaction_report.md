@@ -28,8 +28,10 @@ duplicate-hash commit, partial final block, and cancellation.
 | block leaks | 0 |
 | stale hash pointers | 0 |
 | cache-table inconsistencies | 0 |
-| promotion p95 | 0.237 ms |
-| rollback p95 | 0.146 ms |
+| transaction metadata leaks | 0 |
+| active transactions after run | 0 |
+| promotion p95 | 0.219 ms |
+| rollback p95 | 0.137 ms |
 | gate pass | true |
 
 This supports the core invariant:
@@ -38,11 +40,21 @@ This supports the core invariant:
 - after commit: certified stable blocks become visible
 - after abort: the global cache table is unchanged and blocks are reclaimed
 
+## Source-Level Follow-Up
+
+Phase 16E installs the same visibility boundary in vLLM V1 by using its real
+`delay_cache_blocks` allocation path. In the Qwen3-4B live run, an aborted
+shadow left the global cache entry count unchanged and the identical foreground
+probe reused only 0.48% of prompt tokens. A committed shadow registered 246
+new full blocks in 0.396 ms, and the identical probe reused 99.85% of prompt
+tokens. Both model outputs passed marker sanity.
+
 ## Boundary
 
 Commit/rollback is O(B) in the number of promoted/freed blocks, not O(1). The
-current result is a correctness and latency model; the next step is to install
-the same transaction boundary in vLLM V1 block registration.
+in-memory result remains a concurrency-model check. Phase 16E is a real vLLM
+whole-request stable-prefix transaction, but it does not yet prove concurrent
+commit atomicity, multi-KV-group behavior, or an in-situ teacher-forced verifier.
 
 ## Artifacts
 
