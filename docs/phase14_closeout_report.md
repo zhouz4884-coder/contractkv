@@ -7,13 +7,14 @@
 3. Cold fan-out has a measurable cache-fill race; singleflight priming resolves it.
 4. The static request-level quality selector remains closed. Teacher-forced SLC is a high-precision fail-closed guard but does not yet have deployable coverage.
 5. The open-loop endpoint evaluation shows a large sustainable CAPOSC operating region and correctly rejects short-window false knees.
+6. A 450-request natural mixed-agent endpoint replay confirms that the layout benefit transfers beyond the synthetic shared-context probe: CAPOSC lowers observed new prefill work and improves SLO-compliant goodput at both single-request and queued serving regimes.
 
 ## Paper Position
 
-The strongest current paper claim is a real vLLM system result: segment contracts and cache-aware canonical layout create cross-session physical prefix reuse under legal ordering constraints. This reduces actual prefill work and KV block pressure, yielding strong low- and high-load endpoint performance on shared-context agent serving.
+The strongest current paper claim is a real vLLM system result: segment contracts and cache-aware canonical layout create cross-session physical prefix reuse under legal ordering constraints. This reduces actual prefill work and KV block pressure, yielding strong low- and high-load endpoint performance on shared-context and natural mixed-agent serving.
 
 Do not claim universal safe automatic canonicalization. The evidence instead supports a two-plane framing: CAPOSC is the performance compiler; SLC/QC are fail-closed safety mechanisms whose coverage remains an open deployment limitation.
 
 ## Next Required Experiment
 
-Run a longer raw-order open-loop measurement at lower offered rates until an all-seed stable raw knee has enough completions, then repeat the same protocol on a natural mixed-agent workload. That will turn the current capacity separation into a final paper-grade capacity-lift ratio.
+Run a longer raw-order open-loop measurement at lower offered rates until an all-seed stable raw knee has enough completions. That will turn the current capacity separation into a final paper-grade capacity-lift ratio. The natural mixed-agent replay is complete, but its marker/order sanity remains paired with separate fresh task-quality calibration rather than being a replacement for official benchmark scoring.

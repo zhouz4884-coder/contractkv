@@ -9,11 +9,13 @@ completed:
   - phase14m_warm_cold_physical_dedup
   - phase14slc_teacher_forced_and_epoch_transfer
   - phase14d_open_loop_shared_context_capacity
+  - phase14p_natural_mixed_endpoint_replay
 claims:
   physical_residency_validator: passed
   static_qc_deployment_gate: closed
   slc_deployment_gate: closed_due_to_coverage
   shared_context_physical_dedup: passed
+  natural_mixed_endpoint_transfer: passed_with_marker_sanity_and_separate_quality_calibration
   final_raw_capacity_knee: pending_longer_low_rate_measurement
 artifacts:
   - results/hard_systems/phase14rc_residency_summary_v2.csv
@@ -21,3 +23,5 @@ artifacts:
   - results/hard_systems/phase14m_scaling_summary_v2.csv
   - results/hard_systems/phase14slc_teacher_forced_summary_v0.csv
   - results/hard_systems/phase14d_capacity_final2_summary_v0.csv
+  - results/hard_systems/phase14p_natural_mixed_raw_v0.csv
+  - results/hard_systems/phase14p_natural_mixed_summary_v0.csv
