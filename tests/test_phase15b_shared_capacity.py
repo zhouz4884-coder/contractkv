@@ -15,6 +15,7 @@ class Phase15BSharedCapacityTests(unittest.TestCase):
                 "completion_rate": "1", "p95_ttft_ms": "100", "slo_compliant_req_per_sec": "1",
                 "end_backlog": "0", "second_half_wait_slope_sec_per_sec": "0", "primer_latency_ms": "0",
                 "cold_start_amortized_latency_ms": "1", "mean_observed_new_prefill_tokens": "2",
+                "p95_send_lag_ms": "1", "p99_send_lag_ms": "2",
             })
         self.assertFalse(summarize(rows)[0]["all_seeds_stable"])
 

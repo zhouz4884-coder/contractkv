@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 
 from scripts.phase14c_run_full_pool_quality_jobs import (
+    RAW_FIELDS,
     build_labels,
     completed_job_ids,
     quality_messages,
@@ -12,6 +13,9 @@ from scripts.phase14c_run_full_pool_quality_jobs import (
 
 
 class Phase14CFullPoolQualityRunnerTests(unittest.TestCase):
+    def test_raw_output_schema_records_finish_reason(self):
+        self.assertIn("finish_reason", RAW_FIELDS)
+
     def test_select_pending_jobs_filters_done_partition_policy_and_limit(self):
         jobs = [
             {"job_id": "a", "partition": "calibration", "policy": "raw-order"},

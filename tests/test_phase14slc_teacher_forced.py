@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from scripts.phase14slc_teacher_forced_verify import answer_logit_slice, summarize
+from scripts.phase14slc_teacher_forced_verify import answer_logit_slice, build_prompt_ids, select_truncated_answer_and_stop_logits, stop_is_consistent, summarize
 
 
 class Phase14SLCTeacherForcedTest(unittest.TestCase):
@@ -23,6 +23,49 @@ class Phase14SLCTeacherForcedTest(unittest.TestCase):
     def test_answer_logit_slice_rejects_empty_sequences(self) -> None:
         with self.assertRaises(ValueError):
             answer_logit_slice(0, 1)
+
+    def test_truncated_logits_keep_exact_answer_and_stop_window(self) -> None:
+        class Tensor:
+            shape = (1, 4, 9)
+            def __getitem__(self, item):
+                return item
+        answer, stop = select_truncated_answer_and_stop_logits(Tensor(), 3)
+        self.assertEqual(answer, (0, slice(None, 3, None), slice(None, None, None)))
+        self.assertEqual(stop, (0, 3, slice(None, None, None)))
+
+    def test_truncated_logits_rejects_wrong_shape(self) -> None:
+        class Tensor:
+            shape = (1, 3, 9)
+        with self.assertRaises(ValueError):
+            select_truncated_answer_and_stop_logits(Tensor(), 3)
+
+    def test_stop_certificate_accepts_eos_or_explicit_stop_token(self) -> None:
+        self.assertTrue(stop_is_consistent("stop", 151645, 151645))
+        self.assertTrue(stop_is_consistent("stop", 42, 151645, {42}))
+
+    def test_stop_certificate_rejects_length_unknown_and_token_mismatch(self) -> None:
+        self.assertFalse(stop_is_consistent("length", 151645, 151645))
+        self.assertFalse(stop_is_consistent("", 151645, 151645))
+        self.assertFalse(stop_is_consistent("stop", 7, 151645, {42}))
+
+    def test_prompt_builder_rejects_manifest_identity_mismatch(self) -> None:
+        class Tokenizer:
+            def encode(self, text, add_special_tokens=False):
+                return [1]
+            def apply_chat_template(self, messages, tokenize=True, add_generation_prompt=True):
+                return [1, 2, 3]
+        sample = {
+            "dataset": "RULER", "task": "niah", "sample_id": "0",
+            "segments": [
+                {"type": "SYS_PROMPT", "text": "sys"},
+                {"type": "RAG_CHUNK", "text": "context"},
+                {"type": "USER_QUERY", "text": "query"},
+            ],
+            "answer": "answer", "metadata": {},
+        }
+        job = {"topological_order": "[]", "candidate_id": "definitely-wrong"}
+        with self.assertRaises(ValueError):
+            build_prompt_ids(job, sample, Tokenizer(), 8192, 2600)
 
 
 if __name__ == "__main__":

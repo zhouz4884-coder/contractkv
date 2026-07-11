@@ -1,0 +1,86 @@
+phase: phase15
+name: fairness_cache_certification
+status: complete
+date: 2026-07-11
+models:
+  primary: Qwen3-8B
+  replication: Qwen3-4B
+server:
+  workspace: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv
+  environment: contractkv-cu128
+  gpu: 1x RTX 3090 for reported live cells
+scope:
+  - phase15a_fair_fresh_process_replay
+  - phase15b_async_shared_context_capacity
+  - phase15c_cache_state_adaptation
+  - phase15d_task_bearing_certification
+headline_results:
+  phase15a:
+    rowwise_join_keys: 450
+    rowwise_join_success_rate: 1.0
+    caposc_warm_mean_ttft_ms_c1: 79.46
+    raw_warm_mean_ttft_ms_c1: 1471.18
+    caposc_warm_mean_ttft_ms_c4: 666.10
+    raw_warm_mean_ttft_ms_c4: 4303.04
+  phase15b:
+    old_sync_client_result_superseded: true
+    raw_stable_rps: 0.9
+    raw_first_unstable_rps: 1.0
+    caposc_stable_rps: 12.0
+    caposc_first_unstable_rps: 16.0
+    stable_point_ratio: 13.33
+    strict_lower_bound: ">12x"
+  phase15c:
+    qwen3_8b_physical_vs_static_mean_ttft_reduction_pct: 45.45
+    qwen3_8b_physical_vs_static_p95_ttft_reduction_pct: 45.41
+    qwen3_4b_static_mean_ttft_ms: 649.09
+    qwen3_4b_physical_mean_ttft_ms: 374.64
+    churn_within_one_round_rate: 1.0
+    churn_within_one_block_rate: 1.0
+  phase15d:
+    slc_candidates: 734
+    slc_certificate_issue_rate: 0.6608
+    slc_unsafe_rejection_rate: 0.9412
+    task_sessions: 60
+    task_future_pairs: 205
+    task_future_mismatch_rate: 0.004878
+    task_future_mismatch_wilson95_upper: 0.027109
+    task_warm_ttft_reduction_fraction: 0.513916
+    active_tenant_p95_ttft_penalty_ms: 584.86
+claim_boundaries:
+  - Phase 15B reports the async-client corrected lower bound; the prior synchronous 56 rps / 112x result is superseded.
+  - Phase 15C observes native cache state and selects layouts; it does not mutate vLLM KV blocks.
+  - Phase 15D uses task sanity/output contracts, not complete official benchmark scoring.
+  - Shadow/canary verification is not zero-cost on the active serving GPU and requires scheduling or isolation.
+artifacts:
+  docs:
+    - docs/phase15a_fair_replication_report.md
+    - docs/phase15b_shared_capacity_report.md
+    - docs/phase15c_cache_state_adaptation_report.md
+    - docs/phase15d_task_bearing_certification_report.md
+    - docs/phase15_closeout.md
+  results:
+    - results/hard_systems/phase15a_rowwise_fairness_v0.csv
+    - results/hard_systems/phase15a_warm_cold_family_breakdown_v0.csv
+    - results/hard_systems/phase15b_async_capacity_summary_v0.csv
+    - results/hard_systems/phase15c_cache_conflict_summary_v0.csv
+    - results/hard_systems/phase15c_qwen3_4b_summary_v0.csv
+    - results/hard_systems/phase15c_cache_churn_raw_v0.csv
+    - results/hard_systems/phase15c_cache_churn_summary_v0.csv
+    - results/end_to_end/phase15_slc_teacher_forced_v2.jsonl
+    - results/end_to_end/phase15_slc_teacher_forced_summary_v2.csv
+    - results/end_to_end/phase15d_task_bearing_raw_v0.csv
+    - results/end_to_end/phase15d_task_bearing_summary_v0.csv
+    - results/end_to_end/phase15d_active_tenant_interference_raw_v0.csv
+    - results/end_to_end/phase15d_active_tenant_interference_summary_v0.csv
+  scripts:
+    - scripts/phase15a_postprocess_diagnostics.py
+    - scripts/phase15c_cache_state_conflict.py
+    - scripts/phase15c_cache_churn.py
+    - scripts/phase15d_task_bearing_certified_replay.py
+    - scripts/phase15d_active_tenant_interference.py
+tests:
+  command:
+    - python -m unittest discover -s tests -v
+    - git diff --check
+  status: passed

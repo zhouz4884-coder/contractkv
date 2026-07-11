@@ -11,6 +11,24 @@ PORT="${PORT:-8001}"
 SEED="${SEED:-15101}"
 CAP_RATES="${CAP_RATES:-24 32 40}"
 RAW_RATES="${RAW_RATES:-1 2}"
+PROFILE="${PROFILE:-custom}"
+
+if [[ "$PROFILE" == "async_narrow" ]]; then
+  RAW_RATES="0.6 0.75 0.9"
+  CAP_RATES="16 24 32 64 72"
+fi
+if [[ "$PROFILE" == "async_final" ]]; then
+  RAW_RATES="0.6 0.75 0.9"
+  CAP_RATES="8 12 16 24"
+fi
+if [[ "$PROFILE" == "async_low" ]]; then
+  RAW_RATES=""
+  CAP_RATES="8 12"
+fi
+if [[ "$PROFILE" == "async_raw_upper" ]]; then
+  RAW_RATES="1"
+  CAP_RATES=""
+fi
 
 cd "$ROOT"
 mkdir -p "$OUT"
@@ -35,6 +53,7 @@ run_point() {
   "$PYTHON_BIN" scripts/phase14d_open_loop_capacity.py --policy "$policy" --arrival-rate-rps "$rate" \
     --measurement-seconds "$seconds" --drain-seconds 90 --shared-target-tokens 2048 --tokenizer "$MODEL_PATH" \
     --metrics-events "$metrics" --slo-ttft-ms 5000 --seed "$SEED" --min-completed 200 --min-second-half-samples 100 \
+    --max-p95-send-lag-ms 5 --max-p99-send-lag-ms 20 \
     --cell-id "$cell" --raw-output "$raw" --summary-output "$summary"
   bash scripts/stop_vllm_server.sh --pid-path "$pid_path" --port "$PORT" || true
   pid_path=""
@@ -43,7 +62,9 @@ run_point() {
 for rate in $RAW_RATES; do
   case "$rate" in
     0.5) seconds=480 ;;
-    0.75) seconds=280 ;;
+    0.6) seconds=400 ;;
+    0.75) seconds=320 ;;
+    0.9) seconds=270 ;;
     1) seconds=220 ;;
     2) seconds=110 ;;
     *) seconds=220 ;;
@@ -51,5 +72,10 @@ for rate in $RAW_RATES; do
   run_point raw-order "$rate" "$seconds"
 done
 for rate in $CAP_RATES; do
-  run_point contractkv-caposc "$rate" 15
+  case "$rate" in
+    8) seconds=30 ;;
+    12) seconds=20 ;;
+    *) seconds=15 ;;
+  esac
+  run_point contractkv-caposc "$rate" "$seconds"
 done

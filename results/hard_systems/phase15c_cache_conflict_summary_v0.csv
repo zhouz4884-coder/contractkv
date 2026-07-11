@@ -1,0 +1,5 @@
+policy,seeds,cells,turns,completion_rate,quality_sanity_rate,mean_ttft_ms,p95_ttft_ms,mean_prefix_hit_tokens,mean_new_prefill_tokens,mean_used_block_high_water,physical_feedback_rate,within_one_block_rate,claim_boundary
+logical-ledger-caposc,"15301,15302,15303",3,300,1.0,1.0,1047.2279968866667,1063.1437673,29.12,4129.58,262.0,1.0,0.18,"Real vLLM conflict across three fresh-process seeds; prior-request physical feedback, not general candidate RPC."
+physical-residency-caposc,"15301,15302,15303",3,300,1.0,1.0,570.4654807666667,579.33766325,2079.84,2078.86,262.0,1.0,1.0,"Real vLLM conflict across three fresh-process seeds; prior-request physical feedback, not general candidate RPC."
+raw-order,"15301,15302,15303",3,300,1.0,1.0,1046.02105708,1059.1964503499999,16.0,4142.7,262.0,1.0,1.0,"Real vLLM conflict across three fresh-process seeds; prior-request physical feedback, not general candidate RPC."
+static-posc,"15301,15302,15303",3,300,1.0,1.0,1045.8192679133333,1061.1979623999998,29.12,4129.58,262.0,1.0,0.18,"Real vLLM conflict across three fresh-process seeds; prior-request physical feedback, not general candidate RPC."

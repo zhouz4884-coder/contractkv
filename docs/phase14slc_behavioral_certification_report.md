@@ -1,30 +1,36 @@
 # Phase 14SLC Behavioral Certification
 
-## SLC-A: Teacher-Forced Token-Path Certification
+## Status
 
-The verifier runs Qwen3-8B on GPU1 and checks every token of the raw greedy answer under the candidate prompt. A certificate requires every candidate top-1 token to equal the raw token, consistent stopping behavior, and a nonnegative minimum logit margin.
+This report is retained for chronology, but the Phase 14SLC numbers are
+superseded by Phase 15D SLC v2. Do not cite the original Phase 14SLC v0/v1
+coverage or rejection rates as paper evidence.
 
-| Full paired pool metric | Result |
-| --- | ---: |
-| Candidate layouts | 734 |
-| Known unsafe layouts | 34 |
-| Unsafe layouts rejected | 33/34 (97.1%) |
-| Safe layouts certified | 220/700 (31.4%) |
-| Retained safe prefix gain | 20.4% |
-| Mean verification time | 2.10 s |
-| p95 verification time | 3.01 s |
+Phase 15 fixed three issues:
 
-This is a strong fail-closed safety filter, especially for RULER where it certifies all examples, but it does not meet the planned 60% safe coverage. It is therefore not used as the main performance selector.
+- prompt identity mismatch in the stable-context construction
+- truncated-logit indexing in teacher-forced verification
+- fail-closed handling for EOS/explicit stop and length mismatch
 
-## SLC-B: Epoch Transfer
+The valid current evidence is documented in
+`docs/phase15d_task_bearing_certification_report.md`.
 
-On a separate six-session synthetic multi-turn split, all first-turn raw/CAPOSC outputs matched and all 30 K=5 future pairs also matched. Shadow runtime averaged about 355 ms, so 500 ms and 2 s tool slack hid every shadow in this small replay while 100 ms hid none.
+## Current Valid SLC v2 Result
 
-The zero-failure Wilson upper bound remains 11.35% at only 30 future pairs. This demonstrates transfer behavior but is not sufficient for the 3% deployment safety target.
+Across 734 candidates, SLC v2 issues certificates for 485 candidates
+(66.08%), rejects 32 of 34 known unsafe candidates (94.12%), certifies 483 of
+700 safe candidates (69.0%), and retains 64.40% prefix gain among certified
+candidates.
+
+Two held-out false-safe cases remain, so the correct claim is:
+
+SLC is a useful fail-closed behavioral guard with high unsafe rejection and
+paper-useful coverage, but it is not a formal semantic-equivalence proof and
+must still be paired with task-bearing future replay.
 
 ## Artifacts
 
+- `docs/phase15d_task_bearing_certification_report.md`
+- `results/end_to_end/phase15_slc_teacher_forced_v2.jsonl`
+- `results/end_to_end/phase15_slc_teacher_forced_summary_v2.csv`
 - `scripts/phase14slc_teacher_forced_verify.py`
-- `scripts/phase14slc_epoch_transfer.py`
-- `results/hard_systems/phase14slc_teacher_forced_summary_v0.csv`
-- `results/hard_systems/phase14slc_epoch_summary_v0.csv`

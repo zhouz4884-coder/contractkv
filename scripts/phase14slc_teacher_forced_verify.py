@@ -19,7 +19,7 @@ if __package__ is None or __package__ == "":
 
 from scripts.phase12f_real_vllm_caposc_replay import _ordered_text
 from scripts.phase13b_fresh_policy_quality_replay import build_case
-from scripts.phase14c_full_pool_qc_inputs import _retokenize_case
+from scripts.phase14c_full_pool_qc_inputs import _retokenize_case, candidate_identity
 from scripts.phase14c_run_full_pool_quality_jobs import quality_messages
 
 
@@ -73,10 +73,25 @@ def sample_key(sample: dict[str, Any]) -> str:
     return f"{sample.get('dataset')}::{sample.get('task')}::{sample.get('sample_id')}"
 
 
-def build_prompt_ids(job: dict[str, Any], sample: dict[str, Any], tokenizer: Any, max_model_len: int) -> list[int]:
-    case = _retokenize_case(build_case(sample, stable_word_limit=0), tokenizer, max_model_len)
+def build_prompt_ids(
+    job: dict[str, Any],
+    sample: dict[str, Any],
+    tokenizer: Any,
+    max_model_len: int,
+    stable_word_limit: int,
+) -> list[int]:
+    case = _retokenize_case(
+        build_case(sample, stable_word_limit=stable_word_limit), tokenizer, max_model_len,
+    )
     order_value = job.get("topological_order", "[]")
     order = json.loads(order_value) if isinstance(order_value, str) else list(order_value)
+    identity = candidate_identity(case, [str(item) for item in order])
+    for field in ("candidate_id", "order_hash"):
+        expected = str(job.get(field, ""))
+        if expected and expected != identity[field]:
+            raise ValueError(
+                f"SLC prompt identity mismatch for {field}: expected={expected} actual={identity[field]}"
+            )
     text = _ordered_text([str(item) for item in order], case["segments"])
     messages = quality_messages(case, text)
     return tokenizer.apply_chat_template(
@@ -91,6 +106,29 @@ def answer_logit_slice(prompt_tokens: int, answer_tokens: int) -> slice:
     return slice(prompt_tokens - 1, prompt_tokens - 1 + answer_tokens)
 
 
+def select_truncated_answer_and_stop_logits(logits: Any, answer_tokens: int) -> tuple[Any, Any]:
+    """Read ``logits_to_keep=A+1`` output without absolute prompt indices."""
+    if int(logits.shape[1]) != answer_tokens + 1:
+        raise ValueError(
+            f"truncated logits length {int(logits.shape[1])} does not equal answer_tokens + 1 ({answer_tokens + 1})")
+    return logits[0, :answer_tokens, :], logits[0, answer_tokens, :]
+
+
+def stop_is_consistent(
+    raw_finish_reason: str,
+    stop_top1_token_id: int,
+    eos_token_id: int | None,
+    stop_token_ids: set[int] | None = None,
+) -> bool:
+    """Fail closed unless the recorded stop agrees with a model stop token."""
+    if raw_finish_reason != "stop":
+        return False
+    accepted = set(stop_token_ids or ())
+    if eos_token_id is not None:
+        accepted.add(int(eos_token_id))
+    return stop_top1_token_id in accepted
+
+
 def verify_token_path(
     model: Any,
     tokenizer: Any,
@@ -98,6 +136,7 @@ def verify_token_path(
     raw_output_text: str,
     raw_finish_reason: str,
     margin_threshold: float,
+    stop_token_ids: set[int] | None = None,
 ) -> dict[str, Any]:
     import torch
 
@@ -112,7 +151,8 @@ def verify_token_path(
             use_cache=False,
             logits_to_keep=len(answer_ids) + 1,
         )
-        prediction_logits = output.logits[0, answer_logit_slice(len(prompt_ids), len(answer_ids)), :].float()
+        prediction_logits, stop_logits = select_truncated_answer_and_stop_logits(output.logits, len(answer_ids))
+        prediction_logits = prediction_logits.float()
         targets = torch.tensor(answer_ids, device=prediction_logits.device)
         top2_values, top2_ids = prediction_logits.topk(2, dim=-1)
         top1_ids = top2_ids[:, 0]
@@ -122,8 +162,7 @@ def verify_token_path(
         )
         margins = raw_logits - best_other
         matches = top1_ids == targets
-        stop_logits = output.logits[0, len(prompt_ids) + len(answer_ids) - 1, :].float()
-        stop_top1 = int(stop_logits.argmax().item())
+        stop_top1 = int(stop_logits.float().argmax().item())
     elapsed_ms = (time.perf_counter() - started) * 1000.0
     matched = int(matches.sum().item())
     minimum_margin = float(margins.min().item())
@@ -131,7 +170,9 @@ def verify_token_path(
     eos_id = getattr(tokenizer, "eos_token_id", None)
     # A generation stopped by max length is not an output-stop certificate.
     # Missing legacy metadata also fails closed rather than being assumed safe.
-    eos_consistency = bool(raw_finish_reason == "stop" and eos_id is not None and stop_top1 == int(eos_id))
+    eos_consistency = stop_is_consistent(
+        raw_finish_reason, stop_top1, eos_id, stop_token_ids,
+    )
     certificate = all_match and eos_consistency and minimum_margin >= margin_threshold
     return {
         "answer_tokens": len(answer_ids),
@@ -209,11 +250,14 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
         try:
             if sample is None or raw is None or label is None:
                 raise KeyError("missing sample, raw output, or paired label")
-            prompt_ids = build_prompt_ids(job, sample, tokenizer, args.max_model_len)
+            prompt_ids = build_prompt_ids(
+                job, sample, tokenizer, args.max_model_len, args.stable_word_limit,
+            )
             row.update(verify_token_path(
                 model, tokenizer, prompt_ids, str(raw.get("output_text", "")),
                 str(raw.get("finish_reason", "")),
                 args.margin_threshold,
+                args.stop_token_ids,
             ))
         except Exception as exc:
             row.update({
@@ -285,10 +329,19 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--summary-output", type=Path, required=True)
     parser.add_argument("--margin-threshold", type=float, default=0.0)
+    parser.add_argument(
+        "--stop-token-ids",
+        default="",
+        help="Comma-separated additional model stop-token IDs; EOS is always accepted.",
+    )
     parser.add_argument("--max-model-len", type=int, default=8192)
+    parser.add_argument("--stable-word-limit", type=int, default=2600)
     parser.add_argument("--partitions", default="")
     parser.add_argument("--max-candidates", type=int, default=0)
     args = parser.parse_args()
+    args.stop_token_ids = {
+        int(item.strip()) for item in args.stop_token_ids.split(",") if item.strip()
+    }
     rows = run(args)
     write_csv(args.summary_output, summarize(rows), SUMMARY_FIELDS)
     print(json.dumps(next(row for row in summarize(rows) if row["partition"] == "all"), ensure_ascii=False, indent=2))

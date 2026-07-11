@@ -21,6 +21,9 @@ CALL_END = "# CONTRACTKV_PREFIX_METRICS_CALL_END"
 HELPER = r'''
 # CONTRACTKV_PREFIX_METRICS_HELPER_BEGIN
 _contractkv_prefix_metric_seen = set()
+_contractkv_prefix_query_seen = None
+_contractkv_prefix_query_signature = None
+_contractkv_prefix_query_epoch = 0
 
 
 def _contractkv_prefix_metrics_write(event):
@@ -70,12 +73,72 @@ def _contractkv_prefix_metrics_block_state(scheduler, block_ids):
         return [], [], []
 
 
+def _contractkv_prefix_metrics_process_query(scheduler):
+    """Answer read-only candidate residency queries from the layout compiler."""
+    import json
+    import os
+    import time as _time
+    global _contractkv_prefix_query_seen
+    global _contractkv_prefix_query_signature
+    global _contractkv_prefix_query_epoch
+    query_path = os.environ.get("CONTRACTKV_PREFIX_QUERY_PATH")
+    result_path = os.environ.get("CONTRACTKV_PREFIX_QUERY_RESULT_PATH")
+    if not query_path or not result_path or not os.path.exists(query_path):
+        return
+    try:
+        with open(query_path, encoding="utf-8") as handle:
+            query = json.load(handle)
+        query_id = str(query.get("query_id", ""))
+        if not query_id or query_id == _contractkv_prefix_query_seen:
+            return
+        pool = scheduler.kv_cache_manager.block_pool
+        resident = {bytes(key).hex() for key in pool.cached_block_hash_to_block}
+        signature = hash(frozenset(resident))
+        if signature != _contractkv_prefix_query_signature:
+            _contractkv_prefix_query_epoch += 1
+            _contractkv_prefix_query_signature = signature
+        candidates = []
+        for candidate in query.get("candidates", []):
+            hashes = [str(item) for item in candidate.get("block_hashes", []) if item]
+            matched = 0
+            for block_hash in hashes:
+                if block_hash not in resident:
+                    break
+                matched += 1
+            candidates.append({
+                "candidate_id": str(candidate.get("candidate_id", "")),
+                "resident_prefix_blocks": matched,
+                "candidate_blocks": len(hashes),
+            })
+        result = {
+            "query_id": query_id,
+            "timestamp": _time.time(),
+            "cache_epoch": _contractkv_prefix_query_epoch,
+            "resident_hash_entries": len(resident),
+            "free_gpu_blocks": int(pool.get_num_free_blocks()),
+            "candidates": candidates,
+        }
+        temporary = result_path + ".tmp"
+        with open(temporary, "w", encoding="utf-8") as handle:
+            json.dump(result, handle)
+        os.replace(temporary, result_path)
+        _contractkv_prefix_query_seen = query_id
+        _contractkv_prefix_metrics_write({
+            "event": "prefix_cache_candidate_residency_query", **result,
+        })
+    except Exception as exc:
+        _contractkv_prefix_metrics_write({
+            "event": "prefix_cache_candidate_query_error", "error": repr(exc),
+        })
+
+
 def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
     import os
     import time as _time
     if os.environ.get("CONTRACTKV_PREFIX_METRICS") != "1":
         return
     try:
+        _contractkv_prefix_metrics_process_query(scheduler)
         block_pool = getattr(getattr(scheduler, "kv_cache_manager", None), "block_pool", None)
         block_size = int(getattr(scheduler, "block_size", 0) or 0)
         scheduled = getattr(scheduler_output, "num_scheduled_tokens", {}) or {}
@@ -178,7 +241,11 @@ def _remove_marked_region(text: str, begin: str, end: str) -> str:
 def install(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
     if HELPER_BEGIN in text:
-        return "already_installed"
+        text = _remove_marked_region(text, HELPER_BEGIN, HELPER_END)
+        anchor = "class Scheduler"
+        text = text.replace(anchor, HELPER + "\n\n" + anchor, 1)
+        path.write_text(text, encoding="utf-8")
+        return "updated"
     anchor = "class Scheduler"
     if anchor not in text:
         raise RuntimeError("Could not find V1 Scheduler class anchor.")

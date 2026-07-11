@@ -17,7 +17,7 @@ FIELDS = [
     "min_completed_requests", "min_second_half_samples_required", "mean_completion_rate",
     "max_p95_ttft_ms", "mean_slo_goodput_rps", "max_end_backlog",
     "max_queue_slope", "mean_primer_latency_ms", "mean_cold_start_amortized_latency_ms",
-    "mean_new_prefill_tokens", "claim_boundary",
+    "max_p95_send_lag_ms", "max_p99_send_lag_ms", "mean_new_prefill_tokens", "claim_boundary",
 ]
 
 
@@ -62,6 +62,8 @@ def summarize(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
             "max_queue_slope": max(number(row["second_half_wait_slope_sec_per_sec"]) for row in group),
             "mean_primer_latency_ms": statistics.mean(number(row["primer_latency_ms"]) for row in group),
             "mean_cold_start_amortized_latency_ms": statistics.mean(number(row["cold_start_amortized_latency_ms"]) for row in group),
+            "max_p95_send_lag_ms": max(number(row.get("p95_send_lag_ms")) for row in group),
+            "max_p99_send_lag_ms": max(number(row.get("p99_send_lag_ms")) for row in group),
             "mean_new_prefill_tokens": statistics.mean(number(row["mean_observed_new_prefill_tokens"]) for row in group),
             "claim_boundary": "Finite capacity requires all three seeds to satisfy completion, SLO, queue-slope, drain, and minimum-sample gates.",
         })

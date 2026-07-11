@@ -21,6 +21,29 @@ CAPOSC reduces mean TTFT by 75.5% at concurrency one. At concurrency four it red
 
 Static POSC and CAPOSC are nearly tied in this workload. This table therefore proves the real serving benefit of legal canonical layout, but does not by itself prove that cache-aware candidate selection is necessary.
 
+## Row-Wise Fairness And Warm/Cold Split
+
+The postprocess audit joins all policies by `seed x concurrency x trajectory x turn`.
+All 450 row-wise keys join across raw-order, static POSC, and CAPOSC. The
+order-insensitive content signatures match, and the prompt token counts and
+source labels match. This closes the fairness gap: policy differences are not
+caused by missing rows, different source samples, or different content.
+
+The warm/cold breakdown shows why all-turn p95 must be interpreted carefully.
+Cold turns carry the unavoidable first-request/context-build cost. Warm turns
+show the steady reuse behavior:
+
+| Concurrency | Policy | Warm mean TTFT | Warm p95 TTFT |
+| --- | --- | ---: | ---: |
+| 1 | raw-order | 1,471 ms | 2,130 ms |
+| 1 | CAPOSC | 79 ms | 96 ms |
+| 4 | raw-order | 4,303 ms | 6,547 ms |
+| 4 | CAPOSC | 666 ms | 2,145 ms |
+
+This keeps the paper claim precise: CAPOSC's core serving win is warm-turn
+prefill/cache work reduction, while cold-turn tails remain a separate cost that
+must be amortized or handled by scheduling.
+
 ## Concurrent Physical Sharing
 
 The physical replay validates only same-scheduler-snapshot sharing. At 6K/20 sessions, static POSC and CAPOSC each reach a concurrent dedup factor of 20.0x with a refcount-match rate of 100%, while raw order has effective dedup of about 1.00x. CAPOSC lowers p95 TTFT from 30.22 s to 0.53 s and mean used-block high water from 1,513 to 446.
@@ -35,3 +58,5 @@ The natural replay remains a serving and marker/order-sanity experiment. Its tas
 - `results/hard_systems/phase15a_natural_fair_summary_v0.csv`
 - `results/hard_systems/phase15a_physical_fair_raw_v0.csv`
 - `results/hard_systems/phase15a_physical_fair_summary_v0.csv`
+- `results/hard_systems/phase15a_rowwise_fairness_v0.csv`
+- `results/hard_systems/phase15a_warm_cold_family_breakdown_v0.csv`

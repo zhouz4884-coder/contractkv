@@ -219,6 +219,82 @@ def quality_sanity(output_text: str, expected_answer: str) -> bool:
     return expected_answer in output_text
 
 
+async def send_chat_stream_async(
+    session: Any,
+    base_url: str,
+    model: str,
+    messages: list[dict[str, str]],
+    max_tokens: int,
+    request_tag: str,
+    seed: int = 14014,
+) -> dict[str, Any]:
+    """Async streaming request for open-loop load generation.
+
+    The caller owns a shared ``aiohttp.ClientSession`` so offered arrivals do
+    not queue in the default ``asyncio.to_thread`` executor before reaching
+    the vLLM endpoint.
+    """
+    payload = {
+        "model": model, "messages": messages, "max_tokens": max_tokens,
+        "temperature": 0, "top_p": 1, "seed": seed, "stream": True,
+        "stream_options": {"include_usage": True},
+    }
+    started = time.perf_counter()
+    chunks: list[dict[str, Any]] = []
+    token_times: list[float] = []
+    usage: dict[str, Any] | None = None
+    finish_reason = ""
+    try:
+        async with session.post(
+            base_url.rstrip("/") + "/chat/completions", json=payload,
+            headers={"Content-Type": "application/json", "X-Request-Id": request_tag},
+        ) as response:
+            response.raise_for_status()
+            async for raw in response.content:
+                line = raw.decode("utf-8", errors="replace").strip()
+                if not line.startswith("data:"):
+                    continue
+                item = line[5:].strip()
+                if item == "[DONE]":
+                    break
+                chunk = json.loads(item)
+                if chunk.get("usage"):
+                    usage = chunk["usage"]
+                choices = chunk.get("choices") or []
+                if choices and choices[0].get("finish_reason"):
+                    finish_reason = str(choices[0]["finish_reason"])
+                content = chunk_delta_content(chunk)
+                if content:
+                    chunks.append(chunk)
+                    token_times.append(time.perf_counter())
+        ended = time.perf_counter()
+        output = "".join(chunk_delta_content(chunk) for chunk in chunks)
+        output_tokens = len(chunks)
+        first = token_times[0] if token_times else None
+        last = token_times[-1] if token_times else None
+        cached, observable = _extract_cached_tokens(usage)
+        return {
+            "request_id": chunks[0].get("id", request_tag) if chunks else request_tag,
+            "success": bool(output),
+            "ttft_ms": round((first - started) * 1000.0, 6) if first is not None else 0.0,
+            "tpot_ms": round(((last - first) * 1000.0 / max(output_tokens - 1, 1)), 6) if first and last and output_tokens > 1 else 0.0,
+            "total_latency_ms": round((ended - started) * 1000.0, 6),
+            "output_tokens": output_tokens, "output_text": output,
+            "cached_tokens": cached, "cached_tokens_observable": observable,
+            "finish_reason": finish_reason,
+            "error_type": "none" if output else "bad_output", "error_message": "",
+        }
+    except Exception as exc:
+        ended = time.perf_counter()
+        return {
+            "request_id": request_tag, "success": False, "ttft_ms": 0.0,
+            "tpot_ms": 0.0, "total_latency_ms": round((ended - started) * 1000.0, 6),
+            "output_tokens": 0, "output_text": "", "cached_tokens": "",
+            "cached_tokens_observable": False, "finish_reason": "",
+            "error_type": type(exc).__name__, "error_message": str(exc)[:300],
+        }
+
+
 def run_case(
     base_url: str,
     model: str,

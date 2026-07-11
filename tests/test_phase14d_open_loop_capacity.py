@@ -24,6 +24,11 @@ class Phase14DOpenLoopCapacityTest(unittest.TestCase):
         rows = [{"success": True, "quality_sanity": True, "ttft_ms": 100, "tpot_ms": 1, "latency_ms": 200, "arrival_offset_ms": 600, "scheduler_wait_ms": 2, "prefix_hit_tokens": 0, "observed_new_prefill_tokens": 1, "used_gpu_blocks": 5, "free_gpu_blocks": 99}]
         self.assertEqual(summarize(rows, args, 50)["cold_start_amortized_latency_ms"], 250)
 
+    def test_send_lag_closes_capacity_gate(self) -> None:
+        args = argparse.Namespace(cell_id="x", policy="raw-order", arrival_rate_rps=1.0, seed=1, measurement_seconds=10.0, offered_requests=10, slo_ttft_ms=5000.0, min_completed=0, min_second_half_samples=0, max_p95_send_lag_ms=5.0, max_p99_send_lag_ms=20.0)
+        rows = [{"success": True, "quality_sanity": True, "ttft_ms": 100, "tpot_ms": 1, "latency_ms": 100, "arrival_offset_ms": i * 1000, "scheduler_wait_ms": 1, "send_lag_ms": 25, "prefix_hit_tokens": 0, "observed_new_prefill_tokens": 1, "used_gpu_blocks": 1, "free_gpu_blocks": 99} for i in range(10)]
+        self.assertFalse(summarize(rows, args)["capacity_stable"])
+
 
 if __name__ == "__main__":
     unittest.main()
