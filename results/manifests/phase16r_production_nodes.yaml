@@ -1,0 +1,19 @@
+phase: phase16r
+title: three production-strengthened independent nodes
+status: complete
+run_base_commit: 9ff76eb
+model: Qwen3-4B
+backend: vLLM-0.10.2
+gpu: 1x-RTX-3090
+nodes:
+  pstp:
+    status: complete
+    result: results/hard_systems/phase16r_pstp_live_v0.csv
+  verifier:
+    status: complete
+    result: results/hard_systems/phase16r_verifier_live_v0.csv
+    historical_diagnosis: results/hard_systems/phase16r_historical_false_safe_classification_v0.csv
+  quiescence:
+    status: complete
+    result: results/hard_systems/phase16r_quiescence_pareto_v0.csv
+claim_boundary: independent live nodes; verifier-to-PSTP connection deferred to Phase 17
