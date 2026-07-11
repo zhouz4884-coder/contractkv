@@ -53,6 +53,23 @@ def _contractkv_prefix_metrics_block_ids(scheduler, request_id):
         return []
 
 
+def _contractkv_prefix_metrics_block_state(scheduler, block_ids):
+    try:
+        block_pool = scheduler.kv_cache_manager.block_pool
+        refcounts = []
+        hashes = []
+        resident = []
+        for block_id in block_ids:
+            block = block_pool.blocks[int(block_id)]
+            refcounts.append(int(block.ref_cnt))
+            block_hash = getattr(block, "block_hash", None)
+            hashes.append(bytes(block_hash).hex() if block_hash is not None else None)
+            resident.append(block_hash is not None)
+        return refcounts, hashes, resident
+    except Exception:
+        return [], [], []
+
+
 def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
     import os
     import time as _time
@@ -78,6 +95,8 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
             prefill_scheduled_tokens = min(scheduled_tokens, remaining_prompt)
             prefix_hit_tokens = min(prompt_tokens, computed_before) if initial else None
             physical_ids = _contractkv_prefix_metrics_block_ids(scheduler, request_id)
+            block_refcounts, block_hashes, block_cache_resident = (
+                _contractkv_prefix_metrics_block_state(scheduler, physical_ids))
             # These are scheduler-observable derivations, not hidden cache-manager counters.
             reused_blocks = (prefix_hit_tokens // block_size) if initial and block_size else None
             allocated_blocks = max(0, len(physical_ids) - (reused_blocks or 0))
@@ -98,8 +117,11 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
                 "num_computed_tokens_before_schedule": computed_before,
                 "scheduled_tokens": scheduled_tokens,
                 "block_size": block_size,
-                "physical_block_ids": physical_ids[:256],
+                "physical_block_ids": physical_ids[:1024],
                 "physical_block_count": len(physical_ids),
+                "physical_block_refcounts": block_refcounts[:1024],
+                "physical_block_hashes": block_hashes[:1024],
+                "physical_block_cache_resident": block_cache_resident[:1024],
                 "reused_physical_blocks": reused_blocks,
                 "reused_physical_blocks_method": "derived_floor(prefix_hit_tokens/block_size)",
                 "newly_allocated_blocks": allocated_blocks,
@@ -111,6 +133,10 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
                 "decode_gpu_ms": None,
                 "gpu_timing_availability": "requires_worker_or_metrics_endpoint_probe",
                 "free_gpu_blocks": int(block_pool.get_num_free_blocks()) if block_pool is not None else None,
+                "total_gpu_blocks": int(getattr(block_pool, "num_gpu_blocks", 0) or 0) if block_pool is not None else None,
+                "used_gpu_blocks": (int(getattr(block_pool, "num_gpu_blocks", 0) or 0)
+                                    - int(block_pool.get_num_free_blocks())) if block_pool is not None else None,
+                "cached_physical_entries": sum(len(blocks) for blocks in block_pool.cached_block_hash_to_block.values()) if block_pool is not None else None,
             })
     except Exception as exc:
         _contractkv_prefix_metrics_write({"event": "prefix_cache_probe_error", "error": repr(exc)})

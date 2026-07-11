@@ -1,0 +1,23 @@
+phase: phase14
+title: physical_cache_safety_capacity
+model: Qwen3-8B
+backend: vLLM 0.10.2 V1
+hardware: 1x RTX 3090 for serving; GPU1 used only for SLC verification
+completed:
+  - phase14rc_physical_residency_validator
+  - phase14q_request_level_safety_audit
+  - phase14m_warm_cold_physical_dedup
+  - phase14slc_teacher_forced_and_epoch_transfer
+  - phase14d_open_loop_shared_context_capacity
+claims:
+  physical_residency_validator: passed
+  static_qc_deployment_gate: closed
+  slc_deployment_gate: closed_due_to_coverage
+  shared_context_physical_dedup: passed
+  final_raw_capacity_knee: pending_longer_low_rate_measurement
+artifacts:
+  - results/hard_systems/phase14rc_residency_summary_v2.csv
+  - results/end_to_end/phase14q_request_safety_summary_v0.csv
+  - results/hard_systems/phase14m_scaling_summary_v2.csv
+  - results/hard_systems/phase14slc_teacher_forced_summary_v0.csv
+  - results/hard_systems/phase14d_capacity_final2_summary_v0.csv

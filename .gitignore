@@ -85,5 +85,11 @@ results/hard_systems/*
 !results/hard_systems/*.json
 !results/hard_systems/*.jsonl
 
+# Phase 14Q's request-level audit is a compact, paper-facing selector record.
+!results/end_to_end/
+results/end_to_end/*
+!results/end_to_end/phase14q_request_safety_audit_v0.csv
+!results/end_to_end/phase14q_request_safety_summary_v0.csv
+
 # Local worktree isolation.
 .worktrees/

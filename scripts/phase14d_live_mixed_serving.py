@@ -26,6 +26,7 @@ from scripts.phase12f_real_vllm_caposc_replay import _messages_for_case, _ordere
 from scripts.phase13b_fresh_policy_quality_replay import build_case
 from scripts.phase14c_full_pool_qc_inputs import _feature_for_candidate, _retokenize_case
 from scripts.phase14r_qc_candidate_calibration import FEATURE_NAMES, _feature_vector, predict
+from scripts.summarize_vllm_prefix_metrics import summarize as summarize_prefix_events
 
 
 POLICIES = ["vllm-raw-order", "static-posc", "contractkv-caposc", "qc-caposc-v2"]
@@ -114,14 +115,12 @@ def build_sessions(
                 case["unsafe_answer"] = "ORDER_ERROR"
                 for segment in case["segments"]:
                     if segment.get("segment_type") == "TOOL_OBS":
-                        segment["text"] = f"[TOOL_OBS_DYNAMIC] session={session_id}; turn={turn}; status=ok; no extra answer evidence."
+                        segment["text"] = (
+                            f"[TOOL_OBS_DYNAMIC] turn={turn}; latest_marker={marker}; "
+                            "status=ok."
+                        )
                     elif segment.get("segment_type") == "USER_QUERY":
-                        segment["text"] = f"Return exactly the marker {marker}."
-                stable = next(
-                    segment for segment in case["segments"]
-                    if segment.get("segment_type") not in {"SYS_PROMPT", "TOOL_OBS", "USER_QUERY"}
-                )
-                stable["text"] = str(stable.get("text", "")) + f"\nThe required marker for turn {turn} is {marker}."
+                        segment["text"] = "Return exactly the latest_marker from TOOL_OBS."
                 case = _retokenize_case(case, tokenizer, max_model_len)
                 session_turns.append({"case": case, "source_sample": sample, "family": family})
             output.append({"session_id": session_id, "turns": session_turns})
@@ -185,21 +184,14 @@ def prepare_cell(
     tokenizer: Any,
     max_model_len: int,
 ) -> list[list[dict[str, Any]]]:
-    prepared = []
+    # Compilation is deliberately deferred to _run_session.  CAPOSC is an
+    # online controller: turn i must execute before its layout is committed to
+    # the ledger used by turn i+1.
+    prepared: list[list[dict[str, Any]]] = []
     for session in sessions:
-        ledger = SegmentPrefixLedger()
         turns = []
         for entry in session["turns"]:
-            started = time.perf_counter()
-            job = _compile_job(policy, entry, ledger, qc_model, tokenizer, max_model_len)
-            job["compiler_overhead_ms"] = (time.perf_counter() - started) * 1000.0
-            messages = [dict(message) for message in job["messages"]]
-            messages[0]["content"] = f"[CACHE_CELL:{cell_id}]\n" + messages[0]["content"]
-            job["messages"] = messages
-            job["entry"] = entry
-            turns.append(job)
-            compiled = job["compiled"]
-            ledger.update(entry["case"]["trajectory_id"], int(entry["case"]["turn_id"]), entry["case"]["segments"], compiled["topological_order"], policy=policy)
+            turns.append({"entry": entry})
         prepared.append(turns)
     return prepared
 
@@ -216,13 +208,24 @@ def _run_session(
     policy: str,
     concurrency: int,
     arrival_mode: str,
+    qc_model: dict[str, Any],
+    tokenizer: Any,
+    max_model_len: int,
 ) -> list[dict[str, Any]]:
     remaining = delay_s - (time.perf_counter() - cell_started)
     if remaining > 0:
         time.sleep(remaining)
     rows = []
-    for job in turns:
-        entry, compiled = job["entry"], job["compiled"]
+    ledger = SegmentPrefixLedger()
+    for turn_entry in turns:
+        entry = turn_entry["entry"]
+        compile_started = time.perf_counter()
+        job = _compile_job(policy, entry, ledger, qc_model, tokenizer, max_model_len)
+        compiler_overhead_ms = (time.perf_counter() - compile_started) * 1000.0
+        messages = [dict(message) for message in job["messages"]]
+        messages[0]["content"] = f"[CACHE_CELL:{cell_id}]\n" + messages[0]["content"]
+        job["messages"] = messages
+        compiled = job["compiled"]
         case = entry["case"]
         result = send_chat_stream(base_url, model, job["messages"], max_tokens, timeout, f"{cell_id}-{case['trajectory_id']}-{case['turn_id']}")
         quality, score = score_real_output(result.get("output_text", ""), case["expected_answer"], case["unsafe_answer"], compiled.get("violated_edges", []))
@@ -233,7 +236,7 @@ def _run_session(
             "request_id": result.get("request_id", ""), "success": result.get("success", False), "quality_sanity": quality,
             "quality_score": score, "ttft_ms": result.get("ttft_ms", 0), "tpot_ms": result.get("tpot_ms", 0),
             "latency_ms": result.get("total_latency_ms", 0), "output_tokens": result.get("output_tokens", 0),
-            "compiler_overhead_ms": job["compiler_overhead_ms"], "predicted_risk": job["predicted_risk"],
+            "compiler_overhead_ms": compiler_overhead_ms, "predicted_risk": job["predicted_risk"],
             "qc_fallback": job["qc_fallback"], "selected_layout_policy": compiled.get("selected_policy", compiled.get("policy", "")),
             "layout_decision": compiled.get("layout_decision", ""), "actual_prompt_tokens": compiled.get("actual_prompt_tokens", 0),
             "estimated_lcp_tokens": compiled.get("estimated_lcp_tokens", 0), "estimated_new_prefill_tokens": compiled.get("estimated_new_prefill_tokens", 0),
@@ -241,6 +244,11 @@ def _run_session(
             "error_type": result.get("error_type", ""), "error_message": result.get("error_message", ""), "batch_wall_time_ms": 0,
             "claim_boundary": "Fresh live vLLM mixed-agent request; QC uses calibration-only model and marker sanity is not official task scoring.",
         })
+        if result.get("success"):
+            ledger.update(
+                case["trajectory_id"], int(case["turn_id"]), case["segments"],
+                compiled["topological_order"], policy=policy,
+            )
     return rows
 
 
@@ -249,7 +257,7 @@ def run_live(args: argparse.Namespace, sessions: list[dict[str, Any]], qc_model:
     rng = random.Random(args.seed)
     for arrival_mode in args.arrival_modes:
         for concurrency in args.concurrencies:
-            for policy in POLICIES:
+            for policy in args.policies:
                 cell_id = f"phase14d-{arrival_mode}-c{concurrency}-{policy}"
                 prepared = prepare_cell(sessions, policy, cell_id, qc_model, tokenizer, args.max_model_len)
                 if arrival_mode == "poisson":
@@ -262,7 +270,12 @@ def run_live(args: argparse.Namespace, sessions: list[dict[str, Any]], qc_model:
                 started = time.perf_counter()
                 cell_rows = []
                 with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as pool:
-                    futures = [pool.submit(_run_session, turns, delay, started, args.base_url, args.model, args.max_tokens, args.timeout, cell_id, policy, concurrency, arrival_mode) for turns, delay in zip(prepared, delays)]
+                    futures = [pool.submit(
+                        _run_session, turns, delay, started, args.base_url,
+                        args.model, args.max_tokens, args.timeout, cell_id,
+                        policy, concurrency, arrival_mode, qc_model, tokenizer,
+                        args.max_model_len,
+                    ) for turns, delay in zip(prepared, delays)]
                     for future in concurrent.futures.as_completed(futures):
                         cell_rows.extend(future.result())
                 wall = (time.perf_counter() - started) * 1000.0
@@ -277,16 +290,15 @@ def run_live(args: argparse.Namespace, sessions: list[dict[str, Any]], qc_model:
 def join_metrics(rows: list[dict[str, Any]], metrics_path: Path | None) -> None:
     if not metrics_path or not metrics_path.exists():
         return
-    initial = {
-        str(event.get("request_id", "")): event
-        for event in load_jsonl(metrics_path)
-        if event.get("initial_prefill_observation") is True
+    by_request = {
+        str(metric.get("request_id", "")): metric
+        for metric in summarize_prefix_events(load_jsonl(metrics_path))
     }
     for row in rows:
-        metric = initial.get(str(row.get("request_id", "")))
+        metric = by_request.get(str(row.get("request_id", "")))
         if metric:
             row["prefix_hit_tokens"] = metric.get("prefix_hit_tokens", "")
-            row["observed_new_prefill_tokens"] = metric.get("new_prefill_tokens_this_iteration", "")
+            row["observed_new_prefill_tokens"] = metric.get("new_prefill_tokens", "")
             row["metric_join_success"] = True
 
 
@@ -332,6 +344,7 @@ def main() -> int:
     parser.add_argument("--sessions-per-family", type=int, default=12)
     parser.add_argument("--turns", type=int, default=5)
     parser.add_argument("--arrival-modes", default="burst,poisson")
+    parser.add_argument("--policies", default=",".join(POLICIES))
     parser.add_argument("--concurrencies", default="1,2,4,8")
     parser.add_argument("--slo-buckets-ms", default="1000,2000,3000,5000")
     parser.add_argument("--poisson-mean-interarrival-ms", type=float, default=50.0)
@@ -345,12 +358,18 @@ def main() -> int:
     parser.add_argument("--summary-output", type=Path, required=True)
     args = parser.parse_args()
     args.arrival_modes = [value.strip() for value in args.arrival_modes.split(",") if value.strip()]
+    args.policies = [value.strip() for value in args.policies.split(",") if value.strip()]
+    unknown_policies = sorted(set(args.policies) - set(POLICIES))
+    if unknown_policies:
+        raise SystemExit(f"unknown policies: {','.join(unknown_policies)}")
     args.concurrencies = [int(value) for value in args.concurrencies.split(",") if value.strip()]
     slos = [float(value) for value in args.slo_buckets_ms.split(",") if value.strip()]
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, trust_remote_code=True)
     qc_model = json.loads(args.qc_model.read_text(encoding="utf-8"))
-    if not qc_model.get("deployment_gate_open", False) and not args.allow_closed_gate_smoke:
+    if ("qc-caposc-v2" in args.policies
+            and not qc_model.get("deployment_gate_open", False)
+            and not args.allow_closed_gate_smoke):
         raise SystemExit("QC deployment gate is closed; refusing full Phase 14D live replay")
     sessions = build_sessions(load_jsonl(args.full_pool), args.sessions_per_family, args.turns, tokenizer, args.max_model_len, args.seed)
     rows = run_live(args, sessions, qc_model, tokenizer)
