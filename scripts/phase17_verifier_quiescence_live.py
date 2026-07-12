@@ -26,7 +26,7 @@ RAW_FIELDS = ["seed", "condition", "request_class", "success", "ttft_ms", "total
 SUMMARY_FIELDS = [
     "condition", "active_requests", "active_success_rate", "verifier_requests",
     "verifier_success_rate", "active_mean_ttft_ms", "active_p95_ttft_ms",
-    "p95_penalty_ms", "shadow_completion_rate", "mixed_rounds",
+    "active_p50_ttft_ms", "active_p99_ttft_ms", "p95_penalty_ms", "per_seed_p95_penalty_ms", "shadow_completion_rate", "mixed_rounds",
     "max_shadow_request_tokens", "idle_hysteresis_events", "collision_events",
     "gate_pass", "claim_boundary",
 ]
@@ -60,6 +60,14 @@ async def run(args: argparse.Namespace) -> list[dict[str, Any]]:
     import aiohttp
     timeout = aiohttp.ClientTimeout(total=args.timeout)
     rows = []
+    frozen_policy = None; frozen_policy_hash = ""; identity = None
+    if args.policy:
+        if args.model_path is None:
+            raise ValueError("--model-path is required with --policy")
+        from scripts.contractkv_frozen_policy import load_frozen_policy, runtime_identity
+        import vllm
+        frozen_policy, frozen_policy_hash = load_frozen_policy(args.policy)
+        identity = runtime_identity(args.model, args.model_path, vllm.__version__)
     registry: dict[str, PSTPRuntime] = {}
     prepared: dict[int, list[tuple[str, list[int]]]] = {}
     for seed in args.seeds:
@@ -76,6 +84,7 @@ async def run(args: argparse.Namespace) -> list[dict[str, Any]]:
                 candidate_prompt_ids=candidate_ids, raw=raw, stop_token_id=args.stop_token_id,
                 thresholds={"tau_raw": 0.0, "tau_abs": 0.0, "tau_drop": 4.0},
                 candidate_messages=layout["candidate_messages"],
+                frozen_policy=frozen_policy, frozen_policy_hash=frozen_policy_hash, runtime_identity=identity,
             )
             prepared[seed].append((request_id, candidate_ids + raw["token_ids"] + [raw["terminal_stop_token_id"]]))
     write_runtime_registry(args.registry, registry)
@@ -127,6 +136,14 @@ def summarize(args: argparse.Namespace, rows: list[dict[str, Any]], events: list
         good_verifiers = [row for row in verifiers if row["success"]]
         ttft = [float(row["ttft_ms"]) for row in good]
         p95 = percentile(ttft, .95)
+        p50 = percentile(ttft, .50)
+        p99 = percentile(ttft, .99)
+        per_seed = {}
+        for seed in args.seeds:
+            base_seed = [float(row["ttft_ms"]) for row in rows if row["seed"] == seed and row["condition"] == "baseline" and row["request_class"] == "active" and row["success"]]
+            live_seed = [float(row["ttft_ms"]) for row in rows if row["seed"] == seed and row["condition"] == "live_verifier" and row["request_class"] == "active" and row["success"]]
+            if base_seed and live_seed:
+                per_seed[str(seed)] = percentile(live_seed, .95) - percentile(base_seed, .95)
         mixed = sum(int(event.get("foreground_tokens", 0)) > 0 for event in rounds) if condition == "live_verifier" else 0
         max_chunk = max((int(event.get("max_shadow_request_tokens", 0)) for event in rounds), default=0) if condition == "live_verifier" else 0
         penalty = p95 - baseline_p95 if condition == "live_verifier" else 0.0
@@ -141,6 +158,7 @@ def summarize(args: argparse.Namespace, rows: list[dict[str, Any]], events: list
             "verifier_success_rate": len(good_verifiers) / max(len(verifiers), 1) if verifiers else 1.0,
             "active_mean_ttft_ms": statistics.mean(ttft) if ttft else 0,
             "active_p95_ttft_ms": p95, "p95_penalty_ms": penalty,
+            "active_p50_ttft_ms": p50, "active_p99_ttft_ms": p99, "per_seed_p95_penalty_ms": json.dumps(per_seed, sort_keys=True),
             "shadow_completion_rate": len(good_verifiers) / max(len(verifiers), 1) if verifiers else 1.0,
             "mixed_rounds": mixed, "max_shadow_request_tokens": max_chunk,
             "idle_hysteresis_events": sum(event.get("reason") == "idle_hysteresis" for event in admissions) if condition == "live_verifier" else 0,
@@ -162,6 +180,8 @@ def main() -> int:
     parser.add_argument("--base-url", default="http://127.0.0.1:8017/v1")
     parser.add_argument("--model", default="qwen3-4b")
     parser.add_argument("--registry", type=Path, required=True)
+    parser.add_argument("--policy", type=Path)
+    parser.add_argument("--model-path", type=Path)
     parser.add_argument("--event-log", type=Path, required=True)
     parser.add_argument("--raw-output", type=Path, required=True)
     parser.add_argument("--summary-output", type=Path, required=True)

@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import urllib.request
+from dataclasses import asdict, is_dataclass
 from typing import Any
 
 from scripts.contractkv_pstp import classify_tokenization_glue, lcp_length
@@ -87,6 +88,9 @@ def build_runtime(
     thresholds: dict[str, float],
     candidate_messages: list[dict[str, str]],
     fault_mode: str = "none",
+    frozen_policy: object | None = None,
+    frozen_policy_hash: str = "",
+    runtime_identity: object | None = None,
 ) -> PSTPRuntime:
     boundary = lcp_length(stable_ids, candidate_prompt_ids)
     glue_loss, glue_status = classify_tokenization_glue(len(stable_ids), boundary)
@@ -101,6 +105,10 @@ def build_runtime(
         dependency_graph_hash=digest([["system", "stable"], ["stable", "query"]]),
         shadow_work=True,
         fault_mode=fault_mode,
+        policy_hash=frozen_policy_hash,
+        policy_version=str(getattr(frozen_policy, "policy_version", "")),
+        attestation_mode=str(getattr(frozen_policy, "attestation_mode", "")),
+        runtime_identity=dict(getattr(runtime_identity, "__dict__", runtime_identity or {})),
     )
     payload = {
         "raw_token_ids": raw["token_ids"],
@@ -113,5 +121,9 @@ def build_runtime(
         "model_hash": digest("qwen-live-backend"),
         "tokenizer_hash": digest(candidate_prompt_ids),
         "chat_template_hash": digest(candidate_messages),
+        "frozen_policy": asdict(frozen_policy) if frozen_policy is not None and is_dataclass(frozen_policy) else dict(frozen_policy or {}),
+        "policy_hash": frozen_policy_hash,
+        "policy_version": str(getattr(frozen_policy, "policy_version", "")),
+        "attestation_mode": str(getattr(frozen_policy, "attestation_mode", "")),
     }
     return PSTPRuntime(plan=plan, verify_payload=payload)

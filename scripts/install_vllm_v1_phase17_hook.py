@@ -26,6 +26,20 @@ POST_CLEANUP_END = "# CONTRACTKV_PHASE17_POST_CLEANUP_END"
 
 
 HELPER = r'''# CONTRACTKV_PHASE17_HELPER_BEGIN
+def _contractkv_policy_errors(runtime):
+    try:
+        from scripts.contractkv_frozen_policy import FrozenVerifierPolicy, RuntimeIdentity, policy_hash, validate_policy_runtime
+        payload = runtime.verify_payload
+        policy = FrozenVerifierPolicy(**dict(payload.get("frozen_policy") or {}))
+        identity = RuntimeIdentity(**dict(runtime.plan.runtime_identity or {}))
+        errors = validate_policy_runtime(policy, identity)
+        if runtime.plan.policy_hash != policy_hash(policy):
+            errors.append("runtime policy_hash differs from manifest")
+        return errors
+    except Exception as exc:
+        return ["policy_loader_error=" + repr(exc)]
+
+
 def _contractkv_attach_pstp(request):
     runtime = getattr(request, "contractkv_pstp_runtime", None)
     if runtime is not None:
@@ -41,6 +55,7 @@ def _contractkv_attach_pstp(request):
         if runtime.plan.fault_mode == "cancel_before_verification":
             from scripts.contractkv_pstp import VerifyDecision
             runtime.verify_decision = VerifyDecision.CANCELLED
+        runtime.policy_errors = _contractkv_policy_errors(runtime)
         request.contractkv_pstp_runtime = runtime
         _contractkv_write({
             "event": "phase17_runtime_attached",
@@ -50,6 +65,9 @@ def _contractkv_attach_pstp(request):
             "verify_decision": runtime.verify_decision.value,
             "stable_prefix_end_token": runtime.plan.stable_prefix_end_token,
             "fault_mode": runtime.plan.fault_mode,
+            "policy_hash": runtime.plan.policy_hash,
+            "policy_version": runtime.plan.policy_version,
+            "policy_errors": runtime.policy_errors,
         })
         return runtime
     except Exception as exc:
@@ -72,6 +90,24 @@ def _contractkv_phase17_receive_verify_tensors(scheduler, request, tensors):
         return
     from scripts.contractkv_pstp import VerifyDecision
     from scripts.contractkv_transaction import TxnState
+    if getattr(runtime, "policy_errors", []):
+        from dataclasses import replace
+        from scripts.contractkv_verifier import incomplete_report
+        runtime.txn_state = TxnState.VERIFYING
+        runtime.verify_report = replace(
+            incomplete_report("policy_runtime_mismatch: " + "; ".join(runtime.policy_errors)),
+            policy_hash=runtime.plan.policy_hash,
+            policy_version=runtime.plan.policy_version,
+            attestation_mode=runtime.plan.attestation_mode,
+        )
+        runtime.verify_decision = VerifyDecision.INCOMPLETE
+        _contractkv_write({
+            "event": "phase17_verify_report", "request_id": request.request_id,
+            "txn_id": runtime.plan.txn_id, "decision": runtime.verify_decision.value,
+            "failure_reason": runtime.verify_report.failure_reason,
+            "policy_hash": runtime.plan.policy_hash,
+        })
+        return
     if runtime.plan.fault_mode == "cancel_during_verification":
         runtime.verify_decision = VerifyDecision.CANCELLED
         runtime.txn_state = TxnState.VERIFYING
@@ -106,6 +142,8 @@ def _contractkv_phase17_receive_verify_tensors(scheduler, request, tensors):
         "candidate_margin_q05": report.candidate_margin_q05,
         "degradation_q95": report.degradation_q95,
         "robustness_reserve": report.robustness_reserve,
+        "policy_hash": report.policy_hash,
+        "policy_version": report.policy_version,
     })
 
 
@@ -143,6 +181,9 @@ def _contractkv_pstp_finalize(scheduler, request):
         and float(report.robustness_reserve) >= 0.0
         and runtime.plan.tokenization_glue_loss < scheduler.block_size
         and runtime.plan.fault_mode not in {"calibration_only", "frontend_disconnect"}
+        and not getattr(runtime, "policy_errors", [])
+        and report.policy_hash == runtime.plan.policy_hash
+        and report.policy_version == runtime.plan.policy_version
         and commit_tokens > 0
     )
     started = _time.perf_counter()
@@ -180,6 +221,12 @@ def _contractkv_pstp_finalize(scheduler, request):
             degradation_q95=report.degradation_q95,
             robustness_reserve=report.robustness_reserve,
             issued_cache_epoch=epoch,
+            policy_hash=runtime.plan.policy_hash,
+            policy_version=runtime.plan.policy_version,
+            attestation_mode=runtime.plan.attestation_mode,
+            model_revision=str(runtime.plan.runtime_identity.get("model_revision", "")),
+            tokenizer_hash=str(runtime.plan.runtime_identity.get("tokenizer_hash", "")),
+            chat_template_hash=str(runtime.plan.runtime_identity.get("chat_template_hash", "")),
         )
     else:
         runtime.committed_tokens = 0
@@ -210,6 +257,10 @@ def _contractkv_pstp_finalize(scheduler, request):
         "promotion_action": promotion_action,
         "operation_ms": elapsed_ms,
         "fault_mode": runtime.plan.fault_mode,
+        "policy_hash": runtime.plan.policy_hash,
+        "policy_version": runtime.plan.policy_version,
+        "attestation_mode": runtime.plan.attestation_mode,
+        "policy_errors": getattr(runtime, "policy_errors", []),
     }
     _contractkv_write(event)
     if certificate is not None:

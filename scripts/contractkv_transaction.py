@@ -33,6 +33,10 @@ class PSTPPlan:
     dependency_graph_hash: str
     shadow_work: bool = True
     fault_mode: str = "none"
+    policy_hash: str = ""
+    policy_version: str = ""
+    attestation_mode: str = ""
+    runtime_identity: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
@@ -59,6 +63,12 @@ class TransactionalCertificate:
     degradation_q95: float
     robustness_reserve: float
     issued_cache_epoch: int
+    policy_hash: str = ""
+    policy_version: str = ""
+    attestation_mode: str = ""
+    model_revision: str = ""
+    tokenizer_hash: str = ""
+    chat_template_hash: str = ""
 
 
 def runtime_to_dict(runtime: PSTPRuntime) -> dict[str, Any]:

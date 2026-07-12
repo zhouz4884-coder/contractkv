@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from scripts.contractkv_pstp import VerifyDecision
 
@@ -42,6 +42,9 @@ class VerifyReport:
     candidate_margin_q05: float
     degradation_q95: float
     robustness_reserve: float
+    policy_hash: str = ""
+    policy_version: str = ""
+    attestation_mode: str = ""
 
 
 def quantile(values: list[float] | tuple[float, ...], q: float) -> float:
@@ -216,6 +219,13 @@ def report_from_prompt_logprob_tensors(payload: dict, tensors: object) -> Verify
             chat_template_hash=str(payload["chat_template_hash"]),
         )
         thresholds = VerifyThresholds(**dict(payload["thresholds"]))
-        return make_verify_report(raw, raw_ids, candidate_margins, candidate_ranks, candidate_stop, thresholds)
+        report = make_verify_report(raw, raw_ids, candidate_margins, candidate_ranks, candidate_stop, thresholds)
+        return replace(report,
+                       policy_hash=str(payload.get("policy_hash", "")),
+                       policy_version=str(payload.get("policy_version", "")),
+                       attestation_mode=str(payload.get("attestation_mode", "")))
     except Exception as exc:
-        return incomplete_report(str(exc))
+        return replace(incomplete_report(str(exc)),
+                       policy_hash=str(payload.get("policy_hash", "")),
+                       policy_version=str(payload.get("policy_version", "")),
+                       attestation_mode=str(payload.get("attestation_mode", "")))
