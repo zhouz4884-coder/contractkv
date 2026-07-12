@@ -8,6 +8,7 @@ PORT="${PORT:-8019}"; cd "$ROOT"; mkdir -p logs/phase17r results/hard_systems
 POLICY="results/hard_systems/phase17r_frozen_policy_manifest_v0.json"; REGISTRY="$ROOT/results/hard_systems/phase17r_quiescence_registry.json"; EVENT="$ROOT/results/hard_systems/phase17r_quiescence_events_v0.jsonl"; PID="logs/phase17r/qwen8b_quiescence.pid"
 "$PYTHON_BIN" scripts/install_vllm_v1_phase17_hook.py --scheduler "$SCHEDULER" --action install; "$PYTHON_BIN" -m py_compile "$SCHEDULER"; rm -f "$REGISTRY" "$EVENT" "$PID"
 export CONTRACTKV_EPHEMERAL_SHADOW=1 CONTRACTKV_QUIESCENCE=1 CONTRACTKV_PHASE17_REGISTRY="$REGISTRY" CONTRACTKV_PHASE16R_EVENT_LOG="$EVENT"
+export CONTRACTKV_TRACE_MODE="${CONTRACTKV_TRACE_MODE:-SYNC_JSONL}"
 export CONTRACTKV_IDLE_GRACE_MS=10 CONTRACTKV_BASE_BACKOFF_MS=1 CONTRACTKV_MAX_BACKOFF_MS=8 CONTRACTKV_SHADOW_CHUNK_TOKENS=32 CONTRACTKV_SHADOW_ROUND_TOKENS=32 CONTRACTKV_SHADOW_BLOCK_WATERMARK=0
 export EXTRA_VLLM_ARGS="--enable-prefix-caching --scheduling-policy priority --enable-chunked-prefill --max-num-batched-tokens 1024"
 stop_server(){ [[ -f "$PID" ]] && kill "$(cat "$PID")" 2>/dev/null || true; }; trap stop_server EXIT

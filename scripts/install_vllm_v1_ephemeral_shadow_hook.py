@@ -26,9 +26,12 @@ COMPLETION_CALL = "# CONTRACTKV_QUIESCENCE_COMPLETION_CALL"
 
 HELPER = r'''# CONTRACTKV_EPHEMERAL_SHADOW_HELPER_BEGIN
 def _contractkv_write(event):
-    import json
     import os
     import time as _time
+    mode = os.environ.get("CONTRACTKV_TRACE_MODE", "SYNC_JSONL").upper()
+    if mode in {"OFF", "COUNTERS", "RING"}:
+        return
+    import json
     path = os.environ.get("CONTRACTKV_PHASE16R_EVENT_LOG") or os.environ.get("CONTRACTKV_EPHEMERAL_SHADOW_LOG")
     if not path:
         return
