@@ -1,0 +1,21 @@
+phase: phase17
+title: verification-driven transactional promotion
+status: complete_with_quality_boundary
+run_base_commit: 3bb70e7
+models:
+  integration: Qwen3-4B
+  calibration: Qwen3-8B
+backend: vLLM-0.10.2 V1 scheduler
+artifacts:
+  integration: results/hard_systems/phase17_integrated_live_v0.csv
+  calibration: results/hard_systems/phase17_threshold_calibration_summary_v0.csv
+  concurrency_fault: results/hard_systems/phase17_concurrency_fault_v0.csv
+  quiescence: results/hard_systems/phase17_verifier_quiescence_summary_v0.csv
+outcomes:
+  integrated_gates: 16/16
+  concurrency_fault_gates: 10/10
+  verifier_quiescence_gate: true
+  heldout_unsafe_certified: 2/17
+claim_boundary: >-
+  Real vLLM verification-driven promotion and fail-closed transaction behavior are complete.
+  Frozen intrinsic verifier thresholds do not yet provide a production semantic-quality guarantee.

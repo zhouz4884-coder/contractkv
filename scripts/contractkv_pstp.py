@@ -13,6 +13,7 @@ from typing import Any
 
 
 class VerifyDecision(str, Enum):
+    PENDING = "PENDING"
     PASS = "PASS"
     FAIL = "FAIL"
     INCOMPLETE = "INCOMPLETE"

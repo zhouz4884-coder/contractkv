@@ -1,0 +1,3 @@
+condition,active_requests,active_success_rate,verifier_requests,verifier_success_rate,active_mean_ttft_ms,active_p95_ttft_ms,p95_penalty_ms,shadow_completion_rate,mixed_rounds,max_shadow_request_tokens,idle_hysteresis_events,collision_events,gate_pass,claim_boundary
+baseline,60,1.0,0,1.0,110.82484561484307,192.73844910785556,0.0,1.0,0,0,0,0,True,Live vLLM teacher-forced verification under foreground load; no acceleration claim.
+live_verifier,60,1.0,6,1.0,115.37011372080694,199.604375497438,6.865926389582455,1.0,0,32,114,0,True,Live vLLM teacher-forced verification under foreground load; no acceleration claim.

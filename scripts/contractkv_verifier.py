@@ -109,14 +109,12 @@ def make_verify_report(
         return incomplete_report("raw finish_reason=length")
     if not raw.stop_token_ids:
         return incomplete_report("raw stop metadata missing")
-    if candidate_stop_token_id is None:
-        return incomplete_report("candidate stop token missing")
 
     matches = sum(
         int(target) == int(candidate) and int(rank) == 1
         for target, candidate, rank in zip(raw.token_ids, candidate_token_ids, candidate_ranks)
     )
-    stop_consistent = int(candidate_stop_token_id) in set(raw.stop_token_ids)
+    stop_consistent = candidate_stop_token_id is not None and int(candidate_stop_token_id) in set(raw.stop_token_ids)
     raw_q05 = quantile(raw.token_margins, 0.05)
     candidate_q05 = quantile(candidate_margins, 0.05)
     degradation = [float(raw_margin) - float(candidate_margin) for raw_margin, candidate_margin in zip(raw.token_margins, candidate_margins)]
@@ -159,3 +157,65 @@ def incomplete_report(reason: str) -> VerifyReport:
         degradation_q95=float("nan"),
         robustness_reserve=float("-inf"),
     )
+
+
+def split_terminal_stop_token(
+    token_ids: list[int] | tuple[int, ...],
+    token_margins: list[float] | tuple[float, ...],
+    finish_reason: str,
+) -> tuple[list[int], list[float], int]:
+    """Separate the single terminal stop token from a stopped completion.
+
+    vLLM's token-ID completion payload includes EOS in the returned sequence.
+    The verifier must teacher-force answer tokens followed by that same EOS
+    exactly once; treating EOS as an answer token shifts the stop check by one.
+    """
+    ids = [int(value) for value in token_ids]
+    margins = [float(value) for value in token_margins]
+    if finish_reason != "stop":
+        raise VerificationIncomplete(f"raw finish_reason={finish_reason}")
+    if len(ids) < 2 or len(margins) != len(ids):
+        raise VerificationIncomplete("raw completion lacks one answer token plus terminal stop")
+    return ids[:-1], margins[:-1], ids[-1]
+
+
+def report_from_prompt_logprob_tensors(payload: dict, tensors: object) -> VerifyReport:
+    """Build a compact report inside EngineCore before scheduler cleanup."""
+    try:
+        lists = tensors.tolist() if hasattr(tensors, "tolist") else tensors.tolists()
+        token_rows = lists.logprob_token_ids
+        logprob_rows = lists.logprobs
+        ranks_all = lists.sampled_token_ranks
+        raw_ids = [int(value) for value in payload["raw_token_ids"]]
+        raw_margins = [float(value) for value in payload["raw_token_margins"]]
+        answer_start = int(payload["candidate_answer_start"])
+        stop_token_ids = tuple(int(value) for value in payload["stop_token_ids"])
+        candidate_margins = []
+        candidate_ranks = []
+        for offset, target in enumerate(raw_ids):
+            row_index = answer_start - 1 + offset
+            ids = [int(value) for value in token_rows[row_index]]
+            values = [float(value) for value in logprob_rows[row_index]]
+            target_values = [value for token_id, value in zip(ids, values) if token_id == target]
+            competitors = [value for token_id, value in zip(ids, values) if token_id != target]
+            if not target_values or not competitors:
+                raise VerificationIncomplete(f"candidate target/competitor unavailable at answer offset {offset}")
+            candidate_margins.append(target_values[0] - max(competitors))
+            candidate_ranks.append(int(ranks_all[row_index]))
+        stop_row = answer_start - 1 + len(raw_ids)
+        stop_target = int(payload["candidate_stop_token_id"])
+        stop_rank = int(ranks_all[stop_row])
+        stop_ids = [int(value) for value in token_rows[stop_row]]
+        candidate_stop = stop_target if stop_rank == 1 and stop_target in stop_ids else None
+        raw = RawAttestation(
+            token_ids=tuple(raw_ids), token_margins=tuple(raw_margins),
+            finish_reason=str(payload["raw_finish_reason"]),
+            stop_token_ids=stop_token_ids,
+            model_hash=str(payload["model_hash"]),
+            tokenizer_hash=str(payload["tokenizer_hash"]),
+            chat_template_hash=str(payload["chat_template_hash"]),
+        )
+        thresholds = VerifyThresholds(**dict(payload["thresholds"]))
+        return make_verify_report(raw, raw_ids, candidate_margins, candidate_ranks, candidate_stop, thresholds)
+    except Exception as exc:
+        return incomplete_report(str(exc))

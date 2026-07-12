@@ -1,0 +1,13 @@
+{
+  "status": "feasible",
+  "tau_raw": -1000000000.0,
+  "tau_abs": -1000000000.0,
+  "tau_drop": 1000000000.0,
+  "selected_on": "calibration_only",
+  "objective": "max_certified_retained_prefix_gain",
+  "constraints": {
+    "calibration_unsafe_certified": 0,
+    "safe_coverage_min": 0.5,
+    "retained_gain_min": 0.5
+  }
+}
