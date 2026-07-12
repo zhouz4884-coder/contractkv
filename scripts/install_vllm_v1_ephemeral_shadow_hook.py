@@ -102,6 +102,8 @@ def _contractkv_init_state(scheduler):
     scheduler.base_backoff_ms = float(os.environ.get("CONTRACTKV_BASE_BACKOFF_MS", "1"))
     scheduler.max_backoff_ms = float(os.environ.get("CONTRACTKV_MAX_BACKOFF_MS", "8"))
     scheduler.shadow_block_watermark = int(os.environ.get("CONTRACTKV_SHADOW_BLOCK_WATERMARK", "0"))
+    from scripts.contractkv_shadow_parking import ShadowParking
+    scheduler.contractkv_shadow_parking = ShadowParking()
 
 
 def _contractkv_last_foreground_activity_ns(scheduler):
@@ -168,6 +170,24 @@ def _contractkv_begin_round(scheduler):
         })
     else:
         scheduler.shadow_collision_count = max(0, scheduler.shadow_collision_count - 1)
+
+
+def _contractkv_park_and_wake(scheduler):
+    import time as _time
+    _contractkv_init_state(scheduler)
+    now = _time.monotonic_ns()
+    foreground = _contractkv_has_foreground_waiting(scheduler) or _contractkv_has_foreground_running(scheduler)
+    if foreground:
+        retained = []
+        wake_ns = _contractkv_last_foreground_activity_ns(scheduler) + int(scheduler.idle_grace_ms * 1e6)
+        for request in scheduler.running:
+            if _contractkv_shadow_enabled(request): scheduler.contractkv_shadow_parking.park(request, wake_ns, "foreground")
+            else: retained.append(request)
+        scheduler.running[:] = retained
+        return
+    deadline = max(_contractkv_last_foreground_activity_ns(scheduler) + int(scheduler.idle_grace_ms * 1e6), scheduler.shadow_backoff_until_ns)
+    for parked in scheduler.contractkv_shadow_parking.wake(now if now >= deadline else -1, max_wake=1):
+        scheduler.waiting.add_request(parked.request)
 
 
 def _contractkv_should_admit_shadow(scheduler, request):
@@ -339,7 +359,7 @@ WAITING_GATE = '''                # CONTRACTKV_QUIESCENCE_WAITING_BEGIN
                     _contractkv_waiting_gate = _contractkv_should_admit_shadow(self, request)
                     if not _contractkv_waiting_gate["admitted"]:
                         self.waiting.pop_request()
-                        skipped_waiting_requests.prepend_request(request)
+                        self.contractkv_shadow_parking.park(request, _contractkv_last_foreground_activity_ns(self) + int(self.idle_grace_ms * 1e6), _contractkv_waiting_gate["reason"])
                         continue
                 # CONTRACTKV_QUIESCENCE_WAITING_END
 '''
@@ -375,6 +395,14 @@ def clean(text: str) -> str:
     for marker, call in call_lines:
         text = text.replace(f"        {marker}\n        {call}\n", "")
         text = text.replace(f"                {marker}\n                {call}\n", "")
+    text = text.replace(
+        "        # CONTRACTKV_QUIESCENCE_PARKING_CALL\n        _contractkv_park_and_wake(self)\n",
+        "",
+    )
+    text = text.replace(
+        "    def get_num_unfinished_requests(self) -> int:\n        parked = len(getattr(getattr(self, 'contractkv_shadow_parking', None), 'items', {}))\n        return len(self.waiting) + len(self.running) + parked\n",
+        "    def get_num_unfinished_requests(self) -> int:\n        return len(self.waiting) + len(self.running)\n",
+    )
     # Phase 16 used the same marker with the legacy request-id-driven finalizer.
     text = text.replace(
         f"        {FINALIZE_CALL}\n        _contractkv_shadow_finalize(self, request)\n",
@@ -418,6 +446,7 @@ def install(text: str) -> str:
     if timestamp_anchor not in text:
         raise RuntimeError("schedule timestamp anchor not found")
     text = text.replace(timestamp_anchor, timestamp_anchor + f"        {BEGIN_ROUND_CALL}\n        _contractkv_begin_round(self)\n", 1)
+    text = text.replace("        _contractkv_begin_round(self)\n", "        _contractkv_begin_round(self)\n        # CONTRACTKV_QUIESCENCE_PARKING_CALL\n        _contractkv_park_and_wake(self)\n", 1)
 
     running_anchor = "            request = self.running[req_index]\n\n"
     if running_anchor not in text:
@@ -455,6 +484,11 @@ def install(text: str) -> str:
     if waiting_threshold not in text:
         raise RuntimeError("waiting chunk threshold anchor not found")
     text = text.replace(waiting_threshold, waiting_cap, 1)
+
+    unfinished_anchor = "    def get_num_unfinished_requests(self) -> int:\n        return len(self.waiting) + len(self.running)\n"
+    if unfinished_anchor not in text:
+        raise RuntimeError("unfinished request anchor not found")
+    text = text.replace(unfinished_anchor, "    def get_num_unfinished_requests(self) -> int:\n        parked = len(getattr(getattr(self, 'contractkv_shadow_parking', None), 'items', {}))\n        return len(self.waiting) + len(self.running) + parked\n", 1)
 
     running_alloc = "                    num_lookahead_tokens=self.num_lookahead_tokens)\n"
     if running_alloc not in text:

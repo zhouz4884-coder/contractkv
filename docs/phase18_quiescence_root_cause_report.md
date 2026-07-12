@@ -24,6 +24,12 @@ Removing synchronous event writes reduces the observed penalty by 4.40 ms across
 
 The residual C1 penalty still exceeds 10 ms. At this point it cannot honestly be attributed solely to GPU non-preemption: polling gates, full prompt-logprob egress/JSON serialization, and request queueing are still present. Therefore Phase 18's full closure gate remains open.
 
+### C2 parking result
+
+The corrected parked-shadow implementation counts parked requests as unfinished EngineCore work, performs exactly one waiting-queue pop, and wakes through normal admission while preserving `num_computed_tokens`. A Qwen3-8B live regression completed 60/60 foreground and 6/6 verifier requests without a hang. Its pooled p95 penalty was 15.92 ms, compared with 15.12 ms for C1. Given the large seed spread (-0.65 to +33.61 ms), this does not show a latency improvement. It does show that repeated polling was not the dominant residual in this workload.
+
+The compact-result cell remains architecturally blocked. Deleting `prompt_logprobs_dict` after verification caused frontend lifecycle failure; a valid implementation requires a new EngineCore output type, CoreClient result router, and dedicated endpoint. No C3/C4 or physical-CUDA claim is made from that failed experiment.
+
 The next required implementation steps are event-driven shadow parking, compact EngineCore-to-frontend verifier egress, and one-shot collision/CUDA-event timing. Only if that cleaned path still exceeds 10 ms should a frozen wall-time LUT be introduced.
 
 ## Claim Boundary
