@@ -1,0 +1,23 @@
+phase: phase17r
+title: policy-consistent causality closure
+status: complete_with_quiescence_portability_failure
+policy_manifest: results/hard_systems/phase17r_frozen_policy_manifest_v0.json
+policy_hash: 55e10dc4f54daf428b382a35fe8a8feeded5b4b3f34752f36f45c8f825df1ee4
+model: Qwen3-8B
+backend: vLLM-0.10.2 V1 scheduler
+artifacts:
+  lineage: results/hard_systems/phase17r_policy_consistency_v0.csv
+  false_safe_audit: results/hard_systems/phase17r_false_safe_causality_v0.csv
+  integrated: results/hard_systems/phase17r_qwen8b_integrated_v0.csv
+  quiescence: results/hard_systems/phase17r_qwen8b_quiescence_v0.csv
+  incomplete_taxonomy: results/hard_systems/phase17r_incomplete_taxonomy_summary_v0.csv
+outcomes:
+  normal_policy_lineage_consistent: 14/14
+  manifest_mismatch_zero_promotion: 4/4
+  false_safe_audit: 2/2 stale_or_misjoined_quality_label
+  unsafe_label_refresh: 29_confirmed_unsafe_3_stale_2_incomplete
+  quiescence_p95_penalty_ms: 19.513252424076427
+  quiescence_gate_10ms: failed_after_global_32_token_fix
+claim_boundary: >-
+  Source-level frozen-policy transaction correctness is demonstrated. Static 32-token,
+  10ms quiescence settings do not transfer from Qwen3-4B to Qwen3-8B.

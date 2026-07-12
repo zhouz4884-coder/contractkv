@@ -93,6 +93,8 @@ def _contractkv_init_state(scheduler):
     scheduler.shadow_collision_count = 0
     scheduler.previous_round_shadow_tokens = 0
     scheduler.previous_round_shadow_start_ns = 0
+    scheduler._contractkv_round_id = 0
+    scheduler._contractkv_round_shadow_reserved = 0
     scheduler.idle_grace_ms = float(os.environ.get("CONTRACTKV_IDLE_GRACE_MS", "0"))
     scheduler.base_backoff_ms = float(os.environ.get("CONTRACTKV_BASE_BACKOFF_MS", "1"))
     scheduler.max_backoff_ms = float(os.environ.get("CONTRACTKV_MAX_BACKOFF_MS", "8"))
@@ -141,6 +143,8 @@ def _contractkv_record_completion(scheduler, request):
 def _contractkv_begin_round(scheduler):
     import time as _time
     _contractkv_init_state(scheduler)
+    scheduler._contractkv_round_id += 1
+    scheduler._contractkv_round_shadow_reserved = 0
     now = _time.monotonic_ns()
     foreground = _contractkv_has_foreground_waiting(scheduler) or _contractkv_has_foreground_running(scheduler)
     collision = scheduler.previous_round_shadow_tokens > 0 and foreground
@@ -171,6 +175,12 @@ def _contractkv_should_admit_shadow(scheduler, request):
     now = _time.monotonic_ns()
     free_blocks = scheduler.kv_cache_manager.block_pool.get_num_free_blocks()
     idle_age_ms = (now - _contractkv_last_foreground_activity_ns(scheduler)) / 1e6
+    cached = getattr(request, "_contractkv_shadow_admission", None)
+    if cached is not None and cached.get("round_id") == scheduler._contractkv_round_id:
+        return cached
+    requested_tokens = _contractkv_shadow_chunk_tokens(request) or 0
+    global_budget = max(1, int(os.environ.get("CONTRACTKV_SHADOW_ROUND_TOKENS", "32")))
+    available_tokens = max(0, global_budget - scheduler._contractkv_round_shadow_reserved)
     report = decide_shadow_admission(
         foreground_waiting=_contractkv_has_foreground_waiting(scheduler),
         foreground_running=_contractkv_has_foreground_running(scheduler, request),
@@ -181,13 +191,22 @@ def _contractkv_should_admit_shadow(scheduler, request):
         block_watermark=scheduler.shadow_block_watermark,
         collision_count=scheduler.shadow_collision_count,
         current_backoff_ms=(scheduler.shadow_backoff_until_ns - now) / 1e6,
-        chunk_tokens=_contractkv_shadow_chunk_tokens(request) or 0,
+        chunk_tokens=min(requested_tokens, available_tokens),
         quiescence_enabled=os.environ.get("CONTRACTKV_QUIESCENCE", "1") == "1",
     ).as_dict()
+    if report["admitted"] and available_tokens <= 0:
+        report["admitted"] = False
+        report["reason"] = "shadow_round_budget"
+    if report["admitted"]:
+        scheduler._contractkv_round_shadow_reserved += int(report["chunk_tokens"])
     report.update({
         "event": "shadow_admission",
         "request_id": request.request_id,
+        "round_id": scheduler._contractkv_round_id,
+        "global_shadow_budget_tokens": global_budget,
+        "round_shadow_reserved_tokens": scheduler._contractkv_round_shadow_reserved,
     })
+    request._contractkv_shadow_admission = report
     _contractkv_write(report)
     return report
 
@@ -200,6 +219,13 @@ def _contractkv_shadow_chunk_tokens(request):
         return max(1, int(os.environ.get("CONTRACTKV_SHADOW_CHUNK_TOKENS", "32")))
     except ValueError:
         return 32
+
+
+def _contractkv_shadow_granted_tokens(request):
+    if not _contractkv_shadow_enabled(request):
+        return None
+    report = getattr(request, "_contractkv_shadow_admission", None) or {}
+    return int(report.get("chunk_tokens", 0))
 
 
 def _contractkv_end_round(scheduler, scheduler_output):
@@ -225,6 +251,7 @@ def _contractkv_end_round(scheduler, scheduler_output):
             "foreground_tokens": foreground_tokens,
             "shadow_request_tokens": shadow_request_tokens,
             "max_shadow_request_tokens": max(shadow_request_tokens.values(), default=0),
+            "global_shadow_budget_tokens": int(__import__("os").environ.get("CONTRACTKV_SHADOW_ROUND_TOKENS", "32")),
         })
     if foreground_tokens > 0:
         scheduler.last_fg_schedule_ns = now
@@ -400,7 +427,7 @@ def install(text: str) -> str:
                     self.scheduler_config.long_prefill_token_threshold)
 '''
     running_cap = running_threshold + '''            if _contractkv_shadow_chunk is not None:
-                num_new_tokens = min(num_new_tokens, _contractkv_shadow_chunk)
+                num_new_tokens = min(num_new_tokens, _contractkv_shadow_granted_tokens(request))
 '''
     if running_threshold not in text:
         raise RuntimeError("running chunk threshold anchor not found")
@@ -417,7 +444,7 @@ def install(text: str) -> str:
                             self.scheduler_config.long_prefill_token_threshold)
 '''
     waiting_cap = waiting_threshold + '''                    # CONTRACTKV_EPHEMERAL_SHADOW_WAITING_BEGIN
-                    _contractkv_waiting_shadow_chunk = _contractkv_shadow_chunk_tokens(request)
+                    _contractkv_waiting_shadow_chunk = _contractkv_shadow_granted_tokens(request)
                     if _contractkv_waiting_shadow_chunk is not None:
                         num_new_tokens = min(num_new_tokens, _contractkv_waiting_shadow_chunk)
                     # CONTRACTKV_EPHEMERAL_SHADOW_WAITING_END

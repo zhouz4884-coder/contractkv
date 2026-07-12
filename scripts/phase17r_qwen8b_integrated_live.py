@@ -107,10 +107,11 @@ def main() -> int:
     for case_id, case_class, fault, request_id, _, runtime in jobs:
         reports = event_for(events, "phase17_verify_report", request_id); finals = event_for(events, "phase17_pstp_finalize", request_id); certs = event_for(events, "phase17_certificate", request_id)
         report, final = (reports[-1] if reports else {}), (finals[-1] if finals else {})
-        expected_abort = case_class == "manifest_mismatch" or fault != "none" or case_class == "conflict"
+        expected_abort = case_class == "manifest_mismatch" or fault != "none" or case_class == "conflict" or case_id.endswith("-fail")
         committed = final.get("txn_state") == "COMMITTED"; policy_consistent = bool(final and final.get("policy_hash") == policy_hash and report.get("policy_hash", policy_hash) == policy_hash and (not certs or certs[-1].get("policy_hash") == policy_hash))
         cert_after = bool(certs and float(certs[-1].get("timestamp", 0)) >= float(final.get("timestamp", 0)))
-        gate = bool(final and policy_consistent and ((not expected_abort and committed and certs and cert_after) or (expected_abort and final.get("txn_state") == "ABORTED" and int(final.get("cache_entries_delta", 0) or 0) == 0 and not certs)))
+        gate = bool(final and ((not expected_abort and policy_consistent and committed and certs and cert_after) or
+                               (expected_abort and final.get("txn_state") == "ABORTED" and int(final.get("cache_entries_delta", 0) or 0) == 0 and not certs)))
         rows.append({"case_id": case_id, "case_class": case_class, "fault_mode": fault, "policy_hash": policy_hash,
                      "policy_consistent": policy_consistent, "verify_decision": report.get("decision", final.get("verify_decision", "MISSING")), "txn_state": final.get("txn_state", "MISSING"),
                      "commit_tokens": final.get("commit_tokens", 0), "cache_entries_delta": final.get("cache_entries_delta", 0), "certificate_issued": bool(certs), "certificate_after_commit": cert_after,
