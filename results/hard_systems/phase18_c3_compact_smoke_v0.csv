@@ -1,0 +1,5 @@
+case,status,response_bytes,latency_ms,decision,txn_state,committed_tokens,certificate_issued,failure_reason,raw_margin_q05,candidate_margin_q05,degradation_q95,contains_prompt_logprobs
+pass,200,431,1175.1845283433795,PASS,COMMITTED,6624,True,,10.671094114069911,10.91875016472077,0.6640624582732655,False
+fail,200,394,1171.3290219195187,FAIL,ABORTED,0,False,token_path_or_margin_guard_failed,110.67109411406992,10.91875016472077,100.66406245827326,False
+incomplete,200,363,1166.7627356946468,INCOMPLETE,ABORTED,0,False,reference_length_mismatch,,,,False
+manifest_mismatch,200,358,1166.5349421091378,INCOMPLETE,ABORTED,0,False,policy_manifest_mismatch,,,,False

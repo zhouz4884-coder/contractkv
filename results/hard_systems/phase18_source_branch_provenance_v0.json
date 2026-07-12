@@ -1,0 +1,14 @@
+{
+  "vllm_upstream_tag": "v0.10.2",
+  "vllm_upstream_commit": "01efc7ef781391e744ed08c3292817a773d654e6",
+  "vllm_patch_branch": "contractkv-compact-egress",
+  "vllm_patch_commit": "0a336eeb2a62198b8f6d27a079657df5e126a5c6",
+  "contractkv_parent_commit": "0b545e6",
+  "python_environment": "contractkv-cu128",
+  "pytorch": "2.8.0+cu128",
+  "cuda_runtime": "12.8",
+  "vllm": "0.10.2",
+  "gpu": "2 x NVIDIA RTX 3090",
+  "patch_file": "patches/vllm-0.10.2-contractkv-compact-egress.patch",
+  "claim_boundary": "Source-level vLLM V1 extension; compiled wheel runtime reused without replacing the stable conda environment."
+}

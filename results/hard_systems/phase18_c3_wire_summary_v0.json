@@ -1,0 +1,81 @@
+{
+  "normal_requests": 2,
+  "normal_success_rate": 1.0,
+  "smoke": [
+    {
+      "case": "pass",
+      "status": 200,
+      "response_bytes": 432,
+      "latency_ms": 5755.85063919425,
+      "decision": "PASS",
+      "txn_state": "COMMITTED",
+      "committed_tokens": 6624,
+      "certificate_issued": true,
+      "failure_reason": "",
+      "raw_margin_q05": 10.671094114069911,
+      "candidate_margin_q05": 10.911718717989425,
+      "degradation_q95": 0.6882812082732654,
+      "contains_prompt_logprobs": false
+    },
+    {
+      "case": "fail",
+      "status": 200,
+      "response_bytes": 395,
+      "latency_ms": 5611.480684950948,
+      "decision": "FAIL",
+      "txn_state": "ABORTED",
+      "committed_tokens": 0,
+      "certificate_issued": false,
+      "failure_reason": "token_path_or_margin_guard_failed",
+      "raw_margin_q05": 110.67109411406992,
+      "candidate_margin_q05": 10.911718717989425,
+      "degradation_q95": 100.68828120827327,
+      "contains_prompt_logprobs": false
+    },
+    {
+      "case": "incomplete",
+      "status": 200,
+      "response_bytes": 363,
+      "latency_ms": 5623.563792090863,
+      "decision": "INCOMPLETE",
+      "txn_state": "ABORTED",
+      "committed_tokens": 0,
+      "certificate_issued": false,
+      "failure_reason": "reference_length_mismatch",
+      "raw_margin_q05": null,
+      "candidate_margin_q05": null,
+      "degradation_q95": null,
+      "contains_prompt_logprobs": false
+    },
+    {
+      "case": "manifest_mismatch",
+      "status": 200,
+      "response_bytes": 358,
+      "latency_ms": 5599.520321935415,
+      "decision": "INCOMPLETE",
+      "txn_state": "ABORTED",
+      "committed_tokens": 0,
+      "certificate_issued": false,
+      "failure_reason": "policy_manifest_mismatch",
+      "raw_margin_q05": null,
+      "candidate_margin_q05": null,
+      "degradation_q95": null,
+      "contains_prompt_logprobs": false
+    }
+  ],
+  "sequential_success": 1,
+  "concurrent_success": 1,
+  "compact_response_mean_bytes": 387,
+  "compact_response_max_bytes": 432,
+  "full_prompt_logprob_http_bytes": 831262,
+  "full_prompt_logprob_http_status": 200,
+  "http_payload_reduction_ratio": 2147.9638242894057,
+  "router_stats": {
+    "pending_futures": 0,
+    "orphan_outputs": 0,
+    "duplicate_outputs": 0,
+    "compact_outputs": 7,
+    "compact_wire_bytes_total": 1459,
+    "compact_wire_bytes_max": 231
+  }
+}

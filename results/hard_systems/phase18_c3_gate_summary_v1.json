@@ -1,0 +1,44 @@
+{
+  "normal_api_regression": {
+    "requests": 200,
+    "success_rate": 1.0,
+    "valid_matrix_only": true
+  },
+  "compact_smoke": {
+    "pass": "COMMITTED",
+    "fail": "ABORTED",
+    "incomplete": "ABORTED",
+    "manifest_mismatch": "ABORTED",
+    "max_http_response_bytes": 432,
+    "contains_prompt_logprobs": false
+  },
+  "lifecycle": {
+    "sequential_success": 100,
+    "sequential_total": 100,
+    "concurrent_success": 20,
+    "concurrent_total": 20,
+    "duplicate_accepted": 1,
+    "duplicate_rejected": 1,
+    "timeout_observed": true,
+    "cancel_before_observed": true,
+    "cancel_during_observed": true,
+    "frontend_disconnect_observed": true,
+    "shutdown_during_verify_http_status": 500,
+    "normal_completion_after_faults_status": 200,
+    "pending_futures": 0,
+    "orphan_outputs": 0,
+    "duplicate_outputs": 0
+  },
+  "wire_payload": {
+    "full_prompt_logprob_http_bytes": 831262,
+    "compact_http_mean_bytes": 387,
+    "compact_http_max_bytes": 432,
+    "compact_engine_output_max_bytes": 231,
+    "http_payload_reduction_ratio": 2147.9638242894057
+  },
+  "shutdown_cleanup": {
+    "port_open_after_cleanup": false,
+    "gpu_compute_processes_after_cleanup": 0
+  },
+  "gate_pass": true
+}

@@ -49,6 +49,10 @@ def _contractkv_write(event):
 def _contractkv_attach_pstp(request):
     if getattr(request, "contractkv_pstp", None) is not None:
         return getattr(request, "contractkv_pstp")
+    native_spec = getattr(request, "contractkv_verify_spec", None)
+    if native_spec is not None:
+        request.contractkv_pstp = native_spec
+        return native_spec
     try:
         from scripts.contractkv_pstp import lookup_pstp_spec
         spec = lookup_pstp_spec(str(request.request_id))
@@ -173,6 +177,9 @@ def _contractkv_begin_round(scheduler):
 
 
 def _contractkv_park_and_wake(scheduler):
+    import os
+    if os.environ.get("CONTRACTKV_PARKING", "1") != "1":
+        return
     import time as _time
     _contractkv_init_state(scheduler)
     now = _time.monotonic_ns()
@@ -287,6 +294,9 @@ def _contractkv_cache_entries(pool):
 def _contractkv_pstp_finalize(scheduler, request):
     import os
     import time as _time
+    if getattr(request, "contractkv_verify_spec", None) is not None:
+        # Source-level compact verification owns its finalization path.
+        return
     spec = _contractkv_attach_pstp(request)
     if spec is None:
         return
@@ -358,8 +368,12 @@ WAITING_GATE = '''                # CONTRACTKV_QUIESCENCE_WAITING_BEGIN
                 if _contractkv_shadow_enabled(request):
                     _contractkv_waiting_gate = _contractkv_should_admit_shadow(self, request)
                     if not _contractkv_waiting_gate["admitted"]:
+                        if __import__("os").environ.get("CONTRACTKV_PARKING", "1") == "1":
+                            self.waiting.pop_request()
+                            self.contractkv_shadow_parking.park(request, _contractkv_last_foreground_activity_ns(self) + int(self.idle_grace_ms * 1e6), _contractkv_waiting_gate["reason"])
+                            continue
                         self.waiting.pop_request()
-                        self.contractkv_shadow_parking.park(request, _contractkv_last_foreground_activity_ns(self) + int(self.idle_grace_ms * 1e6), _contractkv_waiting_gate["reason"])
+                        skipped_waiting_requests.prepend_request(request)
                         continue
                 # CONTRACTKV_QUIESCENCE_WAITING_END
 '''

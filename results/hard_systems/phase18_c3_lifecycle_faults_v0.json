@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "case": "timeout",
+      "status": 500,
+      "client_cancelled": false
+    },
+    {
+      "case": "cancel_before",
+      "status": 0,
+      "client_cancelled": true
+    },
+    {
+      "case": "cancel_during",
+      "status": 0,
+      "client_cancelled": true
+    },
+    {
+      "case": "frontend_disconnect",
+      "status": 0,
+      "client_cancelled": true
+    }
+  ],
+  "router_stats_after_faults": {
+    "pending_futures": 0,
+    "orphan_outputs": 0,
+    "duplicate_outputs": 0,
+    "compact_outputs": 0,
+    "compact_wire_bytes_total": 0,
+    "compact_wire_bytes_max": 0
+  },
+  "normal_completion_status_after_faults": 200,
+  "gate_pass": true
+}
