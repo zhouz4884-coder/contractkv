@@ -1,0 +1,17 @@
+{
+  "schema_version": "mistral.heldout-gate.v1",
+  "gates": {
+    "completion_100": true,
+    "unsafe_certified_zero": true,
+    "certified_future_violations_zero": true,
+    "safe_coverage_ge_50pct": true,
+    "retained_prefix_gain_ge_50pct": true,
+    "new_prefill_reduction_ge_30pct": true,
+    "net_mean_ttft_reduction_ge_30pct": true,
+    "certified_reuse_ge_95pct": true,
+    "dynamic_suffix_reuse_zero": true
+  },
+  "gate_pass": true,
+  "heldout_threshold_retuning_allowed": false,
+  "stop_all_model_experiments_after_extension": true
+}

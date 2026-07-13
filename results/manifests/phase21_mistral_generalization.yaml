@@ -1,0 +1,50 @@
+phase: phase21_generalization_closure
+status: complete_all_model_experiments_stopped
+date: 2026-07-13
+execution_base_commit: 1bafdd9f93dfa684fb67d28a344755fa14d31187
+models:
+  diagnosis: Llama-3.1-8B-Instruct
+  final_prospective_extension: Mistral-7B-Instruct-v0.3
+llama_audit:
+  audited_future_rows: 11
+  fresh_rejected_or_incomplete: 10
+  fresh_pass_with_quality_drop: 0
+  diagnosis: stale_certificate_scope
+mistral_protocol:
+  smoke_cases: 10
+  protocol_bugs: 0
+  max_rendered_prompt_tokens: 6486
+  segment_separator: "\\n\\n"
+mistral_split:
+  development_sessions: 25
+  heldout_sessions: 50
+  turns_per_session: 10
+  development_sha256: 91b1d114de2ee762ce20270487fd4854125cd709b9c6f9cca6fefeb48a642fc0
+  heldout_sha256: cf94c901404a34a890fd4f9113f8c4a0e62b84a37ca026f7b32410759a25f8dd
+  sample_overlap: 0
+  source_group_overlap: 0
+mistral_policy:
+  frozen_hash: f5d99ddf2bb14dc9d3e0a92040f337682cbb9ab93baef4e3be5d43d9106488d8
+  heldout_threshold_retuning: false
+  stable_word_limit: 1500
+  main_concurrency: 2
+heldout:
+  completion_rate: 1.0
+  safe_coverage: 0.50
+  unsafe_certified_sessions: 0
+  future_quality_violation_rows: 0
+  max_quality_drop: 0.02
+  new_prefill_reduction_vs_raw: 0.3946292455165468
+  net_mean_ttft_reduction_vs_raw: 0.32322600289829584
+  certified_prefix_reuse_fraction: 0.999597865365281
+  max_dynamic_suffix_reuse_tokens: 0
+  all_preregistered_gates_pass: true
+load_extension:
+  concurrency_1_mean_ttft_reduction: 0.35831286114720895
+  concurrency_4_mean_ttft_reduction: 0.36456569571289377
+stop_rule:
+  all_model_experiments_after_mistral: stopped
+claim_boundary: >-
+  Bounded cross-model generalization with model/task/observation-scoped
+  certification. Llama is a stale-certificate-scope failure, not evidence that
+  the prefix/cache mechanism or a specific model architecture is invalid.

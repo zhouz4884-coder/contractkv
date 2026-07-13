@@ -87,11 +87,21 @@ def extract_raw_tokens_and_margins(response: dict[str, Any]) -> tuple[list[int],
     for item in content:
         chosen = float(item["logprob"])
         chosen_token = item.get("token")
-        competitors = [
-            float(candidate["logprob"])
-            for candidate in (item.get("top_logprobs") or [])
-            if candidate.get("logprob") is not None and candidate.get("token") != chosen_token
-        ]
+        competitors = []
+        removed_chosen = False
+        for candidate in item.get("top_logprobs") or []:
+            if candidate.get("logprob") is None:
+                continue
+            candidate_logprob = float(candidate["logprob"])
+            # Candidate token IDs are absent from the OpenAI-compatible
+            # payload. Mistral can emit distinct IDs with identical decoded
+            # text, so remove exactly the sampled entry rather than every
+            # candidate sharing its token string.
+            if (not removed_chosen and candidate.get("token") == chosen_token
+                    and abs(candidate_logprob - chosen) <= 1e-7):
+                removed_chosen = True
+                continue
+            competitors.append(candidate_logprob)
         if not competitors:
             raise VerificationIncomplete("raw strongest competitor unavailable")
         margins.append(chosen - max(competitors))

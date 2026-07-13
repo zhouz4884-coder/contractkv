@@ -1,0 +1,52 @@
+{
+  "schema_version": "mistral.logprob-payload-audit.v1",
+  "session_id": "mistral-hotpotqa-152",
+  "tokens": 7,
+  "problematic_positions": 1,
+  "problematic_examples": [
+    {
+      "index": 3,
+      "chosen": {
+        "token": "Cl",
+        "logprob": -3.814689989667386e-06,
+        "bytes": [
+          67,
+          108
+        ],
+        "top_logprobs": [
+          {
+            "token": "Cl",
+            "logprob": -3.814689989667386e-06,
+            "bytes": [
+              67,
+              108
+            ]
+          },
+          {
+            "token": "Cl",
+            "logprob": -12.578128814697266,
+            "bytes": [
+              67,
+              108
+            ]
+          }
+        ]
+      },
+      "candidate_count": 2,
+      "same_text_count": 2,
+      "candidate_keys": [
+        "bytes",
+        "logprob",
+        "token"
+      ]
+    }
+  ],
+  "current_parser_pass": true,
+  "current_parser_error": "",
+  "parsed_token_count": 7,
+  "parsed_margin_count": 7,
+  "finish_reason": "stop",
+  "token_source": "choice.token_ids",
+  "top_logprobs_frozen": 2,
+  "claim_boundary": "Development-only payload inspection; no top-k change."
+}

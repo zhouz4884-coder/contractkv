@@ -442,6 +442,17 @@ def clean(text: str) -> str:
         "            if _contractkv_shadow_chunk is not None:\n                num_new_tokens = min(num_new_tokens, _contractkv_shadow_chunk)\n",
         "",
     )
+    # Phase 16R changed the cap expression to the grant-aware helper, but the
+    # cleaner retained only the older literal.  Remove every copy so repeated
+    # install/remove cycles remain byte-stable instead of accumulating calls
+    # whose helper definition disappears on removal.
+    grant_cap = (
+        "            if _contractkv_shadow_chunk is not None:\n"
+        "                num_new_tokens = min(num_new_tokens, "
+        "_contractkv_shadow_granted_tokens(request))\n"
+    )
+    while grant_cap in text:
+        text = text.replace(grant_cap, "")
     text = text.replace(
         "                        num_new_tokens = (request.num_tokens_with_spec +",
         "            num_new_tokens = (request.num_tokens_with_spec +",

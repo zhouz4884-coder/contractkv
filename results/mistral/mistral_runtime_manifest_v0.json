@@ -1,0 +1,32 @@
+{
+  "schema_version": "mistral.runtime-manifest.v1",
+  "model_id": "Mistral-7B-Instruct-v0.3",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Mistral-7B-Instruct-v0.3",
+  "model_config_hash": "9262d15f830e511429ccd175a71680e51c656ef3a4aa7460f3e9596508d32487",
+  "model_revision": "local-checkpoint-no-revision",
+  "tokenizer_hash": "00f8839964732867ef25a66a4a1a5236a25ff5c1054226e2ac11076381b37bf4",
+  "chat_template_hash": "b3fcbc404295814f21f15e626e6403753def5c2359d8e797d3aea5fd47f47a72",
+  "chat_template_separator": "\\n\\n between typed segments; frozen before protocol audit",
+  "vllm_patch_commit": "0a336eeb2a62198b8f6d27a079657df5e126a5c6",
+  "python": "3.10.20",
+  "torch": "2.8.0+cu128",
+  "torch_cuda": "12.8",
+  "cuda_available": true,
+  "gpu_names": [
+    "NVIDIA GeForce RTX 3090",
+    "NVIDIA GeForce RTX 3090"
+  ],
+  "decode": {
+    "temperature": 0,
+    "top_p": 1,
+    "max_context": 8192,
+    "max_output_tokens": 128,
+    "single_terminal_token": true,
+    "stable_word_limit": 1500,
+    "dtype": "float16"
+  },
+  "candidate_builder_hash": "ee43a8fda57e9aeab1ec80ff39d5acf4596dc50bab2604eeba22743c7f67ff64",
+  "quality_scorer_hash": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51",
+  "verifier_payload_parser_hash": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105",
+  "split_commitment_hash": "01f81adcba03d1febd86e81d94e498e341262381039a34208d445f39787ee183"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "mistral.frozen-heldout-policy.v1",
+  "model_id": "Mistral-7B-Instruct-v0.3",
+  "method": [
+    "dependency-constrained-cache-aware-layout",
+    "strict-tier1-token-path-attestation",
+    "compact-enginecore-result",
+    "prefix-selective-transactional-promotion"
+  ],
+  "excluded": [
+    "tier2-free-decode",
+    "semantic-fallback",
+    "promotion-only-second-prefill"
+  ],
+  "certificate_scope": "MODEL_TASK_QUALIFIED_SESSION",
+  "margin_mode": "telemetry-only",
+  "quality_epsilon": 0.03,
+  "tool_slack_ms": 2000,
+  "main_concurrency": 2,
+  "max_output_tokens": 128,
+  "development_gate": {
+    "completion_rate": 1.0,
+    "certified_future_violations": 0,
+    "safe_coverage_min": 0.35,
+    "protocol_bugs": 0
+  },
+  "heldout_gate": {
+    "completion_rate": 1.0,
+    "unsafe_certified_sessions": 0,
+    "certified_future_violations": 0,
+    "safe_coverage_min": 0.5,
+    "retained_prefix_gain_min": 0.5,
+    "new_prefill_reduction_min": 0.3,
+    "net_mean_ttft_reduction_min": 0.3,
+    "certified_reuse_min": 0.95,
+    "dynamic_suffix_reuse_max": 0
+  },
+  "runtime_manifest_hash": "59ae2b5eb956a779daa209baed26ab9af4c4ca999bc357b159c8aa84ce23ace9",
+  "split_commitment_hash": "01f81adcba03d1febd86e81d94e498e341262381039a34208d445f39787ee183",
+  "heldout_threshold_retuning_allowed": false,
+  "third_model_after_mistral_allowed": false,
+  "policy_hash": "f5d99ddf2bb14dc9d3e0a92040f337682cbb9ab93baef4e3be5d43d9106488d8",
+  "development_summary_sha256": "520300b833188bc1ca68a7dffb18df478d506b42fd26285c2f0dead5009f0e92",
+  "development_gate_sha256": "7514e5dc0df37efae10981baf44a1dc888d7250d2377050897491e7fcf25f193",
+  "heldout_opened_after_gate_pass": true
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "mistral.prospective-split.v1",
+  "development_count": 25,
+  "heldout_count": 50,
+  "development_sha256": "91b1d114de2ee762ce20270487fd4854125cd709b9c6f9cca6fefeb48a642fc0",
+  "heldout_sha256": "cf94c901404a34a890fd4f9113f8c4a0e62b84a37ca026f7b32410759a25f8dd",
+  "sample_overlap": 0,
+  "source_group_overlap": 0,
+  "prior_sample_overlap": 0,
+  "prior_source_group_overlap": 0,
+  "families": {
+    "ruler": {
+      "development": 5,
+      "heldout": 10
+    },
+    "hotpotqa": {
+      "development": 5,
+      "heldout": 10
+    },
+    "narrativeqa": {
+      "development": 5,
+      "heldout": 10
+    },
+    "qasper": {
+      "development": 5,
+      "heldout": 10
+    },
+    "repobench": {
+      "development": 5,
+      "heldout": 10
+    }
+  },
+  "heldout_opened_for_tuning": false,
+  "selection_salt": "mistral-prospective-v0"
+}
