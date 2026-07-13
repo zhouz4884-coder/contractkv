@@ -61,6 +61,18 @@ requests, and 20 verifiers.
 Both cells completed all foreground and verifier requests. Final router state was
 zero pending futures, zero orphan outputs, and zero duplicate outputs.
 
+The frozen statistical gates are deliberately separate:
+
+| Gate | C3 | C4 |
+| --- | --- | --- |
+| Functional/lifecycle | PASS | PASS |
+| Pooled systematic interference (<=10 ms) | PASS | PASS |
+| Median paired-seed interference (<=10 ms) | FAIL | PASS |
+| All-seed guard (<=10 ms) | FAIL | FAIL |
+
+Accordingly, engineering closure passes, while per-seed tail determinism is not
+established. See `docs/phase18_statistical_addendum.md` for the frozen wording.
+
 The pooled result no longer shows the roughly +15 ms residual seen in the prior
 full-egress C1/C2 screening. This supports compact egress as the mechanism that
 removes systematic bulk-output interference. It does not establish an exact
@@ -95,7 +107,8 @@ should not be converted into a fixed wall-time LUT from this dataset.
 Compact egress is frozen as a valid ContractKV mechanism. The decision rule in
 the Phase 18 plan only requires CUDA collision timing if the cleaned C3/C4 path
 still has a systematic penalty near 10-15 ms. The pooled C3/C4 penalty is below
-zero, so CUDA collision instrumentation is not required for this closeout.
+zero, so CUDA collision instrumentation is not required for this closeout. The
+negative values are not claimed as acceleration.
 
 The paper-safe claim is:
 

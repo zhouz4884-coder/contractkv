@@ -1,0 +1,48 @@
+phase: phase19a
+title: frozen-provenance full quality rebuild
+status: complete
+model: Qwen3-8B
+backend: vLLM-0.10.2-V1
+vllm_source_revision: 0a336eeb2a62198b8f6d27a079657df5e126a5c6
+policy_hash: 55e10dc4f54daf428b382a35fe8a8feeded5b4b3f34752f36f45c8f825df1ee4
+split:
+  calibration: 357
+  held_out_quality: 377
+execution:
+  raw_free_decodes: 539
+  candidate_free_decodes: 734
+  verifier_pass: 488
+  verifier_fail: 219
+  verifier_incomplete: 27
+outcomes:
+  candidate_rows: 734
+  complete_candidates: 692
+  incomplete_candidates: 42
+  fresh_safe_candidates: 664
+  fresh_unsafe_candidates: 28
+  certificate_eligible: 487
+  calibration_safe_coverage: 0.7476923076923077
+  held_out_safe_coverage: 0.7197640117994101
+  all_safe_coverage: 0.733433734939759
+  unsafe_certified: 0
+  unsafe_rejection_rate: 1.0
+  retained_expected_prefix_gain_rate: 0.6991109744438767
+  incomplete_opportunity_loss_tokens: 219299
+audit:
+  identity_auditable: 734
+  provenance_complete: 734
+  duplicate_rows: 0
+  missing_rows: 0
+  unexplained_join_mismatch: 0
+  stale_label_used: 0
+  unknown_protocol_error: 0
+  legacy_label_changed_telemetry: 4
+hashes:
+  raw_generation_cache_sha256: 9517800c7eea091b0fba4395e4cdea06ad3316ee2ccf46e728a63b262571fd71
+  candidate_generation_cache_sha256: f2d6eef1e4a504058d5ac5f8e47ec14403080c050911c9028a254c140c49d8c4
+  frozen_quality_sha256: 2ae007cbdc805bef4ad55b564d7117d2237db9815a818ecee45347e60f46fafd
+  provenance_audit_sha256: cd808b45fc06c3e2c8bacf241bad97f0ca18e64357918327ff784740c51db254
+claim_boundary: >-
+  Fresh frozen-provenance Qwen3-8B task-sanity and intrinsic attestation.
+  Expected prefix gain is compiler-estimated, not observed serving reuse;
+  task scores are not official benchmark scoring.
