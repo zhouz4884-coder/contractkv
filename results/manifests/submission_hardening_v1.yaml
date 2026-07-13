@@ -1,0 +1,33 @@
+batch: submission_hardening_v1
+status: complete
+research_scope: frozen
+models:
+  - Qwen3-8B
+  - Mistral-7B-Instruct-v0.3
+negative_boundary_model: Llama-3.1-8B-Instruct
+backend: vllm-0.10.2
+hardware: 2x-RTX-3090
+fresh_process_repeats: 3
+concurrency: 2
+turns: 10
+ttft_slo_ms: 1500
+tool_slack_ms: 2000
+certificate_scope_modes:
+  - observation
+  - qualified_session
+external_baseline_status: complete
+results:
+  - results/submission_repeats/submission_repeat_cells_v0.csv
+  - results/submission_repeats/submission_repeat_pairs_v0.csv
+  - results/submission_repeats/submission_repeat_aggregate_v0.csv
+  - results/submission_repeats/submission_repeat_summary_v0.json
+  - results/external_baseline/external_prefix_baseline_summary_v0.json
+  - results/cross_model/llama_qualified_replay/aggregate_v0.csv
+  - results/cross_model/llama_qualified_replay/quality_summary_v0.json
+  - results/hard_systems/physical_dedup_memory_v0.csv
+paper:
+  - submission/contractkv_manuscript.md
+  - submission/contractkv_appendix.md
+  - submission/claim_evidence_map.md
+  - submission/terminology_ledger.md
+claim_boundary: scoped empirical certificates and real prefix reuse; no universal semantic proof or real KV offload claim

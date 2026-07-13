@@ -24,7 +24,6 @@ if [[ -n "$PID_PATH" && -f "$PID_PATH" ]]; then
   fi
   rm -f "$PID_PATH"
 fi
-
 if [[ -n "$PORT" ]]; then
   if command -v lsof >/dev/null 2>&1; then
     lsof -ti ":${PORT}" | xargs -r kill
@@ -32,4 +31,3 @@ if [[ -n "$PORT" ]]; then
     echo "lsof not available; port-based stop skipped." >&2
   fi
 fi
-

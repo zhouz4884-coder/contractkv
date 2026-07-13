@@ -1,8 +1,12 @@
 import unittest
+
+from argparse import Namespace
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from scripts.phase19b_end_to_end_live import stable_order
+from scripts.phase19b_end_to_end_live import request_context, validity_scope
+from scripts.contractkv_certificate_scope import validation_errors
 from scripts.install_vllm_v1_prefix_metrics_probe import install, uninstall
 
 
@@ -35,6 +39,46 @@ class Phase19EndToEndTests(unittest.TestCase):
             {"segment_id": "s3", "segment_type": "USER_QUERY"},
         ]}
         self.assertEqual(stable_order(case, ["s0", "s1", "s2", "s3"]), ["s0", "s1"])
+
+    def test_main_replay_uses_explicit_qualified_session_scope(self):
+        args = Namespace(
+            model_identity="model-a", model="served-a",
+            certificate_scope_mode="qualified_session",
+            policy_hash="policy-a", qualification_hash="qualification-a",
+        )
+        sample = {"dataset": "LongBench", "task": "hotpotqa"}
+        base_segments = [
+            {"segment_id": "sys", "segment_type": "SYS_PROMPT", "text": "system", "dependencies": []},
+            {"segment_id": "doc", "segment_type": "RAG_CHUNK", "text": "stable", "dependencies": ["sys"]},
+            {"segment_id": "obs", "segment_type": "TOOL_OBS", "text": "observation 0", "dependencies": ["sys"]},
+            {"segment_id": "query", "segment_type": "USER_QUERY", "text": "question", "dependencies": ["doc", "obs"]},
+        ]
+        layout = {"topological_order": ["sys", "doc", "obs", "query"]}
+        issued = validity_scope(args, sample, {"turn_id": 0, "segments": base_segments}, layout)
+        changed = [dict(segment) for segment in base_segments]
+        changed[2]["text"] = "observation 1"
+        current = validity_scope(args, sample, {"turn_id": 1, "segments": changed}, layout)
+        self.assertEqual(validation_errors(issued, request_context(current)), [])
+
+    def test_observation_scope_rejects_future_observation(self):
+        args = Namespace(
+            model_identity="model-a", model="served-a",
+            certificate_scope_mode="observation",
+            policy_hash="policy-a", qualification_hash="",
+        )
+        sample = {"dataset": "RULER", "task": "niah"}
+        segments = [
+            {"segment_id": "sys", "segment_type": "SYS_PROMPT", "text": "system", "dependencies": []},
+            {"segment_id": "obs", "segment_type": "TOOL_OBS", "text": "observation 0", "dependencies": ["sys"]},
+        ]
+        layout = {"topological_order": ["sys", "obs"]}
+        issued = validity_scope(args, sample, {"turn_id": 0, "segments": segments}, layout)
+        changed = [dict(segment) for segment in segments]
+        changed[1]["text"] = "observation 1"
+        current = validity_scope(args, sample, {"turn_id": 1, "segments": changed}, layout)
+        errors = validation_errors(issued, request_context(current))
+        self.assertIn("observation_identity_mismatch", errors)
+        self.assertIn("observation_epoch_mismatch", errors)
 
     def test_final_replay_uses_ten_turn_horizon(self):
         script = (ROOT / "scripts/run_phase19b.sh").read_text(encoding="utf-8")
@@ -69,6 +113,11 @@ class Phase19EndToEndTests(unittest.TestCase):
         heldout = script.index("for policy in raw-order contractkv-full")
         self.assertLess(calibration, freeze)
         self.assertLess(freeze, heldout)
+
+    def test_async_future_rows_bind_request_local_scope_errors(self):
+        source = (ROOT / "scripts/phase19b_end_to_end_live.py").read_text(encoding="utf-8")
+        self.assertIn("exact_lcp_tokens, job_scope_errors) in jobs", source)
+        self.assertIn('"certificate_scope_errors": job_scope_errors', source)
 
 
 if __name__ == "__main__":

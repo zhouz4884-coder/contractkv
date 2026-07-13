@@ -40,6 +40,29 @@ def _contractkv_policy_errors(runtime):
         return ["policy_loader_error=" + repr(exc)]
 
 
+def _contractkv_scope_errors(runtime):
+    try:
+        from scripts.contractkv_certificate_scope import (
+            CertificateValidityScope, RequestValidityContext, validation_errors)
+        model_identity = runtime.plan.model_identity
+        certificate_scope = CertificateValidityScope(
+            model_identity=model_identity,
+            task_family=runtime.plan.task_family,
+            layout_hash=runtime.plan.layout_hash,
+            stable_prefix_hash=runtime.plan.stable_content_hash,
+            scope_mode=runtime.plan.scope_mode,
+            observation_identity=runtime.plan.observation_identity,
+            observation_epoch=runtime.plan.observation_epoch,
+            policy_hash=runtime.plan.policy_hash,
+            qualification_hash=runtime.plan.qualification_hash,
+        )
+        request_scope = RequestValidityContext(
+            **dict(runtime.verify_payload.get("request_scope") or {}))
+        return validation_errors(certificate_scope, request_scope)
+    except Exception as exc:
+        return ["scope_loader_error=" + repr(exc)]
+
+
 def _contractkv_attach_pstp(request):
     runtime = getattr(request, "contractkv_pstp_runtime", None)
     if runtime is not None:
@@ -56,6 +79,7 @@ def _contractkv_attach_pstp(request):
             from scripts.contractkv_pstp import VerifyDecision
             runtime.verify_decision = VerifyDecision.CANCELLED
         runtime.policy_errors = _contractkv_policy_errors(runtime)
+        runtime.scope_errors = _contractkv_scope_errors(runtime)
         request.contractkv_pstp_runtime = runtime
         _contractkv_write({
             "event": "phase17_runtime_attached",
@@ -68,6 +92,7 @@ def _contractkv_attach_pstp(request):
             "policy_hash": runtime.plan.policy_hash,
             "policy_version": runtime.plan.policy_version,
             "policy_errors": runtime.policy_errors,
+            "scope_errors": runtime.scope_errors,
         })
         return runtime
     except Exception as exc:
@@ -182,6 +207,7 @@ def _contractkv_pstp_finalize(scheduler, request):
         and runtime.plan.tokenization_glue_loss < scheduler.block_size
         and runtime.plan.fault_mode not in {"calibration_only", "frontend_disconnect"}
         and not getattr(runtime, "policy_errors", [])
+        and not getattr(runtime, "scope_errors", [])
         and report.policy_hash == runtime.plan.policy_hash
         and report.policy_version == runtime.plan.policy_version
         and commit_tokens > 0
@@ -227,6 +253,13 @@ def _contractkv_pstp_finalize(scheduler, request):
             model_revision=str(runtime.plan.runtime_identity.get("model_revision", "")),
             tokenizer_hash=str(runtime.plan.runtime_identity.get("tokenizer_hash", "")),
             chat_template_hash=str(runtime.plan.runtime_identity.get("chat_template_hash", "")),
+            model_identity=runtime.plan.model_identity,
+            task_family=runtime.plan.task_family,
+            stable_prefix_hash=runtime.plan.stable_content_hash,
+            scope_mode=runtime.plan.scope_mode,
+            observation_identity=runtime.plan.observation_identity,
+            observation_epoch=runtime.plan.observation_epoch,
+            qualification_hash=runtime.plan.qualification_hash,
         )
     else:
         runtime.committed_tokens = 0
@@ -261,6 +294,7 @@ def _contractkv_pstp_finalize(scheduler, request):
         "policy_version": runtime.plan.policy_version,
         "attestation_mode": runtime.plan.attestation_mode,
         "policy_errors": getattr(runtime, "policy_errors", []),
+        "scope_errors": getattr(runtime, "scope_errors", []),
     }
     _contractkv_write(event)
     if certificate is not None:

@@ -91,9 +91,17 @@ def build_runtime(
     frozen_policy: object | None = None,
     frozen_policy_hash: str = "",
     runtime_identity: object | None = None,
+    task_family: str = "unspecified",
+    scope_mode: str = "observation",
+    observation_identity: str = "",
+    observation_epoch: int = 0,
+    qualification_hash: str = "",
 ) -> PSTPRuntime:
     boundary = lcp_length(stable_ids, candidate_prompt_ids)
     glue_loss, glue_status = classify_tokenization_glue(len(stable_ids), boundary)
+    runtime_identity_dict = dict(getattr(runtime_identity, "__dict__", runtime_identity or {}))
+    model_identity = str(runtime_identity_dict.get("model_revision") or digest("runtime-model-unspecified"))
+    observed = observation_identity or digest(candidate_messages)
     plan = PSTPPlan(
         txn_id=txn_id,
         stable_prefix_end_token=boundary,
@@ -108,7 +116,13 @@ def build_runtime(
         policy_hash=frozen_policy_hash,
         policy_version=str(getattr(frozen_policy, "policy_version", "")),
         attestation_mode=str(getattr(frozen_policy, "attestation_mode", "")),
-        runtime_identity=dict(getattr(runtime_identity, "__dict__", runtime_identity or {})),
+        runtime_identity=runtime_identity_dict,
+        model_identity=model_identity,
+        task_family=task_family,
+        scope_mode=scope_mode,
+        observation_identity=observed,
+        observation_epoch=int(observation_epoch),
+        qualification_hash=qualification_hash,
     )
     payload = {
         "raw_token_ids": raw["token_ids"],
@@ -125,5 +139,15 @@ def build_runtime(
         "policy_hash": frozen_policy_hash,
         "policy_version": str(getattr(frozen_policy, "policy_version", "")),
         "attestation_mode": str(getattr(frozen_policy, "attestation_mode", "")),
+        "request_scope": {
+            "model_identity": model_identity,
+            "task_family": task_family,
+            "layout_hash": plan.layout_hash,
+            "stable_prefix_hash": plan.stable_content_hash,
+            "observation_identity": observed,
+            "observation_epoch": int(observation_epoch),
+            "policy_hash": frozen_policy_hash,
+            "qualification_hash": qualification_hash,
+        },
     }
     return PSTPRuntime(plan=plan, verify_payload=payload)

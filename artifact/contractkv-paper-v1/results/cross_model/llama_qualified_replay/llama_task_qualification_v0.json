@@ -1,0 +1,56 @@
+{
+  "schema_version": "contractkv.llama-task-qualification.v1",
+  "model_identity": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct",
+  "qualification_basis": "development_only_all_sessions_strict_certificate",
+  "minimum_development_sessions": 5,
+  "development_source_sha256": "8038041f2721fb358f74336a192454a820bdf6ee9b05ccc75501b6d010b02862",
+  "heldout_opened_for_tuning": false,
+  "decisions": [
+    {
+      "task_family": "LongBench:hotpotqa",
+      "development_sessions": 5,
+      "strict_certificates": 4,
+      "errors": 0,
+      "qualified": false,
+      "reason": "fail_closed_incomplete_development_coverage"
+    },
+    {
+      "task_family": "LongBench:narrativeqa",
+      "development_sessions": 5,
+      "strict_certificates": 1,
+      "errors": 0,
+      "qualified": false,
+      "reason": "fail_closed_incomplete_development_coverage"
+    },
+    {
+      "task_family": "LongBench:qasper",
+      "development_sessions": 5,
+      "strict_certificates": 2,
+      "errors": 0,
+      "qualified": false,
+      "reason": "fail_closed_incomplete_development_coverage"
+    },
+    {
+      "task_family": "RULER:niah_single_1",
+      "development_sessions": 5,
+      "strict_certificates": 5,
+      "errors": 0,
+      "qualified": true,
+      "reason": "all_development_sessions_strictly_certified"
+    },
+    {
+      "task_family": "RepoBench:python_v1.1",
+      "development_sessions": 5,
+      "strict_certificates": 0,
+      "errors": 0,
+      "qualified": false,
+      "reason": "fail_closed_incomplete_development_coverage"
+    }
+  ],
+  "qualified_task_families": [
+    "RULER:niah_single_1"
+  ],
+  "fallback": "raw-order",
+  "claim_boundary": "Qualification is task-family scoped and prospective. It is not a universal Llama certificate; all unqualified families fail closed to raw order.",
+  "qualification_hash": "4253f8a2692f7a809b7a375a27bc1e8f042536588cee51724507d3054ea70549"
+}

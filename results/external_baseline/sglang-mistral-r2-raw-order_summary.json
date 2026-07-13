@@ -1,0 +1,21 @@
+{
+  "backend": "sglang-mistral-r2-raw-order",
+  "policy": "raw-order",
+  "sessions": 50,
+  "future_requests": 450,
+  "completed_requests": 450,
+  "completion_rate": 1.0,
+  "mean_ttft_ms": 1030.50753822,
+  "p95_ttft_ms": 2363.200192,
+  "mean_tpot_ms": 44.42990784222222,
+  "p95_tpot_ms": 94.634329,
+  "mean_prompt_tokens": 2704.52,
+  "mean_task_score": 0.30366389156202095,
+  "offline_qualified_sessions": 0,
+  "peak_kv_blocks": "unavailable_without_backend_block_metric",
+  "slo_ms": 1500.0,
+  "slo_compliant_requests": 358,
+  "slo_compliant_req_per_sec": 0.6537558103699619,
+  "cached_tokens_observable_rate": 0.0,
+  "claim_boundary": "External production prefix-cache baseline on the same raw-order trace; cached-token metrics are reported only if the backend exposes them."
+}

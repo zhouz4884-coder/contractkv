@@ -37,6 +37,12 @@ class PSTPPlan:
     policy_version: str = ""
     attestation_mode: str = ""
     runtime_identity: dict[str, Any] = field(default_factory=dict)
+    model_identity: str = ""
+    task_family: str = "unspecified"
+    scope_mode: str = "observation"
+    observation_identity: str = ""
+    observation_epoch: int = 0
+    qualification_hash: str = ""
 
 
 @dataclass
@@ -69,6 +75,13 @@ class TransactionalCertificate:
     model_revision: str = ""
     tokenizer_hash: str = ""
     chat_template_hash: str = ""
+    model_identity: str = ""
+    task_family: str = ""
+    stable_prefix_hash: str = ""
+    scope_mode: str = "observation"
+    observation_identity: str = ""
+    observation_epoch: int = 0
+    qualification_hash: str = ""
 
 
 def runtime_to_dict(runtime: PSTPRuntime) -> dict[str, Any]:

@@ -16,6 +16,10 @@ if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.contractkv_pstp import lcp_length
+from scripts.contractkv_certificate_scope import (
+    CertificateValidityScope, RequestValidityContext, ScopeMode,
+    validation_errors,
+)
 from scripts.phase12_prefix_cache_ab import send_chat_stream
 from scripts.phase12_task_quality_sanity import score_answer
 from scripts.phase12e_cache_aware_posc import SegmentPrefixLedger, cache_aware_posc_compile, compile_static_policy
@@ -54,6 +58,54 @@ def stable_order(case: dict[str, Any], order: list[str]) -> list[str]:
             break
         result.append(segment_id)
     return result
+
+
+def validity_scope(
+    args: argparse.Namespace,
+    sample: dict[str, Any],
+    case: dict[str, Any],
+    layout: dict[str, Any],
+) -> CertificateValidityScope:
+    order = [str(value) for value in layout["topological_order"]]
+    by_id = {str(segment["segment_id"]): segment for segment in case["segments"]}
+    stable_ids = stable_order(case, order)
+    layout_identity = [
+        (segment_id, tuple(sorted(str(value) for value in by_id[segment_id].get("dependencies", []))))
+        for segment_id in order
+    ]
+    stable_identity = [
+        (segment_id, str(by_id[segment_id].get("segment_type", "")), str(by_id[segment_id].get("text", "")))
+        for segment_id in stable_ids
+    ]
+    observations = [
+        (str(segment.get("segment_id", "")), str(segment.get("text", "")))
+        for segment in case["segments"]
+        if str(segment.get("segment_type", "")) == "TOOL_OBS"
+    ]
+    return CertificateValidityScope(
+        model_identity=args.model_identity or args.model,
+        task_family=f"{sample.get('dataset', '')}:{sample.get('task', '')}",
+        layout_hash=digest(layout_identity),
+        stable_prefix_hash=digest(stable_identity),
+        scope_mode=args.certificate_scope_mode,
+        observation_identity=digest(observations),
+        observation_epoch=int(case.get("turn_id", 0)),
+        policy_hash=args.policy_hash,
+        qualification_hash=args.qualification_hash or args.policy_hash,
+    )
+
+
+def request_context(scope: CertificateValidityScope) -> RequestValidityContext:
+    return RequestValidityContext(
+        model_identity=scope.model_identity,
+        task_family=scope.task_family,
+        layout_hash=scope.layout_hash,
+        stable_prefix_hash=scope.stable_prefix_hash,
+        observation_identity=scope.observation_identity,
+        observation_epoch=scope.observation_epoch,
+        policy_hash=scope.policy_hash,
+        qualification_hash=scope.qualification_hash,
+    )
 
 
 def compile_layout(policy: str, case: dict[str, Any], ledger: SegmentPrefixLedger,
@@ -114,6 +166,10 @@ def main() -> int:
     parser.add_argument("--stable-word-limit", type=int, default=2600); parser.add_argument("--max-tokens", type=int, default=96)
     parser.add_argument("--tool-slack-ms", type=float, default=2000); parser.add_argument("--slo-ms", type=float, default=1000)
     parser.add_argument("--timeout", type=float, default=300); parser.add_argument("--metrics-events", type=Path, required=True)
+    parser.add_argument("--certificate-scope-mode", choices=[mode.value for mode in ScopeMode],
+                        default=ScopeMode.QUALIFIED_SESSION.value)
+    parser.add_argument("--model-identity", default="")
+    parser.add_argument("--qualification-hash", default="")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     sessions = load_jsonl(args.sessions); ledger = SegmentPrefixLedger(); rows = []
@@ -139,6 +195,9 @@ def main() -> int:
                 verify = compact_verify(args, sample, case, layout, raw, sid)
                 score = score_answer(raw["text"], sample.get("answer", ""), str(sample.get("dataset", "")))["score"]
                 issued = bool(verify.get("certificate_issued"))
+                scope = validity_scope(args, sample, case, layout)
+                if issued:
+                    verify["validity_scope"] = scope.__dict__.copy()
                 certificates[sid] = verify
                 rows.append({"row_type": "canary", "policy": args.policy, "load_tier": args.load_tier,
                              "concurrency": args.concurrency, "session_id": sid, "dataset": sample.get("dataset"),
@@ -147,6 +206,9 @@ def main() -> int:
                              "output_text": raw["text"], "task_score": score, "ttft_ms": "", "tpot_ms": "",
                              "latency_ms": (time.perf_counter()-started)*1000, "slo_compliant": "",
                              "certificate_issued": issued, "verify_decision": verify.get("verify_decision", ""),
+                             "certificate_scope_mode": scope.scope_mode,
+                             "certificate_scope_valid": issued,
+                             "certificate_scope_errors": [],
                              "txn_state": verify.get("txn_state", ""), "committed_tokens": verify.get("committed_tokens", 0),
                              "preparation_ms": verify.get("preparation_ms", 0),
                              "verify_endpoint_ms": verify.get("verify_endpoint_ms", 0),
@@ -223,24 +285,38 @@ def main() -> int:
         for sample in cohort:
             sid = str(sample["phase19b_session_id"]); case = turn_case(sample, turn, args.stable_word_limit)
             effective = args.policy
-            if effective == "contractkv-full": effective = "physical-cache-aware" if certificates[sid].get("certificate_issued") else "raw-order"
+            scope_errors: list[str] = []
+            if effective == "contractkv-full":
+                probe_layout = compile_layout("physical-cache-aware", case, ledger, sid, turn, args.tool_slack_ms)
+                stored = certificates[sid].get("validity_scope")
+                if stored:
+                    current = validity_scope(args, sample, case, probe_layout)
+                    scope_errors = validation_errors(
+                        CertificateValidityScope(**dict(stored)), request_context(current))
+                else:
+                    scope_errors = ["certificate_missing_or_unissued"]
+                effective = "physical-cache-aware" if not scope_errors else "raw-order"
             layout = compile_layout(effective, case, ledger, sid, turn, args.tool_slack_ms)
             request_messages = messages(case, layout["topological_order"])
             prompt_ids = tokenize(args.base_url, args.model, request_messages, True, args.timeout)
             exact_lcp_tokens = lcp_length(previous_prompt_ids.get(sid, []), prompt_ids)
-            jobs.append((sample, sid, case, layout, effective, request_messages, prompt_ids, exact_lcp_tokens))
+            jobs.append((sample, sid, case, layout, effective, request_messages,
+                         prompt_ids, exact_lcp_tokens, list(scope_errors)))
         batch_started = time.perf_counter(); batch_id = f"{args.policy}-{args.load_tier}-c{cohort_index}-t{turn}"
         with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
             futures = {}
-            for sample, sid, case, layout, effective, request_messages, prompt_ids, exact_lcp_tokens in jobs:
+            for (sample, sid, case, layout, effective, request_messages,
+                 prompt_ids, exact_lcp_tokens, job_scope_errors) in jobs:
                 rid = f"phase19b-{args.policy}-{args.load_tier}-{sid}-t{turn}"
                 future = pool.submit(send_chat_stream, args.base_url, args.model,
                                      request_messages, args.max_tokens,
                                      args.timeout, rid)
-                futures[future] = (sample, sid, case, layout, effective, rid, prompt_ids, exact_lcp_tokens)
+                futures[future] = (sample, sid, case, layout, effective, rid,
+                                   prompt_ids, exact_lcp_tokens, job_scope_errors)
             finished = []
             for future in as_completed(futures):
-                sample, sid, case, layout, effective, rid, prompt_ids, exact_lcp_tokens = futures[future]
+                (sample, sid, case, layout, effective, rid, prompt_ids,
+                 exact_lcp_tokens, job_scope_errors) = futures[future]
                 try: result = future.result()
                 except Exception as exc: result = {"success": False, "error_type": type(exc).__name__, "error_message": str(exc)}
                 score = score_answer(result.get("output_text", ""), sample.get("answer", ""), str(sample.get("dataset", "")))["score"] if result.get("success") else 0.0
@@ -254,6 +330,9 @@ def main() -> int:
                                  "latency_ms": result.get("total_latency_ms", 0),
                                  "slo_compliant": bool(result.get("success") and float(result.get("ttft_ms", 0)) <= args.slo_ms),
                                  "certificate_issued": bool(certificates.get(sid, {}).get("certificate_issued")) if args.policy == "contractkv-full" else "",
+                                 "certificate_scope_mode": args.certificate_scope_mode if args.policy == "contractkv-full" else "",
+                                 "certificate_scope_valid": not job_scope_errors if args.policy == "contractkv-full" else "",
+                                 "certificate_scope_errors": job_scope_errors if args.policy == "contractkv-full" else [],
                                  "verification_ms": certificates.get(sid, {}).get("verification_ms", 0) if args.policy == "contractkv-full" else 0,
                                  "unhidden_verifier_ms": max(0.0, float(certificates.get(sid, {}).get("verification_ms", 0))-args.tool_slack_ms) if args.policy == "contractkv-full" else 0,
                                  "certified_stable_prefix_tokens": certificates.get(sid, {}).get("stable_prefix_tokens", 0) if args.policy == "contractkv-full" else "",

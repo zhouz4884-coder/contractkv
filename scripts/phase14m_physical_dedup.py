@@ -28,7 +28,8 @@ RAW_FIELDS = [
     "tpot_ms", "latency_ms", "prompt_tokens", "prefix_hit_tokens",
     "reused_physical_blocks", "newly_allocated_blocks", "physical_block_ids",
     "physical_block_refcounts",
-    "used_gpu_blocks", "free_gpu_blocks", "scheduler_wait_ms", "primer",
+    "block_size", "total_gpu_blocks", "used_gpu_blocks", "free_gpu_blocks",
+    "scheduler_wait_ms", "primer",
     "content_multiset_sha256",
     "error_type", "error_message",
 ]
@@ -42,6 +43,7 @@ SUMMARY_FIELDS = [
     "peak_concurrent_shared_blocks", "peak_concurrent_logical_refs",
     "peak_concurrent_unique_blocks", "peak_concurrent_dedup_factor",
     "peak_concurrent_refcount_match_rate",
+    "block_size", "total_gpu_blocks", "mean_newly_allocated_blocks",
     "used_block_high_water", "minimum_free_blocks", "mean_scheduler_wait_ms",
     "primer_latency_ms", "preemption_count", "claim_boundary",
 ]
@@ -107,12 +109,13 @@ def join_events(results: list[dict[str, Any]], events: list[dict[str, Any]]) -> 
             "prompt_tokens": initial.get("prompt_tokens", ""),
             "prefix_hit_tokens": initial.get("prefix_hit_tokens", ""),
             "reused_physical_blocks": initial.get("reused_physical_blocks", ""),
-            "newly_allocated_blocks": max(
-                (int(event.get("newly_allocated_blocks") or 0) for event in group),
-                default=0,
-            ),
+            # Initial prompt allocation only. Later decode allocations belong
+            # to request growth and must not be reported as fresh prompt copies.
+            "newly_allocated_blocks": initial.get("newly_allocated_blocks", ""),
             "physical_block_ids": initial.get("physical_block_ids", []),
             "physical_block_refcounts": initial.get("physical_block_refcounts", []),
+            "block_size": initial.get("block_size", ""),
+            "total_gpu_blocks": initial.get("total_gpu_blocks", ""),
             "used_gpu_blocks": max((int(event.get("used_gpu_blocks") or 0) for event in group), default=0),
             "free_gpu_blocks": min((int(event.get("free_gpu_blocks") or 0) for event in group), default=0),
             "scheduler_wait_ms": initial.get("scheduler_wait_ms", ""),
@@ -197,6 +200,11 @@ def summarize(
         "unique_physical_blocks_effective": effective_unique,
         "effective_dedup_factor": total_blocks / effective_unique if effective_unique else 0.0,
         **(concurrent_stats or concurrent_snapshot_stats([])),
+        "block_size": max((int(row.get("block_size") or 0) for row in successful), default=0),
+        "total_gpu_blocks": max((int(row.get("total_gpu_blocks") or 0) for row in successful), default=0),
+        "mean_newly_allocated_blocks": statistics.mean(
+            float(row.get("newly_allocated_blocks") or 0) for row in successful
+        ) if successful else 0.0,
         "used_block_high_water": max((int(row.get("used_gpu_blocks") or 0) for row in successful), default=0),
         "minimum_free_blocks": min((int(row.get("free_gpu_blocks") or 0) for row in successful), default=0),
         "mean_scheduler_wait_ms": statistics.mean(float(row.get("scheduler_wait_ms") or 0) for row in successful) if successful else 0.0,

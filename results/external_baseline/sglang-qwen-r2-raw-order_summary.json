@@ -1,0 +1,21 @@
+{
+  "backend": "sglang-qwen-r2-raw-order",
+  "policy": "raw-order",
+  "sessions": 50,
+  "future_requests": 450,
+  "completed_requests": 450,
+  "completion_rate": 1.0,
+  "mean_ttft_ms": 1421.5468632644443,
+  "p95_ttft_ms": 2913.664325,
+  "mean_tpot_ms": 41.485935157777774,
+  "p95_tpot_ms": 122.124824,
+  "mean_prompt_tokens": 3530.12,
+  "mean_task_score": 0.3273765319149508,
+  "offline_qualified_sessions": 0,
+  "peak_kv_blocks": "unavailable_without_backend_block_metric",
+  "slo_ms": 1500.0,
+  "slo_compliant_requests": 227,
+  "slo_compliant_req_per_sec": 0.40337254303108006,
+  "cached_tokens_observable_rate": 0.0,
+  "claim_boundary": "External production prefix-cache baseline on the same raw-order trace; cached-token metrics are reported only if the backend exposes them."
+}
