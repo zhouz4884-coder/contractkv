@@ -1,0 +1,38 @@
+phase: phase19c
+title: Llama cross-model transactional replay
+status: completed_evaluation_gate_not_met
+model: Llama-3.1-8B-Instruct
+backend: vLLM-0.10.2-V1
+policy_hash: e6497794e4eaf6f5f464dcadbddf91dcf4d469f72d932ad6879eac91a27a7265
+hardware: 2x RTX 3090, isolated sequential/paired cells
+workload:
+  calibration_sessions: 10
+  heldout_sessions: 20
+  phase19b_overlap: 0
+  turns_per_session: 10
+  policies: 4
+  heldout_future_requests: 720
+  heldout_initialization_rows: 80
+  heldout_total_rows: 800
+outcomes:
+  completion_rate: 1.0
+  unsafe_certified: 0
+  quality_violation_rate: 0.0
+  safe_coverage: 0.4117647058823529
+  certified_stable_prefix_reuse: 0.9995833085302697
+  dynamic_suffix_reuse_tokens: 0.0
+  net_ttft_reduction: 0.14636451530757388
+  new_prefill_reduction: 0.2414667719884146
+  retained_prefix_gain_rate: 0.24434730991311854
+  slo_goodput_gain: 0.46714636694675105
+audit:
+  transaction_integrity: pass
+  unsafe_certified_zero: pass
+  quality_violation_zero: pass
+  safe_coverage_ge_0_50: fail
+  new_prefill_reduction_ge_0_30: fail
+  retained_prefix_gain_ge_0_50: fail
+  gate_pass: false
+claim_boundary: >-
+  Completed fresh cross-model evaluation. Safety and transaction integrity
+  transfer, but the frozen cross-model performance gate is not met.

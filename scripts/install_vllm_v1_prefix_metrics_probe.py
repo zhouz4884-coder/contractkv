@@ -17,6 +17,7 @@ HELPER_BEGIN = "# CONTRACTKV_PREFIX_METRICS_HELPER_BEGIN"
 HELPER_END = "# CONTRACTKV_PREFIX_METRICS_HELPER_END"
 CALL_BEGIN = "# CONTRACTKV_PREFIX_METRICS_CALL_BEGIN"
 CALL_END = "# CONTRACTKV_PREFIX_METRICS_CALL_END"
+BACKUP_SUFFIX = ".contractkv-prefix-metrics.bak"
 
 HELPER = r'''
 # CONTRACTKV_PREFIX_METRICS_HELPER_BEGIN
@@ -154,6 +155,9 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
             initial = request_id not in _contractkv_prefix_metric_seen
             if initial:
                 _contractkv_prefix_metric_seen.add(request_id)
+            if (os.environ.get("CONTRACTKV_PREFIX_INITIAL_ONLY") == "1"
+                    and not initial):
+                continue
             remaining_prompt = max(0, prompt_tokens - computed_before)
             prefill_scheduled_tokens = min(scheduled_tokens, remaining_prompt)
             prefix_hit_tokens = min(prompt_tokens, computed_before) if initial else None
@@ -238,8 +242,14 @@ def _remove_marked_region(text: str, begin: str, end: str) -> str:
     return text[:start] + text[finish:]
 
 
+def _backup_path(path: Path) -> Path:
+    return path.with_name(path.name + BACKUP_SUFFIX)
+
+
 def install(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
+    original_text = text
+    backup = _backup_path(path)
     if HELPER_BEGIN in text:
         text = _remove_marked_region(text, HELPER_BEGIN, HELPER_END)
         anchor = "class Scheduler"
@@ -253,12 +263,19 @@ def install(path: Path) -> str:
     needle = "        self._update_after_schedule(scheduler_output)\n"
     if needle not in text:
         raise RuntimeError("Could not find V1 scheduler post-schedule insertion point.")
+    if not backup.exists():
+        backup.write_text(original_text, encoding="utf-8")
     text = text.replace(needle, CALL + needle, 1)
     path.write_text(text, encoding="utf-8")
     return "installed"
 
 
 def uninstall(path: Path) -> str:
+    backup = _backup_path(path)
+    if backup.exists():
+        path.write_text(backup.read_text(encoding="utf-8"), encoding="utf-8")
+        backup.unlink()
+        return "uninstalled"
     text = path.read_text(encoding="utf-8")
     if HELPER_BEGIN not in text:
         return "not_installed"

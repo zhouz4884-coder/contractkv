@@ -1,0 +1,65 @@
+{
+  "full_pool_rows": 1300,
+  "datasets": {
+    "LongBench": 600,
+    "RULER": 200,
+    "RepoBench": 500
+  },
+  "partitions": {
+    "calibration": 258,
+    "held_out_quality": 281,
+    "live_serving": 761
+  },
+  "assets": [
+    {
+      "kind": "archive",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/sources/RULER-main.zip",
+      "present": true,
+      "size_bytes": 65009
+    },
+    {
+      "kind": "archive",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/sources/LongBench-main.zip",
+      "present": true,
+      "size_bytes": 7767824
+    },
+    {
+      "kind": "archive",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/sources/repobench-main.zip",
+      "present": true,
+      "size_bytes": 1852396
+    },
+    {
+      "kind": "archive",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/sources/contractkv_datasets.zip",
+      "present": true,
+      "size_bytes": 958899140
+    },
+    {
+      "kind": "repo",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/repos/RULER-main",
+      "present": true,
+      "size_bytes": 0
+    },
+    {
+      "kind": "repo",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/repos/LongBench-main",
+      "present": true,
+      "size_bytes": 0
+    },
+    {
+      "kind": "repo",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/repos/repobench-main",
+      "present": true,
+      "size_bytes": 0
+    },
+    {
+      "kind": "generated_pool",
+      "path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/datasets/contractkv_datasets/outputs/sample_prompts.jsonl",
+      "present": true,
+      "size_bytes": 5184546
+    }
+  ],
+  "all_required_assets_present": true,
+  "claim_boundary": "Local source and unified-pool readiness; not a claim that official benchmark scoring has run on every source example."
+}

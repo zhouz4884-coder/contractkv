@@ -1,0 +1,46 @@
+phase: phase19b
+title: task-bearing end-to-end live replay
+status: complete
+model: Qwen3-8B
+backend: vLLM-0.10.2-V1
+policy_hash: 55e10dc4f54daf428b382a35fe8a8feeded5b4b3f34752f36f45c8f825df1ee4
+hardware: 2x RTX 3090, one isolated cell per GPU
+workload:
+  sessions: 50
+  task_families: 5
+  turns_per_session: 10
+  unmeasured_initial_turn: 0
+  measured_turns: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  policies: 4
+  load_tiers: [low, transition, saturation]
+  measured_future_requests: 5400
+  initialization_rows: 600
+  total_rows: 6000
+outcomes:
+  certificate_issue_rate: 0.68
+  quality_violation_rate: 0.0
+  completion_rate: 1.0
+  certified_stable_prefix_reuse: 0.9997735615577689
+  dynamic_suffix_reuse_tokens: 0.0
+  net_ttft_reduction:
+    low: 0.3598707303979348
+    transition: 0.4165976142337592
+    saturation: 0.3955623346395931
+  new_prefill_reduction:
+    low: 0.5912963199352208
+    transition: 0.5912963199352208
+    saturation: 0.5912963199352208
+  slo_goodput_gain:
+    low: 0.748600286167872
+    transition: 3.93036013382776
+    saturation: 5.393432956949987
+audit:
+  future_request_count_aligned: true
+  measured_turns_aligned: true
+  unmeasured_turn0_complete: true
+  unsafe_certified_zero: true
+  gate_pass: true
+claim_boundary: >-
+  Fresh isolated vLLM future-turn serving metrics with scheduler-observed
+  prefix work and repository task-sanity scoring. This is not official full
+  RULER, LongBench, or RepoBench leaderboard scoring.

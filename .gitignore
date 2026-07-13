@@ -75,6 +75,7 @@ results/quality/*
 !results/hardware/*.csv
 !results/datasets/*.csv
 !results/datasets/*.jsonl
+!results/datasets/*.json
 !results/risk_ledger/*.csv
 !results/cost/*.csv
 !results/controller/*.csv
@@ -94,6 +95,16 @@ results/quality/*
 results/end_to_end/*
 !results/end_to_end/phase14q_request_safety_audit_v0.csv
 !results/end_to_end/phase14q_request_safety_summary_v0.csv
+!results/end_to_end/phase19b_untouched_sessions_v0.jsonl
+!results/end_to_end/phase19b_task_replay_raw_v0.jsonl
+!results/end_to_end/phase19b_task_replay_summary_v0.csv
+!results/end_to_end/phase19b_task_replay_gate_v0.json
+
+!results/cross_model/
+results/cross_model/*
+!results/cross_model/*.csv
+!results/cross_model/*.json
+!results/cross_model/*.jsonl
 
 # Local worktree isolation.
 .worktrees/
