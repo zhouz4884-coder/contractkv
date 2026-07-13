@@ -1,0 +1,20 @@
+{
+  "schema_version": "phase20.two-tier-development-summary.v1",
+  "sessions": 25,
+  "tier1_certificates": 12,
+  "tier2_attempts": 13,
+  "tier2_contract_passes": 0,
+  "tier2_promotions": 0,
+  "total_safe_coverage": 0.48,
+  "candidate_p95_ms": 8277.83282008022,
+  "promotion_probe_p95_ms": 6122.902320232242,
+  "frozen_incremental_budget_ms": 14500.735140312463,
+  "budget_fits_3s_slack": false,
+  "ephemeral_candidate_abort_clean": true,
+  "promotion_probe_abort_clean": true,
+  "promotion_commit_observed": 0,
+  "contract_is_exact_only": true,
+  "ground_truth_used_online": false,
+  "conclusion": "Tier-2 is structurally unavailable under the frozen 3 s slack when its development p95 total cost exceeds the budget.",
+  "claim_boundary": "Development calibration and source-level transaction evidence; not held-out performance."
+}

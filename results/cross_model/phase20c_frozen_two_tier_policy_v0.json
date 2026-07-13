@@ -1,0 +1,66 @@
+{
+  "schema_version": "phase20.two-tier-policy.v1",
+  "model_id": "llama-3.1-8b-instruct",
+  "development_results_sha256": "8038041f2721fb358f74336a192454a820bdf6ee9b05ccc75501b6d010b02862",
+  "split_commitment_sha256": "3df21cc3840e91d92e4fc0f406bad14855ad1f09912c9a7b580f32b0a1c09ff8",
+  "development_sessions": 25,
+  "heldout_opened_for_tuning": false,
+  "tier1_mode": "same-backend-teacher-forced-strict-top1",
+  "tier2_mode": "ephemeral-free-decode-deterministic-task-contract",
+  "ground_truth_online": false,
+  "candidate_cache_visibility": "ephemeral-abort",
+  "promotion_mode": "separate-promotion-only-PSTP",
+  "tier2_once_per_session": true,
+  "length_stop_fail_closed": true,
+  "eligible_tier1_failures": [
+    "top1_path_mismatch",
+    "target_token_absent",
+    "terminal_protocol_mismatch",
+    "incomplete"
+  ],
+  "tier1_p95_ms": 5044.27860211581,
+  "tier2_candidate_p95_ms": 8277.83282008022,
+  "tier2_promotion_p95_ms": 6122.902320232242,
+  "guard_ms": 100.0,
+  "prompt_length_buckets": [
+    2048,
+    4096,
+    8192
+  ],
+  "candidate_total_p95_ms": [
+    0.0,
+    5136.574894655496,
+    8277.83282008022
+  ],
+  "output_length_buckets": [
+    16,
+    32,
+    64,
+    96
+  ],
+  "decode_inclusive_total_p95_ms": [
+    3064.702867064625,
+    3064.702867064625,
+    7210.225291550159,
+    8277.83282008022
+  ],
+  "stable_length_buckets": [
+    2048,
+    4096,
+    8192
+  ],
+  "promotion_p95_ms": [
+    0.0,
+    3029.621415771544,
+    6122.902320232242
+  ],
+  "frozen_total_cost_budget_ms": 14500.735140312463,
+  "budget_semantics": "incremental Tier-2 p95 plus guard; admit only if it fits slack remaining after actual Tier-1",
+  "tool_slack_ms": 3000.0,
+  "tier2_budget_fits_slack": false,
+  "development_tier1_coverage": 0.48,
+  "development_tier2_incremental_coverage": 0.0,
+  "development_total_safe_coverage": 0.48,
+  "claim_boundary": "Frozen from 25 development sessions before opening the 50-session held-out split.",
+  "policy_hash": "99f7fc72eb233f8ddce48ba7ccbdea68ae5ad398919b4eaeece483c6c44312fc"
+}

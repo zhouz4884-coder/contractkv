@@ -1,0 +1,51 @@
+phase,partition,load_tier,dataset,task,policy,pairs,raw_mean,policy_mean,paired_difference,bootstrap_ci_low,bootstrap_ci_high,material_drop_gt_0_03,certified,unsafe_certified,metric,metric_source
+phase19a,calibration,,LongBench,hotpotqa,candidate-layout,35,0.2498315918943575,0.27642727364531877,0.026595681750961258,0.0,0.06842945874001775,False,29,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,LongBench,hotpotqa,contractkv-effective,35,0.2498315918943575,0.2498315918943575,0.0,0.0,0.0,False,29,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,LongBench,narrativeqa,candidate-layout,37,0.1293017464115146,0.12872071275771466,-0.0005810336537999282,-0.01562759281800615,0.01323160139496456,False,23,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,LongBench,narrativeqa,contractkv-effective,37,0.1293017464115146,0.1293017464115146,0.0,0.0,0.0,False,23,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,LongBench,qasper,candidate-layout,38,0.24635697681698407,0.23381648805612645,-0.012540488760857612,-0.029351451841114908,0.00046581179046120013,False,26,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,LongBench,qasper,contractkv-effective,38,0.24635697681698407,0.24635697681698407,0.0,0.0,0.0,False,26,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,calibration,,RULER,niah_single_1,candidate-layout,48,1.0,1.0,0.0,0.0,0.0,False,48,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19a,calibration,,RULER,niah_single_1,contractkv-effective,48,1.0,1.0,0.0,0.0,0.0,False,48,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19a,calibration,,RepoBench,python_v1.1,candidate-layout,184,0.20168478260869566,0.19804347826086957,-0.0036413043478260867,-0.012010869565217389,0.0044565217391304346,False,117,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19a,calibration,,RepoBench,python_v1.1,contractkv-effective,184,0.20168478260869566,0.20168478260869566,0.0,0.0,0.0,False,117,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19a,held_out_quality,,LongBench,hotpotqa,candidate-layout,47,0.26448945455104467,0.2632363872285485,-0.001253067322496215,-0.029879759778975907,0.029797988095860414,False,36,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,LongBench,hotpotqa,contractkv-effective,47,0.26448945455104467,0.26448945455104467,0.0,0.0,0.0,False,36,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,LongBench,narrativeqa,candidate-layout,44,0.08931802663811554,0.08250721216038368,-0.0068108144777318585,-0.01692749280121772,0.0011472868673319987,False,22,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,LongBench,narrativeqa,contractkv-effective,44,0.08931802663811554,0.08931802663811554,0.0,0.0,0.0,False,22,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,LongBench,qasper,candidate-layout,48,0.32547060453892757,0.32105901220527194,-0.004411592333655609,-0.03995444653049576,0.03034256346189681,False,31,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,LongBench,qasper,contractkv-effective,48,0.32547060453892757,0.32547060453892757,0.0,0.0,0.0,False,31,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19a,held_out_quality,,RULER,niah_single_1,candidate-layout,45,1.0,1.0,0.0,0.0,0.0,False,45,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19a,held_out_quality,,RULER,niah_single_1,contractkv-effective,45,1.0,1.0,0.0,0.0,0.0,False,45,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19a,held_out_quality,,RepoBench,python_v1.1,candidate-layout,166,0.22102409638554218,0.22144578313253013,0.00042168674698795207,-0.006085843373493977,0.006747474929658753,False,110,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19a,held_out_quality,,RepoBench,python_v1.1,contractkv-effective,166,0.22102409638554218,0.22102409638554218,0.0,0.0,0.0,False,110,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,low,LongBench,hotpotqa,contractkv-full,90,0.09300415608732039,0.09300415608732039,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,LongBench,hotpotqa,physical-cache-aware,90,0.09300415608732039,0.062234925318089614,-0.03076923076923077,-0.09230769230769231,0.0,True,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,LongBench,narrativeqa,contractkv-full,90,0.025925925925925925,0.025396825396825397,-0.000529100529100529,-0.0015873015873015873,0.0,False,45,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,LongBench,narrativeqa,physical-cache-aware,90,0.025925925925925925,0.026406926406926406,0.00048100048100048335,-0.0015873015873015873,0.0030303030303030372,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,LongBench,qasper,contractkv-full,90,0.30717479978372997,0.30717479978372997,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,LongBench,qasper,physical-cache-aware,90,0.30717479978372997,0.3130409055089906,0.005866105725260665,0.0,0.015888055606365498,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,low,RULER,niah_single_1,contractkv-full,90,1.0,1.0,0.0,0.0,0.0,False,90,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,low,RULER,niah_single_1,physical-cache-aware,90,1.0,1.0,0.0,0.0,0.0,False,0,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,low,RepoBench,python_v1.1,contractkv-full,90,0.20966666666666667,0.20966666666666667,0.0,0.0,0.0,False,45,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,low,RepoBench,python_v1.1,physical-cache-aware,90,0.20966666666666667,0.2051111111111111,-0.004555555555555555,-0.020999999999999998,0.008444444444444442,False,0,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,saturation,LongBench,hotpotqa,contractkv-full,90,0.09300415608732039,0.09300415608732039,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,LongBench,hotpotqa,physical-cache-aware,90,0.09300415608732039,0.062234925318089614,-0.03076923076923077,-0.09230769230769231,0.0,True,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,LongBench,narrativeqa,contractkv-full,90,0.025925925925925925,0.025396825396825397,-0.000529100529100529,-0.0015873015873015873,0.0,False,45,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,LongBench,narrativeqa,physical-cache-aware,90,0.025925925925925925,0.026406926406926406,0.00048100048100048335,-0.0015873015873015873,0.0030303030303030372,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,LongBench,qasper,contractkv-full,90,0.30717479978372997,0.30717479978372997,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,LongBench,qasper,physical-cache-aware,90,0.30717479978372997,0.3130409055089906,0.005866105725260665,0.0,0.014177794036949002,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,saturation,RULER,niah_single_1,contractkv-full,90,1.0,1.0,0.0,0.0,0.0,False,90,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,saturation,RULER,niah_single_1,physical-cache-aware,90,1.0,1.0,0.0,0.0,0.0,False,0,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,saturation,RepoBench,python_v1.1,contractkv-full,90,0.21077777777777779,0.21077777777777779,0.0,0.0,0.0,False,45,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,saturation,RepoBench,python_v1.1,physical-cache-aware,90,0.21077777777777779,0.2051111111111111,-0.005666666666666666,-0.02255555555555555,0.00622222222222222,False,0,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,transition,LongBench,hotpotqa,contractkv-full,90,0.09300415608732039,0.09300415608732039,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,LongBench,hotpotqa,physical-cache-aware,90,0.09300415608732039,0.062234925318089614,-0.03076923076923077,-0.09230769230769231,0.0,True,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,LongBench,narrativeqa,contractkv-full,90,0.025925925925925925,0.025396825396825397,-0.000529100529100529,-0.0015873015873015873,0.0,False,45,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,LongBench,narrativeqa,physical-cache-aware,90,0.025925925925925925,0.026406926406926406,0.00048100048100048335,-0.0015873015873015873,0.0030303030303030372,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,LongBench,qasper,contractkv-full,90,0.30717479978372997,0.30717479978372997,0.0,0.0,0.0,False,63,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,LongBench,qasper,physical-cache-aware,90,0.30717479978372997,0.3130409055089906,0.005866105725260665,0.0,0.014177794036949002,False,0,0,qa_f1,LongBench/metrics.py:qa_f1_score
+phase19b,untouched,transition,RULER,niah_single_1,contractkv-full,90,1.0,1.0,0.0,0.0,0.0,False,90,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,transition,RULER,niah_single_1,physical-cache-aware,90,1.0,1.0,0.0,0.0,0.0,False,0,0,string_match_part,RULER scripts/eval/synthetic/constants.py
+phase19b,untouched,transition,RepoBench,python_v1.1,contractkv-full,90,0.21077777777777779,0.21077777777777779,0.0,0.0,0.0,False,45,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)
+phase19b,untouched,transition,RepoBench,python_v1.1,physical-cache-aware,90,0.21077777777777779,0.2051111111111111,-0.005666666666666666,-0.021444444444444443,0.005555555555555554,False,0,0,edit_similarity,repobench/evaluation/metrics.py:edit_similarity_score (formula-equivalent)

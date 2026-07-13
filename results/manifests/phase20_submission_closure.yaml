@@ -1,0 +1,33 @@
+phase: phase20_submission_closure
+status: complete_with_negative_heldout_gate
+date: 2026-07-13
+model:
+  development_and_heldout: Llama-3.1-8B-Instruct
+  excluded_rescue_model: Mistral-7B-Instruct-v0.3
+policy:
+  frozen_hash: 99f7fc72eb233f8ddce48ba7ccbdea68ae5ad398919b4eaeece483c6c44312fc
+  tier2_incremental_budget_ms: 14500.735140312463
+split:
+  development_sessions: 25
+  heldout_sessions: 50
+  development_sha256: a6ac630957e23ad3f555e434120ae4c1da39aadc915cddd08ed78625fb364785
+  heldout_sha256: 9519d8f8f480ada7ae2cfb26145895c3641a960d1144d3abf30e21fcc81f5a5d
+gates:
+  phase20a_official_quality: pass
+  phase20d_one_shot_heldout: fail
+  stop_experiments_after_phase20: true
+heldout:
+  completion_rate: 1.0
+  safe_coverage: 0.44
+  unsafe_certified_sessions: 3
+  net_ttft_reduction_vs_raw: 0.2668012214167669
+  new_prefill_reduction_vs_raw: 0.30661307847294744
+  certified_prefix_reuse_fraction: 0.9992439280501779
+  max_dynamic_suffix_reuse_tokens: 0
+causality:
+  reproducible_future_turn_layout_sensitivity_rows: 11
+  cross_process_or_score_boundary_rows: 1
+  conclusion: turn0_attestation_does_not_prove_future_turn_safety
+claim_boundary: >-
+  Phase 20 closes at the frozen gate. It does not claim successful Tier-2
+  promotion, universal cross-model safety, or third-model rescue.

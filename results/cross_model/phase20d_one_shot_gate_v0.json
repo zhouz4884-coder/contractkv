@@ -1,0 +1,21 @@
+{
+  "schema_version": "phase20.heldout-gate.v1",
+  "gates": {
+    "completion_100": true,
+    "unsafe_certified_zero": false,
+    "quality_violation_zero": false,
+    "safe_coverage_ge_50pct": false,
+    "retained_prefix_gain_ge_50pct": true,
+    "new_prefill_reduction_ge_30pct": true,
+    "net_ttft_reduction_ge_30pct": false,
+    "certified_prefix_reuse_ge_95pct": true,
+    "dynamic_suffix_reuse_zero": true,
+    "tier2_p95_slack_overrun_le_1pct": true,
+    "foreground_p95_extra_interference_le_10ms": true,
+    "ephemeral_abort_clean": true,
+    "promotion_commit_observed": false
+  },
+  "gate_pass": false,
+  "stop_experiments_after_phase20": true,
+  "claim_boundary": "One-shot sealed Llama held-out result; no retuning or third-model rescue."
+}
