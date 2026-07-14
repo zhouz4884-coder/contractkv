@@ -1,0 +1,52 @@
+{
+  "schema_version": "contractkv.phase25.deepseek-preflight.v1",
+  "model_key": "coder",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-Coder-V2-Lite-Instruct",
+  "architecture": [
+    "DeepseekV2ForCausalLM"
+  ],
+  "kv_lora_rank": 512,
+  "tensor_parallel_size": 2,
+  "sessions": 10,
+  "future_requests": 90,
+  "verifier_decisions": {
+    "REJECTED_ALL_LEVELS": 5,
+    "PASS": 4,
+    "INCOMPLETE": 1
+  },
+  "length_stop_fail_closed_cases": 1,
+  "mean_physical_block_count": 135.4,
+  "max_physical_block_count": 272,
+  "max_dynamic_suffix_reuse_tokens": 0,
+  "fault_cases": 18,
+  "aborted_fault_cases": 11,
+  "committed_fault_probe_cases": 7,
+  "conservative_marker_rejections": 0,
+  "fault_probe_checks": {
+    "fault_probe_rows_present": true,
+    "all_transactions_terminal": true,
+    "positive_commit_observed": true,
+    "commits_are_verified_and_certified": true,
+    "all_aborts_publish_zero": true,
+    "explicit_faults_fail_closed": true,
+    "policy_consistent_outside_manifest_mismatch": true,
+    "dynamic_suffix_reuse_zero": true
+  },
+  "kv_bytes_per_block": "unavailable_MLA_geometry_not_validated",
+  "checks": {
+    "architecture_is_deepseek_v2": true,
+    "mla_kv_rank_present": true,
+    "tp2_frozen": true,
+    "cell_valid": true,
+    "compact_verifier_transport_ok": true,
+    "length_stop_fail_closed": true,
+    "pstp_stable_prefix_observed": true,
+    "real_prefix_block_metrics_readable": true,
+    "dynamic_suffix_reuse_zero": true,
+    "fault_probe_mechanism_safe": true,
+    "abort_paths_publish_zero": true,
+    "mla_bytes_not_inferred": true
+  },
+  "pass": true,
+  "claim_boundary": "Real vLLM V1 TP=2 compatibility and block telemetry; no GQA-to-MLA byte conversion."
+}

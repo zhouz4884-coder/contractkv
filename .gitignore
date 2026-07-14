@@ -129,6 +129,23 @@ results/cross_model/llama_broad_generalization_r3/*
 !results/cross_model/llama_broad_generalization_r3/*.csv
 !results/cross_model/llama_broad_generalization_r3/*.json
 
+# Phase 25 controlled DeepSeek pair: compact summaries, manifests, and
+# development-only certificate diagnostics. Full live traces remain remote.
+!results/cross_model/deepseek_v2_lite_pair/
+results/cross_model/deepseek_v2_lite_pair/*
+!results/cross_model/deepseek_v2_lite_pair/*.csv
+!results/cross_model/deepseek_v2_lite_pair/*.json
+!results/cross_model/deepseek_v2_lite_pair/chat/
+results/cross_model/deepseek_v2_lite_pair/chat/*
+!results/cross_model/deepseek_v2_lite_pair/chat/*.csv
+!results/cross_model/deepseek_v2_lite_pair/chat/*.json
+!results/cross_model/deepseek_v2_lite_pair/chat/certificate_diagnostic_v0.jsonl
+!results/cross_model/deepseek_v2_lite_pair/coder/
+results/cross_model/deepseek_v2_lite_pair/coder/*
+!results/cross_model/deepseek_v2_lite_pair/coder/*.csv
+!results/cross_model/deepseek_v2_lite_pair/coder/*.json
+!results/cross_model/deepseek_v2_lite_pair/coder/certificate_diagnostic_v0.jsonl
+
 # Phase 23 limited Qwen3-14B scale-up: compact paired summaries only.
 !results/scale_up/
 results/scale_up/*

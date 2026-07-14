@@ -148,6 +148,38 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
             self.assertEqual(row["physical_block_count"], 17)
             self.assertEqual(row["reused_physical_blocks"], 9)
 
+    def test_certificate_diagnostic_is_development_only_and_records_causes(self) -> None:
+        script = (ROOT / "scripts" / "phase25_deepseek_certificate_diagnostic.py").read_text(encoding="utf-8")
+        self.assertIn("phase19b_session_id", script)
+        self.assertIn('for level in ("L1", "L2", "L3")', script)
+        self.assertIn("failure_reason", script)
+        self.assertNotIn("heldout", script.lower())
+        runner = (ROOT / "scripts" / "run_phase25_deepseek_diagnostics.sh").read_text(encoding="utf-8")
+        self.assertIn("certificate_diagnostic_v0.jsonl", runner)
+        self.assertIn("--tensor-parallel-size 2", runner)
+
+    def test_final_pair_result_preserves_successes_and_negative_gate(self) -> None:
+        result_dir = ROOT / "results" / "cross_model" / "deepseek_v2_lite_pair"
+        gate = json.loads((result_dir / "pair_gate_v0.json").read_text(encoding="utf-8"))
+        self.assertFalse(gate["pass"])
+        self.assertFalse(gate["interpretation"]["moe_mla_architecture_generalization_supported"])
+        for model in gate["models"]:
+            self.assertEqual(model["completion_rate"], 1.0)
+            self.assertEqual(model["policy_quality_violations"], 0.0)
+            self.assertEqual(model["max_dynamic_suffix_reuse_tokens"], 0.0)
+            self.assertGreater(model["certified_prefix_reuse"], 0.99)
+
+    def test_coder_ruler_gain_and_repobench_boundary_are_machine_checked(self) -> None:
+        path = ROOT / "results" / "cross_model" / "deepseek_v2_lite_pair" / "family_summary_v0.csv"
+        rows = ANALYSIS.load_csv(path)
+        coder_ruler = next(row for row in rows if row["model_key"] == "coder" and row["family"] == "RULER")
+        coder_repo = next(row for row in rows if row["model_key"] == "coder" and row["family"] == "RepoBench")
+        self.assertEqual(coder_ruler["frozen_level"], "L3")
+        self.assertGreater(float(coder_ruler["net_mean_ttft_reduction"]), 0.50)
+        self.assertGreater(float(coder_ruler["new_prefill_reduction"]), 0.95)
+        self.assertEqual(coder_repo["frozen_level"], "L0")
+        self.assertEqual(float(coder_repo["certificate_coverage"]), 0.0)
+
 
 if __name__ == "__main__":
     unittest.main()

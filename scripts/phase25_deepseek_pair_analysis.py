@@ -352,6 +352,78 @@ def summarize(args: argparse.Namespace) -> int:
     return 0 if payload["pass"] else 1
 
 
+def diagnostic_summary(args: argparse.Namespace) -> int:
+    rows: list[dict[str, Any]] = []
+    margin_rows: list[dict[str, Any]] = []
+    for model_key, path in (("chat", args.chat), ("coder", args.coder)):
+        diagnostic_rows = load_jsonl(path)
+        grouped: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+        for row in diagnostic_rows:
+            decision = str(row.get("decision", "INCOMPLETE"))
+            reason = str(row.get("failure_reason", "")) or "none"
+            key = (str(row.get("family", "")), str(row.get("level", "")), decision, reason)
+            grouped.setdefault(key, []).append(row)
+        for (family_name, level, decision, reason), group in sorted(grouped.items()):
+            numeric_reserves = [
+                as_float(row["robustness_reserve"])
+                for row in group
+                if row.get("robustness_reserve") not in {None, ""}
+            ]
+            ratios = [
+                as_float(row.get("top1_matches")) / max(1.0, as_float(row.get("answer_tokens")))
+                for row in group
+                if row.get("answer_tokens") not in {None, "", 0}
+            ]
+            rows.append({
+                "model_key": model_key,
+                "family": FAMILY_NAMES.get(family_name, family_name),
+                "level": level,
+                "decision": decision,
+                "failure_reason": reason,
+                "count": len(group),
+                "mean_top1_match_ratio": statistics.fmean(ratios) if ratios else "",
+                "mean_robustness_reserve": statistics.fmean(numeric_reserves) if numeric_reserves else "",
+                "mean_moved_stable_tokens": statistics.fmean(
+                    as_float(row.get("moved_stable_tokens")) for row in group
+                ),
+            })
+        scopes = {"all": diagnostic_rows}
+        scopes.update({
+            FAMILY_NAMES.get(family_name, family_name): [
+                row for row in diagnostic_rows if str(row.get("family", "")) == family_name
+            ]
+            for family_name in sorted({str(row.get("family", "")) for row in diagnostic_rows})
+        })
+        for scope, scoped_rows in scopes.items():
+            for decision in ("PASS", "FAIL", "RAW_ERROR"):
+                group = [row for row in scoped_rows if row.get("decision") == decision]
+                if not group:
+                    continue
+                candidate = [as_float(row["candidate_margin_q05"]) for row in group
+                             if row.get("candidate_margin_q05") not in {None, ""}]
+                raw = [as_float(row["raw_margin_q05"]) for row in group
+                       if row.get("raw_margin_q05") not in {None, ""}]
+                degradation = [as_float(row["degradation_q95"]) for row in group
+                               if row.get("degradation_q95") not in {None, ""}]
+                margin_rows.append({
+                    "model_key": model_key,
+                    "scope": scope,
+                    "decision": decision,
+                    "count": len(group),
+                    "candidate_margin_q05_mean": statistics.fmean(candidate) if candidate else "",
+                    "candidate_margin_q05_median": statistics.median(candidate) if candidate else "",
+                    "raw_margin_q05_mean": statistics.fmean(raw) if raw else "",
+                    "degradation_q95_mean": statistics.fmean(degradation) if degradation else "",
+                })
+    write_csv(args.output, rows)
+    write_csv(args.margin_output, margin_rows)
+    print(json.dumps({
+        "rows": len(rows), "output": str(args.output),
+        "margin_rows": len(margin_rows), "margin_output": str(args.margin_output),
+    }, indent=2))
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -378,6 +450,11 @@ def main() -> int:
     summary.add_argument("--summary-output", type=Path, required=True)
     summary.add_argument("--family-output", type=Path, required=True)
     summary.add_argument("--gate-output", type=Path, required=True)
+    diagnostic = sub.add_parser("diagnostic-summary")
+    diagnostic.add_argument("--chat", type=Path, required=True)
+    diagnostic.add_argument("--coder", type=Path, required=True)
+    diagnostic.add_argument("--output", type=Path, required=True)
+    diagnostic.add_argument("--margin-output", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "validate-cell":
         payload = validate_cell(args.cell, args.sessions, args.turns)
@@ -389,6 +466,8 @@ def main() -> int:
         return 0 if payload["complete"] else 1
     if args.command == "preflight":
         return preflight(args)
+    if args.command == "diagnostic-summary":
+        return diagnostic_summary(args)
     return summarize(args)
 
 

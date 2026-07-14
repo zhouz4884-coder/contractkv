@@ -1,0 +1,49 @@
+{
+  "schema_version": "contractkv.phase25.deepseek-pair-commitment.v1",
+  "protocol_sha256": "34369728501a2c2e092d696082b9c57cd6c4de7645d437d5b01d2b8c55ba8549",
+  "protocol_hash": "656e524376e4452c29c273cdd60d6ec2145a3b8a449144a4dadccf23e560fca4",
+  "development_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/cross_model/llama_broad_generalization_r3/development_sessions_v0.jsonl",
+  "development_sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31",
+  "development_sessions": 25,
+  "heldout_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl",
+  "heldout_sha256": "fbc70da5fc6323934ee6999b068f16ec64417002a53fa2e26c2db8c70219ff54",
+  "heldout_sessions": 50,
+  "preflight_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/cross_model/deepseek_v2_lite_pair/preflight_sessions_v0.jsonl",
+  "preflight_sha256": "21b6aee6364bec126d1ef7dd8df6639bff27bf766323f14f06ed5a5dbaa9a441",
+  "preflight_sessions": 10,
+  "sample_overlap": 0,
+  "heldout_opened_for_retuning": false,
+  "frozen_models": {
+    "chat": {
+      "model_id": "deepseek-v2-lite-chat",
+      "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-V2-Lite-Chat",
+      "specialization": "general_chat"
+    },
+    "coder": {
+      "model_id": "deepseek-coder-v2-lite-instruct",
+      "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-Coder-V2-Lite-Instruct",
+      "specialization": "code"
+    }
+  },
+  "frozen_runtime": {
+    "vllm_version": "0.10.2",
+    "tensor_parallel_size": 2,
+    "gpu_ids": "0,1",
+    "dtype": "bfloat16",
+    "max_model_len": 8192,
+    "max_num_seqs": 2,
+    "gpu_memory_utilization": 0.9,
+    "concurrency": 2,
+    "enable_prefix_caching": true,
+    "trust_remote_code": true
+  },
+  "frozen_gates": {
+    "completion_rate": 1.0,
+    "policy_attributable_quality_violations": 0,
+    "scope_invalid_admissions": 0,
+    "max_dynamic_suffix_reuse_tokens": 0,
+    "minimum_certificate_coverage": 0.5,
+    "minimum_new_prefill_reduction": 0.3,
+    "minimum_net_mean_ttft_reduction": 0.25
+  }
+}

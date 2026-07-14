@@ -1,0 +1,45 @@
+{
+  "schema_version": "contractkv.llama-broad-qualification.v1",
+  "model_identity": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-Coder-V2-Lite-Instruct",
+  "layout_ladder": {
+    "L0": 0.0,
+    "L1": 0.25,
+    "L2": 0.5,
+    "L3": 1.0
+  },
+  "selection_rule": "highest retained prefix gain among layouts passing every preregistered gate",
+  "minimum_development_sessions": 5,
+  "minimum_admitted_coverage": 0.5,
+  "quality_drop_threshold": 0.03,
+  "max_tokens": 128,
+  "stable_word_limit": 1150,
+  "turns": 10,
+  "stable_pieces": 4,
+  "development_source_sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31",
+  "split_commitment_sha256": "0d2302b56224867cf8fecd0d331e929bbbf65bf051b23839c30b97777ed3b196",
+  "heldout_opened_for_tuning": false,
+  "frozen_family_levels": {
+    "LongBench:hotpotqa": "L0",
+    "LongBench:narrativeqa": "L0",
+    "LongBench:qasper": "L0",
+    "RULER:niah_single_1": "L3",
+    "RepoBench:python_v1.1": "L0"
+  },
+  "family_eligible_levels": {
+    "LongBench:hotpotqa": [],
+    "LongBench:narrativeqa": [],
+    "LongBench:qasper": [],
+    "RULER:niah_single_1": [
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "RepoBench:python_v1.1": []
+  },
+  "qualified_families": [
+    "RULER:niah_single_1"
+  ],
+  "fallback": "certificate_guided_level_descent_then_L0_raw_order",
+  "claim_boundary": "Uniform task-agnostic ladder; heldout cannot modify levels, thresholds, output budget, or family decisions.",
+  "qualification_hash": "362633581c60e3ed13e6819e23f7b5a48b1099db1adca9a76367e98b0f457df7"
+}

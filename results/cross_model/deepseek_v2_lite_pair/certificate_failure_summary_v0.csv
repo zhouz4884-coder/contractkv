@@ -1,0 +1,55 @@
+model_key,family,level,decision,failure_reason,count,mean_top1_match_ratio,mean_robustness_reserve,mean_moved_stable_tokens
+chat,HotpotQA,L1,FAIL,token_path_or_margin_guard_failed,5,,,3475.2
+chat,HotpotQA,L2,FAIL,token_path_or_margin_guard_failed,4,,,5728.25
+chat,HotpotQA,L2,PASS,none,1,,,6044.0
+chat,HotpotQA,L3,FAIL,token_path_or_margin_guard_failed,5,,,8812.8
+chat,NarrativeQA,L1,FAIL,token_path_or_margin_guard_failed,4,,,7682.0
+chat,NarrativeQA,L1,PASS,none,1,,,4188.0
+chat,NarrativeQA,L2,FAIL,token_path_or_margin_guard_failed,4,,,13116.75
+chat,NarrativeQA,L2,PASS,none,1,,,7855.0
+chat,NarrativeQA,L3,FAIL,token_path_or_margin_guard_failed,5,,,20198.6
+chat,Qasper,L1,FAIL,token_path_or_margin_guard_failed,2,,,860.5
+chat,Qasper,L1,PASS,none,1,,,1677.0
+chat,Qasper,L1,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,2,,,0.0
+chat,Qasper,L2,FAIL,token_path_or_margin_guard_failed,2,,,1137.0
+chat,Qasper,L2,PASS,none,1,,,1677.0
+chat,Qasper,L2,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,2,,,0.0
+chat,Qasper,L3,FAIL,token_path_or_margin_guard_failed,3,,,2577.3333333333335
+chat,Qasper,L3,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,2,,,0.0
+chat,RULER,L1,FAIL,token_path_or_margin_guard_failed,4,,,175.0
+chat,RULER,L1,PASS,none,1,,,175.0
+chat,RULER,L2,FAIL,token_path_or_margin_guard_failed,2,,,350.0
+chat,RULER,L2,PASS,none,3,,,350.0
+chat,RULER,L3,FAIL,token_path_or_margin_guard_failed,5,,,700.0
+chat,RepoBench,L1,FAIL,token_path_or_margin_guard_failed,4,,,1231.75
+chat,RepoBench,L1,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+chat,RepoBench,L2,FAIL,token_path_or_margin_guard_failed,3,,,1959.3333333333333
+chat,RepoBench,L2,PASS,none,1,,,687.0
+chat,RepoBench,L2,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+chat,RepoBench,L3,FAIL,token_path_or_margin_guard_failed,4,,,2985.0
+chat,RepoBench,L3,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+coder,HotpotQA,L1,FAIL,token_path_or_margin_guard_failed,5,,,3475.2
+coder,HotpotQA,L2,FAIL,token_path_or_margin_guard_failed,4,,,5628.75
+coder,HotpotQA,L2,PASS,none,1,,,6442.0
+coder,HotpotQA,L3,FAIL,token_path_or_margin_guard_failed,5,,,8812.8
+coder,NarrativeQA,L1,FAIL,token_path_or_margin_guard_failed,4,,,6412.0
+coder,NarrativeQA,L1,PASS,none,1,,,9268.0
+coder,NarrativeQA,L2,FAIL,token_path_or_margin_guard_failed,4,,,10481.5
+coder,NarrativeQA,L2,PASS,none,1,,,18396.0
+coder,NarrativeQA,L3,FAIL,token_path_or_margin_guard_failed,5,,,20198.6
+coder,Qasper,L1,FAIL,token_path_or_margin_guard_failed,4,,,872.75
+coder,Qasper,L1,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+coder,Qasper,L2,FAIL,token_path_or_margin_guard_failed,3,,,1336.6666666666667
+coder,Qasper,L2,PASS,none,1,,,1270.0
+coder,Qasper,L2,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+coder,Qasper,L3,FAIL,token_path_or_margin_guard_failed,4,,,2579.0
+coder,Qasper,L3,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,1,,,0.0
+coder,RULER,L1,PASS,none,5,,,175.0
+coder,RULER,L2,PASS,none,5,,,350.0
+coder,RULER,L3,PASS,none,5,,,700.0
+coder,RepoBench,L1,PASS,none,1,,,805.0
+coder,RepoBench,L1,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,4,,,0.0
+coder,RepoBench,L2,FAIL,token_path_or_margin_guard_failed,1,,,1229.0
+coder,RepoBench,L2,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,4,,,0.0
+coder,RepoBench,L3,FAIL,token_path_or_margin_guard_failed,1,,,1719.0
+coder,RepoBench,L3,RAW_ERROR,VerificationIncomplete: raw finish_reason=length,4,,,0.0

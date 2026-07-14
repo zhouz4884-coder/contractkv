@@ -1,0 +1,69 @@
+{
+  "schema_version": "contractkv.phase25.prompt-budget-audit.v1",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-Coder-V2-Lite-Instruct",
+  "rows": [
+    {
+      "word_cap": 1200,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 8153,
+      "over_budget_sessions": 1,
+      "over_budget_examples": [
+        {
+          "session_id": "phase22r-repobench-239",
+          "dataset": "RepoBench",
+          "task": "python_v1.1",
+          "sample_id": "239",
+          "tokens": 8153
+        }
+      ],
+      "pass": false
+    },
+    {
+      "word_cap": 1150,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 7904,
+      "over_budget_sessions": 0,
+      "over_budget_examples": [],
+      "pass": true
+    },
+    {
+      "word_cap": 1100,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 6959,
+      "over_budget_sessions": 0,
+      "over_budget_examples": [],
+      "pass": true
+    },
+    {
+      "word_cap": 1050,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 5874,
+      "over_budget_sessions": 0,
+      "over_budget_examples": [],
+      "pass": true
+    },
+    {
+      "word_cap": 1000,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 4927,
+      "over_budget_sessions": 0,
+      "over_budget_examples": [],
+      "pass": true
+    },
+    {
+      "word_cap": 900,
+      "sessions": 75,
+      "input_budget": 8064,
+      "maximum_prompt_tokens": 4114,
+      "over_budget_sessions": 0,
+      "over_budget_examples": [],
+      "pass": true
+    }
+  ],
+  "largest_safe_word_cap": 1150
+}

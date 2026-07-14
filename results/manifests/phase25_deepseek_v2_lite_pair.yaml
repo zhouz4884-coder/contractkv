@@ -1,0 +1,70 @@
+phase: phase25_deepseek_v2_lite_pair
+status: complete_negative_primary_gate
+date: 2026-07-14
+formal_source_commit: f72c6ab
+protocol:
+  file: configs/phase25_deepseek_v2_lite_pair_protocol.json
+  sha256: 34369728501a2c2e092d696082b9c57cd6c4de7645d437d5b01d2b8c55ba8549
+  frozen_before_heldout: true
+  heldout_retuned: false
+runtime:
+  vllm: 0.10.2
+  engine: V1
+  attention_backend: Triton_MLA
+  dtype: bfloat16
+  tensor_parallel_size: 2
+  gpus: 2x_RTX_3090
+  concurrency: 2
+  max_model_len: 8192
+  max_num_seqs: 2
+  fresh_process_pairs: 3
+models:
+  chat: DeepSeek-V2-Lite-Chat
+  coder: DeepSeek-Coder-V2-Lite-Instruct
+workload:
+  families: [RULER, HotpotQA, NarrativeQA, Qasper, RepoBench]
+  preflight_sessions_per_model: 10
+  development_sessions_per_model: 25
+  heldout_sessions_per_model: 50
+  turns_per_session: 10
+  formal_heldout_request_rows: 6000
+  formal_heldout_future_requests: 5400
+results:
+  chat:
+    completion_rate: 1.0
+    certificate_coverage: 0.06
+    new_prefill_reduction: 0.0183024851
+    net_mean_ttft_reduction: 0.0218267549
+    p95_ttft_reduction: 0.0138987763
+    slo_goodput_gain: 0.0168519809
+    qualified_families: {RULER: L2}
+    primary_gate_pass: false
+  coder:
+    completion_rate: 1.0
+    certificate_coverage: 0.20
+    new_prefill_reduction: 0.1217097211
+    net_mean_ttft_reduction: 0.0748280756
+    p95_ttft_reduction: -0.0016530307
+    slo_goodput_gain: 0.0295780435
+    qualified_families: {RULER: L3}
+    primary_gate_pass: false
+  shared_safety:
+    policy_attributable_quality_violations: 0
+    scope_invalid_admissions: 0
+    max_dynamic_suffix_reuse_tokens: 0
+  repobench_secondary_pass: false
+diagnostic:
+  development_only: true
+  sealed_policy_changed: false
+  chat: {pass: 10, strict_path_or_stop_fail: 56, raw_length_stop: 9}
+  coder: {pass: 20, strict_path_or_stop_fail: 40, raw_length_stop: 15}
+claim_boundary: >
+  Real MLA+MoE compatibility and selective serving benefit are established. Broad five-family
+  performance generalization is not established. No MLA bytes-per-block or GiB saving is claimed.
+evidence:
+  report: docs/phase25_deepseek_v2_lite_pair_report.md
+  pair_summary: results/cross_model/deepseek_v2_lite_pair/pair_summary_v0.csv
+  family_summary: results/cross_model/deepseek_v2_lite_pair/family_summary_v0.csv
+  gate: results/cross_model/deepseek_v2_lite_pair/pair_gate_v0.json
+  certificate_failures: results/cross_model/deepseek_v2_lite_pair/certificate_failure_summary_v0.csv
+  certificate_margins: results/cross_model/deepseek_v2_lite_pair/certificate_margin_summary_v0.csv
