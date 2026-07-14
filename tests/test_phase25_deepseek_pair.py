@@ -84,6 +84,32 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
             (ROOT / "configs" / "phase25_deepseek_v2_lite_pair_protocol.json").read_text(encoding="utf-8")
         )["qualification"]["fallback"])
 
+    def test_fault_probe_accepts_conservative_rejection_but_not_publication(self) -> None:
+        rows = [
+            {
+                "case_id": "normal-0", "case_class": "normal_safe", "fault_mode": "none",
+                "txn_state": "COMMITTED", "verify_decision": "PASS", "certificate_issued": "True",
+                "certificate_after_commit": "True", "policy_consistent": "True",
+                "dynamic_suffix_reused_tokens": "0", "cache_entries_delta": "4",
+            },
+            {
+                "case_id": "normal-1", "case_class": "normal_safe", "fault_mode": "none",
+                "txn_state": "ABORTED", "verify_decision": "FAIL", "certificate_issued": "False",
+                "certificate_after_commit": "False", "policy_consistent": "True",
+                "dynamic_suffix_reused_tokens": "0", "cache_entries_delta": "0",
+            },
+            {
+                "case_id": "cancel-before", "case_class": "cancel_before",
+                "fault_mode": "cancel_before_verification", "txn_state": "ABORTED",
+                "verify_decision": "FAIL", "certificate_issued": "False",
+                "certificate_after_commit": "False", "policy_consistent": "True",
+                "dynamic_suffix_reused_tokens": "0", "cache_entries_delta": "0",
+            },
+        ]
+        self.assertTrue(all(ANALYSIS.fault_probe_checks(rows).values()))
+        rows[-1]["cache_entries_delta"] = "1"
+        self.assertFalse(ANALYSIS.fault_probe_checks(rows)["explicit_faults_fail_closed"])
+
 
 if __name__ == "__main__":
     unittest.main()

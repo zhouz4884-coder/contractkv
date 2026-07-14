@@ -87,6 +87,44 @@ def validate_cell(path: Path, sessions: int, turns: int) -> dict[str, Any]:
     }
 
 
+def fault_probe_checks(rows: list[dict[str, str]]) -> dict[str, bool]:
+    """Check PSTP safety independently of model-specific positive markers."""
+    committed = [row for row in rows if row.get("txn_state") == "COMMITTED"]
+    aborted = [row for row in rows if row.get("txn_state") == "ABORTED"]
+    explicit_faults = [
+        row for row in rows
+        if row.get("fault_mode") not in {"", "none"}
+        or row.get("case_class") in {"conflict", "manifest_mismatch"}
+        or row.get("case_id", "").endswith("-fail")
+    ]
+    return {
+        "fault_probe_rows_present": bool(rows),
+        "all_transactions_terminal": bool(rows) and len(committed) + len(aborted) == len(rows),
+        "positive_commit_observed": bool(committed),
+        "commits_are_verified_and_certified": bool(committed) and all(
+            row.get("verify_decision") == "PASS"
+            and as_bool(row.get("certificate_issued"))
+            and as_bool(row.get("certificate_after_commit"))
+            for row in committed
+        ),
+        "all_aborts_publish_zero": bool(aborted) and all(
+            int(row.get("cache_entries_delta", 0) or 0) == 0
+            and not as_bool(row.get("certificate_issued"))
+            for row in aborted
+        ),
+        "explicit_faults_fail_closed": bool(explicit_faults) and all(
+            row.get("txn_state") == "ABORTED"
+            and int(row.get("cache_entries_delta", 0) or 0) == 0
+            and not as_bool(row.get("certificate_issued"))
+            for row in explicit_faults
+        ),
+        "policy_consistent": bool(rows) and all(as_bool(row.get("policy_consistent")) for row in rows),
+        "dynamic_suffix_reuse_zero": bool(rows) and all(
+            int(row.get("dynamic_suffix_reused_tokens", 0) or 0) == 0 for row in rows
+        ),
+    }
+
+
 def preflight(args: argparse.Namespace) -> int:
     protocol = json.loads(args.protocol.read_text(encoding="utf-8"))
     config = json.loads(args.model_config.read_text(encoding="utf-8"))
@@ -97,6 +135,7 @@ def preflight(args: argparse.Namespace) -> int:
     fault_rows = load_csv(args.fault_probe)
     evaluated = [row for row in canaries if row.get("verify_decision") not in {"", "INCOMPLETE", "NOT_REQUIRED"}]
     aborted = [row for row in fault_rows if row.get("txn_state") == "ABORTED"]
+    fault_checks = fault_probe_checks(fault_rows)
     checks = {
         "architecture_is_deepseek_v2": config.get("architectures") == ["DeepseekV2ForCausalLM"],
         "mla_kv_rank_present": int(config.get("kv_lora_rank", 0) or 0) > 0,
@@ -107,13 +146,8 @@ def preflight(args: argparse.Namespace) -> int:
         "real_prefix_block_metrics_readable": bool(future)
         and all(int(row.get("physical_block_count", 0) or 0) > 0 for row in future),
         "dynamic_suffix_reuse_zero": all(int(row.get("dynamic_suffix_reuse_tokens", 0) or 0) == 0 for row in future),
-        "fault_probe_complete": bool(fault_rows) and all(as_bool(row.get("gate_pass")) for row in fault_rows),
-        "abort_paths_publish_zero": bool(aborted)
-        and all(
-            int(row.get("cache_entries_delta", 0) or 0) == 0
-            and not as_bool(row.get("certificate_issued"))
-            for row in aborted
-        ),
+        "fault_probe_mechanism_safe": all(fault_checks.values()),
+        "abort_paths_publish_zero": fault_checks["all_aborts_publish_zero"],
         "mla_bytes_not_inferred": protocol["mla_measurement_boundary"]["memory_gib_claim_allowed"] is False,
     }
     payload = {
@@ -135,6 +169,15 @@ def preflight(args: argparse.Namespace) -> int:
         ),
         "fault_cases": len(fault_rows),
         "aborted_fault_cases": len(aborted),
+        "committed_fault_probe_cases": sum(row.get("txn_state") == "COMMITTED" for row in fault_rows),
+        "conservative_marker_rejections": sum(
+            row.get("fault_mode") == "none"
+            and row.get("case_class") in {"normal_safe", "same_prefix_pass_pass", "same_prefix_pass_fail"}
+            and row.get("txn_state") == "ABORTED"
+            and not row.get("case_id", "").endswith("-fail")
+            for row in fault_rows
+        ),
+        "fault_probe_checks": fault_checks,
         "kv_bytes_per_block": "unavailable_MLA_geometry_not_validated",
         "checks": checks,
         "pass": all(checks.values()),
