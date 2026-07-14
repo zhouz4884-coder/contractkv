@@ -1,0 +1,95 @@
+{
+  "schema_version": "contractkv.phase23.layout-ablation-cost.v1",
+  "development_sessions": 25,
+  "gpu_hours": 0.35857777777777783,
+  "manifest_bytes": 1678,
+  "runtime_lookup_mean_us": 0.125267,
+  "runtime_lookup_p95_us": 0.2,
+  "descent_vs_family_fixed": {
+    "completion_rate_delta": 0.0,
+    "safe_completed_coverage_delta": 0.0,
+    "retained_prefix_gain_delta_tokens": 0.0
+  },
+  "descent_vs_fixed_L3": {
+    "policy_quality_violations_removed": 10,
+    "unsafe_promoted_sessions_removed": 2
+  },
+  "stability_by_family": [
+    {
+      "family": "LongBench:hotpotqa",
+      "frozen_level": "L2",
+      "minimum_samples_for_80pct_stability": 3,
+      "minimum_samples_for_100pct_stability": 4,
+      "five_session_selection_stable": true
+    },
+    {
+      "family": "LongBench:narrativeqa",
+      "frozen_level": "L2",
+      "minimum_samples_for_80pct_stability": 4,
+      "minimum_samples_for_100pct_stability": 5,
+      "five_session_selection_stable": true
+    },
+    {
+      "family": "LongBench:qasper",
+      "frozen_level": "L0",
+      "minimum_samples_for_80pct_stability": 4,
+      "minimum_samples_for_100pct_stability": 5,
+      "five_session_selection_stable": true
+    },
+    {
+      "family": "RULER:niah_single_1",
+      "frozen_level": "L3",
+      "minimum_samples_for_80pct_stability": 1,
+      "minimum_samples_for_100pct_stability": 1,
+      "five_session_selection_stable": true
+    },
+    {
+      "family": "RepoBench:python_v1.1",
+      "frozen_level": "L0",
+      "minimum_samples_for_80pct_stability": 1,
+      "minimum_samples_for_100pct_stability": 1,
+      "five_session_selection_stable": true
+    }
+  ],
+  "sealed_heldout_descent_ablation": [
+    {
+      "repeat": "aggregate",
+      "strategy": "family_fixed_maximum",
+      "sessions": 50,
+      "future_requests": 450,
+      "completion_rate": 1.0,
+      "safe_completed_session_coverage": 0.48,
+      "policy_attributable_quality_violations": 0.0,
+      "retained_prefix_gain_tokens_vs_raw": 721.3866666666667,
+      "new_prefill_reduction_vs_raw": 0.3040823265917477,
+      "certified_prefix_physical_reuse": 0.9996404171161452,
+      "max_dynamic_suffix_reuse_tokens": 0.0
+    },
+    {
+      "repeat": "aggregate",
+      "strategy": "certificate_guided_descent",
+      "sessions": 50,
+      "future_requests": 450,
+      "completion_rate": 1.0,
+      "safe_completed_session_coverage": 0.5,
+      "policy_attributable_quality_violations": 0.0,
+      "retained_prefix_gain_tokens_vs_raw": 734.791111111111,
+      "new_prefill_reduction_vs_raw": 0.3097326315414785,
+      "certified_prefix_physical_reuse": 0.9996359996359997,
+      "max_dynamic_suffix_reuse_tokens": 0.0
+    },
+    {
+      "repeat": "aggregate",
+      "strategy": "raw_fallback",
+      "sessions": 50,
+      "future_requests": 450,
+      "completion_rate": 1.0,
+      "safe_completed_session_coverage": 0.0,
+      "policy_attributable_quality_violations": 0.0,
+      "retained_prefix_gain_tokens_vs_raw": 0.0,
+      "new_prefill_reduction_vs_raw": 0.0,
+      "certified_prefix_physical_reuse": 0.0,
+      "max_dynamic_suffix_reuse_tokens": 0.0
+    }
+  ]
+}
