@@ -121,6 +121,8 @@ run_main_cell() {
   local log="$MODEL_LOG/${label}_server.log" pid="$MODEL_LOG/${label}_server.pid"
   mkdir -p "$dir"
   if [[ -f "$marker" ]]; then
+    "$PY" scripts/phase25_deepseek_pair_analysis.py backfill-cell-metrics \
+      --cell "$output" --metrics "$metrics" >/dev/null
     "$PY" scripts/phase25_deepseek_pair_analysis.py validate-cell --cell "$output" \
       --sessions "$session_count" --turns 10 >/dev/null
     return 0
@@ -145,6 +147,8 @@ run_main_cell() {
   remove_hooks
   unset CONTRACTKV_PREFIX_METRICS CONTRACTKV_PREFIX_INITIAL_ONLY CONTRACTKV_PREFIX_METRICS_LOG CONTRACTKV_POLICY_HASH
   [[ $status -eq 0 ]] || return "$status"
+  "$PY" scripts/phase25_deepseek_pair_analysis.py backfill-cell-metrics \
+    --cell "$output" --metrics "$metrics"
   "$PY" scripts/phase25_deepseek_pair_analysis.py validate-cell --cell "$output" \
     --sessions "$session_count" --turns 10
   touch "$marker"

@@ -252,6 +252,9 @@ def main() -> int:
         row["dynamic_suffix_reuse_tokens"] = (max(0, int(metric.get("prefix_hit_tokens", 0)) - int(exact))
                                                        if metric and exact not in {"", None} else "")
         row["reused_physical_blocks"] = metric.get("reused_physical_blocks", "")
+        row["physical_block_count"] = metric.get("physical_block_count", "")
+        row["block_size"] = metric.get("block_size", "")
+        row["newly_allocated_blocks"] = metric.get("newly_allocated_blocks", "")
         row["free_gpu_blocks"] = metric.get("free_gpu_blocks", "")
     args.output.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
     print(json.dumps({"rows": len(rows), "future": sum(r.get("row_type") == "future" for r in rows),

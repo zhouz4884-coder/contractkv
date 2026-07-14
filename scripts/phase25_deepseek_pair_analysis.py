@@ -125,6 +125,32 @@ def fault_probe_checks(rows: list[dict[str, str]]) -> dict[str, bool]:
     }
 
 
+def backfill_cell_metrics(cell: Path, metrics_path: Path) -> dict[str, Any]:
+    rows = load_jsonl(cell)
+    metrics = {
+        str(row.get("request_id")): row
+        for row in load_jsonl(metrics_path)
+        if row.get("event") == "prefix_cache_request_observation"
+        and row.get("initial_prefill_observation") is True
+    }
+    matched = 0
+    for row in rows:
+        if row.get("row_type") != "future":
+            continue
+        metric = metrics.get(str(row.get("request_id", "")))
+        if not metric:
+            continue
+        matched += 1
+        for field in (
+            "physical_block_count", "block_size", "newly_allocated_blocks",
+            "reused_physical_blocks", "free_gpu_blocks",
+        ):
+            row[field] = metric.get(field, row.get(field, ""))
+    cell.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
+    future = sum(row.get("row_type") == "future" for row in rows)
+    return {"rows": len(rows), "future": future, "matched": matched, "complete": matched == future}
+
+
 def preflight(args: argparse.Namespace) -> int:
     protocol = json.loads(args.protocol.read_text(encoding="utf-8"))
     config = json.loads(args.model_config.read_text(encoding="utf-8"))
@@ -314,6 +340,9 @@ def main() -> int:
     validate.add_argument("--cell", type=Path, required=True)
     validate.add_argument("--sessions", type=int, required=True)
     validate.add_argument("--turns", type=int, default=10)
+    backfill = sub.add_parser("backfill-cell-metrics")
+    backfill.add_argument("--cell", type=Path, required=True)
+    backfill.add_argument("--metrics", type=Path, required=True)
     compat = sub.add_parser("preflight")
     compat.add_argument("--protocol", type=Path, required=True)
     compat.add_argument("--model-key", choices=["chat", "coder"], required=True)
@@ -335,6 +364,10 @@ def main() -> int:
         payload = validate_cell(args.cell, args.sessions, args.turns)
         print(json.dumps(payload, indent=2))
         return 0 if payload["pass"] else 1
+    if args.command == "backfill-cell-metrics":
+        payload = backfill_cell_metrics(args.cell, args.metrics)
+        print(json.dumps(payload, indent=2))
+        return 0 if payload["complete"] else 1
     if args.command == "preflight":
         return preflight(args)
     return summarize(args)

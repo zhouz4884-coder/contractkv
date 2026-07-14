@@ -110,6 +110,23 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
         rows[-1]["cache_entries_delta"] = "1"
         self.assertFalse(ANALYSIS.fault_probe_checks(rows)["explicit_faults_fail_closed"])
 
+    def test_backfill_cell_metrics_copies_real_block_telemetry(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            directory = Path(temporary)
+            cell = directory / "cell.jsonl"
+            metrics = directory / "metrics.jsonl"
+            cell.write_text(json.dumps({"row_type": "future", "request_id": "req-1"}) + "\n", encoding="utf-8")
+            metrics.write_text(json.dumps({
+                "event": "prefix_cache_request_observation", "request_id": "req-1",
+                "initial_prefill_observation": True, "physical_block_count": 17,
+                "block_size": 16, "reused_physical_blocks": 9, "free_gpu_blocks": 100,
+            }) + "\n", encoding="utf-8")
+            result = ANALYSIS.backfill_cell_metrics(cell, metrics)
+            self.assertTrue(result["complete"])
+            row = json.loads(cell.read_text(encoding="utf-8"))
+            self.assertEqual(row["physical_block_count"], 17)
+            self.assertEqual(row["reused_physical_blocks"], 9)
+
 
 if __name__ == "__main__":
     unittest.main()
