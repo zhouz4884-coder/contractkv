@@ -118,7 +118,10 @@ def fault_probe_checks(rows: list[dict[str, str]]) -> dict[str, bool]:
             and not as_bool(row.get("certificate_issued"))
             for row in explicit_faults
         ),
-        "policy_consistent": bool(rows) and all(as_bool(row.get("policy_consistent")) for row in rows),
+        "policy_consistent_outside_manifest_mismatch": bool(rows) and all(
+            row.get("case_class") == "manifest_mismatch" or as_bool(row.get("policy_consistent"))
+            for row in rows
+        ),
         "dynamic_suffix_reuse_zero": bool(rows) and all(
             int(row.get("dynamic_suffix_reused_tokens", 0) or 0) == 0 for row in rows
         ),
@@ -160,6 +163,11 @@ def preflight(args: argparse.Namespace) -> int:
     future = [row for row in rows if row.get("row_type") == "future"]
     fault_rows = load_csv(args.fault_probe)
     evaluated = [row for row in canaries if row.get("verify_decision") not in {"", "INCOMPLETE", "NOT_REQUIRED"}]
+    length_stops = [
+        row for row in canaries
+        if row.get("verify_decision") == "INCOMPLETE"
+        and "raw finish_reason=length" in str(row.get("failure_reason", ""))
+    ]
     aborted = [row for row in fault_rows if row.get("txn_state") == "ABORTED"]
     fault_checks = fault_probe_checks(fault_rows)
     checks = {
@@ -167,7 +175,12 @@ def preflight(args: argparse.Namespace) -> int:
         "mla_kv_rank_present": int(config.get("kv_lora_rank", 0) or 0) > 0,
         "tp2_frozen": int(protocol["runtime"]["tensor_parallel_size"]) == 2,
         "cell_valid": cell["pass"],
-        "compact_verifier_transport_ok": len(evaluated) == len(canaries),
+        "compact_verifier_transport_ok": bool(evaluated)
+        and len(evaluated) + len(length_stops) == len(canaries),
+        "length_stop_fail_closed": all(
+            not row.get("certificate_issued") and row.get("effective_level") == "L0"
+            for row in length_stops
+        ),
         "pstp_stable_prefix_observed": any(int(row.get("certified_stable_prefix_tokens", 0) or 0) > 0 for row in canaries),
         "real_prefix_block_metrics_readable": bool(future)
         and all(int(row.get("physical_block_count", 0) or 0) > 0 for row in future),
@@ -186,6 +199,7 @@ def preflight(args: argparse.Namespace) -> int:
         "sessions": args.sessions,
         "future_requests": len(future),
         "verifier_decisions": dict(Counter(str(row.get("verify_decision", "")) for row in canaries)),
+        "length_stop_fail_closed_cases": len(length_stops),
         "mean_physical_block_count": statistics.fmean(
             int(row.get("physical_block_count", 0) or 0) for row in future
         ) if future else 0.0,

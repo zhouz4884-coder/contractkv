@@ -110,6 +110,23 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
         rows[-1]["cache_entries_delta"] = "1"
         self.assertFalse(ANALYSIS.fault_probe_checks(rows)["explicit_faults_fail_closed"])
 
+    def test_manifest_mismatch_is_expected_policy_inconsistency(self) -> None:
+        rows = [
+            {
+                "case_id": "normal-0", "case_class": "normal_safe", "fault_mode": "none",
+                "txn_state": "COMMITTED", "verify_decision": "PASS", "certificate_issued": "True",
+                "certificate_after_commit": "True", "policy_consistent": "True",
+                "dynamic_suffix_reused_tokens": "0", "cache_entries_delta": "4",
+            },
+            {
+                "case_id": "mismatch-model", "case_class": "manifest_mismatch", "fault_mode": "none",
+                "txn_state": "ABORTED", "verify_decision": "FAIL", "certificate_issued": "False",
+                "certificate_after_commit": "False", "policy_consistent": "False",
+                "dynamic_suffix_reused_tokens": "0", "cache_entries_delta": "0",
+            },
+        ]
+        self.assertTrue(all(ANALYSIS.fault_probe_checks(rows).values()))
+
     def test_backfill_cell_metrics_copies_real_block_telemetry(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary)
