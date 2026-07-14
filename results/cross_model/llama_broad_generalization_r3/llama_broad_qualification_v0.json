@@ -1,0 +1,54 @@
+{
+  "schema_version": "contractkv.llama-broad-qualification.v1",
+  "model_identity": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct",
+  "layout_ladder": {
+    "L0": 0.0,
+    "L1": 0.25,
+    "L2": 0.75,
+    "L3": 1.0
+  },
+  "selection_rule": "highest retained prefix gain among layouts passing every preregistered gate",
+  "minimum_development_sessions": 5,
+  "minimum_admitted_coverage": 0.4,
+  "quality_drop_threshold": 0.03,
+  "max_tokens": 96,
+  "stable_word_limit": 1500,
+  "turns": 10,
+  "stable_pieces": 16,
+  "development_source_sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31",
+  "split_commitment_sha256": "0d2302b56224867cf8fecd0d331e929bbbf65bf051b23839c30b97777ed3b196",
+  "heldout_opened_for_tuning": false,
+  "frozen_family_levels": {
+    "LongBench:hotpotqa": "L2",
+    "LongBench:narrativeqa": "L2",
+    "LongBench:qasper": "L0",
+    "RULER:niah_single_1": "L3",
+    "RepoBench:python_v1.1": "L0"
+  },
+  "family_eligible_levels": {
+    "LongBench:hotpotqa": [
+      "L1",
+      "L2"
+    ],
+    "LongBench:narrativeqa": [
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "LongBench:qasper": [],
+    "RULER:niah_single_1": [
+      "L1",
+      "L2",
+      "L3"
+    ],
+    "RepoBench:python_v1.1": []
+  },
+  "qualified_families": [
+    "LongBench:hotpotqa",
+    "LongBench:narrativeqa",
+    "RULER:niah_single_1"
+  ],
+  "fallback": "certificate_guided_level_descent_then_L0_raw_order",
+  "claim_boundary": "Uniform task-agnostic ladder; heldout cannot modify levels, thresholds, output budget, or family decisions.",
+  "qualification_hash": "0a9e638631c1a45af65991d82c5c97f15bd7b87734a471c03f7bb602568afc49"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "contractkv.llama-broad-heldout-gate.v1",
+  "qualification_hash": "0008499dab8dc9a4ca20987a3ed4d347dae6ad1fbd7b50bd8da46de523e1f03a",
+  "heldout_sessions": 50,
+  "future_requests_per_repeat": 450,
+  "fresh_process_repeats": 3,
+  "qualified_family_count": 4,
+  "paper_gates": {
+    "completion_100": true,
+    "policy_attributable_quality_violations_zero": true,
+    "scope_invalid_admissions_zero": true,
+    "dynamic_suffix_reuse_zero": true,
+    "certified_prefix_reuse_ge_95pct": true,
+    "qualified_families_ge_3": true,
+    "certificate_session_coverage_ge_50pct": true,
+    "new_prefill_reduction_ge_30pct": false,
+    "net_mean_ttft_reduction_ge_25pct": true
+  },
+  "paper_gate_pass": false,
+  "strong_gates": {
+    "qualified_families_ge_4": true,
+    "global_net_mean_ttft_reduction_ge_30pct": false,
+    "global_new_prefill_reduction_ge_35pct": false
+  },
+  "strong_gate_pass": false,
+  "claim_boundary": "Sealed five-family heldout with raw fallback included in global metrics."
+}
