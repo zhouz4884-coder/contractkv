@@ -150,8 +150,13 @@ def backfill_cell_metrics(cell: Path, metrics_path: Path) -> dict[str, Any]:
         ):
             row[field] = metric.get(field, row.get(field, ""))
     cell.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8")
-    future = sum(row.get("row_type") == "future" for row in rows)
-    return {"rows": len(rows), "future": future, "matched": matched, "complete": matched == future}
+    successful_future = sum(
+        row.get("row_type") == "future" and row.get("success") is True for row in rows
+    )
+    return {
+        "rows": len(rows), "successful_future": successful_future,
+        "matched": matched, "complete": matched == successful_future,
+    }
 
 
 def preflight(args: argparse.Namespace) -> int:

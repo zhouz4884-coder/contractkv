@@ -31,6 +31,8 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
         self.assertEqual(protocol["shared_architecture"]["kv_lora_rank"], 512)
         self.assertEqual(protocol["runtime"]["tensor_parallel_size"], 2)
         self.assertEqual(protocol["runtime"]["concurrency"], 2)
+        self.assertEqual(protocol["runtime"]["stable_word_limit"], 1150)
+        self.assertEqual(protocol["runtime"]["maximum_input_tokens_after_chat_template"], 8064)
         self.assertEqual(protocol["workload"]["fresh_process_repeats"], 3)
         self.assertFalse(protocol["qualification"]["heldout_retuning_allowed"])
         self.assertEqual(protocol["primary_gates"]["minimum_certificate_coverage"], 0.5)
@@ -132,7 +134,9 @@ class DeepSeekPairProtocolTest(unittest.TestCase):
             directory = Path(temporary)
             cell = directory / "cell.jsonl"
             metrics = directory / "metrics.jsonl"
-            cell.write_text(json.dumps({"row_type": "future", "request_id": "req-1"}) + "\n", encoding="utf-8")
+            cell.write_text(json.dumps({
+                "row_type": "future", "request_id": "req-1", "success": True,
+            }) + "\n", encoding="utf-8")
             metrics.write_text(json.dumps({
                 "event": "prefix_cache_request_observation", "request_id": "req-1",
                 "initial_prefill_observation": True, "physical_block_count": 17,

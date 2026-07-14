@@ -136,7 +136,7 @@ run_main_cell() {
   local command=("$PY" scripts/phase22_llama_broad_live.py --sessions "$sessions"
     --base-url "http://127.0.0.1:$PORT/v1" --model "$SERVED_MODEL" --model-identity "$MODEL_PATH"
     --mode "$mode" --level "$level" --policy-hash "$policy_hash" --load-tier "phase25-${key}-${label}"
-    --concurrency 2 --turns 10 --stable-word-limit 1500 --max-tokens 128
+    --concurrency 2 --turns 10 --stable-word-limit 1150 --max-tokens 128
     --tool-slack-ms 6000 --slo-ms 1500 --metrics-events "$metrics" --output "$output")
   if [[ "$mode" == "frozen" ]]; then command+=(--qualification-manifest "$MANIFEST"); fi
   set +e
@@ -180,7 +180,7 @@ run_full_model() {
     --cell "L0=$MODEL_OUT/development/dev-L0.jsonl" --cell "L1=$MODEL_OUT/development/dev-L1.jsonl" \
     --cell "L2=$MODEL_OUT/development/dev-L2.jsonl" --cell "L3=$MODEL_OUT/development/dev-L3.jsonl" \
     --model-identity "$MODEL_PATH" --minimum-development-sessions 5 --minimum-admitted-coverage .5 \
-    --max-tokens 128 --stable-word-limit 1500 --split-commitment "$SPLIT" \
+    --max-tokens 128 --stable-word-limit 1150 --split-commitment "$SPLIT" \
     --development-summary "$MODEL_OUT/development_layout_summary_v0.csv" \
     --quality-output "$MODEL_OUT/development_quality_v0.csv" --manifest "$MANIFEST"
   local hash
