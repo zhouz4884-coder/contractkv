@@ -1,0 +1,11 @@
+model,family,evidence_scope,evaluated_sessions,certificate_pass,top1_path_mismatch,target_absent,length_stop,quality_gate_failure,scope_mismatch,raw_fallback,unclassified_verifier_fail,detail_availability
+Llama-3.1-8B-Instruct,RULER,final_heldout_runtime_canary_repeat1,10,10,,,0,0,0,0,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,HotpotQA,final_heldout_runtime_canary_repeat1,10,9,,,0,0,0,1,1,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,NarrativeQA,final_heldout_runtime_canary_repeat1,10,6,,,0,0,0,4,4,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,Qasper,final_heldout_runtime_canary_repeat1,10,0,,,4,0,0,10,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,RepoBench,final_heldout_runtime_canary_repeat1,10,0,,,5,0,0,10,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Mistral-7B-Instruct-v0.3,RULER,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,HotpotQA,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,NarrativeQA,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,Qasper,phase21_protocol_smoke_diagnostic,2,0,2,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,RepoBench,phase21_protocol_smoke_diagnostic,2,0,2,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.

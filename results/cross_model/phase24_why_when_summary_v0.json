@@ -1,0 +1,40 @@
+{
+  "schema_version": "contractkv.phase24.why_when.v1",
+  "qualification_map_rows": 15,
+  "models": [
+    "Llama-3.1-8B-Instruct",
+    "Mistral-7B-Instruct-v0.3",
+    "Qwen3-8B"
+  ],
+  "families": [
+    "RULER",
+    "HotpotQA",
+    "NarrativeQA",
+    "Qasper",
+    "RepoBench"
+  ],
+  "ablation_rows": 7,
+  "failure_reason_rows": 45,
+  "margin_samples": 734,
+  "source_sha256": {
+    "results\\end_to_end\\phase19b_task_replay_raw_v0.jsonl": "e7e95c1e1dc75018ebbc485e7a3f2814cf8a4570e96c8d5ed6d764870eb03786",
+    "results\\mistral\\heldout_raw_order_v0.jsonl": "bc90ce5be58ab3dbbc1017e7b3a40ed815142d613628bc79d3a522e61afbac96",
+    "results\\mistral\\heldout_contractkv_v0.jsonl": "9b90cd88c5d4557454ab1cf588efbc7cbf66f3ca98c6e961debddd7965856cf2",
+    "results\\mistral\\heldout_summary_v0.json": "edd52c2fa860247d8fc92b78f784391ec641463e501eb4b81f63c905b276e7b9",
+    "results\\end_to_end\\phase19b_task_replay_summary_v0.csv": "349067cd0599c13d8093b735bd859c13c56e9dbd2bd351cdab43c8ffcaec03d1",
+    "results\\cross_model\\llama_broad_generalization_r3\\heldout_scope_aggregate_v0.csv": "3075982e3ec78490994791ff1a82562107d46ab56bfe1a2dd1ac6a452a03268d",
+    "results\\hard_systems\\phase17_calibration_candidate_margins_v2.csv": "980981ebcc034d03fbef9f8c5709661e4f8f9de6bf41e1e68023750148fd0028",
+    "results\\cross_model\\phase20b_llama_rejection_audit_v0.jsonl": "e021d30ac1e74d7a8f63bd1b96b4e1870c918d0a9fd356bbf5ab95403904b6de",
+    "results\\cross_model\\phase24_external_failure_evidence_v0.csv": "97d70c9aa41b671cdabd0ed1c7d543846699bd9fae01c569dbfa7f8314863ab8"
+  },
+  "external_raw_source_sha256": {
+    ".artifacts\\phase24\\llama-r1-contract.jsonl": "6ab141567cad19370121d364343e6e689722fbf07b84d0e563f04208ffe78551",
+    ".artifacts\\phase24\\mistral-protocol-audit.jsonl": "5e3a1cb500168c27f6f0efa4cf4d48cd111e5048d545c3d3a8ca530a53192da6"
+  },
+  "claim_boundary": [
+    "Qualification-map performance comes from fresh live vLLM held-out replays.",
+    "Qwen and Mistral L3* denote the full compiled candidate; unlike Llama, L1/L2 were not separately calibrated.",
+    "Failure subreasons from diagnostic subsets are not merged into final-runtime canary counts.",
+    "Margin analysis is correlational and does not establish a model-architecture root cause."
+  ]
+}

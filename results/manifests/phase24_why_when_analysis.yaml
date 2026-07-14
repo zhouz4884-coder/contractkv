@@ -1,0 +1,47 @@
+phase: phase24
+name: why_when_analysis
+status: complete
+execution_mode: existing_live_results_plus_diagnostic_resummary
+models:
+  - Qwen3-8B
+  - Mistral-7B-Instruct-v0.3
+  - Llama-3.1-8B-Instruct
+families:
+  - RULER
+  - HotpotQA
+  - NarrativeQA
+  - Qasper
+  - RepoBench
+script: scripts/phase24_why_when_analysis.py
+inputs:
+  - results/end_to_end/phase19b_task_replay_raw_v0.jsonl
+  - results/end_to_end/phase19b_task_replay_summary_v0.csv
+  - results/mistral/heldout_raw_order_v0.jsonl
+  - results/mistral/heldout_contractkv_v0.jsonl
+  - results/mistral/heldout_summary_v0.json
+  - results/cross_model/llama_broad_generalization_r3/heldout_scope_aggregate_v0.csv
+  - results/cross_model/llama_broad_generalization_r3/layout_ladder_ablation_v0.csv
+  - results/cross_model/llama_broad_generalization_r3/layout_ladder_heldout_descent_ablation_v0.csv
+  - results/cross_model/llama_broad_generalization_r3/qualification_cost_v0.csv
+  - results/cross_model/llama_broad_generalization_r3/qualification_sample_stability_v0.csv
+  - results/hard_systems/phase17_calibration_candidate_margins_v2.csv
+  - results/cross_model/phase20b_llama_rejection_audit_v0.jsonl
+  - results/cross_model/phase24_external_failure_evidence_v0.csv
+external_inputs:
+  - server:results/cross_model/llama_broad_generalization_r3/repeat1/r1-contract.jsonl
+  - server:results/mistral/protocol_audit_v0.jsonl
+outputs:
+  - results/cross_model/phase24_cross_model_qualification_map_v0.csv
+  - results/cross_model/phase24_layout_aggressiveness_ablation_v0.csv
+  - results/cross_model/phase24_qualification_cost_v0.csv
+  - results/cross_model/phase24_qualification_stability_1_2_3_5_v0.csv
+  - results/cross_model/phase24_certificate_failure_reasons_v0.csv
+  - results/cross_model/phase24_external_failure_evidence_v0.csv
+  - results/cross_model/phase24_margin_correlation_v0.csv
+  - results/cross_model/phase24_margin_correlation_summary_v0.json
+  - results/cross_model/phase24_why_when_summary_v0.json
+report: docs/phase24_why_when_analysis_report.md
+claim_boundary:
+  - Qualification performance is from fresh live vLLM held-out replay.
+  - Failure diagnostic subsets are not merged with final-runtime canary prevalence.
+  - Margin evidence is correlational, not an architecture root-cause claim.

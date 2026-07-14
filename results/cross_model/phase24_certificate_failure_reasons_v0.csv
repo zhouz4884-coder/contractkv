@@ -1,0 +1,46 @@
+model,family,evidence_scope,evaluated_sessions,certificate_pass,top1_path_mismatch,target_absent,length_stop,quality_gate_failure,scope_mismatch,raw_fallback,unclassified_verifier_fail,detail_availability
+Qwen3-8B,RULER,final_heldout_runtime_canary,10,10,,,0,0,0,0,0,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Qwen3-8B,HotpotQA,final_heldout_runtime_canary,10,7,,,0,0,0,3,3,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Qwen3-8B,NarrativeQA,final_heldout_runtime_canary,10,5,,,0,0,0,5,5,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Qwen3-8B,Qasper,final_heldout_runtime_canary,10,7,,,0,0,0,3,3,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Qwen3-8B,RepoBench,final_heldout_runtime_canary,10,5,,,1,0,0,5,4,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Mistral-7B-Instruct-v0.3,RULER,final_heldout_runtime_canary,10,10,,,0,0,0,0,0,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Mistral-7B-Instruct-v0.3,HotpotQA,final_heldout_runtime_canary,10,7,,,0,0,0,3,3,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Mistral-7B-Instruct-v0.3,NarrativeQA,final_heldout_runtime_canary,10,6,,,0,0,0,4,4,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Mistral-7B-Instruct-v0.3,Qasper,final_heldout_runtime_canary,10,1,,,4,0,0,9,5,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Mistral-7B-Instruct-v0.3,RepoBench,final_heldout_runtime_canary,10,1,,,4,0,0,9,5,Historical compact rows retained PASS/FAIL but not the FAIL subreason; no exact top1/target split is claimed.
+Llama-3.1-8B-Instruct,RULER,final_heldout_runtime_canary_repeat1,10,10,,,0,0,0,0,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,HotpotQA,final_heldout_runtime_canary_repeat1,10,9,,,0,0,0,1,1,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,NarrativeQA,final_heldout_runtime_canary_repeat1,10,6,,,0,0,0,4,4,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,Qasper,final_heldout_runtime_canary_repeat1,10,0,,,4,0,0,10,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Llama-3.1-8B-Instruct,RepoBench,final_heldout_runtime_canary_repeat1,10,0,,,5,0,0,10,0,L0 families require no verifier; rejected descent attempts retained decisions but not token-path subreasons.
+Qwen3-8B,RULER,phase17_candidate_token_path_diagnostic,93,93,0,0,0,,,,0,Exact candidate-token diagnostic; not the Phase19 held-out runtime canary population.
+Qwen3-8B,HotpotQA,phase17_candidate_token_path_diagnostic,82,65,14,0,0,,,,0,Exact candidate-token diagnostic; not the Phase19 held-out runtime canary population.
+Qwen3-8B,NarrativeQA,phase17_candidate_token_path_diagnostic,82,46,35,0,0,,,,0,Exact candidate-token diagnostic; not the Phase19 held-out runtime canary population.
+Qwen3-8B,Qasper,phase17_candidate_token_path_diagnostic,87,57,28,1,1,,,,0,Exact candidate-token diagnostic; not the Phase19 held-out runtime canary population.
+Qwen3-8B,RepoBench,phase17_candidate_token_path_diagnostic,388,228,130,24,24,,,,0,Exact candidate-token diagnostic; not the Phase19 held-out runtime canary population.
+Llama-3.1-8B-Instruct,RULER,phase20b_rejected_safe_diagnostic,0,0,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Llama-3.1-8B-Instruct,HotpotQA,phase20b_rejected_safe_diagnostic,3,0,3,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Llama-3.1-8B-Instruct,NarrativeQA,phase20b_rejected_safe_diagnostic,2,0,2,0,1,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Llama-3.1-8B-Instruct,Qasper,phase20b_rejected_safe_diagnostic,1,0,1,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Llama-3.1-8B-Instruct,RepoBench,phase20b_rejected_safe_diagnostic,4,0,4,0,3,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,RULER,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,HotpotQA,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,NarrativeQA,phase21_protocol_smoke_diagnostic,2,2,0,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,Qasper,phase21_protocol_smoke_diagnostic,2,0,2,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Mistral-7B-Instruct-v0.3,RepoBench,phase21_protocol_smoke_diagnostic,2,0,2,0,0,,,,0,Exact diagnostic subset; kept separate from final held-out runtime counts.
+Qwen3-8B,RULER,phase19_unguarded_physical_candidate_quality,10,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Qwen3-8B,HotpotQA,phase19_unguarded_physical_candidate_quality,10,,,,,1,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Qwen3-8B,NarrativeQA,phase19_unguarded_physical_candidate_quality,10,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Qwen3-8B,Qasper,phase19_unguarded_physical_candidate_quality,10,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Qwen3-8B,RepoBench,phase19_unguarded_physical_candidate_quality,10,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Mistral-7B-Instruct-v0.3,RULER,development_unguarded_physical_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Mistral-7B-Instruct-v0.3,HotpotQA,development_unguarded_physical_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Mistral-7B-Instruct-v0.3,NarrativeQA,development_unguarded_physical_candidate_quality,5,,,,,1,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Mistral-7B-Instruct-v0.3,Qasper,development_unguarded_physical_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Mistral-7B-Instruct-v0.3,RepoBench,development_unguarded_physical_candidate_quality,5,,,,,3,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Llama-3.1-8B-Instruct,RULER,development_L3_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Llama-3.1-8B-Instruct,HotpotQA,development_L3_candidate_quality,5,,,,,1,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Llama-3.1-8B-Instruct,NarrativeQA,development_L3_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Llama-3.1-8B-Instruct,Qasper,development_L3_candidate_quality,5,,,,,1,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
+Llama-3.1-8B-Instruct,RepoBench,development_L3_candidate_quality,5,,,,,0,,,,Candidate-quality diagnostic only; failures are not admitted by the final ContractKV policy.
