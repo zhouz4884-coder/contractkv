@@ -146,6 +146,17 @@ results/cross_model/deepseek_v2_lite_pair/coder/*
 !results/cross_model/deepseek_v2_lite_pair/coder/*.json
 !results/cross_model/deepseek_v2_lite_pair/coder/certificate_diagnostic_v0.jsonl
 
+# Phase 26R observation-scoped closure: compact summaries, frozen policy, and
+# sealed split commitments only. Request-level live traces stay on the 8T disk.
+!results/cross_model/deepseek_phase26r_scope_closure/
+results/cross_model/deepseek_phase26r_scope_closure/*
+!results/cross_model/deepseek_phase26r_scope_closure/*.csv
+!results/cross_model/deepseek_phase26r_scope_closure/*.json
+!results/cross_model/deepseek_phase26r_scope_closure/sealed/
+results/cross_model/deepseek_phase26r_scope_closure/sealed/*
+!results/cross_model/deepseek_phase26r_scope_closure/sealed/split_commitment_v5.json
+!results/cross_model/deepseek_phase26r_scope_closure/sealed/split_commitment_v6.json
+
 # Phase 23 limited Qwen3-14B scale-up: compact paired summaries only.
 !results/scale_up/
 results/scale_up/*

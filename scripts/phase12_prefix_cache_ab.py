@@ -143,6 +143,7 @@ def send_chat_stream(
     timeout: float,
     request_tag: str,
     seed: int = 14014,
+    cache_salt: str | None = None,
 ) -> dict[str, Any]:
     payload = {
         "model": model,
@@ -154,6 +155,8 @@ def send_chat_stream(
         "stream": True,
         "stream_options": {"include_usage": True},
     }
+    if cache_salt is not None:
+        payload["cache_salt"] = cache_salt
     request = urllib.request.Request(
         base_url.rstrip("/") + "/chat/completions",
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),

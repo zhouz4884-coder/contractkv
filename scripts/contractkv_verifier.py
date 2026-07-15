@@ -29,6 +29,9 @@ class VerifyThresholds:
     tau_raw: float = 0.0
     tau_abs: float = 0.0
     tau_drop: float = 4.0
+    # Disabled by default for backward compatibility with pre-Phase-26R
+    # manifests. New observation-scoped policies must freeze a finite value.
+    tau_stop: float = float("-inf")
 
 
 @dataclass(frozen=True)
@@ -41,6 +44,7 @@ class VerifyReport:
     raw_margin_q05: float
     candidate_margin_q05: float
     degradation_q95: float
+    terminal_stop_margin: float
     robustness_reserve: float
     policy_hash: str = ""
     policy_version: str = ""
@@ -100,6 +104,7 @@ def make_verify_report(
     candidate_ranks: list[int] | tuple[int, ...],
     candidate_stop_token_id: int | None,
     thresholds: VerifyThresholds,
+    candidate_stop_margin: float | None = None,
 ) -> VerifyReport:
     answer_tokens = len(raw.token_ids)
     if answer_tokens == 0:
@@ -112,6 +117,8 @@ def make_verify_report(
         return incomplete_report("raw finish_reason=length")
     if not raw.stop_token_ids:
         return incomplete_report("raw stop metadata missing")
+    if math.isfinite(thresholds.tau_stop) and candidate_stop_margin is None:
+        return incomplete_report("terminal stop margin unavailable")
 
     matches = sum(
         int(target) == int(candidate) and int(rank) == 1
@@ -122,11 +129,15 @@ def make_verify_report(
     candidate_q05 = quantile(candidate_margins, 0.05)
     degradation = [float(raw_margin) - float(candidate_margin) for raw_margin, candidate_margin in zip(raw.token_margins, candidate_margins)]
     degradation_q95 = quantile(degradation, 0.95)
-    reserve = min(
+    reserve_terms = [
         raw_q05 - thresholds.tau_raw,
         candidate_q05 - thresholds.tau_abs,
         thresholds.tau_drop - degradation_q95,
-    )
+    ]
+    if math.isfinite(thresholds.tau_stop):
+        assert candidate_stop_margin is not None
+        reserve_terms.append(float(candidate_stop_margin) - thresholds.tau_stop)
+    reserve = min(reserve_terms)
     reasons = []
     if matches != answer_tokens:
         reasons.append("top1_path_mismatch")
@@ -144,6 +155,9 @@ def make_verify_report(
         raw_margin_q05=raw_q05,
         candidate_margin_q05=candidate_q05,
         degradation_q95=degradation_q95,
+        terminal_stop_margin=(float(candidate_stop_margin)
+                              if candidate_stop_margin is not None
+                              else float("nan")),
         robustness_reserve=reserve,
     )
 
@@ -158,6 +172,7 @@ def incomplete_report(reason: str) -> VerifyReport:
         raw_margin_q05=float("nan"),
         candidate_margin_q05=float("nan"),
         degradation_q95=float("nan"),
+        terminal_stop_margin=float("nan"),
         robustness_reserve=float("-inf"),
     )
 
@@ -209,6 +224,14 @@ def report_from_prompt_logprob_tensors(payload: dict, tensors: object) -> Verify
         stop_target = int(payload["candidate_stop_token_id"])
         stop_rank = int(ranks_all[stop_row])
         stop_ids = [int(value) for value in token_rows[stop_row]]
+        stop_values = [float(value) for value in logprob_rows[stop_row]]
+        stop_targets = [value for token_id, value in zip(stop_ids, stop_values)
+                        if token_id == stop_target]
+        stop_competitors = [value for token_id, value in zip(stop_ids, stop_values)
+                            if token_id != stop_target]
+        if not stop_targets or not stop_competitors:
+            raise VerificationIncomplete("terminal stop target/competitor unavailable")
+        stop_margin = stop_targets[0] - max(stop_competitors)
         candidate_stop = stop_target if stop_rank == 1 and stop_target in stop_ids else None
         raw = RawAttestation(
             token_ids=tuple(raw_ids), token_margins=tuple(raw_margins),
@@ -219,7 +242,9 @@ def report_from_prompt_logprob_tensors(payload: dict, tensors: object) -> Verify
             chat_template_hash=str(payload["chat_template_hash"]),
         )
         thresholds = VerifyThresholds(**dict(payload["thresholds"]))
-        report = make_verify_report(raw, raw_ids, candidate_margins, candidate_ranks, candidate_stop, thresholds)
+        report = make_verify_report(
+            raw, raw_ids, candidate_margins, candidate_ranks, candidate_stop,
+            thresholds, candidate_stop_margin=stop_margin)
         return replace(report,
                        policy_hash=str(payload.get("policy_hash", "")),
                        policy_version=str(payload.get("policy_version", "")),

@@ -1,0 +1,226 @@
+{
+  "schema_version": "contractkv.phase26r.observation-policy.v1",
+  "model_key": "deepseek-coder-v2-lite-instruct",
+  "certificate_scope": "observation_identity+observation_epoch",
+  "exact_pipeline": "raw_attestation_then_compact_teacher_forced; free_decode_only_on_exact_fail",
+  "exact_robustness_thresholds": {
+    "minimum_candidate_margin_q05": 1.0,
+    "maximum_degradation_q95": 1.0,
+    "minimum_terminal_stop_margin": 1.0,
+    "calibration_rule": "development-frozen answer q05>=1, degradation_q95<=1, terminal stop margin>=1, and zero observed task-quality violations"
+  },
+  "family_specs": {
+    "LongBench:hotpotqa": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 3,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 160
+    },
+    "LongBench:narrativeqa": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 0,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 128
+    },
+    "LongBench:qasper": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 2,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:qasper",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:qasper",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:qasper",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 384
+    },
+    "RULER:niah_single_1": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "insufficient_confidence_bounded_admissions",
+      "typed_development_admissions": 0,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 128
+    },
+    "RepoBench:python_v1.1": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "insufficient_confidence_bounded_admissions",
+      "typed_development_admissions": 6,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 1024
+    }
+  },
+  "quality_epsilon": 0.03,
+  "unsafe_rate_epsilon": 0.03,
+  "minimum_future_observations": 45,
+  "minimum_typed_admissions": 125,
+  "global_coverage_constraint": null,
+  "selection_objective": "safety_first; no coverage quota",
+  "economics": {
+    "prefill_ms_per_token": 0.105,
+    "decode_ms_per_token": 12.0,
+    "promotion_ms_estimate": 70.0,
+    "tool_slack_ms": 6000.0,
+    "observation_scoped_expected_reuses": 1
+  },
+  "typed_contract_manifest": {
+    "version": "phase26r.typed-behavior.v2",
+    "contract_code_hash": "d5b2469ec1e7a01f376f670e4e5a3221c0802a83356c077c17c467442af712ec",
+    "certificate_scope": "one observation identity and epoch",
+    "ground_truth_allowed_online": false,
+    "lexical_f1_role": "routing_and_diagnostic_only_never_PASS",
+    "rules": {
+      "RULER": "normalized complete-answer exact",
+      "LongBench": "normalized complete-answer exact else UNKNOWN",
+      "RepoBench": "fragment exact or AST exact with frozen repository context",
+      "unsupported": "UNKNOWN"
+    },
+    "unknown_action": "abort_and_raw_fallback",
+    "manifest_hash": "84734cf2ce59846e6698e9c1021d361761f25035d9b910bfd5e7b87c4858012c"
+  },
+  "fallback": "any incomplete, unknown, stale scope, low confidence, or nonpositive gain -> raw L0",
+  "heldout_opened": false,
+  "claim_boundary": "No development task label is consumed by the live request gate.",
+  "qualification_hash": "20f6a1c268247f7fe2463e3c9467ee0d27a9d070766f54e70f7e4b0848a8b909"
+}

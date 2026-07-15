@@ -1,0 +1,255 @@
+{
+  "schema_version": "contractkv.phase26s.observation-policy.v2",
+  "model_key": "deepseek-coder-v2-lite-instruct",
+  "certificate_scope": "observation_identity+observation_epoch",
+  "exact_pipeline": "raw_attestation_then_compact_teacher_forced; free_decode_only_on_exact_fail",
+  "exact_robustness_thresholds": {
+    "minimum_candidate_margin_q05": 1.25,
+    "maximum_degradation_q95": 1.0,
+    "minimum_terminal_stop_margin": 1.0,
+    "calibration_rule": "v5 disjoint pilot maximum false-safe candidate q05 plus 0.15; fresh v6 required for every reported result"
+  },
+  "family_specs": {
+    "LongBench:hotpotqa": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 3,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:hotpotqa",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 160,
+      "pilot_observations": 100,
+      "preparation_p95_ms": 11873.457503993995,
+      "exact_passes_at_frozen_margin": 8,
+      "exact_pass_probability_lcb": 0.04109346148438062
+    },
+    "LongBench:narrativeqa": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 0,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:narrativeqa",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 128,
+      "pilot_observations": 100,
+      "preparation_p95_ms": 11771.498180390336,
+      "exact_passes_at_frozen_margin": 2,
+      "exact_pass_probability_lcb": 0.00550196755016235
+    },
+    "LongBench:qasper": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "open_qa_not_deterministic",
+      "typed_development_admissions": 2,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "LongBench:qasper",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:qasper",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "LongBench:qasper",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 384,
+      "pilot_observations": 100,
+      "preparation_p95_ms": 12035.87195314467,
+      "exact_passes_at_frozen_margin": 10,
+      "exact_pass_probability_lcb": 0.055229137060675094
+    },
+    "RULER:niah_single_1": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "insufficient_confidence_bounded_admissions",
+      "typed_development_admissions": 0,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RULER:niah_single_1",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 128,
+      "pilot_observations": 100,
+      "preparation_p95_ms": 6703.581305406988,
+      "exact_passes_at_frozen_margin": 71,
+      "exact_pass_probability_lcb": 0.6146110882442887
+    },
+    "RepoBench:python_v1.1": {
+      "exact_probe_level": "L3",
+      "certificate_scope": "observation",
+      "typed_contract_enabled": false,
+      "typed_disable_reason": "insufficient_confidence_bounded_admissions",
+      "typed_development_admissions": 6,
+      "typed_development_unsafe": 0,
+      "typed_pass_probability_lcb": 0.0,
+      "future_quality_options": [
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L1",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L2",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        },
+        {
+          "family": "RepoBench:python_v1.1",
+          "level": "L3",
+          "future_observations": 45,
+          "future_quality_violations": 0,
+          "unsafe_rate_wilson95_upper": 0.07865159873288836,
+          "population_layout_qualified": false
+        }
+      ],
+      "candidate_budget_tokens": 1024,
+      "pilot_observations": 100,
+      "preparation_p95_ms": 26951.126660732552,
+      "exact_passes_at_frozen_margin": 1,
+      "exact_pass_probability_lcb": 0.0017674320641406526
+    }
+  },
+  "quality_epsilon": 0.03,
+  "unsafe_rate_epsilon": 0.03,
+  "minimum_future_observations": 45,
+  "minimum_typed_admissions": 125,
+  "global_coverage_constraint": null,
+  "selection_objective": "safety_first; no coverage quota",
+  "economics": {
+    "prefill_ms_per_token": 0.105,
+    "decode_ms_per_token": 12.0,
+    "promotion_ms_estimate": 70.0,
+    "tool_slack_ms": 7000.0,
+    "observation_scoped_expected_reuses": 1,
+    "admission_rule": "p95 preparation must fit declared slack and Wilson-LCB expected saved time must be positive"
+  },
+  "typed_contract_manifest": {
+    "version": "phase26r.typed-behavior.v2",
+    "contract_code_hash": "d5b2469ec1e7a01f376f670e4e5a3221c0802a83356c077c17c467442af712ec",
+    "certificate_scope": "one observation identity and epoch",
+    "ground_truth_allowed_online": false,
+    "lexical_f1_role": "routing_and_diagnostic_only_never_PASS",
+    "rules": {
+      "RULER": "normalized complete-answer exact",
+      "LongBench": "normalized complete-answer exact else UNKNOWN",
+      "RepoBench": "fragment exact or AST exact with frozen repository context",
+      "unsupported": "UNKNOWN"
+    },
+    "unknown_action": "abort_and_raw_fallback",
+    "manifest_hash": "84734cf2ce59846e6698e9c1021d361761f25035d9b910bfd5e7b87c4858012c"
+  },
+  "fallback": "any incomplete, unknown, stale scope, low confidence, or nonpositive gain -> raw L0",
+  "heldout_opened": false,
+  "claim_boundary": "v5 is calibration-only after exposing a false-safe; only fresh v6 may support Phase 26S claims.",
+  "calibration_source": {
+    "role": "disjoint pilot only; excluded from formal results",
+    "path": ".artifacts\\phase26r_v5_r1_exact.jsonl",
+    "sha256": "3f6dfc094d6a667c86c483446126e8b22a63c0ab3771f4f07ee3f8c5c2c35ebe",
+    "observations": 500,
+    "false_safe_count": 2
+  },
+  "formal_split": "fresh v6; disjoint from development and v1-v5",
+  "qualification_hash": "b49b5b0555ac9c6ed0137fa681c30824a7d0cf80d0c2f470fe01cb79931fd7ed"
+}

@@ -118,7 +118,8 @@ def compile_layout(policy: str, case: dict[str, Any], ledger: SegmentPrefixLedge
 
 
 def compact_verify(args: argparse.Namespace, sample: dict[str, Any], case: dict[str, Any],
-                   layout: dict[str, Any], raw: dict[str, Any], session_id: str) -> dict[str, Any]:
+                   layout: dict[str, Any], raw: dict[str, Any], session_id: str,
+                   cache_salt: str | None = None) -> dict[str, Any]:
     order = [str(value) for value in layout["topological_order"]]
     candidate_messages = messages(case, order)
     prefix_messages = messages(case, stable_order(case, order))
@@ -137,6 +138,7 @@ def compact_verify(args: argparse.Namespace, sample: dict[str, Any], case: dict[
         "stable_content_hash": digest(stable_ids), "layout_hash": digest(candidate_ids),
         "dependency_graph_hash": digest([(segment["segment_id"], segment.get("dependencies", [])) for segment in case["segments"]]),
         "timeout_s": args.timeout,
+        "cache_salt": cache_salt,
     }
     verify_started = time.perf_counter()
     body = post_json(api_root(args.base_url) + "/v1/contractkv/verify", payload, args.timeout)

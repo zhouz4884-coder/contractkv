@@ -1,0 +1,33 @@
+{
+  "schema_version": "contractkv.phase26s.heldout-gate.v2",
+  "cells_complete": true,
+  "requests_per_policy": 1500,
+  "completion_100_percent": true,
+  "policy_quality_violations_zero": true,
+  "scope_invalid_zero": true,
+  "dynamic_suffix_reuse_zero": true,
+  "net_mean_ttft_reduction": 0.037275301327335045,
+  "new_prefill_reduction": 0.041297958952674706,
+  "observation_certificate_coverage": 0.07733333333333334,
+  "typed_coverage": 0.0,
+  "exact_pass_count": 116,
+  "tier_b_gate_admitted_count": 0,
+  "minimum_terminal_stop_margin": 5.249999839346856,
+  "exact_diagnostic": {
+    "requests": 1500,
+    "certificate_coverage": 0.09933333333333333,
+    "new_prefill_reduction": 0.0828869763474591,
+    "net_mean_ttft_reduction": -8.904226808463777,
+    "policy_quality_violations": 0
+  },
+  "ruler_qualified_scope": {
+    "certificate_coverage": 0.38666666666666666,
+    "new_prefill_reduction": 0.35821732879834495,
+    "net_mean_ttft_reduction": 0.22576100858694573,
+    "policy_quality_violations": 0
+  },
+  "safety_gate_pass": true,
+  "broad_performance_gate_pass": false,
+  "bounded_deployment_gate_pass": true,
+  "claim_boundary": "Fresh live vLLM observation-scoped evaluation; no lexical-F1 safety PASS and no future-turn certificate reuse."
+}

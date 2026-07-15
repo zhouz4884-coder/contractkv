@@ -1,0 +1,72 @@
+{
+  "schema_version": "contractkv.phase26s.pilot-diagnosis.v1",
+  "status": "calibration_only_not_formal_evidence",
+  "exact_observations": 500,
+  "contract_observations": 500,
+  "exact_false_safe_count": 2,
+  "contract_false_safe_count": 0,
+  "false_safe_cases": [
+    {
+      "session_id": "phase26r-repobench-5715",
+      "turn_id": 6,
+      "family": "RepoBench:python_v1.1",
+      "quality_drop": 0.12000000000000001,
+      "raw_finish_reason": "stop",
+      "measured_finish_reason": "length",
+      "candidate_margin_q05": 1.075000023841858,
+      "terminal_stop_margin": 2.500000014901161
+    },
+    {
+      "session_id": "phase26r-repobench-5715",
+      "turn_id": 8,
+      "family": "RepoBench:python_v1.1",
+      "quality_drop": 0.12000000000000001,
+      "raw_finish_reason": "stop",
+      "measured_finish_reason": "length",
+      "candidate_margin_q05": 1.0749999761581421,
+      "terminal_stop_margin": 2.3750000670552254
+    }
+  ],
+  "family_preparation": {
+    "RULER:niah_single_1": {
+      "observations": 100,
+      "exact_passes": 71,
+      "mean_preparation_ms": 4912.060260344297,
+      "p95_preparation_ms": 6703.581305406988,
+      "mean_unhidden_ms_at_6000_slack": 193.07324341498315
+    },
+    "LongBench:hotpotqa": {
+      "observations": 100,
+      "exact_passes": 8,
+      "mean_preparation_ms": 7578.88987865299,
+      "p95_preparation_ms": 11873.457503993995,
+      "mean_unhidden_ms_at_6000_slack": 2026.7937520844862
+    },
+    "LongBench:narrativeqa": {
+      "observations": 100,
+      "exact_passes": 2,
+      "mean_preparation_ms": 6877.254851846956,
+      "p95_preparation_ms": 11771.498180390336,
+      "mean_unhidden_ms_at_6000_slack": 1643.4390727989376
+    },
+    "LongBench:qasper": {
+      "observations": 100,
+      "exact_passes": 10,
+      "mean_preparation_ms": 8594.816096886061,
+      "p95_preparation_ms": 12035.87195314467,
+      "mean_unhidden_ms_at_6000_slack": 2675.9671920584515
+    },
+    "RepoBench:python_v1.1": {
+      "observations": 100,
+      "exact_passes": 3,
+      "mean_preparation_ms": 15934.093716219068,
+      "p95_preparation_ms": 26951.126660732552,
+      "mean_unhidden_ms_at_6000_slack": 9934.093716219068
+    }
+  },
+  "root_cause_classification": {
+    "implementation": "candidate q05=1.0 was not robust to independent TP=2 decode",
+    "design": "observation-scoped verifier cost exceeded declared slack outside RULER",
+    "scoring_artifact": false
+  }
+}
