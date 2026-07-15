@@ -162,7 +162,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sessions", type=Path, required=True)
     parser.add_argument("--base-url", required=True); parser.add_argument("--model", required=True)
-    parser.add_argument("--policy", choices=["raw-order", "static-dependency-layout", "physical-cache-aware", "contractkv-full"], required=True)
+    parser.add_argument("--policy", choices=["raw-order", "static-dependency-layout", "physical-cache-aware", "offline-frozen-safe-compiled", "contractkv-full"], required=True)
     parser.add_argument("--policy-hash", required=True); parser.add_argument("--load-tier", required=True)
     parser.add_argument("--concurrency", type=int, required=True); parser.add_argument("--turns", type=int, default=5)
     parser.add_argument("--stable-word-limit", type=int, default=2600); parser.add_argument("--max-tokens", type=int, default=96)
@@ -172,9 +172,19 @@ def main() -> int:
                         default=ScopeMode.QUALIFIED_SESSION.value)
     parser.add_argument("--model-identity", default="")
     parser.add_argument("--qualification-hash", default="")
+    parser.add_argument("--safe-session-source", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     sessions = load_jsonl(args.sessions); ledger = SegmentPrefixLedger(); rows = []
+    safe_sessions: set[str] = set()
+    if args.policy == "offline-frozen-safe-compiled":
+        if not args.safe_session_source:
+            raise ValueError("offline-frozen-safe-compiled requires --safe-session-source")
+        safe_sessions = {
+            str(row["session_id"])
+            for row in load_jsonl(args.safe_session_source)
+            if row.get("row_type") == "canary" and row.get("certificate_issued") is True
+        }
     certificates: dict[str, dict[str, Any]] = {}
     previous_prompt_ids: dict[str, list[int]] = {}
     # Keep each active-session working set within the requested load tier. The
@@ -246,7 +256,10 @@ def main() -> int:
             for sample in cohort:
                 sid = str(sample["phase19b_session_id"])
                 case = turn_case(sample, 0, args.stable_word_limit)
-                layout = compile_layout(args.policy, case, ledger, sid, 0, args.tool_slack_ms)
+                effective = args.policy
+                if effective == "offline-frozen-safe-compiled":
+                    effective = "physical-cache-aware" if sid in safe_sessions else "raw-order"
+                layout = compile_layout(effective, case, ledger, sid, 0, args.tool_slack_ms)
                 warmup_messages = messages(case, layout["topological_order"])
                 prompt_ids = tokenize(args.base_url, args.model, warmup_messages, True, args.timeout)
                 rid = f"phase19b-{args.policy}-{args.load_tier}-{sid}-warmup"
@@ -273,6 +286,8 @@ def main() -> int:
                     "tpot_ms": result.get("tpot_ms", 0),
                     "latency_ms": result.get("total_latency_ms", 0),
                     "selected_layout": layout.get("selected_policy", ""),
+                    "effective_policy": effective,
+                    "offline_qualified": sid in safe_sessions if args.policy == "offline-frozen-safe-compiled" else "",
                     "violated_edges": layout.get("violated_edges", []),
                     "error_type": result.get("error_type", "none"),
                     "error_message": result.get("error_message", ""),
@@ -288,6 +303,8 @@ def main() -> int:
             sid = str(sample["phase19b_session_id"]); case = turn_case(sample, turn, args.stable_word_limit)
             effective = args.policy
             scope_errors: list[str] = []
+            if effective == "offline-frozen-safe-compiled":
+                effective = "physical-cache-aware" if sid in safe_sessions else "raw-order"
             if effective == "contractkv-full":
                 probe_layout = compile_layout("physical-cache-aware", case, ledger, sid, turn, args.tool_slack_ms)
                 stored = certificates[sid].get("validity_scope")
@@ -339,6 +356,7 @@ def main() -> int:
                                  "unhidden_verifier_ms": max(0.0, float(certificates.get(sid, {}).get("verification_ms", 0))-args.tool_slack_ms) if args.policy == "contractkv-full" else 0,
                                  "certified_stable_prefix_tokens": certificates.get(sid, {}).get("stable_prefix_tokens", 0) if args.policy == "contractkv-full" else "",
                                  "selected_layout": layout.get("selected_policy", ""), "violated_edges": layout.get("violated_edges", []),
+                                 "offline_qualified": sid in safe_sessions if args.policy == "offline-frozen-safe-compiled" else "",
                                  "exact_prompt_lcp_tokens": exact_lcp_tokens,
                                  "error_type": result.get("error_type", "none"), "error_message": result.get("error_message", "")})
                 ledger.update(sid, turn, case["segments"], layout["topological_order"], policy=str(layout.get("selected_policy", effective)))

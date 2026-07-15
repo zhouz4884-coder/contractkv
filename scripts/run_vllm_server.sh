@@ -113,7 +113,8 @@ PID=$!
 echo "$PID" > "$PID_PATH"
 echo "pid=${PID}" >> "$LOG_PATH"
 
-for _ in $(seq 1 180); do
+STARTUP_POLLS="${VLLM_STARTUP_POLLS:-180}"
+for _ in $(seq 1 "$STARTUP_POLLS"); do
   if ! kill -0 "$PID" 2>/dev/null; then
     echo "vLLM process exited during startup. See $LOG_PATH" >&2
     exit 12
