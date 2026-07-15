@@ -1,0 +1,24 @@
+{
+  "schema_version": "contractkv.phase26.audit-provenance.v0",
+  "model": "deepseek-coder-v2-lite-instruct",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/DeepSeek-Coder-V2-Lite-Instruct",
+  "protocol_sha256": "228ffe91c2434ca4deb97481acd9f70e1ca66614cdb4e27aa0aa97127df127a9",
+  "sessions_sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31",
+  "diagnostics_sha256": "fb8ff1192daaaa4d0d5d9b5b6e636565ca9e1d5809d32aa74b91d5136245d9fc",
+  "typed_contract_manifest": {
+    "version": "phase26.typed-behavior.v1",
+    "ground_truth_allowed": false,
+    "rules": [
+      "RULER:normalized-answer-exact",
+      "LongBench:normalized-free-form-exact-else-unknown",
+      "RepoBench:fragment-exact-or-AST-exact-else-fail-closed",
+      "unsupported:strict-only"
+    ],
+    "required_context": {
+      "RepoBench": "raw repository prefix when syntactically composable"
+    },
+    "code_hash": "b875e9c9df3965648f8dda4a229fed4c682ef2db4558617892327ad7643de5e2"
+  },
+  "ground_truth_used_for_offline_diagnosis_only": true,
+  "heldout_opened": false
+}

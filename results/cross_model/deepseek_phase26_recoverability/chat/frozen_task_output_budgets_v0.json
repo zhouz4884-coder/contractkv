@@ -1,0 +1,51 @@
+{
+  "schema_version": "contractkv.phase26.frozen-task-output-budgets.v0",
+  "model": "deepseek-v2-lite-chat",
+  "budgets": {
+    "LongBench:hotpotqa": 128,
+    "LongBench:narrativeqa": 128,
+    "LongBench:qasper": 1024,
+    "RULER:niah_single_1": 128,
+    "RepoBench:python_v1.1": 672
+  },
+  "lengths": {
+    "LongBench:hotpotqa": [
+      29,
+      30,
+      37,
+      50,
+      50
+    ],
+    "LongBench:narrativeqa": [
+      22,
+      22,
+      24,
+      27,
+      82
+    ],
+    "LongBench:qasper": [
+      21,
+      41,
+      54,
+      270,
+      1024
+    ],
+    "RULER:niah_single_1": [
+      16,
+      16,
+      16,
+      16,
+      16
+    ],
+    "RepoBench:python_v1.1": [
+      39,
+      43,
+      46,
+      76,
+      656
+    ]
+  },
+  "profile_max_tokens": 1024,
+  "rule": "align_up(P99(raw_output_tokens)+32,32), clipped to [128,1024]",
+  "development_only": true
+}

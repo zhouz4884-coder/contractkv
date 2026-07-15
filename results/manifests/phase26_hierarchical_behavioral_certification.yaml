@@ -1,0 +1,80 @@
+phase: phase26
+title: Hierarchical behavioral certification with typed contracts
+status: complete_boundary_result
+date: 2026-07-15
+model:
+  audit:
+    - DeepSeek-V2-Lite-Chat
+    - DeepSeek-Coder-V2-Lite-Instruct
+  sealed_heldout: DeepSeek-Coder-V2-Lite-Instruct
+runtime:
+  backend: vLLM V1
+  tensor_parallel_size: 2
+  dtype: bfloat16
+  gpu: 2x RTX 3090
+  concurrency: 2
+  fresh_process_repeats: 3
+protocol:
+  sessions: 50
+  turns_per_session: 10
+  future_requests_per_policy_per_repeat: 450
+  policies:
+    - raw
+    - exact
+    - typed
+    - contract
+  qualification_hash: 7250e1216dcb25d8b40186a3c47aeb569fb2d52dc70c1b515d5fe06cbdf6cdfd
+  heldout_sha256: 31397988f5dd1f0ba0a8758d39c9f657bf6b9e85f9fc15cc2a447ba6b4445b9a
+results:
+  completion_rate: 1.0
+  exact_coverage: 0.42
+  exact_new_prefill_reduction: 0.2904581003
+  exact_net_mean_ttft_reduction: 0.2045046969
+  exact_policy_quality_violations: 0
+  contract_coverage: 0.46
+  contract_new_prefill_reduction: 0.2890743075
+  contract_net_mean_ttft_reduction: 0.1877754597
+  contract_net_p95_ttft_reduction: 0.1407349130
+  contract_policy_quality_violation_rows: 8
+  scope_invalid_admissions: 0
+  max_dynamic_suffix_reuse_tokens: 0
+  paper_gate_pass: false
+v0_estimator:
+  status: invalidated
+  reason: cumulative exact/typed descent cost omitted
+v1_estimator:
+  status: corrected
+  verifier: single candidate fused exact/typed with hard deadline
+claim_boundary: >
+  Real DeepSeek MLA+MoE prefix reuse and fused-verifier cost are measured.
+  Broad safe typed certification did not pass because open-QA future-turn
+  quality violations remained. No zero-copy typed-candidate KV promotion is claimed.
+outputs:
+  - docs/phase26a_strict_failure_recoverability_report.md
+  - docs/phase26b_typed_contract_freeze_report.md
+  - docs/phase26c_transactional_tier_b_report.md
+  - docs/phase26d_deepseek_coder_heldout_report.md
+  - docs/phase26_closeout.md
+  - results/cross_model/deepseek_phase26_recoverability/phase26d_fused_heldout_gate_v1.json
+  - results/cross_model/deepseek_phase26_recoverability/heldout_v1_scope_aggregate.csv
+actual_run_code_files:
+  - scripts/phase26_recoverability_common.py
+  - scripts/phase26_typed_behavior_contracts.py
+  - scripts/phase26a_recoverability_audit.py
+  - scripts/phase26a_backfill_prefix_tokens.py
+  - scripts/phase26a_recoverability_analysis.py
+  - scripts/phase26b_freeze_typed_contracts.py
+  - scripts/phase26b_freeze_fused_verifier.py
+  - scripts/phase26c_typed_transaction.py
+  - scripts/phase26d_typed_live.py
+  - scripts/phase26d_fused_live.py
+  - scripts/phase26d_typed_analysis.py
+  - scripts/phase26d_fused_analysis.py
+  - scripts/phase26_runtime_estimator_repair_analysis.py
+  - scripts/run_phase26a_deepseek_recoverability.sh
+  - scripts/run_phase26d_deepseek_coder_heldout.sh
+  - scripts/run_phase26d_fused_coder.sh
+  - scripts/run_vllm_server.sh
+  - scripts/stop_vllm_server.sh
+  - scripts/install_vllm_v1_ephemeral_shadow_hook.py
+  - scripts/install_vllm_v1_prefix_metrics_probe.py

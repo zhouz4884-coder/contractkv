@@ -1,0 +1,40 @@
+{
+  "schema_version": "contractkv.phase26a.continuation-gate.v0",
+  "models": [
+    {
+      "model_key": "chat",
+      "audit_rows": 75,
+      "non_length_strict_fail_rows": 56,
+      "non_length_strict_fail_task_safe": 44,
+      "non_length_strict_fail_task_safe_fraction": 0.7857142857142857,
+      "families_with_deployable_coverage_ge_50pct": 5,
+      "selected_levels": "{\"LongBench:hotpotqa\": \"L3\", \"LongBench:narrativeqa\": \"L3\", \"LongBench:qasper\": \"L3\", \"RULER:niah_single_1\": \"L3\", \"RepoBench:python_v1.1\": \"L3\"}",
+      "global_theoretical_new_prefill_reduction": 0.8249986755828286,
+      "global_theoretical_net_ttft_reduction": 0.2501334997905376,
+      "repobench_complete_safe_sessions": 4,
+      "continuation_checks": "{\"global_theoretical_net_ttft\": true, \"global_theoretical_new_prefill\": true, \"non_length_strict_fail_task_safe_fraction\": true, \"repobench_complete_safe_sessions\": true, \"workflow_family_count\": true}",
+      "continuation_gate_pass": true
+    },
+    {
+      "model_key": "coder",
+      "audit_rows": 75,
+      "non_length_strict_fail_rows": 39,
+      "non_length_strict_fail_task_safe": 32,
+      "non_length_strict_fail_task_safe_fraction": 0.8205128205128205,
+      "families_with_deployable_coverage_ge_50pct": 4,
+      "selected_levels": "{\"LongBench:hotpotqa\": \"L3\", \"LongBench:narrativeqa\": \"L3\", \"LongBench:qasper\": \"L3\", \"RULER:niah_single_1\": \"L3\", \"RepoBench:python_v1.1\": \"L3\"}",
+      "global_theoretical_new_prefill_reduction": 0.7615217476226604,
+      "global_theoretical_net_ttft_reduction": 0.40137333871024256,
+      "repobench_complete_safe_sessions": 3,
+      "continuation_checks": "{\"global_theoretical_net_ttft\": true, \"global_theoretical_new_prefill\": true, \"non_length_strict_fail_task_safe_fraction\": true, \"repobench_complete_safe_sessions\": true, \"workflow_family_count\": true}",
+      "continuation_gate_pass": true
+    }
+  ],
+  "continue_phase26b_d": true,
+  "continue_models": [
+    "chat",
+    "coder"
+  ],
+  "heldout_opened": false,
+  "claim_boundary": "Development-only upper-bound and deployable typed-contract analysis; no new held-out run was authorized unless the frozen gate passes."
+}

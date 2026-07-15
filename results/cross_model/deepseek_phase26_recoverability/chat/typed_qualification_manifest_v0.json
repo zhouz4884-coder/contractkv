@@ -1,0 +1,282 @@
+{
+  "schema_version": "contractkv.phase26.typed-qualification.v1",
+  "model_key": "chat",
+  "qa_f1_threshold": 0.8,
+  "quality_epsilon": 0.03,
+  "family_specs": {
+    "LongBench:hotpotqa": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.6,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 0,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 310.10177193333345,
+          "mean_verification_ms": 1039.5858597941697,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-110",
+            "phase22r-hotpotqa-41"
+          ],
+          "development_coverage": 0.4
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 193.81360745833342,
+          "mean_verification_ms": 967.5937922438607,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-110",
+            "phase22r-hotpotqa-41"
+          ],
+          "development_coverage": 0.4
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 310.10177193333345,
+          "mean_verification_ms": 851.4691033400595,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-110",
+            "phase22r-hotpotqa-130"
+          ],
+          "development_coverage": 0.4
+        }
+      }
+    },
+    "LongBench:narrativeqa": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.2,
+      "qualified": false,
+      "level_specs": {
+        "L1": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 1190.2661808999255,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.2
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 746.2794433813542,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.2
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 183.77488697333342,
+          "mean_verification_ms": 648.9401859231293,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.2
+        }
+      }
+    },
+    "LongBench:qasper": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.2,
+      "qualified": false,
+      "level_specs": {
+        "L1": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 2584.5764532374837,
+          "development_deployable_sessions": [
+            "phase22r-qasper-133"
+          ],
+          "development_coverage": 0.2
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 1312.0626329133909,
+          "development_deployable_sessions": [
+            "phase22r-qasper-133"
+          ],
+          "development_coverage": 0.2
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 169.82570343333336,
+          "mean_verification_ms": 1241.841261042282,
+          "development_deployable_sessions": [
+            "phase22r-qasper-133"
+          ],
+          "development_coverage": 0.2
+        }
+      }
+    },
+    "RULER:niah_single_1": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 1.0,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 1,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 143.94826956666668,
+          "mean_verification_ms": 429.71038131508976,
+          "development_deployable_sessions": [
+            "phase22r-ruler-177",
+            "phase22r-ruler-64",
+            "phase22r-ruler-92"
+          ],
+          "development_coverage": 0.6
+        },
+        "L2": {
+          "exact_count": 3,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 408.3567715715617,
+          "development_deployable_sessions": [
+            "phase22r-ruler-111",
+            "phase22r-ruler-177",
+            "phase22r-ruler-56"
+          ],
+          "development_coverage": 0.6
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 3,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 172.73792348,
+          "mean_verification_ms": 404.6970909461379,
+          "development_deployable_sessions": [
+            "phase22r-ruler-177",
+            "phase22r-ruler-64",
+            "phase22r-ruler-92"
+          ],
+          "development_coverage": 0.6
+        }
+      }
+    },
+    "RepoBench:python_v1.1": {
+      "frozen_max_level": "L2",
+      "eligible_descent_levels": [
+        "L2"
+      ],
+      "development_session_coverage": 0.2,
+      "qualified": false,
+      "level_specs": {
+        "L1": {
+          "exact_count": 0,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 1811.3837926648557,
+          "development_deployable_sessions": [],
+          "development_coverage": 0.0
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 2649.882712867111,
+          "development_deployable_sessions": [
+            "phase22r-repobench-239"
+          ],
+          "development_coverage": 0.2
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 2001.3797842897475,
+          "development_deployable_sessions": [],
+          "development_coverage": 0.0
+        }
+      }
+    }
+  },
+  "qualified_families": [
+    "LongBench:hotpotqa",
+    "RULER:niah_single_1"
+  ],
+  "development_global_coverage": 0.44000000000000006,
+  "development_unsafe_admissions": 0,
+  "heldout_opened": false,
+  "heldout_gate_open": false,
+  "benefit_gate": {
+    "expected_future_reuses": 9,
+    "tool_slack_ms": 6000,
+    "minimum_net_gain_ms": 0,
+    "use_development_family_pass_probability": true
+  },
+  "typed_contract_manifest": {
+    "version": "phase26.typed-behavior.v1",
+    "ground_truth_allowed": false,
+    "rules": [
+      "RULER:normalized-answer-exact",
+      "LongBench:normalized-free-form-exact-else-unknown",
+      "LongBench/bounded:token-F1-threshold+numeric+polarity+length-ratio",
+      "RepoBench:fragment-exact-or-AST-exact-else-fail-closed",
+      "unsupported:strict-only"
+    ],
+    "required_context": {
+      "RepoBench": "raw repository prefix when syntactically composable"
+    },
+    "code_hash": "9a5327e1b78052823de98f05a65e68706cbcd0280f02b367aa476ef2c0a679f9"
+  },
+  "claim_boundary": "Frozen on Phase 25 development plus Phase 26A outputs; references are excluded from runtime contracts.",
+  "qualification_hash": "a12625d0f5028f9e4f9e66a18944962f28e23aa806048636920862d6e210bd90"
+}

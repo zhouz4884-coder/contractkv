@@ -1,0 +1,305 @@
+{
+  "schema_version": "contractkv.phase26.typed-qualification.v1",
+  "model_key": "coder",
+  "qa_f1_threshold": 0.8,
+  "quality_epsilon": 0.03,
+  "family_specs": {
+    "LongBench:hotpotqa": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.8,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 0,
+          "typed_count": 4,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 614.5926235379521,
+          "mean_verification_ms": 1278.1235075555742,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-127",
+            "phase22r-hotpotqa-130",
+            "phase22r-hotpotqa-41",
+            "phase22r-hotpotqa-54"
+          ],
+          "development_coverage": 0.8
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 3,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 853.3325730698087,
+          "mean_verification_ms": 1130.985101335682,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-127",
+            "phase22r-hotpotqa-130",
+            "phase22r-hotpotqa-41",
+            "phase22r-hotpotqa-54"
+          ],
+          "development_coverage": 0.8
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 3,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 1220.7283244182818,
+          "mean_verification_ms": 1227.6871340582147,
+          "development_deployable_sessions": [
+            "phase22r-hotpotqa-127",
+            "phase22r-hotpotqa-130",
+            "phase22r-hotpotqa-41"
+          ],
+          "development_coverage": 0.6
+        }
+      }
+    },
+    "LongBench:narrativeqa": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.4,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 1,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 183.87457679475364,
+          "mean_verification_ms": 1710.7022430282086,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-160",
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.4
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 284.74602059778493,
+          "mean_verification_ms": 1477.1439135074615,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-160",
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.4
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 348.9084268734961,
+          "mean_verification_ms": 1258.204424008727,
+          "development_deployable_sessions": [
+            "phase22r-narrativeqa-8"
+          ],
+          "development_coverage": 0.2
+        }
+      }
+    },
+    "LongBench:qasper": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.2,
+      "qualified": false,
+      "level_specs": {
+        "L1": {
+          "exact_count": 0,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 120.65456143506566,
+          "mean_verification_ms": 1536.055519245565,
+          "development_deployable_sessions": [
+            "phase22r-qasper-70"
+          ],
+          "development_coverage": 0.2
+        },
+        "L2": {
+          "exact_count": 1,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 2540.8061534787216,
+          "development_deployable_sessions": [
+            "phase22r-qasper-70"
+          ],
+          "development_coverage": 0.2
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 1,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 319.43325836308156,
+          "mean_verification_ms": 1679.474261496216,
+          "development_deployable_sessions": [
+            "phase22r-qasper-70"
+          ],
+          "development_coverage": 0.2
+        }
+      }
+    },
+    "RULER:niah_single_1": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 1.0,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 5,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 0.0,
+          "development_deployable_sessions": [
+            "phase22r-ruler-111",
+            "phase22r-ruler-177",
+            "phase22r-ruler-56",
+            "phase22r-ruler-64",
+            "phase22r-ruler-92"
+          ],
+          "development_coverage": 1.0
+        },
+        "L2": {
+          "exact_count": 5,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 0.0,
+          "development_deployable_sessions": [
+            "phase22r-ruler-111",
+            "phase22r-ruler-177",
+            "phase22r-ruler-56",
+            "phase22r-ruler-64",
+            "phase22r-ruler-92"
+          ],
+          "development_coverage": 1.0
+        },
+        "L3": {
+          "exact_count": 5,
+          "typed_count": 0,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": 0.0,
+          "mean_verification_ms": 0.0,
+          "development_deployable_sessions": [
+            "phase22r-ruler-111",
+            "phase22r-ruler-177",
+            "phase22r-ruler-56",
+            "phase22r-ruler-64",
+            "phase22r-ruler-92"
+          ],
+          "development_coverage": 1.0
+        }
+      }
+    },
+    "RepoBench:python_v1.1": {
+      "frozen_max_level": "L3",
+      "eligible_descent_levels": [
+        "L3",
+        "L2",
+        "L1"
+      ],
+      "development_session_coverage": 0.6,
+      "qualified": true,
+      "level_specs": {
+        "L1": {
+          "exact_count": 1,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": false,
+          "benefit_expected_gain_ms": -303.9659002835324,
+          "mean_verification_ms": 7740.674674976617,
+          "development_deployable_sessions": [
+            "phase22r-repobench-226"
+          ],
+          "development_coverage": 0.2
+        },
+        "L2": {
+          "exact_count": 0,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 1057.4900972719943,
+          "mean_verification_ms": 5267.815907485783,
+          "development_deployable_sessions": [
+            "phase22r-repobench-128",
+            "phase22r-repobench-239"
+          ],
+          "development_coverage": 0.4
+        },
+        "L3": {
+          "exact_count": 0,
+          "typed_count": 2,
+          "unsafe_admissions": 0,
+          "tier_b_enabled": true,
+          "benefit_expected_gain_ms": 2581.225261217088,
+          "mean_verification_ms": 5845.5746485851705,
+          "development_deployable_sessions": [
+            "phase22r-repobench-128",
+            "phase22r-repobench-239"
+          ],
+          "development_coverage": 0.4
+        }
+      }
+    }
+  },
+  "qualified_families": [
+    "LongBench:hotpotqa",
+    "LongBench:narrativeqa",
+    "RULER:niah_single_1",
+    "RepoBench:python_v1.1"
+  ],
+  "development_global_coverage": 0.6,
+  "development_unsafe_admissions": 0,
+  "heldout_opened": false,
+  "heldout_gate_open": true,
+  "benefit_gate": {
+    "expected_future_reuses": 9,
+    "tool_slack_ms": 6000,
+    "minimum_net_gain_ms": 0,
+    "use_development_family_pass_probability": true
+  },
+  "typed_contract_manifest": {
+    "version": "phase26.typed-behavior.v1",
+    "ground_truth_allowed": false,
+    "rules": [
+      "RULER:normalized-answer-exact",
+      "LongBench:normalized-free-form-exact-else-unknown",
+      "LongBench/bounded:token-F1-threshold+numeric+polarity+length-ratio",
+      "RepoBench:fragment-exact-or-AST-exact-else-fail-closed",
+      "unsupported:strict-only"
+    ],
+    "required_context": {
+      "RepoBench": "raw repository prefix when syntactically composable"
+    },
+    "code_hash": "9a5327e1b78052823de98f05a65e68706cbcd0280f02b367aa476ef2c0a679f9"
+  },
+  "claim_boundary": "Frozen on Phase 25 development plus Phase 26A outputs; references are excluded from runtime contracts.",
+  "qualification_hash": "f3e8f368ff4c33abb0920f6ced2841e72c33fe82b8933c23878fc9aa09417ac1"
+}
