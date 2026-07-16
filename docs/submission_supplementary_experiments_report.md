@@ -157,3 +157,11 @@ latency, real KV offload or quantization, or production-cluster throughput.
 - `scripts/install_vllm_v1_prefix_metrics_probe.py`
 
 Test files are intentionally excluded from this list.
+
+## Common-scope cross-model addendum
+
+The final sample-symmetry experiment replays Qwen, Mistral, and Llama on the
+same frozen 30 RULER sessions. The model-stratified macro result is 86.67% net
+mean TTFT reduction, 96.01% new-prefill reduction, and 3.31x SLO-goodput, with
+2,430 paired future outputs and zero quality violations. Full protocol and
+claim boundaries are in `docs/common_ruler_cross_model_report.md`.
