@@ -9,4 +9,4 @@
 
 ## Operating-region definition
 
-The analytical contour interpolates only measured registration cost and measured per-turn savings. A rejected certificate executes raw-order fallback and remains in the live table; rejection is not converted into a false compiled-policy success. Live boundary lanes remain separately identifiable, and the offline contour is not presented as serving throughput.
+This is a deployment operating-region analysis, not a perfect online benefit predictor. The analytical contour interpolates only measured registration cost and measured per-turn savings. A rejected certificate executes raw-order fallback and remains in the live table; accepted and positive-benefit counts are reported separately, including accepted negative-benefit lanes. Live boundary lanes remain separately identifiable, and the offline contour is not presented as serving throughput.

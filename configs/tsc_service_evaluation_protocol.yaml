@@ -32,6 +32,24 @@ service_locality_full_strength:
   mistral:
     family_25: {load_fractions: [0.80, 1.00, 1.20], policies: [D0, D2]}
   expected_fresh_process_cells: 129
+certificate_granularity_ablation:
+  model: Qwen3-8B
+  tenants_per_template: 25
+  load_fraction: 0.80
+  future_requests: 1125
+  repeats: 3
+  policies: [D0, D1, D2-session, D2-template]
+  invariant: D2-session and D2-template use the same safe layout and frozen trace; only certificate-object scope changes
+service_template_task_quality:
+  templates: [RULER, HotpotQA, NarrativeQA, Qasper, RepoBench]
+  authorized_tenants_per_template: 10
+  turns_per_tenant: 10
+  policies: [D0, D2-template]
+  repeats: 3
+  generation_budget_file: configs/tsc_service_quality_protocol.json
+  paired_future_outputs: 1350
+  semantic_invariant: context, query, and answer are copied from one coherent source sample per deployed template
+  score_metrics: [RULER-string-match, LongBench-QA-F1, RepoBench-edit-similarity]
 locality_residency_operating_region:
   active_templates: [5, 25, 50]
   arrival_distributions: [round_robin, zipf]

@@ -76,14 +76,6 @@ The natural mixed trace is retained as a low-locality boundary. The prospective 
 | qwen | 5 | D2-template-contractkv | 80% | 1000 | 1.36x | 56.86% | 34.22% | 54.15% |
 | qwen | 5 | D2-template-contractkv | 80% | 1500 | 1.10x | 56.86% | 34.22% | 54.15% |
 | qwen | 5 | D2-template-contractkv | 80% | 3000 | 1.00x | 56.86% | 34.22% | 54.15% |
-| qwen | 25 | D1-frozen-safe | 20% | 500 | 3.41x | 89.73% | 92.62% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 20% | 1000 | 1.04x | 89.73% | 92.62% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 20% | 1500 | 1.00x | 89.73% | 92.62% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 20% | 3000 | 1.00x | 89.73% | 92.62% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 40% | 500 | 3.81x | 90.83% | 94.64% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 40% | 1000 | 1.11x | 90.83% | 94.64% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 40% | 1500 | 1.01x | 90.83% | 94.64% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 40% | 3000 | 1.00x | 90.83% | 94.64% | 98.15% |
 | qwen | 25 | D1-frozen-safe | 60% | 500 | 4.34x | 91.79% | 95.26% | 98.15% |
 | qwen | 25 | D1-frozen-safe | 60% | 1000 | 1.23x | 91.79% | 95.26% | 98.15% |
 | qwen | 25 | D1-frozen-safe | 60% | 1500 | 1.03x | 91.79% | 95.26% | 98.15% |
@@ -104,30 +96,10 @@ The natural mixed trace is retained as a low-locality boundary. The prospective 
 | qwen | 25 | D1-frozen-safe | 140% | 1000 | 3.39x | 96.32% | 98.29% | 98.15% |
 | qwen | 25 | D1-frozen-safe | 140% | 1500 | 1.92x | 96.32% | 98.29% | 98.15% |
 | qwen | 25 | D1-frozen-safe | 140% | 3000 | 1.14x | 96.32% | 98.29% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 200% | 500 | 659.06x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 200% | 1000 | 109.84x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 200% | 1500 | 59.91x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 200% | 3000 | 47.08x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 400% | 500 | 2179.65x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 400% | 1000 | 1089.83x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 400% | 1500 | 726.55x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 400% | 3000 | 192.33x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 600% | 500 | 2597.93x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 600% | 1000 | 1559.04x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 600% | 1500 | 865.98x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 600% | 3000 | 371.13x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D1-frozen-safe | 800% | 500 | 3158.25x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D1-frozen-safe | 800% | 1000 | 3158.25x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D1-frozen-safe | 800% | 1500 | 1052.75x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D1-frozen-safe | 800% | 3000 | 557.43x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D2-template-contractkv | 20% | 500 | 3.41x | 89.65% | 92.58% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 20% | 1000 | 1.04x | 89.65% | 92.58% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 20% | 1500 | 1.00x | 89.65% | 92.58% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 20% | 3000 | 1.00x | 89.65% | 92.58% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 40% | 500 | 3.81x | 90.86% | 94.63% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 40% | 1000 | 1.11x | 90.86% | 94.63% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 40% | 1500 | 1.01x | 90.86% | 94.63% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 40% | 3000 | 1.00x | 90.86% | 94.63% | 98.15% |
+| qwen | 25 | D2-session-contractkv | 80% | 500 | 4.79x | 92.49% | 95.71% | 97.77% |
+| qwen | 25 | D2-session-contractkv | 80% | 1000 | 1.40x | 92.49% | 95.71% | 97.77% |
+| qwen | 25 | D2-session-contractkv | 80% | 1500 | 1.08x | 92.49% | 95.71% | 97.77% |
+| qwen | 25 | D2-session-contractkv | 80% | 3000 | 1.00x | 92.49% | 95.71% | 97.77% |
 | qwen | 25 | D2-template-contractkv | 60% | 500 | 4.35x | 91.82% | 95.32% | 98.15% |
 | qwen | 25 | D2-template-contractkv | 60% | 1000 | 1.23x | 91.82% | 95.32% | 98.15% |
 | qwen | 25 | D2-template-contractkv | 60% | 1500 | 1.03x | 91.82% | 95.32% | 98.15% |
@@ -148,22 +120,6 @@ The natural mixed trace is retained as a low-locality boundary. The prospective 
 | qwen | 25 | D2-template-contractkv | 140% | 1000 | 3.39x | 96.32% | 98.23% | 98.15% |
 | qwen | 25 | D2-template-contractkv | 140% | 1500 | 1.92x | 96.32% | 98.23% | 98.15% |
 | qwen | 25 | D2-template-contractkv | 140% | 3000 | 1.14x | 96.32% | 98.23% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 200% | 500 | 659.07x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 200% | 1000 | 109.85x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 200% | 1500 | 59.92x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 200% | 3000 | 47.08x | 99.88% | 99.89% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 400% | 500 | 2179.66x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 400% | 1000 | 1089.83x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 400% | 1500 | 726.55x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 400% | 3000 | 192.33x | 99.96% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 600% | 500 | 2598.04x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 600% | 1000 | 1559.11x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 600% | 1500 | 866.01x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 600% | 3000 | 371.15x | 99.95% | 99.96% | 98.15% |
-| qwen | 25 | D2-template-contractkv | 800% | 500 | 3158.42x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D2-template-contractkv | 800% | 1000 | 3158.42x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D2-template-contractkv | 800% | 1500 | 1052.81x | 99.95% | 99.96% | 98.14% |
-| qwen | 25 | D2-template-contractkv | 800% | 3000 | 557.46x | 99.95% | 99.96% | 98.14% |
 
 ## Certificate fan-out
 
@@ -173,19 +129,25 @@ The natural mixed trace is retained as a low-locality boundary. The prospective 
 | qwen | D2-template-contractkv | 1 | 125.0 | 124.0 | 9.0 | 99.809 | 2.10% |
 | qwen | D2-template-contractkv | 5 | 25.0 | 25.0 | 45.0 | 18.085 | 56.86% |
 | qwen | D1-frozen-safe | 25 | 0.0 | 5.0 | 1125.0 | 0.000 | 92.65% |
+| qwen | D2-session-contractkv | 25 | 125.0 | 125.0 | 9.0 | 25.049 | 92.49% |
 | qwen | D2-template-contractkv | 25 | 5.0 | 5.0 | 225.0 | 3.236 | 92.62% |
 
-## SLO-sustainable service capacity
+## Hierarchical uncertainty
 
-The capacity is the largest frozen arrival-rate fraction for which all three fresh processes complete every request with zero quality/drop events and p99 TTFT at or below 1,500 ms.
+Confidence intervals resample fresh process, service template, and tenant session. p99 is reported as the range across the three fresh repeats rather than by pooling all requests.
 
-| Model | Policy | Sustainable load | Uplift vs native |
-|---|---|---:|---:|
-| mistral | D0-native-apc | 0.00 | unbounded_by_grid |
-| mistral | D2-template-contractkv | 0.00 | unbounded_by_grid |
-| qwen | D0-native-apc | 0.00 | unbounded_by_grid |
-| qwen | D1-frozen-safe | 8.00 | unbounded_by_grid |
-| qwen | D2-template-contractkv | 8.00 | unbounded_by_grid |
+| Model | SLO (ms) | Mean TTFT reduction (95% CI) | p99 reduction repeat range | New-prefill repeat range | SLO-goodput delta req/s (95% CI) | Multiplier (95% CI when identifiable) |
+|---|---:|---:|---:|---:|---:|---:|
+| qwen | 500 | 92.62% [91.68%, 93.31%] | [95.70%, 95.83%] | [98.15%, 98.15%] | 0.658 [0.539, 0.765] | 4.81x [2.85x, 12.61x] |
+| qwen | 1000 | 92.62% [91.68%, 93.31%] | [95.70%, 95.83%] | [98.15%, 98.15%] | 0.238 [0.198, 0.275] | 1.40x [1.31x, 1.49x] |
+| qwen | 1500 | 92.62% [91.68%, 93.31%] | [95.70%, 95.83%] | [98.15%, 98.15%] | 0.060 [0.047, 0.073] | 1.08x [1.06x, 1.10x] |
+| qwen | 3000 | 92.62% [91.68%, 93.31%] | [95.70%, 95.83%] | [98.15%, 98.15%] | 0.001 [0.001, 0.001] | 1.00x [1.00x, 1.00x] |
+| mistral | 500 | 54.37% [34.25%, 72.02%] | [29.20%, 30.53%] | [50.74%, 50.82%] | 0.340 [0.129, 0.538] | 4.48x [ratio CI not identifiable: clustered D0 crosses zero] |
+| mistral | 1000 | 54.37% [34.25%, 72.02%] | [29.20%, 30.53%] | [50.74%, 50.82%] | 0.247 [0.187, 0.302] | 1.48x [1.35x, 1.63x] |
+| mistral | 1500 | 54.37% [34.25%, 72.02%] | [29.20%, 30.53%] | [50.74%, 50.82%] | 0.119 [0.089, 0.145] | 1.17x [1.12x, 1.22x] |
+| mistral | 3000 | 54.37% [34.25%, 72.02%] | [29.20%, 30.53%] | [50.74%, 50.82%] | 0.003 [0.001, 0.005] | 1.00x [1.00x, 1.01x] |
+
+The former single-number 1,500-ms sustainable-capacity ratio is intentionally omitted: native D0 is already below that p99 gate at the lowest measured load, so its denominator is zero. The paper-facing result is the complete 60%-140% load-p99-goodput curve. Loads above 140% remain an overload appendix and are not headline evidence.
 
 ## Locality-residency operating region
 

@@ -1,0 +1,17 @@
+{
+  "schema_version": "tsc.service-template-quality-trace.v0",
+  "families": {
+    "RULER": 10,
+    "HotpotQA": 10,
+    "NarrativeQA": 10,
+    "Qasper": 10,
+    "RepoBench": 10
+  },
+  "service_templates": 5,
+  "authorized_tenants": 50,
+  "turns_per_tenant": 10,
+  "future_requests_per_policy_repeat": 450,
+  "semantic_rule": "Each tenant consumes an exact copy of its service template's context, query, and answer; only neutral TOOL_OBS identity varies.",
+  "sessions_sha256": "8c4f26e1627195d133c9573d4cfa16c33d42e13b6d72ced1589e8592c4914907",
+  "frozen_before_measurement": true
+}

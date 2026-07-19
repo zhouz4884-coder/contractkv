@@ -24,6 +24,10 @@ trap cleanup_hooks EXIT
 run_cell(){
   local label=$1 model_path=$2 served=$3 identity=$4 level=$5 repeat=$6 policy=$7 policy_label=$8
   local scope_mode=$9 fraction=${10} gpu=${11} port=${12}
+  local cache_scope_mode=certificate
+  local attestation_mode=auto
+  [[ "$policy_label" == "D2-session-contractkv" ]] && cache_scope_mode=service_template
+  [[ "$policy_label" == "D2-session-contractkv" ]] && attestation_mode=prospective-qualified
   local sessions="$ROOT/results/tsc_service/tsc_service_sessions_locality_g${level}_v0.jsonl"
   local tag="${label}_g${level}_r${repeat}_${policy_label}_f${fraction//./p}"
   local dir="$OUT/$tag"
@@ -47,7 +51,8 @@ run_cell(){
     --base-url "http://127.0.0.1:$port/v1" --model "$served" --cell-id "tsc-locality-$tag" \
     --metrics-events "$metrics" --raw-output "$raw" --registration-output "$registration" --summary-output "$summary" \
     --policy-hash "tsc-locality-$label-g$level-v0" --load-tier "$tag" \
-    --certificate-scope-mode "$scope_mode"
+    --certificate-scope-mode "$scope_mode" --cache-scope-mode "$cache_scope_mode" \
+    --attestation-mode "$attestation_mode"
   cleanup_cell; trap - RETURN
 }
 
@@ -81,6 +86,18 @@ worker(){
 }
 
 case "$PROFILE" in
+  session-ablation)
+    worker_session(){
+      local gpu=$1 repeat=$2 port=$3
+      run_cell qwen /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B qwen3-8b Qwen3-8B \
+        25 "$repeat" D2-full-contractkv D2-session-contractkv qualified_session .8 "$gpu" "$port"
+    }
+    worker_session 0 1 9351 & p0=$!
+    worker_session 1 2 9451 & p1=$!
+    failed=0; wait "$p0" || failed=1; wait "$p1" || failed=1
+    [[ $failed -eq 0 ]] || exit "$failed"
+    worker_session 0 3 9353
+    ;;
   template-pilot)
     run_cell qwen /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B qwen3-8b Qwen3-8B 25 0 D2-full-contractkv D2-template-contractkv service_template .8 0 9303
     ;;

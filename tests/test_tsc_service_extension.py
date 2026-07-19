@@ -5,6 +5,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 from scripts.build_tsc_service_trace import FAMILIES, build_arrivals, select_sessions
+from scripts.build_tsc_service_quality_trace import build as build_quality_templates
 from scripts.build_tsc_residency_arrivals import build as build_residency_arrivals
 from scripts.build_tsc_service_locality_traces import stable_segments, variant, variant_template_count
 from scripts.tsc_open_loop_service import registration_scope, request_cache_salt, slope
@@ -75,6 +76,23 @@ class TscServiceExtensionTests(unittest.TestCase):
                    for row in first_family]
         self.assertEqual(len(set(private)), 5)
 
+    def test_quality_templates_preserve_semantics_and_fan_out_identity(self):
+        sessions = select_sessions(self._pool(per_family=2), 2, 27001)
+        for index, row in enumerate(sessions):
+            row["answer"] = f"answer-{index}"
+            row["segments"] = [
+                {"type": "RAG_CHUNK", "text": f"context-{index}", "token_count": 2},
+                {"type": "USER_QUERY", "text": f"query-{index}", "token_count": 2},
+            ]
+        output = build_quality_templates(sessions, tenants_per_template=3)
+        self.assertEqual(len(output), 15)
+        for family in FAMILIES:
+            group = [row for row in output if row["tsc_family"] == family]
+            self.assertEqual(len({row["service_template_id"] for row in group}), 1)
+            self.assertEqual(len({json.dumps(row["segments"], sort_keys=True) for row in group}), 1)
+            self.assertEqual(len({str(row["answer"]) for row in group}), 1)
+            self.assertEqual(len({row["tenant_id"] for row in group}), 3)
+
     def test_active_template_variant_and_arrivals_preserve_invariants(self):
         sessions = select_sessions(self._pool(per_family=25), 25, 27001)
         for index, row in enumerate(sessions):
@@ -112,12 +130,16 @@ class TscServiceExtensionTests(unittest.TestCase):
         native = SimpleNamespace(certificate_scope_mode="qualified_session", policy="D0-native-apc",
                                  policy_hash="policy-a")
         session_contract = SimpleNamespace(certificate_scope_mode="qualified_session",
-                                           policy="D2-full-contractkv", policy_hash="policy-a")
+                                           cache_scope_mode="certificate", policy="D2-full-contractkv", policy_hash="policy-a")
         template_native = SimpleNamespace(certificate_scope_mode="service_template", policy="D0-native-apc",
                                           policy_hash="policy-a")
         self.assertIsNone(request_cache_salt(native, sample))
         self.assertEqual(request_cache_salt(session_contract, sample), "policy-a:session-a")
         self.assertEqual(request_cache_salt(template_native, sample), "policy-a:template-a")
+        session_certificate_shared_cache = SimpleNamespace(
+            certificate_scope_mode="qualified_session", cache_scope_mode="service_template",
+            policy="D2-full-contractkv", policy_hash="policy-a")
+        self.assertEqual(request_cache_salt(session_certificate_shared_cache, sample), "policy-a:template-a")
 
     def test_queue_slope(self):
         self.assertAlmostEqual(slope([0, 1, 2], [0, 1, 2]), 1.0)
@@ -202,6 +224,25 @@ class TscServiceExtensionTests(unittest.TestCase):
         rows[-1]["p99_ttft_ms"] = 1600
         self.assertEqual(locality_capacity(rows)[0]["slo_sustainable_load_fraction"], 0.0)
 
+    def test_paper_renderer_omits_zero_denominator_capacity_claim(self):
+        source = Path("scripts/render_tsc_service_reports.py").read_text(encoding="utf-8")
+        self.assertNotIn('read_csv(root / "service_locality_slo_capacity_v0.csv")', source)
+        self.assertNotIn('"## SLO-sustainable service capacity"', source)
+        self.assertIn("deployment operating-region analysis", source)
+
+    def test_quality_runner_verifies_the_turn_zero_prepared_object(self):
+        source = Path("scripts/tsc_service_template_quality_live.py").read_text(encoding="utf-8")
+        self.assertIn('prepared[str(representative["tsc_session_id"])][0]', source)
+
+    def test_quality_runner_fails_closed_for_unqualified_template(self):
+        protocol = json.loads(Path("configs/tsc_service_quality_protocol.json").read_text(encoding="utf-8"))
+        self.assertFalse(protocol["template_qualification"]["Qasper"])
+        self.assertTrue(all(protocol["template_qualification"][family]
+                            for family in FAMILIES if family != "Qasper"))
+        source = Path("scripts/tsc_service_template_quality_live.py").read_text(encoding="utf-8")
+        self.assertIn('"FROZEN_RAW_FALLBACK"', source)
+        self.assertIn('if compiled else None', source)
+
     def test_shadow_parking_never_requeues_a_running_request(self):
         source = Path("scripts/install_vllm_v1_ephemeral_shadow_hook.py").read_text(encoding="utf-8")
         start = source.index("def _contractkv_park_and_wake")
@@ -214,6 +255,8 @@ class TscServiceExtensionTests(unittest.TestCase):
         source = Path("scripts/run_tsc_service_locality_sweep.sh").read_text(encoding="utf-8")
         expected = "tsc-locality-$label-g$level-v0"
         self.assertEqual(source.count(expected), 2)
+        self.assertIn("cache_scope_mode=service_template", source)
+        self.assertIn("attestation_mode=prospective-qualified", source)
 
     def test_locality_pilot_gate_requires_real_template_attestation(self):
         common = {

@@ -53,10 +53,14 @@ Tenant aggregate rows: 34. Unauthorized cross-tenant reuse, dynamic suffix reuse
 
 Positive live economics lanes: 71/84; certificate accepted: 82/84; rejected lanes execute measured raw-order fallback.
 
+## Submission closure
+
+P0-A real task-quality gate: **True** across 1350 paired future outputs. Four qualified templates fan out certificates; Qasper follows frozen raw fallback. P0-B certificate-granularity gate: **True**. Overall submission-closure gate: **True**.
+
 ## Service lifecycle
 
 Lifecycle gate: **True** across 10 events.
 
 ## Claim boundary
 
-Open-loop and tenant results are real vLLM serving measurements. Marker sanity is not presented as official benchmark scoring. The lifecycle model/tokenizer events test the routing scope without claiming an in-process weight reload.
+Open-loop and tenant results are real vLLM serving measurements. P0-A uses frozen task metrics and task-specific output budgets, but is a five-template deployment-object audit rather than a full benchmark submission. The archived all-template negative control is retained and is not counted as a safe ContractKV admission. The lifecycle model/tokenizer events test routing scope without claiming an in-process weight reload.

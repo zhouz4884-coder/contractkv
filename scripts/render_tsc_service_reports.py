@@ -37,7 +37,7 @@ def write(path: Path, lines: list[str]) -> None:
 def p0_1(root: Path, docs: Path) -> None:
     rows = read_csv(root / "open_loop_policy_comparison_v0.csv")
     locality = read_csv(root / "service_locality_policy_comparison_v0.csv")
-    capacity = read_csv(root / "service_locality_slo_capacity_v0.csv")
+    confidence = read_csv(root / "service_locality_confidence_intervals_v0.csv")
     residency = read_csv(root / "locality_residency_policy_comparison_v0.csv")
     primary = [row for row in rows if number(row["slo_ttft_ms"]) in {500, 1000, 1500, 3000}]
     lines = [
@@ -61,7 +61,8 @@ def p0_1(root: Path, docs: Path) -> None:
     lines += ["", "## Service-template locality", "",
               "The natural mixed trace is retained as a low-locality boundary. The prospective locality sweep changes only authorized stable-template sharing; tenant-private suffixes and the arrival trace remain frozen.", "",
               "| Model | Tenants/template | Policy | Load | SLO (ms) | Goodput multiplier | Mean TTFT reduction | p99 reduction | New-prefill reduction |", "|---|---:|---|---:|---:|---:|---:|---:|---:|"]
-    for row in sorted([item for item in locality if number(item["slo_ttft_ms"]) in {500, 1000, 1500, 3000}],
+    for row in sorted([item for item in locality if number(item["slo_ttft_ms"]) in {500, 1000, 1500, 3000}
+                       and .6 <= number(item["load_fraction"]) <= 1.4],
                       key=lambda item: (item["model"], number(item["tenants_per_template"]), item["policy"], number(item["load_fraction"]), number(item["slo_ttft_ms"]))):
         lines.append(f"| {row['model']} | {number(row['tenants_per_template']):.0f} | {row['policy']} | {number(row['load_fraction']):.0%} | {number(row['slo_ttft_ms']):.0f} | {number(row['slo_goodput_multiplier_vs_raw']):.2f}x | {percent(row['mean_ttft_reduction_vs_raw'])} | {percent(row['p99_ttft_reduction_vs_raw'])} | {percent(row['new_prefill_reduction_vs_raw'])} |")
     lines += ["", "## Certificate fan-out", "",
@@ -75,13 +76,23 @@ def p0_1(root: Path, docs: Path) -> None:
             f"{number(row.get('verification_fanout')):.1f} | {number(row.get('unhidden_verification_ms_per_future_request')):.3f} | "
             f"{percent(row.get('mean_ttft_reduction_vs_raw'))} |"
         )
-    lines += ["", "## SLO-sustainable service capacity", "",
-              "The capacity is the largest frozen arrival-rate fraction for which all three fresh processes complete every request with zero quality/drop events and p99 TTFT at or below 1,500 ms.", "",
-              "| Model | Policy | Sustainable load | Uplift vs native |", "|---|---|---:|---:|"]
-    for row in sorted(capacity, key=lambda item: (item["model"], item["policy"])):
-        uplift = row.get("capacity_uplift_vs_native", "")
-        uplift_text = f"{number(uplift):.2f}x" if str(uplift) != "unbounded_by_grid" else str(uplift)
-        lines.append(f"| {row['model']} | {row['policy']} | {number(row['slo_sustainable_load_fraction']):.2f} | {uplift_text} |")
+    lines += ["", "## Hierarchical uncertainty", "",
+              "Confidence intervals resample fresh process, service template, and tenant session. p99 is reported as the range across the three fresh repeats rather than by pooling all requests.", "",
+              "| Model | SLO (ms) | Mean TTFT reduction (95% CI) | p99 reduction repeat range | New-prefill repeat range | SLO-goodput delta req/s (95% CI) | Multiplier (95% CI when identifiable) |", "|---|---:|---:|---:|---:|---:|---:|"]
+    for row in confidence:
+        ratio_ci = (f"{number(row['slo_goodput_multiplier']):.2f}x "
+                    f"[{number(row['slo_goodput_multiplier_ci_low']):.2f}x, {number(row['slo_goodput_multiplier_ci_high']):.2f}x]"
+                    if str(row.get("slo_goodput_multiplier_ci_identifiable", "")).lower() == "true"
+                    else f"{number(row['slo_goodput_multiplier']):.2f}x [ratio CI not identifiable: clustered D0 crosses zero]")
+        lines.append(
+            f"| {row['model']} | {number(row['slo_ttft_ms']):.0f} | {percent(row['mean_ttft_reduction'])} "
+            f"[{percent(row['mean_ttft_reduction_ci_low'])}, {percent(row['mean_ttft_reduction_ci_high'])}] | "
+            f"[{percent(row['p99_ttft_reduction_repeat_min'])}, {percent(row['p99_ttft_reduction_repeat_max'])}] | "
+            f"[{percent(row['new_prefill_reduction_repeat_min'])}, {percent(row['new_prefill_reduction_repeat_max'])}] | "
+            f"{number(row['slo_goodput_delta_rps']):.3f} [{number(row['slo_goodput_delta_ci_low']):.3f}, "
+            f"{number(row['slo_goodput_delta_ci_high']):.3f}] | {ratio_ci} |"
+        )
+    lines += ["", "The former single-number 1,500-ms sustainable-capacity ratio is intentionally omitted: native D0 is already below that p99 gate at the lowest measured load, so its denominator is zero. The paper-facing result is the complete 60%-140% load-p99-goodput curve. Loads above 140% remain an overload appendix and are not headline evidence."]
     lines += ["", "## Locality-residency operating region", "",
               "Exact vLLM eviction counts are unavailable in the scheduler probe and are not fabricated. Reuse distance, prefix-hit ratio, new-prefill work, and zero-hit-after-prior-template requests are reported instead.", "",
               "| Active templates | Arrival order | Mean reuse distance | Prefix-hit ratio | New-prefill reduction | Net mean TTFT reduction | SLO-goodput multiplier |", "|---:|---|---:|---:|---:|---:|---:|"]
@@ -134,7 +145,7 @@ def p0_3(root: Path, docs: Path) -> None:
             f"{statistics.mean(number(row.get('observed_net_benefit_ms')) for row in group):.1f} |"
         )
     lines += ["", "## Operating-region definition", "",
-              "The analytical contour interpolates only measured registration cost and measured per-turn savings. A rejected certificate executes raw-order fallback and remains in the live table; rejection is not converted into a false compiled-policy success. Live boundary lanes remain separately identifiable, and the offline contour is not presented as serving throughput."]
+              "This is a deployment operating-region analysis, not a perfect online benefit predictor. The analytical contour interpolates only measured registration cost and measured per-turn savings. A rejected certificate executes raw-order fallback and remains in the live table; accepted and positive-benefit counts are reported separately, including accepted negative-benefit lanes. Live boundary lanes remain separately identifiable, and the offline contour is not presented as serving throughput."]
     write(docs / "tsc_p0_3_verification_economics_report.md", lines)
 
 
@@ -150,6 +161,65 @@ def p0_4(root: Path, docs: Path) -> None:
              f"- Overall gate: {summary.get('gate_pass', False)}", "", "## Boundary", "",
              "Template/context/schema/policy/qualification/tenant changes are live routing-scope tests. Model and tokenizer changes validate scope invalidation without claiming in-process weight or tokenizer hot reload. Cancellation and duplicate-finalize rows reuse the real Phase 18 compact-wire fault evidence."]
     write(docs / "tsc_p0_4_service_lifecycle_report.md", lines)
+
+
+def p0_a(root: Path, docs: Path) -> None:
+    rows = read_csv(root / "service_template_quality_summary_v0.csv")
+    gate_path = root / "service_template_quality_gate_v0.json"
+    gate = json.loads(gate_path.read_text(encoding="utf-8")) if gate_path.exists() else {}
+    negative_path = root / "service_template_quality_all_compiled_negative_control_v0.json"
+    negative = json.loads(negative_path.read_text(encoding="utf-8")) if negative_path.exists() else {}
+    lines = [
+        "# P0-A Service-Template Formal Task-Quality Audit", "", "## Protocol", "",
+        "Five semantically coherent deployed templates (RULER, HotpotQA, NarrativeQA, Qasper, and RepoBench) are each consumed by ten authorized tenants for ten turns. D0 raw order and D2 template-certificate cells use three paired fresh processes. Each tenant receives the same template-consistent context, query, and answer; only a neutral private tool-observation identity changes. Generation uses the frozen task budgets rather than the 64-token marker budget.", "",
+        "| Family | Paired future outputs | Raw score | D2 score | Paired delta (95% cluster CI) | Violations >0.03 | Raw fallback |", "|---|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row in rows:
+        lines.append(
+            f"| {row['family']} | {number(row['paired_future_outputs']):.0f} | {number(row['raw_mean_score']):.6f} | "
+            f"{number(row['contract_mean_score']):.6f} | {number(row['paired_difference']):+.6f} "
+            f"[{number(row['cluster_bootstrap_ci_low']):+.6f}, {number(row['cluster_bootstrap_ci_high']):+.6f}] | "
+            f"{number(row['quality_violations_gt_0_03']):.0f} | {percent(row['raw_fallback_rate'])} |"
+        )
+    lines += ["", "## Safety gate", "",
+              f"Overall gate: **{'PASS' if gate.get('gate_pass') else 'FAIL/INCOMPLETE'}**. "
+              f"Paired future outputs: {gate.get('paired_future_outputs', 0)}; completion 100%: {gate.get('completion_100pct', False)}; "
+              f"policy quality violations zero: {gate.get('policy_quality_violations_zero', False)}; scope-invalid admissions zero: {gate.get('scope_invalid_admissions_zero', False)}; "
+              f"unauthorized reuse zero: {gate.get('unauthorized_reuse_zero', False)}.", "",
+              "The hierarchical bootstrap resamples fresh process, service template, and tenant session. This closes certificate fan-out for four qualified templates and fail-closed behavior across all five; it does not replace the broader frozen full-task quality experiments.", "",
+              "## Fail-closed negative control", "",
+              f"The archived policy that issued certificates to all five templates produced {negative.get('archived_metric_drops_gt_0_03', 0)} paired metric drops. "
+              f"All were Qasper: {negative.get('all_drops_qasper', False)}. The pre-existing Qasper risk qualification therefore remains raw-order; the paper-facing guarded policy eliminates those drops: {negative.get('safe_policy_eliminates_drops', False)}. "
+              "The archived rows remain machine-readable and are not counted as successful ContractKV admissions."]
+    write(docs / "tsc_p0_a_service_template_quality_report.md", lines)
+
+
+def p0_b(root: Path, docs: Path) -> None:
+    rows = read_csv(root / "certificate_granularity_ablation_v0.csv")
+    gate_path = root / "certificate_granularity_ablation_gate_v0.json"
+    gate = json.loads(gate_path.read_text(encoding="utf-8")) if gate_path.exists() else {}
+    lines = [
+        "# P0-B Certificate-Object Granularity Ablation", "", "## Controlled setup", "",
+        "Qwen3-8B, 25 tenants per service template, the identical frozen 1,125-request trace, 80% offered load, and three fresh processes. D0, D1, D2-Session, and D2-Template use the same prompt layouts within their safe-layout class; only certificate granularity changes between the two D2 rows.", "",
+        "| Policy | Verifier calls | Commits | Fan-out | Unhidden verify ms/request | New-prefill tokens | Prefix-hit ratio | Mean/p99 TTFT (ms) | 1500-ms SLO req/s |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for row in rows:
+        lines.append(
+            f"| {row['policy']} | {number(row['mean_actual_verifier_endpoint_calls']):.1f} | "
+            f"{number(row['mean_transaction_commits']):.1f} | {number(row['mean_verification_fanout']):.1f} | "
+            f"{number(row['mean_unhidden_verification_ms_per_future_request']):.3f} | "
+            f"{number(row['mean_mean_new_prefill_tokens']):.1f} | {percent(row['mean_template_prefix_hit_ratio'])} | "
+            f"{number(row['mean_mean_ttft_ms']):.1f}/{number(row['mean_p99_ttft_ms']):.1f} | "
+            f"{number(row['mean_slo_compliant_goodput_rps']):.3f} |"
+        )
+    lines += ["", "## Causal conclusion", "",
+              f"Overall gate: **{'PASS' if gate.get('gate_pass') else 'FAIL/INCOMPLETE'}**. "
+              f"D2 session/template new-prefill delta: {number(gate.get('prefix_work_delta_tokens')):.1f} tokens "
+              f"({percent(gate.get('prefix_work_delta_fraction_prompt'))} of prompt). "
+              f"Template verifier calls lower: {gate.get('template_verifier_calls_lt_session', False)}; "
+              f"template verification cost per future request lower: {gate.get('template_verification_ms_per_request_lt_session', False)}.", "",
+              "The ablation isolates the economic effect of certificate-object granularity: service-template certificates amortize one verification across authorized sessions without changing the layout or manufacturing additional prefix hits. Quality, dynamic-suffix isolation, and cross-domain isolation remain unchanged."]
+    write(docs / "tsc_p0_b_certificate_granularity_ablation_report.md", lines)
 
 
 def p1_1(root: Path, docs: Path) -> None:
@@ -181,7 +251,8 @@ def main() -> int:
     parser.add_argument("--docs", type=Path, default=Path("docs"))
     args = parser.parse_args()
     p0_1(args.root, args.docs); p0_2(args.root, args.docs); p0_3(args.root, args.docs)
-    p0_4(args.root, args.docs); p1_1(args.root, args.docs); p1_2(args.root, args.docs)
+    p0_4(args.root, args.docs); p0_a(args.root, args.docs); p0_b(args.root, args.docs)
+    p1_1(args.root, args.docs); p1_2(args.root, args.docs)
     return 0
 
 

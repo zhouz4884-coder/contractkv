@@ -389,7 +389,7 @@ def aggregate_tenants(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
-def markdown(report: Path, open_agg: list[dict[str, Any]], comparisons: list[dict[str, Any]],
+def markdown(root: Path, report: Path, open_agg: list[dict[str, Any]], comparisons: list[dict[str, Any]],
              locality_comparison: list[dict[str, Any]], residency_comparison: list[dict[str, Any]],
              tenant_agg: list[dict[str, Any]], economics: list[dict[str, Any]], lifecycle: dict[str, Any],
              gate: dict[str, Any]) -> None:
@@ -397,6 +397,12 @@ def markdown(report: Path, open_agg: list[dict[str, Any]], comparisons: list[dic
     tenant_all = [row for row in tenant_agg if row["service_class"] == "ALL"]
     positive = sum(number(row.get("observed_net_benefit_ms")) > 0 for row in economics)
     accepted = sum(truth(row.get("certificate_issued")) for row in economics)
+    closure_path = root / "tsc_submission_closure_gate_v0.json"
+    quality_path = root / "service_template_quality_gate_v0.json"
+    granularity_path = root / "certificate_granularity_ablation_gate_v0.json"
+    closure = json.loads(closure_path.read_text(encoding="utf-8")) if closure_path.exists() else {}
+    quality = json.loads(quality_path.read_text(encoding="utf-8")) if quality_path.exists() else {}
+    granularity = json.loads(granularity_path.read_text(encoding="utf-8")) if granularity_path.exists() else {}
     headline_locality = [row for row in locality_comparison
                          if row["policy"] == "D2-template-contractkv"
                          and number(row["tenants_per_template"]) == 25
@@ -435,8 +441,12 @@ def markdown(report: Path, open_agg: list[dict[str, Any]], comparisons: list[dic
     lines += ["", "## Safety and Economics Closure", "",
               f"Tenant aggregate rows: {len(tenant_all)}. Unauthorized cross-tenant reuse, dynamic suffix reuse, and scope-invalid admissions are all zero.", "",
               f"Positive live economics lanes: {positive}/{len(economics)}; certificate accepted: {accepted}/{len(economics)}; rejected lanes execute measured raw-order fallback.", "",
+              "## Submission closure", "",
+              f"P0-A real task-quality gate: **{quality.get('gate_pass', False)}** across {quality.get('paired_future_outputs', 0)} paired future outputs. "
+              f"Four qualified templates fan out certificates; Qasper follows frozen raw fallback. P0-B certificate-granularity gate: **{granularity.get('gate_pass', False)}**. "
+              f"Overall submission-closure gate: **{closure.get('gate_pass', False)}**.", "",
               "## Service lifecycle", "", f"Lifecycle gate: **{lifecycle.get('gate_pass', False)}** across {lifecycle.get('events', 0)} events.", "",
-              "## Claim boundary", "", "Open-loop and tenant results are real vLLM serving measurements. Marker sanity is not presented as official benchmark scoring. The lifecycle model/tokenizer events test the routing scope without claiming an in-process weight reload.", ""]
+              "## Claim boundary", "", "Open-loop and tenant results are real vLLM serving measurements. P0-A uses frozen task metrics and task-specific output budgets, but is a five-template deployment-object audit rather than a full benchmark submission. The archived all-template negative control is retained and is not counted as a safe ContractKV admission. The lifecycle model/tokenizer events test routing scope without claiming an in-process weight reload.", ""]
     report.parent.mkdir(parents=True, exist_ok=True); report.write_text("\n".join(lines), encoding="utf-8")
 
 
@@ -450,7 +460,6 @@ def main() -> int:
     pilot = pilot_capacity(open_raw); bootstrap = bootstrap_common(root)
     locality_raw = locality_cells(root); locality_agg = aggregate_locality(locality_raw)
     locality_comparison = compare_locality(locality_agg)
-    locality_capacity_rows = locality_capacity(locality_raw)
     residency_raw = residency_cells(root); residency_agg = aggregate_residency(residency_raw)
     residency_comparison = compare_residency(residency_agg)
     tenant_raw = tenant_cells(root); tenant_agg = aggregate_tenants(tenant_raw)
@@ -467,14 +476,16 @@ def main() -> int:
     write_csv(root / "service_locality_cell_summary_v0.csv", locality_raw)
     write_csv(root / "service_locality_aggregate_v0.csv", locality_agg)
     write_csv(root / "service_locality_policy_comparison_v0.csv", locality_comparison)
-    write_csv(root / "service_locality_slo_capacity_v0.csv", locality_capacity_rows)
     write_csv(root / "locality_residency_cell_summary_v0.csv", residency_raw)
     write_csv(root / "locality_residency_aggregate_v0.csv", residency_agg)
     write_csv(root / "locality_residency_policy_comparison_v0.csv", residency_comparison)
     write_csv(root / "multi_tenant_cell_summary_v0.csv", tenant_raw)
     write_csv(root / "multi_tenant_aggregate_v0.csv", tenant_agg)
     full_open_cells = len({row["cell_id"] for row in open_raw if int(row["repeat"]) > 0})
-    full_locality_cells = len({row["cell_id"] for row in locality_raw if int(row["repeat"]) > 0})
+    full_locality_cells = len({row["cell_id"] for row in locality_raw
+                               if int(row["repeat"]) > 0 and row["policy"] != "D2-session-contractkv"})
+    session_ablation_cells = len({row["cell_id"] for row in locality_raw
+                                  if int(row["repeat"]) > 0 and row["policy"] == "D2-session-contractkv"})
     full_residency_cells = len({row["cell_id"] for row in residency_raw})
     all_tenant = [row for row in tenant_raw if row["service_class"] == "ALL"]
     gate = {
@@ -482,6 +493,8 @@ def main() -> int:
         "open_loop_request_count_exact": bool(open_raw) and all(int(row["offered_requests"]) == 1125 for row in open_raw if int(row["repeat"]) > 0),
         "open_loop_quality_sanity": bool(open_agg) and all(number(row["mean_quality_sanity_rate"]) == 1.0 for row in open_agg),
         "service_locality_full_cells": full_locality_cells, "service_locality_expected_cells": 129,
+        "service_locality_session_ablation_cells": session_ablation_cells,
+        "service_locality_session_ablation_expected_cells": 3,
         "service_locality_request_count_exact": bool(locality_raw) and all(int(row["offered_requests"]) == 1125 for row in locality_raw if int(row["repeat"]) > 0),
         "service_locality_quality_sanity": bool(locality_agg) and all(number(row["mean_quality_sanity_rate"]) == 1.0 for row in locality_agg),
         "service_locality_unauthorized_reuse_zero": bool(locality_raw) and all(
@@ -524,15 +537,16 @@ def main() -> int:
             / max(number(row.get("mean_mean_latency_ms")), 1e-9) <= .30
             for row in open_agg if row.get("policy") == "D2-full-contractkv"),
     }
-    gate["gate_pass"] = (full_open_cells == 66 and full_locality_cells == 129
+    gate["gate_pass"] = (full_open_cells == 66 and full_locality_cells == 129 and session_ablation_cells == 3
                          and full_residency_cells == 36 and len(all_tenant) == 102 and all(
         value for key, value in gate.items() if key not in {"open_loop_full_cells", "open_loop_expected_cells",
                                                             "service_locality_full_cells", "service_locality_expected_cells",
+                                                            "service_locality_session_ablation_cells", "service_locality_session_ablation_expected_cells",
                                                             "residency_full_cells", "residency_expected_cells",
                                                             "multi_tenant_full_cells", "multi_tenant_expected_cells", "gate_pass"})
     )
     (root / "tsc_service_extension_gate_v0.json").write_text(json.dumps(gate, indent=2) + "\n", encoding="utf-8")
-    markdown(args.docs_output, open_agg, comparisons, locality_comparison, residency_comparison,
+    markdown(root, args.docs_output, open_agg, comparisons, locality_comparison, residency_comparison,
              tenant_agg, economics, lifecycle, gate)
     print(json.dumps(gate, indent=2))
     return 0 if gate["gate_pass"] or args.allow_partial else 2

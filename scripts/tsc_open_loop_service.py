@@ -195,6 +195,11 @@ def registration_scope(args: argparse.Namespace, sample: dict[str, Any]) -> str:
 
 def request_cache_salt(args: argparse.Namespace, sample: dict[str, Any]) -> str | None:
     """Match certificate scope without weakening the unsalted native baseline."""
+    cache_scope_mode = getattr(args, "cache_scope_mode", "certificate")
+    if cache_scope_mode == "service_template":
+        return f"{args.policy_hash}:{sample['service_template_id']}"
+    if cache_scope_mode == "none":
+        return None
     if args.certificate_scope_mode == "service_template" or args.policy == "D2-full-contractkv":
         return f"{args.policy_hash}:{registration_scope(args, sample)}"
     return None
@@ -228,13 +233,16 @@ def registration_one(args: argparse.Namespace, sample: dict[str, Any], prepared:
             row["certificate_issued"] = True
             row["verify_decision"] = "FROZEN_SAFE"
         else:
-            deployment_attestation = args.certificate_scope_mode == "service_template"
+            deployment_attestation = (args.certificate_scope_mode == "service_template"
+                                      or args.attestation_mode == "prospective-qualified")
             reference_messages = turn0["compiled_messages"] if deployment_attestation else turn0["raw_messages"]
             raw = generate_raw(args.base_url, args.model, f"{args.cell_id}-canary-raw-{sid}",
                                reference_messages, args.timeout, args.registration_max_tokens)
             verify = compact_verify_service(
                 args, turn0["case"], turn0["compiled_layout"], raw, scope_id,
-                attestation_mode=("prospective-qualified-template-exact-path-v1"
+                attestation_mode=(("prospective-qualified-template-exact-path-v1"
+                                   if args.certificate_scope_mode == "service_template"
+                                   else "prospective-qualified-session-exact-path-v1")
                                   if deployment_attestation else "same-backend-teacher-forced-strict-top1"),
             )
             row["certificate_issued"] = bool(verify.get("certificate_issued"))
@@ -245,8 +253,11 @@ def registration_one(args: argparse.Namespace, sample: dict[str, Any], prepared:
                         "degradation_q95", "terminal_stop_margin", "stable_prefix_tokens"):
                 row[key] = verify.get(key, "")
             row["deployment_attestation_mode"] = (
-                "prospective-qualified-template-exact-path-v1" if deployment_attestation
+                (("prospective-qualified-template-exact-path-v1"
+                  if args.certificate_scope_mode == "service_template"
+                  else "prospective-qualified-session-exact-path-v1") if deployment_attestation
                 else "session-strict-output-path-v1"
+                )
             )
             record = template_scope_record(args, sample, turn0)
             row["certificate_scope_digest"] = scope_digest(record)
@@ -546,6 +557,11 @@ def main() -> int:
     parser.add_argument("--qualification-hash", default="tsc-service-family-policy-v0")
     parser.add_argument("--certificate-scope-mode", choices=("qualified_session", "service_template"),
                         default="qualified_session")
+    parser.add_argument("--cache-scope-mode", choices=("certificate", "service_template", "none"),
+                        default="certificate",
+                        help="Decouple authorized APC namespace from certificate-object granularity for controlled ablations.")
+    parser.add_argument("--attestation-mode", choices=("auto", "prospective-qualified"), default="auto",
+                        help="Keep safe-layout attestation semantics fixed while varying certificate-object granularity.")
     parser.add_argument("--load-tier", default="tsc-open-loop")
     args = parser.parse_args()
     args.slo_buckets_ms = [float(value) for value in args.slo_buckets_ms.split(",")]
