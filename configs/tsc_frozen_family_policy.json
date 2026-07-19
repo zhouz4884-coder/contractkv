@@ -1,0 +1,23 @@
+{
+  "schema_version": "tsc.frozen-family-policy.v0",
+  "frozen_from": "phase24_cross_model_qualification_map_v0.csv",
+  "quality_epsilon": 0.03,
+  "models": {
+    "Qwen3-8B": {
+      "RULER": "L3",
+      "HotpotQA": "L3",
+      "NarrativeQA": "L3",
+      "Qasper": "L3",
+      "RepoBench": "L3"
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "RULER": "L3",
+      "HotpotQA": "L3",
+      "NarrativeQA": "L3",
+      "Qasper": "L0",
+      "RepoBench": "L0"
+    }
+  },
+  "rule": "Use the prospectively frozen family level; L0 means raw fallback. D2 may only descend or fail closed after live verification.",
+  "heldout_retuning_forbidden": true
+}

@@ -230,6 +230,7 @@ async def send_chat_stream_async(
     max_tokens: int,
     request_tag: str,
     seed: int = 14014,
+    cache_salt: str | None = None,
 ) -> dict[str, Any]:
     """Async streaming request for open-loop load generation.
 
@@ -242,6 +243,8 @@ async def send_chat_stream_async(
         "temperature": 0, "top_p": 1, "seed": seed, "stream": True,
         "stream_options": {"include_usage": True},
     }
+    if cache_salt is not None:
+        payload["cache_salt"] = cache_salt
     started = time.perf_counter()
     chunks: list[dict[str, Any]] = []
     token_times: list[float] = []

@@ -1,0 +1,23 @@
+{
+  "schema_version": "tsc.locality-pilot-gate.v0",
+  "d0_net_mean_ttft_ms": 856.541457098462,
+  "d1_net_mean_ttft_ms": 63.48649830785158,
+  "d2_net_mean_ttft_ms": 65.93506047658718,
+  "d2_fraction_of_d1_gain": 0.9969124937161107,
+  "d1_mean_new_prefill_tokens": 41.67466666666667,
+  "d2_mean_new_prefill_tokens": 41.67466666666667,
+  "checks": {
+    "offered_requests_exact": true,
+    "completion_complete": true,
+    "quality_complete": true,
+    "scope_checks_complete": true,
+    "private_suffix_excluded": true,
+    "unauthorized_reuse_zero": true,
+    "dynamic_suffix_reuse_zero": true,
+    "actual_verifier_calls_exact": true,
+    "transaction_commits_exact": true,
+    "new_prefill_within_5pct_of_d1": true,
+    "retains_90pct_of_d1_net_gain": true
+  },
+  "gate_pass": true
+}

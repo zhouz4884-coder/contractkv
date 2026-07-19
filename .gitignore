@@ -95,6 +95,21 @@ results/mistral/*
 !results/mistral/*.json
 !results/mistral/*.jsonl
 
+# TSC service extension: commit compact aggregates and gates only. Per-cell
+# requests, metrics, monitors, and server logs remain on the 8T experiment disk.
+!results/tsc_service/
+results/tsc_service/*
+!results/tsc_service/*.csv
+!results/tsc_service/*.json
+!results/tsc_service/*.env
+!results/tsc_service/economics/
+results/tsc_service/economics/*
+!results/tsc_service/economics/*.csv
+!results/tsc_service/lifecycle/
+results/tsc_service/lifecycle/*
+!results/tsc_service/lifecycle/*.csv
+!results/tsc_service/lifecycle/*.json
+
 # Phase 14Q's request-level audit is a compact, paper-facing selector record.
 !results/end_to_end/
 results/end_to_end/*

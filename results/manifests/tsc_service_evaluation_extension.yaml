@@ -1,0 +1,54 @@
+batch: tsc_service_evaluation_extension_v0
+status: complete
+completed_at: 2026-07-19T10:08:08+08:00
+source_commit: 0e511a3b6e27b4dbe7e7a9b6bb7d42c2627babb3
+protocol: configs/tsc_service_evaluation_protocol.yaml
+service_model: docs/tsc_service_model_and_protocol.md
+trace:
+  sessions: results/tsc_service/tsc_service_sessions_v0.jsonl
+  arrivals: results/tsc_service/tsc_service_arrivals_v0.jsonl
+  commitment: results/tsc_service/tsc_service_trace_commitment_v0.json
+models:
+  primary: Qwen3-8B
+  replication: Mistral-7B-Instruct-v0.3
+experiments:
+  p0_1_open_loop: complete
+  p0_1_service_locality: complete
+  p0_1_locality_residency: complete
+  p0_2_multi_tenant: complete
+  p0_3_verification_economics: complete
+  p0_4_service_lifecycle: complete
+  p1_1_tenant_density: complete
+  p1_2_service_classes: complete
+evaluation_strength: full_strength_not_minimum_submission
+gates:
+  exact_future_requests_per_cell: 1125
+  fresh_process_repeats: 3
+  unauthorized_cross_tenant_reuse: 0
+  scope_invalid_admissions: 0
+  dynamic_suffix_reuse: 0
+  policy_quality_violations: 0
+  locality_pilot:
+    actual_verifier_calls: 5
+    transaction_commits: 5
+    d2_new_prefill_distance_from_d1_max: 0.05
+    d2_fraction_of_d1_net_gain_min: 0.90
+  expected_cells:
+    natural_open_loop: 66
+    service_locality: 129
+    locality_residency: 36
+    multi_tenant: 102
+outputs:
+  report: docs/tsc_service_evaluation_extension_report.md
+  closeout: docs/tsc_service_execution_closeout.md
+  gate: results/tsc_service/tsc_service_extension_gate_v0.json
+  open_loop_cells: 66
+  service_locality_cells: 129
+  locality_residency_cells: 36
+  multi_tenant_cells: 102
+  economics_model_points: 24
+  lifecycle_events: 10
+  overall_gate: pass
+claim_boundary: >
+  Service results must come from real vLLM measurements. Analytical contours
+  and reused Phase 18 wire faults remain explicitly labeled.

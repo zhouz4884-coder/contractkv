@@ -204,6 +204,8 @@ def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
                 "used_gpu_blocks": (int(getattr(block_pool, "num_gpu_blocks", 0) or 0)
                                     - int(block_pool.get_num_free_blocks())) if block_pool is not None else None,
                 "cached_physical_entries": sum(len(blocks) for blocks in block_pool.cached_block_hash_to_block.values()) if block_pool is not None else None,
+                "scheduler_running_requests": len(getattr(scheduler, "running", []) or []),
+                "scheduler_waiting_requests": len(getattr(scheduler, "waiting", []) or []),
             })
         if os.environ.get("CONTRACTKV_PREFIX_CONCURRENT_SNAPSHOTS") == "1":
             # The snapshot is intentionally scheduler-local: a shared ID is

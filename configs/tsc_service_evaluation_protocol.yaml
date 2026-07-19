@@ -1,0 +1,73 @@
+protocol: tsc_service_evaluation_v0
+status: frozen_before_measurement
+paper_target: IEEE Transactions on Services Computing
+models:
+  primary: Qwen3-8B
+  replication: Mistral-7B-Instruct-v0.3
+workload:
+  families: [RULER, HotpotQA, NarrativeQA, Qasper, RepoBench]
+  sessions_per_family: 25
+  turns_per_session: 10
+  future_requests_per_cell: 1125
+  arrival_process: Poisson open-loop
+  burst_process: ON/OFF at 80-percent baseline load
+  locality_variants:
+    unique: 1 tenant per stable service template
+    cohort: 5 tenants per stable service template
+    family_shared: 25 tenants per stable service template
+  locality_invariant: private observations, tenant IDs, requests, and arrival trace remain distinct
+policies:
+  D0: native-vllm-apc-raw-order
+  D1: frozen-safe-layout-only
+  D2-session: full-contractkv-per-session-registration-verification-ablation
+  D2-template: full-contractkv-service-template-attestation-and-request-scope-check
+load_fractions: [0.60, 0.80, 1.00, 1.20]
+slo_ms_primary: [500, 1000, 1500, 3000]
+slo_ms_auxiliary_postprocess: [750]
+repeats: 3
+service_locality_full_strength:
+  qwen:
+    cohort_5: {load_fractions: [0.80], policies: [D0, D1, D2]}
+    family_25: {load_fractions: [0.20, 0.40, 0.60, 0.80, 1.00, 1.20, 1.40, 2.00, 4.00, 6.00, 8.00], policies: [D0, D1, D2-Template]}
+  mistral:
+    family_25: {load_fractions: [0.80, 1.00, 1.20], policies: [D0, D2]}
+  expected_fresh_process_cells: 129
+locality_residency_operating_region:
+  active_templates: [5, 25, 50]
+  arrival_distributions: [round_robin, zipf]
+  policies: [D0, D2-template]
+  repeats: 3
+  expected_fresh_process_cells: 36
+  prefix_cache_evictions: unavailable_in_vllm_scheduler_probe
+  eviction_proxy: zero_prefix_hit_after_prior_template_request
+server:
+  dtype: float16
+  max_model_len: 8192
+  max_num_seqs: 8
+  generation_max_tokens: 64
+  gpu_memory_utilization: 0.88
+  isolated_compile_cache_per_cell: true
+correctness_gates:
+  completion_rate: 1.0
+  policy_attributable_quality_violations: 0
+  scope_invalid_admissions: 0
+  unauthorized_cross_tenant_reuse: 0
+  dynamic_suffix_reuse: 0
+  verifier_fraction_of_request_latency_max: 0.30
+reproducibility:
+  exact_request_count_required: true
+  partial_cell_resume_forbidden: true
+  rotate_policy_order: true
+  session_cluster_bootstrap: true
+  workload_sha_frozen: true
+claim_boundaries:
+  - Marker and typed task sanity are not substituted for official benchmark scoring.
+  - D2 registration cost and unhidden verification time must be reported separately and amortized.
+  - Multi-tenant claims require explicit tenant identity and sharing authorization.
+multi_tenant_full_strength:
+  stage_a: {tenants: 10, sharing: [0.0, 0.75], policies: [D0, D1, D2]}
+  stage_b: {tenants: 20, sharing: [0.0, 0.5, 1.0], policies: [D0, D2]}
+  stage_c: {tenants: 40, sharing: [0.0, 0.25, 0.5, 0.75, 1.0], policies: [D0, D2]}
+  density: {tenants: [10, 20, 30, 40, 60, 80], sharing: 1.0, policies: [D0, D2]}
+  service_classes: [Gold, Silver, Bronze]
+  expected_fresh_process_cells: 102

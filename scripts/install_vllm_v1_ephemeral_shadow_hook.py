@@ -185,12 +185,11 @@ def _contractkv_park_and_wake(scheduler):
     now = _time.monotonic_ns()
     foreground = _contractkv_has_foreground_waiting(scheduler) or _contractkv_has_foreground_running(scheduler)
     if foreground:
-        retained = []
-        wake_ns = _contractkv_last_foreground_activity_ns(scheduler) + int(scheduler.idle_grace_ms * 1e6)
-        for request in scheduler.running:
-            if _contractkv_shadow_enabled(request): scheduler.contractkv_shadow_parking.park(request, wake_ns, "foreground")
-            else: retained.append(request)
-        scheduler.running[:] = retained
+        # A RUNNING request cannot be moved into the waiting queue without the
+        # scheduler's native preemption transition.  The running-loop admission
+        # gate already pauses shadow work in place, preserving status and KV
+        # ownership.  Parking is therefore restricted to not-yet-admitted
+        # waiting requests below.
         return
     deadline = max(_contractkv_last_foreground_activity_ns(scheduler) + int(scheduler.idle_grace_ms * 1e6), scheduler.shadow_backoff_until_ns)
     for parked in scheduler.contractkv_shadow_parking.wake(now if now >= deadline else -1, max_wake=1):
