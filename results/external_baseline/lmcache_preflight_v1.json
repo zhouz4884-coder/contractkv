@@ -1,0 +1,23 @@
+{
+  "system": "LMCache-dev source snapshot",
+  "environment": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-lmcache-probe-venv",
+  "base_stack": {
+    "vllm": "0.10.2",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.55.2"
+  },
+  "preflight": {
+    "editable_source_install_no_deps": "success",
+    "lmcache_cli_help": "success_with_missing_c_ops_warning",
+    "lmcache_server_help": "failed_before_launch",
+    "server_failure": "ModuleNotFoundError: sortedcontainers",
+    "compiled_backend": "lmcache.c_ops unavailable"
+  },
+  "dependency_audit": {
+    "source_runtime_requires_transformers": ">=5.4",
+    "base_transformers": "4.55.2",
+    "pip_check": "failed: missing runtime packages and transformers requirement conflict"
+  },
+  "decision": "blocked_for_same-stack_live_comparison",
+  "claim_boundary": "This is a reproducible compatibility preflight, not an LMCache performance result. Installing the source requirements would alter the tested vLLM 0.10.2 stack."
+}

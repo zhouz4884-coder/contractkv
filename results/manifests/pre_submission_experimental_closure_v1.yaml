@@ -31,6 +31,9 @@ components:
     fresh_process_repeats: 3
     certified_layout_mean_ttft_reduction: 0.27069924283183
     online_verification_transferred: false
+  external_compatibility:
+    lmcache_preflight: blocked_for_same_stack_live_comparison
+    reason: source_requires_transformers_gte_5_4_while_vllm_0_10_2_stack_uses_4_55_2
   state_machine_stress:
     transactions_per_client_setting: 100000
     client_settings: [1, 8, 32]
@@ -47,3 +50,4 @@ artifacts:
   granularity: results/tsc_service/certificate_granularity_ablation_v0.csv
   heldout_gate: results/tsc_service/economics/heldout_gate_v1_summary.json
   sglang: results/external_baseline/llama_radix_certified/summary_v1.json
+  lmcache_preflight: results/external_baseline/lmcache_preflight_v1.json

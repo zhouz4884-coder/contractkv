@@ -130,10 +130,16 @@ does not claim that online verification or PSTP was transplanted into SGLang.
 
 CacheSlide, CacheBlend, PromptCache, and LMCache were source-audited. Their
 checked source trees respectively pin vLLM 0.8.5, Torch 2.2.1, Torch 2.3.0 with
-Transformers 4.34, and Torch 2.11/CUDA-13-oriented build isolation. These are
-not compatible with an untouched vLLM 0.10.2 / Torch 2.8 CUDA-12.8 Llama
-process. They require isolated, version-matched reproductions; no cross-stack
-number is reported as a same-stack direct comparison.
+Transformers 4.34, and a current LMCache development build whose runtime
+requirements include Transformers >=5.4. An isolated LMCache preflight was
+performed against the CUDA-12.8 base stack: the command-line shell imported,
+but the full server failed before launch because its unstaged runtime
+dependencies (including `sortedcontainers` and the compiled `lmcache.c_ops`)
+were absent; `pip check` also reported the incompatible Transformers
+requirement. Completing that installation would replace the vLLM 0.10.2
+environment's Transformers 4.55.2 with a version outside its tested range.
+These systems therefore require isolated, version-matched reproductions; no
+cross-stack number is reported as a same-stack direct comparison.
 
 Evidence: `results/external_baseline/llama_radix_certified/summary_v1.csv`,
 `results/external_baseline/llama_radix_certified/summary_v1.json`, and
