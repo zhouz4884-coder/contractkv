@@ -1,0 +1,83 @@
+{
+  "schema_version": "pstp-stress-v1",
+  "rows": [
+    {
+      "clients": 1,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    },
+    {
+      "clients": 8,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    },
+    {
+      "clients": 32,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    }
+  ]
+}

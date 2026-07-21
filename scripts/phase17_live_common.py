@@ -15,6 +15,24 @@ from scripts.contractkv_verifier import split_terminal_stop_token
 from scripts.phase16r_verifier_live import extract_raw_tokens_and_margins
 
 
+def build_live_smoke_policy(model_id: str, model_path: str, vllm_version: str,
+                            thresholds: dict[str, float]):
+    """Bind Phase-17 smoke requests to an explicit runtime identity."""
+    from pathlib import Path
+    from scripts.contractkv_frozen_policy import FrozenVerifierPolicy, runtime_identity
+    identity = runtime_identity(model_id, Path(model_path), vllm_version)
+    return FrozenVerifierPolicy(
+        schema_version="phase17.live-smoke-policy.v1", policy_version="phase17-live-smoke-v1",
+        attestation_mode="same-backend-teacher-forced-strict-top1",
+        model_id=identity.model_id, model_revision=identity.model_revision,
+        tokenizer_hash=identity.tokenizer_hash, chat_template_hash=identity.chat_template_hash,
+        vllm_version=identity.vllm_version, terminal_protocol_version=identity.terminal_protocol_version,
+        verifier_code_commit="phase17-live-smoke", tau_raw=float(thresholds["tau_raw"]),
+        tau_abs=float(thresholds["tau_abs"]), tau_drop=float(thresholds["tau_drop"]),
+        calibration_manifest_hash="live-smoke-not-heldout", calibration_split_hash="live-smoke-not-heldout",
+        decode_config_hash=identity.decode_config_hash), identity
+
+
 def post_json(url: str, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
     request = urllib.request.Request(
         url, data=json.dumps(payload).encode("utf-8"),

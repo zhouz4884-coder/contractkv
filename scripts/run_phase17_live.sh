@@ -52,6 +52,7 @@ bash scripts/run_vllm_server.sh \
 if [[ "${SKIP_PHASE17_INTEGRATION:-0}" != "1" ]]; then
 "$PYTHON_BIN" scripts/phase17_integrated_live.py \
   --base-url "http://127.0.0.1:${PORT}/v1" --model "$MODEL_NAME" \
+  --model-id "$MODEL_NAME" --model-path "$MODEL_PATH" --vllm-version 0.10.2 \
   --registry "$REGISTRY" --event-log "$EVENT_LOG" --prefix-metrics-log "$PREFIX_LOG" \
   --output results/hard_systems/phase17_integrated_live_v0.csv
 fi
@@ -59,6 +60,7 @@ fi
 if [[ "${SKIP_PHASE17_FAULTS:-0}" != "1" ]]; then
 "$PYTHON_BIN" scripts/phase17_concurrency_fault_live.py \
   --base-url "http://127.0.0.1:${PORT}/v1" --model "$MODEL_NAME" \
+  --model-id "$MODEL_NAME" --model-path "$MODEL_PATH" --vllm-version 0.10.2 \
   --registry "$REGISTRY" --event-log "$EVENT_LOG" \
   --output results/hard_systems/phase17_concurrency_fault_v0.csv
 fi

@@ -1,0 +1,113 @@
+{
+  "schema_version": "contractkv.external.llama-radix.v1",
+  "cells": [
+    {
+      "runtime": "SGLang-0.4.9.post6-RadixAttention",
+      "policy": "raw-order",
+      "fresh_process_repeats": 3,
+      "repeats": [
+        {
+          "file": "llama-r1-raw.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 913.1199566111111,
+          "p95_ttft_ms": 1757.032776,
+          "p99_ttft_ms": 2351.108365,
+          "mean_latency_ms": 1821.1952709644445,
+          "mean_task_score": 0.35367814430942446,
+          "qualified_future_fraction": 0.0
+        },
+        {
+          "file": "llama-r2-raw.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 917.4281563711111,
+          "p95_ttft_ms": 1759.134711,
+          "p99_ttft_ms": 2359.01958,
+          "mean_latency_ms": 1835.4862761755558,
+          "mean_task_score": 0.35367814430942446,
+          "qualified_future_fraction": 0.0
+        },
+        {
+          "file": "llama-r3-raw.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 919.5269543755555,
+          "p95_ttft_ms": 1757.629197,
+          "p99_ttft_ms": 2344.601515,
+          "mean_latency_ms": 1824.3362166644445,
+          "mean_task_score": 0.3538082744395546,
+          "qualified_future_fraction": 0.0
+        }
+      ],
+      "mean_ttft_ms": 916.6916891192592,
+      "mean_p95_ttft_ms": 1757.932228,
+      "mean_p99_ttft_ms": 2351.576486666667,
+      "mean_latency_ms": 1827.005921268148,
+      "mean_task_score": 0.3537215210194678,
+      "mean_completion_rate": 1.0,
+      "mean_qualified_future_fraction": 0.0
+    },
+    {
+      "runtime": "SGLang-0.4.9.post6-RadixAttention",
+      "policy": "offline-vllm-certified-layout",
+      "fresh_process_repeats": 3,
+      "repeats": [
+        {
+          "file": "llama-r1-certified.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 664.8475702377777,
+          "p95_ttft_ms": 1768.263022,
+          "p99_ttft_ms": 2356.59146,
+          "mean_latency_ms": 1505.2788524622222,
+          "mean_task_score": 0.35464832327960344,
+          "qualified_future_fraction": 0.5
+        },
+        {
+          "file": "llama-r2-certified.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 670.1740011933333,
+          "p95_ttft_ms": 1754.042261,
+          "p99_ttft_ms": 2344.602234,
+          "mean_latency_ms": 1496.6035407666666,
+          "mean_task_score": 0.3536875405978905,
+          "qualified_future_fraction": 0.5
+        },
+        {
+          "file": "llama-r3-certified.jsonl",
+          "future_requests": 450,
+          "completed_requests": 450,
+          "completion_rate": 1.0,
+          "mean_ttft_ms": 670.6102574622222,
+          "p95_ttft_ms": 1771.698521,
+          "p99_ttft_ms": 2366.799103,
+          "mean_latency_ms": 1503.7811189533334,
+          "mean_task_score": 0.35367814430942446,
+          "qualified_future_fraction": 0.5
+        }
+      ],
+      "mean_ttft_ms": 668.5439429644445,
+      "mean_p95_ttft_ms": 1764.6679346666667,
+      "mean_p99_ttft_ms": 2355.997599,
+      "mean_latency_ms": 1501.887837394074,
+      "mean_task_score": 0.3540046693956394,
+      "mean_completion_rate": 1.0,
+      "mean_qualified_future_fraction": 0.5
+    }
+  ],
+  "compiled_mean_ttft_reduction_vs_raw": 0.27069924283183,
+  "paired_quality": {
+    "paired_requests": 1350,
+    "mean_compiled_minus_raw_task_score": 0.0002831483761716319,
+    "requests_with_drop_gt_0_03": 1,
+    "drop_gt_0_03_rate": 0.0007407407407407407
+  },
+  "claim_boundary": "SGLang consumes the frozen Llama layout map. This demonstrates layout portability, not online ContractKV verification or PSTP inside SGLang."
+}

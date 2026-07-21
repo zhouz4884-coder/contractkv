@@ -143,7 +143,9 @@ def contour(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     for row in rows:
         by_length.setdefault(int(row["stable_prefix_tokens"]), []).append(row)
     output = []
-    for length in (1000, 2000, 4000, 6000):
+    # Sealed validation may supply lengths that intentionally differ from the
+    # development grid. Build the contour only for lengths actually measured.
+    for length in sorted(by_length):
         group = by_length[length]
         saved = statistics.median(float(row["saved_ms_per_turn"]) for row in group)
         verify = statistics.median(float(row["registration_ms"]) for row in group)
@@ -186,11 +188,26 @@ def main() -> int:
     parser.add_argument("--timeout", type=float, default=300.0)
     parser.add_argument("--raw-output", type=Path, required=True)
     parser.add_argument("--contour-output", type=Path, required=True)
+    parser.add_argument(
+        "--boundary-points-json",
+        default="",
+        help=("Optional JSON file containing [[stable_tokens, future_reuses, "
+              "tool_slack_ms, concurrency], ...]. This supports sealed "
+              "operating-point validation without changing the frozen default grid."),
+    )
     args = parser.parse_args()
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(args.tokenizer, trust_remote_code=True)
+    points = BOUNDARY_POINTS
+    if args.boundary_points_json:
+        payload = json.loads(Path(args.boundary_points_json).read_text(encoding="utf-8"))
+        if not isinstance(payload, list) or not payload:
+            raise ValueError("boundary-points JSON must be a non-empty list")
+        points = [tuple(int(value) for value in point) for point in payload]
+        if any(len(point) != 4 for point in points):
+            raise ValueError("each boundary point must contain four integers")
     rows = []
-    for index, point in enumerate(BOUNDARY_POINTS):
+    for index, point in enumerate(points):
         point_rows = run_point(args, tokenizer, index, point)
         rows.extend(point_rows)
         write_csv(args.raw_output, rows)

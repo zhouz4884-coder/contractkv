@@ -1,0 +1,49 @@
+batch: pre_submission_experimental_closure_v1
+status: complete
+primary_model: Qwen3-8B
+secondary_models:
+  - Qwen3-4B
+  - Llama-3.1-8B-Instruct
+components:
+  source_level_pstp:
+    corrected_policy_binding: true
+    integrated_gate: 16_of_16
+    concurrent_fault_gate: 10_of_10
+  same_queue_verifier:
+    source_level_c3_c4: complete
+    claim: foreground interference measured on the live engine queue
+  service_template_quality:
+    paired_future_outputs: 1350
+    fresh_process_repeats: 3
+    policy_quality_violations: 0
+  certificate_granularity:
+    d2_session_calls: 125
+    d2_template_calls: 5
+    controlled_same_trace: true
+  net_benefit_gate:
+    frozen_development_rule: future_reuses_gte_10
+    sealed_heldout_lanes: 4
+    accepted_lanes: 2
+    accepted_observed_net_benefit_positive: true
+  external_runtime:
+    runtime: SGLang-0.4.9.post6-RadixAttention
+    model: Llama-3.1-8B-Instruct
+    fresh_process_repeats: 3
+    certified_layout_mean_ttft_reduction: 0.27069924283183
+    online_verification_transferred: false
+  state_machine_stress:
+    transactions_per_client_setting: 100000
+    client_settings: [1, 8, 32]
+    invariant_failures: 0
+claim_boundary: >
+  All serving results are real local endpoint/source-hook measurements unless explicitly
+  labelled deterministic state-machine stress. SGLang proves offline certified-layout
+  portability, not online ContractKV verification or PSTP within SGLang.
+artifacts:
+  report: docs/pre_submission_experimental_closure_v1.md
+  pstp_integrated: results/hard_systems/phase17_integrated_live_v0.csv
+  pstp_faults: results/hard_systems/phase17_concurrency_fault_v0.csv
+  template_quality: results/tsc_service/service_template_quality_summary_v0.csv
+  granularity: results/tsc_service/certificate_granularity_ablation_v0.csv
+  heldout_gate: results/tsc_service/economics/heldout_gate_v1_summary.json
+  sglang: results/external_baseline/llama_radix_certified/summary_v1.json

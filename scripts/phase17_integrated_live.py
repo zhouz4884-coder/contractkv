@@ -15,7 +15,7 @@ if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.contractkv_transaction import PSTPRuntime, write_runtime_registry
-from scripts.phase17_live_common import build_layout, build_runtime, generate_raw, post_json, tokenize
+from scripts.phase17_live_common import build_layout, build_live_smoke_policy, build_runtime, generate_raw, post_json, tokenize
 from scripts.summarize_vllm_prefix_metrics import summarize as summarize_prefix_events
 
 
@@ -54,6 +54,9 @@ def send_probe(args: argparse.Namespace, request_id: str, messages: list[dict[st
 def run(args: argparse.Namespace) -> list[dict[str, Any]]:
     cases = [(f"safe-{index}", False) for index in range(args.safe_cases)]
     cases += [(f"conflict-{index}", True) for index in range(args.conflict_cases)]
+    thresholds = {"tau_raw": args.tau_raw, "tau_abs": args.tau_abs, "tau_drop": args.tau_drop}
+    frozen_policy, identity = build_live_smoke_policy(args.model_id, args.model_path, args.vllm_version, thresholds)
+    from scripts.contractkv_frozen_policy import policy_hash
     registry: dict[str, PSTPRuntime] = {}
     prepared = []
     for case_id, conflict in cases:
@@ -66,8 +69,9 @@ def run(args: argparse.Namespace) -> list[dict[str, Any]]:
             txn_id=f"txn-{case_id}", stable_ids=stable_ids,
             candidate_prompt_ids=candidate_ids, raw=raw,
             stop_token_id=args.stop_token_id,
-            thresholds={"tau_raw": args.tau_raw, "tau_abs": args.tau_abs, "tau_drop": args.tau_drop},
+            thresholds=thresholds,
             candidate_messages=layout["candidate_messages"],
+            frozen_policy=frozen_policy, frozen_policy_hash=policy_hash(frozen_policy), runtime_identity=identity,
         )
         registry[request_id] = runtime
         prepared.append((case_id, conflict, request_id, layout, raw, candidate_ids, runtime))
@@ -139,6 +143,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default="http://127.0.0.1:8017/v1")
     parser.add_argument("--model", default="qwen3-4b")
+    parser.add_argument("--model-id", default="qwen3-4b")
+    parser.add_argument("--model-path", required=True)
+    parser.add_argument("--vllm-version", default="0.10.2")
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--event-log", type=Path, required=True)
     parser.add_argument("--prefix-metrics-log", type=Path, required=True)

@@ -18,7 +18,7 @@ if __package__ is None or __package__ == "":
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.contractkv_transaction import PSTPRuntime, write_runtime_registry
-from scripts.phase17_live_common import build_layout, build_runtime, generate_raw, post_json, tokenize
+from scripts.phase17_live_common import build_layout, build_live_smoke_policy, build_runtime, generate_raw, post_json, tokenize
 
 
 FIELDS = [
@@ -64,12 +64,19 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default="http://127.0.0.1:8017/v1")
     parser.add_argument("--model", default="qwen3-4b")
+    parser.add_argument("--model-id", default="qwen3-4b")
+    parser.add_argument("--model-path", required=True)
+    parser.add_argument("--vllm-version", default="0.10.2")
     parser.add_argument("--registry", type=Path, required=True)
     parser.add_argument("--event-log", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--stop-token-id", type=int, default=151645)
     parser.add_argument("--timeout", type=float, default=180)
     args = parser.parse_args()
+
+    thresholds = {"tau_raw": 0.0, "tau_abs": 0.0, "tau_drop": 4.0}
+    frozen_policy, identity = build_live_smoke_policy(args.model_id, args.model_path, args.vllm_version, thresholds)
+    from scripts.contractkv_frozen_policy import policy_hash
 
     definitions = [
         ("same_prefix_two_pass", "same-pass-a", False, "shared-pass", "none"),
@@ -95,8 +102,9 @@ def main() -> int:
             txn_id=f"txn-{case_id}", stable_ids=stable_ids,
             candidate_prompt_ids=candidate_ids, raw=raw,
             stop_token_id=args.stop_token_id,
-            thresholds={"tau_raw": 0.0, "tau_abs": 0.0, "tau_drop": 4.0},
+            thresholds=thresholds,
             candidate_messages=layout["candidate_messages"], fault_mode=fault,
+            frozen_policy=frozen_policy, frozen_policy_hash=policy_hash(frozen_policy), runtime_identity=identity,
         )
         registry[request_id] = runtime
         jobs.append((scenario, case_id, request_id, candidate_ids + raw["token_ids"] + [raw["terminal_stop_token_id"]], runtime))

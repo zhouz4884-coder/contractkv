@@ -1,0 +1,22 @@
+{
+  "gate_id": "tsc-net-benefit-gate-v1",
+  "selection_source": "results/tsc_service/economics/qwen_boundary_live_v0.csv",
+  "development_rule": {
+    "minimum_future_reuses": 10,
+    "minimum_tool_slack_ms": 0,
+    "require_certificate": true,
+    "require_completion": true
+  },
+  "selection_evidence": {
+    "accepted_development_lanes": 28,
+    "positive_observed_net_benefit_lanes": 28,
+    "minimum_observed_net_benefit_ms": 918.1594606488943
+  },
+  "sealed_heldout_points": [
+    [1500, 8, 3500, 1],
+    [3000, 12, 500, 1],
+    [5000, 10, 1500, 1],
+    [3500, 6, 6000, 1]
+  ],
+  "admission_note": "Only the first three held-out points satisfy the frozen rule; the fourth is a deliberate conservative rejection control."
+}
