@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+#PBS -N ckv-v100-runtime
+#PBS -q GPUDefq
+#PBS -l nodes=gpu2:ppn=36:gpus=8
+#PBS -j oe
+
+set -euo pipefail
+
+ROOT="${CONTRACTKV_V100_ROOT:-/data/home/${USER}/contractkv_v100}"
+LOCAL_ROOT="${CONTRACTKV_V100_LOCAL_ROOT:-/tmp/${USER}/contractkv-v100-runtime}"
+ENV="$LOCAL_ROOT/contractkv-v100-cu121"
+PERSISTENT_ENV="$ROOT/env/contractkv-v100-cu121"
+MM="$ROOT/tools/micromamba/micromamba"
+OUT="$ROOT/results/preflight/${PBS_JOBID:-manual}-runtime"
+LOG="$ROOT/logs/env/${PBS_JOBID:-manual}-runtime.log"
+
+mkdir -p "$OUT" "$(dirname "$LOG")" "$LOCAL_ROOT"
+exec > >(tee "$LOG") 2>&1
+
+if [[ "$(hostname -s)" != "gpu2" ]]; then
+  echo "Expected gpu2, got $(hostname -s)" >&2
+  exit 42
+fi
+[[ -x "$MM" ]] || { echo "Missing micromamba: $MM" >&2; exit 2; }
+
+if [[ -x "$PERSISTENT_ENV/bin/python" ]]; then
+  # PBS clears node-local /tmp between allocations. Restore the known-good
+  # runtime locally; installation itself must remain off NFS because locks
+  # are unavailable there.
+  mkdir -p "$LOCAL_ROOT"
+  tar -C "$(dirname "$PERSISTENT_ENV")" -cf - "$(basename "$PERSISTENT_ENV")" | \
+    tar -C "$LOCAL_ROOT" -xf -
+fi
+
+if [[ ! -x "$ENV/bin/python" ]]; then
+  "$MM" create -y --no-rc --override-channels -r "$LOCAL_ROOT/micromamba-root" -p "$ENV" \
+    -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ \
+    -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ \
+    -c https://repo.anaconda.com/pkgs/main/ \
+    -c https://conda.anaconda.org/nvidia/ \
+    python=3.10 pytorch=2.4.1 torchvision=0.19.1 torchaudio=2.4.1 pytorch-cuda=12.1
+fi
+
+export PIP_CACHE_DIR="$ROOT/cache/pip"
+"$ENV/bin/python" -m pip install --upgrade pip
+# The base Conda package leaves an obsolete module file behind while pip
+# updates only its metadata. Force a clean module reinstall before torch is
+# imported; torch 2.4's CUDA graph path requires typing_extensions.deprecated.
+"$ENV/bin/python" -m pip install --force-reinstall --no-deps \
+  -i https://pypi.tuna.tsinghua.edu.cn/simple typing_extensions==4.12.2
+"$ENV/bin/python" -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  modelscope transformers==4.55.2 openai fastapi uvicorn
+rm -rf "$PERSISTENT_ENV"
+mkdir -p "$(dirname "$PERSISTENT_ENV")"
+tar -C "$LOCAL_ROOT" -cf - "$(basename "$ENV")" | \
+  tar -C "$(dirname "$PERSISTENT_ENV")" -xf -
+"$ENV/bin/python" "$ROOT/scripts/check_env.py" > "$OUT/torch_env.json"
+"$ENV/bin/python" -m pip freeze > "$OUT/pip_freeze.txt"
+echo "LOCAL_ENV=$ENV" > "$OUT/runtime_location.txt"
+echo "PERSISTENT_ENV=$PERSISTENT_ENV" >> "$OUT/runtime_location.txt"
+echo "RUNTIME_BOOTSTRAP_COMPLETE"

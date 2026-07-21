@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#PBS -N ckv-v100-preflight
+#PBS -q GPUDefq
+#PBS -l nodes=gpu2:ppn=36:gpus=8
+# This PBS installation rejects an explicit walltime attribute for GPUDefq.
+# The queue policy supplies the limit, while the probe itself exits quickly.
+#PBS -j oe
+
+set -euo pipefail
+
+ROOT="${CONTRACTKV_V100_ROOT:-/data/home/${USER}/contractkv_v100}"
+PERSISTENT_ENV="$ROOT/env/contractkv-v100-cu121"
+LOCAL_ROOT="/tmp/${USER}/contractkv-v100-runtime"
+ENV="${CONTRACTKV_V100_ENV:-$LOCAL_ROOT/contractkv-v100-cu121}"
+if [[ ! -x "$ENV/bin/python" ]]; then
+  if [[ -x "$PERSISTENT_ENV/bin/python" ]]; then
+    mkdir -p "$LOCAL_ROOT"
+    tar -C "$(dirname "$PERSISTENT_ENV")" -cf - "$(basename "$PERSISTENT_ENV")" | \
+      tar -C "$LOCAL_ROOT" -xf -
+  fi
+fi
+JOB_TAG="${PBS_JOBID:-manual}"
+OUT="$ROOT/results/preflight/$JOB_TAG"
+LOG="$ROOT/logs/preflight/$JOB_TAG"
+mkdir -p "$OUT" "$LOG" \
+  "$ROOT/cache/$JOB_TAG/triton" \
+  "$ROOT/cache/$JOB_TAG/torchinductor" \
+  "$ROOT/cache/$JOB_TAG/vllm"
+
+export TMPDIR="$ROOT/tmp/$JOB_TAG"
+export HF_HOME="$ROOT/hf_cache"
+export TRANSFORMERS_CACHE="$HF_HOME/transformers"
+export TRITON_CACHE_DIR="$ROOT/cache/$JOB_TAG/triton"
+export TORCHINDUCTOR_CACHE_DIR="$ROOT/cache/$JOB_TAG/torchinductor"
+export VLLM_CACHE_ROOT="$ROOT/cache/$JOB_TAG/vllm"
+mkdir -p "$TMPDIR" "$TRANSFORMERS_CACHE"
+
+exec > >(tee "$LOG/preflight.log") 2>&1
+
+if [[ "$(hostname -s)" != "gpu2" ]]; then
+  echo "Expected gpu2, got $(hostname -s); refusing the V100 protocol." >&2
+  exit 42
+fi
+
+hostname
+date -Is
+echo "PBS_JOBID=${PBS_JOBID:-unset}"
+cat /etc/redhat-release
+df -h "$ROOT" /home
+du -sh /dev/shm
+nvidia-smi
+nvidia-smi -L
+nvidia-smi topo -m
+command -v singularity || true
+command -v apptainer || true
+command -v conda || true
+module avail 2>&1 | grep -Ei 'cuda|gcc|python|conda' || true
+python --version 2>&1 || true
+
+if [[ -x "$ENV/bin/python" ]]; then
+  "$ENV/bin/python" "$ROOT/scripts/check_env.py" > "$OUT/python_gpu_probe.txt" 2>&1 || true
+else
+  echo "Environment Python missing: $ENV/bin/python" > "$OUT/python_gpu_probe.txt"
+fi
+
+env | grep -E 'PBS|CUDA|NCCL|CONTRACTKV|HF_HOME|TRITON|VLLM' | sort > "$OUT/environment.txt"
+echo "PRELIGHT_COMPLETE"

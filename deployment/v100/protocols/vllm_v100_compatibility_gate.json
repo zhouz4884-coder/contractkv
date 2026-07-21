@@ -1,0 +1,44 @@
+{
+  "schema_version": "contractkv.v100-vllm-compatibility-gate.v1",
+  "target": {
+    "vllm_source_release": "0.10.2",
+    "contractkv_patch": "patches/vllm-0.10.2-contractkv-compact-egress.patch",
+    "execution_mode": "source-level V1 integration"
+  },
+  "observed_platform": {
+    "node": "gpu2",
+    "gpu": "Tesla V100-PCIE-32GB",
+    "gpu_count": 8,
+    "compute_capability": "7.0",
+    "driver": "530.30.02",
+    "cuda_driver_runtime": "12.1",
+    "torch": "2.4.1",
+    "torch_cuda": "12.1"
+  },
+  "required_by_vllm_0_10_2": {
+    "torch": "2.8.0",
+    "cmake": ">=3.26.1",
+    "cuda_compiler": true
+  },
+  "observed_build_toolchain": {
+    "nvcc_present": false,
+    "gcc": "4.8.5",
+    "cmake": "2.8.12"
+  },
+  "decision": "blocked",
+  "blockers": [
+    "The frozen source requires torch 2.8.0 but the driver-compatible runtime is torch 2.4.1 plus CUDA 12.1.",
+    "No CUDA compiler is installed on gpu2.",
+    "The installed CMake is below the vLLM source requirement."
+  ],
+  "permitted_unblock_paths": [
+    "Install a CUDA-12.1-compatible torch 2.8.0 build for sm_70 and a modern CUDA/CMake toolchain.",
+    "Upgrade the GPU driver, then recreate the official vLLM 0.10.2 binary environment and rerun all gates."
+  ],
+  "forbidden_workarounds": [
+    "vLLM source downgrade",
+    "model quantization",
+    "CPU offload",
+    "unfrozen policy changes"
+  ]
+}

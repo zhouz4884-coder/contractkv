@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+#PBS -N ckv-v100-vllm-audit
+#PBS -q GPUDefq
+#PBS -l nodes=gpu2:ppn=36:gpus=8
+#PBS -j oe
+
+# Capture a reproducible compatibility verdict without mutating the persisted
+# CUDA runtime. vLLM's build must happen on a GPU node because torch performs
+# CUDA capability checks during its extension configuration.
+set -u -o pipefail
+
+ROOT="${CONTRACTKV_V100_ROOT:-/data/home/${USER}/contractkv_v100}"
+PERSISTENT_ENV="$ROOT/env/contractkv-v100-cu121"
+LOCAL_ROOT="/tmp/${USER}/contractkv-v100-vllm-audit-${PBS_JOBID:-manual}"
+ENV="$LOCAL_ROOT/contractkv-v100-cu121"
+SOURCE="$ROOT/code/vllm-contractkv-v100"
+OUT="$ROOT/results/preflight/${PBS_JOBID:-manual}-vllm-compat"
+LOG="$ROOT/logs/env/${PBS_JOBID:-manual}-vllm-compat.log"
+mkdir -p "$OUT" "$(dirname "$LOG")" "$LOCAL_ROOT"
+exec > >(tee "$LOG") 2>&1
+
+[[ "$(hostname -s)" == "gpu2" ]] || { echo "wrong host"; exit 42; }
+[[ -x "$PERSISTENT_ENV/bin/python" ]] || { echo "persistent runtime missing"; exit 2; }
+tar -C "$(dirname "$PERSISTENT_ENV")" -cf - "$(basename "$PERSISTENT_ENV")" | \
+  tar -C "$LOCAL_ROOT" -xf -
+
+command -v nvcc > "$OUT/nvcc_path.txt" 2>&1 || true
+nvcc --version > "$OUT/nvcc_version.txt" 2>&1 || true
+gcc --version > "$OUT/gcc_version.txt" 2>&1 || true
+cmake --version > "$OUT/cmake_version.txt" 2>&1 || true
+"$ENV/bin/python" "$ROOT/scripts/check_env.py" > "$OUT/torch_env.json" 2>&1
+sed -n '1,40p' "$SOURCE/pyproject.toml" > "$OUT/pyproject_build_requirements.txt"
+sed -n '1,40p' "$SOURCE/requirements/cuda.txt" > "$OUT/cuda_requirements.txt"
+
+set +e
+"$ENV/bin/python" -m pip install --dry-run --only-binary=:all: \
+  --report "$OUT/vllm_pypi_resolution.json" vllm==0.10.2 \
+  > "$OUT/vllm_pypi_resolution.stdout" 2> "$OUT/vllm_pypi_resolution.stderr"
+RESOLUTION_STATUS=$?
+set -e
+printf '%s\n' "$RESOLUTION_STATUS" > "$OUT/vllm_pypi_resolution_exit_code.txt"
+
+# Supply metadata-only build helpers in this disposable copy. Torch remains
+# deliberately pinned to the persisted CUDA-12.1 runtime, so any rejection
+# after this point is an actual vLLM/torch/toolchain incompatibility.
+"$ENV/bin/python" -m pip install --force-reinstall --no-deps \
+  setuptools==79.0.1 setuptools-scm==8.3.1 wheel packaging ninja \
+  > "$OUT/build_helper_install.stdout" 2> "$OUT/build_helper_install.stderr"
+
+set +e
+# The portable source seed intentionally omits .git. Freeze the upstream
+# release identity explicitly so setuptools-scm cannot mask the real build
+# compatibility result.
+export SETUPTOOLS_SCM_PRETEND_VERSION_FOR_VLLM=0.10.2
+"$ENV/bin/python" -m pip install --no-deps --no-build-isolation "$SOURCE" \
+  > "$OUT/vllm_source_install.stdout" 2> "$OUT/vllm_source_install.stderr"
+STATUS=$?
+set -e
+printf '%s\n' "$STATUS" > "$OUT/vllm_source_install_exit_code.txt"
+if [[ "$STATUS" -eq 0 ]]; then
+  "$ENV/bin/python" -m vllm.entrypoints.openai.api_server --help > "$OUT/vllm_help.txt" 2>&1
+  HELP_STATUS=$?
+else
+  HELP_STATUS=127
+fi
+printf '%s\n' "$HELP_STATUS" > "$OUT/vllm_help_exit_code.txt"
+
+if [[ "$STATUS" -eq 0 && "$HELP_STATUS" -eq 0 ]]; then
+  echo VLLM_COMPATIBLE
+  exit 0
+fi
+echo VLLM_COMPATIBILITY_BLOCKED
+exit 0

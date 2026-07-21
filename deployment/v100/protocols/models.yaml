@@ -1,0 +1,22 @@
+models:
+  qwen3_32b:
+    hub_id: Qwen/Qwen3-32B
+    local_dir: /data/home/zhoubin/contractkv_v100/models/qwen3-32b
+    tensor_parallel_size: 4
+    gpu_memory_utilization: 0.88
+    candidate_levels: [L0, L3_star]
+  mistral_small_24b:
+    hub_id: mistralai/Mistral-Small-24B-Instruct-2501
+    local_dir: /data/home/zhoubin/contractkv_v100/models/mistral-small-24b
+    tensor_parallel_size: 4
+    gpu_memory_utilization: 0.88
+    candidate_levels: [L0, L3_star]
+    template_requirement: mistral_common_locked
+  llama_3_1_70b:
+    hub_id: LLM-Research/Meta-Llama-3.1-70B-Instruct
+    local_dir: /data/home/zhoubin/contractkv_v100/models/llama3.1-70b-instruct
+    tensor_parallel_size: 8
+    pipeline_parallel_size: 1
+    gpu_memory_utilization: 0.86
+    candidate_levels: [L0, L1, L2, L3]
+    fallback_parallelism: PP2_TP4_after_preflight_only

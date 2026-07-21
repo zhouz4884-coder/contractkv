@@ -1,0 +1,40 @@
+schema_version: 1
+platform:
+  login_host: manager
+  os: RHEL_7.6
+  kernel: 3.10.0-957.el7.x86_64
+  scheduler: PBS_6.1.1
+  queue: GPUDefq
+  node: gpu2
+  gpu:
+    count: 8
+    name: Tesla_V100-PCIE-32GB
+    memory_gib: 32
+    compute_capability: sm70
+    driver: 530.30.02
+  cpu_cores: 36
+  memory_gib: 188
+storage:
+  root: /data/home/zhoubin/contractkv_v100
+  models: /data/home/zhoubin/contractkv_v100/models
+  hf_cache: /data/home/zhoubin/contractkv_v100/hf_cache
+  raw_logs: /data/home/zhoubin/contractkv_v100/logs
+  results: /data/home/zhoubin/contractkv_v100/results
+environment:
+  target_name: contractkv-v100-cu121
+  cuda_runtime_target: "12.1"
+  cuda_runtime_fallback: "11.8"
+  dtype: float16
+  vllm_target: 0.10.2
+  attention_backend: freeze_after_preflight
+experiment_defaults:
+  enable_prefix_caching: true
+  max_model_len: 8192
+  primary_concurrency: 2
+  output_limit: 96
+  stable_word_limit: 1500
+  fresh_repeats: 3
+  raw_fallback: true
+  strict_top1_attestation: true
+  dynamic_suffix_publication: false
+  partial_cell_resume: false
