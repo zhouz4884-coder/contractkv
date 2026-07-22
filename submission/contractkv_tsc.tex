@@ -4,7 +4,7 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{graphicx}
-\graphicspath{{../Paper/figures/}}
+\graphicspath{{figures/}{../Paper/figures/}}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{booktabs}
@@ -37,7 +37,7 @@
 \maketitle
 
 \begin{abstract}
-Prefix caching accelerates LLM serving only when reusable tokens form a contiguous physical prefix. In repeated agent, retrieval, and code services, 85.0\% of prompt tokens are stable, yet native automatic prefix caching recovers only 2.4\%. We present ContractKV, a service control plane that converts this latent stability into governed physical reuse. A contract-aware compiler constructs dependency-valid stable-prefix layouts; prospective qualification and strict teacher-forced attestation admit only behaviorally supported routes; signed, versioned certificates bind model, runtime, template, policy, authorization, and lifecycle identity; and Prefix-Selective Transactional Promotion makes only exact-LCP, block-aligned stable state visible to the shared cache. A frozen net-benefit gate retains raw order outside profitable scopes, while service-template certificates amortize in-engine verification across authorized tenants. On vLLM~0.10.2, four configurations from three model families reduce all-workflow mean TTFT by 29.41--44.69\%, including raw fallback and measured verification charges. In a five-repeat Llama-3.1-8B comparison, ContractKV reduces mean TTFT by 29.16\% over native APC, compared with 26.96\% for CacheBlend over its matched runtime. Observed material paired task-score regressions are 0.089\% overall and 0/1{,}125 among admitted compiled requests; both overall events occur on raw fallback and reproduce under raw-only control, whereas CacheBlend exhibits a 9.956\% regression rate. In an independent same-engine Qwen3-8B closure, template-scoped ContractKV reduces mean TTFT by 92.90\% after charging registration wall time. Across the 25-tenant load sweep it improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants peak KV-block occupancy falls by 72\%. Across live fault probes and 325{,}000 transactional stress operations, no aborted transaction publishes compiled blocks.
+Prefix caching accelerates LLM serving only when reusable tokens form a contiguous physical prefix. In repeated agent, retrieval, and code services, 85.0\% of prompt tokens are stable, yet native automatic prefix caching recovers only 2.4\%. We present ContractKV, a service control plane that converts this latent stability into governed physical reuse. A contract-aware compiler constructs dependency-valid stable-prefix layouts; prospective qualification and strict teacher-forced attestation admit only behaviorally supported routes; authenticated, versioned certificates bind model, runtime, template, policy, authorization, and lifecycle identity; and Prefix-Selective Transactional Promotion makes only exact-LCP, block-aligned stable state visible to the shared cache. A frozen net-benefit gate retains raw order outside profitable scopes, while service-template certificates amortize in-engine verification across authorized tenants. On vLLM~0.10.2, four configurations from three model families reduce all-workflow mean TTFT by 29.41--44.69\%, including raw fallback and measured verification charges. In a five-repeat Llama-3.1-8B comparison, ContractKV reduces mean TTFT by 29.16\% over native APC, compared with 26.96\% for CacheBlend over its matched runtime. Observed material paired task-score regressions are 0.089\% overall and 0/1{,}125 among admitted compiled requests; both overall events occur on raw fallback and reproduce under raw-only control, whereas CacheBlend exhibits a 9.956\% regression rate. In an independent same-engine Qwen3-8B closure, template-scoped ContractKV reduces mean TTFT by 92.90\% after charging registration wall time. Across the 25-tenant load sweep it improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants peak KV-block occupancy falls by 72\%. Across live fault probes and 325{,}000 transactional stress operations, no aborted transaction publishes compiled blocks.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -57,16 +57,16 @@ Moving stable segments ahead of volatile ones can expose this reuse, but prefix 
 
 Recent position-independent and cross-position reuse systems selectively compose, correct, or recompute moved segments~\cite{cacheblend2025,epic2025,cacheslide2026,minipic2026}. They expand the reuse space but do not by themselves answer a service-level question: \emph{under what evidence, identity, authorization, and transaction conditions may transformed state become shared service state?} A safe service must validate dependencies, bind model-backed evidence to runtime and authorization identity, revoke it across lifecycle changes, and prevent failed verification from partially publishing shared state. ContractKV therefore treats compiled KV as a versioned service object, not only a performance artifact.
 
-We present \textsc{ContractKV}, a compile--attest--commit control plane for multi-tenant prefix reuse. (1)~A \emph{Contract-Aware Layout Compiler} (CALC) constructs a bounded ladder of dependency-valid layouts with progressively longer stable prefixes. (2)~\emph{Scoped Behavioral Certification} uses prospective qualification, strict teacher-forced token-path agreement, and signed versioned identity to admit only supported model--workflow--layout routes. (3)~\emph{Prefix-Selective Transactional Promotion} (PSTP) keeps candidate state private and makes only verified, exact-LCP, block-aligned stable blocks visible at one scheduler-thread linearization point. (4)~A frozen \emph{net-benefit gate} retains raw order outside profitable scopes, while a service-template certificate amortizes one deployment attestation across authorized tenants. Failure, identity mismatch, scope conflict, timeout, or profitability rejection publishes no compiled state.
+We present \textsc{ContractKV}, a compile--attest--commit control plane for multi-tenant prefix reuse. (1)~A \emph{Contract-Aware Layout Compiler} (CALC) constructs a bounded ladder of dependency-valid layouts with progressively longer stable prefixes. (2)~\emph{Scoped Behavioral Certification} uses prospective qualification, strict teacher-forced token-path agreement, and authenticated versioned identity to admit only supported model--workflow--layout routes. (3)~\emph{Prefix-Selective Transactional Promotion} (PSTP) keeps candidate state private and makes only verified, exact-LCP, block-aligned stable blocks visible at one scheduler-thread linearization point. (4)~A frozen \emph{net-benefit gate} retains raw order outside profitable scopes, while a service-template certificate amortizes one deployment attestation across authorized tenants. Failure, identity mismatch, scope conflict, timeout, or profitability rejection publishes no compiled state.
 
-We evaluate \textsc{ContractKV} on vLLM~0.10.2 using Qwen3-8B, Qwen3-14B (TP=2), Mistral-7B-Instruct-v0.3, and Llama-3.1-8B. Across five workflows, all four configurations reduce all-workflow mean TTFT by 29.41--44.69\% after accounting for direct L0 routing, runtime fallback, and measured verification charges. Under the same frozen RULER scope, Qwen, Mistral, and Llama converge to 85.97--87.41\% reduction. In a five-repeat Llama comparison, ContractKV achieves a 29.16\% matched-baseline reduction, compared with 26.96\% for CacheBlend, while reducing observed material paired regressions from 9.956\% to 0.089\%; no such regression occurs among 1{,}125 admitted compiled requests. An independent same-engine verifier closure charges all template-registration wall time and reduces Qwen3-8B mean TTFT by 92.90\%. Across the primary load sweep, ContractKV improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants reduces peak KV-block occupancy by 72\%. Live fault probes, signed-binding tests, and 325{,}000 state-machine transactions report no partial publication or stale-scope admission.
+We evaluate \textsc{ContractKV} on vLLM~0.10.2 using Qwen3-8B, Qwen3-14B (TP=2), Mistral-7B-Instruct-v0.3, and Llama-3.1-8B. Across five workflows, all four configurations reduce all-workflow mean TTFT by 29.41--44.69\% after accounting for direct L0 routing, runtime fallback, and measured verification charges. Under the same frozen RULER scope, Qwen, Mistral, and Llama converge to 85.97--87.41\% reduction. In a five-repeat Llama comparison, ContractKV achieves a 29.16\% matched-baseline reduction, compared with 26.96\% for CacheBlend, while reducing observed material paired regressions from 9.956\% to 0.089\%; no such regression occurs among 1{,}125 admitted compiled requests. An independent same-engine verifier closure charges all template-registration wall time and reduces Qwen3-8B mean TTFT by 92.90\%. Across the primary load sweep, ContractKV improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants reduces peak KV-block occupancy by 72\%. Live fault probes, authenticated-binding tests, and 325{,}000 state-machine transactions report no partial publication or stale-scope admission.
 
 This paper makes the following contributions:
 \begin{itemize}
     \item We formulate \emph{certified prompt compilation} for structured LLM services. An operator-registered manifest defines segment stability, separators, dependencies, authorization, and expected fan-out; undeclared tenant content defaults to private. CALC constructs a bounded ladder of dependency-valid native-prefix layouts.
     \item We introduce scoped behavioral certification and service-template certificates. Strict token-path attestation is bound to model/runtime identity, template version, policy, authorization domain, and lifecycle epoch, enabling deployment-level amortization without sharing private suffix state.
     \item We design PSTP, which keeps candidate KV state outside the shared prefix index until a valid commit and atomically publishes only the exact-LCP, block-aligned stable subset. Abort, timeout, duplicate, identity, and scope conflicts publish no compiled blocks.
-    \item We implement ContractKV in the vLLM V1 scheduler and evaluate it across four model configurations, five task families, direct non-prefix-reuse baselines, same-engine verification, open-loop SLO workloads, 80-tenant consolidation, signed binding, live fault injection, and 325{,}000 transactional stress operations.
+    \item We implement ContractKV in the vLLM V1 scheduler and evaluate it across four model configurations, five task families, direct non-prefix-reuse baselines, same-engine verification, open-loop SLO workloads, 80-tenant consolidation, authenticated binding, live fault injection, and 325{,}000 transactional stress operations.
 \end{itemize}
 
 
@@ -201,21 +201,22 @@ P(\pi)&=\sum_{j=1}^{q(\pi)}|\mathbf{c}_{\pi(j)}|.
 \end{equation}
 The physical reuse at block granularity $B$ is $\lfloor P(\pi) / B \rfloor$ blocks.
 
-\begin{problem}[Dependency-Constrained Prefix Maximization]
+\begin{problem}[Certified Frozen-Ladder Selection]
 \label{prob:dcpx}
-Given a structured request $r$ with SDG $G_r$, resident state $\mathcal{R}$, and a finite compiler ladder $\Pi_L(G_r)=\{\pi_0,\ldots,\pi_K\}\subseteq\Pi(G_r)$, maximize block-aligned reuse over the frozen ladder:
-{\small
+Given request $r$, resident state $\mathcal{R}$, and frozen ladder $\Pi_L(G_r)=\{\pi_0,\ldots,\pi_K\}\subseteq\Pi(G_r)$, write $\mathrm{BA}_\ell$ and $\mathrm{BG}_\ell$ for the behavioral-admission and benefit-gate results of $\pi_\ell$. Then
+{\scriptsize
 \begin{align}
-  \pi^*=\arg\max_{\pi\in\Pi_L(G_r)} &\ \textit{reuse}_B(\pi,\mathcal{R}) \label{eq:objective} \\
-  \text{s.t.} \quad & \textit{BehavioralAdmission}(\pi,r;\theta,C)=\textsc{Pass}, \label{eq:behav}\\
-  & \textit{ScopeValid}(r,C)=1, \label{eq:scope}\\
-  & \textit{BenefitGate}(\pi,\Theta)=\textsc{Pass}. \label{eq:benefit}
+P(\pi_0)\le P(\pi_1)\le\cdots\le P(\pi_K), \label{eq:ladder_order}\\
+\mathcal{J}(r,\mathcal{R})=\{\ell\in\{1,\ldots,K\}:&\ \mathrm{BA}_\ell=\textsc{Pass},\ \textit{ScopeValid}(r,C)=1,\notag\\
+&\ \mathrm{BG}_\ell=\textsc{Pass},\ \textit{reuse}_B(\pi_\ell,\mathcal{R})\ge1\}, \label{eq:admissible_levels}\\
+\ell^*&=\begin{cases}\max\mathcal{J}(r,\mathcal{R}),&\mathcal{J}(r,\mathcal{R})\ne\varnothing,\\0,&\text{otherwise},\end{cases} \label{eq:ladder_choice}\\
+\pi^*&=\pi_{\ell^*}. \notag
 \end{align}
 }
-Here $\pi_0$ is raw order and each ladder member is dependency-valid by construction. The compiler maximizes reuse only within the set admitted by three frozen controls: behavioral attestation, certificate scope, and prospective net benefit. The implementation takes the first passing member in frozen high-to-low order; resident state is a reuse witness and admission input, not an online optimizer of construction order. The 0.03 task-score threshold was frozen on development data before sealed evaluation as the uniform material-effect reporting threshold across task scorers; it is a post-hoc quality gate, not an admission tolerance or proof of equivalence.
+Here $\pi_0$ is raw order and every ladder member is dependency-valid by construction. ContractKV selects the highest frozen level passing behavioral, identity/scope, profitability, and residency gates; otherwise it returns L0. This exactly matches high-to-low descent and does not search arbitrary topological orders online. The 0.03 task-score threshold was frozen on development data as a uniform material-effect reporting threshold; it is post-hoc reporting, not an admission tolerance or equivalence proof.
 \end{problem}
 
-\noindent Exact optimization would search dependency-valid topological orders while evaluating a model-backed behavioral predicate. ContractKV instead uses a bounded \emph{layout ladder} (Section~\ref{sec:calc}); the ledger rejects candidates that expose no resident block and certification evaluates the remaining frozen-order candidates. We do not rely on an unproven complexity classification for this search problem.
+\noindent Let $G'=(V',E')$ be the expanded unit-level dependency graph after stable-segment splitting. Constructing each fixed candidate by priority topological ordering costs $O(|E'|+|V'|\log|V'|)$; model-backed admission dominates this control-plane cost.
 
 \subsection{Service-Template Model}
 
@@ -331,11 +332,11 @@ This five-field record keeps per-token logprob tensors off scheduler egress. A c
 
 \smallskip
 \noindent\textbf{Certificate scope binding.}
-Let $I=H(W,M,T_k,G,R)$ bind weight/checkpoint $W$, model configuration $M$, tokenizer/chat template $T_k$, frozen generation protocol $G$, and serving runtime $R$. A behavioral certificate is a signed empirical attestation:
+Let $I=H(W,\Gamma,T_k,G,R)$ bind weight/checkpoint $W$, model architecture/configuration $\Gamma$, tokenizer/chat template $T_k$, frozen generation protocol $G$, and serving runtime $R$. A behavioral certificate is an authenticated empirical attestation:
 \begin{equation}
   C=\langle I,V,H_s,L,P,Q,A,E,\Sigma\rangle,
 \end{equation}
-Here $V$ is immutable template version, $H_s$ stable-content hash, $L$ layout hash, $P$ verifier policy, $Q$ qualification-manifest hash, $A$ authorization domain, $E$ lifecycle epoch, and $\Sigma$ the issuer signature. The run manifest binds CUDA runtime, dtype, tensor parallelism, output budget, stop protocol, sampling parameters, and seed policy. Reuse requires exact identity and scope subsumption; any mismatch returns raw. A 15-case signed-binding stress has zero false admit/reject: unseen private suffixes remain admissible, while malicious metadata fails closed.
+Here $V$ is immutable template version, $H_s$ stable-content hash, $L$ layout hash, $P$ verifier policy, $Q$ qualification-manifest hash, $A$ authorization domain, $E$ lifecycle epoch, and $\Sigma$ the authentication tag. The prototype computes $\Sigma$ with HMAC-SHA256 under an operator-held control-plane secret. The real-task D2 admission path verifies the tag and complete binding before request forwarding; this work is included in service wall time but not in the separately reported 0.109-ms server-side scope lookup. The run manifest binds CUDA runtime, dtype, tensor parallelism, output budget, stop protocol, sampling parameters, and seed policy. Any mismatch returns raw. A 15-case authenticated-binding stress has zero false admit/reject: unseen private suffixes remain admissible, while malicious metadata fails closed.
 
 \smallskip
 \noindent\textbf{Evidence and scope layers.}
@@ -435,14 +436,15 @@ Compiler and protocol overheads remain below model-serving latency: CALC is 0.38
 
 \begin{table}[t]
 \centering
-\caption{Frozen primary protocols. Quantiles pool requests within a fresh process and are summarized across independent processes.}
+\caption{Frozen primary protocols. Means and request-level quantiles use all requests in a complete cell; clustered inference preserves fresh-process and paired-session units.}
 \label{tab:protocols}
 \scriptsize
 \begin{tabular}{@{}lrrl@{}}
 \toprule
 \textbf{Study} & \textbf{Per repeat} & \textbf{Total/cell} & \textbf{Output} \\
 \midrule
-All-workflow / common scope & 450 / 270 & 1{,}350 / 810 & task-specific \\
+All-workflow evaluation & 450 & 1{,}350 & task-specific \\
+Common RULER scope & 270 & 810 & task-specific \\
 Llama direct baselines & 450 & 2{,}250 & 96 generated \\
 Same-engine D0/D1/D2 & 450 & 2{,}250 & 96 generated \\
 Open-loop / consolidation & 375 & 1{,}125 & 64-token marker \\
@@ -473,7 +475,7 @@ Four configurations spanning three model families and the 7--14B parameter class
 Five service families (RULER~\cite{ruler2024}, HotpotQA, NarrativeQA, Qasper, RepoBench) span long-context retrieval, reasoning, and code~\cite{longbench2024}. Each model evaluates 25--50 sealed sessions \emph{in total}, balanced across the five families, with 10 turns per session and three fresh-process repetitions.
 
 \noindent\textbf{Protocol.}
-Policy order and GPU assignment are rotated across repetitions. We report \emph{net} mean TTFT (observed TTFT plus $C_{\rm unhidden}$), new-prefill tokens, SLO goodput, and certificate coverage. Each model--workflow cell uses one development-frozen SLO deadline applied identically to Raw and ContractKV; deadlines may differ across model--workflow cells. Task-specific output budgets are frozen from development profiling; the 64-token deterministic marker used in service-load cells isolates queueing, prefix reuse, and TTFT and is not a production output cap. Full task metrics are measured in separate paired quality runs. Request-level quantiles are pooled within each fresh process; reported repeat summaries and session-cluster bootstrap confidence intervals preserve process and paired-session clusters.
+Policy order and GPU assignment are rotated across repetitions. We report \emph{net} mean TTFT (observed TTFT plus $C_{\rm unhidden}$), new-prefill tokens, SLO goodput, and certificate coverage. Each model--workflow cell uses one development-frozen SLO deadline applied identically to Raw and ContractKV; deadlines may differ across model--workflow cells. Task-specific output budgets are frozen from development profiling; the 64-token deterministic marker used in service-load cells isolates queueing, prefix reuse, and TTFT and is not a production output cap. Full task metrics are measured in separate paired quality runs. Request-level quantiles use the complete cell's pooled requests; confidence intervals and paired inference preserve fresh-process and paired-session clusters.
 
 % ------------------------------------------------------------
 \subsection{Global All-Workflow Results}
@@ -486,7 +488,7 @@ Table~\ref{tab:global} and Fig.~\ref{fig:main_results} report the primary all-wo
 \centering
 \caption{Global all-workflow results (3 fresh-process repetitions; raw fallback and residual verification exposure included). Each model--workflow cell uses one development-frozen SLO applied identically to Raw and ContractKV; deadlines may differ across cells.}
 \label{tab:global}
-\footnotesize
+\scriptsize
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Metric} & \textbf{Qwen 8B} & \textbf{Qwen 14B} & \textbf{Mistral} & \textbf{Llama} \\
@@ -496,7 +498,7 @@ New-prefill red. & 59.13\% & 60.57\% & 39.46\% & 30.97\% \\
 Net SLO goodput ($\times$) & 2.64 & 2.92 & 1.24 & 1.19 \\
 Cert.\ coverage & 68\% & 68\% & 50\% & 50\% \\
 \midrule
-Quality violations & 0 & 0 & 0 & 0 \\
+Policy-attrib. reg. ($>0.03$) & 0 & 0 & 0 & 0 \\
 Scope-invalid adm. & 0 & 0 & 0 & 0 \\
 Completion & 100\% & 100\% & 100\% & 100\% \\
 \bottomrule
@@ -539,11 +541,13 @@ SLO req/s (raw$\to$CKV) & 2.42$\to$6.33 & 2.67$\to$8.31 & 3.42$\to$14.42 \\
 Goodput multiplier & 2.61$\times$ & 3.11$\times$ & 4.22$\times$ \\
 \midrule
 Cert.\ coverage & 100\% & 100\% & 100\% \\
-Quality violations & 0 & 0 & 0 \\
+Policy-attrib. reg. ($>0.03$) & 0 & 0 & 0 \\
 Paired outputs & 810 & 810 & 810 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+These regression rows exclude raw fallback; the separate Llama audit below observes two fallback events and none among admitted compiled requests.
 
 Table~\ref{tab:common_ruler} shows close convergence: the macro TTFT reduction is \textbf{86.67\%} (95\% CI [86.44, 86.90]) and the estimates lie within 1.44 percentage points. The same sealed sessions, manifest, L3 layout, turns, and fresh-process protocol remove sample and layout asymmetry. With 100\% certified coverage, this separates \emph{model-dependent admission coverage} from the \emph{reusable-prefix mechanism}: equal certified scope yields nearly equal redundant-prefill recovery.
 
@@ -556,7 +560,7 @@ The SLO-goodput multiplier varies (2.61--4.22$\times$) because each model has a 
 
 Fig.~\ref{fig:llama_baselines}(a) compares runtime-native implementations using the same Llama-3.1-8B weights, hardware, sealed workload, concurrency, and output budget. Because systems retain their native serving and prompt-serialization stacks, causal comparisons use each method's delta against its matched baseline. ContractKV and CacheBlend reduce mean TTFT by 29.16\% and 26.96\%, respectively, while their observed paired $>0.03$ regression rates are 0.089\% and 9.956\%; none of 1{,}125 admitted compiled requests regresses. Their absolute means are 722.92 and 739.04~ms, but this descriptive difference is not treated as a cross-runtime causal comparison. The manual row is an unsafe offline upper bound; SGLang consumes an offline-frozen layout but performs neither online qualification nor PSTP.
 
-Fig.~\ref{fig:llama_baselines}(b) localizes the tail: compiled requests have p99 899~ms and 100\% attainment at 1{,}500~ms, whereas the aggregate p99 is concentrated in deliberate L0. Across all 2{,}250 paired ContractKV outputs, 2 material regressions (0.089\%) occur on raw fallback and reproduce under raw-only control. The admitted compiled subset has 0/1{,}125 events (one-sided 95\% exact upper bound 0.266\%). ContractKV is the only measured deployable row combining greater than 29\% matched reduction with zero observed admitted-path regressions.
+Fig.~\ref{fig:llama_baselines}(b) localizes the tail: compiled requests have p99 899~ms and 100\% attainment at 1{,}500~ms, whereas the aggregate p99 is concentrated in deliberate L0. Across all 2{,}250 paired ContractKV outputs, two material regressions (0.089\%) occur on the same fail-closed runtime-fallback request. A cyclic raw-versus-raw control reproduces the request-level change at a 0.044\% material-regression rate. The admitted compiled subset has 0/1{,}125 events (one-sided 95\% exact upper bound 0.266\%). ContractKV is the only measured deployable row combining greater than 29\% matched reduction with zero observed admitted-path regressions.
 
 \smallskip
 \noindent\textbf{Runtime controls.}
@@ -586,7 +590,7 @@ Five deployed templates (RULER, HotpotQA, NarrativeQA, Qasper, RepoBench) are ea
 
 \smallskip
 \noindent\textbf{Scope-granularity ablation.}
-Fig.~\ref{fig:verification_economics}(c) isolates certificate-object granularity. At identical 25-tenant locality, safe layout, and 80\% load, template scope reduces verifier calls from 125 to 5 (25$\times$), raises fan-out from 9 to 225 requests per certificate, and reduces unhidden verification cost from 25.05 to 3.24~ms/request (7.7$\times$). Serving work is unchanged: prefix-hit ratios are 97.82\% and 98.19\%, and mean TTFT, p99, and SLO goodput are statistically indistinguishable. Template scope therefore changes the economics of the safety decision, not the cache opportunity used to obtain performance.
+Fig.~\ref{fig:verification_economics}(c) isolates certificate-object granularity. At identical 25-tenant locality, safe layout, and 80\% load, template scope reduces verifier calls from 125 to 5 (25$\times$), raises fan-out from 9 to 225 requests per certificate, and reduces unhidden verification cost from 25.05 to 3.24~ms/request (7.7$\times$). Mean TTFT changes from 64.02 to 62.91~ms and p99 from 89.51 to 88.02~ms, while prefix-hit ratios are 97.82\% and 98.19\%. These small shifts confirm that template scope changes verification granularity rather than the underlying cache opportunity.
 
 \begin{figure}[t]
 \centering
@@ -716,15 +720,15 @@ ContractKV targets repeated authorized templates; the frozen gate leaves zero-lo
 
 \smallskip
 \noindent\textbf{Conclusion.}
-ContractKV combines dependency-valid compilation, scoped certification, and transactional publication. Its strongest Qwen3-8B point reduces mean TTFT by 92.62\%, improves 500-ms SLO goodput by 4.81$\times$, and uses 72\% fewer peak KV blocks at 80 tenants. On Llama, its matched-runtime reduction is 29.16\% versus CacheBlend's 26.96\%, with 112$\times$ fewer observed paired regressions and none among admitted compiled requests. Four configurations remain net-positive with fallback charged; template certificates lower residual exposure 7.7$\times$. Failed or out-of-scope candidates publish no compiled state.
+ContractKV combines dependency-valid compilation, scoped certification, and transactional publication. Its strongest Qwen3-8B point reduces mean TTFT by 92.62\%, improves 500-ms SLO goodput by 4.81$\times$, and uses 72\% fewer peak KV blocks at 80 tenants. On Llama, its matched-runtime reduction is 29.16\% versus CacheBlend's 26.96\%, with an approximately 112$\times$ lower observed material-regression rate and none among admitted compiled requests. Four configurations remain net-positive with fallback charged; template certificates lower residual exposure 7.7$\times$. Failed or out-of-scope candidates publish no compiled state.
 
 % ============================================================
 % References
 % ============================================================
 
-\scriptsize
 \begin{thebibliography}{99}
-\setlength{\itemsep}{-0.35pt}
+\fontsize{7}{7.3}\selectfont
+\setlength{\itemsep}{-1.1pt}
 
 \bibitem{vllm2023}
 W. Kwon \textit{et al.}, ``Efficient memory management for large language model serving with {PagedAttention},'' in \textit{Proc. 29th Symp. Oper. Syst. Principles (SOSP)}, 2023, pp. 611--626.

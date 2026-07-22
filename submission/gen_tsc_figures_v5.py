@@ -124,7 +124,7 @@ def figure2_global_benefit():
     ax_a.text(
         0.985,
         0.94,
-        "native reference = 1.0x",
+        "native reference = 1.0×",
         transform=ax_a.transAxes,
         ha="right",
         va="top",
@@ -137,7 +137,7 @@ def figure2_global_benefit():
     ax_a.set_ylabel("SLO-goodput multiplier")
     grid_y(ax_a)
     panel(ax_a, "a", "All-workflow net SLO goodput")
-    label_vertical_bars(ax_a, bars, "{:.2f}x", 0.07)
+    label_vertical_bars(ax_a, bars, "{:.2f}×", 0.07)
     ax_a.annotate(
         "benefit persists at TP=2",
         xy=(1, 2.92),
@@ -280,7 +280,7 @@ def figure4_verification_economics():
     grid_y(ax_a)
     panel(ax_a, "a", "Full ContractKV preserves layout-only goodput")
     label_vertical_bars(ax_a, bars, "{:.3f}", 0.045)
-    ax_a.annotate("21.5x", xy=(2, 1.428), xytext=(1.55, 1.62), fontsize=8.0, fontweight="bold", color=CKV, arrowprops=dict(arrowstyle="->", color=CKV, lw=1.0, connectionstyle="arc3,rad=.18"))
+    ax_a.annotate("21.5×", xy=(2, 1.428), xytext=(1.55, 1.62), fontsize=8.0, fontweight="bold", color=CKV, arrowprops=dict(arrowstyle="->", color=CKV, lw=1.0, connectionstyle="arc3,rad=.18"))
     ax_a.text(2, 0.12, "4 verifier calls\n4 commits\n0 failures", ha="center", va="bottom", fontsize=5.15, color="white", fontweight="bold")
 
     mean = [2742.83, 194.95, 194.72]
@@ -319,8 +319,8 @@ def figure4_verification_economics():
     for bars, values, color in ((b1, session, MUTED), (b2, template, CKV)):
         for bar, value in zip(bars, values):
             ax_c.text(bar.get_x() + bar.get_width() / 2, value * 1.12, f"{value:g}", ha="center", fontsize=5.9, fontweight="bold", color=color)
-    ax_c.text(-0.03, 47, "25x", color=SAFE, fontsize=6.4, fontweight="bold", ha="center")
-    ax_c.text(0.97, 8.8, "7.7x", color=SAFE, fontsize=6.4, fontweight="bold", ha="center")
+    ax_c.text(-0.03, 47, "25×", color=SAFE, fontsize=6.4, fontweight="bold", ha="center")
+    ax_c.text(0.97, 8.8, "7.7×", color=SAFE, fontsize=6.4, fontweight="bold", ha="center")
     ax_c.legend(loc="upper right", ncol=2, columnspacing=0.8)
 
     fig.text(0.5, 0.011, "Quality audit: 1,350/1,350 complete, zero >0.03 drops, zero unauthorized or dynamic-suffix reuse.", ha="center", fontsize=5.8, color=MUTED)
@@ -350,7 +350,7 @@ def figure5_service_locality():
     grid_y(ax_a)
     panel(ax_a, "a", "Absolute compliant throughput grows under load")
     ax_a.legend(loc="upper left")
-    ax_a.annotate("80% load\n0.173 → 0.831 req/s\n4.81x [2.85, 12.61]", xy=(80, 0.831), xytext=(104, 0.53), fontsize=6.1, color=CKV, fontweight="bold", bbox=dict(boxstyle="round,pad=.3", fc="white", ec=CKV, lw=0.7), arrowprops=dict(arrowstyle="->", color=CKV, lw=0.8, connectionstyle="arc3,rad=.15"))
+    ax_a.annotate("80% load\n0.173 → 0.831 req/s\n4.81× [2.85, 12.61]", xy=(80, 0.831), xytext=(104, 0.53), fontsize=6.1, color=CKV, fontweight="bold", bbox=dict(boxstyle="round,pad=.3", fc="white", ec=CKV, lw=0.7), arrowprops=dict(arrowstyle="->", color=CKV, lw=0.8, connectionstyle="arc3,rad=.15"))
 
     tenants = np.array([10, 20, 30, 40, 60, 80])
     raw_density = np.array([0.900, 1.032, 1.059, 1.073, 1.112, 1.152])
