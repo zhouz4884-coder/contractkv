@@ -180,7 +180,8 @@ def figure2_global_benefit():
     for r in range(3):
         for c in range(5):
             color = "white" if coverage[r, c] >= 55 else INK
-            ax_d.text(c, r, levels[r, c], ha="center", va="center", fontsize=6.0, color=color, fontweight="bold")
+            label = f"{levels[r, c]}\n{coverage[r, c]}%"
+            ax_d.text(c, r, label, ha="center", va="center", fontsize=5.15, color=color, fontweight="bold", linespacing=0.88)
     for spine in ax_d.spines.values():
         spine.set_visible(False)
 
@@ -199,7 +200,7 @@ def figure3_llama_baselines():
     ax_risk = fig.add_subplot(top[0, 1], sharey=ax_speed)
     ax_tail = fig.add_subplot(outer[1, 0])
 
-    methods = ["ContractKV", "CacheBlend", "Manual upper bound", "SGLang frozen layout"]
+    methods = ["ContractKV\n(vLLM)", "CacheBlend\n(LMCache)", "Manual upper\nbound (vLLM)", "Frozen layout\n(SGLang)"]
     reduction = np.array([29.16, 26.96, 37.87, 26.60])
     regression = np.array([0.089, 9.956, 1.733, 0.089])
     colors = [CKV, RISK, UNSAFE, SAFE]
@@ -215,7 +216,7 @@ def figure3_llama_baselines():
     ax_speed.set_xlim(0, 45)
     ax_speed.set_xlabel("Matched TTFT reduction (%)")
     grid_x(ax_speed)
-    ax_speed.set_title("(a)  High speedup with low observed risk", loc="left", pad=5, fontweight="bold", fontsize=8.0)
+    ax_speed.set_title("(a)  Matched-runtime gain vs. observed risk", loc="left", pad=5, fontweight="bold", fontsize=8.0)
     for bar, value in zip(bars, reduction):
         ax_speed.text(value + 0.7, bar.get_y() + bar.get_height() / 2, f"{value:.1f}%", va="center", fontsize=6.2, fontweight="bold", color=bar.get_facecolor())
 
@@ -268,7 +269,7 @@ def figure4_verification_economics():
     ax_c = fig.add_subplot(gs[2, 0])
 
     policies = ["D0 native", "D1 frozen", "D2 full CKV"]
-    sublabels = ["raw", "layout-only", "live certificate"]
+    sublabels = ["raw APC", "safe layout only", "in-engine certificate"]
     goodput = [0.066, 1.472, 1.428]
     x = np.arange(3)
     colors = [NATIVE, SAFE, CKV]
@@ -277,7 +278,7 @@ def figure4_verification_economics():
     ax_a.set_ylim(0, 1.72)
     ax_a.set_ylabel("500-ms goodput (req/s)")
     grid_y(ax_a)
-    panel(ax_a, "a", "Full in-engine verification preserves goodput")
+    panel(ax_a, "a", "Full ContractKV preserves layout-only goodput")
     label_vertical_bars(ax_a, bars, "{:.3f}", 0.045)
     ax_a.annotate("21.5x", xy=(2, 1.428), xytext=(1.55, 1.62), fontsize=8.0, fontweight="bold", color=CKV, arrowprops=dict(arrowstyle="->", color=CKV, lw=1.0, connectionstyle="arc3,rad=.18"))
     ax_a.text(2, 0.12, "4 verifier calls\n4 commits\n0 failures", ha="center", va="bottom", fontsize=5.15, color="white", fontweight="bold")
@@ -444,7 +445,7 @@ def figure6_operating_region():
     ax_c.set_xlim(0, 13000)
     ax_c.set_xlabel("Held-out net benefit (ms)")
     grid_x(ax_c)
-    panel(ax_c, "c", "Frozen gate: 2/2 admitted lanes are net-positive")
+    panel(ax_c, "c", "Frozen gate: 2/4 admitted; both net-positive")
 
     fig.subplots_adjust(left=0.17, right=0.985, top=0.97, bottom=0.08)
     finish(fig, "fig6_operating_region")
