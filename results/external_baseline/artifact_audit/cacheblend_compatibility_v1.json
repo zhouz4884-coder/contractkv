@@ -1,0 +1,81 @@
+{
+  "schema_version": "contractkv.cacheblend-compatibility-audit.v1",
+  "versions": {
+    "command": [
+      "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-lmcache-039/bin/python",
+      "-c",
+      "from importlib.metadata import version; import flashinfer,torch,vllm; print(f'flashinfer={flashinfer.__version__}'); print(f'lmcache={version(\"lmcache\")}'); print(f'torch={torch.__version__}'); print(f'vllm={vllm.__version__}')"
+    ],
+    "returncode": 0,
+    "stdout": "flashinfer=0.3.1\nlmcache=0.3.9\ntorch=2.8.0+cu128\nvllm=0.10.2",
+    "stderr": "W0722 13:27:13.821000 3437530 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. \nW0722 13:27:13.821000 3437530 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures."
+  },
+  "required_flashinfer_api": {
+    "command": [
+      "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/contractkv-lmcache-039/bin/python",
+      "-c",
+      "from flashinfer.page import block_sparse_indices_to_vector_sparse_offsets; from flashinfer.utils import check_shape_dtype_device,device_support_pdl; print('compatible')"
+    ],
+    "returncode": 0,
+    "stdout": "compatible",
+    "stderr": "W0722 13:27:18.725000 3437601 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. \nW0722 13:27:18.725000 3437601 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures."
+  },
+  "nvcc": {
+    "command": [
+      "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/cuda-nvcc-12.8/bin/nvcc",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0",
+    "stderr": ""
+  },
+  "fp16_validation_patch_installed": true,
+  "positional_encoding_sha256": "7ad228b379f9036943bd7370de9ba38f7f5951420c7533267e12f08c48764125",
+  "cacheblend_chunk_size": 32,
+  "separator": "<|reserved_special_token_0|>",
+  "repeats": [
+    {
+      "repeat": 1,
+      "log_present": true,
+      "hit_events": 500,
+      "positive_hit_events": 449,
+      "engine_fatal_errors": 0,
+      "http_500": 0
+    },
+    {
+      "repeat": 2,
+      "log_present": true,
+      "hit_events": 500,
+      "positive_hit_events": 450,
+      "engine_fatal_errors": 0,
+      "http_500": 0
+    },
+    {
+      "repeat": 3,
+      "log_present": true,
+      "hit_events": 500,
+      "positive_hit_events": 448,
+      "engine_fatal_errors": 0,
+      "http_500": 0
+    },
+    {
+      "repeat": 4,
+      "log_present": true,
+      "hit_events": 500,
+      "positive_hit_events": 449,
+      "engine_fatal_errors": 0,
+      "http_500": 0
+    },
+    {
+      "repeat": 5,
+      "log_present": true,
+      "hit_events": 500,
+      "positive_hit_events": 449,
+      "engine_fatal_errors": 0,
+      "http_500": 0
+    }
+  ],
+  "total_hit_events": 2500,
+  "positive_hit_event_rate": 0.898,
+  "claim_boundary": "The patch changes only LMCache's hard-coded BF16 RoPE validation tensors to the frozen FP16 dtype. The cache lookup, sparse attention, blend, and serving request paths remain upstream LMCache."
+}

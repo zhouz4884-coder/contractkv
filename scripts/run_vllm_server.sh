@@ -98,7 +98,8 @@ if [[ -n "$EXTRA_VLLM_ARGS" ]]; then
   EXTRA_ARGS_ARRAY=($EXTRA_VLLM_ARGS)
 fi
 
-CUDA_VISIBLE_DEVICES="$GPU_IDS" nohup python -m vllm.entrypoints.openai.api_server \
+PYTHON_BIN="${PYTHON_BIN:-python}"
+CUDA_VISIBLE_DEVICES="$GPU_IDS" nohup "$PYTHON_BIN" -m vllm.entrypoints.openai.api_server \
   --model "$MODEL_PATH" \
   --served-model-name "$SERVED_MODEL_NAME" \
   --dtype "$DTYPE" \

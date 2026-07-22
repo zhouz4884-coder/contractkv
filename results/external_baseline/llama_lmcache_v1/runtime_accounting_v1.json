@@ -1,0 +1,36 @@
+{
+  "schema_version": "contractkv.lmcache-runtime-accounting.v1",
+  "summaries": [
+    {
+      "mode": "lmcache",
+      "events": 2500,
+      "fresh_process_repeats": 5,
+      "mean_total_tokens": 2471.54,
+      "mean_lmcache_hit_tokens": 0.0,
+      "mean_new_prefill_tokens": 2471.54,
+      "mean_hit_fraction": 0.0,
+      "positive_hit_event_rate": 0.0
+    },
+    {
+      "mode": "blendraw",
+      "events": 2500,
+      "fresh_process_repeats": 5,
+      "mean_total_tokens": 2300.08,
+      "mean_lmcache_hit_tokens": 0.0,
+      "mean_new_prefill_tokens": 2300.08,
+      "mean_hit_fraction": 0.0,
+      "positive_hit_event_rate": 0.0
+    },
+    {
+      "mode": "cacheblend",
+      "events": 2500,
+      "fresh_process_repeats": 5,
+      "mean_total_tokens": 2300.08,
+      "mean_lmcache_hit_tokens": 1916.1336,
+      "mean_new_prefill_tokens": 383.9464,
+      "mean_hit_fraction": 0.8293828234773555,
+      "positive_hit_event_rate": 0.898
+    }
+  ],
+  "claim_boundary": "Values are parsed from LMCacheConnectorV1 request logs; they are not inferred from prompt layout."
+}

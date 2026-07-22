@@ -9,6 +9,7 @@ SESSIONS="${SESSIONS:-$ROOT/results/cross_model/llama_broad_generalization_r3/he
 QUALIFICATION="$ROOT/results/cross_model/llama_broad_generalization_r3/llama_broad_qualification_v0.json"
 CERTIFIED_SESSIONS="$ROOT/results/cross_model/llama_broad_generalization_r3/repeat1/r1-contract.jsonl"
 MODE_RIGHT="${MODE_RIGHT:-certified}"
+REPEATS="${REPEATS:-1 2 3}"
 OUT="${OUT:-$ROOT/results/external_baseline/llama_radix_certified}"; LOG="${LOG:-$ROOT/logs/external_baseline/llama_radix_certified}"
 CACHE_ROOT="/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/runtime_cache/sglang_llama_radix"
 mkdir -p "$OUT" "$LOG" "$CACHE_ROOT"; cd "$ROOT"
@@ -46,7 +47,7 @@ run_cell() {
   cleanup; trap - RETURN
 }
 
-for repeat in 1 2 3; do
+for repeat in $REPEATS; do
   if (( repeat % 2 )); then
     run_cell "$repeat" raw 0 $((8800 + repeat)) & p0=$!
     run_cell "$repeat" "$MODE_RIGHT" 1 $((8900 + repeat)) & p1=$!

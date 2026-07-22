@@ -1,0 +1,16 @@
+case,expected_admitted,actual_admitted,decision,errors,pass
+exact_match,True,True,ADMIT,[],True
+unseen_private_suffix,True,True,ADMIT,[],True
+unseen_suffix_claimed_shareable,False,False,FAIL_CLOSED,"[""private_suffix_not_excluded""]",True
+stable_content_changed,False,False,FAIL_CLOSED,"[""stable_prefix_hash_mismatch""]",True
+malicious_tenant_metadata,False,False,FAIL_CLOSED,"[""tenant_id_mismatch""]",True
+authorization_scope_forgery,False,False,FAIL_CLOSED,"[""authorization_domain_mismatch""]",True
+generation_config_changed,False,False,FAIL_CLOSED,"[""generation_config_hash_mismatch""]",True
+runtime_revision_changed,False,False,FAIL_CLOSED,"[""runtime_revision_mismatch""]",True
+model_revision_changed,False,False,FAIL_CLOSED,"[""model_revision_mismatch""]",True
+qualification_manifest_changed,False,False,FAIL_CLOSED,"[""qualification_manifest_hash_mismatch""]",True
+policy_changed,False,False,FAIL_CLOSED,"[""policy_hash_mismatch""]",True
+template_epoch_changed,False,False,FAIL_CLOSED,"[""service_template_epoch_mismatch""]",True
+certificate_expired,False,False,FAIL_CLOSED,"[""certificate_expired""]",True
+missing_signature,False,False,FAIL_CLOSED,"[""signature_mismatch""]",True
+tampered_signed_payload,False,False,FAIL_CLOSED,"[""layout_hash_mismatch"", ""signature_mismatch""]",True

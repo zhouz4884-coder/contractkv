@@ -1,0 +1,114 @@
+{
+  "schema_version": "pstp-stress-v1",
+  "rows": [
+    {
+      "clients": 1,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "rejected_racing_or_late_actions": 0,
+      "published_blocks": 270234,
+      "aborted_with_published_blocks": 0,
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    },
+    {
+      "clients": 8,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "rejected_racing_or_late_actions": 0,
+      "published_blocks": 270234,
+      "aborted_with_published_blocks": 0,
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    },
+    {
+      "clients": 32,
+      "transactions": 100000,
+      "seed": 20260722,
+      "final_states": {
+        "ABORTED": 40067,
+        "COMMITTED": 59933
+      },
+      "actions": {
+        "begin_verify": 100000,
+        "verify_fail": 7951,
+        "verify_pass": 67021,
+        "commit": 59933,
+        "invalidation": 7045,
+        "duplicate": 5005,
+        "eviction": 5019,
+        "restart": 4991,
+        "timeout": 7973
+      },
+      "committed": 59933,
+      "aborted": 40067,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "rejected_racing_or_late_actions": 0,
+      "published_blocks": 270234,
+      "aborted_with_published_blocks": 0,
+      "pass": true,
+      "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported."
+    },
+    {
+      "clients": 32,
+      "transactions": 25000,
+      "seed": 20260722,
+      "contention": true,
+      "final_states": {
+        "ABORTED": 8167,
+        "COMMITTED": 16833
+      },
+      "actions": {
+        "raced_actions": 100000
+      },
+      "committed": 16833,
+      "aborted": 8167,
+      "invariant_failures": 0,
+      "failure_examples": [],
+      "rejected_racing_or_late_actions": 50000,
+      "published_blocks": 75531,
+      "aborted_with_published_blocks": 0,
+      "pass": true,
+      "claim_boundary": "Deterministic same-transaction commit/cancel/revoke race; live scheduler faults remain separately reported."
+    }
+  ]
+}

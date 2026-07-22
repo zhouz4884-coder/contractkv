@@ -1,0 +1,32 @@
+{
+  "schema_version": "contractkv.pstp.state-machine.v1",
+  "initial_state": "PRIVATE",
+  "terminal_states": ["COMMITTED", "ABORTED"],
+  "transitions": [
+    {"from": "PRIVATE", "event": "begin_verify", "to": "VERIFYING"},
+    {"from": "VERIFYING", "event": "verify_pass_same_scope_epoch", "to": "VERIFIED"},
+    {"from": "VERIFYING", "event": "verify_fail", "to": "ABORTED"},
+    {"from": "VERIFYING", "event": "timeout", "to": "ABORTED"},
+    {"from": "VERIFYING", "event": "scope_mismatch", "to": "ABORTED"},
+    {"from": "VERIFIED", "event": "commit_same_scope_epoch", "to": "COMMITTED"},
+    {"from": "VERIFIED", "event": "invalidation", "to": "ABORTED"},
+    {"from": "VERIFIED", "event": "eviction", "to": "ABORTED"},
+    {"from": "VERIFIED", "event": "restart", "to": "ABORTED"}
+  ],
+  "idempotence": {
+    "duplicate_open_same_immutable_spec": "no_state_change",
+    "duplicate_or_late_terminal_event": "reject_without_publication_change",
+    "conflicting_open_same_transaction_id": "reject"
+  },
+  "publication_invariants": [
+    "only_COMMITTED_transactions_have_published_blocks",
+    "published_blocks_equal_the_verified_exact_LCP_block_set",
+    "ABORTED_transactions_have_zero_published_blocks",
+    "certificate_epoch_equals_transaction_epoch",
+    "dynamic_suffix_blocks_are_never_published"
+  ],
+  "fail_closed_events": [
+    "verify_fail", "timeout", "scope_mismatch", "invalidation", "eviction",
+    "restart", "request_cancel", "duplicate_finalize", "malicious_metadata"
+  ]
+}

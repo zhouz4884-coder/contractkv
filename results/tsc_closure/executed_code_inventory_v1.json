@@ -1,0 +1,281 @@
+{
+  "schema_version": "contractkv.tsc-executed-code-inventory.v1",
+  "tests_excluded": true,
+  "tasks": [
+    {
+      "task": 1,
+      "code": [
+        {
+          "path": "scripts/phase22_llama_broad_live.py",
+          "present": true,
+          "sha256": "f619e0df48a582c9dc163e1580655b816a0d6797534e38609cb4c59fddbc2611"
+        },
+        {
+          "path": "scripts/run_external_llama_radix_replay.py",
+          "present": true,
+          "sha256": "1ac814515528f80a3f5f4f8b5049a10a0fc76903eb41aefe1efbf13c8e7bdb08"
+        },
+        {
+          "path": "scripts/run_llama_direct_vllm_baselines.sh",
+          "present": true,
+          "sha256": "547a3fb036a73dc8c49c201f148523ec58020cda04697526370b02a54b81ad45"
+        },
+        {
+          "path": "scripts/run_external_llama_sglang_baseline.sh",
+          "present": true,
+          "sha256": "8e49ec31a5cce72f4a2f4a6e7c5ea8cb2736e4f15661fa47c094d8b772ee903e"
+        },
+        {
+          "path": "scripts/run_llama_lmcache_baselines.sh",
+          "present": true,
+          "sha256": "626adb0081bfac799b567fd818ec0a4524456b7b29d1c653500bc9f16dbabb64"
+        },
+        {
+          "path": "scripts/run_llama_lmcache_baselines_serial.sh",
+          "present": true,
+          "sha256": "370d7ecc10d9c888881d7826344d3af20d1e7eae2401902388382e59da251a88"
+        },
+        {
+          "path": "scripts/run_llama_cacheblend_after_lmcache.sh",
+          "present": true,
+          "sha256": "f39a111aa55ac15d82e3f5750868de6d00cbd1a0bc68eac283140a31d911fc97"
+        },
+        {
+          "path": "scripts/run_llama_lmcache_resume_after_cacheblend.sh",
+          "present": true,
+          "sha256": "e781e864e27d3790896b658cbfaf9b3bcfad997ae19391a44866be7806fc62be"
+        },
+        {
+          "path": "scripts/setup_cacheblend_legacy_env.sh",
+          "present": true,
+          "sha256": "3c391b51cebf208f38ee5f15d6b20beda7eea7321eda5cafa3231eff60d51c50"
+        },
+        {
+          "path": "scripts/check_lmcache_separator.py",
+          "present": true,
+          "sha256": "04a695a3869c113fd4a19cb45e0b7453a6431aabf0ae883060ad0590f3a92035"
+        },
+        {
+          "path": "scripts/audit_lmcache_segment_identity.py",
+          "present": true,
+          "sha256": "6ae305a056450e4d98284d4376b1c3a21508d25dbfdc5b9fdb1e85e8c8e555fd"
+        },
+        {
+          "path": "scripts/audit_cacheblend_compatibility.py",
+          "present": true,
+          "sha256": "984d49ea3c7d6be7e3b69470926d2c17a61e52647a6723712a89e29e14eac844"
+        },
+        {
+          "path": "scripts/patch_flashinfer_sparse_import.py",
+          "present": true,
+          "sha256": "88bca99228fe29c01c65c89872091f523a65589ae95e4be33a952a1065bf86e0"
+        },
+        {
+          "path": "scripts/run_cacheslide_llama_smoke.py",
+          "present": true,
+          "sha256": "2c6248308f356eec7b84a4b3014f23a33922bc28bfed32442451110783f7caee"
+        },
+        {
+          "path": "scripts/run_cacheslide_artifact_smoke.py",
+          "present": true,
+          "sha256": "663c8f13f20f35db54a414cd3cda4074e5b92c256d812f9a436afe38be1c7117"
+        },
+        {
+          "path": "scripts/patch_cacheblend_llama31_compat.py",
+          "present": true,
+          "sha256": "349b73d67d64a28caf826415276c12e86a51cc6cc895463a3e8d45f37dc50304"
+        },
+        {
+          "path": "scripts/patch_lmcache_cacheblend_fp16.py",
+          "present": true,
+          "sha256": "1d1351ad16a3b4acb3c3d21f0e353314dd7308c70f4aa721058945f38ef83988"
+        },
+        {
+          "path": "third_party/patches/lmcache_cacheblend_v0102/sitecustomize.py",
+          "present": true,
+          "sha256": "6f903900544ce5dae80fed40acd741bdc826d01e73dabb77c3b54fe72d67853b"
+        },
+        {
+          "path": "scripts/summarize_lmcache_runtime_logs.py",
+          "present": true,
+          "sha256": "e21e5549a413583b2007c081c16aceebf83401a74b9061207bac33fa1622dd2f"
+        },
+        {
+          "path": "scripts/summarize_llama_sota_matrix.py",
+          "present": true,
+          "sha256": "60bbacd770be2562f9b35ae4a1b9a1df4e86eaa6b7db1269a830bcd16bfd4ef0"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_closure/llama_sota_matrix_v1.json",
+          "present": true
+        },
+        {
+          "path": "results/external_baseline/llama_lmcache_v1/runtime_accounting_v1.json",
+          "present": true
+        },
+        {
+          "path": "results/external_baseline/artifact_audit/cacheblend_compatibility_v1.json",
+          "present": true
+        },
+        {
+          "path": "results/external_baseline/artifact_audit/cacheslide_llama_smoke_v1.json",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    },
+    {
+      "task": 2,
+      "code": [
+        {
+          "path": "scripts/tsc_real_task_open_loop.py",
+          "present": true,
+          "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019"
+        },
+        {
+          "path": "scripts/run_tsc_real_task_open_loop.sh",
+          "present": true,
+          "sha256": "de9da9d2c614dafca9d9c104dba4a86a0d0dfdbfecac9af58e93061c7cbcd7c9"
+        },
+        {
+          "path": "scripts/run_tsc_real_task_open_loop_serial.sh",
+          "present": true,
+          "sha256": "291be13c3372f97d65eec62508341783c9332da4ea6ebb4710a5dc692d18e7be"
+        },
+        {
+          "path": "scripts/summarize_tsc_real_task_open_loop.py",
+          "present": true,
+          "sha256": "4d306d37625fbbeacf3210b01ee5037ce4e6eed49fcc31dd0729e4a9e0ede602"
+        },
+        {
+          "path": "scripts/run_vllm_server.sh",
+          "present": true,
+          "sha256": "353969bc3975e2f1b78292999bf1826dec2013a3fe985000d3382a2dd4b612ce"
+        },
+        {
+          "path": "scripts/stop_vllm_server.sh",
+          "present": true,
+          "sha256": "59e7a557e209d28c0fdf2a3954c11c5a97aff7068b10feaeff4d52e07f161d0b"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_closure/real_task_open_loop_summary_v1.json",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    },
+    {
+      "task": 3,
+      "code": [
+        {
+          "path": "scripts/run_tsc_net_benefit_heldout.sh",
+          "present": true,
+          "sha256": "a2919fb697aedc049c37ff538a43b8cc9363f7958af92b54d4413a8b24bb2c84"
+        },
+        {
+          "path": "scripts/summarize_tsc_net_benefit_gate.py",
+          "present": true,
+          "sha256": "2a82ec9c4ab1e030bdb8858c2f21c0e45be5b686bfaffbf91162c8eaeb02023e"
+        },
+        {
+          "path": "scripts/phase22_llama_broad_live.py",
+          "present": true,
+          "sha256": "f619e0df48a582c9dc163e1580655b816a0d6797534e38609cb4c59fddbc2611"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_service/economics/heldout_gate_v1_summary.json",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    },
+    {
+      "task": 4,
+      "code": [
+        {
+          "path": "scripts/contractkv_certificate_binding.py",
+          "present": true,
+          "sha256": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc"
+        },
+        {
+          "path": "scripts/certificate_binding_stress.py",
+          "present": true,
+          "sha256": "a87b5d7ddac63839953b69b63adfe3ffe6d9450c77bde8af0892d5ddafde812c"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_closure/certificate_binding_stress_v1.json",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    },
+    {
+      "task": 5,
+      "code": [
+        {
+          "path": "scripts/pstp_transaction_stress.py",
+          "present": true,
+          "sha256": "575dd79aa63813c0e0c2771c23bc0b911062df6a96cdd63afb08d94e2dc5ee94"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_closure/pstp_state_machine_stress_v2.json",
+          "present": true
+        },
+        {
+          "path": "results/hard_systems/phase17_concurrency_fault_v0.csv",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    },
+    {
+      "task": 6,
+      "code": [
+        {
+          "path": "scripts/tsc_real_task_open_loop.py",
+          "present": true,
+          "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019"
+        },
+        {
+          "path": "scripts/run_tsc_real_task_open_loop.sh",
+          "present": true,
+          "sha256": "de9da9d2c614dafca9d9c104dba4a86a0d0dfdbfecac9af58e93061c7cbcd7c9"
+        },
+        {
+          "path": "scripts/run_tsc_real_task_open_loop_serial.sh",
+          "present": true,
+          "sha256": "291be13c3372f97d65eec62508341783c9332da4ea6ebb4710a5dc692d18e7be"
+        },
+        {
+          "path": "scripts/summarize_tsc_real_task_open_loop.py",
+          "present": true,
+          "sha256": "4d306d37625fbbeacf3210b01ee5037ce4e6eed49fcc31dd0729e4a9e0ede602"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "results/tsc_closure/real_task_open_loop_summary_v1.json",
+          "present": true
+        }
+      ],
+      "all_code_present": true,
+      "all_evidence_present": true
+    }
+  ],
+  "claim_boundary": "The inventory lists experiment, patch, orchestration, and summarization code that participated in the recorded artifacts; unit-test files are intentionally omitted."
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "contractkv.tsc-six-task-closure.v1",
+  "tasks": [
+    {
+      "task": 1,
+      "name": "Llama SOTA direct comparison",
+      "pass": false,
+      "external_blocker": true,
+      "blocked_cell": "CacheSlide"
+    },
+    {
+      "task": 2,
+      "name": "same-serving-path D0/D1/D2",
+      "pass": true
+    },
+    {
+      "task": 3,
+      "name": "frozen net-benefit admission",
+      "pass": true
+    },
+    {
+      "task": 4,
+      "name": "certificate binding and lifecycle",
+      "pass": true
+    },
+    {
+      "task": 5,
+      "name": "PSTP state machine and concurrent faults",
+      "pass": true
+    },
+    {
+      "task": 6,
+      "name": "five-repeat real-task open-loop matrix",
+      "pass": true
+    }
+  ],
+  "all_required_gates_pass": false,
+  "external_artifact_blockers": [
+    "CacheSlide"
+  ],
+  "claim_boundary": "A source-artifact blocker is not converted into a performance number or counted as a reproduced baseline."
+}

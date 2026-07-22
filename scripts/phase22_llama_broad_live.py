@@ -61,7 +61,7 @@ def main() -> int:
     parser.add_argument("--sessions", type=Path, required=True)
     parser.add_argument("--base-url", required=True); parser.add_argument("--model", required=True)
     parser.add_argument("--model-identity", required=True)
-    parser.add_argument("--mode", choices=["raw", "level", "frozen"], required=True)
+    parser.add_argument("--mode", choices=["raw", "level", "frozen", "oracle"], required=True)
     parser.add_argument("--level", choices=["L0", "L1", "L2", "L3"], default="L0")
     parser.add_argument("--layout-ladder", default="L0=0,L1=.25,L2=.5,L3=1")
     parser.add_argument("--qualification-manifest", type=Path)
@@ -76,8 +76,8 @@ def main() -> int:
     parser.add_argument("--metrics-events", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    if args.mode == "frozen" and not args.qualification_manifest:
-        parser.error("--qualification-manifest is required for frozen mode")
+    if args.mode in {"frozen", "oracle"} and not args.qualification_manifest:
+        parser.error("--qualification-manifest is required for frozen/oracle mode")
 
     qualification_hash = args.policy_hash
     ladder = parse_ladder(args.layout_ladder)
@@ -115,6 +115,24 @@ def main() -> int:
                                      "validity_scope": None, "raw_finish_reason": result.get("finish_reason", "")}
                 previous_prompt_ids[sid] = prompt_ids
                 effective = "L0"
+            elif args.mode == "oracle":
+                selected_layout = layout_for_level(case, level, ladder)
+                compiled_messages = messages(case, selected_layout["topological_order"])
+                result = send_chat_stream(args.base_url, args.model, compiled_messages, args.max_tokens,
+                                          args.timeout, f"phase22-{args.load_tier}-{sid}-oracle-warmup")
+                previous_prompt_ids[sid] = tokenize(
+                    args.base_url, args.model, compiled_messages, True, args.timeout)
+                certificates[sid] = {
+                    "certificate_issued": False,
+                    "verify_decision": "MANUAL_ORACLE_DEV_FROZEN",
+                    "verification_ms": 0.0,
+                    "stable_prefix_tokens": 0,
+                    "validity_scope": None,
+                    "raw_finish_reason": result.get("finish_reason", ""),
+                    "selected_level": level,
+                    "level_attempts": [],
+                }
+                effective = level
             else:
                 try:
                     raw = generate_raw(args.base_url, args.model,
@@ -180,10 +198,14 @@ def main() -> int:
                 selected_level = str(certificates[sid].get("selected_level") or requested)
                 selected_layout = layout_for_level(case, selected_level, ladder)
                 scope_errors: list[str] = []
-                admitted = bool(certificates[sid].get("certificate_issued")) and requested != "L0"
+                admitted = ((args.mode == "oracle") or bool(certificates[sid].get("certificate_issued"))) and requested != "L0"
                 if admitted:
                     stored = certificates[sid].get("validity_scope")
-                    if stored:
+                    if args.mode == "oracle":
+                        # The oracle is a development-frozen upper bound, not an online
+                        # certificate. Do not route it through certificate-scope fallback.
+                        scope_errors = []
+                    elif stored:
                         current = validity_scope(args, sample, case, selected_layout)
                         scope_errors = validation_errors(CertificateValidityScope(**stored), request_context(current))
                     else:

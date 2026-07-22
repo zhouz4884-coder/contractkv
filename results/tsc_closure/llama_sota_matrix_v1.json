@@ -1,0 +1,387 @@
+{
+  "schema_version": "contractkv.llama-sota-matrix.v1",
+  "model": "Llama-3.1-8B-Instruct",
+  "fresh_process_repeats": 5,
+  "future_requests_per_repeat": 450,
+  "slo_ttft_ms": 1500.0,
+  "cells": [
+    {
+      "cell": "vllm_apc",
+      "label": "vLLM APC (raw order)",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 1020.4441727835556,
+      "p95_ttft_ms": 1705.5721654000001,
+      "p99_ttft_ms": 2292.9776842,
+      "mean_tpot_ms": 40.410068784888885,
+      "mean_latency_ms": 1856.7284002226668,
+      "mean_prompt_tokens": 2471.54,
+      "mean_prefix_hit_tokens": 99.2,
+      "mean_new_prefill_tokens": 2372.34,
+      "wall_clock_goodput_rps": 0.9450079359290271,
+      "slo_compliant_goodput_rps": 0.8353854940803279,
+      "mean_task_score": 0.35378036915583533
+    },
+    {
+      "cell": "manual_oracle",
+      "label": "Manual stable-layout oracle (offline upper bound)",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 633.9533729880001,
+      "p95_ttft_ms": 1710.5588169999999,
+      "p99_ttft_ms": 2296.2831232,
+      "mean_tpot_ms": 26.780687244,
+      "mean_latency_ms": 1429.0091319773333,
+      "mean_prompt_tokens": 2471.54,
+      "mean_prefix_hit_tokens": 1036.8,
+      "mean_new_prefill_tokens": 1434.74,
+      "wall_clock_goodput_rps": 1.1919106251507592,
+      "slo_compliant_goodput_rps": 1.055776799432385,
+      "mean_task_score": 0.3563228910146057,
+      "mean_ttft_reduction_vs_matched_baseline": 0.3787476180507655,
+      "slo_goodput_gain_vs_matched_baseline": 1.2638198854466403,
+      "paired_quality_requests": 2250,
+      "mean_task_score_delta_vs_matched_baseline": 0.0025425218587703364,
+      "quality_drop_gt_0_03_rate": 0.017333333333333333,
+      "quality_drop_gt_0_03_examples": [
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 9,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 4,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 8,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 3,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 7,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 2,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 6,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 5,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 9,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 4,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        }
+      ]
+    },
+    {
+      "cell": "contractkv",
+      "label": "ContractKV",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 722.9154996582222,
+      "p95_ttft_ms": 1715.1765094000002,
+      "p99_ttft_ms": 2304.6794058,
+      "mean_tpot_ms": 27.651742847555557,
+      "mean_latency_ms": 1527.8646451515556,
+      "mean_prompt_tokens": 2471.54,
+      "mean_prefix_hit_tokens": 833.9911111111111,
+      "mean_new_prefill_tokens": 1637.548888888889,
+      "wall_clock_goodput_rps": 1.1187526936205958,
+      "slo_compliant_goodput_rps": 0.989478458160681,
+      "mean_task_score": 0.3537442156238679,
+      "mean_ttft_reduction_vs_matched_baseline": 0.29156781043076385,
+      "slo_goodput_gain_vs_matched_baseline": 1.1844573136262,
+      "paired_quality_requests": 2250,
+      "mean_task_score_delta_vs_matched_baseline": -3.615353196748546e-05,
+      "quality_drop_gt_0_03_rate": 0.0008888888888888889,
+      "quality_drop_gt_0_03_examples": [
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 2,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 2,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        }
+      ]
+    },
+    {
+      "cell": "sglang_raw",
+      "label": "SGLang RadixAttention (raw order)",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 911.4493718102221,
+      "p95_ttft_ms": 1758.0918527999997,
+      "p99_ttft_ms": 2351.4415834,
+      "mean_tpot_ms": 58.98940188488889,
+      "mean_latency_ms": 1823.5407707106667,
+      "mean_prompt_tokens": 2471.54,
+      "wall_clock_goodput_rps": 0.968869676762643,
+      "slo_compliant_goodput_rps": 0.8439974949970986,
+      "mean_task_score": 0.3537390852503654
+    },
+    {
+      "cell": "sglang_certified",
+      "label": "SGLang RadixAttention + frozen certified layout",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 668.9898680106667,
+      "p95_ttft_ms": 1764.4926496,
+      "p99_ttft_ms": 2355.1200885999997,
+      "mean_tpot_ms": 32.63457638488889,
+      "mean_latency_ms": 1501.5117483942222,
+      "mean_prompt_tokens": 2471.54,
+      "wall_clock_goodput_rps": 1.149272552740038,
+      "slo_compliant_goodput_rps": 0.9990904714287643,
+      "mean_task_score": 0.35387405936115346,
+      "mean_ttft_reduction_vs_matched_baseline": 0.2660153282216967,
+      "slo_goodput_gain_vs_matched_baseline": 1.183759996150461,
+      "paired_quality_requests": 2250,
+      "mean_task_score_delta_vs_matched_baseline": 0.00013497411078806427,
+      "quality_drop_gt_0_03_rate": 0.0008888888888888889,
+      "quality_drop_gt_0_03_examples": [
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 4,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        },
+        {
+          "session_id": "phase22r-narrativeqa-158",
+          "turn_id": 4,
+          "baseline_score": 0.16666666666666666,
+          "candidate_score": 0.1081081081081081,
+          "delta": -0.05855855855855856
+        }
+      ]
+    },
+    {
+      "cell": "lmcache",
+      "label": "LMCache local-CPU connector",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 1078.9206719333333,
+      "p95_ttft_ms": 1822.8003981999998,
+      "p99_ttft_ms": 2416.4207004,
+      "mean_tpot_ms": 44.05246961733334,
+      "mean_latency_ms": 1938.3737399124445,
+      "mean_prompt_tokens": 2471.54,
+      "wall_clock_goodput_rps": 0.911595559393235,
+      "slo_compliant_goodput_rps": 0.7965278370036227,
+      "mean_task_score": 0.35382835045117994,
+      "connector_events": 2500,
+      "mean_prefix_hit_tokens": 0.0,
+      "mean_new_prefill_tokens": 2471.54,
+      "connector_hit_fraction": 0.0,
+      "positive_hit_event_rate": 0.0
+    },
+    {
+      "cell": "cacheblend_raw",
+      "label": "LMCache matched separator baseline",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 1011.8829416728889,
+      "p95_ttft_ms": 1738.0337685999998,
+      "p99_ttft_ms": 2300.5020102000003,
+      "mean_tpot_ms": 38.933338333777776,
+      "mean_latency_ms": 2015.514722716,
+      "mean_prompt_tokens": 2300.08,
+      "wall_clock_goodput_rps": 0.8748769921982028,
+      "slo_compliant_goodput_rps": 0.7776690595706508,
+      "mean_task_score": 0.3332098562064104,
+      "connector_events": 2500,
+      "mean_prefix_hit_tokens": 0.0,
+      "mean_new_prefill_tokens": 2300.08,
+      "connector_hit_fraction": 0.0,
+      "positive_hit_event_rate": 0.0
+    },
+    {
+      "cell": "cacheblend",
+      "label": "LMCache CacheBlend (compatibility-shimmed lifecycle)",
+      "status": "complete",
+      "fresh_process_repeats": 5,
+      "future_requests_per_repeat": 450,
+      "completed_requests_per_repeat": 450,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 739.0396624248889,
+      "p95_ttft_ms": 1002.2031377999999,
+      "p99_ttft_ms": 1616.2870196,
+      "mean_tpot_ms": 35.36566914177778,
+      "mean_latency_ms": 1655.626588043111,
+      "mean_prompt_tokens": 2300.08,
+      "wall_clock_goodput_rps": 1.0450588841747313,
+      "slo_compliant_goodput_rps": 1.0279037107920375,
+      "mean_task_score": 0.3398171826947662,
+      "mean_ttft_reduction_vs_matched_baseline": 0.2696391726862434,
+      "slo_goodput_gain_vs_matched_baseline": 1.3217752437772703,
+      "paired_quality_requests": 2250,
+      "mean_task_score_delta_vs_matched_baseline": 0.006607326488355815,
+      "quality_drop_gt_0_03_rate": 0.09955555555555555,
+      "quality_drop_gt_0_03_examples": [
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 3,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 7,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 6,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 5,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 9,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 4,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 3,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 7,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 6,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        },
+        {
+          "session_id": "phase22r-qasper-166",
+          "turn_id": 5,
+          "baseline_score": 0.7636363636363637,
+          "candidate_score": 0.40740740740740733,
+          "delta": -0.35622895622895634
+        }
+      ],
+      "connector_events": 2500,
+      "mean_prefix_hit_tokens": 1916.1336,
+      "mean_new_prefill_tokens": 383.9464,
+      "connector_hit_fraction": 0.8293828234773555,
+      "positive_hit_event_rate": 0.898
+    },
+    {
+      "cell": "cacheslide",
+      "label": "CacheSlide supplied artifact",
+      "status": "external_artifact_blocked",
+      "runtime": "CacheBlend vLLM fork 0.4.1 with exact Llama-3 RoPE compatibility backport",
+      "entrypoint": "third_party/external_baselines/CacheSlide-main/CacheSlide-main/examples/CacheSlide.py",
+      "artifact_path_executed": true,
+      "model_loaded": true,
+      "cache_fuse_metadata_present": true,
+      "hack_kv_layers": 32,
+      "diagnostic_cached_ttft_ms": 228.1196117401123,
+      "diagnostic_normal_ttft_ms": 41.910409927368164,
+      "diagnostic_quality_match": false,
+      "error_type": "common_protocol_unsupported",
+      "error_message": "The supplied CacheSlide path executes, but its process-global old_kvs/cache_fuse_metadata state is not request-isolated for concurrency=2, and the supplied Mistral-format entrypoint does not preserve Llama-3.1 output equivalence. It is therefore excluded from the common 5x450-request service matrix rather than assigned a proxy number."
+    }
+  ],
+  "claim_boundary": "Every complete row is a fresh real-runtime replay. The SGLang compiled row is an offline portability diagnostic; CacheSlide is reported separately when its supplied artifact cannot satisfy the frozen common protocol."
+}

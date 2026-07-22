@@ -26,6 +26,7 @@ from scripts.phase20a_official_quality import standard_score
 from scripts.phase22_llama_broad_analysis import family_key
 from scripts.phase22_llama_broad_live import expand_stable_segments, layout_for_level
 from scripts.phase19b_end_to_end_live import load_jsonl, messages, turn_case
+from scripts.phase14c_run_full_pool_quality_jobs import quality_messages
 
 
 def percentile(values: list[float], q: float) -> float:
@@ -35,6 +36,23 @@ def percentile(values: list[float], q: float) -> float:
     return ordered[max(0, min(len(ordered) - 1, math.ceil(q * len(ordered)) - 1))]
 
 
+def claim_boundary(backend: str, mode: str) -> str:
+    if backend.startswith("sglang") and mode in {"frozen", "certified"}:
+        return (
+            "SGLang RadixAttention with a prospectively frozen Llama layout map; "
+            "offline portability only, without online ContractKV certificates or PSTP."
+        )
+    if backend.startswith("sglang"):
+        return "SGLang RadixAttention raw-order baseline; no ContractKV layout or certificate."
+    if backend == "lmcache":
+        return "Fresh vLLM replay through LMCacheConnectorV1 without CacheBlend segmentation."
+    if backend == "blendraw":
+        return "Fresh vLLM replay with the frozen CacheBlend separator and blending disabled."
+    if backend == "cacheblend":
+        return "Fresh vLLM replay with CacheBlend segmentation and blending enabled."
+    return "Fresh external-runtime replay under the frozen protocol."
+
+
 def selected_level(sample: dict[str, Any], mode: str, manifest: dict[str, Any],
                    certificate_levels: dict[str, str]) -> str:
     if mode == "raw":
@@ -42,6 +60,16 @@ def selected_level(sample: dict[str, Any], mode: str, manifest: dict[str, Any],
     if mode == "certified":
         return certificate_levels.get(str(sample["phase19b_session_id"]), "L0")
     return str(manifest["frozen_family_levels"].get(family_key(sample), "L0"))
+
+
+def request_messages(case: dict[str, Any], order: list[str], separator: str) -> list[dict[str, str]]:
+    if not separator:
+        return messages(case, order)
+    by_id = {str(segment["segment_id"]): segment for segment in case["segments"]}
+    ordered_text = separator.join(str(by_id[segment_id].get("text", "")) for segment_id in order)
+    result = quality_messages(case, ordered_text)
+    result[0]["content"] = f"[PHASE19B:{case['trajectory_id']}]\n" + result[0]["content"]
+    return result
 
 
 def main() -> int:
@@ -61,6 +89,8 @@ def main() -> int:
     parser.add_argument("--max-tokens", type=int, default=96)
     parser.add_argument("--slo-ms", type=float, default=1500.0)
     parser.add_argument("--timeout", type=float, default=600.0)
+    parser.add_argument("--segment-separator", default="",
+                        help="Optional method-required separator inserted between ordered segments.")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--summary-output", type=Path, required=True)
     args = parser.parse_args()
@@ -91,10 +121,11 @@ def main() -> int:
                 case = expand_stable_segments(
                     turn_case(sample, turn, args.stable_word_limit), args.stable_pieces)
                 layout = layout_for_level(case, level, ladder)
-                request_messages = messages(case, layout["topological_order"])
+                rendered_messages = request_messages(
+                    case, layout["topological_order"], args.segment_separator)
                 prompt_tokens = len(tokenizer.apply_chat_template(
-                    request_messages, tokenize=True, add_generation_prompt=True))
-                jobs.append((sample, session_id, level, request_messages, prompt_tokens))
+                    rendered_messages, tokenize=True, add_generation_prompt=True))
+                jobs.append((sample, session_id, level, rendered_messages, prompt_tokens))
 
             started = time.perf_counter()
             with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
@@ -135,14 +166,10 @@ def main() -> int:
                         "scoring_error": scoring_error,
                         "cached_tokens": result.get("cached_tokens", ""),
                         "cached_tokens_observable": bool(result.get("cached_tokens_observable", False)),
+                        "segment_separator": args.segment_separator,
                         "error_type": result.get("error_type", "none"),
                         "error_message": result.get("error_message", ""),
-                        "claim_boundary": (
-                            "SGLang RadixAttention with a prospectively frozen Llama layout map; "
-                            "offline portability only, without online ContractKV certificates or PSTP."
-                            if args.mode in {"frozen", "certified"} else
-                            "SGLang RadixAttention raw-order baseline; no ContractKV layout or certificate."
-                        ),
+                        "claim_boundary": claim_boundary(args.backend_label, args.mode),
                     })
             batch_wall_ms = (time.perf_counter() - started) * 1000.0
             batch_id = f"{args.backend_label}-c{cohort_index}-t{turn}"
@@ -178,11 +205,7 @@ def main() -> int:
         "slo_ms": args.slo_ms,
         "slo_compliant_requests": sum(value <= args.slo_ms for value in ttft),
         "slo_compliant_req_per_sec": sum(value <= args.slo_ms for value in ttft) / max(wall_s, 1e-9),
-        "claim_boundary": (
-            "Fresh SGLang replay with layouts accepted by vLLM certificates on the same sealed sessions; "
-            "the certificates are not transferred as online SGLang admission decisions."
-            if args.mode == "certified" else
-            "Fresh SGLang runtime replay with a frozen Llama policy map. The compiled cell is not online ContractKV."),
+        "claim_boundary": claim_boundary(args.backend_label, args.mode),
     }
     args.summary_output.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))

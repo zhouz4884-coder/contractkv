@@ -48,11 +48,15 @@ class PSTPStateMachine:
         self._transactions: dict[str, Transaction] = {}
         self._committed: dict[str, Transaction] = {}
         self._violations: list[str] = []
+        self._rejected: list[str] = []
 
     def open(self, txn: Transaction) -> None:
         with self._lock:
             if txn.txn_id in self._transactions:
-                self._violations.append(f"duplicate_open:{txn.txn_id}")
+                prior = self._transactions[txn.txn_id]
+                if (prior.exact_lcp_blocks, prior.scope, prior.epoch) != (
+                        txn.exact_lcp_blocks, txn.scope, txn.epoch):
+                    self._rejected.append(f"conflicting_open:{txn.txn_id}")
                 return
             self._transactions[txn.txn_id] = txn
 
@@ -60,9 +64,9 @@ class PSTPStateMachine:
         with self._lock:
             txn = self._transactions[txn_id]
             if txn.terminal:
-                # Idempotent duplicate delivery is legal only after a terminal state.
+                # Concurrent late delivery cannot reopen or mutate publication.
                 if action not in {"duplicate", "restart"}:
-                    self._violations.append(f"post_terminal:{txn_id}:{action}")
+                    self._rejected.append(f"post_terminal:{txn_id}:{action}")
                 return
             if action == "begin_verify":
                 if txn.state is not State.PRIVATE:
@@ -118,6 +122,10 @@ class PSTPStateMachine:
     def transactions(self) -> Iterable[Transaction]:
         return self._transactions.values()
 
+    @property
+    def rejected_actions(self) -> int:
+        return len(self._rejected)
+
 
 def sequence(rng: random.Random) -> tuple[list[str], str, int]:
     fault = rng.choices(
@@ -154,13 +162,58 @@ def run_clients(transactions: int, clients: int, seed: int) -> dict[str, object]
             counts.update(partial)
     failures = machine.audit()
     terminal = Counter(txn.state.value for txn in machine.transactions)
+    committed = [txn for txn in machine.transactions if txn.state is State.COMMITTED]
+    aborted = [txn for txn in machine.transactions if txn.state is State.ABORTED]
     return {
         "clients": clients, "transactions": transactions, "seed": seed,
         "final_states": dict(terminal), "actions": dict(counts),
         "committed": terminal[State.COMMITTED.value], "aborted": terminal[State.ABORTED.value],
         "invariant_failures": len(failures), "failure_examples": failures[:20],
+        "rejected_racing_or_late_actions": machine.rejected_actions,
+        "published_blocks": sum(len(txn.published_blocks) for txn in committed),
+        "aborted_with_published_blocks": sum(bool(txn.published_blocks) for txn in aborted),
         "pass": not failures,
         "claim_boundary": "Deterministic in-memory PSTP state-machine stress; live scheduler fault probes remain separately reported.",
+    }
+
+
+def run_contention(transactions: int, clients: int, seed: int) -> dict[str, object]:
+    """Race commit, cancellation, revocation, and duplicate delivery per txn."""
+    machine = PSTPStateMachine()
+    rng = random.Random(seed)
+    specs = []
+    for index in range(transactions):
+        blocks = tuple(range(index * 8, index * 8 + rng.randint(1, 8)))
+        txn = Transaction(f"shared-txn-{index:06d}", blocks, "scope-ok", 1)
+        machine.open(txn)
+        machine.apply(txn.txn_id, "begin_verify", scope="scope-ok", epoch=1)
+        machine.apply(txn.txn_id, "verify_pass", scope="scope-ok", epoch=1)
+        specs.append(txn)
+
+    def race(item: tuple[Transaction, str]) -> None:
+        txn, action = item
+        machine.apply(txn.txn_id, action, scope="scope-ok", epoch=1)
+
+    actions = []
+    for txn in specs:
+        actions.extend((txn, action) for action in ("commit", "invalidation", "duplicate", "commit"))
+    random.Random(seed + 1).shuffle(actions)
+    with ThreadPoolExecutor(max_workers=clients) as pool:
+        list(pool.map(race, actions))
+    failures = machine.audit()
+    terminal = Counter(txn.state.value for txn in machine.transactions)
+    committed = [txn for txn in machine.transactions if txn.state is State.COMMITTED]
+    aborted = [txn for txn in machine.transactions if txn.state is State.ABORTED]
+    return {
+        "clients": clients, "transactions": transactions, "seed": seed,
+        "contention": True, "final_states": dict(terminal), "actions": {"raced_actions": len(actions)},
+        "committed": terminal[State.COMMITTED.value], "aborted": terminal[State.ABORTED.value],
+        "invariant_failures": len(failures), "failure_examples": failures[:20],
+        "rejected_racing_or_late_actions": machine.rejected_actions,
+        "published_blocks": sum(len(txn.published_blocks) for txn in committed),
+        "aborted_with_published_blocks": sum(bool(txn.published_blocks) for txn in aborted),
+        "pass": not failures and not any(txn.published_blocks for txn in aborted),
+        "claim_boundary": "Deterministic same-transaction commit/cancel/revoke race; live scheduler faults remain separately reported.",
     }
 
 
@@ -173,16 +226,23 @@ def main() -> int:
     parser.add_argument("--json-output", type=Path, required=True)
     args = parser.parse_args()
     rows = [run_clients(args.transactions, int(value), args.seed) for value in args.clients.split(",")]
+    rows.append(run_contention(min(args.transactions, 25_000), max(int(value) for value in args.clients.split(",")), args.seed))
     args.csv_output.parent.mkdir(parents=True, exist_ok=True)
     with args.csv_output.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=[
-            "clients", "transactions", "seed", "committed", "aborted", "invariant_failures", "pass", "final_states", "actions", "claim_boundary"])
+            "clients", "transactions", "seed", "contention", "committed", "aborted",
+            "invariant_failures", "rejected_racing_or_late_actions", "published_blocks",
+            "aborted_with_published_blocks", "pass", "final_states", "actions", "claim_boundary"])
         writer.writeheader()
         for row in rows:
             writer.writerow({
                 "clients": row["clients"], "transactions": row["transactions"], "seed": row["seed"],
+                "contention": row.get("contention", False),
                 "committed": row["committed"], "aborted": row["aborted"],
                 "invariant_failures": row["invariant_failures"], "pass": row["pass"],
+                "rejected_racing_or_late_actions": row["rejected_racing_or_late_actions"],
+                "published_blocks": row["published_blocks"],
+                "aborted_with_published_blocks": row["aborted_with_published_blocks"],
                 "final_states": json.dumps(row["final_states"], sort_keys=True),
                 "actions": json.dumps(row["actions"], sort_keys=True),
                 "claim_boundary": row["claim_boundary"],

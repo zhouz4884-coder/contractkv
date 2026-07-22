@@ -75,11 +75,16 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--directory", type=Path, required=True)
     parser.add_argument("--compiled-mode", choices=("frozen", "certified"), default="frozen")
+    parser.add_argument("--repeats", default="1,2,3",
+                        help="Comma-separated fresh-process repeat ids.")
     parser.add_argument("--json-output", type=Path, required=True)
     parser.add_argument("--csv-output", type=Path, required=True)
     args = parser.parse_args()
-    raw = [args.directory / f"llama-r{repeat}-raw.jsonl" for repeat in (1, 2, 3)]
-    compiled_paths = [args.directory / f"llama-r{repeat}-{args.compiled_mode}.jsonl" for repeat in (1, 2, 3)]
+    repeats = tuple(int(value.strip()) for value in args.repeats.split(",") if value.strip())
+    if not repeats:
+        raise ValueError("--repeats must contain at least one repeat id")
+    raw = [args.directory / f"llama-r{repeat}-raw.jsonl" for repeat in repeats]
+    compiled_paths = [args.directory / f"llama-r{repeat}-{args.compiled_mode}.jsonl" for repeat in repeats]
     missing = [str(path) for path in raw + compiled_paths if not path.exists()]
     if missing:
         raise FileNotFoundError("missing completed repeats: " + ", ".join(missing))

@@ -12,15 +12,33 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+descendants() {
+  local parent=$1 child
+  while read -r child; do
+    [[ -n "$child" ]] || continue
+    descendants "$child"
+    printf '%s\n' "$child"
+  done < <(pgrep -P "$parent" 2>/dev/null || true)
+}
+
 if [[ -n "$PID_PATH" && -f "$PID_PATH" ]]; then
   PID="$(cat "$PID_PATH")"
   if [[ -n "$PID" ]] && kill -0 "$PID" 2>/dev/null; then
-    kill "$PID"
+    # Capture the multiprocessing tree before terminating the API parent;
+    # EngineCore/resource_tracker children are reparented to PID 1 otherwise.
+    mapfile -t CHILD_PIDS < <(descendants "$PID")
+    kill "$PID" "${CHILD_PIDS[@]}" 2>/dev/null || true
     for _ in $(seq 1 30); do
-      kill -0 "$PID" 2>/dev/null || break
+      alive=0
+      for target in "$PID" "${CHILD_PIDS[@]}"; do
+        kill -0 "$target" 2>/dev/null && alive=1
+      done
+      (( alive == 0 )) && break
       sleep 1
     done
-    kill -0 "$PID" 2>/dev/null && kill -9 "$PID" || true
+    for target in "$PID" "${CHILD_PIDS[@]}"; do
+      kill -0 "$target" 2>/dev/null && kill -9 "$target" 2>/dev/null || true
+    done
   fi
   rm -f "$PID_PATH"
 fi
