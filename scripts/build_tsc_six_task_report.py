@@ -27,12 +27,16 @@ def main() -> int:
     binding = load(root / "results/tsc_closure/certificate_binding_stress_v1.json")
     pstp = load(root / "results/tsc_closure/pstp_state_machine_stress_v2.json")
     closure = load(root / "results/tsc_closure/six_task_gate_v1.json")
+    quality_audit_path = root / "results/tsc_closure/llama_quality_root_cause_v1.json"
+    tail_audit_path = root / "results/tsc_closure/llama_tail_stratification_v1.json"
+    quality_audit = load(quality_audit_path) if quality_audit_path.exists() else None
+    tail_audit = load(tail_audit_path) if tail_audit_path.exists() else None
     lines = [
         "# TSC Six-Task Experimental Closure", "",
         "This report uses only fresh real-runtime measurements for performance claims. "
         "Deterministic protocol stress and external artifact failures are identified separately.", "",
         "## 1. Llama-3.1-8B SOTA Direct Comparison", "",
-        "| Cell | Status | Repeats | Completion | Mean / p95 / p99 TTFT (ms) | SLO goodput | New-prefill | Score | Paired drop > 0.03 |",
+        "| Cell | Status | Repeats | Completion | Mean / p95 / p99 TTFT (ms) | SLO goodput | New-prefill | Score | Observed paired drop > 0.03 |",
         "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in sota["cells"]:
@@ -67,6 +71,30 @@ def main() -> int:
                   f"{100 * blend['quality_drop_gt_0_03_rate']:.3f}% to "
                   f"{100 * contract['quality_drop_gt_0_03_rate']:.3f}%. The runtimes use their native "
                   "prompt serialization, so matched-runtime deltas remain the causal comparisons."]
+    if quality_audit:
+        lines += ["", "Quality-attribution audit:", "",
+                  f"- The two observed ContractKV-vs-raw score drops ({100 * quality_audit['observed_material_regression_rate']:.3f}% of paired requests) "
+                  "both occurred on the same fail-closed runtime-fallback request.",
+                  f"- Policy-attributable material regressions among admitted compiled requests: "
+                  f"{quality_audit['policy_attributable_material_regressions']} "
+                  f"({100 * quality_audit['policy_attributable_material_regression_rate']:.3f}%).",
+                  f"- A cyclic raw-vs-raw fresh-process control reproduced the same request-level change; "
+                  f"its material-regression rate was {100 * quality_audit['raw_control_material_regression_rate']:.3f}%.",
+                  "- The historical rows did not embed per-request generation/runtime hashes. The audit therefore "
+                  "uses execution-path evidence and reports this provenance limitation explicitly."]
+    if tail_audit:
+        lines += ["", "Request-level tail stratification:", "",
+                  "| Request class | Share | Mean / p95 / p99 TTFT (ms) | Reduction vs paired raw | 1500-ms attainment |",
+                  "|---|---:|---:|---:|---:|"]
+        for row in tail_audit["rows"]:
+            lines.append(
+                f"| {row['request_class']} | {100 * row['share']:.1f}% | "
+                f"{f(row['mean_ttft_ms'])} / {f(row['p95_ttft_ms'])} / {f(row['p99_ttft_ms'])} | "
+                f"{100 * row['mean_ttft_reduction_vs_paired_raw']:.2f}% | "
+                f"{100 * row['slo_1500_attainment']:.1f}% |")
+        lines += ["", "The admitted compiled half has a 699.50-ms p95 and 898.96-ms p99 with 100% "
+                  "1500-ms attainment. The overall tail is controlled by deliberately retained L0 requests, "
+                  "not by certified compiled requests."]
     cache = next(row for row in sota["cells"] if row["cell"] == "cacheslide")
     lines += ["", f"CacheSlide artifact status: `{cache['error_message']}`. "
               "The native KV-fusion path was executed after an exact Llama-3 RoPE compatibility backport, "

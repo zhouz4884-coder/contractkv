@@ -1,0 +1,70 @@
+{
+  "schema_version": "contractkv.llama-tail-stratification.v1",
+  "rows": [
+    {
+      "request_class": "admitted_compiled",
+      "requests": 1125,
+      "share": 0.5,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 263.2915651022222,
+      "p50_ttft_ms": 294.08274,
+      "p95_ttft_ms": 699.500452,
+      "p99_ttft_ms": 898.961942,
+      "paired_raw_mean_ttft_ms": 830.6667193004445,
+      "mean_ttft_reduction_vs_paired_raw": 0.6830358566382,
+      "slo_1500_attainment": 1.0,
+      "mean_prompt_tokens": 1983.04,
+      "mean_prefix_hit_tokens": 1571.9822222222222,
+      "mean_new_prefill_tokens": 411.0577777777778
+    },
+    {
+      "request_class": "manifest_direct_l0",
+      "requests": 900,
+      "share": 0.4,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 1261.7551555566665,
+      "p50_ttft_ms": 1047.402645,
+      "p95_ttft_ms": 1778.894345,
+      "p99_ttft_ms": 2311.011938,
+      "paired_raw_mean_ttft_ms": 1257.5714464622222,
+      "mean_ttft_reduction_vs_paired_raw": -0.003326816226794808,
+      "slo_1500_attainment": 0.7111111111111111,
+      "mean_prompt_tokens": 3075.05,
+      "mean_prefix_hit_tokens": 96.0,
+      "mean_new_prefill_tokens": 2979.05
+    },
+    {
+      "request_class": "runtime_fallback",
+      "requests": 225,
+      "share": 0.1,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 865.6765488444445,
+      "p50_ttft_ms": 898.081465,
+      "p95_ttft_ms": 1125.575908,
+      "p99_ttft_ms": 1129.169843,
+      "paired_raw_mean_ttft_ms": 1020.8223454844444,
+      "mean_ttft_reduction_vs_paired_raw": 0.1519811917580757,
+      "slo_1500_attainment": 1.0,
+      "mean_prompt_tokens": 2500.0,
+      "mean_prefix_hit_tokens": 96.0,
+      "mean_new_prefill_tokens": 2404.0
+    },
+    {
+      "request_class": "overall_mixture",
+      "requests": 2250,
+      "share": 1.0,
+      "completion_rate": 1.0,
+      "mean_ttft_ms": 722.9154996582222,
+      "p50_ttft_ms": 696.867442,
+      "p95_ttft_ms": 1716.740974,
+      "p99_ttft_ms": 2306.459171,
+      "paired_raw_mean_ttft_ms": 1020.4441727835555,
+      "mean_ttft_reduction_vs_paired_raw": 0.2915678104307638,
+      "slo_1500_attainment": 0.8844444444444445,
+      "mean_prompt_tokens": 2471.54,
+      "mean_prefix_hit_tokens": 833.9911111111111,
+      "mean_new_prefill_tokens": 1637.548888888889
+    }
+  ],
+  "claim_boundary": "Per-class percentiles describe the five-repeat request mixture. The overall p95/p99 is not claimed as the tail of certified requests when fail-closed L0 requests dominate that quantile."
+}

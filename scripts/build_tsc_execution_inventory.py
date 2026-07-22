@@ -32,12 +32,16 @@ TASKS = {
             "third_party/patches/lmcache_cacheblend_v0102/sitecustomize.py",
             "scripts/summarize_lmcache_runtime_logs.py",
             "scripts/summarize_llama_sota_matrix.py",
+            "scripts/analyze_llama_quality_tail.py",
+            "scripts/build_tsc_six_task_report.py",
         ],
         "evidence": [
             "results/tsc_closure/llama_sota_matrix_v1.json",
             "results/external_baseline/llama_lmcache_v1/runtime_accounting_v1.json",
             "results/external_baseline/artifact_audit/cacheblend_compatibility_v1.json",
             "results/external_baseline/artifact_audit/cacheslide_llama_smoke_v1.json",
+            "results/tsc_closure/llama_quality_root_cause_v1.json",
+            "results/tsc_closure/llama_tail_stratification_v1.json",
         ],
     },
     "2": {

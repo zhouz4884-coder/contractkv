@@ -4,7 +4,7 @@ This report uses only fresh real-runtime measurements for performance claims. De
 
 ## 1. Llama-3.1-8B SOTA Direct Comparison
 
-| Cell | Status | Repeats | Completion | Mean / p95 / p99 TTFT (ms) | SLO goodput | New-prefill | Score | Paired drop > 0.03 |
+| Cell | Status | Repeats | Completion | Mean / p95 / p99 TTFT (ms) | SLO goodput | New-prefill | Score | Observed paired drop > 0.03 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | vLLM APC (raw order) | complete | 5 | 100.0% | 1020.44 / 1705.57 / 2292.98 | 0.835 | 2372.3 | 0.3538 | - |
 | Manual stable-layout oracle (offline upper bound) | complete | 5 | 100.0% | 633.95 / 1710.56 / 2296.28 | 1.056 | 1434.7 | 0.3563 | 1.733% |
@@ -22,6 +22,24 @@ Matched-runtime deltas:
 - Frozen certified layout on SGLang vs raw RadixAttention: 26.60% mean-TTFT reduction; this is a portability diagnostic, not online ContractKV.
 - CacheBlend vs its matched separator-only LMCache runtime: 26.96% mean-TTFT reduction.
 - Descriptively, ContractKV is 2.18% faster in mean TTFT than CacheBlend while reducing paired >0.03 quality drops from 9.956% to 0.089%. The runtimes use their native prompt serialization, so matched-runtime deltas remain the causal comparisons.
+
+Quality-attribution audit:
+
+- The two observed ContractKV-vs-raw score drops (0.089% of paired requests) both occurred on the same fail-closed runtime-fallback request.
+- Policy-attributable material regressions among admitted compiled requests: 0 (0.000%).
+- A cyclic raw-vs-raw fresh-process control reproduced the same request-level change; its material-regression rate was 0.044%.
+- The historical rows did not embed per-request generation/runtime hashes. The audit therefore uses execution-path evidence and reports this provenance limitation explicitly.
+
+Request-level tail stratification:
+
+| Request class | Share | Mean / p95 / p99 TTFT (ms) | Reduction vs paired raw | 1500-ms attainment |
+|---|---:|---:|---:|---:|
+| admitted_compiled | 50.0% | 263.29 / 699.50 / 898.96 | 68.30% | 100.0% |
+| manifest_direct_l0 | 40.0% | 1261.76 / 1778.89 / 2311.01 | -0.33% | 71.1% |
+| runtime_fallback | 10.0% | 865.68 / 1125.58 / 1129.17 | 15.20% | 100.0% |
+| overall_mixture | 100.0% | 722.92 / 1716.74 / 2306.46 | 29.16% | 88.4% |
+
+The admitted compiled half has a 699.50-ms p95 and 898.96-ms p99 with 100% 1500-ms attainment. The overall tail is controlled by deliberately retained L0 requests, not by certified compiled requests.
 
 CacheSlide artifact status: `The supplied CacheSlide path executes, but its process-global old_kvs/cache_fuse_metadata state is not request-isolated for concurrency=2, and the supplied Mistral-format entrypoint does not preserve Llama-3.1 output equivalence. It is therefore excluded from the common 5x450-request service matrix rather than assigned a proxy number.`. The native KV-fusion path was executed after an exact Llama-3 RoPE compatibility backport, but it does not satisfy the frozen concurrency-2 common protocol; no proxy performance number is reported. Its diagnostic run loaded 32 hooked layers; cached TTFT was 228.1196117401123 ms and output-equivalence was `False`.
 

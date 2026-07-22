@@ -104,6 +104,16 @@
           "path": "scripts/summarize_llama_sota_matrix.py",
           "present": true,
           "sha256": "60bbacd770be2562f9b35ae4a1b9a1df4e86eaa6b7db1269a830bcd16bfd4ef0"
+        },
+        {
+          "path": "scripts/analyze_llama_quality_tail.py",
+          "present": true,
+          "sha256": "8dba60129dafd37016e45d0aac5ee564c7ae4f05987dd6cabe8c381ed410e76e"
+        },
+        {
+          "path": "scripts/build_tsc_six_task_report.py",
+          "present": true,
+          "sha256": "034967aa3676f13906cd35b24a90d6a743808c37ea996316957a626d52ce8f65"
         }
       ],
       "evidence": [
@@ -121,6 +131,14 @@
         },
         {
           "path": "results/external_baseline/artifact_audit/cacheslide_llama_smoke_v1.json",
+          "present": true
+        },
+        {
+          "path": "results/tsc_closure/llama_quality_root_cause_v1.json",
+          "present": true
+        },
+        {
+          "path": "results/tsc_closure/llama_tail_stratification_v1.json",
           "present": true
         }
       ],

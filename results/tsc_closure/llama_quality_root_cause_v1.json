@@ -1,0 +1,255 @@
+{
+  "schema_version": "contractkv.llama-quality-root-cause.v1",
+  "case": {
+    "session_id": "phase22r-narrativeqa-158",
+    "turn_id": 2
+  },
+  "protocol_sha256": "2d711ea09488b4c97bce63f3fb9077ee2e72fd783a3208fab48e2a81b3ae4022",
+  "matched_requests": 2250,
+  "observed_material_regressions": 2,
+  "observed_material_regression_rate": 0.0008888888888888889,
+  "policy_attributable_material_regressions": 0,
+  "policy_attributable_material_regression_rate": 0.0,
+  "raw_control_comparisons": 2250,
+  "raw_control_material_regressions": 1,
+  "raw_control_material_regression_rate": 0.00044444444444444447,
+  "case_canary_decisions": [
+    {
+      "repeat": 1,
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "verify_decision": "REJECTED_ALL_LEVELS",
+      "level_attempts": [
+        {
+          "level": "L2",
+          "decision": "FAIL"
+        },
+        {
+          "level": "L1",
+          "decision": "FAIL"
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "verify_decision": "REJECTED_ALL_LEVELS",
+      "level_attempts": [
+        {
+          "level": "L2",
+          "decision": "FAIL"
+        },
+        {
+          "level": "L1",
+          "decision": "FAIL"
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "verify_decision": "REJECTED_ALL_LEVELS",
+      "level_attempts": [
+        {
+          "level": "L2",
+          "decision": "FAIL"
+        },
+        {
+          "level": "L1",
+          "decision": "FAIL"
+        }
+      ]
+    },
+    {
+      "repeat": 4,
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "verify_decision": "REJECTED_ALL_LEVELS",
+      "level_attempts": [
+        {
+          "level": "L2",
+          "decision": "FAIL"
+        },
+        {
+          "level": "L1",
+          "decision": "FAIL"
+        }
+      ]
+    },
+    {
+      "repeat": 5,
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "verify_decision": "REJECTED_ALL_LEVELS",
+      "level_attempts": [
+        {
+          "level": "L2",
+          "decision": "FAIL"
+        },
+        {
+          "level": "L1",
+          "decision": "FAIL"
+        }
+      ]
+    }
+  ],
+  "case_repeats": [
+    {
+      "repeat": 1,
+      "request_class": "runtime_fallback",
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "certificate_scope_valid": true,
+      "moved_stable_tokens": 0,
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.1081081081081081,
+      "score_delta": -0.05855855855855856,
+      "raw_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "contract_output_sha256": "aaae68e2a2444f829d493ec9e367c646223c03c6ac719ab31954f78f0364cdde",
+      "first_character_divergence": 135,
+      "raw_finish_reason": "stop",
+      "contract_finish_reason": "stop",
+      "first_token_divergence": 26,
+      "raw_output_tokens": 35,
+      "contract_output_tokens": 39,
+      "raw_token_at_divergence": 3347,
+      "contract_token_at_divergence": 864
+    },
+    {
+      "repeat": 2,
+      "request_class": "runtime_fallback",
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "certificate_scope_valid": true,
+      "moved_stable_tokens": 0,
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.16666666666666666,
+      "score_delta": 0.0,
+      "raw_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "contract_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "first_character_divergence": null,
+      "raw_finish_reason": "stop",
+      "contract_finish_reason": "stop",
+      "first_token_divergence": null,
+      "raw_output_tokens": 35,
+      "contract_output_tokens": 35,
+      "raw_token_at_divergence": null,
+      "contract_token_at_divergence": null
+    },
+    {
+      "repeat": 3,
+      "request_class": "runtime_fallback",
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "certificate_scope_valid": true,
+      "moved_stable_tokens": 0,
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.16666666666666666,
+      "score_delta": 0.0,
+      "raw_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "contract_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "first_character_divergence": null,
+      "raw_finish_reason": "stop",
+      "contract_finish_reason": "stop",
+      "first_token_divergence": null,
+      "raw_output_tokens": 35,
+      "contract_output_tokens": 35,
+      "raw_token_at_divergence": null,
+      "contract_token_at_divergence": null
+    },
+    {
+      "repeat": 4,
+      "request_class": "runtime_fallback",
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "certificate_scope_valid": true,
+      "moved_stable_tokens": 0,
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.1081081081081081,
+      "score_delta": -0.05855855855855856,
+      "raw_output_sha256": "caeb30281696f9e48a5df8c5ba3f30fa2e67063fd7b486a2e7814ceb0a7a1f6e",
+      "contract_output_sha256": "aaae68e2a2444f829d493ec9e367c646223c03c6ac719ab31954f78f0364cdde",
+      "first_character_divergence": 135,
+      "raw_finish_reason": "stop",
+      "contract_finish_reason": "stop",
+      "first_token_divergence": 26,
+      "raw_output_tokens": 35,
+      "contract_output_tokens": 39,
+      "raw_token_at_divergence": 3347,
+      "contract_token_at_divergence": 864
+    },
+    {
+      "repeat": 5,
+      "request_class": "runtime_fallback",
+      "requested_level": "L2",
+      "effective_level": "L0",
+      "certificate_issued": false,
+      "certificate_scope_valid": true,
+      "moved_stable_tokens": 0,
+      "raw_score": 0.1081081081081081,
+      "contract_score": 0.1081081081081081,
+      "score_delta": 0.0,
+      "raw_output_sha256": "aaae68e2a2444f829d493ec9e367c646223c03c6ac719ab31954f78f0364cdde",
+      "contract_output_sha256": "aaae68e2a2444f829d493ec9e367c646223c03c6ac719ab31954f78f0364cdde",
+      "first_character_divergence": null,
+      "raw_finish_reason": "stop",
+      "contract_finish_reason": "stop",
+      "first_token_divergence": null,
+      "raw_output_tokens": 39,
+      "contract_output_tokens": 39,
+      "raw_token_at_divergence": null,
+      "contract_token_at_divergence": null
+    }
+  ],
+  "material_regressions": [
+    {
+      "repeat": 1,
+      "session_id": "phase22r-narrativeqa-158",
+      "turn_id": 2,
+      "request_class": "runtime_fallback",
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.1081081081081081,
+      "score_delta": -0.05855855855855856,
+      "material_regression": true
+    },
+    {
+      "repeat": 4,
+      "session_id": "phase22r-narrativeqa-158",
+      "turn_id": 2,
+      "request_class": "runtime_fallback",
+      "raw_score": 0.16666666666666666,
+      "contract_score": 0.1081081081081081,
+      "score_delta": -0.05855855855855856,
+      "material_regression": true
+    }
+  ],
+  "raw_control_material_regressions_for_case": [
+    {
+      "left_repeat": 4,
+      "right_repeat": 5,
+      "session_id": "phase22r-narrativeqa-158",
+      "turn_id": 2,
+      "score_delta": -0.05855855855855856,
+      "material_regression": true
+    }
+  ],
+  "classification": "raw_fallback_nondeterminism_not_policy_attributable",
+  "evidence": [
+    "The affected request is L0 in every repeat after L2 and L1 verification fail closed.",
+    "No certificate is issued, moved_stable_tokens is zero, and no compiled layout is served.",
+    "The same frozen runner, model, dtype, concurrency, max_tokens, and prompt builder are used by both cells.",
+    "Row-level generation/runtime hashes were not embedded in this historical matrix; this is recorded as an audit limitation rather than inferred."
+  ],
+  "claim_boundary": "Observed raw-vs-ContractKV output differences on fail-closed L0 requests are runtime-control variation. Only regressions on admitted_compiled requests are policy-attributable."
+}
