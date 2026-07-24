@@ -1,0 +1,143 @@
+{
+  "audit_schema": "contractkv.vllm-version-compatibility.v1",
+  "runtime": {
+    "vllm_version": "0.25.1",
+    "torch_version": "2.11.0+cu129",
+    "torch_cuda_version": "12.9",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "transformers_version": "5.14.1"
+  },
+  "wheel_source_integrity": {
+    "all_audited_files_match_record": true,
+    "meaning": "Audited source files match the installed vLLM wheel RECORD."
+  },
+  "native_lookup_semantics": {
+    "uses_longest_prefix_chain": true,
+    "supports_arbitrary_non_contiguous_segments": false,
+    "evidence": "KVCacheManager.get_computed_blocks passes request.block_hashes to find_longest_cache_hit with a maximum prefix length."
+  },
+  "partial_block_semantics": {
+    "available": true,
+    "remains_prefix_chain_metadata": true,
+    "supports_arbitrary_non_contiguous_segments": false,
+    "evidence": "cache_partial_block exposes a boundary inside an owning cache block and derives its key from the request prefix-chain hash."
+  },
+  "hook_points": [
+    {
+      "hook": "layout_admission",
+      "module": "vllm.v1.core.sched.scheduler",
+      "qualname": "Scheduler.add_request",
+      "role": "Attach a runtime-bound layout decision before request scheduling.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request) -> None",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/sched/scheduler.py",
+      "first_line": 2012,
+      "source_sha256": "199b81ae87110dcf950dfcd7a92704a622a528d4508dc22bcffcf25a3a94d455",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "4l1MmpWr2-jlFnFO0CV02SnKDV6MEcTMc7hNOjuQVEM",
+        "actual_sha256": "4l1MmpWr2-jlFnFO0CV02SnKDV6MEcTMc7hNOjuQVEM",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    },
+    {
+      "hook": "prefix_lookup",
+      "module": "vllm.v1.core.kv_cache_manager",
+      "qualname": "KVCacheManager.get_computed_blocks",
+      "role": "Observe the longest native prefix-cache hit for a request.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request) -> tuple[vllm.v1.core.kv_cache_manager.KVCacheBlocks, int]",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/kv_cache_manager.py",
+      "first_line": 206,
+      "source_sha256": "bd610f9942c8aa48a0db515d5099cd2d1ec3fb39aa8f97a923334c37e9560958",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "actual_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    },
+    {
+      "hook": "block_allocation",
+      "module": "vllm.v1.core.kv_cache_manager",
+      "qualname": "KVCacheManager.allocate_slots",
+      "role": "Allocate request KV blocks after native prefix lookup.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request, num_new_tokens: int, num_new_computed_tokens: int = 0, new_computed_blocks: vllm.v1.core.kv_cache_manager.KVCacheBlocks | None = None, num_lookahead_tokens: int = 0, num_external_computed_tokens: int = 0, delay_cache_blocks: bool = False, num_encoder_tokens: int = 0, full_sequence_must_fit: bool = False, reserved_blocks: int = 0, has_scheduled_reqs: bool = True) -> vllm.v1.core.kv_cache_manager.KVCacheBlocks | None",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/kv_cache_manager.py",
+      "first_line": 248,
+      "source_sha256": "5b028bc42bfccf149490cdd90d883bfe95c5dbccf9e0ae568a5bd7fc2a01cbca",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "actual_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    },
+    {
+      "hook": "cache_publication",
+      "module": "vllm.v1.core.kv_cache_manager",
+      "qualname": "KVCacheManager.cache_blocks",
+      "role": "Enter verified computed blocks into the cache coordinator.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request, num_computed_tokens: int) -> None",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/kv_cache_manager.py",
+      "first_line": 620,
+      "source_sha256": "43e4641c63772b09232cc24c7317bfb86e1a9241eb801846193a315e54208429",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "actual_sha256": "vpxQkYyM0Bc2EC3kAg4qmoZQZ1vNTrQifUDSvt5ruFM",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    },
+    {
+      "hook": "hash_index_registration",
+      "module": "vllm.v1.core.block_pool",
+      "qualname": "BlockPool.cache_full_blocks",
+      "role": "Register full block hashes in the native prefix-cache index.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request, blocks: list[vllm.v1.core.kv_cache_utils.KVCacheBlock], num_cached_blocks: int, num_full_blocks: int, block_size: int, kv_cache_group_id: int, block_mask: list[bool] | None = None) -> None",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/block_pool.py",
+      "first_line": 226,
+      "source_sha256": "fb7f81b843debd78dee663a3b4a89218999816fd751aacf342da0f9f13112b3e",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "P8Xf4Kt8zGIG9ut4hrKq0VOE-ScI5rn35ex4OLc3mr4",
+        "actual_sha256": "P8Xf4Kt8zGIG9ut4hrKq0VOE-ScI5rn35ex4OLc3mr4",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    },
+    {
+      "hook": "partial_block_registration",
+      "module": "vllm.v1.core.block_pool",
+      "qualname": "BlockPool.cache_partial_block",
+      "role": "Register an intra-block prefix boundary; this is not non-contiguous segment reuse.",
+      "available": true,
+      "signature": "(self, request: vllm.v1.request.Request, block: vllm.v1.core.kv_cache_utils.KVCacheBlock, num_tokens: int, kv_cache_group_id: int, block_size: int) -> Optional[vllm.v1.core.kv_cache_utils.BlockHashWithGroupId]",
+      "source_file": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm/v1/core/block_pool.py",
+      "first_line": 358,
+      "source_sha256": "1d821bc76e72950424074c5b33b72091090f11027b8f368bb806c3bca557d77c",
+      "wheel_integrity": {
+        "record_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/envs/specserve-vllm0251/lib/python3.10/site-packages/vllm-0.25.1+cu129.dist-info/RECORD",
+        "record_sha256": "P8Xf4Kt8zGIG9ut4hrKq0VOE-ScI5rn35ex4OLc3mr4",
+        "actual_sha256": "P8Xf4Kt8zGIG9ut4hrKq0VOE-ScI5rn35ex4OLc3mr4",
+        "matches_installed_wheel_record": true
+      },
+      "error": ""
+    }
+  ],
+  "portability_decision": {
+    "layout_admission": "open",
+    "prefix_observation": "open",
+    "transactional_publication": "requires_adaptation",
+    "full_source_patch_drop_in": "blocked",
+    "reason": "The V1 admission, lookup, allocation, and hash-index objects remain available, but signatures and publication internals differ from the frozen vLLM 0.10.2 implementation."
+  }
+}

@@ -1,0 +1,59 @@
+experiment: vllm_025_relevance_audit
+status: complete
+claim_scope: appendix_current_runtime_relevance
+base_git_commit: e22048e94a6ec2ba83f5d3cbf6546cf941fddcca
+runtime:
+  vllm: 0.25.1+cu129
+  torch: 2.11.0+cu129
+  cuda_runtime: "12.9"
+  transformers: 5.14.1
+  source_integrity: wheel_record_match
+hardware:
+  server: local_dual_rtx3090_host
+  gpu_ids: [0]
+  gpu_model: NVIDIA_GeForce_RTX_3090
+  gpu_count_available: 2
+model:
+  name: Qwen3-8B
+  path: /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Qwen3-8B
+protocol:
+  layouts: [raw, frozen_compiled]
+  datasets:
+    RULER: 5
+    LongBench_hotpotqa: 5
+  fresh_processes: 3
+  measured_requests: 60
+  dtype: float16
+  max_model_len: 20000
+  max_num_seqs: 1
+  max_output_tokens: 64
+  prefix_caching: true
+  flashinfer_sampler: disabled_for_cuda_toolkit_compatibility
+  source_patch: false
+results:
+  RULER:
+    completion_rate: 1.0
+    paired_output_equal_rate: 1.0
+    mean_ttft_reduction_pct: 79.843914
+    new_prefill_reduction_pct: 94.197952
+    mean_quality_delta_vs_raw: 0.0
+  LongBench_hotpotqa:
+    completion_rate: 1.0
+    paired_output_equal_rate: 1.0
+    mean_ttft_reduction_pct: 96.769222
+    new_prefill_reduction_pct: 99.526127
+    mean_quality_delta_vs_raw: 0.0
+portability:
+  layout_admission: open
+  prefix_observation: open
+  transactional_publication: requires_adaptation
+  full_source_patch_drop_in: blocked
+artifacts:
+  raw: results/appendix/vllm_025/vllm_025_structural_audit_raw.jsonl
+  summary: results/appendix/vllm_025/vllm_025_structural_audit_summary.csv
+  source_audit: results/appendix/vllm_025/vllm_025_hook_portability_audit.json
+  report: docs/appendix_vllm_025_relevance_audit.md
+  latex_fragment: submission/appendix_vllm_025_relevance.tex
+claim_boundary: >
+  Real unmodified vLLM 0.25.1 APC with a frozen compiled layout. This audit
+  does not execute online qualification, certificate issuance, or PSTP.

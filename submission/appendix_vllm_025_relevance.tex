@@ -1,0 +1,42 @@
+\subsection{Current-vLLM Relevance Audit}
+\label{app:vllm025}
+
+We additionally audit the structural premise on an unmodified official
+vLLM~0.25.1 wheel.  We replay five RULER and five LongBench HotpotQA cases under
+native APC, comparing raw order against the same frozen qualified layout across
+three fresh server processes (60 measured requests).  This is a relevance and
+portability audit, not a claim that the vLLM~0.10.2 PSTP patch applies unchanged:
+online certification and transactional publication are disabled in this cell.
+
+\begin{table}[t]
+\centering
+\caption{Real vLLM~0.25.1 APC audit.  Prefix and prefill counts come from native
+server metrics.}
+\label{tab:vllm025}
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Workload & Layout & Mean TTFT & p95 TTFT & Hit tok. & New tok. \\
+\midrule
+RULER & Raw & 295.66 & 302.48 & 32 & 1,172 \\
+RULER & Compiled & \textbf{59.59} & \textbf{66.56} & 1,136 & \textbf{68} \\
+HotpotQA & Raw & 4,754.28 & 5,402.30 & 32 & 15,658.2 \\
+HotpotQA & Compiled & \textbf{153.60} & \textbf{174.79} & 15,616 & \textbf{74.2} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The compiled layout reduces mean TTFT by 79.84\% on RULER and 96.77\% on the
+long-context HotpotQA audit, while reducing observed new-prefill tokens by
+94.20\% and 99.53\%, respectively.  Completion is 100\%, every paired
+raw/compiled output is identical, and task-score deltas are zero.  RULER exact
+retrieval passes all cases; the identical 60\% HotpotQA pass rate is used only
+as paired behavior evidence, not as an official LongBench claim.
+
+Source inspection finds the V1 admission, prefix lookup, allocation, full-block
+registration, and partial-block registration objects, and all audited files
+match the installed wheel manifest.  Native lookup still exposes a longest
+prefix chain rather than arbitrary non-contiguous segment reuse.  The required
+object classes therefore remain available, but changed cache-publication
+interfaces require a version-specific PSTP adaptation before a full
+vLLM~0.25.1 port can be claimed.

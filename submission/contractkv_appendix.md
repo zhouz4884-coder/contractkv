@@ -70,3 +70,20 @@ python scripts/build_paper_artifact.py
 All models, Hugging Face caches, conda packages, logs, and raw request results
 remain on the 8 TB data volume. Git tracks source, summarized evidence, and
 hash manifests only.
+
+## F. Current-runtime relevance: vLLM 0.25.1
+
+An appendix-only audit replays five RULER and five LongBench HotpotQA cases on
+an unmodified official vLLM 0.25.1 wheel, with native APC and three fresh server
+processes. The frozen compiled layout reduces mean TTFT by 79.84% on RULER and
+96.77% on HotpotQA, and reduces observed new-prefill work by 94.20% and 99.53%.
+All 60 requests complete; every paired raw/compiled output is identical and
+the task-score delta is zero.
+
+The source audit finds the V1 admission, lookup, allocation, and block
+registration objects, and the audited files match the installed wheel
+manifest. Native vLLM still exposes a longest prefix chain rather than
+arbitrary non-contiguous segment reuse. The audit therefore establishes
+current-version structural relevance, while changed cache-publication
+interfaces require a version-specific PSTP adaptation. It is not presented as
+a full ContractKV port to vLLM 0.25.1.

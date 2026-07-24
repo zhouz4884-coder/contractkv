@@ -196,5 +196,15 @@ results/submission_supplement/*
 !results/submission_supplement/*.csv
 !results/submission_supplement/*.json
 
+# Current-runtime appendix audits: retain compact raw request records, summaries,
+# and source-hook integrity evidence; server logs remain on the 8T data disk.
+!results/appendix/
+results/appendix/*
+!results/appendix/vllm_025/
+results/appendix/vllm_025/*
+!results/appendix/vllm_025/*.csv
+!results/appendix/vllm_025/*.json
+!results/appendix/vllm_025/*.jsonl
+
 # Local worktree isolation.
 .worktrees/
