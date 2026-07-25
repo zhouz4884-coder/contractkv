@@ -1,0 +1,125 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\title{Supplementary Material for ``ContractKV: Certified Prompt Compilation
+for Transactional Prefix Reuse in Multi-Tenant LLM Services''}
+
+\author{Bin~Zhou and Xi~Cao,~\IEEEmembership{Member,~IEEE}}
+
+\maketitle
+
+\section{Current-vLLM Relevance Audit}
+
+\subsection{Protocol and Runtime Identity}
+
+This audit tests whether ContractKV's structural opportunity and integration
+objects remain present in a current runtime. It does not repeat the full service
+matrix or claim that the frozen vLLM~0.10.2 PSTP patch applies unchanged.
+
+We use the official installed \texttt{vllm==0.25.1+cu129} wheel, Qwen3-8B in
+FP16, and one NVIDIA RTX~3090. Native automatic prefix caching is enabled. Five
+RULER \texttt{niah\_single\_1} cases and five LongBench HotpotQA cases are
+replayed under raw order and the same previously qualified frozen layout. Each
+cell runs in three fresh server processes, yielding 60 measured requests.
+Serving uses \texttt{max\_model\_len=20000},
+\texttt{max\_num\_seqs=1}, and a 64-token output limit.
+
+The optional FlashInfer sampler is disabled because the host's default CUDA
+toolkit predates the wheel runtime. Both layouts use this setting, all caches
+and logs reside on the data volume, and no vLLM source file is modified. The
+audited scheduler and cache-manager files match the installed wheel's
+\texttt{RECORD} hashes.
+
+\subsection{Real Serving Results}
+
+\begin{table}[H]
+\centering
+\caption{Native vLLM~0.25.1 APC performance. Token counts come from server metrics.}
+\label{tab:vllm025-results}
+\scriptsize
+\setlength{\tabcolsep}{2.7pt}
+\begin{tabular}{llrrrr}
+\toprule
+Workload & Layout & Mean & p95 & Hit & New \\
+ & & TTFT & TTFT & tok. & tok. \\
+\midrule
+RULER & Raw & 295.66 & 302.48 & 32 & 1,172 \\
+RULER & Compiled & \textbf{59.59} & \textbf{66.56} &
+1,136 & \textbf{68} \\
+HotpotQA & Raw & 4,754.28 & 5,402.30 & 32 & 15,658.2 \\
+HotpotQA & Compiled & \textbf{153.60} & \textbf{174.79} &
+15,616 & \textbf{74.2} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Paired behavior audit.}
+\label{tab:vllm025-quality}
+\small
+\begin{tabular}{llrr}
+\toprule
+Workload & Layout & Task pass & Pair equal \\
+\midrule
+RULER & Raw & 100\% & -- \\
+RULER & Compiled & 100\% & 100\% \\
+HotpotQA & Raw & 60\% & -- \\
+HotpotQA & Compiled & 60\% & 100\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The compiled layout reduces mean TTFT by 79.84\% on RULER and 96.77\% on
+HotpotQA. Observed new-prefill work falls by 94.20\% and 99.53\%,
+respectively. All requests complete. Every paired raw/compiled output is
+identical, and both the mean and minimum paired task-score differences are
+zero.
+
+The absolute HotpotQA task pass rate is 60\% in both cells. It is neither an
+official LongBench aggregate nor a ContractKV-induced regression. This small
+audit uses task scores only to test paired behavior preservation; the main
+paper reports the full quality protocols.
+
+\subsection{Source Portability Audit}
+
+\begin{table}[H]
+\centering
+\caption{vLLM~0.25.1 integration-object audit.}
+\label{tab:vllm025-hooks}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.23\columnwidth}p{0.64\columnwidth}}
+\toprule
+Requirement & Status \\
+\midrule
+Layout admission & Available (\texttt{Scheduler.add\_request}) \\
+Prefix observation & Available (\texttt{get\_computed\_blocks}) \\
+Slot allocation & Available (\texttt{allocate\_slots}) \\
+Cache publication & Available; interface adaptation required \\
+Partial-block registration & Available; remains prefix-chain metadata \\
+Frozen patch compatibility & Not drop-in \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Native vLLM still searches a longest prefix chain rather than arbitrary
+non-contiguous stable segments. The admission, lookup, allocation, and
+publication object classes remain available, but their signatures and
+publication internals differ from the frozen implementation. The compiler's
+frozen output can therefore be consumed by the current runtime, whereas PSTP
+requires a version-specific backend adaptation.
+
+This audit supports architectural relevance and adaptation feasibility, not
+full implementation equivalence across versions. Machine-readable request
+records, native metric summaries, source hashes, and the protocol manifest are
+available in the public artifact:
+\url{https://github.com/zhouz4884-coder/contractkv}.
+
+\end{document}

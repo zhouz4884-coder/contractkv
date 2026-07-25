@@ -59,7 +59,7 @@ Recent position-independent and cross-position reuse systems selectively compose
 
 We present \textsc{ContractKV}, a compile--attest--commit control plane for multi-tenant prefix reuse. (1)~A \emph{Contract-Aware Layout Compiler} (CALC) constructs a bounded ladder of dependency-valid layouts with progressively longer stable prefixes. (2)~\emph{Scoped Behavioral Certification} uses prospective qualification, strict teacher-forced token-path agreement, and authenticated versioned identity to admit only supported model--workflow--layout routes. (3)~\emph{Prefix-Selective Transactional Promotion} (PSTP) keeps candidate state private and makes only verified, exact-LCP, block-aligned stable blocks visible at one scheduler-thread linearization point. (4)~A frozen \emph{net-benefit gate} retains raw order outside profitable scopes, while a service-template certificate amortizes one deployment attestation across authorized tenants. Failure, identity mismatch, scope conflict, timeout, or profitability rejection publishes no compiled state.
 
-We evaluate \textsc{ContractKV} on vLLM~0.10.2 using Qwen3-8B, Qwen3-14B (TP=2), Mistral-7B-Instruct-v0.3, and Llama-3.1-8B. Across five workflows, all four configurations reduce all-workflow mean TTFT by 29.41--44.69\% after accounting for direct L0 routing, runtime fallback, and measured verification charges. Under the same frozen RULER scope, Qwen, Mistral, and Llama converge to 85.97--87.41\% reduction. In a five-repeat Llama comparison, ContractKV achieves a 29.16\% matched-baseline reduction, compared with 26.96\% for CacheBlend, while reducing observed material paired regressions from 9.956\% to 0.089\%; no such regression occurs among 1{,}125 admitted compiled requests. An independent same-engine verifier closure charges all template-registration wall time and reduces Qwen3-8B mean TTFT by 92.90\%. Across the primary load sweep, ContractKV improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants reduces peak KV-block occupancy by 72\%. Live fault probes, authenticated-binding tests, and 325{,}000 state-machine transactions report no partial publication or stale-scope admission.
+We evaluate \textsc{ContractKV} on vLLM~0.10.2 using Qwen3-8B, Qwen3-14B (TP=2), Mistral-7B-Instruct-v0.3, and Llama-3.1-8B. Across five workflows, all four configurations reduce all-workflow mean TTFT by 29.41--44.69\% after accounting for direct L0 routing, runtime fallback, and measured verification charges. Under the same frozen RULER scope, Qwen, Mistral, and Llama converge to 85.97--87.41\% reduction. In a five-repeat Llama comparison, ContractKV achieves a 29.16\% matched-baseline reduction, compared with 26.96\% for CacheBlend, while reducing observed material paired regressions from 9.956\% to 0.089\%; no such regression occurs among 1{,}125 admitted compiled requests. An independent same-engine verifier closure charges all template-registration wall time and reduces Qwen3-8B mean TTFT by 92.90\%. Across the primary load sweep, ContractKV improves 500-ms SLO goodput by 4.81$\times$, and at 80 tenants reduces peak KV-block occupancy by 72\%. Live fault probes, authenticated-binding tests, and 325{,}000 state-machine transactions report no partial publication or stale-scope admission. An unmodified vLLM~0.25.1 audit confirms that the structural opportunity and required integration objects persist (Supplementary Material).
 
 This paper makes the following contributions:
 \begin{itemize}
@@ -328,7 +328,7 @@ The verification result is transmitted as a \emph{compact attestation} rather th
 \begin{equation}
   \mathcal{A} = (\textit{decision},\; \textit{tx\_id},\; L_{\rm cert},\; \textit{policy\_hash},\; \textit{timestamp}).
 \end{equation}
-This five-field record keeps per-token logprob tensors off scheduler egress. A controlled wire measurement is 387~B versus 831{,}262~B for the corresponding full response (2{,}148$\times$ smaller; largest core record 231~B). This is an implementation result, not the basis of the latency headline.
+This five-field record keeps per-token logprob tensors off scheduler egress. Request and transaction identity remain scheduler-local rather than expanding the scheduler response with per-token logprob tensors.
 
 \smallskip
 \noindent\textbf{Certificate scope binding.}
@@ -433,6 +433,10 @@ PSTP is implemented as a commit gate in the prefix-cache block-management path. 
 To eliminate cross-cell cache contamination, our evaluation harness creates \emph{independent server processes} for each experimental cell. Each cell receives a dedicated GPU assignment, port, compile cache, and metrics log. The request runner alternates policy order (raw-order vs.\ ContractKV) and GPU assignment across repetitions to control for thermal and scheduling bias. Workload traces are SHA-frozen before measurement; partial cell resume is forbidden. This framework ensures that reported metrics reflect steady-state serving behavior rather than warm-start artifacts.
 
 Compiler and protocol overheads remain below model-serving latency: CALC is 0.389~ms mean (0.819~ms p95), residency lookup 0.249~ms (0.507~ms), template-scope check 0.109~ms (0.111~ms), and PSTP finalization 0.636~ms (0.685~ms).
+
+\smallskip
+\noindent\textbf{Current-version relevance audit.}
+We replay a frozen qualified layout on an official, unmodified vLLM~0.25.1 wheel. Across three fresh processes and 60 requests, it cuts mean TTFT by 79.84\%/96.77\% and new-prefill work by 94.20\%/99.53\% on RULER/HotpotQA; every paired output matches. A wheel-RECORD source audit finds the admission, prefix lookup, slot allocation, and publication objects, although publication interfaces have changed. This establishes current-runtime structural relevance, not a full port of certification or PSTP (Supplementary Material).
 
 \begin{table}[t]
 \centering
@@ -688,7 +692,7 @@ Frozen benefit gate & 2/4 lanes admitted & Both admitted lanes are net-positive;
 \end{tabular}
 \end{table}
 
-The live hook establishes that PASS reaches visible shared blocks and FAIL reaches zero-pollution abort in the real scheduler path. The 325{,}000-transaction result is a deterministic in-memory concurrency closure for the formal state machine; it is not presented as 325{,}000 live GPU requests. Across lifecycle changes (model, tokenizer, policy, content, authorization, and combinations), dependent certificates invalidate before reuse and re-register under the new generation. The task-score aggregate is 0.356 for both raw and D2-template service, and Qasper remains on prospective raw fallback.
+The live hook establishes that PASS publishes shared blocks and FAIL aborts without pollution. The 325{,}000-transaction result is an in-memory concurrency closure for the formal state machine, not 325{,}000 live GPU requests. Lifecycle changes invalidate dependent certificates before reuse. Raw and D2-template task scores both average 0.356; Qasper remains on prospective raw fallback.
 
 % ============================================================
 \section{Related Work}
@@ -696,15 +700,15 @@ The live hook establishes that PASS reaches visible shared blocks and FAIL reach
 % ============================================================
 
 \noindent\textbf{Prefix, cross-position, and application-aware reuse.}
-PagedAttention~\cite{vllm2023} allocates KV blocks, RadixAttention~\cite{sglang2024} indexes prefixes, and Prompt Cache~\cite{promptcache2023} exposes reusable modules. CacheBlend~\cite{cacheblend2025}, EPIC~\cite{epic2025}, CacheSlide~\cite{cacheslide2026}, and MiniPIC~\cite{minipic2026} address non-prefix or cross-position reuse through recomputation, positional correction, or position-free cache primitives; Parrot~\cite{parrot2024} exposes application dependencies. These systems determine how structured state can be reused. ContractKV governs when compiled state may become shared service state, requiring behavioral evidence, composite identity, authorization, lifecycle validity, and atomic publication. DistServe~\cite{distserve2024} and Mooncake~\cite{mooncake2024} instead optimize serving placement and disaggregation.
+PagedAttention~\cite{vllm2023} allocates KV blocks, RadixAttention~\cite{sglang2024} indexes prefixes, and Prompt Cache~\cite{promptcache2023} exposes reusable modules. CacheBlend~\cite{cacheblend2025}, EPIC~\cite{epic2025}, CacheSlide~\cite{cacheslide2026}, and MiniPIC~\cite{minipic2026} add cross-position reuse through recomputation or positional correction; Parrot~\cite{parrot2024} exposes application dependencies. ContractKV instead governs when compiled state becomes shared, requiring behavioral evidence, bound identity, authorization, lifecycle validity, and atomic publication. DistServe~\cite{distserve2024} and Mooncake~\cite{mooncake2024} optimize placement and disaggregation.
 
 \smallskip
 \noindent\textbf{KV reduction and prompt construction.}
-H2O~\cite{h2o2023} and SnapKV~\cite{snapkv2024} retain selected tokens, while CacheGen~\cite{llmcachegen2024} compresses transferred KV. They optimize within a fixed prompt order. Stable-first prompt construction can expose prefixes but supplies neither behavioral evidence nor atomic publication. ContractKV increases reusable continuity only when a scoped certificate authorizes it, and otherwise preserves raw order.
+H2O~\cite{h2o2023} and SnapKV~\cite{snapkv2024} retain selected tokens, while CacheGen~\cite{llmcachegen2024} compresses transferred KV. Stable-first prompt construction can expose prefixes but supplies neither behavioral evidence nor atomic publication. ContractKV changes continuity only under a scoped certificate and otherwise preserves raw order.
 
 \smallskip
 \noindent\textbf{Service contracts.}
-Classical contracts encode static QoS obligations~\cite{qosmulti2020}. ContractKV's runtime certificate authorizes sharing only for a bound model, policy, content, tenant scope, and lifecycle; mismatch fails closed. This evidence-bound service object and its transactional visibility distinguish ContractKV from application prompt engineering.
+Classical contracts encode static QoS obligations~\cite{qosmulti2020}. ContractKV binds sharing to model, policy, content, tenant scope, and lifecycle, with mismatch failing closed. Evidence binding and transactional visibility distinguish it from application prompt engineering.
 
 % ============================================================
 \section{Discussion and Conclusion}
@@ -712,11 +716,11 @@ Classical contracts encode static QoS obligations~\cite{qosmulti2020}. ContractK
 % ============================================================
 
 \noindent\textbf{Why and when ContractKV helps.}
-Benefit requires a large stable segment set, repeated authorized consumption, and cache residency. Fig.~\ref{fig:main_results}(d) shows that admissible reuse is a model--workflow property: RULER compiles across models, retrieval admits model-dependent levels, and order-sensitive families may freeze at L0. Always-L3 causes 10/225 development violations; prospective qualification and descent remove them. Coverage variation is thus evidence for certification, which extracts admissible reuse and preserves raw behavior elsewhere.
+Benefit requires substantial stable content, repeated authorized use, and cache residency. Fig.~\ref{fig:main_results}(d) shows that admissible reuse is model--workflow dependent. Always-L3 causes 10/225 development violations; qualification and descent remove them. Coverage variation therefore motivates certification: ContractKV extracts admissible reuse and preserves raw behavior elsewhere.
 
 \smallskip
 \noindent\textbf{Limitations and artifact scope.}
-ContractKV targets repeated authorized templates; the frozen gate leaves zero-locality or non-admitted lanes raw. Certificates are scoped empirical attestations, not proofs for arbitrary inputs. Cross-model rows charge residual verifier exposure, and the same-engine Qwen closure measures live registration/publication. The evaluation establishes single-cache-domain service behavior rather than multi-node deployment scalability. PSTP is atomic within one vLLM cache domain; a disaggregated pool additionally requires distributed commit, invalidation, and recovery. The public artifact at \url{https://github.com/zhouz4884-coder/contractkv} records frozen manifests, trace commitments, runner scripts, baseline patches, machine-readable results, and the CacheSlide common-protocol blocker rather than substituting a proxy number.
+ContractKV targets repeated authorized templates; zero-locality and non-admitted lanes remain raw. Certificates are scoped attestations, not proofs for arbitrary inputs. The primary PSTP implementation targets the frozen vLLM~0.10.2 V1 cache domain. Our RECORD-verified vLLM~0.25.1 audit confirms that the blind spot and required objects persist, but changed publication interfaces require backend adaptation rather than a new compiler, certificate, or transaction abstraction. The evaluation covers one cache domain; disaggregated pools additionally require distributed commit, invalidation, and recovery. The public artifact at \url{https://github.com/zhouz4884-coder/contractkv} provides manifests, traces, runners, patches, results, and the CacheSlide common-protocol blocker.
 
 \smallskip
 \noindent\textbf{Conclusion.}
