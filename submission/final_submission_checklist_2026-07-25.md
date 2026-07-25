@@ -38,7 +38,7 @@
 
 - Archive: `submission/contractkv_tsc_submission_2026-07-25.zip`
 - SHA-256:
-  `c6b7380bf3a424554bc7b81977721712a51e344a552d4a2f2f1764c57d250c60`
+  `8c5c81ee29b0a5b57983086de5e2559eac02a8b97150833d2cb6ee099444c601`
 - Claim boundary: the vLLM 0.25.1 experiment establishes current-runtime
   structural relevance and adaptation feasibility, not a complete port of
   online certification or PSTP.
