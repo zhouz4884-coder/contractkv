@@ -30,6 +30,9 @@ def main():
     stages=[r for r in read_csv(summary/'observed_cost_stages_v1.csv') if r['family']=='ALL']
     lanes=read_csv(summary/'within_gpu_lane_diagnostic_v1.csv')
     drops=sum(n(r,'compiled_material_drops') for r in quality)
+    case_path=summary/'material_drop_cases_v1.csv'
+    compiled_cases=[r for r in read_csv(case_path) if r['effective_level']!='L0'] if case_path.is_file() else []
+    if len(compiled_cases)!=drops: raise RuntimeError('Compiled failure case coverage does not match quality totals')
     compiled=sum(n(r,'compiled_pairs') for r in quality)
     paired=sum(n(r,'pairs') for r in quality)
     all_drops=sum(n(r,'material_drops_gt_0_03') for r in quality)
@@ -55,6 +58,12 @@ def main():
             f'本次新样本仍有 {drops}/{compiled:,} 个已编译配对超过 0.03 的任务分数下降。修复没有闭合全体行为风险，失败案例与来源簇必须继续保留。'),'',
            f'总体超过阈值的下降为 {all_drops}/{paired:,}；raw 路由上的事件也计入总体。分组案例与 raw 重复对照用于判断波动，不能仅因走 raw 就删除或直接免除因果责任。','',
            '对于已编译退化，诊断还核对未来输出是否与当初 raw 见证逐 token 一致。如果一致，说明证据可能只覆盖了当时的输出路径，不能据此证明不同私有元数据或批形状下的未来 raw 输出也相同。独立重复是否稳定、metadata 变化是否起作用，必须由相同输入的控制判定；单条退化不被直接归结为实现错误，也不被直接免除为数值噪声。','',
+           (table(['场景','模型','重复','session/turn','分数raw→编译','首次分歧token','与见证token一致','raw重复数 [分数范围]'],[
+               [r['study'],r['model'],r['repeat'],r['session_id']+'/t'+r['turn_id'],
+                f"{f(r,'raw_score'):.5f}→{f(r,'candidate_score'):.5f}",r['raw_candidate_first_divergence'],r['candidate_matches_witness_ids'],
+                f"{r['raw_repeat_observations']} [{f(r,'raw_repeat_min_score'):.5f}, {f(r,'raw_repeat_max_score'):.5f}]"] for r in compiled_cases]) if compiled_cases else
+            '本次没有已编译的阈值退化案例；所有 raw 路由事件仍保留在逐请求诊断中。'),'',
+           '相同冻结输入的 raw 重复若存在较大分数变化，只说明对照本身也有波动；原配对退化仍计入分母和失败数。重复请求、tenant 和来源之间的相关性不被转换成独立失败概率。完整输出文字与来源位于 material_drop_cases_v1.csv。','',
            table(['场景','模型','raw重复比较','token分歧','分数绝对差>0.03'],[[r['study'],r['model'],r['comparisons'],r['token_divergences'],r['score_abs_diff_gt0_03']] for r in controls]),'',
            '## 全成本与真实计时','',
            '单 session 与模板 fan-out 分开报告。fan-out 为十个模板、每模板十个 tenant session，并发仍为 2；这是闭环重放，不是 100 个同时活跃请求或开放环容量测量。完整 wall 包括 warm 业务、首次 raw、失败验证、准备和等待，不减去假想 tool slack。服务启动和独立预控制在各策略中同等排除。','',
@@ -100,6 +109,7 @@ def main():
            '原 R1 的新 query 反例支持收紧证书作用域，真实业务输出复用及 approved-prefix read 则针对完整成本来源。新正式矩阵保留冷会话与模板场景，使收益不足的场景不会被平均或摊销口径隐藏。','',
            '如果短 session 的完整 wall 仍不改善，一个待检验解释是新 query 数量、首用 raw 和级别下降成本超过该 session 内可节省的 prefill；本报告没有把它当成已证实的唯一原因。下一项检查应在新的开发输入上分解首次 witness、失败尝试、decode 和控制器等待，并在新冻结数据上检验收益门禁。','',
            'raw 路由的质量差异可能与 FP16、批形状或调度轨迹有关；必须结合相同输入与重复运行验证，不能仅靠路径名称归因。继承验证器检查每个答案/EOS 的 rank-one membership；并列最大分数和 teacher-forced/decode 的有限精度差异不构成唯一 argmax 或逐请求数学保证。','',
+           '修复 trace 保存了冻结来源、session/轮次、query scope、实际输出 token IDs 和服务端 prompt 计数，但没有逐次另存完整 prompt token IDs 或其哈希。因此相同输入对照的身份依据是冻结样本、确定性 renderer 及模型/配置清单，而不是每条请求已留存的 prompt-token 哈希；后续更严格的数值机制定位应补齐这层记录。','',
            '安全边界仍依赖正确的 operator 声明。授权和哈希不是机密性分类器，也不消除共享前缀时延推断；CPU 状态机压力操作不计为 GPU 服务请求。','',
            '原 R1 报告：`docs/tsc_major_revision_r1_results.md`。复现和计时边界：`docs/tsc_revision_r1r_reproduce.md`。原始数据、逐请求 CSV、运行快照及逐文件哈希保存在本实验 artifact。GitHub 的最终提交和清理审计由交付记录核验，报告生成本身不声称上传或投稿完成。','']
     known=a.root/'known_counterexamples'

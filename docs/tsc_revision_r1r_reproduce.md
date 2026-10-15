@@ -124,6 +124,13 @@ resample paired repeats and source templates. Full-wall goodput reports three
 fresh-repeat paired values and min/max, rather than inventing an additive
 source-level wall-clock interval.
 
+The repair trace does not separately archive per-request prompt token IDs or
+their hashes. Input-repeat identity relies on the committed sample/session/turn,
+deterministic renderer and model/configuration manifests, with actual server
+prompt counts retained. Do not describe this as a direct per-request prompt-ID
+hash match. A later numerical replay should add that logging without rewriting
+the current frozen study.
+
 GPU lanes follow the frozen task-index modulo-two assignment. Some raw/policy
 pairs use different physical cards of the same RTX 3090 type. The per-cell
 hardware snapshots and `launcher_gpu_assignment_v1.csv` record this context.
