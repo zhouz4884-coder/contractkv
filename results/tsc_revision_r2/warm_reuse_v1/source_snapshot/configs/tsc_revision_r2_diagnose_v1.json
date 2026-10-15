@@ -1,0 +1,20 @@
+{
+  "schema_version": "tsc-r2.known-case-diagnosis.v1",
+  "phase1_commit": "3dba4e58f406cc427f83f23379abe3d3567cf301",
+  "purpose": "Selected known failures are development diagnostics, not heldout efficacy or performance evidence",
+  "fresh_server_processes_per_model": 1,
+  "sequential_repeats_in_same_process": 3,
+  "concurrency": 1,
+  "cache_condition": "Unique request salts, internal approved-prefix reads disabled; actual metric observations retained",
+  "reference": "Fresh nonstream raw business output with actual margins and returned prompt/output IDs",
+  "full_logprob_control": "Same forced candidate IDs plus complete witness answer and stop; all answer/stop rows retained",
+  "order": "L0 then ascending levels for repeats1/3; descending levels then L0 for repeat2; witness turn before future turn",
+  "cases": [
+    {"key":"llama","model":"Llama-3.1-8B-Instruct","served_model":"llama31-8b","source_session":"r1r-heldout_sealed-3c2e1be3687e6af0","witness_tenant":0,"witness_turn":1,"future_tenant":0,"future_turn":4,"levels":["L0","L1","L2"]},
+    {"key":"mistral","model":"Mistral-7B-Instruct-v0.3","served_model":"mistral7b","source_session":"r1r-heldout_sealed-4dbe35777b43b963","witness_tenant":0,"witness_turn":0,"future_tenant":8,"future_turn":9,"levels":["L0","L1","L2","L3"]}
+  ],
+  "expected_free_generations":{"llama":21,"mistral":27},
+  "expected_full_logprob_calls":{"llama":18,"mistral":24},
+  "expected_internal_calls":{"llama":12,"mistral":18},
+  "no_frozen_phase1_source_or_threshold_changes":true
+}

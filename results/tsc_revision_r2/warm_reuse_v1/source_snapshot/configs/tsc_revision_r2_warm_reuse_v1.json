@@ -1,0 +1,17 @@
+{
+  "schema_version":"tsc-r2.certified-warm-reuse-diagnosis.v1",
+  "phase1_commit":"3dba4e58f406cc427f83f23379abe3d3567cf301",
+  "case_config":"configs/tsc_revision_r2_diagnose_v1.json",
+  "selected_known_development_cases":["llama","mistral"],
+  "level":"L2",
+  "sequential_repeats_per_fresh_server":3,
+  "concurrency":1,
+  "qualification":"Fresh actual raw witness; original internal check, no prior approved-prefix read; commit into a private diagnostic salt",
+  "replay":"Same candidate prompt IDs with unique cold salt versus the exact qualification salt; witness and future metadata prompts",
+  "generation_order":"raw baseline first; cold then warm in repeats1/3, warm then cold in repeat2",
+  "expected_free_generations_per_model":21,
+  "expected_internal_calls_per_model":3,
+  "actual_prefix_hit_required_for_reuse_evidence":true,
+  "no_performance_claim":true,
+  "no_phase1_or_diagnosis_v1_changes":true
+}

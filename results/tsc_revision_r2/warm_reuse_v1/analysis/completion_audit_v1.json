@@ -1,0 +1,32 @@
+{
+  "schema_version": "tsc-r2.certified-warm-control-audit.v1",
+  "execution_complete": true,
+  "errors": [],
+  "cases": [
+    {
+      "case": "llama",
+      "free_generations": 21,
+      "qualifications": 3,
+      "actual_metric_joins": 24,
+      "same_prompt_cold_warm_pairs": 6,
+      "qualified_reuse_pairs": 6,
+      "cold_material_drops": 0,
+      "warm_material_drops": 0,
+      "cold_warm_token_divergences": 0
+    },
+    {
+      "case": "mistral",
+      "free_generations": 21,
+      "qualifications": 3,
+      "actual_metric_joins": 24,
+      "same_prompt_cold_warm_pairs": 6,
+      "qualified_reuse_pairs": 6,
+      "cold_material_drops": 0,
+      "warm_material_drops": 0,
+      "cold_warm_token_divergences": 0
+    }
+  ],
+  "selected_development_not_heldout": true,
+  "performance_claim": false,
+  "same_prompt_reuse_and_cold_order_counterbalanced_within_process": true
+}

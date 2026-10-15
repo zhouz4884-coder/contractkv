@@ -1,0 +1,35 @@
+{
+  "schema_version": "tsc-r2.selected-control-archive.v1",
+  "archive": "warm_reuse_v1_raw_evidence_v1.tar.gz",
+  "archive_sha256": "639e580e634a474f4b7e9523c8ccd3f2abb3b3afefa3b81d89acca8887c86f29",
+  "archive_bytes": 1664689,
+  "member_files": 57,
+  "study": "warm_reuse_v1",
+  "cases": [
+    {
+      "case": "llama",
+      "free_generations": 21,
+      "qualifications": 3,
+      "actual_metric_joins": 24,
+      "same_prompt_cold_warm_pairs": 6,
+      "qualified_reuse_pairs": 6,
+      "cold_material_drops": 0,
+      "warm_material_drops": 0,
+      "cold_warm_token_divergences": 0
+    },
+    {
+      "case": "mistral",
+      "free_generations": 21,
+      "qualifications": 3,
+      "actual_metric_joins": 24,
+      "same_prompt_cold_warm_pairs": 6,
+      "qualified_reuse_pairs": 6,
+      "cold_material_drops": 0,
+      "warm_material_drops": 0,
+      "cold_warm_token_divergences": 0
+    }
+  ],
+  "includes_actual_prompt_and_output_IDs_metrics_and_source_snapshots": true,
+  "selected_development_not_heldout": true,
+  "performance_claim": false
+}

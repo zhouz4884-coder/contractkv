@@ -1,0 +1,54 @@
+{
+  "schema_version": "tsc-r1r.validation-cell.v1",
+  "timestamp": "2026-10-15T09:07:55.043602+00:00",
+  "cell": "r2-development-warm-llama",
+  "freeze_sha256": "c7c62ec4a0510c2b13a14411aabb848587cbd9aefe2a2f6a2cc4299332b83ffc",
+  "sessions_sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct",
+  "model_files": [
+    {
+      "file": "config.json",
+      "sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "sha256": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b"
+    }
+  ],
+  "shards": [
+    {
+      "file": "model-00001-of-00004.safetensors",
+      "bytes": 4976698672
+    },
+    {
+      "file": "model-00002-of-00004.safetensors",
+      "bytes": 4999802720
+    },
+    {
+      "file": "model-00003-of-00004.safetensors",
+      "bytes": 4915916176
+    },
+    {
+      "file": "model-00004-of-00004.safetensors",
+      "bytes": 1168138808
+    }
+  ],
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "vllm": "0.10.2",
+    "transformers": "4.55.2",
+    "triton": "3.4.0",
+    "numpy": "2.2.6"
+  },
+  "environment": {
+    "PYTHONPATH": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/third_party/vllm-contractkv-tsc-r1r-slice:/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "CONTRACTKV_POLICY_HASH": "02ad5dbdee3df4469cdcc7d74943a268cf68d22d5adab23df3447bea3985987b",
+    "CONTRACTKV_SHADOW_CHUNK_TOKENS": "128",
+    "CONTRACTKV_SHADOW_ROUND_TOKENS": "128"
+  },
+  "gpu_snapshot": "index, name, uuid, memory.total [MiB], memory.used [MiB], driver_version\n0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24576 MiB, 24 MiB, 570.133.07\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24576 MiB, 24 MiB, 570.133.07\n"
+}
