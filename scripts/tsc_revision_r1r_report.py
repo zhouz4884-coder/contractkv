@@ -48,12 +48,13 @@ def main():
            '这是受控修复变体：继承 family 最大级别并统一下降，检查答案/EOS 的 rank-one membership；辅助 margin/degradation 阈值设为宽界，未执行原论文的完整收益门禁。query-full 指全上下文验证计算，不代表复现原方法全部策略。因此新结果不替换原投稿的全工作流主表。','',
            '这也是保守的 query-catalog 模式：认证工作随不同 exact query 作用域的数量增长。fan-out 有意让多个 tenant 复用相同 benchmark 问题，不能据此推断生产中的重复 query 比例、任意新 query 的 O(1) 认证，或唯一 query 流上的收益；它与原投稿已资格化模板及其授权轨迹的结果分开解释。','',
            '以下总体分母同时包含首次 raw、冻结 L0 和验证失败回退。不同策略和两个场景有相关来源，不能把这些配对当成互相独立的样本。','',
-           table(['场景','模型','策略','配对','编译','token 分歧 总体/编译','下降>0.03 总体/编译','平均分 raw→策略'],[
+           table(['场景','模型','策略','配对','编译','token 分歧 总体/编译','下降>0.03 总体/编译','编译最大分数下降','平均分 raw→策略'],[
                [r['study'],r['model'],r['policy'],r['pairs'],r['compiled_pairs'],f"{r['token_divergences']}/{r['compiled_token_divergences']}",
-                f"{r['material_drops_gt_0_03']}/{r['compiled_material_drops']}",f"{f(r,'raw_mean_score'):.5f}→{f(r,'candidate_mean_score'):.5f}"] for r in quality]),'',
+                f"{r['material_drops_gt_0_03']}/{r['compiled_material_drops']}",f"{f(r,'max_compiled_quality_drop'):.5f}" if n(r,'compiled_pairs') else 'NA',f"{f(r,'raw_mean_score'):.5f}→{f(r,'candidate_mean_score'):.5f}"] for r in quality]),'',
            (f'本次新样本中未观察到已编译请求超过 0.03 的任务分数下降（0/{compiled:,}）。这是本冻结范围的观测结果，不能外推为任意未来 query、工具内容或模型的零风险保证。' if drops==0 else
             f'本次新样本仍有 {drops}/{compiled:,} 个已编译配对超过 0.03 的任务分数下降。修复没有闭合全体行为风险，失败案例与来源簇必须继续保留。'),'',
            f'总体超过阈值的下降为 {all_drops}/{paired:,}；raw 路由上的事件也计入总体。分组案例与 raw 重复对照用于判断波动，不能仅因走 raw 就删除或直接免除因果责任。','',
+           '对于已编译退化，诊断还核对未来输出是否与当初 raw 见证逐 token 一致。如果一致，说明证据可能只覆盖了当时的输出路径，不能据此证明不同私有元数据或批形状下的未来 raw 输出也相同。独立重复是否稳定、metadata 变化是否起作用，必须由相同输入的控制判定；单条退化不被直接归结为实现错误，也不被直接免除为数值噪声。','',
            table(['场景','模型','raw重复比较','token分歧','分数绝对差>0.03'],[[r['study'],r['model'],r['comparisons'],r['token_divergences'],r['score_abs_diff_gt0_03']] for r in controls]),'',
            '## 全成本与真实计时','',
            '单 session 与模板 fan-out 分开报告。fan-out 为十个模板、每模板十个 tenant session，并发仍为 2；这是闭环重放，不是 100 个同时活跃请求或开放环容量测量。完整 wall 包括 warm 业务、首次 raw、失败验证、准备和等待，不减去假想 tool slack。服务启动和独立预控制在各策略中同等排除。','',

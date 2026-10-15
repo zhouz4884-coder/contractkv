@@ -14,6 +14,8 @@ def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); a=p.parse_args(); root=a.root.resolve()
     entries=sorted((root/'scripts').glob('*tsc_revision_r1r*.py'))+sorted((root/'scripts').glob('run_tsc_revision_r1r*.sh'))
     pending=list(entries); roles={path:'entrypoint_or_analysis' for path in entries}; used=set()
+    for name in ('tsc_revision_verify_archive.py','tsc_revision_split_raw_archive.py'):
+        path=root/'scripts'/name; pending.append(path); roles[path]='archive_transport_verification_tool'
     freeze=json.loads((root/'results/tsc_revision_r1r/validation/freeze_v1.json').read_text())
     for item in freeze['files']:
         if item['path'].startswith('third_party/'):

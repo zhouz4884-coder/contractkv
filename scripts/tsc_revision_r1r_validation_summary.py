@@ -173,6 +173,8 @@ def main():
                         'compiled_token_divergences':sum(r['first_diverging_token']!=-1 and r['effective_level']!='L0' for r in rs),
                         'material_drops_gt_0_03':sum(r['quality_drop']>.03 for r in rs),
                         'compiled_material_drops':sum(r['quality_drop']>.03 and r['effective_level']!='L0' for r in rs),
+                        'max_quality_drop':max(r['quality_drop'] for r in rs),
+                        'max_compiled_quality_drop':max((r['quality_drop'] for r in rs if r['effective_level']!='L0'),default=None),
                         'distinct_sources_with_compiled_drop':len({r['source_group'] for r in rs if r['quality_drop']>.03 and r['effective_level']!='L0'}),
                         'raw_mean_score':mean(rs,'raw_score'),'candidate_mean_score':mean(rs,'candidate_score'),
                         'compiled_outputs_gt96':sum(r['effective_level']!='L0' and r['candidate_output_tokens']>96 for r in rs),
