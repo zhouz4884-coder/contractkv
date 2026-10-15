@@ -88,6 +88,21 @@ verification answer/EOS ranks/margins. They are model-step metadata, not a
 per-kernel profiler. The old six-file backend and all 83 original commitments
 remain unchanged. Real GPU preflight is required before calibration/formal use.
 
+The preflight is now complete: 120 actual requests and all model-runner samples
+join to returned IDs; the pointwise gate rejects the 12 paths that would pass
+rank-one alone, with zero rejected publication. Its known-case/all-reject scope
+is not independent efficacy evidence. Checkpoint/tokenizer registry v1 records
+full hashes for all 12 weight shards across three models before new calibration.
+
+`tsc_revision_r2_profile_v1.json` defines independent per-level development
+controls on the 12 development sources. It probes the three exact-query forms,
+earlier same-tenant and later new-tenant metadata pairs. Rejected layouts have
+no candidate-future generation and are not described as actual raw fallback
+outputs. This is not a production descent policy or a serving-acceptance trial.
+Full client RPC and planning cost observations calibrate the later prospective
+gate; real formal wall/p99 measurements remain required. Calibration excludes
+separate startup/control checks, matching the declared formal boundary.
+
 After the controls, choose a repair supported by observed target-task evidence.
 Candidate explanations include metadata scope sensitivity, teacher-forced versus
 decode arithmetic, ambiguous ranks/margins, or an implementation difference.

@@ -1,0 +1,25 @@
+{
+  "schema_version":"tsc-r2.development-independent-level-profile.v1",
+  "development_sessions_sha256":"f990e5f429fed3bd99187c91b8b28aefc5e95b78f5a06fa7a50142b1e08ea6b5",
+  "development_sources":12,
+  "models":["qwen","mistral","llama"],
+  "concurrency":2,
+  "qualification_margin_floors":"disabled (-inf) to collect observations for every predeclared development grid choice",
+  "qualification_prefix_read":false,
+  "independent_level_and_query_namespaces":true,
+  "query_probes":[
+    {"witness_turn":0,"future_points":[{"turn":3,"first_tenant":0},{"turn":9,"first_tenant":8}]},
+    {"witness_turn":1,"future_points":[{"turn":4,"first_tenant":0},{"turn":7,"first_tenant":8}]},
+    {"witness_turn":2,"future_points":[{"turn":5,"first_tenant":0},{"turn":8,"first_tenant":8}]}
+  ],
+  "expected_level_slots":{"qwen":108,"mistral":72,"llama":54},
+  "raw_reference_and_future_generations_per_eligible_source":18,
+  "candidate_future_generations_per_issued_qualification":4,
+  "free_generation_upper_bounds":{"qwen":648,"mistral":432,"llama":360},
+  "no_candidate_future_call_for_rejected_qualification":true,
+  "unexecuted_candidate_is_not_claimed_as_real_raw_fallback_generation":true,
+  "trace_gpu_model_steps":false,
+  "all_requests_log_actual_prompt_and_output_IDs_and_hashes":true,
+  "no_end_to_end_policy_or_serving_efficacy_claim":true,
+  "purpose":"Development per-level acceptance, pointwise margins, complete single-call cost and real paired quality; not online multi-level descent"
+}
