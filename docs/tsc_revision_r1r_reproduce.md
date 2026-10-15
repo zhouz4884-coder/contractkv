@@ -228,6 +228,34 @@ study started. Its restoration hash and queue state are recorded in
 `results/tsc_revision_r1r/analysis_change_record_v1.json`; generation sources,
 inputs and backend files were not changed by that edit.
 
+## Completed evidence transport and local checks
+
+The main archive is represented by five binary parts and the selected known-case
+archive by one part. For each root, concatenate the files in the exact order in
+`raw_evidence_parts_manifest_v1.json`, without text conversion. Verify the full
+archive and every member before extracting into a clean workspace copy:
+
+```bash
+python scripts/tsc_revision_verify_archive.py --root results/tsc_revision_r1r --archive /path/to/r1r_raw_evidence_v1.tar.gz --output main_verification.json
+python scripts/tsc_revision_verify_archive.py --root results/tsc_revision_r1r/known_counterexamples --archive /path/to/known_raw_evidence_v1.tar.gz --output known_verification.json
+```
+
+The verifier requires agreement between archive/part manifests, exact unique
+membership, member sizes and hashes. Expected member roots are
+`results/tsc_revision_r1r/`, `logs/tsc_revision_r1r/` and `third_party/licenses/`.
+Reject links, non-regular files and traversal paths; preserve existing files
+whose bytes differ. The delivery restoration checks recorded zero conflicts
+and zero overwrites. Raw cell files remain in these verified archive parts;
+they are not duplicated as loose Git files.
+
+`local_completion_audit_v1.json` records the independent local main, long-output,
+frozen known-case and additional known-case analyses. Main/long CSV bytes match
+the remote tables and parsed audit JSON values match. In the known-case summary,
+all IDs/counts match exactly and the largest mean-score reduction difference is
+5.55e-17; its comparison permits at most 1e-15 absolute difference for the two
+mean fields only. Per-request pairs match byte for byte. The original archived
+scores and tables were not changed to resolve floating-point formatting.
+
 ## Claims left outside scope
 
 Correctly signed manifests can still mislabel private content. The verifier

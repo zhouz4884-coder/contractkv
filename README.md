@@ -1,5 +1,7 @@
 # ContractKV
 
+> **2026-10-15 大修补强第一阶段已完成。** [总报告](docs/tsc_major_revision_phase1_summary_zh.md)汇总原 R1、query 绑定补测、真实长输出、失败案例对照和完整成本；[详细结果](docs/tsc_major_revision_r1r_results_zh.md)保留所有退化与回退。下方 2026-07-20 内容记录原投稿版本，新受控变体的结果单独解释。
+
 > **Certified Prompt Layout Compilation and Transactional Prefix Reuse for Multi-Tenant LLM Services**
 
 ContractKV 是一个面向结构化 LLM 服务的前缀缓存系统。它将 **Prompt 布局编译、行为认证、证书作用域和物理 KV 发布**连接成一个完整闭环，在不修改模型权重和注意力内核的前提下，把原本位于动态片段之后、无法被原生 Prefix Cache 利用的稳定上下文转换为可认证、可共享、可回滚的物理前缀状态。

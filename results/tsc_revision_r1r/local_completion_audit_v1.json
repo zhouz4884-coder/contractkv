@@ -1,0 +1,201 @@
+{
+  "schema_version": "tsc-r1r.local-complete-evidence.v1",
+  "timestamp": "2026-10-15T08:39:44.369038+00:00",
+  "all_required_audits_pass": true,
+  "primary_cells": 45,
+  "primary_futures": 28350,
+  "long_cells": 9,
+  "long_actual_generations": 135,
+  "known_policy_cells": 9,
+  "known_futures": 108,
+  "main_and_long_local_recomputation": {
+    "schema_version": "tsc-r1r.local-derived-comparison.v1",
+    "compared_files": 12,
+    "all_reproduced_values_match": true,
+    "all_csv_bytes_match": true,
+    "json_newline_limit": "Windows JSON write_text uses CRLF; remote uses LF; parsed JSON equality is checked. Archived raw bytes were verified separately.",
+    "files": [
+      {
+        "group": "validation",
+        "file": "completion_audit_v1.json",
+        "byte_equal": false,
+        "value_equal": true,
+        "difference": "JSON line-ending only"
+      },
+      {
+        "group": "validation",
+        "file": "performance_by_cell_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "validation",
+        "file": "performance_comparison_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "validation",
+        "file": "quality_pairs_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "validation",
+        "file": "quality_summary_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "validation",
+        "file": "raw_repeat_controls_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "validation",
+        "file": "verification_attempts_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "long_horizon",
+        "file": "completion_audit_v1.json",
+        "byte_equal": false,
+        "value_equal": true,
+        "difference": "JSON line-ending only"
+      },
+      {
+        "group": "long_horizon",
+        "file": "long_output_pairs_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "long_horizon",
+        "file": "long_output_summary_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "long_horizon",
+        "file": "posthoc_schema_diagnostics_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      },
+      {
+        "group": "long_horizon",
+        "file": "posthoc_schema_summary_v1.csv",
+        "byte_equal": true,
+        "value_equal": true,
+        "difference": "none"
+      }
+    ]
+  },
+  "known_local_recomputation": [
+    {
+      "file": "completion_audit_v1.json",
+      "equal": true,
+      "comparison": "parsed JSON"
+    },
+    {
+      "file": "quality_pairs_v1.csv",
+      "equal": true,
+      "comparison": "bytes"
+    },
+    {
+      "file": "quality_summary_v1.csv",
+      "equal": true,
+      "comparison": "Exact IDs/counts and absolute mean-score tolerance 1e-15",
+      "max_mean_absolute_difference": 5.551115123125783e-17,
+      "byte_equal": false
+    }
+  ],
+  "additional_known_local_audit_matches_remote": true,
+  "archives": [
+    {
+      "schema_version": "tsc-revision-local-archive-verification.v1",
+      "parts": 5,
+      "archive_sha256": "8804009cd3069f19743551fbb40ef367d907b837f30228bd0c0627ea46557ff6",
+      "members_verified": 534,
+      "all_hashes_match": true,
+      "does_not_imply_scientific_success": true
+    },
+    {
+      "schema_version": "tsc-revision-local-archive-verification.v1",
+      "parts": 1,
+      "archive_sha256": "a0c3eb7a76a62cd563cb0530dcc7458b5ce15eb810e70dd8f454c329f439be5b",
+      "members_verified": 72,
+      "all_hashes_match": true,
+      "does_not_imply_scientific_success": true
+    }
+  ],
+  "restores": [
+    {
+      "archive_sha256": "8804009cd3069f19743551fbb40ef367d907b837f30228bd0c0627ea46557ff6",
+      "archive_members": 534,
+      "existing_byte_matches": 307,
+      "missing_before_restore": 227,
+      "conflicts": [],
+      "restored_files": 227,
+      "overwritten_files": 0,
+      "complete": true
+    },
+    {
+      "archive_sha256": "a0c3eb7a76a62cd563cb0530dcc7458b5ce15eb810e70dd8f454c329f439be5b",
+      "archive_members": 72,
+      "existing_byte_matches": 55,
+      "missing_before_restore": 17,
+      "conflicts": [],
+      "restored_files": 17,
+      "overwritten_files": 0,
+      "complete": true
+    }
+  ],
+  "remote_closure": {
+    "schema_version": "tsc-r1r.remote-closure.v1",
+    "timestamp": "2026-10-15T08:36:58.865024+00:00",
+    "primary_cells": 45,
+    "primary_futures": 28350,
+    "long_cells": 9,
+    "long_actual_generations": 135,
+    "known_policy_cells": 9,
+    "known_futures": 108,
+    "all_experimental_audits_complete": true,
+    "known_additional_identity_audit_complete": true,
+    "prospective_files_match_at_closure": true,
+    "gpu_process_query_success": true,
+    "owned_resident_gpu_pids": [],
+    "other_resident_gpu_pids_not_modified": [],
+    "owned_gpu_cleanup_verified": true,
+    "prior_supervisor_observations": {
+      "2334871": "exited",
+      "2340849": "exited",
+      "2343437": "exited",
+      "2360242": "exited",
+      "2369591": "exited"
+    },
+    "gpu_snapshot": "index, name, uuid, memory.used [MiB], memory.total [MiB]\n0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24 MiB, 24576 MiB\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24 MiB, 24576 MiB\n",
+    "no_processes_stopped_by_this_audit": true,
+    "local_byte_verification_and_git_publication_are_separate": true
+  },
+  "targeted_cpu_tests_passed": 40,
+  "cpu_tests_do_not_measure_gpu_efficacy": true,
+  "scientific_success_is_separate": true,
+  "git_publication_requires_separate_remote_ref_verification": true,
+  "known_summary_floating_point_limit": {
+    "max_mean_absolute_difference": 5.551115123125783e-17,
+    "all_non_mean_fields_exact": true,
+    "no_archived_table_or_score_modified": true,
+    "local_python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]"
+  }
+}

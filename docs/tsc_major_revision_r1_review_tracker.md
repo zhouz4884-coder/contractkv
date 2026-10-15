@@ -1,14 +1,22 @@
 # Major Revision: Reviewer-to-Evidence Tracker
 
-Readiness: **R1 execution complete and archived; query-bound repair validation
-in progress; manuscript not ready to submit**.
+Readiness: **Phase-1 experiments complete and archived: R1, query-bound repair,
+actual-long-output and known-counterexample controls; manuscript not ready to submit**.
 The submitted manuscript is preserved. This tracker does not claim that the
 manuscript or response letter has already been revised.
 
 Task mode: **triage-only** for a **major revision**. Response-package readiness
-is **draft_with_placeholders**, because manuscript locations and the final
-repair/long-output evidence are not yet assigned. Experimental completion and
+is **draft_with_placeholders**, because manuscript locations and text revisions
+are not yet assigned. Experimental completion and
 submission readiness are separate states.
+
+Phase-1 closure is summarized in `docs/tsc_major_revision_phase1_summary_zh.md`.
+R1R local and remote audits confirm 45/45 main cells (28,350 futures), 9/9
+long-output cells (135 actual generations), and 9/9 known-case policy cells
+(108 futures). All three archives have per-member transport verification;
+remote closure verifies all 83 prospective source/input checks and no owned
+resident GPU process. Two compiled quality regressions remain in the new main
+cohort. Targeted optimization is the separately authorized second phase.
 
 The decision letter is identified by SHA256
 `e5b12656164650d7d9d13fd9377ded67b346b7963d5893735d84354173fea03d`.
@@ -26,7 +34,7 @@ completed text changes are implied here.
 | E4 | EIC prohibits colored/bold/italic change marks; AE asks colored changes | Prepare clean manuscript and location-specific change list; resolve submission-format conflict | unresolved format instruction |
 | E5 | Maintain journal size limits | Compress duplicated methods/protocol prose rather than shrink figures or omit key evidence | manuscript stage |
 | AE1 | Clarify component novelty versus end-to-end integration | Cross-reference R2.1/R2.5; separate known primitives from scoped publication governance | positioning/manuscript stage |
-| AE2 | Certification beyond reordering; workloads, free generation and overhead | Cross-reference R1.2/R1.4 and R3.2/R3.3; use measured evidence with failures retained | R1 complete; repair and actual-long supplement in progress |
+| AE2 | Certification beyond reordering; workloads, free generation and overhead | Cross-reference R1.2/R1.4 and R3.2/R3.3; use measured evidence with failures retained | experiments complete; bounded positive results and residual failures documented |
 | AE3 | Fair and consistent baseline interpretation | Cross-reference R1.1/R1.3; native matched deltas and absolute operating points | analysis complete; manuscript changes pending |
 | AE4 | Manifest, isolation and certification limitations | Cross-reference R1.5/R1.6; CPU and live boundaries kept explicit | evidence/limitations documented; manuscript changes pending |
 | AE5 | Clarity, reproducibility and related work | Cross-reference R1.11/R1.12/R2.1/R2.2/R2.3 | reproducibility evidence available; text/citation work pending |
@@ -35,8 +43,8 @@ completed text changes are implied here.
 | R1.2b | Narrow macro CI versus model spread | Fixed-model estimand explanation; joint source-session bootstrap across models | completed: joint-session intervals in R1 report; not an architecture-population interval |
 | R1.3a | Different stacks do not support performance superiority | Matched native baseline deltas; no causal 2.18% cross-stack claim | audit completed |
 | R1.3b | Explain CacheBlend regression rate and asymmetry | 9000 archived matched pairs; mean changes, improvements and threshold sensitivity; original paper reporting comparison | completed and archived; cross-runtime superiority/112x causal safety claims not supported |
-| R1.4a | Certified-prefix free-running divergence | X2: actual token IDs, first divergence, score difference, admitted/fallback and raw-repeat controls | R1 complete: changed-query counterexamples retained; query-bound repair validation running on new sources |
-| R1.4b | Explicit certified output horizon | Original family budgets and newly bound 512-token condition; actual length/stop distribution and positions beyond the recorded witness length | R1 followup: 216/3672 admitted futures exceed their own reference length, totaling 2376 extra positions; actual outputs remain short; controlled actual-long supplement queued |
+| R1.4a | Certified-prefix free-running divergence | X2: actual token IDs, first divergence, score difference, admitted/fallback and raw-repeat controls | complete: original 108 compiled drops retained; new cohort has 2/8595 compiled drops; four selected old failure units reproduce and are protected in the new combined control |
+| R1.4b | Explicit certified output horizon | Original family budgets and newly bound 512-token condition; actual length/stop distribution and positions beyond the recorded witness length | complete: original 216/3672 outputs exceed their witness length; controlled Qwen/Mistral compiled outputs reach 646/769 actual tokens; Llama rejects and has no compiled long positive evidence |
 | R1.5 | Manifest correctness is a trust boundary | Dedicated ownership/declaration/hash audit; explicitly show trusted semantic mislabelling is not detected by hashing | nine CPU cases completed; helper is not wired to the live endpoint; manuscript subsection pending |
 | R1.6 | Prefix timing side channel | Explicit limitation: authorization does not eliminate shared-prefix timing leakage | documented; no timing-defense claim |
 | R1.7 | 325000 stress operations are CPU state-machine work | Qualify or remove abstract number; retain live/CPU distinction | manuscript stage |
@@ -47,7 +55,7 @@ completed text changes are implied here.
 | R1.12 | Make space for the requested additions | Compress III-A–III-C; merge overlapping IV-B/IV-D scope prose; remove Table II protocol duplication and group related-work acknowledgements | manuscript stage; no compression claimed yet |
 | R2.1 | Prior-work progression/table | Compare reuse primitive, behavioral admission, authorization/lifecycle and publication governance | literature/manuscript stage |
 | R2.2 | Model/task citations and published venues | Verify model cards, benchmark papers and COLM 2024 RULER citation | literature stage |
-| R2.3 | Package versions for reproducibility | Per-cell package/source/model/input manifests and original runtime inventory | R1 complete: 78 manifests, exact main source and 51-file result-code inventory; R1R freezes recorded |
+| R2.3 | Package versions for reproducibility | Per-cell package/source/model/input manifests and original runtime inventory | complete: R1 78 manifests/51-file inventory; R1R 63-file code inventory, all 83 source/input checks, verified main and known-case archives plus local rerun audits |
 | R2.4 | Artifact link as footnote | Move public URL to a footnote without removing artifact availability | manuscript stage |
 | R2.5 | Individual versus integration novelty | Explicitly distinguish known primitives from scoped service-template certification and transactional shared-state admission | manuscript stage |
 | R2.6 | Input-level prompt displacement | Exact frozen-tokenizer rendered prompt/offset analysis: 4695 segments | completed |
@@ -71,14 +79,14 @@ pending until a revised manuscript supplies real section/table locations.
 |---|---|---|---|---|
 | R1.2a / AE2 | evidence / major | ACCEPT_EXPERIMENT | `results/tsc_revision_r1/fresh_paired_performance_v1.csv`; R1 report X1 | Common HotpotQA improves prefill; zero-slack macro CI crosses zero |
 | R1.2b | statistical / major | ACCEPT_ANALYSIS + SOFTEN_CLAIM | `results/tsc_revision_r1/common_hotpot_shared_cluster_ci_v1.csv` | Fixed three-model estimand; not an architecture-population interval |
-| R1.4a / AE2 | evidence / major | ACCEPT_EXPERIMENT + SOFTEN_CLAIM | `fresh_token_quality_summary_v1.csv`, `material_quality_drop_cases_v1.csv` under R1; R1R `validation/summary/` | Original 108 compiled material drops retained; repair is a controlled query-catalog variant and remains in progress |
-| R1.4b | evidence / major | ACCEPT_EXPERIMENT + PARTIAL | R1 `output_horizon_summary_v1.csv` / `output_horizon_pairs_v1.csv`; frozen R1R `long_horizon/` | Positional excess and missing historical witness IDs explicit; a 512 cap with short outputs is insufficient; actual-long study pending |
+| R1.4a / AE2 | evidence / major | ACCEPT_EXPERIMENT + SOFTEN_CLAIM | `fresh_token_quality_summary_v1.csv`, `material_quality_drop_cases_v1.csv` under R1; R1R `validation/summary/` and `known_counterexamples/` | Original failures retained; controlled query-catalog repair protects selected old cases but has two new compiled regressions; not universal future equivalence |
+| R1.4b | evidence / major | ACCEPT_EXPERIMENT + SOFTEN_CLAIM | R1 horizon CSVs; R1R `long_horizon/summary/` including actual-ID/metric audit | Actual >512 outputs established for two models in a controlled array task; Mistral differs from future raw and Llama lacks a compiled positive; extra witness positions remain uncertified |
 | R3.2 | evidence / major | ACCEPT_ANALYSIS + ACCEPT_EXPERIMENT | R1 `historical_full_cost_by_repeat_v1.csv`, `fresh_cost_decomposition_v1.csv`; R1 report X3 | Missing historical clocks stay unavailable; live readiness/full-wall clocks and offline slack accounting are separate |
 | R3.3 | evidence / major | ACCEPT_EXPERIMENT + CLARIFY_EXISTING | R1 `guard_probe_qwen_v1.jsonl`, `guard_probe_qwen14_actual_v2.jsonl`; R1 report X4 | D1 is a latency reference; D2 adds rejection/publication governance rather than guaranteed speed over D1 |
 | R1.5 / AE4 | scope / major | ACCEPT_ANALYSIS + SOFTEN_CLAIM | R1 `registration_manifest_cases_v1.csv` and `registration_manifest_summary_v1.json` | Standalone CPU audit; trusted semantic mislabelling remains undetected |
 | R1.6 / AE4 | scope / major | SOFTEN_CLAIM | Explicit limitation in R1 report X5 and R1R reproduce notes | No timing-channel defense or adversarial public-tenant endpoint validation |
 | R1.3 / AE3 | interpretation / major | ACCEPT_ANALYSIS + SOFTEN_CLAIM | R1 `matched_baseline_audit_manifest_v1.json`; R1 report X6 | No 2.18% cross-stack causal speed claim or 112x causal safety ranking |
-| R2.3 / AE5 | reproducibility / minor | ACCEPT_ANALYSIS + ACCEPT_TEXT | R1 runtime/source inventory, local/remote completion audits and verified archive; R1R freezes | R1R final source inventory/archive/publication still pending |
+| R2.3 / AE5 | reproducibility / minor | ACCEPT_ANALYSIS + ACCEPT_TEXT | R1 and R1R runtime/source inventory, local/remote completion audits and verified archives | Experimental evidence complete; manuscript citation/version placement remains pending |
 | R2.6 / R3.1 | methodology / major | ACCEPT_ANALYSIS + PARTIAL | R1 `segment_token_displacement_v1.csv` and summary; R1 report X6 | Input displacement is measured; production workload prevalence is not |
 
 All other rows above are manuscript, citation or formatting actions. They are

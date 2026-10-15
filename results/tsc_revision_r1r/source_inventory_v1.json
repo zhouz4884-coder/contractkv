@@ -1,0 +1,32 @@
+{
+  "schema_version": "tsc-r1r.result-source-inventory.v1",
+  "non_test_code_files": 63,
+  "entrypoint_and_import_closure_not_line_execution_trace": true,
+  "validation_exact_live_sources": "validation/freeze_v1.json and source_snapshot",
+  "long_exact_live_sources": "long_horizon/freeze_v1.json and source_snapshot",
+  "historical_development_exact_client_versions_complete": false,
+  "development_provenance": "Retained outputs, launcher snapshots and backend patches; current root client is the frozen validation version. Development is diagnostic, not the sealed validation evidence.",
+  "native_extensions_verified_against_R1": [
+    {
+      "relative_path": "vllm/_C.abi3.so",
+      "bytes": 363681160,
+      "sha256": "feb862d8de73163317f85b796f58ea357ce88e23f4bd5e1cc5d22ac0c9cf97d1"
+    },
+    {
+      "relative_path": "vllm/_flashmla_C.abi3.so",
+      "bytes": 1026584,
+      "sha256": "ec1eecf069278a6ef982f7e690b99d7d45d2c0374a5d5be7623abc5e4c1e21e2"
+    },
+    {
+      "relative_path": "vllm/_moe_C.abi3.so",
+      "bytes": 141492736,
+      "sha256": "03933be46c202894ba7f4e1bd7f59bb95db4eca64fdb1cd7db376a695adc46a9"
+    },
+    {
+      "relative_path": "vllm/cumem_allocator.abi3.so",
+      "bytes": 27776,
+      "sha256": "e17ae70ce22661d5d541efd959dba30eafb6669c408e2c3d452a1382ac5355dd"
+    }
+  ],
+  "private_SSH_and_credentials_excluded": true
+}

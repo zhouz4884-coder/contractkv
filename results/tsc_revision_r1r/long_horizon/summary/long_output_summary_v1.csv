@@ -1,0 +1,10 @@
+model,cap,raw_references,length_references,admitted_references,reference_actual_tokens_max,future_pairs,compiled_pairs,compiled_outputs_gt256,compiled_outputs_gt512,compiled_output_tokens_max,compiled_outputs_exceed_reference_length,compiled_positions_beyond_reference_length,compiled_divergences_from_witness,token_divergences,raw_complete_correct_arrays,policy_complete_correct_arrays,compiled_correctness_regressions
+llama31-8b,256,3,3,0,256,6,0,0,0,0,0,0,0,0,0,0,0
+llama31-8b,512,3,3,0,512,6,0,0,0,0,0,0,0,0,0,0,0
+llama31-8b,1536,3,0,0,517,6,0,0,0,0,0,0,0,0,0,0,0
+mistral7b,256,3,3,0,256,6,0,0,0,0,0,0,0,0,0,0,0
+mistral7b,512,3,3,0,512,6,0,0,0,0,0,0,0,0,0,0,0
+mistral7b,1536,3,0,3,769,6,6,6,6,769,0,0,0,6,0,6,0
+qwen3-8b,256,3,3,0,256,6,0,0,0,0,0,0,0,0,0,0,0
+qwen3-8b,512,3,3,0,512,6,0,0,0,0,0,0,0,0,0,0,0
+qwen3-8b,1536,3,0,3,646,6,6,6,6,646,0,0,0,0,6,6,0
