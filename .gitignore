@@ -31,6 +31,17 @@ runs/
 
 # Keep only lightweight audited experiment records in Git.
 results/*
+!results/tsc_revision_r1/
+results/tsc_revision_r1/*
+!results/tsc_revision_r1/*.csv
+!results/tsc_revision_r1/*.json
+!results/tsc_revision_r1/*.jsonl
+!results/tsc_revision_r1/*.yaml
+!results/tsc_revision_r1/*.patch
+!results/tsc_revision_r1/*.tar.gz.part*
+!results/tsc_revision_r1/source_snapshots/
+results/tsc_revision_r1/source_snapshots/*
+!results/tsc_revision_r1/source_snapshots/*.py
 !results/env/
 !results/baselines/
 !results/manifests/

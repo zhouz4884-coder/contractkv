@@ -1,0 +1,1568 @@
+diff --git a/vllm/entrypoints/openai/api_server.py b/vllm/entrypoints/openai/api_server.py
+index c159bce..385a025 100644
+--- a/vllm/entrypoints/openai/api_server.py
++++ b/vllm/entrypoints/openai/api_server.py
+@@ -7,6 +7,7 @@ import gc
+ import importlib
+ import inspect
+ import json
++import math
+ import multiprocessing
+ import multiprocessing.forkserver as forkserver
+ import os
+@@ -110,6 +111,7 @@ from vllm.utils import (Device, FlexibleArgumentParser, decorate_logs,
+                         set_ulimit)
+ from vllm.v1.metrics.prometheus import get_prometheus_registry
+ from vllm.version import __version__ as VLLM_VERSION
++from vllm.v1.engine import ContractKVVerifySpec
+ 
+ prometheus_multiproc_dir: tempfile.TemporaryDirectory
+ 
+@@ -354,6 +356,25 @@ async def validate_json_request(raw_request: Request):
+ router = APIRouter()
+ 
+ 
++class ContractKVVerifyAPIRequest(pydantic.BaseModel):
++    request_id: str
++    prompt_token_ids: list[int]
++    txn_id: str
++    policy_hash: str
++    policy_version: str
++    attestation_mode: str = "exact_path_stop_v1"
++    stable_prefix_end_token: int
++    verify_start_token: int
++    reference_answer_ids: list[int]
++    reference_raw_margins: list[float]
++    terminal_stop_token_id: int
++    stable_content_hash: str
++    layout_hash: str
++    dependency_graph_hash: str
++    timeout_s: float = 300.0
++    cache_salt: str | None = None  # CONTRACTKV_PHASE26R_OBSERVATION_SALT_V1
++
++
+ class PrometheusResponse(Response):
+     media_type = prometheus_client.CONTENT_TYPE_LATEST
+ 
+@@ -444,6 +465,80 @@ def engine_client(request: Request) -> EngineClient:
+     return request.app.state.engine_client
+ 
+ 
++@router.post("/v1/contractkv/verify",
++             dependencies=[Depends(validate_json_request)])
++@with_cancellation
++async def contractkv_verify_endpoint(payload: ContractKVVerifyAPIRequest,
++                                     raw_request: Request):
++    client = engine_client(raw_request)
++    verify = getattr(client, "contractkv_verify", None)
++    if verify is None:
++        raise HTTPException(
++            status_code=HTTPStatus.NOT_IMPLEMENTED.value,
++            detail="ContractKV compact verification requires vLLM V1",
++        )
++    spec = ContractKVVerifySpec(
++        txn_id=payload.txn_id,
++        policy_hash=payload.policy_hash,
++        policy_version=payload.policy_version,
++        attestation_mode=payload.attestation_mode,
++        stable_prefix_end_token=payload.stable_prefix_end_token,
++        verify_start_token=payload.verify_start_token,
++        reference_answer_ids=payload.reference_answer_ids,
++        reference_raw_margins=payload.reference_raw_margins,
++        terminal_stop_token_id=payload.terminal_stop_token_id,
++        stable_content_hash=payload.stable_content_hash,
++        layout_hash=payload.layout_hash,
++        dependency_graph_hash=payload.dependency_graph_hash,
++    )
++    result = await verify(
++        request_id=payload.request_id,
++        prompt_token_ids=payload.prompt_token_ids,
++        verify_spec=spec,
++        timeout_s=payload.timeout_s,
++        cache_salt=payload.cache_salt,
++    )
++    return JSONResponse(content={
++        "request_id": payload.request_id,
++        "txn_id": result.txn_id,
++        "verify_decision": result.verify_decision,
++        "txn_state": result.txn_state,
++        "failure_reason": result.failure_reason,
++        "committed_tokens": result.committed_tokens,
++        "committed_full_blocks": result.committed_full_blocks,
++        "certificate_issued": result.certificate_issued,
++        "certificate_hash": result.certificate_hash,
++        "policy_hash": result.policy_hash,
++        "raw_margin_q05": (result.raw_margin_q05
++                           if math.isfinite(result.raw_margin_q05) else None),
++        "candidate_margin_q05": (result.candidate_margin_q05
++                                 if math.isfinite(result.candidate_margin_q05)
++                                 else None),
++        "degradation_q95": (result.degradation_q95
++                            if math.isfinite(result.degradation_q95) else None),
++        "terminal_stop_margin": (result.terminal_stop_margin
++                                 if math.isfinite(result.terminal_stop_margin)
++                                 else None),  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
++    })
++
++
++@router.get("/v1/contractkv/stats")
++async def contractkv_stats_endpoint(raw_request: Request):
++    client = engine_client(raw_request)
++    pending = getattr(client, "contractkv_pending", {})
++    router_stats = getattr(client, "contractkv_router_stats", {})
++    return JSONResponse(content={
++        "pending_futures": len(pending),
++        "orphan_outputs": int(router_stats.get("orphan", 0)),
++        "duplicate_outputs": int(router_stats.get("duplicate", 0)),
++        "compact_outputs": int(router_stats.get("compact_outputs", 0)),
++        "compact_wire_bytes_total": int(
++            router_stats.get("compact_wire_bytes_total", 0)),
++        "compact_wire_bytes_max": int(
++            router_stats.get("compact_wire_bytes_max", 0)),
++    })
++
++
+ @router.get("/health", response_class=Response)
+ async def health(raw_request: Request) -> Response:
+     """Health check."""
+diff --git a/vllm/v1/core/sched/scheduler.py b/vllm/v1/core/sched/scheduler.py
+index aa45f66..36dc78a 100644
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -4,6 +4,8 @@
+ from __future__ import annotations
+ 
+ import itertools
++import hashlib
++import os
+ import time
+ from collections import defaultdict
+ from collections.abc import Iterable
+@@ -26,8 +28,8 @@ from vllm.v1.core.sched.output import (CachedRequestData, NewRequestData,
+ from vllm.v1.core.sched.request_queue import (SchedulingPolicy,
+                                               create_request_queue)
+ from vllm.v1.core.sched.utils import check_stop, remove_all
+-from vllm.v1.engine import (EngineCoreEventType, EngineCoreOutput,
+-                            EngineCoreOutputs)
++from vllm.v1.engine import (ContractKVCompactResult, EngineCoreEventType,
++                            EngineCoreOutput, EngineCoreOutputs)
+ from vllm.v1.kv_cache_interface import KVCacheConfig
+ from vllm.v1.metrics.stats import SchedulerStats
+ from vllm.v1.outputs import DraftTokenIds, KVConnectorOutput, ModelRunnerOutput
+@@ -37,6 +39,801 @@ from vllm.v1.structured_output import StructuredOutputManager
+ 
+ logger = init_logger(__name__)
+ 
++# CONTRACTKV_EPHEMERAL_SHADOW_HELPER_BEGIN
++def _contractkv_write(event):
++    import os
++    import time as _time
++    mode = os.environ.get("CONTRACTKV_TRACE_MODE", "SYNC_JSONL").upper()
++    if mode in {"OFF", "COUNTERS", "RING"}:
++        return
++    import json
++    path = os.environ.get("CONTRACTKV_PHASE16R_EVENT_LOG") or os.environ.get("CONTRACTKV_EPHEMERAL_SHADOW_LOG")
++    if not path:
++        return
++    event.setdefault("timestamp", _time.time())
++    try:
++        directory = os.path.dirname(path)
++        if directory:
++            os.makedirs(directory, exist_ok=True)
++        with open(path, "a", encoding="utf-8") as handle:
++            handle.write(json.dumps(event, ensure_ascii=False, default=str) + "\n")
++    except Exception:
++        pass
++
++
++def _contractkv_attach_pstp(request):
++    if getattr(request, "contractkv_pstp", None) is not None:
++        return getattr(request, "contractkv_pstp")
++    native_spec = getattr(request, "contractkv_verify_spec", None)
++    if native_spec is not None:
++        request.contractkv_pstp = native_spec
++        return native_spec
++    try:
++        from scripts.contractkv_pstp import lookup_pstp_spec
++        spec = lookup_pstp_spec(str(request.request_id))
++        if spec is not None:
++            request.contractkv_pstp = spec
++            _contractkv_write({
++                "event": "pstp_attached",
++                "request_id": request.request_id,
++                "txn_id": spec.txn_id,
++                "verify_decision": spec.verify_decision.value,
++                "stable_prefix_end_token": spec.stable_prefix_end_token,
++                "shadow_work": spec.shadow_work,
++            })
++        return spec
++    except Exception as exc:
++        _contractkv_write({"event": "pstp_attach_error", "request_id": getattr(request, "request_id", ""), "error": repr(exc)})
++        return None
++
++
++def _contractkv_pstp_enabled(request):
++    return _contractkv_attach_pstp(request) is not None
++
++
++def _contractkv_shadow_enabled(request):
++    spec = _contractkv_attach_pstp(request)
++    return bool(spec is not None and getattr(spec, "shadow_work", True))
++
++
++def _contractkv_is_foreground(request):
++    return not _contractkv_shadow_enabled(request)
++
++
++def _contractkv_init_state(scheduler):
++    import os
++    import time as _time
++    if getattr(scheduler, "_contractkv_state_ready", False):
++        return
++    now = _time.monotonic_ns()
++    scheduler._contractkv_state_ready = True
++    scheduler.last_fg_arrival_ns = now
++    scheduler.last_fg_admission_ns = now
++    scheduler.last_fg_schedule_ns = now
++    scheduler.last_fg_completion_ns = now
++    scheduler.shadow_backoff_until_ns = 0
++    scheduler.shadow_collision_count = 0
++    scheduler.previous_round_shadow_tokens = 0
++    scheduler.previous_round_shadow_start_ns = 0
++    scheduler._contractkv_round_id = 0
++    scheduler._contractkv_round_shadow_reserved = 0
++    scheduler.idle_grace_ms = float(os.environ.get("CONTRACTKV_IDLE_GRACE_MS", "0"))
++    scheduler.base_backoff_ms = float(os.environ.get("CONTRACTKV_BASE_BACKOFF_MS", "1"))
++    scheduler.max_backoff_ms = float(os.environ.get("CONTRACTKV_MAX_BACKOFF_MS", "8"))
++    scheduler.shadow_block_watermark = int(os.environ.get("CONTRACTKV_SHADOW_BLOCK_WATERMARK", "0"))
++    from scripts.contractkv_shadow_parking import ShadowParking
++    scheduler.contractkv_shadow_parking = ShadowParking()
++
++
++def _contractkv_last_foreground_activity_ns(scheduler):
++    _contractkv_init_state(scheduler)
++    return max(
++        scheduler.last_fg_arrival_ns,
++        scheduler.last_fg_admission_ns,
++        scheduler.last_fg_schedule_ns,
++        scheduler.last_fg_completion_ns,
++    )
++
++
++def _contractkv_has_foreground_waiting(scheduler):
++    return any(_contractkv_is_foreground(req) for req in scheduler.waiting)
++
++
++def _contractkv_has_foreground_running(scheduler, current_request=None):
++    return any(req is not current_request and _contractkv_is_foreground(req) for req in scheduler.running)
++
++
++def _contractkv_record_arrival(scheduler, request):
++    import time as _time
++    _contractkv_init_state(scheduler)
++    if _contractkv_is_foreground(request):
++        scheduler.last_fg_arrival_ns = _time.monotonic_ns()
++
++
++def _contractkv_record_admission(scheduler, request):
++    import time as _time
++    _contractkv_init_state(scheduler)
++    if _contractkv_is_foreground(request):
++        scheduler.last_fg_admission_ns = _time.monotonic_ns()
++
++
++def _contractkv_record_completion(scheduler, request):
++    import time as _time
++    _contractkv_init_state(scheduler)
++    if _contractkv_is_foreground(request):
++        scheduler.last_fg_completion_ns = _time.monotonic_ns()
++
++
++def _contractkv_begin_round(scheduler):
++    import time as _time
++    _contractkv_init_state(scheduler)
++    scheduler._contractkv_round_id += 1
++    scheduler._contractkv_round_shadow_reserved = 0
++    now = _time.monotonic_ns()
++    foreground = _contractkv_has_foreground_waiting(scheduler) or _contractkv_has_foreground_running(scheduler)
++    collision = scheduler.previous_round_shadow_tokens > 0 and foreground
++    if collision:
++        scheduler.shadow_collision_count += 1
++        backoff_ms = min(
++            scheduler.max_backoff_ms,
++            scheduler.base_backoff_ms * (2 ** (scheduler.shadow_collision_count - 1)),
++        )
++        scheduler.shadow_backoff_until_ns = now + int(backoff_ms * 1e6)
++        wait_ms = max(0.0, (now - scheduler.previous_round_shadow_start_ns) / 1e6)
++        _contractkv_write({
++            "event": "shadow_collision",
++            "collision_count": scheduler.shadow_collision_count,
++            "backoff_ms": backoff_ms,
++            "previous_round_shadow_tokens": scheduler.previous_round_shadow_tokens,
++            "foreground_wait_ms": wait_ms,
++        })
++    else:
++        scheduler.shadow_collision_count = max(0, scheduler.shadow_collision_count - 1)
++
++
++def _contractkv_park_and_wake(scheduler):
++    import os
++    if os.environ.get("CONTRACTKV_PARKING", "1") != "1":
++        return
++    import time as _time
++    _contractkv_init_state(scheduler)
++    now = _time.monotonic_ns()
++    foreground = _contractkv_has_foreground_waiting(scheduler) or _contractkv_has_foreground_running(scheduler)
++    if foreground:
++        # A RUNNING request cannot be moved into the waiting queue without the
++        # scheduler's native preemption transition.  The running-loop admission
++        # gate already pauses shadow work in place, preserving status and KV
++        # ownership.  Parking is therefore restricted to not-yet-admitted
++        # waiting requests below.
++        return
++    deadline = max(_contractkv_last_foreground_activity_ns(scheduler) + int(scheduler.idle_grace_ms * 1e6), scheduler.shadow_backoff_until_ns)
++    for parked in scheduler.contractkv_shadow_parking.wake(now if now >= deadline else -1, max_wake=1):
++        scheduler.waiting.add_request(parked.request)
++
++
++def _contractkv_should_admit_shadow(scheduler, request):
++    import os
++    import time as _time
++    from scripts.contractkv_quiescence import decide_shadow_admission
++    _contractkv_init_state(scheduler)
++    now = _time.monotonic_ns()
++    free_blocks = scheduler.kv_cache_manager.block_pool.get_num_free_blocks()
++    idle_age_ms = (now - _contractkv_last_foreground_activity_ns(scheduler)) / 1e6
++    cached = getattr(request, "_contractkv_shadow_admission", None)
++    if cached is not None and cached.get("round_id") == scheduler._contractkv_round_id:
++        return cached
++    requested_tokens = _contractkv_shadow_chunk_tokens(request) or 0
++    global_budget = max(1, int(os.environ.get("CONTRACTKV_SHADOW_ROUND_TOKENS", "32")))
++    available_tokens = max(0, global_budget - scheduler._contractkv_round_shadow_reserved)
++    report = decide_shadow_admission(
++        foreground_waiting=_contractkv_has_foreground_waiting(scheduler),
++        foreground_running=_contractkv_has_foreground_running(scheduler, request),
++        in_collision_backoff=now < scheduler.shadow_backoff_until_ns,
++        idle_age_ms=idle_age_ms,
++        idle_grace_ms=scheduler.idle_grace_ms,
++        free_blocks=free_blocks,
++        block_watermark=scheduler.shadow_block_watermark,
++        collision_count=scheduler.shadow_collision_count,
++        current_backoff_ms=(scheduler.shadow_backoff_until_ns - now) / 1e6,
++        chunk_tokens=min(requested_tokens, available_tokens),
++        quiescence_enabled=os.environ.get("CONTRACTKV_QUIESCENCE", "1") == "1",
++    ).as_dict()
++    if report["admitted"] and available_tokens <= 0:
++        report["admitted"] = False
++        report["reason"] = "shadow_round_budget"
++    if report["admitted"]:
++        scheduler._contractkv_round_shadow_reserved += int(report["chunk_tokens"])
++    report.update({
++        "event": "shadow_admission",
++        "request_id": request.request_id,
++        "round_id": scheduler._contractkv_round_id,
++        "global_shadow_budget_tokens": global_budget,
++        "round_shadow_reserved_tokens": scheduler._contractkv_round_shadow_reserved,
++    })
++    request._contractkv_shadow_admission = report
++    _contractkv_write(report)
++    return report
++
++
++def _contractkv_shadow_chunk_tokens(request):
++    import os
++    if not _contractkv_shadow_enabled(request):
++        return None
++    try:
++        return max(1, int(os.environ.get("CONTRACTKV_SHADOW_CHUNK_TOKENS", "32")))
++    except ValueError:
++        return 32
++
++
++def _contractkv_shadow_granted_tokens(request):
++    if not _contractkv_shadow_enabled(request):
++        return None
++    report = getattr(request, "_contractkv_shadow_admission", None) or {}
++    return int(report.get("chunk_tokens", 0))
++
++
++def _contractkv_end_round(scheduler, scheduler_output):
++    import time as _time
++    _contractkv_init_state(scheduler)
++    shadow_tokens = 0
++    foreground_tokens = 0
++    shadow_request_tokens = {}
++    for request_id, tokens in scheduler_output.num_scheduled_tokens.items():
++        request = scheduler.requests.get(request_id)
++        if request is not None and _contractkv_shadow_enabled(request):
++            shadow_tokens += int(tokens)
++            shadow_request_tokens[str(request_id)] = int(tokens)
++        else:
++            foreground_tokens += int(tokens)
++    now = _time.monotonic_ns()
++    scheduler.previous_round_shadow_tokens = shadow_tokens
++    if shadow_tokens > 0:
++        scheduler.previous_round_shadow_start_ns = now
++        _contractkv_write({
++            "event": "shadow_round",
++            "shadow_tokens": shadow_tokens,
++            "foreground_tokens": foreground_tokens,
++            "shadow_request_tokens": shadow_request_tokens,
++            "max_shadow_request_tokens": max(shadow_request_tokens.values(), default=0),
++            "global_shadow_budget_tokens": int(__import__("os").environ.get("CONTRACTKV_SHADOW_ROUND_TOKENS", "32")),
++        })
++    if foreground_tokens > 0:
++        scheduler.last_fg_schedule_ns = now
++
++
++def _contractkv_cache_entries(pool):
++    return sum(len(blocks) for blocks in pool.cached_block_hash_to_block.values())
++
++
++def _contractkv_pstp_finalize(scheduler, request):
++    import os
++    import time as _time
++    if getattr(request, "contractkv_verify_spec", None) is not None:
++        # Source-level compact verification owns its finalization path.
++        return
++    spec = _contractkv_attach_pstp(request)
++    if spec is None:
++        return
++    if getattr(request, "_contractkv_finalized", False):
++        _contractkv_write({"event": "pstp_finalize_duplicate", "request_id": request.request_id, "txn_id": spec.txn_id})
++        return
++    request._contractkv_finalized = True
++    from scripts.contractkv_pstp import VerifyDecision, aligned_commit_tokens
++
++    pool = scheduler.kv_cache_manager.block_pool
++    blocks = scheduler.kv_cache_manager.get_blocks(request.request_id)
++    physical_blocks = [block for group in blocks.blocks for block in group]
++    cache_before = _contractkv_cache_entries(pool)
++    visible_before = sum(block.block_hash is not None for block in physical_blocks)
++    num_computed_tokens = int(getattr(request, "num_computed_tokens", 0) or 0)
++    commit_tokens = aligned_commit_tokens(spec.stable_prefix_end_token, num_computed_tokens, scheduler.block_size)
++    decision = spec.verify_decision
++    if spec.tokenization_glue_loss >= scheduler.block_size:
++        decision = VerifyDecision.INCOMPLETE
++    started = _time.perf_counter()
++    if decision is VerifyDecision.PASS and commit_tokens > 0:
++        scheduler.kv_cache_manager.cache_blocks(request, commit_tokens)
++        action = "commit"
++    else:
++        commit_tokens = 0
++        action = "abort"
++    elapsed_ms = (_time.perf_counter() - started) * 1000.0
++    visible_after = sum(block.block_hash is not None for block in physical_blocks)
++    _contractkv_write({
++        "event": "pstp_finalize",
++        "request_id": request.request_id,
++        "txn_id": spec.txn_id,
++        "action": action,
++        "verify_decision": decision.value,
++        "failure_reason": spec.failure_reason,
++        "expected_stable_tokens": spec.expected_stable_tokens,
++        "stable_prefix_end_token": spec.stable_prefix_end_token,
++        "tokenization_glue_loss": spec.tokenization_glue_loss,
++        "glue_status": spec.glue_status,
++        "num_computed_tokens": num_computed_tokens,
++        "block_size": scheduler.block_size,
++        "commit_tokens": commit_tokens,
++        "committed_full_blocks": commit_tokens // scheduler.block_size,
++        "discarded_partial_tokens": max(0, spec.stable_prefix_end_token - commit_tokens),
++        "physical_blocks": len(physical_blocks),
++        "visible_blocks_before_finalize": visible_before,
++        "visible_blocks_after_finalize": visible_after,
++        "cache_entries_before": cache_before,
++        "cache_entries_after": _contractkv_cache_entries(pool),
++        "operation_ms": elapsed_ms,
++    })
++    if os.environ.get("CONTRACTKV_PSTP_DOUBLE_FINALIZE") == "1":
++        _contractkv_pstp_finalize(scheduler, request)
++# CONTRACTKV_EPHEMERAL_SHADOW_HELPER_END
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++
++# CONTRACTKV_PREFIX_METRICS_HELPER_BEGIN
++_contractkv_prefix_metric_seen = set()
++_contractkv_prefix_query_seen = None
++_contractkv_prefix_query_signature = None
++_contractkv_prefix_query_epoch = 0
++
++
++def _contractkv_prefix_metrics_write(event):
++    import json
++    import os
++    import time as _time
++    if os.environ.get("CONTRACTKV_PREFIX_METRICS") != "1":
++        return
++    path = os.environ.get("CONTRACTKV_PREFIX_METRICS_LOG")
++    if not path:
++        return
++    event.setdefault("ts", _time.time())
++    event.setdefault("source", "vllm.v1.core.sched.scheduler")
++    try:
++        directory = os.path.dirname(path)
++        if directory:
++            os.makedirs(directory, exist_ok=True)
++        with open(path, "a", encoding="utf-8") as handle:
++            handle.write(json.dumps(event, ensure_ascii=False, default=str) + "\n")
++    except Exception:
++        # Instrumentation must never affect serving.
++        pass
++
++
++def _contractkv_prefix_metrics_block_ids(scheduler, request_id):
++    try:
++        groups = scheduler.kv_cache_manager.get_block_ids(request_id)
++        return [block_id for group in groups for block_id in group]
++    except Exception:
++        return []
++
++
++def _contractkv_prefix_metrics_block_state(scheduler, block_ids):
++    try:
++        block_pool = scheduler.kv_cache_manager.block_pool
++        refcounts = []
++        hashes = []
++        resident = []
++        for block_id in block_ids:
++            block = block_pool.blocks[int(block_id)]
++            refcounts.append(int(block.ref_cnt))
++            block_hash = getattr(block, "block_hash", None)
++            hashes.append(bytes(block_hash).hex() if block_hash is not None else None)
++            resident.append(block_hash is not None)
++        return refcounts, hashes, resident
++    except Exception:
++        return [], [], []
++
++
++def _contractkv_prefix_metrics_process_query(scheduler):
++    """Answer read-only candidate residency queries from the layout compiler."""
++    import json
++    import os
++    import time as _time
++    global _contractkv_prefix_query_seen
++    global _contractkv_prefix_query_signature
++    global _contractkv_prefix_query_epoch
++    query_path = os.environ.get("CONTRACTKV_PREFIX_QUERY_PATH")
++    result_path = os.environ.get("CONTRACTKV_PREFIX_QUERY_RESULT_PATH")
++    if not query_path or not result_path or not os.path.exists(query_path):
++        return
++    try:
++        with open(query_path, encoding="utf-8") as handle:
++            query = json.load(handle)
++        query_id = str(query.get("query_id", ""))
++        if not query_id or query_id == _contractkv_prefix_query_seen:
++            return
++        pool = scheduler.kv_cache_manager.block_pool
++        resident = {bytes(key).hex() for key in pool.cached_block_hash_to_block}
++        signature = hash(frozenset(resident))
++        if signature != _contractkv_prefix_query_signature:
++            _contractkv_prefix_query_epoch += 1
++            _contractkv_prefix_query_signature = signature
++        candidates = []
++        for candidate in query.get("candidates", []):
++            hashes = [str(item) for item in candidate.get("block_hashes", []) if item]
++            matched = 0
++            for block_hash in hashes:
++                if block_hash not in resident:
++                    break
++                matched += 1
++            candidates.append({
++                "candidate_id": str(candidate.get("candidate_id", "")),
++                "resident_prefix_blocks": matched,
++                "candidate_blocks": len(hashes),
++            })
++        result = {
++            "query_id": query_id,
++            "timestamp": _time.time(),
++            "cache_epoch": _contractkv_prefix_query_epoch,
++            "resident_hash_entries": len(resident),
++            "free_gpu_blocks": int(pool.get_num_free_blocks()),
++            "candidates": candidates,
++        }
++        temporary = result_path + ".tmp"
++        with open(temporary, "w", encoding="utf-8") as handle:
++            json.dump(result, handle)
++        os.replace(temporary, result_path)
++        _contractkv_prefix_query_seen = query_id
++        _contractkv_prefix_metrics_write({
++            "event": "prefix_cache_candidate_residency_query", **result,
++        })
++    except Exception as exc:
++        _contractkv_prefix_metrics_write({
++            "event": "prefix_cache_candidate_query_error", "error": repr(exc),
++        })
++
++
++def _contractkv_prefix_metrics_log_scheduler(scheduler, scheduler_output):
++    import os
++    import time as _time
++    if os.environ.get("CONTRACTKV_PREFIX_METRICS") != "1":
++        return
++    try:
++        _contractkv_prefix_metrics_process_query(scheduler)
++        block_pool = getattr(getattr(scheduler, "kv_cache_manager", None), "block_pool", None)
++        block_size = int(getattr(scheduler, "block_size", 0) or 0)
++        scheduled = getattr(scheduler_output, "num_scheduled_tokens", {}) or {}
++        for request_id, scheduled_tokens in scheduled.items():
++            request = getattr(scheduler, "requests", {}).get(request_id)
++            if request is None:
++                continue
++            prompt_tokens = int(getattr(request, "num_prompt_tokens", 0) or 0)
++            if not prompt_tokens:
++                prompt_tokens = len(getattr(request, "prompt_token_ids", []) or [])
++            computed_before = int(getattr(request, "num_computed_tokens", 0) or 0)
++            scheduled_tokens = int(scheduled_tokens or 0)
++            initial = request_id not in _contractkv_prefix_metric_seen
++            if initial:
++                _contractkv_prefix_metric_seen.add(request_id)
++            if (os.environ.get("CONTRACTKV_PREFIX_INITIAL_ONLY") == "1"
++                    and not initial):
++                continue
++            remaining_prompt = max(0, prompt_tokens - computed_before)
++            prefill_scheduled_tokens = min(scheduled_tokens, remaining_prompt)
++            prefix_hit_tokens = min(prompt_tokens, computed_before) if initial else None
++            physical_ids = _contractkv_prefix_metrics_block_ids(scheduler, request_id)
++            block_refcounts, block_hashes, block_cache_resident = (
++                _contractkv_prefix_metrics_block_state(scheduler, physical_ids))
++            # These are scheduler-observable derivations, not hidden cache-manager counters.
++            reused_blocks = (prefix_hit_tokens // block_size) if initial and block_size else None
++            allocated_blocks = max(0, len(physical_ids) - (reused_blocks or 0))
++            arrival = getattr(request, "arrival_time", None)
++            wait_ms = None
++            if initial and isinstance(arrival, (int, float)):
++                candidate = (_time.time() - float(arrival)) * 1000.0
++                if 0.0 <= candidate <= 3_600_000.0:
++                    wait_ms = candidate
++            _contractkv_prefix_metrics_write({
++                "event": "prefix_cache_request_observation",
++                "request_id": request_id,
++                "initial_prefill_observation": initial,
++                "prompt_tokens": prompt_tokens,
++                "prefix_lookup_tokens": prompt_tokens if initial else None,
++                "prefix_hit_tokens": prefix_hit_tokens,
++                "new_prefill_tokens_this_iteration": prefill_scheduled_tokens,
++                "num_computed_tokens_before_schedule": computed_before,
++                "scheduled_tokens": scheduled_tokens,
++                "block_size": block_size,
++                "physical_block_ids": physical_ids[:1024],
++                "physical_block_count": len(physical_ids),
++                "physical_block_refcounts": block_refcounts[:1024],
++                "physical_block_hashes": block_hashes[:1024],
++                "physical_block_cache_resident": block_cache_resident[:1024],
++                "reused_physical_blocks": reused_blocks,
++                "reused_physical_blocks_method": "derived_floor(prefix_hit_tokens/block_size)",
++                "newly_allocated_blocks": allocated_blocks,
++                "newly_allocated_blocks_method": "observed_block_table_minus_derived_reused_blocks",
++                "prefix_cache_evictions": None,
++                "prefix_cache_evictions_availability": "unavailable_in_scheduler_probe",
++                "scheduler_wait_ms": wait_ms,
++                "prefill_gpu_ms": None,
++                "decode_gpu_ms": None,
++                "gpu_timing_availability": "requires_worker_or_metrics_endpoint_probe",
++                "free_gpu_blocks": int(block_pool.get_num_free_blocks()) if block_pool is not None else None,
++                "total_gpu_blocks": int(getattr(block_pool, "num_gpu_blocks", 0) or 0) if block_pool is not None else None,
++                "used_gpu_blocks": (int(getattr(block_pool, "num_gpu_blocks", 0) or 0)
++                                    - int(block_pool.get_num_free_blocks())) if block_pool is not None else None,
++                "cached_physical_entries": sum(len(blocks) for blocks in block_pool.cached_block_hash_to_block.values()) if block_pool is not None else None,
++                "scheduler_running_requests": len(getattr(scheduler, "running", []) or []),
++                "scheduler_waiting_requests": len(getattr(scheduler, "waiting", []) or []),
++            })
++        if os.environ.get("CONTRACTKV_PREFIX_CONCURRENT_SNAPSHOTS") == "1":
++            # The snapshot is intentionally scheduler-local: a shared ID is
++            # counted only when it is present in multiple *currently active*
++            # request block tables, ruling out temporal ID reuse.
++            active = getattr(scheduler, "requests", {}) or {}
++            owners = {}
++            for active_request_id in active:
++                for block_id in _contractkv_prefix_metrics_block_ids(scheduler, active_request_id):
++                    owners.setdefault(int(block_id), set()).add(str(active_request_id))
++            shared_ids = sorted(block_id for block_id, request_ids in owners.items() if len(request_ids) > 1)
++            refcounts, _, _ = _contractkv_prefix_metrics_block_state(scheduler, shared_ids)
++            _contractkv_prefix_metrics_write({
++                "event": "prefix_cache_concurrent_snapshot",
++                "active_request_count": len(active),
++                "shared_block_ids": shared_ids[:4096],
++                "shared_block_request_counts": [len(owners[block_id]) for block_id in shared_ids[:4096]],
++                "shared_block_refcounts": refcounts[:4096],
++                "free_gpu_blocks": int(block_pool.get_num_free_blocks()) if block_pool is not None else None,
++                "total_gpu_blocks": int(getattr(block_pool, "num_gpu_blocks", 0) or 0) if block_pool is not None else None,
++            })
++    except Exception as exc:
++        _contractkv_prefix_metrics_write({"event": "prefix_cache_probe_error", "error": repr(exc)})
++# CONTRACTKV_PREFIX_METRICS_HELPER_END
++
+ 
+ class Scheduler(SchedulerInterface):
+ 
+@@ -202,12 +999,24 @@ class Scheduler(SchedulerInterface):
+ 
+         # For logging.
+         scheduled_timestamp = time.monotonic()
++        # CONTRACTKV_QUIESCENCE_BEGIN_ROUND_CALL
++        _contractkv_begin_round(self)
++        # CONTRACTKV_QUIESCENCE_PARKING_CALL
++        _contractkv_park_and_wake(self)
+ 
+         # First, schedule the RUNNING requests.
+         req_index = 0
+         while req_index < len(self.running) and token_budget > 0:
+             request = self.running[req_index]
+ 
++            # CONTRACTKV_EPHEMERAL_SHADOW_RUNNING_BEGIN
++            _contractkv_shadow_chunk = _contractkv_shadow_chunk_tokens(request)
++            if _contractkv_shadow_chunk is not None:
++                _contractkv_gate = _contractkv_should_admit_shadow(self, request)
++                if not _contractkv_gate["admitted"]:
++                    req_index += 1
++                    continue
++            # CONTRACTKV_EPHEMERAL_SHADOW_RUNNING_END
+             num_new_tokens = (request.num_tokens_with_spec +
+                               request.num_output_placeholders -
+                               request.num_computed_tokens)
+@@ -215,6 +1024,8 @@ class Scheduler(SchedulerInterface):
+                     num_new_tokens):
+                 num_new_tokens = (
+                     self.scheduler_config.long_prefill_token_threshold)
++            if _contractkv_shadow_chunk is not None:
++                num_new_tokens = min(num_new_tokens, _contractkv_shadow_granted_tokens(request))
+             num_new_tokens = min(num_new_tokens, token_budget)
+ 
+             # Make sure the input position does not exceed the max model len.
+@@ -253,7 +1064,8 @@ class Scheduler(SchedulerInterface):
+                 new_blocks = self.kv_cache_manager.allocate_slots(
+                     request,
+                     num_new_tokens,
+-                    num_lookahead_tokens=self.num_lookahead_tokens)
++                    num_lookahead_tokens=self.num_lookahead_tokens,
++                    delay_cache_blocks=_contractkv_pstp_enabled(request))
+                 if new_blocks is None:
+                     # The request cannot be scheduled.
+                     # Preempt the lowest-priority request.
+@@ -337,6 +1149,18 @@ class Scheduler(SchedulerInterface):
+ 
+                 request = self.waiting.peek_request()
+ 
++                # CONTRACTKV_QUIESCENCE_WAITING_BEGIN
++                if _contractkv_shadow_enabled(request):
++                    _contractkv_waiting_gate = _contractkv_should_admit_shadow(self, request)
++                    if not _contractkv_waiting_gate["admitted"]:
++                        if __import__("os").environ.get("CONTRACTKV_PARKING", "1") == "1":
++                            self.waiting.pop_request()
++                            self.contractkv_shadow_parking.park(request, _contractkv_last_foreground_activity_ns(self) + int(self.idle_grace_ms * 1e6), _contractkv_waiting_gate["reason"])
++                            continue
++                        self.waiting.pop_request()
++                        skipped_waiting_requests.prepend_request(request)
++                        continue
++                # CONTRACTKV_QUIESCENCE_WAITING_END
+                 # KVTransfer: skip request if still waiting for remote kvs.
+                 if request.status == RequestStatus.WAITING_FOR_REMOTE_KVS:
+                     is_ready = self._update_waiting_for_remote_kv(request)
+@@ -423,6 +1247,11 @@ class Scheduler(SchedulerInterface):
+                             < num_new_tokens):
+                         num_new_tokens = (
+                             self.scheduler_config.long_prefill_token_threshold)
++                    # CONTRACTKV_EPHEMERAL_SHADOW_WAITING_BEGIN
++                    _contractkv_waiting_shadow_chunk = _contractkv_shadow_granted_tokens(request)
++                    if _contractkv_waiting_shadow_chunk is not None:
++                        num_new_tokens = min(num_new_tokens, _contractkv_waiting_shadow_chunk)
++                    # CONTRACTKV_EPHEMERAL_SHADOW_WAITING_END
+ 
+                     # chunked prefill has to be enabled explicitly to allow
+                     # pooling requests to be chunked
+@@ -477,7 +1306,7 @@ class Scheduler(SchedulerInterface):
+                     num_new_local_computed_tokens,
+                     new_computed_blocks,
+                     num_lookahead_tokens=effective_lookahead_tokens,
+-                    delay_cache_blocks=load_kv_async,
++                    delay_cache_blocks=(load_kv_async or _contractkv_pstp_enabled(request)),
+                     num_encoder_tokens=num_encoder_tokens,
+                 )
+ 
+@@ -508,6 +1337,8 @@ class Scheduler(SchedulerInterface):
+ 
+                 req_index += 1
+                 self.running.append(request)
++                # CONTRACTKV_QUIESCENCE_ADMISSION_CALL
++                _contractkv_record_admission(self, request)
+                 if self.log_stats:
+                     request.record_event(EngineCoreEventType.SCHEDULED,
+                                          scheduled_timestamp)
+@@ -624,6 +1455,11 @@ class Scheduler(SchedulerInterface):
+             batch = KVEventBatch(ts=time.time(), events=events)
+             self.kv_event_publisher.publish(batch)
+ 
++        # CONTRACTKV_QUIESCENCE_END_ROUND_CALL
++        _contractkv_end_round(self, scheduler_output)
++        # CONTRACTKV_PREFIX_METRICS_CALL_BEGIN
++        _contractkv_prefix_metrics_log_scheduler(self, scheduler_output)
++        # CONTRACTKV_PREFIX_METRICS_CALL_END
+         self._update_after_schedule(scheduler_output)
+         return scheduler_output
+ 
+@@ -927,6 +1763,14 @@ class Scheduler(SchedulerInterface):
+                 stopped = check_stop(request, self.max_model_len,
+                                      pooler_output)
+ 
++            prompt_logprobs_tensors = prompt_logprobs_dict.get(req_id)
++            contractkv_result = None
++            if stopped and request.contractkv_verify_spec is not None:
++                contractkv_result = self._finalize_contractkv_verify(
++                    request, prompt_logprobs_tensors)
++                # The compact result is the only cross-process verifier output.
++                prompt_logprobs_tensors = None
++
+             if stopped:
+                 kv_transfer_params = self._free_request(request)
+                 if status_before_stop == RequestStatus.RUNNING:
+@@ -952,9 +1796,18 @@ class Scheduler(SchedulerInterface):
+             if num_nans_in_logits is not None and req_id in num_nans_in_logits:
+                 request.num_nans_in_logits = num_nans_in_logits[req_id]
+ 
+-            # Get prompt logprobs for this request.
+-            prompt_logprobs_tensors = prompt_logprobs_dict.get(req_id)
+-            if new_token_ids or pooler_output is not None \
++            if contractkv_result is not None:
++                outputs[request.client_index].append(
++                    EngineCoreOutput(
++                        request_id=req_id,
++                        new_token_ids=[],
++                        finish_reason=request.get_finished_reason(),
++                        events=request.take_events(),
++                        trace_headers=request.trace_headers,
++                        num_cached_tokens=request.num_cached_tokens,
++                        contractkv_result=contractkv_result,
++                    ))
++            elif new_token_ids or pooler_output is not None \
+                 or kv_transfer_params:
+ 
+                 # Add EngineCoreOutput for this Request.
+@@ -1018,6 +1871,146 @@ class Scheduler(SchedulerInterface):
+ 
+         return engine_core_outputs
+ 
++    @staticmethod
++    def _contractkv_quantile(values: list[float], fraction: float) -> float:
++        if not values:
++            return float("nan")
++        ordered = sorted(values)
++        index = fraction * (len(ordered) - 1)
++        lower = int(index)
++        upper = min(lower + 1, len(ordered) - 1)
++        weight = index - lower
++        return ordered[lower] * (1.0 - weight) + ordered[upper] * weight
++
++    def _finalize_contractkv_verify(
++        self,
++        request: Request,
++        prompt_logprobs_tensors: Any,
++    ) -> ContractKVCompactResult:
++        spec = request.contractkv_verify_spec
++        assert spec is not None
++        decision = "INCOMPLETE"
++        state = "ABORTED"
++        failure = ""
++        committed_tokens = 0
++        raw_q05 = float("nan")
++        candidate_q05 = float("nan")
++        degradation_q95 = float("nan")
++        terminal_stop_margin = float("nan")  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
++        certificate_hash = ""
++
++        try:
++            expected_policy = os.environ.get("CONTRACTKV_POLICY_HASH", "")
++            if expected_policy and spec.policy_hash != expected_policy:
++                raise ValueError("policy_manifest_mismatch")
++            if prompt_logprobs_tensors is None:
++                raise ValueError("prompt_logprobs_missing")
++            if len(spec.reference_answer_ids) != len(
++                    spec.reference_raw_margins):
++                raise ValueError("reference_length_mismatch")
++            lists = prompt_logprobs_tensors.tolists()
++            candidate_margins: list[float] = []
++            candidate_ranks: list[int] = []
++            answer_start = spec.verify_start_token
++            for offset, target in enumerate(spec.reference_answer_ids):
++                row = answer_start - 1 + offset
++                ids = [int(value)
++                       for value in lists.logprob_token_ids[row]]
++                values = [float(value) for value in lists.logprobs[row]]
++                target_values = [value for token_id, value in zip(ids, values)
++                                 if token_id == target]
++                competitors = [value for token_id, value in zip(ids, values)
++                               if token_id != target]
++                if not target_values or not competitors:
++                    raise ValueError(f"target_unavailable:{offset}")
++                candidate_margins.append(target_values[0] - max(competitors))
++                candidate_ranks.append(int(lists.sampled_token_ranks[row]))
++
++            stop_row = answer_start - 1 + len(spec.reference_answer_ids)
++            stop_rank = int(lists.sampled_token_ranks[stop_row])
++            stop_ids = [int(value)
++                        for value in lists.logprob_token_ids[stop_row]]
++            stop_values = [float(value)
++                           for value in lists.logprobs[stop_row]]
++            stop_targets = [value for token_id, value in zip(
++                stop_ids, stop_values)
++                            if token_id == spec.terminal_stop_token_id]
++            stop_competitors = [value for token_id, value in zip(
++                stop_ids, stop_values)
++                                if token_id != spec.terminal_stop_token_id]
++            if not stop_targets or not stop_competitors:
++                raise ValueError("terminal_stop_target_or_competitor_unavailable")
++            terminal_stop_margin = stop_targets[0] - max(stop_competitors)
++            stop_ok = stop_rank == 1 and spec.terminal_stop_token_id in stop_ids
++            raw_q05 = self._contractkv_quantile(
++                spec.reference_raw_margins, 0.05)
++            candidate_q05 = self._contractkv_quantile(
++                candidate_margins, 0.05)
++            degradations = [raw - candidate for raw, candidate in zip(
++                spec.reference_raw_margins, candidate_margins)]
++            degradation_q95 = self._contractkv_quantile(degradations, 0.95)
++            min_margin = float(os.environ.get(
++                "CONTRACTKV_MIN_CANDIDATE_MARGIN", "0"))
++            max_degradation = float(os.environ.get(
++                "CONTRACTKV_MAX_DEGRADATION", "4.0"))
++            min_stop_margin = float(os.environ.get(
++                "CONTRACTKV_MIN_STOP_MARGIN", "-inf"))
++            if (all(rank == 1 for rank in candidate_ranks) and stop_ok
++                    and candidate_q05 >= min_margin
++                    and degradation_q95 <= max_degradation
++                    and terminal_stop_margin >= min_stop_margin):
++                decision = "PASS"
++                state = "COMMITTED"
++                committed_tokens = min(
++                    spec.stable_prefix_end_token,
++                    request.num_computed_tokens,
++                )
++                committed_tokens -= committed_tokens % self.block_size
++                if committed_tokens <= 0:
++                    decision = "INCOMPLETE"
++                    state = "ABORTED"
++                    failure = "no_full_block_to_commit"
++                    committed_tokens = 0
++                else:
++                    self.kv_cache_manager.cache_blocks(
++                        request, committed_tokens)
++            else:
++                decision = "FAIL"
++                failure = "token_path_or_margin_guard_failed"
++        except Exception as exc:
++            failure = str(exc)
++
++        certificate_issued = state == "COMMITTED"
++        if certificate_issued:
++            certificate_payload = "|".join((
++                spec.txn_id,
++                spec.policy_hash,
++                spec.stable_content_hash,
++                spec.layout_hash,
++                spec.dependency_graph_hash,
++                str(committed_tokens),
++            ))
++            certificate_hash = hashlib.sha256(
++                certificate_payload.encode("utf-8")).hexdigest()
++        else:
++            committed_tokens = 0
++
++        return ContractKVCompactResult(
++            txn_id=spec.txn_id,
++            policy_hash=spec.policy_hash,
++            verify_decision=decision,
++            txn_state=state,
++            failure_reason=failure,
++            committed_tokens=committed_tokens,
++            committed_full_blocks=committed_tokens // self.block_size,
++            certificate_issued=certificate_issued,
++            certificate_hash=certificate_hash,
++            raw_margin_q05=raw_q05,
++            candidate_margin_q05=candidate_q05,
++            degradation_q95=degradation_q95,
++            terminal_stop_margin=terminal_stop_margin,
++        )
++
+     def _update_request_with_output(
+         self,
+         request: Request,
+@@ -1092,6 +2085,9 @@ class Scheduler(SchedulerInterface):
+         return len(self.running), len(self.waiting)
+ 
+     def add_request(self, request: Request) -> None:
++        # CONTRACTKV_PSTP_ADD_REQUEST_CALL
++        _contractkv_attach_pstp(request)
++        _contractkv_record_arrival(self, request)
+         self.waiting.add_request(request)
+         self.requests[request.request_id] = request
+         if self.log_stats:
+@@ -1144,6 +2140,10 @@ class Scheduler(SchedulerInterface):
+     def _free_request(self, request: Request) -> Optional[dict[str, Any]]:
+         assert request.is_finished()
+ 
++        # CONTRACTKV_QUIESCENCE_COMPLETION_CALL
++        _contractkv_record_completion(self, request)
++        # CONTRACTKV_EPHEMERAL_SHADOW_FINALIZE_CALL
++        _contractkv_pstp_finalize(self, request)
+         delay_free_blocks, kv_xfer_params = self._connector_finished(request)
+         self.encoder_cache_manager.free(request)
+         request_id = request.request_id
+@@ -1162,7 +2162,8 @@ class Scheduler(SchedulerInterface):
+         del self.requests[request.request_id]
+ 
+     def get_num_unfinished_requests(self) -> int:
+-        return len(self.waiting) + len(self.running)
++        parked = len(getattr(getattr(self, 'contractkv_shadow_parking', None), 'items', {}))
++        return len(self.waiting) + len(self.running) + parked
+ 
+     def has_finished_requests(self) -> bool:
+         return len(self.finished_req_ids) > 0
+diff --git a/vllm/v1/engine/__init__.py b/vllm/v1/engine/__init__.py
+index dec4abe..f0cb8cc 100644
+--- a/vllm/v1/engine/__init__.py
++++ b/vllm/v1/engine/__init__.py
+@@ -21,6 +21,45 @@ from vllm.v1.outputs import LogprobsLists, LogprobsTensors
+ FINISH_REASON_STRINGS = ("stop", "length", "abort")
+ 
+ 
++class ContractKVVerifySpec(
++        msgspec.Struct,
++        array_like=True,  # type: ignore[call-arg]
++        omit_defaults=True,  # type: ignore[call-arg]
++        gc=False):  # type: ignore[call-arg]
++    txn_id: str
++    policy_hash: str
++    policy_version: str
++    attestation_mode: str
++    stable_prefix_end_token: int
++    verify_start_token: int
++    reference_answer_ids: list[int]
++    reference_raw_margins: list[float]
++    terminal_stop_token_id: int
++    stable_content_hash: str
++    layout_hash: str
++    dependency_graph_hash: str
++
++
++class ContractKVCompactResult(
++        msgspec.Struct,
++        array_like=True,  # type: ignore[call-arg]
++        omit_defaults=True,  # type: ignore[call-arg]
++        gc=False):  # type: ignore[call-arg]
++    txn_id: str
++    policy_hash: str
++    verify_decision: str
++    txn_state: str
++    failure_reason: str
++    committed_tokens: int
++    committed_full_blocks: int
++    certificate_issued: bool
++    certificate_hash: str
++    raw_margin_q05: float = float("nan")
++    candidate_margin_q05: float = float("nan")
++    degradation_q95: float = float("nan")
++    terminal_stop_margin: float = float("nan")  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
++
++
+ class FinishReason(enum.IntEnum):
+     """
+     Reason a request finished - stop, length, or abort.
+@@ -68,6 +107,7 @@ class EngineCoreRequest(
+     priority: int = 0
+ 
+     trace_headers: Optional[Mapping[str, str]] = None
++    contractkv_verify_spec: Optional[ContractKVVerifySpec] = None
+ 
+ 
+ class EngineCoreEventType(enum.IntEnum):
+@@ -117,6 +157,7 @@ class EngineCoreOutput(
+     trace_headers: Optional[Mapping[str, str]] = None
+     # The number of tokens with prefix cache hits.
+     num_cached_tokens: int = 0
++    contractkv_result: Optional[ContractKVCompactResult] = None
+ 
+     @property
+     def finished(self) -> bool:
+diff --git a/vllm/v1/engine/async_llm.py b/vllm/v1/engine/async_llm.py
+index e467f40..0b4c04c 100644
+--- a/vllm/v1/engine/async_llm.py
++++ b/vllm/v1/engine/async_llm.py
+@@ -9,6 +9,7 @@ from copy import copy
+ from typing import Any, Optional, Union
+ 
+ import numpy as np
++import msgspec
+ import torch
+ 
+ import vllm.envs as envs
+@@ -34,7 +35,8 @@ from vllm.transformers_utils.tokenizer_group import init_tokenizer_from_configs
+ from vllm.usage.usage_lib import UsageContext
+ from vllm.utils import (Device, as_list, cancel_task_threadsafe, cdiv,
+                         deprecate_kwargs)
+-from vllm.v1.engine import EngineCoreRequest
++from vllm.v1.engine import (ContractKVCompactResult, ContractKVVerifySpec,
++                            EngineCoreRequest)
+ from vllm.v1.engine.core_client import EngineCoreClient
+ from vllm.v1.engine.exceptions import EngineDeadError, EngineGenerateError
+ from vllm.v1.engine.output_processor import (OutputProcessor,
+@@ -155,6 +157,15 @@ class AsyncLLM(EngineClient):
+             self.logger_manager.log_engine_initialized()
+ 
+         self.output_handler: Optional[asyncio.Task] = None
++        self.contractkv_pending: dict[
++            str, asyncio.Future[ContractKVCompactResult]] = {}
++        self.contractkv_router_stats = {
++            "orphan": 0,
++            "duplicate": 0,
++            "compact_outputs": 0,
++            "compact_wire_bytes_total": 0,
++            "compact_wire_bytes_max": 0,
++        }
+         try:
+             # Start output handler eagerly if we are in the asyncio eventloop.
+             asyncio.get_running_loop()
+@@ -255,6 +266,7 @@ class AsyncLLM(EngineClient):
+ 
+         shutdown_prometheus()
+ 
++        self._fail_contractkv_futures(EngineDeadError())
+         if engine_core := getattr(self, "engine_core", None):
+             engine_core.shutdown()
+ 
+@@ -320,6 +332,60 @@ class AsyncLLM(EngineClient):
+         if self.log_requests:
+             logger.info("Added request %s.", request.request_id)
+ 
++    async def contractkv_verify(
++        self,
++        *,
++        request_id: str,
++        prompt_token_ids: list[int],
++        verify_spec: ContractKVVerifySpec,
++        timeout_s: float = 300.0,
++        cache_salt: str | None = None,
++    ) -> ContractKVCompactResult:
++        """Submit an internal verifier request without normal detokenization."""
++        if self.errored:
++            raise EngineDeadError()
++        self._run_output_handler()
++        if request_id in self.contractkv_pending:
++            raise ValueError(f"duplicate request_id={request_id}")
++        loop = asyncio.get_running_loop()
++        future: asyncio.Future[ContractKVCompactResult] = loop.create_future()
++        self.contractkv_pending[request_id] = future
++        params = SamplingParams(
++            temperature=0,
++            top_p=1,
++            max_tokens=1,
++            prompt_logprobs=2,
++        )
++        _, request = self.processor.process_inputs(
++            request_id=request_id,
++            prompt={"prompt_token_ids": prompt_token_ids,
++                    "cache_salt": cache_salt},  # CONTRACTKV_PHASE26R_OBSERVATION_SALT_V1
++            params=params,
++            arrival_time=time.time(),
++            lora_request=None,
++            tokenization_kwargs={},
++            trace_headers=None,
++            priority=100,
++            data_parallel_rank=None,
++        )
++        request.contractkv_verify_spec = verify_spec
++        try:
++            await self.engine_core.add_request_async(request)
++            return await asyncio.wait_for(future, timeout=timeout_s)
++        except (asyncio.TimeoutError, asyncio.CancelledError):
++            await self.engine_core.abort_requests_async([request_id])
++            raise
++        finally:
++            if self.contractkv_pending.get(request_id) is future:
++                self.contractkv_pending.pop(request_id, None)
++
++    def _fail_contractkv_futures(self, exc: Exception) -> None:
++        pending = getattr(self, "contractkv_pending", {})
++        for future in pending.values():
++            if not future.done():
++                future.set_exception(exc)
++        pending.clear()
++
+     # TODO: we should support multiple prompts in one call, as you
+     # can do with LLM.generate. So that for multi-prompt completion
+     # requests we don't need to send multiple messages to core proc,
+@@ -434,6 +500,10 @@ class AsyncLLM(EngineClient):
+         # object, or else it won't be garbage collected and cleaned up properly.
+         engine_core = self.engine_core
+         output_processor = self.output_processor
++        contractkv_pending = self.contractkv_pending
++        contractkv_router_stats = self.contractkv_router_stats
++        measure_contractkv_wire = os.environ.get(
++            "CONTRACTKV_MEASURE_WIRE", "0") == "1"
+         log_stats = self.log_stats
+         logger_manager = self.logger_manager
+ 
+@@ -458,19 +528,54 @@ class AsyncLLM(EngineClient):
+                             cdiv(num_outputs, VLLM_V1_OUTPUT_PROC_CHUNK_SIZE))
+ 
+                     for i, outputs_slice in enumerate(slices):
++                        contractkv_outputs = []
++                        normal_outputs = []
++                        for output in outputs_slice:
++                            if output.contractkv_result is not None:
++                                contractkv_outputs.append(output)
++                            else:
++                                normal_outputs.append(output)
++
++                        for output in contractkv_outputs:
++                            contractkv_router_stats["compact_outputs"] += 1
++                            if measure_contractkv_wire:
++                                wire_bytes = len(msgspec.msgpack.encode(output))
++                                contractkv_router_stats[
++                                    "compact_wire_bytes_total"] += wire_bytes
++                                contractkv_router_stats[
++                                    "compact_wire_bytes_max"] = max(
++                                        contractkv_router_stats[
++                                            "compact_wire_bytes_max"],
++                                        wire_bytes,
++                                    )
++                            future = contractkv_pending.pop(
++                                output.request_id, None)
++                            if future is None:
++                                contractkv_router_stats["orphan"] += 1
++                            elif future.done():
++                                contractkv_router_stats["duplicate"] += 1
++                            else:
++                                future.set_result(output.contractkv_result)
++
+                         # 2) Process EngineCoreOutputs.
+-                        processed_outputs = output_processor.process_outputs(
+-                            outputs_slice, outputs.timestamp, iteration_stats)
++                        if normal_outputs:
++                            processed_outputs = output_processor.process_outputs(
++                                normal_outputs, outputs.timestamp,
++                                iteration_stats)
++                        else:
++                            processed_outputs = None
+                         # NOTE: RequestOutputs are pushed to their queues.
+-                        assert not processed_outputs.request_outputs
++                        if processed_outputs is not None:
++                            assert not processed_outputs.request_outputs
+ 
+                         # Allow other asyncio tasks to run between chunks
+                         if i + 1 < len(slices):
+                             await asyncio.sleep(0)
+ 
+                         # 3) Abort any reqs that finished due to stop strings.
+-                        await engine_core.abort_requests_async(
+-                            processed_outputs.reqs_to_abort)
++                        if processed_outputs is not None:
++                            await engine_core.abort_requests_async(
++                                processed_outputs.reqs_to_abort)
+ 
+                     # 4) Logging.
+                     # TODO(rob): make into a coroutine and launch it in
+@@ -484,6 +589,10 @@ class AsyncLLM(EngineClient):
+             except Exception as e:
+                 logger.exception("AsyncLLM output_handler failed.")
+                 output_processor.propagate_error(e)
++                for future in contractkv_pending.values():
++                    if not future.done():
++                        future.set_exception(e)
++                contractkv_pending.clear()
+ 
+         self.output_handler = asyncio.create_task(output_handler())
+ 
+diff --git a/vllm/v1/request.py b/vllm/v1/request.py
+index 64cce3e..e169039 100644
+--- a/vllm/v1/request.py
++++ b/vllm/v1/request.py
+@@ -10,8 +10,9 @@ from typing import TYPE_CHECKING, Any, Callable, Optional, Union
+ from vllm.multimodal.inputs import MultiModalFeatureSpec
+ from vllm.pooling_params import PoolingParams
+ from vllm.sampling_params import SamplingParams
+-from vllm.v1.engine import (EngineCoreEvent, EngineCoreEventType,
+-                            EngineCoreRequest, FinishReason)
++from vllm.v1.engine import (ContractKVVerifySpec, EngineCoreEvent,
++                            EngineCoreEventType, EngineCoreRequest,
++                            FinishReason)
+ from vllm.v1.structured_output.request import StructuredOutputRequest
+ from vllm.v1.utils import ConstantList
+ 
+@@ -39,6 +40,7 @@ class Request:
+         trace_headers: Optional[Mapping[str, str]] = None,
+         block_hasher: Optional[Callable[["Request"],
+                                         list["BlockHash"]]] = None,
++        contractkv_verify_spec: Optional[ContractKVVerifySpec] = None,
+     ) -> None:
+         self.request_id = request_id
+         self.client_index = client_index
+@@ -104,6 +106,7 @@ class Request:
+         self.all_token_ids = ConstantList(self._all_token_ids)
+         # trace_headers
+         self.trace_headers = trace_headers
++        self.contractkv_verify_spec = contractkv_verify_spec
+         # State
+         # The number of tokens with prefix cache hits.
+         self.num_cached_tokens = -1
+@@ -141,6 +144,7 @@ class Request:
+             priority=request.priority,
+             trace_headers=request.trace_headers,
+             block_hasher=block_hasher,
++            contractkv_verify_spec=request.contractkv_verify_spec,
+         )
+ 
+     def append_output_token_ids(

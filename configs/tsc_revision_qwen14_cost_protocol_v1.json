@@ -1,0 +1,22 @@
+{
+  "schema_version": "contractkv.tsc-revision.qwen14-full-cost.v1",
+  "status": "frozen_before_measurement",
+  "model": "Qwen3-14B",
+  "purpose": "Supplement missing full registration timing for the fourth published configuration",
+  "sessions_source": "results/scale_up/qwen3_14b_tp2_v0/frozen_sessions_v0.jsonl",
+  "sessions": 25,
+  "turns": 10,
+  "fresh_process_repeats": 3,
+  "policies": ["raw-order", "contractkv"],
+  "dtype": "float16",
+  "tensor_parallel_size": 2,
+  "max_model_len": 8192,
+  "max_num_seqs": 2,
+  "concurrency": 2,
+  "gpu_memory_utilization": 0.88,
+  "generation_max_tokens": 96,
+  "stable_word_limit": 1500,
+  "layout": "R1 stable-unit rendering; full L3 with strict raw-reference attestation and raw fallback",
+  "cost": "Full registration includes raw reference, token preparation, all verification attempts and warm service wall time",
+  "claim_boundary": "Fresh supplementary cost experiment on the existing 14B model; not a reconstruction or replacement of the published 44.69% measurement."
+}

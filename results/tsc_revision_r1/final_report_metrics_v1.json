@@ -1,0 +1,69 @@
+{
+  "schema_version": "tsc-revision-report.v1",
+  "experimental_execution_complete": true,
+  "common_hotpot": [
+    {
+      "model": "qwen",
+      "requests": 810,
+      "coverage": 0.6333333333333333,
+      "new_prefill_reduction": 0.48046126046595033,
+      "raw_mean_ttft_ms": 1082.6810117000368,
+      "candidate_observed_mean_ttft_ms": 579.7075230415543,
+      "zero_slack_net_reduction": 0.09033724843539097,
+      "slack2000_net_reduction": 0.29559132837809127,
+      "slack6000_net_reduction": 0.46456994611743063,
+      "score_drops_gt_0_03": 0,
+      "raw_score": 0.1743990268990269,
+      "candidate_score": 0.17443269693269692
+    },
+    {
+      "model": "mistral",
+      "requests": 810,
+      "coverage": 0.5333333333333333,
+      "new_prefill_reduction": 0.4068802042180757,
+      "raw_mean_ttft_ms": 1139.931553022729,
+      "candidate_observed_mean_ttft_ms": 706.1059059552205,
+      "zero_slack_net_reduction": 0.005410995177183242,
+      "slack2000_net_reduction": 0.2003566648720553,
+      "slack6000_net_reduction": 0.3771295861676596,
+      "score_drops_gt_0_03": 0,
+      "raw_score": 0.18069164196803486,
+      "candidate_score": 0.1807546626056873
+    },
+    {
+      "model": "llama",
+      "requests": 810,
+      "coverage": 0.5,
+      "new_prefill_reduction": 0.38381948741563665,
+      "raw_mean_ttft_ms": 1036.7232619451336,
+      "candidate_observed_mean_ttft_ms": 624.9487595201505,
+      "zero_slack_net_reduction": 0.06151544789900898,
+      "slack2000_net_reduction": 0.27586786426241344,
+      "slack6000_net_reduction": 0.39717626566762787,
+      "score_drops_gt_0_03": 0,
+      "raw_score": 0.2793974132863022,
+      "candidate_score": 0.2793974132863022
+    }
+  ],
+  "free_generation_admitted_pairs": 3672,
+  "free_generation_material_drops_on_admitted": 108,
+  "guard": {
+    "cases": 20,
+    "execution_complete": true,
+    "genuine_bad_layout_cases": 10,
+    "bad_layouts_rejected": 10,
+    "rejected_published_tokens": 0,
+    "guard_safety_demonstrated": true
+  },
+  "fresh_post_decision_guard": {
+    "cases": 20,
+    "execution_complete": true,
+    "model": "qwen3-14b",
+    "genuine_bad_layout_cases": 10,
+    "bad_layouts_rejected": 10,
+    "fresh_protected_scores_equal_raw": true,
+    "rejected_published_tokens": 0
+  },
+  "manuscript_and_response_letter_not_yet_revised": true,
+  "original_claims_not_silently_replaced_by_new_protocol": true
+}

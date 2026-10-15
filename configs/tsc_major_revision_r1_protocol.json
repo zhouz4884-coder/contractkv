@@ -1,0 +1,107 @@
+{
+  "schema_version": "contractkv.tsc-major-revision.r1.v1",
+  "created_at": "2026-10-14",
+  "status": "frozen_before_new_measurement",
+  "review_scope": "TSC-2026-07-1067 major revision",
+  "seed": 10672026,
+  "models": ["Qwen3-8B", "Mistral-7B-Instruct-v0.3", "Llama-3.1-8B-Instruct"],
+  "families": ["RULER", "HotpotQA", "NarrativeQA", "Qasper", "RepoBench"],
+  "runtime": {
+    "vllm": "0.10.2",
+    "dtype": "float16",
+    "tensor_parallel_size": 1,
+    "max_model_len": 16384,
+    "max_num_seqs": 2,
+    "gpu_memory_utilization": 0.88,
+    "concurrency": 2,
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014,
+    "primary_hardware": "RTX 3090 24GB",
+    "fresh_server_per_cell": true,
+    "rotate_gpu_and_policy_order": true,
+    "partial_cell_resume_forbidden": true
+  },
+  "layout": {
+    "ladder": {"L0": 0.0, "L1": 0.25, "L2": 0.75, "L3": 1.0},
+    "stable_pieces": 16,
+    "stable_word_limit": 1500,
+    "common_hotpot_level": "L2",
+    "common_level_rationale": "A prospectively fixed moderate level; legacy Llama HotpotQA qualifies L2. All models use identical ordering and independently attest it. Failures remain raw and in the denominator.",
+    "heldout_retuning_forbidden": true
+  },
+  "common_hotpot": {
+    "development_sessions": 5,
+    "heldout_sessions": 30,
+    "turns": 10,
+    "fresh_process_repeats": 3,
+    "policies": ["raw-order", "contractkv"],
+    "output_budget": 128,
+    "slo_ms": 1500,
+    "slack_ms": [0, 500, 2000, 6000],
+    "selection": "SHA-sorted source groups disjoint from archived development and revision development; no selection by observed quality or admission"
+  },
+  "free_generation": {
+    "sessions_per_family": 10,
+    "turns": 10,
+    "fresh_process_repeats": 3,
+    "policies": ["raw-order", "contractkv"],
+    "budgets": {"RULER": 128, "HotpotQA": 128, "NarrativeQA": 256, "Qasper": 256, "RepoBench": 384},
+    "extended_output_budget": 512,
+    "extended_certification_requires_new_generation_binding": true,
+    "vary_query_wrappers_and_private_observations": true,
+    "record_exact_token_match": true,
+    "record_first_diverging_token": true,
+    "record_task_scores_and_length_stops": true,
+    "material_score_drop_threshold": 0.03,
+    "same_prompt_repeat_control": true,
+    "all_fallbacks_and_errors_reported": true,
+    "no_claim_of_512_token_coverage_for_outputs_ending_earlier": true
+  },
+  "verification": {
+    "reference_prompt": "raw-order",
+    "teacher_forced_history": "raw generated token IDs",
+    "strict_top1_required": true,
+    "terminal_stop_match_required": true,
+    "length_stop": "INCOMPLETE; zero publication; raw fallback",
+    "rejected_candidates": "FAIL or INCOMPLETE; zero publication",
+    "margin_min": -1000000000,
+    "max_degradation": 1000000000,
+    "same_raw_and_candidate_seed": true,
+    "unhidden_cost_formula": "max(total_registration_ms - slack_ms, 0)",
+    "accounting_denominator": "all future requests, with certified-only decomposition reported separately"
+  },
+  "zero_slack_live": {
+    "models": ["Qwen3-8B", "Mistral-7B-Instruct-v0.3"],
+    "sessions": 20,
+    "turns": 10,
+    "fresh_process_repeats": 3,
+    "slack_ms": 0,
+    "policies": ["D0-raw", "D1-layout-only", "D2-certified"],
+    "charge_all_registration_and_failed_verification_wall_time": true,
+    "slo_ms": [500, 1000, 1500, 3000]
+  },
+  "guard_ablation": {
+    "include_predeclared_safe_and_unsafe_cases": true,
+    "use_identical_candidate_layouts": true,
+    "policies": ["D0-raw", "D1-layout-only", "D2-certified"],
+    "record_rejected_layout_task_output": true,
+    "record_published_block_invariant": true
+  },
+  "security": {
+    "registration_manifest_trust_audit": true,
+    "content_hash_is_not_a_confidentiality_classifier": true,
+    "untrusted_client_cannot_authorize_shared_segments": true,
+    "operator_mislabelled_private_content_reported_as_trust_boundary": true,
+    "prefix_timing_channel": "Measure a bounded diagnostic if feasible; explicitly retain that authorization does not eliminate timing leakage."
+  },
+  "statistics": {
+    "bootstrap_samples": 10000,
+    "cluster_units": ["fresh_process", "source_session"],
+    "shared_session_resampling_across_models": true,
+    "model_macro_ci_is_for_fixed_three_model_mean_not_population_of_architectures": true,
+    "quality_denominators": ["all requests", "admitted compiled requests", "raw fallback requests"]
+  },
+  "storage": "All remote environments, models, caches, logs, and raw data reside on the designated data disk.",
+  "completion": "All named experiments have raw evidence, source/protocol hashes, compact tables, reports, and GitHub publication; unsuccessful findings remain explicit."
+}

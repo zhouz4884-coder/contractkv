@@ -1,0 +1,23 @@
+{
+  "schema_version": "tsc-revision-raw-archive.v1",
+  "archive": "r1_live_raw_evidence_v1.tar.gz",
+  "archive_sha256": "cfd395311da81f9ebcb1b27f7c9cfd5751c0e54d0c3bae91192a136be54ee0dd",
+  "archive_bytes": 161053893,
+  "member_files": 423,
+  "uncompressed_bytes": 692248957,
+  "live_cells": 78,
+  "measured_future_requests": 25650,
+  "contains_actual_output_token_ids": true,
+  "contains_real_prefix_metric_logs": true,
+  "contains_service_and_supplementary_input_commitments": true,
+  "no_credentials_or_model_weights": true,
+  "excluded": [
+    "private SSH helpers",
+    "encrypted password files",
+    "raw network-origin resource audit",
+    "compilation caches",
+    "superseded quarantined attempts",
+    "model weight files"
+  ],
+  "extraction": "Extract to repository root; archive members use repository-relative paths."
+}
