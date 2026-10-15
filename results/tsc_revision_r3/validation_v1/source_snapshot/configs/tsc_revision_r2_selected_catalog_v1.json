@@ -1,0 +1,158 @@
+{
+  "schema_version": "tsc-r2.frozen-single-shot-catalog.v1",
+  "raw_token_margin_floor": 0.03125,
+  "candidate_token_margin_floor": 0.0625,
+  "benefit_safety_factor": 1.0,
+  "expected_query_repetitions_per_registered_tenant_hint": 3,
+  "online_verification_attempt_limit": 1,
+  "models": {
+    "Qwen3-8B": {
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 491.2670582998544,
+        "complete_qualification_p95_ms": 522.5874988827854,
+        "prefill_ms_per_token": 0.4105315712024963,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7605.93761092664,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 837.93809954077,
+        "complete_qualification_p95_ms": 885.792592074722,
+        "prefill_ms_per_token": 0.4582951478248965,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 7681.106145337729,
+        "development_accepted_scope_scenarios": 10,
+        "development_attempted_scope_scenarios": 18
+      },
+      "NarrativeQA": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 917.7290580235422,
+        "complete_qualification_p95_ms": 953.4781987778842,
+        "prefill_ms_per_token": 0.4567875215188547,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 11274.485051097688,
+        "development_accepted_scope_scenarios": 14,
+        "development_attempted_scope_scenarios": 18
+      },
+      "Qasper": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 793.7175402184948,
+        "complete_qualification_p95_ms": 832.9360788920894,
+        "prefill_ms_per_token": 0.46076144580019257,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 6653.361420990732,
+        "development_accepted_scope_scenarios": 6,
+        "development_attempted_scope_scenarios": 10
+      },
+      "RepoBench": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 1589.2581201624125,
+        "complete_qualification_p95_ms": 1654.364376096055,
+        "prefill_ms_per_token": 0.40791583008692195,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 21351.69800151206,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      }
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "Qasper": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RepoBench": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 484.7437682328746,
+        "complete_qualification_p95_ms": 510.0306370295584,
+        "prefill_ms_per_token": 0.37981930764425864,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 7557.2098378015235,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 911.399713344872,
+        "complete_qualification_p95_ms": 948.3915098942816,
+        "prefill_ms_per_token": 0.42568636305951957,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 4806.661663478237,
+        "development_accepted_scope_scenarios": 8,
+        "development_attempted_scope_scenarios": 18
+      },
+      "NarrativeQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 984.197012335062,
+        "complete_qualification_p95_ms": 1017.0520779676735,
+        "prefill_ms_per_token": 0.4529804169794541,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 4806.082128358875,
+        "development_accepted_scope_scenarios": 8,
+        "development_attempted_scope_scenarios": 14
+      }
+    },
+    "Llama-3.1-8B-Instruct": {
+      "Qasper": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RepoBench": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 435.176930623129,
+        "complete_qualification_p95_ms": 463.59642990864813,
+        "prefill_ms_per_token": 0.4263633510284768,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7312.99131206304,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 755.730889365077,
+        "complete_qualification_p95_ms": 788.6354327201843,
+        "prefill_ms_per_token": 0.46113457919933076,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 3350.599130240349,
+        "development_accepted_scope_scenarios": 6,
+        "development_attempted_scope_scenarios": 16
+      },
+      "NarrativeQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 863.4092112071812,
+        "complete_qualification_p95_ms": 902.4718647822738,
+        "prefill_ms_per_token": 0.4530969484362165,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7059.814181689018,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 18
+      }
+    }
+  },
+  "development_selection": {
+    "raw_floor": 0.03125,
+    "candidate_floor": 0.0625,
+    "safety_factor": 1.0,
+    "eligible_final": true,
+    "unsafe_cells_without_safe_level": 0,
+    "predicted_net_ms_equal_model_family": 5963.996432233061,
+    "accepted_scope_scenarios": 112,
+    "attempted_scope_scenarios": 160,
+    "cost_tiebreak": 9479.336697026156
+  },
+  "selection_objective_detail": "Equal model/family weights; each level has three queries per source. Average declared tenant scenarios. Failed eligible verification costs the conservative p95 estimate, rejected early costs actual planning. This predictor excludes unmeasured raw-logprob overhead and is not a measured serving speedup.",
+  "new_heldout_sessions_sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725",
+  "development_only": true,
+  "selection_plan_sha256": "8dd4a78e1919dbe86f70226d8a25af6b2a58d3b81ed3186e4ce81f73197e7864",
+  "profile_selection_input_sha256": "34422bf2a2a9352fe4397702b8d17f46dd2b11a6d867421769429c7d22e6e360"
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "tsc-r3.recorded-negative-CPU-replay.v1",
+  "old_source_archive_sha256": "9a36851190d6958c2b3258275bce31ad33a4e592cb43c8a0a28bb7eb0ceda403",
+  "cases": [
+    {
+      "source_group": "RepoBench:python_v1.1:ahayler/s4c",
+      "model": "Qwen3-8B",
+      "repeat": "1",
+      "turn": "5",
+      "would_abstain": true,
+      "reason": "python_output_contract",
+      "actual_old_drop": "0.04000000000000001"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:ahayler/s4c",
+      "model": "Qwen3-8B",
+      "repeat": "1",
+      "turn": "8",
+      "would_abstain": true,
+      "reason": "python_output_contract",
+      "actual_old_drop": "0.04000000000000001"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:ahayler/s4c",
+      "model": "Qwen3-8B",
+      "repeat": "2",
+      "turn": "5",
+      "would_abstain": true,
+      "reason": "python_output_contract",
+      "actual_old_drop": "0.04000000000000001"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:ahayler/s4c",
+      "model": "Qwen3-8B",
+      "repeat": "3",
+      "turn": "5",
+      "would_abstain": true,
+      "reason": "python_output_contract",
+      "actual_old_drop": "0.04000000000000001"
+    },
+    {
+      "source_group": "LongBench:narrativeqa:narrativeqa:doc:181",
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "1",
+      "turn": "8",
+      "would_abstain": true,
+      "reason": "candidate_margin_below_.125",
+      "actual_old_drop": "0.2"
+    },
+    {
+      "source_group": "LongBench:narrativeqa:narrativeqa:doc:181",
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "2",
+      "turn": "8",
+      "would_abstain": true,
+      "reason": "candidate_margin_below_.125",
+      "actual_old_drop": "0.2"
+    },
+    {
+      "source_group": "LongBench:narrativeqa:narrativeqa:doc:181",
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "3",
+      "turn": "8",
+      "would_abstain": true,
+      "reason": "candidate_margin_below_.125",
+      "actual_old_drop": "0.2"
+    }
+  ],
+  "all_old_failure_routes_abstain": true,
+  "actual_new_GPU_requests": 0,
+  "not_fresh_validation_or_serving_efficacy": true
+}
