@@ -50,6 +50,18 @@ the salt name, determine whether a reuse condition was exercised. No behavioral
 guard or backend changes are included. This separates post-qualification cache
 execution from the cold-only condition before adding a batch-shape experiment.
 
+The matching-salt singleton control also did not reproduce the original drops:
+all 12 same-prompt cold/reuse pairs exercised actual qualified hits without token
+differences. The next frozen `tsc_revision_r2_batch_reuse_v1.json` adapter keeps
+that driver unchanged and pairs each chat call with the next tenant's metadata
+request. It retains both complete responses. Cold twins use distinct salts;
+qualified twins share the already attested salt. Across two servers this adds
+42 twin generations to 42 primary generations and six qualifications, totaling
+90 actual requests. HTTP overlap and a scheduler observation with two active
+requests are required; these do not supply per-step kernel batch telemetry.
+This is a controlled concurrency adaptation, not an exact reproduction of the
+original long service trace. Three repeats remain within each fresh process.
+
 ## Gate 2: development repair and separate validation
 
 After the controls, choose a repair supported by observed target-task evidence.
