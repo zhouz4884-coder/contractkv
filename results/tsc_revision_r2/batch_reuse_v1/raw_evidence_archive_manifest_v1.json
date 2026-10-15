@@ -1,0 +1,59 @@
+{
+  "schema_version": "tsc-r2.selected-control-archive.v1",
+  "archive": "batch_reuse_v1_raw_evidence_v1.tar.gz",
+  "archive_sha256": "bebddd55cdce932b9352193523479f08261bf65d997d872e20cd6591366e1dda",
+  "archive_bytes": 2123271,
+  "member_files": 65,
+  "study": "batch_reuse_v1",
+  "cases": [
+    {
+      "case": "llama",
+      "primary_free_generations": 21,
+      "twin_free_generations": 21,
+      "qualifications": 3,
+      "actual_engine_metric_joins": 45,
+      "observed_max_scheduler_active_requests": 2,
+      "primary_control": {
+        "case": "llama",
+        "free_generations": 21,
+        "qualifications": 3,
+        "actual_metric_joins": 24,
+        "same_prompt_cold_warm_pairs": 6,
+        "qualified_reuse_pairs": 0,
+        "cold_material_drops": 0,
+        "warm_material_drops": 0,
+        "cold_warm_token_divergences": 0
+      },
+      "twin_qualified_reuse_pairs": 0,
+      "twin_cold_material_drops": 0,
+      "twin_warm_material_drops": 0,
+      "twin_cold_warm_token_divergences": 0
+    },
+    {
+      "case": "mistral",
+      "primary_free_generations": 21,
+      "twin_free_generations": 21,
+      "qualifications": 3,
+      "actual_engine_metric_joins": 45,
+      "observed_max_scheduler_active_requests": 2,
+      "primary_control": {
+        "case": "mistral",
+        "free_generations": 21,
+        "qualifications": 3,
+        "actual_metric_joins": 24,
+        "same_prompt_cold_warm_pairs": 6,
+        "qualified_reuse_pairs": 6,
+        "cold_material_drops": 3,
+        "warm_material_drops": 3,
+        "cold_warm_token_divergences": 0
+      },
+      "twin_qualified_reuse_pairs": 6,
+      "twin_cold_material_drops": 0,
+      "twin_warm_material_drops": 0,
+      "twin_cold_warm_token_divergences": 0
+    }
+  ],
+  "includes_actual_prompt_and_output_IDs_metrics_and_source_snapshots": true,
+  "selected_development_not_heldout": true,
+  "performance_claim": false
+}
