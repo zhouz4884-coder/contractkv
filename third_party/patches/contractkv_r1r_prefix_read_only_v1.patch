@@ -1,0 +1,132 @@
+--- a/vllm/entrypoints/openai/api_server.py
++++ b/vllm/entrypoints/openai/api_server.py
+@@ -373,6 +373,7 @@
+     dependency_graph_hash: str
+     timeout_s: float = 300.0
+     cache_salt: str | None = None  # CONTRACTKV_PHASE26R_OBSERVATION_SALT_V1
++    allow_certified_prefix_read: bool = False
+ 
+ 
+ class PrometheusResponse(Response):
+@@ -490,6 +491,7 @@
+         stable_content_hash=payload.stable_content_hash,
+         layout_hash=payload.layout_hash,
+         dependency_graph_hash=payload.dependency_graph_hash,
++        allow_certified_prefix_read=payload.allow_certified_prefix_read,
+     )
+     result = await verify(
+         request_id=payload.request_id,
+@@ -507,6 +509,7 @@
+         "committed_tokens": result.committed_tokens,
+         "committed_full_blocks": result.committed_full_blocks,
+         "certificate_issued": result.certificate_issued,
++        "cached_prefix_read_tokens": result.cached_prefix_read_tokens,
+         "certificate_hash": result.certificate_hash,
+         "policy_hash": result.policy_hash,
+         "raw_margin_q05": (result.raw_margin_q05
+--- a/vllm/v1/core/kv_cache_manager.py
++++ b/vllm/v1/core/kv_cache_manager.py
+@@ -163,11 +163,28 @@
+                 - A list of blocks that are computed for the request.
+                 - The number of computed tokens.
+         """
+-        # Prefix caching is disabled or
+-        # When the request requires prompt logprobs, we skip prefix caching.
+-        if (not self.enable_caching
+-                or (request.sampling_params is not None
+-                    and request.sampling_params.prompt_logprobs is not None)):
++        if not self.enable_caching:
++            return self.create_empty_block_list(), 0
++
++        # Internal witnesses need only answer/stop rows, not cached-prefix LPs.
++        needs_logprobs = (request.sampling_params is not None
++                          and request.sampling_params.prompt_logprobs is not None)
++        read_limit = 0
++        spec = getattr(request, "contractkv_verify_spec", None)
++        if (needs_logprobs and spec is not None
++                and spec.allow_certified_prefix_read and request.cache_salt):
++            approved = getattr(self, "contractkv_certified_prefixes", {}).get(
++                (request.cache_salt, spec.policy_hash), {})
++            assert self.block_size is not None
++            limit = max(0, min(spec.stable_prefix_end_token - self.block_size,
++                               spec.verify_start_token - 1))
++            for index in range(min(len(request.block_hashes),
++                                   limit // self.block_size)):
++                boundary = (index + 1) * self.block_size
++                if approved.get(boundary) != request.block_hashes[index]:
++                    break
++                read_limit = boundary
++        if needs_logprobs and read_limit == 0:
+             return self.create_empty_block_list(), 0
+ 
+         # NOTE: When all tokens hit the cache, we must recompute the last token
+@@ -177,9 +194,13 @@
+         # num_computed_tokens to be block-size aligned. Removing this limitation
+         # could slightly improve performance in the future.
+         max_cache_hit_length = request.num_tokens - 1
++        if needs_logprobs:
++            max_cache_hit_length = min(max_cache_hit_length, read_limit)
+         computed_blocks, num_new_computed_tokens = (
+             self.coordinator.find_longest_cache_hit(request.block_hashes,
+                                                     max_cache_hit_length))
++        if needs_logprobs:
++            request.contractkv_cached_prefix_read_tokens = num_new_computed_tokens
+ 
+         if self.log_stats:
+             assert self.prefix_cache_stats is not None
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -1912,6 +1912,9 @@
+             candidate_margins: list[float] = []
+             candidate_ranks: list[int] = []
+             answer_start = spec.verify_start_token
++            cached_read = int(getattr(request, "contractkv_cached_prefix_read_tokens", 0))
++            if cached_read >= answer_start:
++                raise ValueError("cached_prefix_overlaps_required_answer_rows")
+             for offset, target in enumerate(spec.reference_answer_ids):
+                 row = answer_start - 1 + offset
+                 ids = [int(value)
+@@ -1974,6 +1977,17 @@
+                 else:
+                     self.kv_cache_manager.cache_blocks(
+                         request, committed_tokens)
++                    # Computational prefix permission is separate from query permission.
++                    if request.cache_salt:
++                        registry = getattr(self.kv_cache_manager,
++                                           "contractkv_certified_prefixes", None)
++                        if registry is None:
++                            registry = {}
++                            self.kv_cache_manager.contractkv_certified_prefixes = registry
++                        approved = registry.setdefault(
++                            (request.cache_salt, spec.policy_hash), {})
++                        for index in range(committed_tokens // self.block_size):
++                            approved[(index + 1) * self.block_size] = request.block_hashes[index]
+             else:
+                 decision = "FAIL"
+                 failure = "token_path_or_margin_guard_failed"
+@@ -2009,6 +2023,7 @@
+             candidate_margin_q05=candidate_q05,
+             degradation_q95=degradation_q95,
+             terminal_stop_margin=terminal_stop_margin,
++            cached_prefix_read_tokens=int(getattr(request, "contractkv_cached_prefix_read_tokens", 0)),
+         )
+ 
+     def _update_request_with_output(
+--- a/vllm/v1/engine/__init__.py
++++ b/vllm/v1/engine/__init__.py
+@@ -38,6 +38,7 @@
+     stable_content_hash: str
+     layout_hash: str
+     dependency_graph_hash: str
++    allow_certified_prefix_read: bool = False
+ 
+ 
+ class ContractKVCompactResult(
+@@ -58,6 +59,7 @@
+     candidate_margin_q05: float = float("nan")
+     degradation_q95: float = float("nan")
+     terminal_stop_margin: float = float("nan")  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
++    cached_prefix_read_tokens: int = 0
+ 
+ 
+ class FinishReason(enum.IntEnum):

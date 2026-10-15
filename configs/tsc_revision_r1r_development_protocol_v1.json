@@ -1,0 +1,21 @@
+{
+  "schema_version": "tsc-r1r.development-protocol.v1",
+  "status": "frozen_before_development",
+  "seed": 10672126,
+  "families": ["RULER", "HotpotQA", "NarrativeQA", "Qasper", "RepoBench"],
+  "models": ["Qwen3-8B", "Mistral-7B-Instruct-v0.3", "Llama-3.1-8B-Instruct"],
+  "runtime": {"concurrency": 2, "temperature": 0, "top_p": 1, "seed": 14014},
+  "layout": {"stable_word_limit": 1500, "stable_pieces": 16, "ladder": {"L0": 0.0, "L1": 0.25, "L2": 0.75, "L3": 1.0}},
+  "free_generation": {"budgets": {"RULER": 128, "HotpotQA": 128, "NarrativeQA": 256, "Qasper": 256, "RepoBench": 384}},
+  "development_sessions_per_family": 2,
+  "heldout_sessions_per_family": 10,
+  "heldout_fresh_repeats": 3,
+  "policies": ["raw-order", "query-full", "query-prefix"],
+  "slack_ms": 0,
+  "query_binding": "exact query text + system + stable content + renderer + generation configuration",
+  "new_query_route": "raw business output supplies strict current-query witness; no duplicate decode",
+  "prefix_read": "engine-approved block-hash chains only, stable boundary minus one full block, no skipped answer/stop row",
+  "quality_threshold": 0.03,
+  "development_is_not_heldout": true,
+  "heldout_selection_uses_outcomes": false
+}

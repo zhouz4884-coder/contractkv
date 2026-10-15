@@ -17,6 +17,7 @@ env/
 Thumbs.db
 
 # Logs and temporary files
+.artifacts/
 logs/
 *.log
 *.tmp
@@ -219,3 +220,24 @@ results/appendix/vllm_025/*
 
 # Local worktree isolation.
 .worktrees/
+
+# R1R compact evidence and immutable archive transport; live cells stay local.
+!results/tsc_revision_r1r/
+results/tsc_revision_r1r/*
+!results/tsc_revision_r1r/*.csv
+!results/tsc_revision_r1r/*.json
+!results/tsc_revision_r1r/*.jsonl
+!results/tsc_revision_r1r/*.tar.gz.part*
+!results/tsc_revision_r1r/inputs/
+!results/tsc_revision_r1r/development_summary/
+!results/tsc_revision_r1r/validation/
+results/tsc_revision_r1r/validation/*
+!results/tsc_revision_r1r/validation/freeze_v1.json
+!results/tsc_revision_r1r/validation/source_snapshot/
+!results/tsc_revision_r1r/validation/summary/
+!results/tsc_revision_r1r/long_horizon/
+results/tsc_revision_r1r/long_horizon/*
+!results/tsc_revision_r1r/long_horizon/freeze_v1.json
+!results/tsc_revision_r1r/long_horizon/source_checksums.sha256
+!results/tsc_revision_r1r/long_horizon/source_snapshot/
+!results/tsc_revision_r1r/long_horizon/summary/

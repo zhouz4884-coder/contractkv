@@ -1,0 +1,14 @@
+{
+  "schema_version": "tsc-r1r.controlled-long-horizon.v1",
+  "frozen_before_execution": true,
+  "models": ["Qwen3-8B", "Mistral-7B-Instruct-v0.3", "Llama-3.1-8B-Instruct"],
+  "fresh_repeats": 3,
+  "output_caps": [256, 512, 1536],
+  "query": "Return a JSON array containing every integer from 1001 through 1128 inclusive, in increasing order. Include all 128 integers. Output only the complete JSON array, without commentary.",
+  "futures_per_cap": 2,
+  "expected_business_futures": 108,
+  "expected_raw_reference_generations": 27,
+  "interpretation": "Controlled long-output mechanics audit, separate from benchmark task quality and all service performance denominators. The 1536 cap permits actual natural-stop outputs longer than 512; no actual length is assumed.",
+  "admission": "Strict raw-path answer and EOS agreement. Any length-stop reference aborts before promotion. Two future raw/policy pairs retain actual output token IDs and completion stops.",
+  "no_retuning_from_benchmark_heldout": true
+}
