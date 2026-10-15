@@ -24,3 +24,10 @@ def test_model_think_stripping_is_not_raw_wire_json_compliance():
     assert scores(value,128,1001)['strict_plain_json_integer_sequence']
     assert not wire_schema(value,128,1001)
     assert wire_schema(json.dumps(list(range(1001,1129))),128,1001)
+
+def test_larger_content_condition_keeps_original_128_predicate_separate():
+    text=json.dumps(list(range(1001,1193)))
+    result=scores(text,192,1001)
+    assert result['original_128_score'] is None and result['separate_160_task_score'] is None
+    assert result['strict_plain_json_integer_sequence'] and wire_schema(text,192,1001)
+    assert not wire_schema(text,128,1001)

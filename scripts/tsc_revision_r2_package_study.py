@@ -14,7 +14,7 @@ import csv
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--study',choices=('development_pilot_v1','long_format_v1','long_format_v2','long_native_v3','validation_v1'),required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--study',choices=('development_pilot_v1','long_format_v1','long_format_v2','long_native_v3','long_extent_v4','validation_v1'),required=True);a=p.parse_args()
     root=a.root.resolve();base=root/'results/tsc_revision_r2'/a.study
     proof=json.loads((base/'analysis/completion_audit_v1.json').read_text(encoding='utf-8'))
     if not proof['execution_complete']:raise ValueError('All expected actual cells and audits must complete')
@@ -32,10 +32,10 @@ def main():
         dispatch_count=len(dispatch['files'])
     post=root/'results/tsc_revision_r2'/('post_'+a.study+'_original_freeze_audit_v1.json')
     subprocess.run([sys.executable,str(root/'scripts/tsc_revision_r1r_freeze_audit.py'),'--root',str(root),'--output',str(post)],check=True)
-    prefix={'development_pilot_v1':'pilot_','long_format_v1':'long-format_','long_format_v2':'long-format-v2_','long_native_v3':'long-native-v3_','validation_v1':'validation_'}[a.study]
+    prefix={'development_pilot_v1':'pilot_','long_format_v1':'long-format_','long_format_v2':'long-format-v2_','long_native_v3':'long-native-v3_','long_extent_v4':'long-extent-v4_','validation_v1':'validation_'}[a.study]
     logs=list((root/'logs/tsc_revision_r2').glob(prefix+'*_server.log'))
     logs+=list((root/'logs/tsc_revision_r2').glob(a.study+'*'))
-    snapshots={'development_pilot_v1':'development_pilot_snapshot_v1.sh','long_format_v1':'long_format_snapshot_v1.sh','long_format_v2':'long_format_snapshot_v2.sh','long_native_v3':'long_native_snapshot_v3.sh','validation_v1':'validation_snapshot_v1.sh'}
+    snapshots={'development_pilot_v1':'development_pilot_snapshot_v1.sh','long_format_v1':'long_format_snapshot_v1.sh','long_format_v2':'long_format_snapshot_v2.sh','long_native_v3':'long_native_snapshot_v3.sh','long_extent_v4':'long_extent_snapshot_v4.sh','validation_v1':'validation_snapshot_v1.sh'}
     logs.append(root/'logs/tsc_revision_r2'/snapshots[a.study])
     owned=set();pattern=re.compile(r'\((?:APIServer|EngineCore_DP\d+|Worker_TP\d+)\s+pid=(\d+)\)')
     for path in logs:
@@ -49,7 +49,7 @@ def main():
     (base/'closure_v1.json').write_text(json.dumps(closure,indent=2)+'\n',encoding='utf-8')
     code=base/'analysis_source';code.mkdir(exist_ok=True)
     names=['tsc_revision_r2_package_study.py','tsc_revision_verify_archive.py','tsc_revision_split_raw_archive.py','tsc_revision_r1r_output_horizon.py','tsc_revision_r1r_witness_decisions.py']
-    names+=['tsc_revision_r2_long_format_summary.py'] if a.study.startswith(('long_format_','long_native_')) else ['tsc_revision_r2_live_summary.py','tsc_revision_r2_select_policy.py','tsc_revision_r2_select_policy_known_guard.py','tsc_revision_r2_tail_bootstrap.py']
+    names+=['tsc_revision_r2_long_format_summary.py'] if a.study.startswith(('long_format_','long_native_','long_extent_')) else ['tsc_revision_r2_live_summary.py','tsc_revision_r2_select_policy.py','tsc_revision_r2_select_policy_known_guard.py','tsc_revision_r2_tail_bootstrap.py']
     for name in names:shutil.copyfile(root/'scripts'/name,code/name)
     files=[p for p in base.rglob('*') if p.is_file() and 'progress_analysis' not in p.relative_to(base).parts and not p.name.endswith(('.pid','.partial','.tar.gz')) and '.tar.gz.part' not in p.name and not p.name.startswith('raw_evidence_')]
     files+=logs+[post,root/'third_party/licenses/vllm-Apache-2.0.txt',root/'third_party/licenses/README.md']

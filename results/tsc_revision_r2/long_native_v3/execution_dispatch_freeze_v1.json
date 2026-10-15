@@ -1,0 +1,48 @@
+{
+  "schema_version": "tsc-r2.before-execution-followup-dispatch.v1",
+  "timestamp": "2026-10-15T13:08:03.455358+00:00",
+  "primary_freeze_sha256": "e297be676ea2b05bc81785835a960db6d16fdf61d1a76dc7c456de788a61469e",
+  "original_frozen_cell_launcher_sha256": "24230635cb8dd526d90b5671a7265e092edf002831af973bcb41a6a478da027e",
+  "actual_requests_before_dispatch_amendment": 0,
+  "prior_native_wait_queue_stopped_before_inference": 2690573,
+  "tasks_fixed_before_execution": [
+    [
+      "long_native_v3",
+      1
+    ],
+    [
+      "long_native_v3",
+      2
+    ],
+    [
+      "long_extent_v4",
+      1
+    ],
+    [
+      "long_native_v3",
+      3
+    ],
+    [
+      "long_extent_v4",
+      2
+    ],
+    [
+      "long_extent_v4",
+      3
+    ]
+  ],
+  "sampling_prompts_scorers_margins_and_fresh_engine_per_cell_unchanged": true,
+  "GPU_assignment_availability_based_and_logged_before_each_cell": true,
+  "files": [
+    {
+      "path": "scripts/run_tsc_revision_r2_long_followup_dispatch.py",
+      "snapshot": "execution_dispatch_v1/dispatcher.py",
+      "sha256": "9dabe228c890fb48073d8b03dd4dfb9a17c52dd48cf60de8e8921ecdf86b18b3"
+    },
+    {
+      "path": "results/tsc_revision_r2/long_native_v3/execution_dispatch_v1/cell_runner.sh",
+      "snapshot": "execution_dispatch_v1/cell_runner.sh",
+      "sha256": "fe0ebc90f93f5ae485be92692aff7c3c6cb1f6cafc63faae61411ee32239866e"
+    }
+  ]
+}

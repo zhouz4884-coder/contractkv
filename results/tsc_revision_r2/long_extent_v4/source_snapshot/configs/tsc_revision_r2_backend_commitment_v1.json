@@ -1,0 +1,66 @@
+{
+  "schema_version": "tsc-r2.pointwise-margin-backend.v1",
+  "timestamp": "2026-10-15T09:51:43.658159+00:00",
+  "base": "vllm-contractkv-tsc-r1r-slice",
+  "new_backend": "vllm-contractkv-tsc-r2-margin",
+  "original_six_source_files_unchanged": true,
+  "source_files": [
+    {
+      "file": "vllm/v1/engine/__init__.py",
+      "before_sha256": "24c9d57fc8a9494d70a2d362238093fbb83ed8e0f9a0b2651f2f62075448a250",
+      "after_sha256": "593187fdc0f8faf4f00f9c8c34f92c1e971a31ad7edfc0f7bd2e0461ed5fde77"
+    },
+    {
+      "file": "vllm/v1/core/sched/scheduler.py",
+      "before_sha256": "f95158dd3d7f66b38cc9982f4a064e5a1c3143f8537aada3ef2e62535ea24223",
+      "after_sha256": "c6b81d22a578239381ef419e88bb06b03f20666ef5350c223f916f247f0cd071"
+    },
+    {
+      "file": "vllm/entrypoints/openai/api_server.py",
+      "before_sha256": "be4c266ef8bc78c29dd428d1220a6495cba45f12df167eb9f70f7755d56380fc",
+      "after_sha256": "c4d70f5d299a059faaf8ca0d3a8d72f0e92065dc376d3a810ca7028c404c2db2"
+    },
+    {
+      "file": "vllm/v1/worker/gpu_model_runner.py",
+      "before_sha256": "6d5207b52b67370ad6b58e3a0c317c49940b5bda260aba5b31cda3bafd02bd38",
+      "after_sha256": "47527c7b52b58ab77d6a038f6b6cda5ec726539fd5c9b4c2891210569a176653"
+    }
+  ],
+  "patch_sha256": "37670b7395372f91417f16e395e8ea27ad867ef03ec26cd4501de4815c8508c9",
+  "project_dependencies": [
+    {
+      "path": "scripts/tsc_revision_r2_margin_policy.py",
+      "sha256": "bd69b3406aa70367afa6ea512b7ccdc9689fc28e73ece29ecb318f7d29cd2258"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_execution_trace.py",
+      "sha256": "682c3ecfc15eb72fa52ff8ffe998826f4ff6a0d7c5aa8d5a17a373c9d1bc2b7e"
+    }
+  ],
+  "no_model_weights_or_attention_kernel_changes": true,
+  "new_margin_floors_default_disabled": true,
+  "trace_is_opt_in_model_runner_metadata_not_per_kernel_profiler": true,
+  "native_extensions": [
+    {
+      "relative_path": "vllm/_C.abi3.so",
+      "bytes": 363681160,
+      "sha256": "feb862d8de73163317f85b796f58ea357ce88e23f4bd5e1cc5d22ac0c9cf97d1"
+    },
+    {
+      "relative_path": "vllm/_flashmla_C.abi3.so",
+      "bytes": 1026584,
+      "sha256": "ec1eecf069278a6ef982f7e690b99d7d45d2c0374a5d5be7623abc5e4c1e21e2"
+    },
+    {
+      "relative_path": "vllm/_moe_C.abi3.so",
+      "bytes": 141492736,
+      "sha256": "03933be46c202894ba7f4e1bd7f59bb95db4eca64fdb1cd7db376a695adc46a9"
+    },
+    {
+      "relative_path": "vllm/cumem_allocator.abi3.so",
+      "bytes": 27776,
+      "sha256": "e17ae70ce22661d5d541efd959dba30eafb6669c408e2c3d452a1382ac5355dd"
+    }
+  ],
+  "old_and_new_native_hashes_equal": true
+}

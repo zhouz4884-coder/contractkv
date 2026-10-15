@@ -1,0 +1,289 @@
+{
+  "schema_version": "tsc-r2.descriptive-tail-attribution.v1",
+  "source_cells": [
+    {
+      "cell": "single-session_llama_legacy-prefix_r1",
+      "raw_sha256": "9173f785a6bf5ad9c5693e5d22833974cb79549a749a557ac0b6f14f2466056b"
+    },
+    {
+      "cell": "single-session_llama_margin-benefit_r1",
+      "raw_sha256": "bccfa51130275ef5321c30e1d266829d961ec7691c7ab29da36ca163d96e9905"
+    },
+    {
+      "cell": "single-session_llama_raw-order_r1",
+      "raw_sha256": "7adcbee67b3addced8c4104384cfffbc967d6ed2b8dd9643c861c93e833a558f"
+    },
+    {
+      "cell": "single-session_mistral_legacy-prefix_r1",
+      "raw_sha256": "9a36bc0a874fdca7babba69fcba2820becced3c5779b769353900046fb05a5fa"
+    },
+    {
+      "cell": "single-session_mistral_margin-benefit_r1",
+      "raw_sha256": "28ef2b488b7cca5b8ccf04f99a72e2de509e154f3a25023f55cd02bc701a3163"
+    },
+    {
+      "cell": "single-session_mistral_raw-order_r1",
+      "raw_sha256": "82ad2c6ff973650b520e0a7106f8a3c610fb31c94d45fb4017ef463619626419"
+    },
+    {
+      "cell": "single-session_qwen_legacy-prefix_r1",
+      "raw_sha256": "6eb0f43acfa972db9a2de141b36afe31a44e95ac23f5c0a025c514a72dfef61e"
+    },
+    {
+      "cell": "single-session_qwen_margin-benefit_r1",
+      "raw_sha256": "16ca0f3e95159cb38a257d2370aaa1744116c4f618068f168c49f207ee48d693"
+    },
+    {
+      "cell": "single-session_qwen_raw-order_r1",
+      "raw_sha256": "97db2b37ee382cceece8bf370ec8ae27aa1aa6f49786c573c057f6c6ac27070c"
+    },
+    {
+      "cell": "template-fanout_llama_legacy-prefix_r1",
+      "raw_sha256": "0ca526f18cac665d7dc820fd895e9f59a9c0d44a708f3a48a958517dd835439b"
+    },
+    {
+      "cell": "template-fanout_llama_margin-benefit_r1",
+      "raw_sha256": "3d986cae5a57017aadef93d4320bc36f7213a06e0f74e59fc8116a581e9648a4"
+    },
+    {
+      "cell": "template-fanout_llama_raw-order_r1",
+      "raw_sha256": "f2731ecd7cd5fbbb4ef862dbb7560e0bc1b296a96f6929cd133031725dd36a34"
+    },
+    {
+      "cell": "template-fanout_mistral_legacy-prefix_r1",
+      "raw_sha256": "87ddcb00c567bc1293abbf6d18ff8f90e07f0df6d69ea5b8dc70a9a6089a55a9"
+    },
+    {
+      "cell": "template-fanout_mistral_margin-benefit_r1",
+      "raw_sha256": "f4a34f0dcf1b8973737e6e9e900425952be709c8d59db9da3ffbda292ec53459"
+    },
+    {
+      "cell": "template-fanout_mistral_raw-order_r1",
+      "raw_sha256": "22b0b6a995a60aea12c8a99c601ce02d66465f05606b075ecffcf5d087d972cd"
+    },
+    {
+      "cell": "template-fanout_qwen_legacy-prefix_r1",
+      "raw_sha256": "ee2d727ea44275f6ef9d776659d65d947d578ff093efc4a1d874a4276565398c"
+    },
+    {
+      "cell": "template-fanout_qwen_margin-benefit_r1",
+      "raw_sha256": "f6120f6d44cae57594c8affae5a9670358a921a5789bbd52f03215176635df08"
+    },
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "raw_sha256": "495998297a6b1b658e30e9154423149f838364c4f9ff452ab33c7590a2b23925"
+    }
+  ],
+  "top_fraction": 0.01,
+  "selection": "Worst ceil(1% * actual futures) by observed readiness TTFT; descriptive, no rows removed from primary metrics",
+  "extra_before_RPC_is_controller_wave_wait_and_client_preparation_not_a_separate_GPU_timer": true,
+  "summary": [
+    {
+      "cell": "single-session_llama_legacy-prefix_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "NarrativeQA": 1,
+        "HotpotQA": 1
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 2392.775024054572
+    },
+    {
+      "cell": "single-session_llama_margin-benefit_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "NarrativeQA": 1,
+        "HotpotQA": 1
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 1664.5365566946566
+    },
+    {
+      "cell": "single-session_llama_raw-order_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "RepoBench": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 2,
+      "mean_extra_before_RPC_ms": 31.45295730791986
+    },
+    {
+      "cell": "single-session_mistral_legacy-prefix_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "HotpotQA": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 5055.151583626866
+    },
+    {
+      "cell": "single-session_mistral_margin-benefit_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "HotpotQA": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 1821.7700612731278
+    },
+    {
+      "cell": "single-session_mistral_raw-order_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "RepoBench": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 2,
+      "mean_extra_before_RPC_ms": 13.48015177063644
+    },
+    {
+      "cell": "single-session_qwen_legacy-prefix_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "RepoBench": 1,
+        "Qasper": 1
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 2900.1004023011774
+    },
+    {
+      "cell": "single-session_qwen_margin-benefit_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "RepoBench": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 2648.736854782328
+    },
+    {
+      "cell": "single-session_qwen_raw-order_r1",
+      "top_rank_count": 2,
+      "future_count": 108,
+      "families": {
+        "RepoBench": 2
+      },
+      "raw_route_tail_requests": 2,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 13.014970114454627
+    },
+    {
+      "cell": "template-fanout_llama_legacy-prefix_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "HotpotQA": 4,
+        "RepoBench": 1
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 1,
+      "mean_extra_before_RPC_ms": 1255.552548263222
+    },
+    {
+      "cell": "template-fanout_llama_margin-benefit_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 5
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 5,
+      "mean_extra_before_RPC_ms": 17.36990688368678
+    },
+    {
+      "cell": "template-fanout_llama_raw-order_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 5
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 5,
+      "mean_extra_before_RPC_ms": 20.22542841732502
+    },
+    {
+      "cell": "template-fanout_mistral_legacy-prefix_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 4,
+        "NarrativeQA": 1
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 4,
+      "mean_extra_before_RPC_ms": 468.381067737937
+    },
+    {
+      "cell": "template-fanout_mistral_margin-benefit_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 5
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 5,
+      "mean_extra_before_RPC_ms": 22.513924818485975
+    },
+    {
+      "cell": "template-fanout_mistral_raw-order_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 5
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 5,
+      "mean_extra_before_RPC_ms": 19.39071398228407
+    },
+    {
+      "cell": "template-fanout_qwen_legacy-prefix_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 2,
+        "HotpotQA": 3
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 1968.441076669842
+    },
+    {
+      "cell": "template-fanout_qwen_margin-benefit_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 3,
+        "Qasper": 1,
+        "HotpotQA": 1
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 1017.7757042460144
+    },
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "top_rank_count": 5,
+      "future_count": 450,
+      "families": {
+        "RepoBench": 5
+      },
+      "raw_route_tail_requests": 5,
+      "inherited_L0_tail_requests": 0,
+      "mean_extra_before_RPC_ms": 20.200348924845457
+    }
+  ],
+  "no_causal_claim_from_attribution_alone": true
+}

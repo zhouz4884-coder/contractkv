@@ -25,8 +25,8 @@
   "full_prompt_IDs_and_hashes":"Every actual business/qualification request, plus separately excluded infrastructure controls",
   "performance_boundary":"Actual controller, planning, business, logging/scoring and synchronous verification waits; same two-request wave barrier; no offline cost subtraction. Audit flush time reported separately for every policy.",
   "quality_reporting":"Retain all raw/fallback/compiled scores and ID divergences; >0.03 material drops reported in all and compiled denominators, no after-output route relabeling",
-  "uncertainty":"Source-template plus paired-repeat bootstrap for readiness; paired three-run min/max for full wall. Registered tenants and turns stay clustered.",
-  "p99_uncertainty":"2000 paired source-template/repeat bootstrap draws, seed10672129, reported vs raw and directly vs legacy. Weighted order statistics checked against literal resampling. Only compute after all cells complete; do not claim significance from point estimates alone.",
+  "uncertainty":"Readiness bootstrap resamples two-source wave cohorts for cold sessions, because both requests share the wave barrier, and source templates with all ten tenants for fanout; paired fresh repeats are resampled jointly. Whole wall uses paired three-run min/max. Turns/tenants and same-wave sources stay clustered.",
+  "p99_uncertainty":"2000 paired cluster/repeat bootstrap draws, seed10672129, with the same cold wave-cohort and fanout template units above; reported vs raw and directly vs legacy. Weighted order statistics checked against literal resampling. Only compute after all cells complete; do not claim significance from point estimates alone.",
   "no_reselection_using_heldout_outcomes":true,
   "no_positive_result_promised":true
 }

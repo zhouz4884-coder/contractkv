@@ -1,0 +1,180 @@
+{
+  "schema_version": "tsc-r2.live-completion-audit.v1",
+  "execution_complete": true,
+  "missing_cells": [],
+  "complete_cells": 18,
+  "expected_cells": 18,
+  "measured_futures": 5022,
+  "expected_futures": 5022,
+  "cases": [
+    {
+      "cell": "single-session_qwen_raw-order_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "single-session_qwen_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 51,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 71
+    },
+    {
+      "cell": "single-session_qwen_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 36,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 66
+    },
+    {
+      "cell": "single-session_mistral_raw-order_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "single-session_mistral_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 46,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 45
+    },
+    {
+      "cell": "single-session_mistral_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 21,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 33
+    },
+    {
+      "cell": "single-session_llama_raw-order_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "single-session_llama_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 31,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 45
+    },
+    {
+      "cell": "single-session_llama_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 22,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 37
+    },
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "template-fanout_qwen_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 21,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 414
+    },
+    {
+      "cell": "template-fanout_qwen_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 15,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 376
+    },
+    {
+      "cell": "template-fanout_mistral_raw-order_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "template-fanout_mistral_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 17,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 188
+    },
+    {
+      "cell": "template-fanout_mistral_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 8,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 188
+    },
+    {
+      "cell": "template-fanout_llama_raw-order_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0
+    },
+    {
+      "cell": "template-fanout_llama_legacy-prefix_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 14,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 150
+    },
+    {
+      "cell": "template-fanout_llama_margin-benefit_r1",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 8,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 122
+    }
+  ],
+  "development_only": true,
+  "scientific_success_is_separate": true,
+  "ci_unit": "Cold: two-source readiness-wave cohort. Fanout: source template including all tenants. Joint paired fresh repeats. Pilot has one repeat and cannot establish repeat uncertainty.",
+  "mean_bootstrap_draws": 3000,
+  "p99_bootstrap_draws": 2000,
+  "p99_bootstrap_seed": 10672129,
+  "full_wall_uncertainty": "Paired repeat min/max, not a source-cluster wall confidence interval."
+}

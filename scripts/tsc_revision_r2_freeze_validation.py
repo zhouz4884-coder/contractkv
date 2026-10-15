@@ -52,6 +52,7 @@ def main():
     files.update(('configs/tsc_revision_r2_validation_v1.json','scripts/run_tsc_revision_r2_validation.sh',
       'scripts/tsc_revision_r2_live.py','scripts/tsc_revision_r2_live_v2.py','scripts/tsc_revision_r2_admission.py','scripts/tsc_revision_r2_freeze_validation.py',
       'scripts/tsc_revision_r2_make_fanout.py','results/tsc_revision_r2/inputs/heldout_sealed_sessions_v1.jsonl',
+      'scripts/tsc_revision_r2_live_summary.py','scripts/tsc_revision_r2_tail_bootstrap.py',
       'results/tsc_revision_r2/inputs/heldout_fanout_v1.jsonl','results/tsc_revision_r2/inputs/heldout_fanout_v1.commitment.json',
       'results/tsc_revision_r2/profile_v1/analysis/selection_input_v1.json',
       'results/tsc_revision_r2/profile_v1/analysis/completion_audit_v1.json',
