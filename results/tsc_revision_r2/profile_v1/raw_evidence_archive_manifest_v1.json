@@ -1,0 +1,46 @@
+{
+  "schema_version": "tsc-r2.selected-control-archive.v1",
+  "archive": "profile_v1_raw_evidence_v1.tar.gz",
+  "archive_sha256": "7c5fe0305c025d96ba33c06c3b529aff5aa902372dba8664ea93420ae8ec03df",
+  "archive_bytes": 10042634,
+  "member_files": 106,
+  "study": "profile_v1",
+  "cases": [
+    {
+      "model": "qwen",
+      "actual_generations": 556,
+      "qualification_calls": 108,
+      "issued": 85,
+      "actual_paired_compiled_controls": 340,
+      "rejected_published_tokens": 0,
+      "metric_joins": 664,
+      "declared_gpu_lane": "0",
+      "raw_sha256": "9c7652b278d0ddc216966dfae02f0ab71af64b45d53f8fc72080c13cdd1218f8"
+    },
+    {
+      "model": "mistral",
+      "actual_generations": 300,
+      "qualification_calls": 72,
+      "issued": 39,
+      "actual_paired_compiled_controls": 156,
+      "rejected_published_tokens": 0,
+      "metric_joins": 372,
+      "declared_gpu_lane": "1",
+      "raw_sha256": "d0bd36803a116f08d3414e47658c4b775dcf651dca8f5bba901f2dc3cb8c84a6"
+    },
+    {
+      "model": "llama",
+      "actual_generations": 304,
+      "qualification_calls": 54,
+      "issued": 40,
+      "actual_paired_compiled_controls": 160,
+      "rejected_published_tokens": 0,
+      "metric_joins": 358,
+      "declared_gpu_lane": "1",
+      "raw_sha256": "faa7b9a48d19d4480496b1678e4b9242d73ccda5700cb8e99cfbb0350e5607a7"
+    }
+  ],
+  "includes_actual_prompt_and_output_IDs_metrics_and_source_snapshots": true,
+  "selected_development_not_heldout": true,
+  "performance_claim": false
+}

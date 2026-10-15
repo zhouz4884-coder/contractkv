@@ -1,0 +1,18 @@
+{
+  "schema_version":"tsc-r2.development-serving-pilot.v1",
+  "development_sources":12,
+  "fanout_selection":"First source per family in frozen development order, five sources; selection before pilot outcomes",
+  "models":["qwen","mistral","llama"],
+  "policies":["raw-order","legacy-prefix","margin-benefit"],
+  "repeats":1,
+  "studies":{"single-session":1,"template-fanout":10},
+  "concurrency":2,
+  "expected_cells":18,
+  "expected_future_requests":5022,
+  "selected_catalog":"configs/tsc_revision_r2_selected_catalog_v1.json",
+  "new_fifty_sources_remain_unrun":true,
+  "legacy_control":"Frozen R1R register, independent new streaming full-ID logger, new backend with pointwise floors disabled",
+  "margin_condition":"Pointwise floors selected from development, prospective p95-cost gate, one selected level per model/family, at most one verification per scope, no online descent",
+  "performance_boundary":"Synchronous wave barrier, full actual controller/planning/business/qualification wall; post-measurement audit excluded equally",
+  "purpose":"Development serving feasibility before independent heldout validation; no heldout efficacy claim"
+}

@@ -17,7 +17,7 @@ def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True)
-    p.add_argument('--study',choices=('warm_reuse_v1','batch_reuse_v1','margin_smoke_v1'),required=True); a=p.parse_args()
+    p.add_argument('--study',choices=('warm_reuse_v1','batch_reuse_v1','margin_smoke_v1','profile_v1'),required=True); a=p.parse_args()
     root=a.root.resolve(); base=root/'results/tsc_revision_r2'/a.study; prefix=a.study.removesuffix('_v1')
     audit=json.loads((base/'analysis/completion_audit_v1.json').read_text(encoding='utf-8'))
     if not audit['execution_complete']: raise ValueError('Complete actual-ID/cache intervention audit required')
@@ -46,6 +46,8 @@ def main():
     if prefix=='batch_reuse': names.append('tsc_revision_r2_batch_summary.py')
     if prefix=='margin_smoke':
         names+=['tsc_revision_r2_margin_smoke_summary.py','tsc_revision_r2_diagnose_summary.py']
+    if prefix=='profile':
+        names+=['tsc_revision_r2_profile_summary.py','tsc_revision_r2_select_policy.py']
     for name in names: shutil.copyfile(root/'scripts'/name,code/name)
     files=[x for x in base.rglob('*') if x.is_file() and not x.name.endswith(('.pid','.partial','.tar.gz'))
            and not x.name.startswith('raw_evidence_') and '.tar.gz.part' not in x.name]
