@@ -26,6 +26,7 @@
   "performance_boundary":"Actual controller, planning, business, logging/scoring and synchronous verification waits; same two-request wave barrier; no offline cost subtraction. Audit flush time reported separately for every policy.",
   "quality_reporting":"Retain all raw/fallback/compiled scores and ID divergences; >0.03 material drops reported in all and compiled denominators, no after-output route relabeling",
   "uncertainty":"Source-template plus paired-repeat bootstrap for readiness; paired three-run min/max for full wall. Registered tenants and turns stay clustered.",
+  "p99_uncertainty":"2000 paired source-template/repeat bootstrap draws, seed10672129, reported vs raw and directly vs legacy. Weighted order statistics checked against literal resampling. Only compute after all cells complete; do not claim significance from point estimates alone.",
   "no_reselection_using_heldout_outcomes":true,
   "no_positive_result_promised":true
 }

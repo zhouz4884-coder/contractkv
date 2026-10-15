@@ -1,0 +1,24 @@
+{
+  "schema_version": "tsc-r2.before-execution-gpu-dispatch-amendment.v1",
+  "timestamp": "2026-10-15T12:05:57.209092+00:00",
+  "primary_freeze_sha256": "d5c603781da25f49cbe40f61bfb4d90127ea5772167a07eb32c8e4835958df92",
+  "original_frozen_cell_launcher_sha256": "c6d21dccd75716da0e2c0f6bb177c582267077318da19e5f0bb67eae205927bd",
+  "files": [
+    {
+      "path": "scripts/run_tsc_revision_r2_long_dispatch.py",
+      "snapshot": "execution_dispatch_v1/dispatcher.py",
+      "sha256": "1f7e8f3e015a453f481f467c7cf5b3ae24aba07f1596615c36e0f89b78c19825"
+    },
+    {
+      "path": "results/tsc_revision_r2/long_format_v2/execution_dispatch_v1/cell_runner.sh",
+      "snapshot": "execution_dispatch_v1/cell_runner.sh",
+      "sha256": "22bb68f9b8acff51345b70dbed2c808cf9959f2af8387a8405f600cbf72dc3ba"
+    }
+  ],
+  "actual_long_requests_before_amendment": 0,
+  "original_wait_only_queue_stopped_pid": 2662003,
+  "reason": "Use GPU0 as soon as all six Qwen pilot cells finish; GPU1 joins after the complete pilot. Fixed nine long cells run in declared model/repeat order on the next available GPU.",
+  "sampling_policy_scorer_prompts_floors_and_fresh_engine_per_cell_unchanged": true,
+  "gpu_assignment_is_availability_based_and_logged_before_each_cell_not_selected_from_quality": true,
+  "no_new_heldout_model_requests": true
+}

@@ -1,4 +1,5 @@
 from scripts.tsc_revision_r2_long_format import scores
+from scripts.tsc_revision_r2_long_format_summary import wire_schema
 import json
 
 def test_original_128_predicate_preserved_and_new_task_separate():
@@ -16,3 +17,10 @@ def test_primary_tolerant_fence_score_does_not_hide_strict_schema_failure():
     result=scores(value,128,1001)
     assert result['original_128_score']['complete_correct_array']
     assert not result['strict_plain_json_integer_sequence']
+
+def test_model_think_stripping_is_not_raw_wire_json_compliance():
+    value='<think>\n\n</think>\n\n'+json.dumps(list(range(1001,1129)))
+    assert scores(value,128,1001)['original_128_score']['complete_correct_array']
+    assert scores(value,128,1001)['strict_plain_json_integer_sequence']
+    assert not wire_schema(value,128,1001)
+    assert wire_schema(json.dumps(list(range(1001,1129))),128,1001)
