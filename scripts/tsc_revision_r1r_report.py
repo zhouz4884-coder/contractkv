@@ -27,6 +27,8 @@ def main():
     perf=read_csv(summary/'performance_comparison_v1.csv'); longrows=read_csv(long/'long_output_summary_v1.csv')
     controls=read_csv(summary/'raw_repeat_controls_v1.csv'); cells=read_csv(summary/'performance_by_cell_v1.csv')
     witness=json.loads((summary/'witness_decision_audit_v1.json').read_text(encoding='utf-8'))
+    horizon_audit=json.loads((summary/'output_horizon_audit_v1.json').read_text(encoding='utf-8'))
+    horizons=read_csv(summary/'output_horizon_summary_v1.csv')
     stages=[r for r in read_csv(summary/'observed_cost_stages_v1.csv') if r['family']=='ALL']
     lanes=read_csv(summary/'within_gpu_lane_diagnostic_v1.csv')
     drops=sum(n(r,'compiled_material_drops') for r in quality)
@@ -34,6 +36,8 @@ def main():
     compiled_cases=[r for r in read_csv(case_path) if r['effective_level']!='L0'] if case_path.is_file() else []
     if len(compiled_cases)!=drops: raise RuntimeError('Compiled failure case coverage does not match quality totals')
     compiled=sum(n(r,'compiled_pairs') for r in quality)
+    if horizon_audit['new_compiled_futures']!=compiled or horizon_audit['new_witness_sequences_available']!=compiled:
+        raise RuntimeError('Output-horizon witness coverage does not match compiled quality totals')
     paired=sum(n(r,'pairs') for r in quality)
     all_drops=sum(n(r,'material_drops_gt_0_03') for r in quality)
     routes=sum(r['scope_invalid_admissions'] for r in audit['cells']); pub=sum(r['rejected_published_tokens'] for r in audit['cells'])
@@ -92,9 +96,17 @@ def main():
            '首 token 后响应时间仍含客户端/传输和结束处理，不能当成纯 GPU decode kernel 时间；其他注册准备是完整注册与逐次 verifier HTTP 时长之差，含渲染、tokenize 与控制开销。这些观测用来分析瓶颈，不被加回已经计入全部成本的 wall。输出长度同时列出，以免把生成长度变化的收益全部归因于 cache。','',
            f"真实任务还配对审计了 {witness['scope_registrations_compared']} 个 query 注册，其中 {witness['same_raw_reference_id_registrations']} 个具有相同 raw 参考 token 序列。相同参考下仍有 {witness['different_matched_level_decisions_with_same_reference']} 个同级判定变化；其中 {witness['same_reference_decision_changes_with_zero_prefix_read']} 个实际前缀读取为 0，{witness['same_reference_decision_changes_with_actual_prefix_read']} 个发生了读取。因此不能把全部变化归因于前缀读取，也不能把该优化称为逐位判定不变。缓存/重算及批形状造成的 FP16 排名差异是待检验解释，尚需固定输入的重复 cold/read 重放定位；本次没有据此调改 held-out 门禁。",'',
            '## 实际长输出与终止边界','',
+           '先按实际见证长度核对未来输出。以下 token 数采用接口实际返回的 IDs（包含已返回的 terminal stop），不是预算值。超过参考序列长度的位置单独计数；即便长度仍在范围内，一旦 token 路径分歧，后续也不能由原 teacher-forced 历史直接推导。','',
+           table(['批次/场景','模型','策略/预算条件','编译未来请求','见证长度范围','未来最长','超过见证长度的输出/位置','可比较见证序列'],[
+               [r['cohort']+'/'+r['study'],r['model'],r['policy']+'/'+r['budget_condition'],r['compiled_futures'],
+                r['reference_tokens_min']+'–'+r['reference_tokens_max'],r['future_tokens_max'],
+                r['outputs_exceed_reference_length']+'/'+r['positions_beyond_reference_length'],r['comparable_witness_sequences']]
+               for r in horizons if r['cohort']=='R1R' or r['study']=='free-generation']),'',
+           '原 R1 主实验只保留参考长度/哈希，未保留参考序列的直接 IDs；表中这些序列不可比较，不补造相对见证的首次分歧位置。原 R1 未来 raw/compiled 配对的分歧仍由实际输出 IDs 计算。新 R1R 保留真实业务见证 IDs。详细每请求的长度、超出位置和相对见证的首次分歧见 output_horizon_pairs_v1.csv；这张编译路由表不替代包含 raw/fallback 的总体质量和成本分母。','',
            '原 R1 的 512 上限条件中，获准输出实际上均未超过 96 token，因此它不构成 512-token 正向行为证据。下面的独立受控任务要求输出完整整数数组，用 1536 上限允许自然 EOS 的较长输出；只按实际长度与结束状态计数。它不替代五任务族的正式任务评分或性能数据。','',
-           table(['模型','上限','参考 length stop','获准参考','编译未来对','实际>512','编译最长token','分歧','正确数组 raw→策略'],[
-               [r['model'],r['cap'],r['length_references'],r['admitted_references'],r['compiled_pairs'],r['compiled_outputs_gt512'],r['compiled_output_tokens_max'],r['token_divergences'],f"{r['raw_complete_correct_arrays']}→{r['policy_complete_correct_arrays']}"] for r in longrows]),'',
+           table(['模型','上限','参考 length stop','获准参考','编译未来对','实际>512','编译最长token','超过见证长度 输出/位置','分歧','正确数组 raw→策略'],[
+               [r['model'],r['cap'],r['length_references'],r['admitted_references'],r['compiled_pairs'],r['compiled_outputs_gt512'],r['compiled_output_tokens_max'],
+                r['compiled_outputs_exceed_reference_length']+'/'+r['compiled_positions_beyond_reference_length'],r['token_divergences'],f"{r['raw_complete_correct_arrays']}→{r['policy_complete_correct_arrays']}"] for r in longrows]),'',
            '所有 length-stop 参考的发布门禁与实际未来输出均在长输出 completion audit 中核验；预算增大本身不被当成完成更长输出。','',
            '## 原七项要求的证据对应','',
            table(['要求','已获得证据','主要解释边界'],[

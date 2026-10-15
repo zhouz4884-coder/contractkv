@@ -25,6 +25,8 @@ def main():
     for script in ('tsc_revision_r1r_failure_diagnostics.py','tsc_revision_r1r_witness_decisions.py','tsc_revision_r1r_cost_decomposition.py','tsc_revision_r1r_gpu_diagnostics.py'):
         subprocess.run([sys.executable,str(root/'scripts'/script),'--root',str(evidence/'validation'),
                         '--output',str(evidence/'validation/summary')],check=True)
+    subprocess.run([sys.executable,str(root/'scripts/tsc_revision_r1r_output_horizon.py'),'--root',str(evidence/'validation'),
+                    '--legacy-root',str(root/'results/tsc_revision_r1'),'--output',str(evidence/'validation/summary')],check=True)
     files=[]
     for path in evidence.rglob('*'):
         if not path.is_file() or path.name.endswith('.partial') or path.name.endswith('.pid'): continue

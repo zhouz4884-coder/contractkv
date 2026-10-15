@@ -71,6 +71,21 @@ Raw comparisons pair repeats 1-2, 1-3 and 2-3, so each request participates thre
 
 Among the 3672 admitted free-running pairs, 0 pairs actually exceed 96 output tokens. The 512 cap therefore tests an extended generation binding and length-stop handling, **not 512-token positive certified behavior**. Original main canaries did not archive their direct free-output token IDs; later futures did. The exact main source snapshot is retained, and this logging omission is not filled with inferred tokens.
 
+### Measured positions beyond the actual witness length
+
+A followup over the immutable R1 raw records finds 216/3672 admitted free-generation futures longer than their own Turn-0 raw reference, totaling 2376 returned token positions beyond that reference length. These positions are reported separately and are not labelled certified. Requests share sources and repeats, and the two budget conditions are correlated. Counts include the terminal stop when returned.
+
+| Model | Budget condition | Compiled futures | Reference length range | Future max | Longer outputs | Extra positions |
+|---|---|---|---|---|---|---|
+| Llama-3.1-8B-Instruct | b0 | 567 | 2–55 | 96 | 27 | 558 |
+| Llama-3.1-8B-Instruct | b512 | 567 | 2–55 | 96 | 27 | 558 |
+| Mistral-7B-Instruct-v0.3 | b0 | 378 | 3–20 | 31 | 18 | 189 |
+| Mistral-7B-Instruct-v0.3 | b512 | 378 | 3–20 | 31 | 18 | 189 |
+| Qwen3-8B | b0 | 891 | 7–80 | 80 | 63 | 441 |
+| Qwen3-8B | b512 | 891 | 7–80 | 80 | 63 | 441 |
+
+The original main retained reference lengths/hashes but no direct reference token IDs, so first divergence from that witness is unavailable. The raw-versus-compiled future-pair divergence still uses actual returned IDs. Even within the length bound, a changed token history is not covered by the original teacher-forced path. This followup changes no admission, task score or original raw record. Per-request evidence is in `results/tsc_revision_r1/output_horizon_pairs_v1.csv`; the separately versioned producer is `scripts/tsc_revision_r1r_output_horizon.py`.
+
 ## X3. Complete Verification Cost and Live Zero-Slack Service
 
 Historical archived timing is audited without inventing missing reference or rejected-attempt clocks. Fresh R1 registration clocks include reference decode, token preparation and verification for both accepted and rejected sessions. The TP2 14B experiment is a fresh cost supplement, not a reconstruction of the earlier 44.69% result. The following session table measures the R1 maximum-level diagnostic variant; it does not substitute for missing exact historical clocks.

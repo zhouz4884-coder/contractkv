@@ -11,6 +11,7 @@ from scripts.tsc_revision_summarize import read,write
 from scripts.tsc_revision_live import load_metrics
 from scripts.tsc_revision_r1r_long_horizon import score
 from scripts.tsc_revision_summarize import first_divergence
+from scripts.tsc_revision_r1r_output_horizon import horizon_measures
 
 
 def structure_findings(rows,model,repeat,caps,futures_per_cap):
@@ -55,6 +56,7 @@ def main():
             name=f'long-horizon_{model}_r{repeat}'; directory=a.root/name; raw=directory/'raw.jsonl'
             if not raw.with_suffix('.summary.json').is_file(): failures.append(name+':missing'); continue
             summary=json.loads(raw.with_suffix('.summary.json').read_text()); rows=read(raw)
+            reference_by_cap={r['cap']:r for r in rows if r['row_type']=='reference'}
             if hashlib.sha256(raw.read_bytes()).hexdigest()!=summary['raw_sha256']: failures.append(name+':hash')
             failures.extend(name+':'+item for item in structure_findings(rows,model_names[model],repeat,protocol['output_caps'],protocol['futures_per_cap']))
             business=[r for r in rows if r['row_type']=='reference']+[r[k] for r in rows if r['row_type']=='paired_future' for k in ('raw','policy')]
@@ -70,7 +72,9 @@ def main():
                     registrations.append({'cell':name,**r})
                     if r['reference_finish']=='length' and r['certificate_issued']: failures.append(name+':length_admission')
                     if not r['certificate_issued'] and r['committed_tokens']: failures.append(name+':rejected_publication')
-                if r['row_type']=='paired_future': pairs.append({'cell':name,**r})
+                if r['row_type']=='paired_future':
+                    witness=reference_by_cap[r['cap']]
+                    pairs.append({'cell':name,**r,**horizon_measures(len(witness['output_token_ids']),r['policy']['output_token_ids'],witness['output_token_ids'])})
             cells.append(name)
     groups=defaultdict(list)
     for r in pairs: groups[(r['model'],r['cap'])].append(r)
@@ -85,6 +89,9 @@ def main():
                       'compiled_outputs_gt256':sum(r['compiled'] and len(r['policy']['output_token_ids'])>256 for r in rs),
                       'compiled_outputs_gt512':sum(r['compiled'] and len(r['policy']['output_token_ids'])>512 for r in rs),
                       'compiled_output_tokens_max':max((len(r['policy']['output_token_ids']) for r in rs if r['compiled']),default=0),
+                      'compiled_outputs_exceed_reference_length':sum(r['compiled'] and r['positions_beyond_reference_length']>0 for r in rs),
+                      'compiled_positions_beyond_reference_length':sum(r['positions_beyond_reference_length'] for r in rs if r['compiled']),
+                      'compiled_divergences_from_witness':sum(r['compiled'] and r['first_divergence_from_witness']!=-1 for r in rs),
                       'token_divergences':sum(r['first_diverging_token']!=-1 for r in rs),
                       'raw_complete_correct_arrays':sum(r['raw_score']['complete_correct_array'] for r in rs),
                       'policy_complete_correct_arrays':sum(r['policy_score']['complete_correct_array'] for r in rs),
@@ -92,6 +99,7 @@ def main():
         for r in rs:
             compact.append({k:r[k] for k in ('cell','model','repeat','cap','turn','compiled','first_diverging_token')} | {
                 'raw_tokens':len(r['raw']['output_token_ids']),'policy_tokens':len(r['policy']['output_token_ids']),
+                **{k:r[k] for k in ('reference_returned_tokens','positions_beyond_reference_length','first_divergence_from_witness','future_positions_from_first_divergence')},
                 'raw_finish':r['raw']['finish_reason'],'policy_finish':r['policy']['finish_reason'],
                 'raw_correct':r['raw_score']['complete_correct_array'],'policy_correct':r['policy_score']['complete_correct_array']})
     a.output.mkdir(parents=True,exist_ok=True)

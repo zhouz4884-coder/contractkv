@@ -148,6 +148,29 @@ evidence. No bitwise or universal future-input theorem is claimed.
 
 ## Long-output supplement
 
+`tsc_revision_r1r_output_horizon.py` separately joins every compiled future to
+its actual business witness in R1R and to the archived reference length in R1.
+`output_horizon_pairs_v1.csv` reports returned token counts, positions exceeding
+the reference length and, where reference IDs exist, the first divergence from
+that witness as a zero-based index. These positions are never labelled certified; even an earlier
+in-range path divergence prevents directly extending the original teacher-forced
+history. The original R1 main only archived reference counts/hashes, so missing
+reference-ID comparisons remain unavailable. Raw/fallback quality and cost
+denominators stay in the separate overall tables.
+
+The historical followup can be regenerated without a GPU after verifying and
+extracting the R1 archive:
+
+```bash
+python scripts/tsc_revision_r1r_output_horizon.py --legacy-only \
+  --legacy-root results/tsc_revision_r1 --output results/tsc_revision_r1
+python scripts/tsc_revision_r1r_legacy_horizon_report.py \
+  --root results/tsc_revision_r1 --report docs/tsc_major_revision_r1_results.md
+```
+
+This preserves the original R1 report producer and raw archive. The new
+derived horizon CSV/JSON files are a separately versioned followup.
+
 `configs/tsc_revision_r1r_long_horizon_protocol_v1.json` freezes a separate
 controlled array-generation task. It measures 256/512 caps and a 1536 cap that
 allows naturally terminated outputs longer than 512. A larger cap alone is not
