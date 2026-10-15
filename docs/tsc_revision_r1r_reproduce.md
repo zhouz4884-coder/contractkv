@@ -26,6 +26,14 @@ registration. The only suffix changes admitted here are the declared
 metadata-only tool-observation schema. This is an empirical scope boundary,
 not a semantic guarantee for arbitrary future tool content.
 
+The conservative repair is a query-catalog mode: attestation work grows with
+the number of distinct exact query scopes. The fan-out trace deliberately
+reuses the same benchmark questions across tenants, rather than measuring the
+prevalence of repeated queries in production. It does not establish an O(1)
+certificate for arbitrarily many unseen queries or a speedup on a unique-query
+stream. Keep it separate from the submitted service-template qualification
+results and their originally authorized trajectories.
+
 The inherited per-model family maxima are documented in the live runner.
 Uniform level descent never exceeds those maxima. Mistral/Llama Qasper and
 RepoBench raw routes remain in the totals. No held-out quality threshold,
@@ -116,6 +124,14 @@ resample paired repeats and source templates. Full-wall goodput reports three
 fresh-repeat paired values and min/max, rather than inventing an additive
 source-level wall-clock interval.
 
+GPU lanes follow the frozen task-index modulo-two assignment. Some raw/policy
+pairs use different physical cards of the same RTX 3090 type. The per-cell
+hardware snapshots and `launcher_gpu_assignment_v1.csv` record this context.
+`within_gpu_lane_diagnostic_v1.csv` separately compares run means on each lane
+where both policies have data; its small, unequal run counts are explicit. This
+is a post hoc hardware diagnostic, not an additional randomized experiment or
+a replacement of the primary paired-repeat estimands.
+
 The inherited verifier checks rank-one membership reported by vLLM for every
 raw answer token and the terminal stop. Equal maximum scores can share rank
 one; this interface does not establish a unique greedy winner under ties.
@@ -163,3 +179,10 @@ Correctly signed manifests can still mislabel private content. The verifier
 checks behavior and identity, not confidentiality. Shared-prefix timing
 channels, adversarial tool semantics, distributional equivalence, stochastic
 decoding and production workload prevalence are not established here.
+
+The live harness acts as a trusted operator and connects to the localhost-only
+prototype endpoint. The nine-case manifest registration validator is a separate
+CPU component audit; that helper is not invoked by the live vLLM endpoint. Do
+not describe its issuer/role checks as an end-to-end adversarial tenant test or
+a deployed confidentiality defense. The live cache-namespace/policy and
+transaction-publication controls are separate evidence.

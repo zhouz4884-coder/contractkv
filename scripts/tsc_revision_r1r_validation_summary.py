@@ -128,6 +128,7 @@ def main():
                             'future_requests':len(future),'compiled_futures':sum(r['effective_level']!='L0' for r in future),
                             'mean_ready_ttft_ms':mean(future,'ready_ttft_ms'),'p99_ready_ttft_ms':percentile([r['ready_ttft_ms'] for r in future],.99),
                             'mean_backend_ttft_ms':mean(future,'ttft_ms'),'new_prefill_tokens_mean':mean(future,'new_prefill_tokens'),
+                            'p99_backend_ttft_ms':percentile([r['ttft_ms'] for r in future],.99),
                             'wall_s':wall,'full_wall_goodput_rps':len(future)/wall,
                             'ready_1500ms_slo_goodput_rps':sum(r['success'] and r['ready_ttft_ms']<=1500 for r in future)/wall,
                             'verification_ms_total':summary['verification_ms_total'],'verification_calls':summary['verification_calls'],**{k:v for k,v in audit.items() if k not in ('findings','cell')}})
@@ -185,10 +186,16 @@ def main():
         candidate=[r for r in performance if (r['study'],r['model'],r['policy'])==(study,model,policy)]
         gains=[next(x for x in raw if x['repeat']==r['repeat'])['wall_s']/r['wall_s'] for r in candidate]
         lo,hi=clustered_ready_ci(rs)
+        raw_futures=[r for repeat in (1,2,3) for r in cells[(study,model,repeat,'raw-order')][1] if r['row_type']=='future']
+        policy_futures=[r for repeat in (1,2,3) for r in cells[(study,model,repeat,policy)][1] if r['row_type']=='future']
         comparisons.append({'study':study,'model':model,'policy':policy,'pairs':len(rs),
                             'raw_ready_ttft_ms':mean(rs,'raw_ready_ttft_ms'),'ready_ttft_ms':mean(rs,'ready_ttft_ms'),
                             'ready_ttft_reduction_pct':100*(1-mean(rs,'ready_ttft_ms')/mean(rs,'raw_ready_ttft_ms')),
                             'ready_reduction_ci95_low':lo,'ready_reduction_ci95_high':hi,
+                            'raw_p99_ready_ttft_ms':percentile([r['ready_ttft_ms'] for r in raw_futures],.99),
+                            'p99_ready_ttft_ms':percentile([r['ready_ttft_ms'] for r in policy_futures],.99),
+                            'raw_p99_backend_ttft_ms':percentile([r['ttft_ms'] for r in raw_futures],.99),
+                            'p99_backend_ttft_ms':percentile([r['ttft_ms'] for r in policy_futures],.99),
                             'raw_full_wall_goodput_rps':sum(x['future_requests'] for x in raw)/sum(x['wall_s'] for x in raw),
                             'full_wall_goodput_rps':sum(x['future_requests'] for x in candidate)/sum(x['wall_s'] for x in candidate),
                             'full_wall_goodput_multiplier':sum(x['wall_s'] for x in raw)/sum(x['wall_s'] for x in candidate),

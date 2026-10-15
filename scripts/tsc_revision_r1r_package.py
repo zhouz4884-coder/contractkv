@@ -22,7 +22,7 @@ def main():
     primary=json.loads((evidence/'validation/summary/completion_audit_v1.json').read_text())
     long=json.loads((evidence/'long_horizon/summary/completion_audit_v1.json').read_text())
     if not primary['experimental_execution_complete'] or not long['execution_complete']: raise RuntimeError('Incomplete serving audit')
-    for script in ('tsc_revision_r1r_failure_diagnostics.py','tsc_revision_r1r_witness_decisions.py'):
+    for script in ('tsc_revision_r1r_failure_diagnostics.py','tsc_revision_r1r_witness_decisions.py','tsc_revision_r1r_cost_decomposition.py','tsc_revision_r1r_gpu_diagnostics.py'):
         subprocess.run([sys.executable,str(root/'scripts'/script),'--root',str(evidence/'validation'),
                         '--output',str(evidence/'validation/summary')],check=True)
     files=[]
@@ -35,8 +35,9 @@ def main():
     logs=root/'logs/tsc_revision_r1r'
     for path in logs.glob('*'):
         if path.name.startswith('known'): continue
-        if path.name.startswith(('finalize','post_analysis')) and path.suffix=='.log': continue
+        if path.name.startswith(('final','post_analysis')) and path.suffix=='.log': continue
         if path.suffix in ('.log','.sh'): files.append(path)
+    files += [root/'third_party/licenses/vllm-Apache-2.0.txt',root/'third_party/licenses/README.md']
     selected=sorted(set(files))
     inventory=[{'path':str(path.relative_to(root)),'bytes':path.stat().st_size,'sha256':sha(path)} for path in selected]
     with (evidence/'raw_evidence_inventory_v1.csv').open('w',encoding='utf-8',newline='') as stream:

@@ -21,6 +21,7 @@ def main():
     logs=root/'logs/tsc_revision_r1r'
     files += list(logs.glob('known-*_server.log'))
     files += [logs/'known_counterexamples_v1.log',logs/'known_counterexamples_snapshot_v1.sh']
+    files += [root/'third_party/licenses/vllm-Apache-2.0.txt',root/'third_party/licenses/README.md']
     files=sorted(set(files))
     inventory=[{'path':str(path.relative_to(root)),'bytes':path.stat().st_size,'sha256':sha(path)} for path in files]
     with (base/'raw_evidence_inventory_v1.csv').open('w',encoding='utf-8',newline='') as stream:

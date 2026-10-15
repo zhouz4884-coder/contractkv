@@ -27,6 +27,8 @@ def main():
     perf=read_csv(summary/'performance_comparison_v1.csv'); longrows=read_csv(long/'long_output_summary_v1.csv')
     controls=read_csv(summary/'raw_repeat_controls_v1.csv'); cells=read_csv(summary/'performance_by_cell_v1.csv')
     witness=json.loads((summary/'witness_decision_audit_v1.json').read_text(encoding='utf-8'))
+    stages=[r for r in read_csv(summary/'observed_cost_stages_v1.csv') if r['family']=='ALL']
+    lanes=read_csv(summary/'within_gpu_lane_diagnostic_v1.csv')
     drops=sum(n(r,'compiled_material_drops') for r in quality)
     compiled=sum(n(r,'compiled_pairs') for r in quality)
     paired=sum(n(r,'pairs') for r in quality)
@@ -44,6 +46,7 @@ def main():
            '## 修复方法与实际质量','',
            '新 query 首次出现时先服务 raw，并用这次真实业务输出提供参考；随后只有该 query 自身通过验证的布局才可复用。验证器可以读取同 namespace/policy 中此前已批准、且仍实际驻留的稳定前缀；答案及 EOS 行仍全部检查。仅提取需要的 logprob 行，Transformer/KV 计算没有被省略成代理量。','',
            '这是受控修复变体：继承 family 最大级别并统一下降，检查答案/EOS 的 rank-one membership；辅助 margin/degradation 阈值设为宽界，未执行原论文的完整收益门禁。query-full 指全上下文验证计算，不代表复现原方法全部策略。因此新结果不替换原投稿的全工作流主表。','',
+           '这也是保守的 query-catalog 模式：认证工作随不同 exact query 作用域的数量增长。fan-out 有意让多个 tenant 复用相同 benchmark 问题，不能据此推断生产中的重复 query 比例、任意新 query 的 O(1) 认证，或唯一 query 流上的收益；它与原投稿已资格化模板及其授权轨迹的结果分开解释。','',
            '以下总体分母同时包含首次 raw、冻结 L0 和验证失败回退。不同策略和两个场景有相关来源，不能把这些配对当成互相独立的样本。','',
            table(['场景','模型','策略','配对','编译','token 分歧 总体/编译','下降>0.03 总体/编译','平均分 raw→策略'],[
                [r['study'],r['model'],r['policy'],r['pairs'],r['compiled_pairs'],f"{r['token_divergences']}/{r['compiled_token_divergences']}",
@@ -61,10 +64,22 @@ def main():
                 f"{f(r,'raw_full_wall_goodput_rps'):.3f}→{f(r,'full_wall_goodput_rps'):.3f}",
                 f"{f(r,'full_wall_goodput_multiplier'):.3f} [{f(r,'goodput_multiplier_repeat_min'):.3f}, {f(r,'goodput_multiplier_repeat_max'):.3f}]"] for r in perf]),'',
            '置信区间对配对重复及来源模板重采样，tenant 和未来轮次保留在来源簇内；模型为固定模型，不能解释成模型总体预测区间。完整 wall 不被虚构拆成独立的每来源 wall，因此吞吐另报三次真实重复的范围。','',
+           table(['场景','模型','策略','冻结GPU lane','raw/策略重复数','同lane吞吐倍率'],[
+               [r['study'],r['model'],r['policy'],r['launcher_gpu_lane'],f"{r['raw_fresh_runs']}/{r['policy_fresh_runs']}",
+                f"{f(r,'within_lane_goodput_multiplier'):.3f}"] for r in lanes]),'',
+           'GPU lane 根据实际执行的冻结 launcher 任务序号恢复，并由每单元硬件快照提供运行背景；它不是另一套独立 device profiler。部分主配对跨两张3090，同lane表额外核对小幅收益是否可能来自硬件分配。每组重复数量较少且不等，不替代主估计，也不被包装成新的随机试验。','',
+           table(['场景','模型','策略','wave-ready p99 ms raw→策略','后端请求 p99 ms raw→策略'],[
+               [r['study'],r['model'],r['policy'],f"{f(r,'raw_p99_ready_ttft_ms'):.1f}→{f(r,'p99_ready_ttft_ms'):.1f}",
+                f"{f(r,'raw_p99_backend_ttft_ms'):.1f}→{f(r,'p99_backend_ttft_ms'):.1f}"] for r in perf]),'',
+           'p99 是合并三次独立进程重复后的观测分位数，不是独立请求假设下的总体置信区间。后端 TTFT 与包含验证等待的 wave-ready TTFT 各自保留，避免用更快的后端响应掩盖注册造成的尾部等待。','',
            table(['场景','模型','策略','验证总秒数','验证ms/未来请求','实际读取已批准前缀token'],[
                [r['study'],r['model'],r['policy'],f"{f(r,'verification_ms_total')/1000:.2f}",
                 f"{f(r,'verification_ms_total')/n(r,'pairs'):.2f}",r['actual_prefix_read_tokens']] for r in perf]),'',
            '这是包含失败尝试的策略级总验证成本，按每个注册调用的完整耗时求和；并行调用可能重叠，不能再把它直接加到已经实测的 TTFT 或完整 wall 上。不同策略可能选择不同级别，故该表不被解释成同一 witness 的逐调用纯算子加速。独立冷读/前缀读控制检查判定一致性、错误 namespace/policy 和零拒绝发布。','',
+           table(['场景','模型','策略','后端TTFT均值ms','首token后响应均值ms','输出token均值','其他注册准备ms/作用域'],[
+               [r['study'],r['model'],r['policy'],f"{f(r,'mean_backend_ttft_ms'):.1f}",f"{f(r,'mean_after_first_token_ms'):.1f}",
+                f"{f(r,'mean_completion_tokens'):.2f}",f"{f(r,'other_registration_ms_per_scope'):.1f}"] for r in stages]),'',
+           '首 token 后响应时间仍含客户端/传输和结束处理，不能当成纯 GPU decode kernel 时间；其他注册准备是完整注册与逐次 verifier HTTP 时长之差，含渲染、tokenize 与控制开销。这些观测用来分析瓶颈，不被加回已经计入全部成本的 wall。输出长度同时列出，以免把生成长度变化的收益全部归因于 cache。','',
            f"真实任务还配对审计了 {witness['scope_registrations_compared']} 个 query 注册，其中 {witness['same_raw_reference_id_registrations']} 个具有相同 raw 参考 token 序列。相同参考下仍有 {witness['different_matched_level_decisions_with_same_reference']} 个同级判定变化；其中 {witness['same_reference_decision_changes_with_zero_prefix_read']} 个实际前缀读取为 0，{witness['same_reference_decision_changes_with_actual_prefix_read']} 个发生了读取。因此不能把全部变化归因于前缀读取，也不能把该优化称为逐位判定不变。缓存/重算及批形状造成的 FP16 排名差异是待检验解释，尚需固定输入的重复 cold/read 重放定位；本次没有据此调改 held-out 门禁。",'',
            '## 实际长输出与终止边界','',
            '原 R1 的 512 上限条件中，获准输出实际上均未超过 96 token，因此它不构成 512-token 正向行为证据。下面的独立受控任务要求输出完整整数数组，用 1536 上限允许自然 EOS 的较长输出；只按实际长度与结束状态计数。它不替代五任务族的正式任务评分或性能数据。','',
@@ -78,7 +93,7 @@ def main():
                ['较长输出','原预算和 512 条件保留；新增独立真实长输出任务','受控长输出与正式 benchmark 质量分别报告'],
                ['完整成本与零 slack','四配置历史审计、真实零 slack D0/D1/D2、14B TP2 补测、新修复完整 wall','缺失的历史参考时钟仍标不可得；闭环与开放环结果分开'],
                ['D1/D2 安全消融','两组20-case guard；10/10真正坏布局被拒绝，拒绝发布0；补测实际后决策输出保持raw分数','D1是性能参考；D2的新增价值是行为准入和发布约束'],
-               ['manifest与隔离','9例CPU声明/签名/所有权检查；live namespace/policy控制；错误共享声明界限','可信operator把私有内容错标共享仍不能由哈希发现；无时延侧信道防御'],
+               ['manifest与隔离','9例独立CPU声明/签名/所有权组件检查；另有live namespace/policy控制','CPU helper未接入live endpoint；可信operator误标私有内容不能由哈希发现；无时延侧信道防御'],
                ['CacheBlend、统计、输入','9000 native-matched 对照重算；阈值敏感性；4695 segment 位移；来源簇CI','不作2.18%跨运行栈性能优势或112x因果安全排名']]),'',
            '## 决策、限制与后续可证伪检查','',
            '原 R1 的新 query 反例支持收紧证书作用域，真实业务输出复用及 approved-prefix read 则针对完整成本来源。新正式矩阵保留冷会话与模板场景，使收益不足的场景不会被平均或摊销口径隐藏。','',
