@@ -34,12 +34,19 @@ def main():
                 other=cells.get((study,model,rindex,'raw-order'),[])
                 raw_repeats += [x for x in other if x['row_type']=='future' and (x['session_id'],x['turn_id'])==(r['session_id'],r['turn_id'])]
             witness=witnesses.get(key)
+            candidate_repeats=[]
+            for rindex in (1,2,3):
+                other=cells.get((study,model,rindex,policy),[])
+                candidate_repeats += [x for x in other if x['row_type']=='future' and (x['session_id'],x['turn_id'])==(r['session_id'],r['turn_id'])]
             row={'study':study,'model':model,'repeat':repeat,'policy':policy,'source_group':r['source_group'],'family':r['family'],
                  'session_id':r['session_id'],'turn_id':r['turn_id'],'effective_level':r['effective_level'],'query_scope':r['query_scope'],
                  'raw_score':ref['task_score'],'candidate_score':r['task_score'],'quality_drop':drop,
                  'raw_repeat_min_score':min(x['task_score'] for x in raw_repeats),'raw_repeat_max_score':max(x['task_score'] for x in raw_repeats),
                  'raw_repeat_observations':len(raw_repeats),'raw_repeat_coverage_complete':len(raw_repeats)==3,
                  'raw_repeat_score_stable':len(raw_repeats)==3 and max(x['task_score'] for x in raw_repeats)-min(x['task_score'] for x in raw_repeats)<=.03,
+                 'raw_repeat_token_stable':len(raw_repeats)==3 and all(x['output_token_ids']==raw_repeats[0]['output_token_ids'] for x in raw_repeats),
+                 'candidate_repeat_levels':'|'.join(str(x['repeat'])+':'+x['effective_level'] for x in candidate_repeats),
+                 'candidate_repeat_scores':'|'.join(str(x['repeat'])+':'+str(x['task_score']) for x in candidate_repeats),
                  'witness_available':bool(witness),'witness_turn':witness['turn_id'] if witness else 'unavailable',
                  'witness_score':witness['task_score'] if witness else 'unavailable',
                  'raw_text':ref['output_text'],'candidate_text':r['output_text'],
@@ -57,6 +64,7 @@ def main():
     if cases: write(a.output/'material_drop_cases_v1.csv',cases); write(a.output/'material_drop_source_clusters_v1.csv',grouped)
     result={'material_drop_pairs':len(cases),'compiled_material_drop_pairs':sum(r['effective_level']!='L0' for r in cases),
             'raw_fallback_material_drop_pairs':sum(r['effective_level']=='L0' for r in cases),'source_clusters':len(grouped),
+            'compiled_drops_with_stable_raw_scores_and_ids':sum(r['effective_level']!='L0' and r['raw_repeat_score_stable'] and r['raw_repeat_token_stable'] for r in cases),
             'diagnostic_only':'No outcome changes admission, source selection or formal quality thresholds.'}
     (a.output/'failure_diagnostics_v1.json').write_text(json.dumps(result,indent=2)+'\n'); print(json.dumps(result))
 

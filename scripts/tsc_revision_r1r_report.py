@@ -35,6 +35,7 @@ def main():
     case_path=summary/'material_drop_cases_v1.csv'
     compiled_cases=[r for r in read_csv(case_path) if r['effective_level']!='L0'] if case_path.is_file() else []
     if len(compiled_cases)!=drops: raise RuntimeError('Compiled failure case coverage does not match quality totals')
+    stable_raw_failures=sum(r['raw_repeat_score_stable']=='True' and r['raw_repeat_token_stable']=='True' for r in compiled_cases)
     compiled=sum(n(r,'compiled_pairs') for r in quality)
     if horizon_audit['new_compiled_futures']!=compiled or horizon_audit['new_witness_sequences_available']!=compiled:
         raise RuntimeError('Output-horizon witness coverage does not match compiled quality totals')
@@ -68,6 +69,7 @@ def main():
                 f"{r['raw_repeat_observations']} [{f(r,'raw_repeat_min_score'):.5f}, {f(r,'raw_repeat_max_score'):.5f}]"] for r in compiled_cases]) if compiled_cases else
             '本次没有已编译的阈值退化案例；所有 raw 路由事件仍保留在逐请求诊断中。'),'',
            '相同冻结输入的 raw 重复若存在较大分数变化，只说明对照本身也有波动；原配对退化仍计入分母和失败数。重复请求、tenant 和来源之间的相关性不被转换成独立失败概率。完整输出文字与来源位于 material_drop_cases_v1.csv。','',
+           f'其中 {stable_raw_failures} 个编译退化案例的三次 raw 分数和 token IDs 都稳定，不能用 raw 对照波动解释。不同重复的首次业务见证及获准级别也可能不同；逐案 CSV 保留 candidate_repeat_levels/scores，不能把这些重复假定为同一候选布局的三次控制。query 绑定仍未证明所声明 metadata 变化下的未来路径不变。后续需固定完整 prompt、GPU/批形状与 cold/read 状态，区分未来输入作用域、数值轨迹和实现问题；本次没有据此修改已观察到的 held-out 门禁。','',
            table(['场景','模型','raw重复比较','token分歧','分数绝对差>0.03'],[[r['study'],r['model'],r['comparisons'],r['token_divergences'],r['score_abs_diff_gt0_03']] for r in controls]),'',
            '## 全成本与真实计时','',
            '单 session 与模板 fan-out 分开报告。fan-out 为十个模板、每模板十个 tenant session，并发仍为 2；这是闭环重放，不是 100 个同时活跃请求或开放环容量测量。完整 wall 包括 warm 业务、首次 raw、失败验证、准备和等待，不减去假想 tool slack。服务启动和独立预控制在各策略中同等排除。','',
