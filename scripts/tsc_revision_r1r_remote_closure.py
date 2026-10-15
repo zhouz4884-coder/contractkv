@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+import sys
 
 
 def main():
@@ -13,6 +14,10 @@ def main():
     primary=json.loads((evidence/'validation/summary/completion_audit_v1.json').read_text())
     long=json.loads((evidence/'long_horizon/summary/completion_audit_v1.json').read_text())
     known=json.loads((evidence/'known_counterexamples/completion_audit_v1.json').read_text())
+    additional=json.loads((evidence/'known_counterexamples/additional_audit_v2/completion_audit_v2.json').read_text())
+    subprocess.run([sys.executable,str(root/'scripts/tsc_revision_r1r_freeze_audit.py'),'--root',str(root),
+                    '--output',str(evidence/'closure_freeze_audit_v1.json')],check=True)
+    freeze=json.loads((evidence/'closure_freeze_audit_v1.json').read_text())
     owned=set(); pattern=re.compile(r'\((?:APIServer|EngineCore_DP\d+|Worker_TP\d+)\s+pid=(\d+)\)')
     for log in (root/'logs/tsc_revision_r1r').glob('*_server.log'):
         with log.open(encoding='utf-8',errors='replace') as stream:
@@ -33,7 +38,9 @@ def main():
             'primary_cells':primary['complete_cells'],'primary_futures':primary['measured_futures'],
             'long_cells':long['complete_cells'],'long_actual_generations':long['actual_generations'],
             'known_policy_cells':known['complete_policy_cells'],'known_futures':known['future_generations'],
-            'all_experimental_audits_complete':primary['experimental_execution_complete'] and long['execution_complete'] and known['execution_complete'],
+            'all_experimental_audits_complete':primary['experimental_execution_complete'] and long['execution_complete'] and known['execution_complete'] and additional['execution_complete'],
+            'known_additional_identity_audit_complete':additional['execution_complete'],
+            'prospective_files_match_at_closure':freeze['all_committed_files_match'],
             'gpu_process_query_success':query.returncode==0,'owned_resident_gpu_pids':still_owned,
             'other_resident_gpu_pids_not_modified':sorted(resident-owned),
             'owned_gpu_cleanup_verified':query.returncode==0 and not still_owned,

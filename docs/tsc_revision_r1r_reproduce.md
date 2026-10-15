@@ -173,6 +173,24 @@ must not be called a repaired failure. The prospective inputs/source hashes are
 in `known_counterexamples/freeze_v1.json`. The followup waits until the primary
 and long-output raw archive is finalized and is published as separate evidence.
 
+The frozen `tsc_revision_r1r_known_summary.py` remains unchanged. An additional
+post-execution `tsc_revision_r1r_known_summary_audit_v2.py` checks the exact
+committed source/session/turn/model/policy set, actual metric events and token
+usage before the separate archive is built. Its outputs are under
+`known_counterexamples/additional_audit_v2/`; they do not overwrite the frozen
+original analysis. The long-output auditor also checks the exact cap/turn and
+model/repeat coordinates and recalculates array scores from response text.
+These are strengthened evidence checks, not new admission or scoring rules.
+
+`tsc_revision_r1r_freeze_audit.py` compares every committed source/input with
+both its immutable snapshot and the current deployment bytes. Point-in-time
+checks before the remaining experiments and at final closure are retained;
+they do not establish uninterrupted historical filesystem identity. A temporary
+mistaken edit to the frozen known-case analysis was restored before that queued
+study started. Its restoration hash and queue state are recorded in
+`results/tsc_revision_r1r/analysis_change_record_v1.json`; generation sources,
+inputs and backend files were not changed by that edit.
+
 ## Claims left outside scope
 
 Correctly signed manifests can still mislabel private content. The verifier

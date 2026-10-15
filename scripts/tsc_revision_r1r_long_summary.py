@@ -9,22 +9,60 @@ import sys
 if __package__ in (None,''): sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.tsc_revision_summarize import read,write
 from scripts.tsc_revision_live import load_metrics
+from scripts.tsc_revision_r1r_long_horizon import score
+from scripts.tsc_revision_summarize import first_divergence
+
+
+def structure_findings(rows,model,repeat,caps,futures_per_cap):
+    """Check frozen coordinates and reported scores against actual response text."""
+    findings=[]
+    if any(r.get('model')!=model or r.get('repeat')!=repeat for r in rows): findings.append('model_or_repeat_identity')
+    if any(r.get('row_type') not in {'reference','verification','paired_future'} for r in rows): findings.append('unexpected_row_type')
+    references=[r for r in rows if r.get('row_type')=='reference']
+    registrations=[r for r in rows if r.get('row_type')=='verification']
+    pairs=[r for r in rows if r.get('row_type')=='paired_future']
+    for name,items in (('reference',references),('verification',registrations)):
+        if len(items)!=len(caps) or {r['cap'] for r in items}!=set(caps): findings.append(name+'_cap_set')
+    coordinates=[(r['cap'],r['turn']) for r in pairs]
+    expected={(cap,turn) for cap in caps for turn in range(1,futures_per_cap+1)}
+    if len(coordinates)!=len(expected) or set(coordinates)!=expected: findings.append('future_cap_turn_set')
+    ref_by_cap={r['cap']:r for r in references}; reg_by_cap={r['cap']:r for r in registrations}
+    for cap,registration in reg_by_cap.items():
+        reference=ref_by_cap.get(cap)
+        if reference is None: continue
+        if (registration['reference_finish'],registration['reference_tokens'])!=(reference['finish_reason'],len(reference['output_token_ids'])):
+            findings.append('verification_reference_mismatch')
+        if registration['certificate_issued'] and (reference['finish_reason']!='stop' or not reference.get('witness_available')):
+            findings.append('uncertifiable_reference_admitted')
+    for row in pairs:
+        registration=reg_by_cap.get(row['cap'])
+        if registration is None or row['compiled']!=registration['certificate_issued']: findings.append('future_route_mismatch')
+        for key in ('raw','policy'):
+            if row[key+'_score']!=score(row[key]['output_text']): findings.append('reported_array_score_mismatch')
+            if len(row[key]['output_token_ids'])>row['cap']: findings.append('output_exceeds_cap')
+        if row['first_diverging_token']!=first_divergence(row['raw']['output_token_ids'],row['policy']['output_token_ids']):
+            findings.append('reported_token_divergence_mismatch')
+    return sorted(set(findings))
 
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); p.add_argument('--output',type=Path,required=True)
     a=p.parse_args(); cells=[]; pairs=[]; registrations=[]; failures=[]; actual=0; joins=0
+    protocol=json.loads((a.root/'source_snapshot/configs/tsc_revision_r1r_long_horizon_protocol_v1.json').read_text())
+    model_names={'qwen':'qwen3-8b','mistral':'mistral7b','llama':'llama31-8b'}
     for model in ('qwen','mistral','llama'):
         for repeat in (1,2,3):
             name=f'long-horizon_{model}_r{repeat}'; directory=a.root/name; raw=directory/'raw.jsonl'
             if not raw.with_suffix('.summary.json').is_file(): failures.append(name+':missing'); continue
             summary=json.loads(raw.with_suffix('.summary.json').read_text()); rows=read(raw)
             if hashlib.sha256(raw.read_bytes()).hexdigest()!=summary['raw_sha256']: failures.append(name+':hash')
+            failures.extend(name+':'+item for item in structure_findings(rows,model_names[model],repeat,protocol['output_caps'],protocol['futures_per_cap']))
             business=[r for r in rows if r['row_type']=='reference']+[r[k] for r in rows if r['row_type']=='paired_future' for k in ('raw','policy')]
             events=load_metrics(directory/'metrics.jsonl'); actual+=len(business)
             if len(business)!=15 or len({r['request_id'] for r in business})!=15: failures.append(name+':generation_count_or_ids')
             for r in business:
-                if not r['success'] or not r['token_ids_available'] or len(r['output_token_ids'])!=r['completion_tokens']: failures.append(name+':missing_actual_generation')
+                if not r['success'] or not r['token_ids_available'] or not r['output_token_ids'] or len(r['output_token_ids'])!=r['completion_tokens'] or r['finish_reason'] not in {'stop','length'}:
+                    failures.append(name+':missing_actual_generation')
                 if r['request_id'] in events: joins+=1
                 else: failures.append(name+':missing_metric_join')
             for r in rows:
