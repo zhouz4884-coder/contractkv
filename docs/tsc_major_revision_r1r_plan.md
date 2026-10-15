@@ -100,3 +100,19 @@ and explicit reporting; it does not authorize changing this held-out protocol.
 Request-level averages, tails, source clusters, raw-repeat variability, fallback
 and first-use raw costs are all retained. No production prevalence or arbitrary
 tool-observation safety is inferred from this metadata-only controlled suffix.
+
+## Implemented variant and audit clarification
+
+The final frozen repair compares rank-one answer/EOS checks with uniform descent
+within the inherited family maximum. Auxiliary candidate-margin/degradation
+bounds are wide (-1e9/+1e9), and this controlled repair study does not execute
+the original submitted policy's profitability gate. `query-full` describes the
+full-context verification computation, not all guards in the published policy.
+The measurements cannot silently replace that policy's original main table.
+
+Per-request output IDs and actual prompt counts are archived; complete prompt
+token IDs/hashes are not separately logged in R1R. Input-repeat identity is
+therefore supported by the committed source/session/turn, deterministic renderer
+and model/configuration records. The report retains compiled failures even when
+raw repeats vary, and distinguishes a witness match from a universal future
+behavior guarantee.

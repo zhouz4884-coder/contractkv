@@ -14,7 +14,15 @@ gaps, with the original frozen submission retained as an immutable baseline.
 | X4 | R3 certification beyond safe reordering | Identical safe/unsafe candidate sets; D1 vs D2 output quality, rejection and zero-publication events | completed: both 20-case guards, including fresh post-decision outputs; 10/10 bad layouts rejected, zero rejected publication |
 | X5 | R1 manifest trust and tenant isolation | Registration ownership/binding cases; detection limits for operator mislabelling; bounded timing diagnostic or explicit limitation | completed: nine CPU cases and explicit timing-channel limitation |
 | X6 | R1 CacheBlend fairness and CI; R2 input differences | Matched-baseline regression thresholds, runtime/configuration inventory, paired-session macro CI audit, token positional displacement | completed: 9000 native-matched pairs, joint-source bootstrap, 4695 segments |
-| X7 | Reproducibility and closure | Protocol/source hashes, environment snapshot, result-producing file list, CSV/JSON/Markdown and verified GitHub upload | pending |
+| X7 | Reproducibility and closure | Protocol/source hashes, environment snapshot, result-producing file list, CSV/JSON/Markdown and verified GitHub upload | completed for R1: 423 raw archive members verified, local and remote 78-cell audits pass, published in a0e682761ba231243c49898e36f3bdd61e38ef8b; added R1R repair remains in progress |
+
+R1 closure is supported by `results/tsc_revision_r1/local_completion_audit_v1.json`,
+`remote_completion_audit_v1.json`, `local_archive_verification_v1.json`, and
+`local_restore_audit_v1.json`. The local audit was rerun after confirming every
+archived member already existed with matching bytes; its earlier missing-file
+snapshot is superseded. Experimental execution and archive integrity do not
+imply zero behavioral regressions. The additional repair study is tracked in
+`docs/tsc_major_revision_r1r_plan.md` and is not marked complete by this R1 table.
 
 The protocol is `configs/tsc_major_revision_r1_protocol.json`. Its hash and all
 input commitments must be saved before any new held-out measurement. A failed
