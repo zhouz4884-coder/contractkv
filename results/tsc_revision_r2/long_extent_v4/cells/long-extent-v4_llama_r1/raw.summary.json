@@ -1,0 +1,38 @@
+{
+  "schema_version": "tsc-r2.long-format-cell.v1",
+  "execution_complete": true,
+  "errors": [],
+  "actual_generations": 20,
+  "paired_futures": 8,
+  "raw_sha256": "637a9dc19de024f0d60d7ac523ebed47c93db8ce7947a97d44f443d7c9831eba",
+  "conditions": [
+    {
+      "array_size": 192,
+      "condition": "original-instruction",
+      "issued": false,
+      "reason": "pointwise_margin_guard:candidate_token_margin_below_floor",
+      "raw_full_margin_min": 0.7812500298023224
+    },
+    {
+      "array_size": 192,
+      "condition": "explicit-schema",
+      "issued": true,
+      "reason": "",
+      "raw_full_margin_min": 0.7812500298023224
+    },
+    {
+      "array_size": 224,
+      "condition": "original-instruction",
+      "issued": true,
+      "reason": "",
+      "raw_full_margin_min": 0.421875
+    },
+    {
+      "array_size": 224,
+      "condition": "explicit-schema",
+      "issued": false,
+      "reason": "pointwise_margin_guard:candidate_token_margin_below_floor",
+      "raw_full_margin_min": 0.328125
+    }
+  ]
+}
