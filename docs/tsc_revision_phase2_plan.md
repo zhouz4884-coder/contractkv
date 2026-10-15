@@ -38,6 +38,18 @@ rechecked. Native extensions, model metadata/shards and available GPU resources
 are checked again. No backend or generation policy is changed in this first
 diagnostic.
 
+The first cold diagnostic did not reproduce the material drops; its actual
+responses and all 120 engine observations are preserved. A separate
+`tsc_revision_r2_warm_reuse_v1.json` condition fixes L2 and the same known cases.
+It first qualifies into a dedicated diagnostic salt, then compares unique-salt
+cold generation with same-salt generation that can consume the newly committed
+KV. Both witness and future metadata prompts are checked, and cold/warm order
+rotates across three sequential repeats. Two fresh servers execute 42 free
+generations and six internal qualifications. Actual prefix hits, rather than
+the salt name, determine whether a reuse condition was exercised. No behavioral
+guard or backend changes are included. This separates post-qualification cache
+execution from the cold-only condition before adding a batch-shape experiment.
+
 ## Gate 2: development repair and separate validation
 
 After the controls, choose a repair supported by observed target-task evidence.
