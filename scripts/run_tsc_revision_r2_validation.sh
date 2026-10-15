@@ -43,7 +43,7 @@ run_cell() (
     --max-num-seqs 2 --gpu-memory-utilization .88 --log-path "$ROOT/logs/tsc_revision_r2/validation_${cell}_server.log" --pid-path "$base/server.pid"
   "$PY" scripts/tsc_revision_r2_prefix_smoke_logged.py --base-url "http://127.0.0.1:$port/v1" --model "$served" \
     --policy-hash "$CONTRACTKV_POLICY_HASH" --repeats 1 --output "$base/pre_measurement_control.jsonl" --evidence "$base/pre_measurement_full_ids.jsonl"
-  "$PY" scripts/tsc_revision_r2_live.py --protocol configs/tsc_revision_r1r_validation_protocol_v1.json --catalog configs/tsc_revision_r2_selected_catalog_v2.json \
+  "$PY" scripts/tsc_revision_r2_live_v2.py --protocol configs/tsc_revision_r1r_validation_protocol_v1.json --catalog configs/tsc_revision_r2_selected_catalog_v2.json \
     --sessions "$sessions" --model "$served" --model-identity "$identity" --study "$study" --policy "$policy" \
     --base-url "http://127.0.0.1:$port/v1" --cell-id "$cell" --policy-hash "$CONTRACTKV_POLICY_HASH" --repeat "$repeat" \
     --tenants-per-template "$tenants" --output "$base/raw.jsonl" --summary "$base/summary.json" --metrics-events "$base/metrics.jsonl"

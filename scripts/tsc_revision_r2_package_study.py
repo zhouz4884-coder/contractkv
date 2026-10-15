@@ -41,7 +41,7 @@ def main():
     closure={'timestamp':datetime.now(timezone.utc).isoformat(),'frozen_current_and_snapshot_files':len(freeze['files']),'owned_resident_gpu_pids':sorted(owned&resident),'other_resident_gpu_pids_untouched':sorted(resident-owned),'no_process_stopped_by_packager':True,'experiment_execution_complete_scientific_success_separate':True}
     (base/'closure_v1.json').write_text(json.dumps(closure,indent=2)+'\n',encoding='utf-8')
     code=base/'analysis_source';code.mkdir(exist_ok=True)
-    names=['tsc_revision_r2_package_study.py','tsc_revision_verify_archive.py','tsc_revision_split_raw_archive.py']
+    names=['tsc_revision_r2_package_study.py','tsc_revision_verify_archive.py','tsc_revision_split_raw_archive.py','tsc_revision_r1r_output_horizon.py','tsc_revision_r1r_witness_decisions.py']
     names+=['tsc_revision_r2_long_format_summary.py'] if a.study.startswith('long_format_') else ['tsc_revision_r2_live_summary.py','tsc_revision_r2_select_policy.py','tsc_revision_r2_select_policy_known_guard.py']
     for name in names:shutil.copyfile(root/'scripts'/name,code/name)
     files=[p for p in base.rglob('*') if p.is_file() and 'progress_analysis' not in p.relative_to(base).parts and not p.name.endswith(('.pid','.partial','.tar.gz')) and '.tar.gz.part' not in p.name and not p.name.startswith('raw_evidence_')]

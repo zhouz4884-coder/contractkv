@@ -15,6 +15,7 @@ from scripts.tsc_revision_live import load_metrics
 from scripts.tsc_revision_summarize import read,write,first_divergence
 from scripts.tsc_revision_r2_select_policy import percentile
 from scripts.phase16r_verifier_live import extract_raw_tokens_and_margins
+from scripts.tsc_revision_r1r_output_horizon import horizon_measures
 
 MODELS={'qwen':'Qwen3-8B','mistral':'Mistral-7B-Instruct-v0.3','llama':'Llama-3.1-8B-Instruct'}
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -137,22 +138,39 @@ def main():
         futures=[r for r in rows if r['row_type']=='future'];wall=summary['wall_s_including_all_setup_and_verification']
         cells[(study,MODELS[key],policy,repeat)]=(summary,rows,manifest)
         performance.append({'cell':name,'study':study,'model':MODELS[key],'policy':policy,'repeat':repeat,'futures':len(futures),'wall_s':wall,'future_goodput_rps':len(futures)/wall,'slo1500_goodput_rps':sum(r['ready_ttft_ms']<=1500 for r in futures)/wall,'mean_ready_ttft_ms':statistics.fmean(r['ready_ttft_ms'] for r in futures),'p99_ready_ttft_ms':percentile([r['ready_ttft_ms'] for r in futures],.99),'verification_calls':summary['verification_calls'],'compiled_futures':sum(r['effective_level']!='L0' for r in futures)})
-    pairs=[];comparison=[];quality=[]
+    pairs=[];comparison=[];quality=[];decisions=[]
+    for (study,model,policy,repeat),(summary,rows,manifest) in cells.items():
+        witnesses={};plans={}
+        for r in rows:
+            if r['row_type'] in ('warm','future') and r['scope_first_raw_business']:witnesses.setdefault((r['certificate_namespace'],r['query_scope']),r)
+            elif r['row_type']=='prospective_plan':plans[(r['certificate_namespace'],r['query_scope'])]=r
+            elif r['row_type']=='verification':
+                key=(r['certificate_namespace'],r['query_scope']);witness=witnesses.get(key);gate=plans.get(key,{})
+                decisions.append({'study':study,'model':model,'policy':policy,'repeat':repeat,'family':r['family'],'certificate_namespace':key[0],'query_scope':key[1],'selected_level':r['selected_level'],'issued':r['certificate_issued'],'actual_GPU_verification_calls':len(r['attempts']),'failure_reason':r['failure_reason'],'complete_controller_verification_ms':r['complete_verification_ms'],'pre_business_planning_ms':r.get('pre_business_planning_ms'),'post_business_registration_ms':r.get('post_business_registration_ms'),'verification_RPC_ms':sum(x['verification_ms'] for x in r['attempts']),'rejected_RPC_ms':sum(x['verification_ms'] for x in r['attempts'] if not x.get('certificate_issued')),'raw_full_min_including_eos':min(witness['reference_margins']) if witness and witness.get('witness_available') else None,'prospective_allowed':gate.get('allow_verification'),'prospective_reason':gate.get('reason'),'predicted_saved_ms':gate.get('estimated_saved_ms'),'predicted_cost_ms':gate.get('estimated_cost_ms'),'declared_reuse_hint':gate.get('declared_remaining_reuse_hint')})
     for (study,model,policy,repeat),(summary,rows,manifest) in cells.items():
         if policy=='raw-order' or (study,model,'raw-order',repeat) not in cells:continue
         refsum,refrows,refmanifest=cells[(study,model,'raw-order',repeat)]
         if manifest['declared_gpu_lane']!=refmanifest['declared_gpu_lane']:audits.append({'cell':summary['cell'],'errors':['paired GPU lane differs']})
         raw={(r['session_id'],r['turn_id']):r for r in refrows if r['row_type']=='future'}
+        witnesses={}
+        for r in rows:
+            if r['row_type'] in ('warm','future') and r['scope_first_raw_business']:
+                witnesses.setdefault((r['certificate_namespace'],r['query_scope']),r)
         for r in rows:
             if r['row_type']!='future':continue
             ref=raw[(r['session_id'],r['turn_id'])]
-            pairs.append({'study':study,'model':model,'policy':policy,'repeat':repeat,'source_group':r['source_group'],'family':r['family'],'session_id':r['session_id'],'turn_id':r['turn_id'],'effective_level':r['effective_level'],'raw_score':ref['task_score'],'candidate_score':r['task_score'],'quality_drop':ref['task_score']-r['task_score'],'first_diverging_token':first_divergence(ref['output_token_ids'],r['output_token_ids']),'raw_ready_ttft_ms':ref['ready_ttft_ms'],'ready_ttft_ms':r['ready_ttft_ms']})
+            horizon={'reference_returned_tokens':None,'future_returned_tokens':len(r['output_token_ids']),'positions_beyond_reference_length':None,'witness_ids_available':False,'first_divergence_from_witness':None,'future_positions_from_first_divergence':None}
+            if r['effective_level']!='L0':
+                witness=witnesses[(r['certificate_namespace'],r['query_scope'])]
+                horizon=horizon_measures(len(witness['output_token_ids']),r['output_token_ids'],witness['output_token_ids'])
+            pairs.append({'study':study,'model':model,'policy':policy,'repeat':repeat,'source_group':r['source_group'],'family':r['family'],'session_id':r['session_id'],'turn_id':r['turn_id'],'effective_level':r['effective_level'],'raw_score':ref['task_score'],'candidate_score':r['task_score'],'quality_drop':ref['task_score']-r['task_score'],'first_diverging_token':first_divergence(ref['output_token_ids'],r['output_token_ids']),'raw_output_tokens':len(ref['output_token_ids']),'candidate_output_tokens':len(r['output_token_ids']),'raw_finish':ref['finish_reason'],'candidate_finish':r['finish_reason'],'raw_ready_ttft_ms':ref['ready_ttft_ms'],'ready_ttft_ms':r['ready_ttft_ms'],**horizon})
     for study,model,policy in itertools.product(config['studies'],MODELS.values(),[x for x in config['policies'] if x!='raw-order']):
         pp=[r for r in pairs if (r['study'],r['model'],r['policy'])==(study,model,policy)]
         if not pp:continue
         for family in ('ALL',*sorted({r['family'] for r in pp})):
             group=pp if family=='ALL' else [r for r in pp if r['family']==family]
-            quality.append({'study':study,'model':model,'policy':policy,'family':family,'pairs':len(group),'compiled_pairs':sum(r['effective_level']!='L0' for r in group),'all_material_drops':sum(r['quality_drop']>.03 for r in group),'compiled_material_drops':sum(r['quality_drop']>.03 and r['effective_level']!='L0' for r in group),'fallback_material_drops':sum(r['quality_drop']>.03 and r['effective_level']=='L0' for r in group),'compiled_ID_divergences':sum(r['first_diverging_token']!=-1 and r['effective_level']!='L0' for r in group),'max_compiled_drop':max((r['quality_drop'] for r in group if r['effective_level']!='L0'),default=None),'distinct_sources':len({r['source_group'] for r in group})})
+            compiled=[r for r in group if r['effective_level']!='L0']
+            quality.append({'study':study,'model':model,'policy':policy,'family':family,'pairs':len(group),'compiled_pairs':len(compiled),'all_material_drops':sum(r['quality_drop']>.03 for r in group),'compiled_material_drops':sum(r['quality_drop']>.03 for r in compiled),'fallback_material_drops':sum(r['quality_drop']>.03 and r['effective_level']=='L0' for r in group),'compiled_ID_divergences':sum(r['first_diverging_token']!=-1 for r in compiled),'max_compiled_drop':max((r['quality_drop'] for r in compiled),default=None),'distinct_sources':len({r['source_group'] for r in group}),'compiled_outputs_beyond_witness_length':sum(r['positions_beyond_reference_length']>0 for r in compiled),'positions_beyond_witness_length':sum(r['positions_beyond_reference_length'] for r in compiled),'compiled_divergences_from_witness':sum(r['first_divergence_from_witness']!=-1 for r in compiled),'raw_mean_output_tokens':statistics.fmean(r['raw_output_tokens'] for r in group),'policy_mean_output_tokens':statistics.fmean(r['candidate_output_tokens'] for r in group)})
         available=sorted({r['repeat'] for r in pp});rawf=[];policf=[];rawwall=policywall=0;gains=[]
         for repeat in available:
             rs,rr,_=cells[(study,model,'raw-order',repeat)];ps,pr,_=cells[(study,model,policy,repeat)]
@@ -160,7 +178,7 @@ def main():
         lo,hi=clustered_ci(pp)
         comparison.append({'study':study,'model':model,'policy':policy,'paired_repeats':len(available),'pairs':len(pp),'full_wall_goodput_multiplier':rawwall/policywall,'paired_repeat_multiplier_min':min(gains),'paired_repeat_multiplier_max':max(gains),'raw_ready_mean_ms':statistics.fmean(r['ready_ttft_ms'] for r in rawf),'policy_ready_mean_ms':statistics.fmean(r['ready_ttft_ms'] for r in policf),'ready_mean_reduction_pct':100*(1-statistics.fmean(r['ready_ttft_ms'] for r in policf)/statistics.fmean(r['ready_ttft_ms'] for r in rawf)),'ready_mean_source_repeat_ci95_low':lo,'ready_mean_source_repeat_ci95_high':hi,'raw_ready_p99_ms':percentile([r['ready_ttft_ms'] for r in rawf],.99),'policy_ready_p99_ms':percentile([r['ready_ttft_ms'] for r in policf],.99)})
     a.output.mkdir(parents=True,exist_ok=True)
-    for name,values in [('performance_by_cell_v1.csv',performance),('quality_pairs_v1.csv',pairs),('quality_summary_v1.csv',quality),('performance_comparison_v1.csv',comparison)]:
+    for name,values in [('performance_by_cell_v1.csv',performance),('quality_pairs_v1.csv',pairs),('quality_summary_v1.csv',quality),('performance_comparison_v1.csv',comparison),('scope_decisions_v1.csv',decisions)]:
         if values:write(a.output/name,values)
     result={'schema_version':'tsc-r2.live-completion-audit.v1','execution_complete':not missing and not any(x['errors'] for x in audits) and len(cells)==config['expected_cells'],'missing_cells':missing,'complete_cells':len(cells),'expected_cells':config['expected_cells'],'measured_futures':sum(x.get('future_requests',0) for x in audits),'expected_futures':config['expected_future_requests'],'cases':audits,'development_only':pilot,'scientific_success_is_separate':True,'ci_unit':'Source template and paired fresh repeat; all turns/tenants remain clustered. Pilot has one repeat and cannot establish repeat uncertainty.','full_wall_uncertainty':'Paired repeat min/max, not a source-cluster wall confidence interval.'}
     if result['measured_futures']!=config['expected_future_requests']:result['execution_complete']=False

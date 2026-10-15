@@ -11,6 +11,7 @@ from scripts.tsc_revision_r2_long_format import scores
 from scripts.tsc_revision_live import load_metrics
 from scripts.phase17_live_common import digest
 from scripts.phase16r_verifier_live import extract_raw_tokens_and_margins
+from scripts.tsc_revision_r1r_output_horizon import horizon_measures
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -68,7 +69,7 @@ def main():
             if row['compiled']:
                 payload=requests[key]['payload'];commit=registered[key]['committed_tokens']
                 if row['policy']['prompt_token_ids'][:commit]!=payload['prompt_token_ids'][:commit] or events[row['policy']['request_id']]['prefix_hit_tokens']<commit:errors.append(cell+':actual qualified reuse')
-            pairs.append({'cell':cell,'model':model,'repeat':repeat,'array_size':key[0],'condition':key[1],'turn':row['turn'],'compiled':row['compiled'],'raw_actual_tokens':len(row['raw']['output_token_ids']),'policy_actual_tokens':len(row['policy']['output_token_ids']),'raw_finish':row['raw']['finish_reason'],'policy_finish':row['policy']['finish_reason'],'raw_strict_schema':rawscore['strict_plain_json_integer_sequence'],'policy_strict_schema':policyscore['strict_plain_json_integer_sequence'],'strict_quality_drop':int(rawscore['strict_plain_json_integer_sequence'])-int(policyscore['strict_plain_json_integer_sequence']),'first_divergence':row['first_divergence'],'witness_tokens':len(references[key]['output_token_ids']),'beyond_witness_tokens':max(0,len(row['policy']['output_token_ids'])-len(references[key]['output_token_ids']))})
+            pairs.append({'cell':cell,'model':model,'repeat':repeat,'array_size':key[0],'condition':key[1],'turn':row['turn'],'compiled':row['compiled'],'raw_actual_tokens':len(row['raw']['output_token_ids']),'policy_actual_tokens':len(row['policy']['output_token_ids']),'raw_finish':row['raw']['finish_reason'],'policy_finish':row['policy']['finish_reason'],'raw_strict_schema':rawscore['strict_plain_json_integer_sequence'],'policy_strict_schema':policyscore['strict_plain_json_integer_sequence'],'strict_quality_drop':int(rawscore['strict_plain_json_integer_sequence'])-int(policyscore['strict_plain_json_integer_sequence']),'first_divergence':row['first_divergence'],**horizon_measures(len(references[key]['output_token_ids']),row['policy']['output_token_ids'],references[key]['output_token_ids'])})
         if set(coordinates)!={(n,c,t) for n,c in expected for t in range(1,config['futures_per_condition']+1)} or len(coordinates)!=8 or actual!=20 or pub:errors.append(cell+':counts/publication')
         control=read(base/'pre_measurement_full_ids.jsonl')
         if len(control)!=21:errors.append(cell+':control complete logging')

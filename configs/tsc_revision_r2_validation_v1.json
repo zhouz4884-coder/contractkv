@@ -15,6 +15,8 @@
   "expected_future_requests":36450,
   "expected_actual_generations":40500,
   "selected_catalog":"configs/tsc_revision_r2_selected_catalog_v2.json",
+  "selected_client":"scripts/tsc_revision_r2_live_v2.py",
+  "witness_logprob_deduplication":"Margin-benefit requests LPs for only the first genuine raw business request per namespace/query in a wave. The second tenant still receives its real raw answer, full prompt/output IDs and hashes. Legacy logging/request behavior is preserved. No extra raw generation is introduced.",
   "before_test_known_negative_constraint":"Profile-only v1 optimum was amended before any new heldout generation: raw floor must strictly exceed the 0.03125 full raw-reference minimum of the already observed Mistral paired-tenant failure. V1 pilot remains an immutable development control.",
   "gpu_assignment":"Atomic blocks of study/repeat/model contain all three policies on the same GPU. Increment block index in study/repeat/model order, assign index mod 2. Record assignment before launch.",
   "policy_order":{"1":["raw-order","legacy-prefix","margin-benefit"],"2":["margin-benefit","raw-order","legacy-prefix"],"3":["legacy-prefix","margin-benefit","raw-order"]},
