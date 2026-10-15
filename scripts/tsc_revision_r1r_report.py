@@ -25,6 +25,7 @@ def main():
     if not audit['experimental_execution_complete'] or not la['execution_complete']: raise RuntimeError('Report requires completed audits')
     quality=[r for r in read_csv(summary/'quality_summary_v1.csv') if r['family']=='ALL']
     perf=read_csv(summary/'performance_comparison_v1.csv'); longrows=read_csv(long/'long_output_summary_v1.csv')
+    schema_issues=[r for r in read_csv(long/'posthoc_schema_summary_v1.csv') if r['cap']=='1536' and r['category']!='frozen_predicate_pass']
     controls=read_csv(summary/'raw_repeat_controls_v1.csv'); cells=read_csv(summary/'performance_by_cell_v1.csv')
     witness=json.loads((summary/'witness_decision_audit_v1.json').read_text(encoding='utf-8'))
     horizon_audit=json.loads((summary/'output_horizon_audit_v1.json').read_text(encoding='utf-8'))
@@ -110,6 +111,10 @@ def main():
                [r['model'],r['cap'],r['length_references'],r['admitted_references'],r['compiled_pairs'],r['compiled_outputs_gt512'],r['compiled_output_tokens_max'],
                 r['compiled_outputs_exceed_reference_length']+'/'+r['compiled_positions_beyond_reference_length'],r['token_divergences'],f"{r['raw_complete_correct_arrays']}→{r['policy_complete_correct_arrays']}"] for r in longrows]),'',
            '所有 length-stop 参考的发布门禁与实际未来输出均在长输出 completion audit 中核验；预算增大本身不被当成完成更长输出。','',
+           '以下为观测后增加的格式诊断，用来区分 JSON 解析、元素类型和数值序列问题；冻结的数组主评分保持原样。JSON 谓词与 token/EOS 认证门禁独立，格式错误与认证拒绝同时出现，并不证明前者导致后者。详细前缀和类型信息见 posthoc_schema_diagnostics_v1.csv。','',
+           (table(['模型','输出角色','实际编译路由','诊断类别','生成次数'],[
+               [r['model'],r['role'],'是' if r['compiled_policy']=='True' else '否',r['category'],r['generations']] for r in schema_issues]) if schema_issues else
+            '自然结束长输出均通过冻结的数组谓词。'),'',
            '## 原七项要求的证据对应','',
            table(['要求','已获得证据','主要解释边界'],[
                ['非 RULER 共同跨模型','原 R1 三模型共同 HotpotQA：2430 配对；输入和固定 L2 完全相同','prefill 降低 38.38–48.05%；完整成本零 slack 宏均值 5.24%，CI [-2.16,12.56]%，不能称普遍冷会话获益'],

@@ -3,7 +3,8 @@ import copy
 import json
 import unittest
 
-from scripts.tsc_revision_r1r_long_summary import structure_findings
+from scripts.tsc_revision_r1r_long_summary import structure_findings,schema_diagnostic
+from scripts.tsc_revision_r1r_long_horizon import score as frozen_long_score
 from scripts.tsc_revision_r1r_known_summary_audit_v2 import future_identity_findings
 
 
@@ -12,7 +13,8 @@ class LongSupplementIntegrityTests(unittest.TestCase):
         rows=[]; text=json.dumps(list(range(1001,1129)))
         for cap in (256,512,1536):
             common={'model':'qwen3-8b','repeat':1,'cap':cap}
-            rows.append({**common,'row_type':'reference','finish_reason':'stop','output_token_ids':[1,2],'witness_available':True})
+            rows.append({**common,'row_type':'reference','finish_reason':'stop','output_token_ids':[1,2],'witness_available':True,
+                         'output_text':text,'complete_correct_array':True,'valid_array':True})
             rows.append({**common,'row_type':'verification','reference_finish':'stop','reference_tokens':2,'certificate_issued':True})
             for turn in (1,2):
                 output={'output_text':text,'output_token_ids':[1,2]}
@@ -39,6 +41,18 @@ class LongSupplementIntegrityTests(unittest.TestCase):
         findings=self.audit(rows)
         self.assertIn('reported_array_score_mismatch',findings)
         self.assertIn('future_route_mismatch',findings)
+
+    def test_reference_score_is_checked_against_actual_text(self):
+        rows=self.records(); rows[0]['output_text']='[]'
+        self.assertIn('reported_reference_array_score_mismatch',self.audit(rows))
+
+    def test_posthoc_format_diagnosis_keeps_original_failures(self):
+        text='[JSON_ARRAY]\n'+json.dumps(list(range(1001,1129)))
+        self.assertFalse(frozen_long_score(text)['complete_correct_array'])
+        self.assertEqual(schema_diagnostic(text,'stop')['category'],'json_parse_error')
+        strings=json.dumps([str(value) for value in range(1001,1129)])
+        self.assertFalse(frozen_long_score(strings)['complete_correct_array'])
+        self.assertEqual(schema_diagnostic(strings,'stop')['category'],'element_type_mismatch')
 
 
 class KnownSupplementIntegrityTests(unittest.TestCase):

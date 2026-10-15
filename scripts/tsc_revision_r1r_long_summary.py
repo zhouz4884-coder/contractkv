@@ -1,9 +1,11 @@
 """Actual length/stop/quality and metric audit for controlled long outputs."""
 import argparse
 from collections import defaultdict
+from collections import Counter
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 
 if __package__ in (None,''): sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -12,6 +14,20 @@ from scripts.tsc_revision_live import load_metrics
 from scripts.tsc_revision_r1r_long_horizon import score
 from scripts.tsc_revision_summarize import first_divergence
 from scripts.tsc_revision_r1r_output_horizon import horizon_measures
+
+
+def schema_diagnostic(text,finish):
+    """Post hoc description only; never changes the frozen primary predicate."""
+    if finish=='length': return {'category':'budget_truncation','detail':'','output_prefix':text[:80]}
+    if score(text)['complete_correct_array']: return {'category':'frozen_predicate_pass','detail':'','output_prefix':text[:80]}
+    clean=re.sub(r'<think>.*?</think>','',text,flags=re.S).strip()
+    clean=re.sub(r'^```(?:json)?\s*|\s*```$','',clean).strip()
+    try: values=json.loads(clean)
+    except ValueError as exc: return {'category':'json_parse_error','detail':str(exc),'output_prefix':clean[:80]}
+    if not isinstance(values,list): return {'category':'not_array','detail':type(values).__name__,'output_prefix':clean[:80]}
+    types=dict(Counter(type(value).__name__ for value in values))
+    category='element_type_mismatch' if any(type(value) is not int for value in values) else 'value_sequence_mismatch'
+    return {'category':category,'detail':json.dumps({'items':len(values),'item_types':types},sort_keys=True),'output_prefix':clean[:80]}
 
 
 def structure_findings(rows,model,repeat,caps,futures_per_cap):
@@ -31,6 +47,8 @@ def structure_findings(rows,model,repeat,caps,futures_per_cap):
     for cap,registration in reg_by_cap.items():
         reference=ref_by_cap.get(cap)
         if reference is None: continue
+        if {key:reference.get(key) for key in ('complete_correct_array','valid_array')}!=score(reference['output_text']):
+            findings.append('reported_reference_array_score_mismatch')
         if (registration['reference_finish'],registration['reference_tokens'])!=(reference['finish_reason'],len(reference['output_token_ids'])):
             findings.append('verification_reference_mismatch')
         if registration['certificate_issued'] and (reference['finish_reason']!='stop' or not reference.get('witness_available')):
@@ -48,7 +66,7 @@ def structure_findings(rows,model,repeat,caps,futures_per_cap):
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args(); cells=[]; pairs=[]; registrations=[]; failures=[]; actual=0; joins=0
+    a=p.parse_args(); cells=[]; pairs=[]; registrations=[]; failures=[]; actual=0; joins=0; formats=[]
     protocol=json.loads((a.root/'source_snapshot/configs/tsc_revision_r1r_long_horizon_protocol_v1.json').read_text())
     model_names={'qwen':'qwen3-8b','mistral':'mistral7b','llama':'llama31-8b'}
     for model in ('qwen','mistral','llama'):
@@ -68,6 +86,9 @@ def main():
                 if r['request_id'] in events: joins+=1
                 else: failures.append(name+':missing_metric_join')
             for r in rows:
+                if r['row_type']=='reference':
+                    formats.append({'cell':name,'model':r['model'],'repeat':r['repeat'],'cap':r['cap'],'turn':0,'role':'reference',
+                                    'compiled_policy':False,**schema_diagnostic(r['output_text'],r['finish_reason'])})
                 if r['row_type']=='verification':
                     registrations.append({'cell':name,**r})
                     if r['reference_finish']=='length' and r['certificate_issued']: failures.append(name+':length_admission')
@@ -75,6 +96,9 @@ def main():
                 if r['row_type']=='paired_future':
                     witness=reference_by_cap[r['cap']]
                     pairs.append({'cell':name,**r,**horizon_measures(len(witness['output_token_ids']),r['policy']['output_token_ids'],witness['output_token_ids'])})
+                    for role in ('raw','policy'):
+                        formats.append({'cell':name,'model':r['model'],'repeat':r['repeat'],'cap':r['cap'],'turn':r['turn'],'role':role,
+                                        'compiled_policy':role=='policy' and r['compiled'],**schema_diagnostic(r[role]['output_text'],r[role]['finish_reason'])})
             cells.append(name)
     groups=defaultdict(list)
     for r in pairs: groups[(r['model'],r['cap'])].append(r)
@@ -104,9 +128,14 @@ def main():
                 'raw_correct':r['raw_score']['complete_correct_array'],'policy_correct':r['policy_score']['complete_correct_array']})
     a.output.mkdir(parents=True,exist_ok=True)
     if table: write(a.output/'long_output_summary_v1.csv',table); write(a.output/'long_output_pairs_v1.csv',compact)
+    if formats:
+        write(a.output/'posthoc_schema_diagnostics_v1.csv',formats)
+        counts=Counter((r['model'],r['cap'],r['role'],r['compiled_policy'],r['category']) for r in formats)
+        write(a.output/'posthoc_schema_summary_v1.csv',[dict(zip(('model','cap','role','compiled_policy','category'),key))|{'generations':count} for key,count in sorted(counts.items())])
     audit={'schema_version':'tsc-r1r.long-completion.v1','complete_cells':len(cells),'expected_cells':9,
            'actual_generations':actual,'expected_generations':135,'metric_joins':joins,'paired_futures':len(pairs),
            'failures':sorted(set(failures)),'execution_complete':len(cells)==9 and actual==joins==135 and not failures,
+           'posthoc_schema_diagnostic_rows':len(formats),'posthoc_diagnostics_do_not_change_primary_scores':True,
            'scope':'controlled long-output mechanics; never pooled with benchmark quality or performance'}
     (a.output/'completion_audit_v1.json').write_text(json.dumps(audit,indent=2)+'\n'); print(json.dumps(audit))
     return 0 if audit['execution_complete'] else 2

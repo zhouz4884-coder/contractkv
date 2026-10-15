@@ -181,6 +181,13 @@ generations. It supplies behavioral mechanics evidence, not official benchmark
 task quality or service performance. Its templates are not pooled into the
 five-family quality table.
 
+Post hoc schema diagnostics separately describe truncated outputs, JSON parse
+errors, element-type mismatches and value/order mismatches. For example, an
+extra `[JSON_ARRAY]` marker or a list of numeric strings remains a failure under
+the frozen primary predicate. These descriptions do not normalize or replace
+that score. Certification follows the token/EOS path checks independently of
+the array predicate; a schema failure alone is not its rejection criterion.
+
 The deployment launcher queues this supplement behind the completed validation
 marker so it cannot contend with the formal performance matrix. The queue's
 recorded parent PID is specific to the original execution and must be updated
