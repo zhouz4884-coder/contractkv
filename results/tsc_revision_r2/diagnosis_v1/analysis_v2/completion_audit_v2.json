@@ -1,0 +1,42 @@
+{
+  "schema_version": "tsc-r2.selected-case-diagnostic-audit.v2",
+  "execution_complete": true,
+  "errors": [],
+  "cases": [
+    {
+      "case": "llama",
+      "free_generations": 21,
+      "full_logprob_calls": 18,
+      "internal_calls": 12,
+      "frozen_driver_execution_complete": false,
+      "postexecution_actual_metric_joins": 51,
+      "same_input_raw_future_unique_outputs": 1,
+      "all_repeated_prompt_identities_equal": true,
+      "observed_max_generic_or_business_prefix_hit": 0,
+      "candidate_layout_material_drops": 0,
+      "full_internal_decision_disagreements": 0,
+      "full_rank_one_but_free_different": 0,
+      "all_internal_read_tokens_zero": true
+    },
+    {
+      "case": "mistral",
+      "free_generations": 27,
+      "full_logprob_calls": 24,
+      "internal_calls": 18,
+      "frozen_driver_execution_complete": false,
+      "postexecution_actual_metric_joins": 69,
+      "same_input_raw_future_unique_outputs": 1,
+      "all_repeated_prompt_identities_equal": true,
+      "observed_max_generic_or_business_prefix_hit": 0,
+      "candidate_layout_material_drops": 0,
+      "full_internal_decision_disagreements": 0,
+      "full_rank_one_but_free_different": 0,
+      "all_internal_read_tokens_zero": true
+    }
+  ],
+  "selected_known_development_not_heldout": true,
+  "no_performance_or_unique_cause_claim": true,
+  "phase1_data_not_modified": true,
+  "frozen_driver_join_error_retained": "The frozen driver uses API response IDs for all metric lookups; completions engine IDs append -0 for this single prompt. Its execution_complete=false remains unchanged. This additional audit joins the exact source-defined engine IDs and checks prompt counts for all requests, including internal calls.",
+  "method_comparison_limit": "Generic full logprobs and chunked internal checks have different arithmetic shapes; disagreement alone does not establish an indexing bug."
+}

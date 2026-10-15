@@ -1,0 +1,50 @@
+{
+  "schema_version": "tsc-r1r.validation-cell.v1",
+  "timestamp": "2026-10-15T08:50:15.742349+00:00",
+  "cell": "r2-development-diagnosis-mistral",
+  "freeze_sha256": "c7c62ec4a0510c2b13a14411aabb848587cbd9aefe2a2f6a2cc4299332b83ffc",
+  "sessions_sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Mistral-7B-Instruct-v0.3",
+  "model_files": [
+    {
+      "file": "config.json",
+      "sha256": "9262d15f830e511429ccd175a71680e51c656ef3a4aa7460f3e9596508d32487"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "sha256": "b0c776216a54c6d031866d1dff0b31715bd73f5ba87f8a30eb35e8c603dff95d"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "sha256": "e489ba553b87cde188d921b1a8283c2e0b9d33d635b88147d96ff0fcd6250016"
+    }
+  ],
+  "shards": [
+    {
+      "file": "model-00001-of-00003.safetensors",
+      "bytes": 4949453792
+    },
+    {
+      "file": "model-00002-of-00003.safetensors",
+      "bytes": 4999819336
+    },
+    {
+      "file": "model-00003-of-00003.safetensors",
+      "bytes": 4546807800
+    }
+  ],
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "vllm": "0.10.2",
+    "transformers": "4.55.2",
+    "triton": "3.4.0",
+    "numpy": "2.2.6"
+  },
+  "environment": {
+    "PYTHONPATH": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/third_party/vllm-contractkv-tsc-r1r-slice:/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "CONTRACTKV_POLICY_HASH": "405c59a2d5b4c09442374bd6e4041fcad12b0a106e1e2e68046ea1132f9ca399",
+    "CONTRACTKV_SHADOW_CHUNK_TOKENS": "128",
+    "CONTRACTKV_SHADOW_ROUND_TOKENS": "128"
+  },
+  "gpu_snapshot": "index, name, uuid, memory.total [MiB], memory.used [MiB], driver_version\n0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24576 MiB, 24 MiB, 570.133.07\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24576 MiB, 24 MiB, 570.133.07\n"
+}
