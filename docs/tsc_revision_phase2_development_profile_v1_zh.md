@@ -19,6 +19,10 @@
 
 选中 raw 全输出（含 EOS）最小 margin 0.03125，candidate answer 与 EOS 下限 0.0625，收益安全系数 1.0。Qwen 五个任务族选 L3；Mistral 和 Llama 的 RULER 选 L3、HotpotQA/NarrativeQA 选 L2，另外两个任务族为 L0。完整网格与每个成本系数见 `results/tsc_revision_r2/profile_v1/analysis`，部署配置为 `configs/tsc_revision_r2_selected_catalog_v1.json`。
 
+后续在独立新 50 来源尚未生成任何输出时，交叉核对更早的 batch 负例，发现上述 v1 的 raw 下限等于该 Mistral 失败参考输出的最小 margin 0.03125。这意味着 v1 的 raw 早拒绝规则不会拦住这个参考；旧 batch 没有记录 candidate 逐位置 margin，不能据此断言 v1 的整个验证器一定会放行。为保守覆盖这一已知负例，增加“raw 下限严格大于该已知失败参考的最小 margin”这一开发约束，在原网格内重新选择得到 v2：raw/candidate 都为 0.0625。证据来源、三个相关重复及原始文件哈希完整写入 `configs/tsc_revision_r2_selected_catalog_v2.json`。这不是基于新测试集调参。
+
+v1 服务试跑继续保留为开发控制。原长输出 v1 只有冻结和等待进程，在任何模型请求发生前取消，保留其冻结及零执行状态；实际长输出使用另行冻结的 v2。不能把停止前尚未执行的条件算作完成实验，也不能将 CPU 早拒绝规则重放算作真实服务质量收益。最终独立验证采用 v2，完整服务效果仍须实测。
+
 收益预测使用 raw-future TTFT / 实际新增 prefill token 数的中位数，属于延迟预测器，不是纯 GPU prefill 计时。预测目标没有单独估计请求 logprob 的额外开销，不能作为端到端加速数字。声明的剩余复用次数也不是实际未来结果的 oracle。真正的质量、冷会话完整收益和 p99，必须由随后完整服务试跑及独立新 50 来源验证给出。这里没有声称新样本零退化、冷会话转正或 p99 已降低。
 
 原始证据包有 106 个成员，SHA256 为 `7c5fe0305c025d96ba33c06c3b529aff5aa902372dba8664ea93420ae8ec03df`。本地重组后逐成员哈希验证通过，独立重算的所有 CSV 和 JSON 与远端分析一致。预热控制单独保存并排除在业务和成本标定分母之外；旧预热控制的日志粒度不等同于本轮测量请求的完整 IDs 日志。

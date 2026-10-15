@@ -58,3 +58,16 @@ def test_unsafe_server_commit_is_fatal_and_full_request_precedes_post():
     args,business,gate=fixture();registrar=SingleShotRegistrar(.0625,.0625,rejected_but_published)
     with pytest.raises(RuntimeError,match='published'):
         registrar.register(args,'n','q',business,gate,record=log.append)
+
+
+def test_positive_single_shot_retains_level_and_reuses_decision():
+    calls=[]
+    def admit(*values):
+        calls.append(values)
+        return {'certificate_issued':True,'committed_tokens':16,'minimum_margin_guard_passed':True,
+                'raw_margin_min':1.,'candidate_margin_min':.5,'terminal_stop_margin':.5}
+    args,business,gate=fixture();registrar=SingleShotRegistrar(.0625,.0625,admit)
+    result=registrar.register(args,'n','q',business,gate)
+    assert result['certificate_issued'] and result['selected_level']=='L2'
+    assert len(result['attempts'])==1 and len(calls)==1
+    assert registrar.register(args,'n','q',business,gate) is result
