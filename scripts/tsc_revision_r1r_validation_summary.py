@@ -27,7 +27,7 @@ def expected_cells():
     return names
 
 
-def audit_cell(directory):
+def audit_cell(directory,expected_sessions):
     summary=json.loads((directory/'summary.json').read_text()); raw=directory/'raw.jsonl'
     rows=read(raw); future=[r for r in rows if r['row_type']=='future']; business=[r for r in rows if r['row_type'] in ('warm','future')]
     findings=[]
@@ -38,6 +38,14 @@ def audit_cell(directory):
     if len(set(identities))!=len(identities): findings.append('duplicate_request_id')
     positions=[(r['session_id'],r['turn_id']) for r in business]
     if len(set(positions))!=len(positions): findings.append('duplicate_session_turn')
+    expected_positions={(sid,turn) for sid in expected_sessions for turn in range(10)}
+    if set(positions)!=expected_positions: findings.append('frozen_session_turn_set_mismatch')
+    for row in business:
+        expected_sample=expected_sessions.get(row['session_id'])
+        if not expected_sample or (row['source_group'],row['family'],row['certificate_namespace'])!=expected_sample:
+            findings.append('frozen_source_family_or_namespace_mismatch'); break
+    if any(r['row_type']!=('warm' if r['turn_id']==0 else 'future') for r in business): findings.append('warm_future_classification')
+    if len({(r['study'],r['model'],r['repeat'],r['policy']) for r in business})!=1: findings.append('mixed_cell_labels')
     if any(not r['success'] for r in business): findings.append('business_generation_failure')
     if any(not r['token_ids_available'] or not r['output_token_ids'] for r in business): findings.append('missing_actual_token_ids')
     if any(len(r['output_token_ids'])!=r['completion_tokens'] for r in business): findings.append('token_usage_mismatch')
@@ -88,16 +96,32 @@ def clustered_ready_ci(pairs,seed=10672126,draws=5000):
 def main():
     p=argparse.ArgumentParser(); p.add_argument('--root',type=Path,required=True); p.add_argument('--output',type=Path,required=True)
     p.add_argument('--allow-partial',action='store_true'); a=p.parse_args(); a.output.mkdir(parents=True,exist_ok=True)
-    cells={}; audits=[]; performance=[]; all_attempts=[]; missing=[]
+    cells={}; audits=[]; performance=[]; all_attempts=[]; missing=[]; model_identities={}
     freeze_path=a.root/'freeze_v1.json'; freeze_sha=hashlib.sha256(freeze_path.read_bytes()).hexdigest()
+    expected_by_study={}
+    for study,filename,tenants in (('single-session','heldout_sealed_sessions_v1.jsonl',1),('template-fanout','heldout_fanout_sessions_v1.jsonl',10)):
+        samples=read(a.root/'source_snapshot/results/tsc_revision_r1r/inputs'/filename)
+        expected={}
+        for sample in samples:
+            for tenant in range(tenants):
+                sid=sample['revision_session_id']+(f'-tenant{tenant:02d}' if tenants>1 else '')
+                expected[sid]=(sample['revision_source_group'],sample['revision_family'],sample['revision_session_id'])
+        expected_by_study[study]=expected
     for name in expected_cells():
         directory=a.root/'cells'/name
         if not (directory/'summary.json').is_file(): missing.append(name); continue
-        audit,summary,rows=audit_cell(directory); audits.append(audit)
+        expected_study,model_alias,expected_policy,repeat_name=name.split('_')
+        audit,summary,rows=audit_cell(directory,expected_by_study[expected_study]); audits.append(audit)
         manifest=json.loads((directory/'manifest.json').read_text())
         if manifest['freeze_sha256']!=freeze_sha: audit['findings'].append('cell_freeze_mismatch')
         if manifest['sessions_sha256']!=summary['sessions_sha256']: audit['findings'].append('cell_input_mismatch')
         future=[r for r in rows if r['row_type']=='future']; first=future[0]
+        expected_model={'qwen':'Qwen3-8B','mistral':'Mistral-7B-Instruct-v0.3','llama':'Llama-3.1-8B-Instruct'}[model_alias]
+        if (first['study'],first['model'],first['policy'],first['repeat'])!=(expected_study,expected_model,expected_policy,int(repeat_name[1:])):
+            audit['findings'].append('cell_labels_do_not_match_planned_cell')
+        identity=json.dumps({k:manifest[k] for k in ('model_files','shards','packages','environment')},sort_keys=True)
+        previous=model_identities.setdefault(first['model'],identity)
+        if previous!=identity: audit['findings'].append('model_runtime_or_environment_changed_between_cells')
         key=(first['study'],first['model'],first['repeat'],first['policy']); cells[key]=(summary,rows)
         wall=summary['wall_s_including_all_setup_and_verification']
         performance.append({'cell':name,'study':key[0],'model':key[1],'repeat':key[2],'policy':key[3],
@@ -145,6 +169,7 @@ def main():
                         'pairs':len(rs),'distinct_sources':len({r['source_group'] for r in rs}),
                         'compiled_pairs':sum(r['effective_level']!='L0' for r in rs),
                         'token_divergences':sum(r['first_diverging_token']!=-1 for r in rs),
+                        'compiled_token_divergences':sum(r['first_diverging_token']!=-1 and r['effective_level']!='L0' for r in rs),
                         'material_drops_gt_0_03':sum(r['quality_drop']>.03 for r in rs),
                         'compiled_material_drops':sum(r['quality_drop']>.03 and r['effective_level']!='L0' for r in rs),
                         'distinct_sources_with_compiled_drop':len({r['source_group'] for r in rs if r['quality_drop']>.03 and r['effective_level']!='L0'}),
@@ -182,8 +207,9 @@ def main():
     audit={'schema_version':'tsc-r1r.validation-completion.v1','expected_cells':45,'complete_cells':len(cells),
            'expected_futures':28350,'measured_futures':sum(r['futures'] for r in audits),
            'missing_cells':missing,'cells':audits,'all_cell_invariants_pass':not any(r['findings'] for r in audits),
-           'experimental_execution_complete':not missing and not any(r['findings'] for r in audits),
+           'experimental_execution_complete':not missing and len(cells)==45 and sum(r['futures'] for r in audits)==28350 and not any(r['findings'] for r in audits),
            'scientific_success_is_separate':True,'freeze_sha256':freeze_sha,
+           'model_and_package_identity_consistency_checked':True,
            'ci_estimand':'fixed model; joint paired repeats and source-template clusters; tenants remain within template; 5000 draws',
            'full_wall_uncertainty':'three fresh-run paired min/max, not a source-template confidence interval'}
     (a.output/'completion_audit_v1.json').write_text(json.dumps(audit,indent=2)+'\n')

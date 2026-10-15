@@ -1,0 +1,46 @@
+{
+  "schema_version": "tsc-r1r.known-failures-input.v1",
+  "selection_uses_known_failures": true,
+  "new_heldout_evidence": false,
+  "known_model_source_units": 4,
+  "expected_policy_cells": 9,
+  "expected_future_generations": 108,
+  "policies": [
+    "raw-order",
+    "legacy-unbound",
+    "query-prefix"
+  ],
+  "fresh_server_processes": 3,
+  "measurement": "Same declared task inputs; policies share one fresh server per model; no performance claim; no assertion of original batch-shape identity",
+  "selection_source_sha256": "00d4cd062d2d1804b921387493eed120500357ecfa51d607633e1f7c4a08e264",
+  "files": [
+    {
+      "model": "qwen",
+      "file": "qwen_sessions_v1.jsonl",
+      "sessions": 2,
+      "sha256": "a4db9de96da4cd598ec3d12276f40f81f7e2ec22bc1e2fee681e65327bdbde32",
+      "source_groups": [
+        "LongBench:qasper:qasper:doc:189",
+        "RepoBench:python_v1.1:Gryphe/MergeMonster"
+      ]
+    },
+    {
+      "model": "mistral",
+      "file": "mistral_sessions_v1.jsonl",
+      "sessions": 1,
+      "sha256": "0b6f11638ad5fc8975790b5f4cc880d3bfd3c8ea967a3c2548259aa940a8531f",
+      "source_groups": [
+        "LongBench:narrativeqa:narrativeqa:doc:85"
+      ]
+    },
+    {
+      "model": "llama",
+      "file": "llama_sessions_v1.jsonl",
+      "sessions": 1,
+      "sha256": "9dea4c838ec3188147c40b9a46b78edde985715cb8a76772fe77d3d42642c9fd",
+      "source_groups": [
+        "LongBench:narrativeqa:narrativeqa:doc:126"
+      ]
+    }
+  ]
+}

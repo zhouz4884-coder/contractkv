@@ -1,0 +1,12 @@
+{
+  "schema_version": "tsc-r1r.primary-baseline-source-check.v1",
+  "checked_date_hkt": "2026-10-15",
+  "primary_source": "https://arxiv.org/html/2405.16444v3",
+  "paper": "CacheBlend: Fast Large Language Model Serving for RAG with Cached Knowledge Fusion",
+  "venue": "EuroSys 2025",
+  "doi": "10.1145/3689031.3696098",
+  "source_sections": ["7.1 Setup", "7.2 Overall Improvement", "7.3 Sensitivity Analysis"],
+  "source_metrics": "Average F1 on QA and Rouge-L on summarization across evaluated requests; not this artifact's per-request >0.03 regression frequency",
+  "source_models": ["Mistral-7B", "Yi-34B", "Llama-70B"],
+  "comparison_boundary": "Our Llama-3.1-8B trace, native runtime baselines, prompt serialization and 32-token compatibility configuration differ. Retain mean improvements and regression tails; do not infer a cross-stack performance/safety ranking."
+}

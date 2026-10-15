@@ -31,6 +31,15 @@ Uniform level descent never exceeds those maxima. Mistral/Llama Qasper and
 RepoBench raw routes remain in the totals. No held-out quality threshold,
 family maximum or routing rule is tuned after observing validation outcomes.
 
+These are controlled repair-study variants, not a reproduction of the complete
+published adaptive policy. They keep rank-one answer/EOS checks and uniform
+allowed-level descent. The launchers set candidate-margin and degradation
+bounds to -1e9/+1e9, so those auxiliary robustness guards do not select routes;
+the original frozen profitability gate is not executed here. `query-full`
+means full-context witness computation, not every guard in the original policy.
+This scope is the same for both query-bound verification variants and prevents
+their measurements from silently replacing the submitted all-workflow table.
+
 ## Runtime
 
 Use the R1 Linux environment: torch 2.8.0+cu128, vLLM 0.10.2,
@@ -89,12 +98,30 @@ subtracted. Server startup and preliminary controls are excluded equally from
 all policies. Readiness TTFT begins at the preceding business-wave completion;
 backend request TTFT is retained separately.
 
+The summed complete-verification milliseconds aggregate registration calls,
+including failures. Parallel calls can overlap. This diagnostic sum must not be
+added again to the already observed readiness TTFT or full wall time.
+
+Specifically, the two sessions in a cohort advance through a shared turn
+barrier: the next wave is ready after both preceding outputs finish. The
+recorded readiness interval includes preparation, verification and dispatch
+after that barrier. Independent per-tenant readiness at each earlier individual
+completion is not measured. Full wall time still charges every within-wave
+wait, so the closed-loop throughput denominator does not discard that time.
+
 Quality pairs retain actual returned token IDs, first token divergence, task
 score differences and length stops. Source templates are the resampling unit;
 tenants and future turns remain correlated within source. Readiness intervals
 resample paired repeats and source templates. Full-wall goodput reports three
 fresh-repeat paired values and min/max, rather than inventing an additive
 source-level wall-clock interval.
+
+The inherited verifier checks rank-one membership reported by vLLM for every
+raw answer token and the terminal stop. Equal maximum scores can share rank
+one; this interface does not establish a unique greedy winner under ties.
+Together with finite-precision differences between teacher forcing and decode,
+this is another reason to retain actual free-running outputs as the behavioral
+evidence. No bitwise or universal future-input theorem is claimed.
 
 ## Long-output supplement
 
@@ -112,6 +139,23 @@ The deployment launcher queues this supplement behind the completed validation
 marker so it cannot contend with the formal performance matrix. The queue's
 recorded parent PID is specific to the original execution and must be updated
 deliberately for a fresh deployment.
+
+## Known-counterexample followup
+
+All four model/source units with native-budget admitted regressions in R1 are
+selected for a separate diagnostic. Their original inputs and IDs are retained.
+One fresh server per model runs raw order, the legacy unbound-scope client, then
+the query-bound prefix-assisted client: nine policy cells, 108 future
+generations. Policies share that model's server and use the same new backend.
+The legacy client is a controlled scope-logic adaptation, not a reproduction of
+the original runtime or batch shapes; no timing advantage is claimed here.
+
+Selection deliberately uses known failures. These cases cannot enter the new
+held-out success rate. Report whether the legacy logic actually reproduces a
+regression under this control and what the new route does; a non-reproduction
+must not be called a repaired failure. The prospective inputs/source hashes are
+in `known_counterexamples/freeze_v1.json`. The followup waits until the primary
+and long-output raw archive is finalized and is published as separate evidence.
 
 ## Claims left outside scope
 

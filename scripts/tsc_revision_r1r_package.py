@@ -4,6 +4,8 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import subprocess
+import sys
 import tarfile
 
 
@@ -20,15 +22,20 @@ def main():
     primary=json.loads((evidence/'validation/summary/completion_audit_v1.json').read_text())
     long=json.loads((evidence/'long_horizon/summary/completion_audit_v1.json').read_text())
     if not primary['experimental_execution_complete'] or not long['execution_complete']: raise RuntimeError('Incomplete serving audit')
+    for script in ('tsc_revision_r1r_failure_diagnostics.py','tsc_revision_r1r_witness_decisions.py'):
+        subprocess.run([sys.executable,str(root/'scripts'/script),'--root',str(evidence/'validation'),
+                        '--output',str(evidence/'validation/summary')],check=True)
     files=[]
     for path in evidence.rglob('*'):
         if not path.is_file() or path.name.endswith('.partial') or path.name.endswith('.pid'): continue
+        if 'known_counterexamples' in path.relative_to(evidence).parts: continue
         if path.name.startswith('r1r_raw_evidence_v1.tar.gz') or path.name.startswith('raw_evidence_'): continue
         if any(s in path.parts for s in ('quarantine','cache')): continue
         if path.suffix in ('.json','.jsonl','.csv','.py','.sh','.sha256','.patch'): files.append(path)
     logs=root/'logs/tsc_revision_r1r'
     for path in logs.glob('*'):
-        if path.name.startswith('finalize') and path.suffix=='.log': continue
+        if path.name.startswith('known'): continue
+        if path.name.startswith(('finalize','post_analysis')) and path.suffix=='.log': continue
         if path.suffix in ('.log','.sh'): files.append(path)
     selected=sorted(set(files))
     inventory=[{'path':str(path.relative_to(root)),'bytes':path.stat().st_size,'sha256':sha(path)} for path in selected]
@@ -43,7 +50,7 @@ def main():
             'formal_cells':45,'formal_future_generations':28350,'controlled_long_cells':9,'controlled_long_generations':135,
             'includes_development_records':True,'includes_actual_output_ids_and_metrics':True,
             'includes_exact_runtime_source_snapshot':True,'includes_server_logs':True,
-            'excluded':['private SSH helpers','credential files','weights','caches','quarantines'],
+            'excluded':['private SSH helpers','credential files','weights','caches','quarantines','known-counterexample followup: separate artifact'],
             'scope':'Experimental execution complete; scientific outcomes are reported separately'}
     (evidence/'raw_evidence_archive_manifest_v1.json').write_text(json.dumps(record,indent=2)+'\n'); print(json.dumps(record))
 
