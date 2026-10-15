@@ -64,6 +64,30 @@ original long service trace. Three repeats remain within each fresh process.
 
 ## Gate 2: development repair and separate validation
 
+The new 50-source test cohort was frozen before development policy selection
+(`heldout_sealed_sessions_v1.jsonl`, SHA256
+`4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725`).
+It excludes all 362 known previous sources. Development uses the existing ten
+sources plus the two selected failures. The threshold/cost selection grid is
+declared in `tsc_revision_r2_development_plan_v1.json`; its estimates are
+development predictions, not measured serving efficacy.
+
+The user additionally requests full prompt IDs/hashes for every request, a hard
+raw/candidate minimum-margin gate, a prospective benefit gate before GPU
+qualification, and at most one online verification attempt. After that attempt
+fails, route L0 without a level-descent loop. Any CPU planning/logging cost still
+counts. A lower verifier sum does not guarantee better wall or p99, and clearer
+format instructions do not guarantee certification.
+
+An independent `vllm-contractkv-tsc-r2-margin` backend computes answer minima and
+checks the candidate EOS before physical commit. Its project helper rejects
+incomplete/nonfinite evidence. Default floors are disabled for compatibility
+controls; the .0625/.0625 preflight is one development grid point, not the final
+chosen policy. Optional traces record actual model-runner shapes and exact
+verification answer/EOS ranks/margins. They are model-step metadata, not a
+per-kernel profiler. The old six-file backend and all 83 original commitments
+remain unchanged. Real GPU preflight is required before calibration/formal use.
+
 After the controls, choose a repair supported by observed target-task evidence.
 Candidate explanations include metadata scope sensitivity, teacher-forced versus
 decode arithmetic, ambiguous ranks/margins, or an implementation difference.

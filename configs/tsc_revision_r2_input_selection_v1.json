@@ -1,0 +1,14 @@
+{
+  "schema_version":"tsc-r2.source-disjoint-input-selection.v1",
+  "seed":10672127,
+  "families":["RULER","HotpotQA","NarrativeQA","Qasper","RepoBench"],
+  "heldout_sessions_per_family":10,
+  "prior_excluded_source_groups":302,
+  "all_previous_excluded_source_groups":362,
+  "source_pool_sha256":"d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "reuse_development_sha256":"d8d2bf87c861b58c83a48df7a9ef62a91c5cc7f062b0455939e5d383470b99c1",
+  "previous_heldout_sha256":"2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079",
+  "development":"10 existing development sources plus two selected known failures; preserve existing session IDs",
+  "new_heldout_selection_uses_outcomes":false,
+  "freeze_before_development_gate_selection":true
+}
