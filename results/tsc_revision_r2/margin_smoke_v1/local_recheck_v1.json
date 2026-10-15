@@ -1,0 +1,30 @@
+{
+  "all_pass": true,
+  "comparisons": [
+    {
+      "file": "completion_audit_v1.json",
+      "equal": true
+    },
+    {
+      "file": "first_divergence_v1.csv",
+      "equal": true
+    },
+    {
+      "file": "request_prompt_hashes_v1.csv",
+      "equal": true
+    },
+    {
+      "file": "original_failure_reference_v1.json",
+      "equal": true
+    }
+  ],
+  "archive": {
+    "schema_version": "tsc-revision-local-archive-verification.v1",
+    "parts": 1,
+    "archive_sha256": "524a10721e74f05885dd28eb98e843c6f7d270ef29cef9bf0356d06607c6db03",
+    "members_verified": 75,
+    "all_hashes_match": true,
+    "does_not_imply_scientific_success": true
+  },
+  "preflight_not_heldout_efficacy": true
+}

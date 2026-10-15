@@ -1,0 +1,116 @@
+{
+  "schema_version": "tsc-r2.runtime-cell.v1",
+  "timestamp": "2026-10-15T10:03:37.844044+00:00",
+  "cell": "r2-margin-preflight-llama",
+  "freeze_sha256": "4da677f6a5bfa036b0bcb9d5b27566ced13463702ca28310c4008deb6a531ca5",
+  "sessions_sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct",
+  "model_files": [
+    {
+      "file": "config.json",
+      "sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "sha256": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "sha256": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b"
+    }
+  ],
+  "shards": [
+    {
+      "file": "model-00001-of-00004.safetensors",
+      "bytes": 4976698672
+    },
+    {
+      "file": "model-00002-of-00004.safetensors",
+      "bytes": 4999802720
+    },
+    {
+      "file": "model-00003-of-00004.safetensors",
+      "bytes": 4915916176
+    },
+    {
+      "file": "model-00004-of-00004.safetensors",
+      "bytes": 1168138808
+    }
+  ],
+  "packages": {
+    "torch": "2.8.0+cu128",
+    "vllm": "0.10.2",
+    "transformers": "4.55.2",
+    "triton": "3.4.0",
+    "numpy": "2.2.6"
+  },
+  "environment": {
+    "PYTHONPATH": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/third_party/vllm-contractkv-tsc-r2-margin:/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "CONTRACTKV_POLICY_HASH": "4da677f6a5bfa036b0bcb9d5b27566ced13463702ca28310c4008deb6a531ca5",
+    "CONTRACTKV_SHADOW_CHUNK_TOKENS": "128",
+    "CONTRACTKV_SHADOW_ROUND_TOKENS": "128"
+  },
+  "gpu_snapshot": "index, name, uuid, memory.total [MiB], memory.used [MiB], driver_version\n0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24576 MiB, 24 MiB, 570.133.07\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24576 MiB, 24 MiB, 570.133.07\n",
+  "inherited_r1r_source_guard_freeze_sha256": "c7c62ec4a0510c2b13a14411aabb848587cbd9aefe2a2f6a2cc4299332b83ffc",
+  "backend_commitment_sha256": "62b24d690c2bec3a1de75512db764c28b1d0edf15cd11a377ed080caf478eabe",
+  "imported_vllm_source": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/third_party/vllm-contractkv-tsc-r2-margin/vllm/__init__.py",
+  "declared_gpu_lane": "0",
+  "native_extensions": [
+    {
+      "relative_path": "vllm/_C.abi3.so",
+      "bytes": 363681160,
+      "sha256": "feb862d8de73163317f85b796f58ea357ce88e23f4bd5e1cc5d22ac0c9cf97d1"
+    },
+    {
+      "relative_path": "vllm/_flashmla_C.abi3.so",
+      "bytes": 1026584,
+      "sha256": "ec1eecf069278a6ef982f7e690b99d7d45d2c0374a5d5be7623abc5e4c1e21e2"
+    },
+    {
+      "relative_path": "vllm/_moe_C.abi3.so",
+      "bytes": 141492736,
+      "sha256": "03933be46c202894ba7f4e1bd7f59bb95db4eca64fdb1cd7db376a695adc46a9"
+    },
+    {
+      "relative_path": "vllm/cumem_allocator.abi3.so",
+      "bytes": 27776,
+      "sha256": "e17ae70ce22661d5d541efd959dba30eafb6669c408e2c3d452a1382ac5355dd"
+    }
+  ],
+  "tokenizer_and_generation_files": [
+    {
+      "file": "config.json",
+      "bytes": 855,
+      "sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 184,
+      "sha256": "189fb0c0d7fd8a527db217c0a60a0e013f0394cd8800f9697a666a9e75e5f7fd"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 55351,
+      "sha256": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 9085657,
+      "sha256": "79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 296,
+      "sha256": "6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec"
+    }
+  ],
+  "gate_and_trace_environment": {
+    "CONTRACTKV_MIN_RAW_TOKEN_MARGIN": ".0625",
+    "CONTRACTKV_MIN_CANDIDATE_TOKEN_MARGIN": ".0625",
+    "CONTRACTKV_MIN_CANDIDATE_MARGIN": "-1000000000",
+    "CONTRACTKV_MAX_DEGRADATION": "1000000000",
+    "CONTRACTKV_MIN_STOP_MARGIN": null,
+    "CONTRACTKV_R2_EXECUTION_TRACE": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_r2/margin_smoke_v1/llama/execution_trace.jsonl",
+    "CONTRACTKV_R2_VERIFY_TRACE": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_r2/margin_smoke_v1/llama/verify_trace.jsonl"
+  }
+}

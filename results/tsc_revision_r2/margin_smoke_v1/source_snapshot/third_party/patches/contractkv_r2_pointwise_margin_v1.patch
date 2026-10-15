@@ -1,0 +1,135 @@
+--- a/vllm/v1/engine/__init__.py
++++ b/vllm/v1/engine/__init__.py
+@@ -60,6 +60,11 @@
+     degradation_q95: float = float("nan")
+     terminal_stop_margin: float = float("nan")  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
+     cached_prefix_read_tokens: int = 0
++    raw_margin_min: float = float("nan")
++    candidate_margin_min: float = float("nan")
++    raw_margin_min_index: int = -1
++    candidate_margin_min_index: int = -1
++    minimum_margin_guard_passed: bool = False
+ 
+ 
+ class FinishReason(enum.IntEnum):
+--- a/vllm/v1/core/sched/scheduler.py
++++ b/vllm/v1/core/sched/scheduler.py
+@@ -6,6 +6,8 @@
+ import itertools
+ import hashlib
+ import os
++from scripts.tsc_revision_r2_margin_policy import minimum_margin_gate
++from scripts.tsc_revision_r2_execution_trace import emit_trace
+ import time
+ from collections import defaultdict
+ from collections.abc import Iterable
+@@ -1898,6 +1900,9 @@
+         degradation_q95 = float("nan")
+         terminal_stop_margin = float("nan")  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
+         certificate_hash = ""
++        raw_min = candidate_min = float("nan")
++        raw_min_index = candidate_min_index = -1
++        minimum_margin_passed = False
+ 
+         try:
+             expected_policy = os.environ.get("CONTRACTKV_POLICY_HASH", "")
+@@ -1958,10 +1963,29 @@
+                 "CONTRACTKV_MAX_DEGRADATION", "4.0"))
+             min_stop_margin = float(os.environ.get(
+                 "CONTRACTKV_MIN_STOP_MARGIN", "-inf"))
++            margin_result = minimum_margin_gate(
++                spec.reference_raw_margins, candidate_margins, terminal_stop_margin,
++                float(os.environ.get("CONTRACTKV_MIN_RAW_TOKEN_MARGIN", "-inf")),
++                float(os.environ.get("CONTRACTKV_MIN_CANDIDATE_TOKEN_MARGIN", "-inf")))
++            raw_min = margin_result["raw_margin_min"]
++            candidate_min = margin_result["candidate_margin_min"]
++            raw_min_index = margin_result["raw_margin_min_index"]
++            candidate_min_index = margin_result["candidate_margin_min_index"]
++            minimum_margin_passed = margin_result["passed"]
++            if os.environ.get("CONTRACTKV_R2_VERIFY_TRACE"):
++                emit_trace("CONTRACTKV_R2_VERIFY_TRACE", {
++                    "event": "r2_actual_verify_answer_eos_rows", "request_id": request.request_id,
++                    "verify_start_token": spec.verify_start_token,
++                    "reference_answer_ids": spec.reference_answer_ids,
++                    "raw_reference_margins": spec.reference_raw_margins,
++                    "candidate_ranks": candidate_ranks, "candidate_margins": candidate_margins,
++                    "terminal_stop_rank": stop_rank, "terminal_stop_margin": terminal_stop_margin,
++                    "pointwise_gate": margin_result})
+             if (all(rank == 1 for rank in candidate_ranks) and stop_ok
+                     and candidate_q05 >= min_margin
+                     and degradation_q95 <= max_degradation
+-                    and terminal_stop_margin >= min_stop_margin):
++                    and terminal_stop_margin >= min_stop_margin
++                    and minimum_margin_passed):
+                 decision = "PASS"
+                 state = "COMMITTED"
+                 committed_tokens = min(
+@@ -1990,7 +2014,8 @@
+                             approved[(index + 1) * self.block_size] = request.block_hashes[index]
+             else:
+                 decision = "FAIL"
+-                failure = "token_path_or_margin_guard_failed"
++                failure = ("pointwise_margin_guard:" + margin_result["reason"]
++                           if not minimum_margin_passed else "token_path_or_margin_guard_failed")
+         except Exception as exc:
+             failure = str(exc)
+ 
+@@ -2024,6 +2049,9 @@
+             degradation_q95=degradation_q95,
+             terminal_stop_margin=terminal_stop_margin,
+             cached_prefix_read_tokens=int(getattr(request, "contractkv_cached_prefix_read_tokens", 0)),
++            raw_margin_min=raw_min, candidate_margin_min=candidate_min,
++            raw_margin_min_index=raw_min_index, candidate_margin_min_index=candidate_min_index,
++            minimum_margin_guard_passed=minimum_margin_passed,
+         )
+ 
+     def _update_request_with_output(
+--- a/vllm/entrypoints/openai/api_server.py
++++ b/vllm/entrypoints/openai/api_server.py
+@@ -512,6 +512,11 @@
+         "cached_prefix_read_tokens": result.cached_prefix_read_tokens,
+         "certificate_hash": result.certificate_hash,
+         "policy_hash": result.policy_hash,
++        "raw_margin_min": result.raw_margin_min if math.isfinite(result.raw_margin_min) else None,
++        "candidate_margin_min": result.candidate_margin_min if math.isfinite(result.candidate_margin_min) else None,
++        "raw_margin_min_index": result.raw_margin_min_index,
++        "candidate_margin_min_index": result.candidate_margin_min_index,
++        "minimum_margin_guard_passed": result.minimum_margin_guard_passed,
+         "raw_margin_q05": (result.raw_margin_q05
+                            if math.isfinite(result.raw_margin_q05) else None),
+         "candidate_margin_q05": (result.candidate_margin_q05
+--- a/vllm/v1/worker/gpu_model_runner.py
++++ b/vllm/v1/worker/gpu_model_runner.py
+@@ -2,6 +2,8 @@
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ 
+ import gc
++import os
++from scripts.tsc_revision_r2_execution_trace import emit_trace
+ import itertools
+ import time
+ from collections import defaultdict
+@@ -2147,6 +2149,23 @@
+         with record_function_or_nullcontext("EPLB"):
+             self.eplb_step()
+ 
++        if os.environ.get("CONTRACTKV_R2_EXECUTION_TRACE"):
++            emit_trace("CONTRACTKV_R2_EXECUTION_TRACE", {
++                "event": "r2_actual_model_runner_execution",
++                "device": str(self.device),
++                "cuda_visible_devices": os.environ.get("CUDA_VISIBLE_DEVICES"),
++                "request_ids": list(req_ids_output_copy),
++                "scheduled_tokens": {key: int(value) for key, value in scheduler_output.num_scheduled_tokens.items()},
++                "active_input_requests": int(self.input_batch.num_reqs),
++                "scheduled_token_count": int(num_scheduled_tokens),
++                "padded_input_token_count": int(num_input_tokens),
++                "cudagraph_mode": str(cudagraph_runtime_mode),
++                "input_ids_shape": list(getattr(input_ids, "shape", ())),
++                "hidden_states_shape": list(getattr(hidden_states, "shape", ())),
++                "sampling_hidden_states_shape": list(getattr(locals().get("sample_hidden_states"), "shape", ())),
++                "sampling_logits_shape": list(getattr(logits, "shape", ())),
++                "sampled_token_ids": valid_sampled_token_ids,
++                "prompt_logprob_shapes": {key: list(getattr(getattr(value, "logprobs", None), "shape", ())) for key, value in prompt_logprobs_dict.items()}})
+         output = ModelRunnerOutput(
+             req_ids=req_ids_output_copy,
+             req_id_to_index=req_id_to_index_output_copy,

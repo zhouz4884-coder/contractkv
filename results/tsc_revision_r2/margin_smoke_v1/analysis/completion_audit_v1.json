@@ -1,0 +1,42 @@
+{
+  "schema_version": "tsc-r2.pointwise-preflight-audit.v1",
+  "execution_complete": true,
+  "errors": [],
+  "cases": [
+    {
+      "case": "llama",
+      "actual_requests": 51,
+      "metric_and_execution_ID_joins": 51,
+      "model_runner_steps": 789,
+      "actual_active_request_counts": [
+        1
+      ],
+      "rank_only_path_passes": 6,
+      "rank_and_pointwise_passes": 0,
+      "issued": 0,
+      "rejected": 12,
+      "rejected_published_tokens": 0,
+      "current_gpu_lane": "0",
+      "original_compiled_gpu_lane": 1
+    },
+    {
+      "case": "mistral",
+      "actual_requests": 69,
+      "metric_and_execution_ID_joins": 69,
+      "model_runner_steps": 1575,
+      "actual_active_request_counts": [
+        1
+      ],
+      "rank_only_path_passes": 6,
+      "rank_and_pointwise_passes": 0,
+      "issued": 0,
+      "rejected": 18,
+      "rejected_published_tokens": 0,
+      "current_gpu_lane": "1",
+      "original_compiled_gpu_lane": 1
+    }
+  ],
+  "preflight_not_final_threshold_selection_or_heldout_efficacy": true,
+  "historical_failed_compiled_token_LPs_unavailable": true,
+  "fixed_current_device_and_model_steps_are_not_claimed_to_reproduce_every_historical_execution_condition": true
+}

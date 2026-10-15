@@ -1,0 +1,266 @@
+{
+  "schema_version": "tsc-r2.pointwise-margin-preflight-freeze.v1",
+  "timestamp": "2026-10-15T10:03:36.735671+00:00",
+  "protocol": {
+    "schema_version": "tsc-r2.pointwise-margin-three-path-preflight.v1",
+    "phase1_commit": "3dba4e58f406cc427f83f23379abe3d3567cf301",
+    "purpose": "Selected known failures are development diagnostics, not heldout efficacy or performance evidence",
+    "fresh_server_processes_per_model": 1,
+    "sequential_repeats_in_same_process": 3,
+    "concurrency": 1,
+    "cache_condition": "Unique request salts, internal approved-prefix reads disabled; actual metric observations retained",
+    "reference": "Fresh nonstream raw business output with actual margins and returned prompt/output IDs",
+    "full_logprob_control": "Same forced candidate IDs plus complete witness answer and stop; all answer/stop rows retained",
+    "order": "L0 then ascending levels for repeats1/3; descending levels then L0 for repeat2; witness turn before future turn",
+    "cases": [
+      {
+        "key": "llama",
+        "model": "Llama-3.1-8B-Instruct",
+        "served_model": "llama31-8b",
+        "source_session": "r1r-heldout_sealed-3c2e1be3687e6af0",
+        "witness_tenant": 0,
+        "witness_turn": 1,
+        "future_tenant": 0,
+        "future_turn": 4,
+        "levels": [
+          "L0",
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "key": "mistral",
+        "model": "Mistral-7B-Instruct-v0.3",
+        "served_model": "mistral7b",
+        "source_session": "r1r-heldout_sealed-4dbe35777b43b963",
+        "witness_tenant": 0,
+        "witness_turn": 0,
+        "future_tenant": 8,
+        "future_turn": 9,
+        "levels": [
+          "L0",
+          "L1",
+          "L2",
+          "L3"
+        ]
+      }
+    ],
+    "expected_free_generations": {
+      "llama": 21,
+      "mistral": 27
+    },
+    "expected_full_logprob_calls": {
+      "llama": 18,
+      "mistral": 24
+    },
+    "expected_internal_calls": {
+      "llama": 12,
+      "mistral": 18
+    },
+    "no_frozen_phase1_source_or_threshold_changes": true,
+    "min_raw_token_margin": 0.0625,
+    "min_candidate_token_margin": 0.0625,
+    "preflight_only": true,
+    "not_final_calibration_selection": true,
+    "new_backend": "vllm-contractkv-tsc-r2-margin",
+    "max_num_seqs": 1,
+    "trace": "Actual ModelRunner shapes and exact verifier answer/EOS rows; model-step metadata, not a per-kernel profiler",
+    "expected_science": "Check exact same-prompt LP/decode rows, genuine pointwise rejection and zero rejected publication; no heldout or service efficacy claim"
+  },
+  "files": [
+    {
+      "path": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+      "sha256": "c00d70623d3f081f7197f919e19430356ad5f2b5fc7eb6aa209122904715c935"
+    },
+    {
+      "path": "configs/tsc_revision_r2_backend_commitment_v1.json",
+      "sha256": "62b24d690c2bec3a1de75512db764c28b1d0edf15cd11a377ed080caf478eabe"
+    },
+    {
+      "path": "configs/tsc_revision_r2_margin_smoke_v1.json",
+      "sha256": "bc8cfb41f67879cd4c67c5264cdfa9fdc0503984a309d5779c71f21cd1dc3306"
+    },
+    {
+      "path": "results/tsc_revision_r1r/inputs/heldout_fanout_sessions_v1.jsonl",
+      "sha256": "1b2c5585df1bc34888371b6d97fbdf4b18ecf312b84b27c85e204e94cf8bf06f"
+    },
+    {
+      "path": "results/tsc_revision_r1r/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079"
+    },
+    {
+      "path": "scripts/contractkv_verifier.py",
+      "sha256": "1577682ac36cf5756a84335a768e83701809cb050b30aa057fd0844a2489c572"
+    },
+    {
+      "path": "scripts/phase12f_real_vllm_caposc_replay.py",
+      "sha256": "857713f21b2f53d81aaf7a759b7fc40de4810528fbecad21bea50ee4b1a683fc"
+    },
+    {
+      "path": "scripts/phase13b_fresh_policy_quality_replay.py",
+      "sha256": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63"
+    },
+    {
+      "path": "scripts/phase16r_verifier_live.py",
+      "sha256": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105"
+    },
+    {
+      "path": "scripts/phase17_live_common.py",
+      "sha256": "298f92081ca467730af1669f8f62328e1c5310f3de60b98d11bef182b66e01ae"
+    },
+    {
+      "path": "scripts/phase20a_official_quality.py",
+      "sha256": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51"
+    },
+    {
+      "path": "scripts/phase22_llama_layout_ladder.py",
+      "sha256": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r1r_validation.sh",
+      "sha256": "9287ef856ac404bc9e6048b1525625c3b028a5c851426ced09e54c9422891d77"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r2_margin_smoke.sh",
+      "sha256": "05943484a8bdf19e777ca65582b2844b853e2f6aa0656ff61069210b93dee0d8"
+    },
+    {
+      "path": "scripts/tsc_revision_live.py",
+      "sha256": "3339cfec899aa64c850b96a4292f592e0b22fe8853de002663916be4872c1dc9"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_business_stream.py",
+      "sha256": "7a59915ea6ba6dc4550d4204d14fccb46a109c6d9148555f3519c5ccc12124a2"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_freeze_validation.py",
+      "sha256": "9221b6cbc947a96984977eeb35950729e3747d83ecca9c8ac6b8ddc68ec06597"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_live.py",
+      "sha256": "25521ad831b98f40b2a5c5235c217681b888301fdb94beedc3b043cbd23bb057"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_prefix_smoke.py",
+      "sha256": "18bd496ec37497e77daf9a5fbb0300e3b36ecb970f8a7790b9add9c61fc9f1df"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_validation_manifest.py",
+      "sha256": "9886c56f4dfa016f5acf37226d26cc89a339efc44d2cf374b6a028460847b7fa"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_execution_trace.py",
+      "sha256": "682c3ecfc15eb72fa52ff8ffe998826f4ff6a0d7c5aa8d5a17a373c9d1bc2b7e"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_install_margin_backend.py",
+      "sha256": "7d2664f39aed0cdd27d3661f9138210fc1da056278ea9e20b548a7d9a23ba6a3"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_margin_policy.py",
+      "sha256": "bd69b3406aa70367afa6ea512b7ccdc9689fc28e73ece29ecb318f7d29cd2258"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_margin_smoke.py",
+      "sha256": "e4dd8ba245b8c5ff9b8504cae1b4c1e67b4f545dd6242a06a5b1623f718e21f7"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_runtime_manifest.py",
+      "sha256": "57eaa95862b84df4dd3e7b7c689636fd7a7909c519dc2a3c75991ddb076dffa4"
+    },
+    {
+      "path": "third_party/patches/contractkv_r2_pointwise_margin_v1.patch",
+      "sha256": "37670b7395372f91417f16e395e8ea27ad867ef03ec26cd4501de4815c8508c9"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/entrypoints/openai/api_server.py",
+      "sha256": "be4c266ef8bc78c29dd428d1220a6495cba45f12df167eb9f70f7755d56380fc"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/core/sched/scheduler.py",
+      "sha256": "f95158dd3d7f66b38cc9982f4a064e5a1c3143f8537aada3ef2e62535ea24223"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/engine/__init__.py",
+      "sha256": "24c9d57fc8a9494d70a2d362238093fbb83ed8e0f9a0b2651f2f62075448a250"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/engine/async_llm.py",
+      "sha256": "bc50153706d6d1dfa1e052fcb6b027ab7ccf7616f5c0d2692a5dd63e90a211fb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "6d5207b52b67370ad6b58e3a0c317c49940b5bda260aba5b31cda3bafd02bd38"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/api_server.py",
+      "sha256": "c4d70f5d299a059faaf8ca0d3a8d72f0e92065dc376d3a810ca7028c404c2db2"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/protocol.py",
+      "sha256": "2aeb7b0f48ada6f30babc056bdcaafe190d63f221b6ca29aa7df925abc90cd97"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/serving_chat.py",
+      "sha256": "aff95a0c5dff9fdd87d8cd531c81f471de3c42f36ddd63bc65a0b7d05ff53beb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/serving_completion.py",
+      "sha256": "2888b73119f04d1bca187581abc1bf727e49276bbfb66b60b5ff2b50b79985e9"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/sched/scheduler.py",
+      "sha256": "c6b81d22a578239381ef419e88bb06b03f20666ef5350c223f916f247f0cd071"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/engine/__init__.py",
+      "sha256": "593187fdc0f8faf4f00f9c8c34f92c1e971a31ad7edfc0f7bd2e0461ed5fde77"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/engine/async_llm.py",
+      "sha256": "bc50153706d6d1dfa1e052fcb6b027ab7ccf7616f5c0d2692a5dd63e90a211fb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "47527c7b52b58ab77d6a038f6b6cda5ec726539fd5c9b4c2891210569a176653"
+    }
+  ],
+  "known_development_only": true,
+  "preflight_not_final_threshold_selection": true,
+  "new_heldout_not_used": true,
+  "native_extensions": [
+    {
+      "relative_path": "vllm/_C.abi3.so",
+      "bytes": 363681160,
+      "sha256": "feb862d8de73163317f85b796f58ea357ce88e23f4bd5e1cc5d22ac0c9cf97d1"
+    },
+    {
+      "relative_path": "vllm/_flashmla_C.abi3.so",
+      "bytes": 1026584,
+      "sha256": "ec1eecf069278a6ef982f7e690b99d7d45d2c0374a5d5be7623abc5e4c1e21e2"
+    },
+    {
+      "relative_path": "vllm/_moe_C.abi3.so",
+      "bytes": 141492736,
+      "sha256": "03933be46c202894ba7f4e1bd7f59bb95db4eca64fdb1cd7db376a695adc46a9"
+    },
+    {
+      "relative_path": "vllm/cumem_allocator.abi3.so",
+      "bytes": 27776,
+      "sha256": "e17ae70ce22661d5d541efd959dba30eafb6669c408e2c3d452a1382ac5355dd"
+    }
+  ],
+  "gpu_snapshot": "index, name, uuid, memory.used [MiB], memory.total [MiB], driver_version\n0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24 MiB, 24576 MiB, 570.133.07\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24 MiB, 24576 MiB, 570.133.07\n"
+}

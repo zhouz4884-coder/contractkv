@@ -7,6 +7,8 @@
   "new_heldout_sources":50,
   "raw_answer_minimum_margin_grid":[0.0,0.03125,0.0625,0.125],
   "candidate_answer_and_eos_minimum_margin_grid":[0.0,0.03125,0.0625,0.125],
+  "zero_floors_are_legacy_controls_not_eligible_final_pointwise_policy":true,
+  "nontrivial_compiled_reuse_required_for_method_success":true,
   "margin_comparison":"Every finite answer-token margin must be >= its floor; candidate EOS also >= candidate floor. Incomplete/nonfinite evidence rejects. q05 does not substitute for the minimum.",
   "benefit_safety_factor_grid":[1.0,1.5,2.0],
   "benefit_cost_estimate":"Development p95 of complete one-level verification plus preparation, including failed calls",
