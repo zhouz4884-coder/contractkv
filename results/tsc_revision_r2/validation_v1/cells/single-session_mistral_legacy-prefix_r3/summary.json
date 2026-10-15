@@ -1,0 +1,23 @@
+{
+  "schema_version": "tsc-r2.single-shot-live.v1",
+  "cell": "single-session_mistral_legacy-prefix_r3",
+  "study": "single-session",
+  "policy": "legacy-prefix",
+  "repeat": 3,
+  "execution_complete": true,
+  "futures": 450,
+  "expected_futures": 450,
+  "successful_futures": 450,
+  "all_actual_metric_joins": 655,
+  "sessions_sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725",
+  "protocol_sha256": "c00d70623d3f081f7197f919e19430356ad5f2b5fc7eb6aa209122904715c935",
+  "catalog_sha256": "7349b32577be8d84dc750cbb7369d3a167c5baa60dd9ed9a1df7598a1bbc6925",
+  "tenants_per_template": 1,
+  "wall_s_including_all_setup_and_verification": 753.6581153259613,
+  "post_measurement_audit_wall_s": 0.9024984240531921,
+  "verification_calls": 155,
+  "verification_ms_total": 145451.46731333807,
+  "compiled_future_requests": 150,
+  "raw_file_sha256": "807b5f5db99971bd81f0a909ed114f19d09ea87cc4b8b0a3b6df8666e579974a",
+  "boundary": "Service wall includes actual planning, business, scoring/logging and all synchronous qualification waits. Same two-request wave readiness barrier as legacy. Post-measurement flush/audit is reported separately, excluded for all policies. Reference is the real first raw business output."
+}
