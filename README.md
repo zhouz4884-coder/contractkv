@@ -4,6 +4,8 @@
 
 > **2026-10-16 第二阶段本轮实验已完成并复核。** [总报告](docs/tsc_revision_phase2_summary_zh.md)汇总两批独立验证（90 cells/67500 次业务生成）及长输出。最新一批十租户完整吞吐为 raw 的 1.833/1.101/1.067 倍；仍有一个 Qwen 来源的三次编译 F1 下降，冷会话稳定收益和三模型 p99 共同改善尚未达成。[完整新验证结果](docs/tsc_revision_phase2_second_independent_results_zh.md)与[下一阶段问题台账](docs/tsc_revision_phase2_next_stage_issues_zh.md)保留反例、原因线索及候选修正；未自动启动新 GPU 矩阵。手稿及逐点回复尚未据此完成修改。
 
+> **第三阶段现已按用户新指令启动。** [启动诊断](docs/tsc_revision_phase3_prior_diagnosis_zh.md)与[决策记录](docs/tsc_revision_phase3_decisions_zh.md)追踪 Qwen 元数据敏感性、失败概率与完整成本门禁、全局及分层尾延迟。新50来源已排除全部462个既往来源并冻结；已知案例控制协议先公开，尚无第三阶段未见样本效果结论。
+
 > **Certified Prompt Layout Compilation and Transactional Prefix Reuse for Multi-Tenant LLM Services**
 
 ContractKV 是一个面向结构化 LLM 服务的前缀缓存系统。它将 **Prompt 布局编译、行为认证、证书作用域和物理 KV 发布**连接成一个完整闭环，在不修改模型权重和注意力内核的前提下，把原本位于动态片段之后、无法被原生 Prefix Cache 利用的稳定上下文转换为可认证、可共享、可回滚的物理前缀状态。
