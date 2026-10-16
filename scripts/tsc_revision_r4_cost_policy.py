@@ -65,7 +65,7 @@ def build_gate(args,prepared,calibration,profile,namespace,turn,tenants,prefixes
     begin=time.perf_counter();case=prepared[0];known=prefixes.get(namespace,{})
     state_hint='warm' if known else 'cold';reuses=declared_reuses(turn,tenants,args.protocol['runtime']['concurrency'])
     common={'plan':None,'scope_case':{'segments':case['segments']},'max_literal_answer_words':16,
-            'nonliteral_ambiguity_boundary':.125,'output_contract':'one_python_statement' if any(s.get('segment_type')=='CODE_FILE' for s in case['segments']) else None,
+            'nonliteral_ambiguity_boundary':.125,'output_contract':None,
             'declared_remaining_reuse_hint':reuses,'profile':profile,'prefix_state_hint':state_hint}
     coarse=decide(stage_features(calibration,profile,state_hint,args.study),reuses)
     if not coarse['allow_verification']:

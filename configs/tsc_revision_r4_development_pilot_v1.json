@@ -1,0 +1,51 @@
+{
+  "schema_version": "tsc-r4.development-serving-pilot.v1",
+  "development_only": true,
+  "models": [
+    "qwen",
+    "mistral",
+    "llama"
+  ],
+  "policies": [
+    "raw-order",
+    "previous-refined",
+    "risk-tail"
+  ],
+  "repeats": 1,
+  "studies": {
+    "single-session": 1,
+    "template-fanout": 10
+  },
+  "expected_cells": 18,
+  "expected_actual_generations": 5580,
+  "expected_future_requests": 5022,
+  "input_files": {
+    "single-session": "results/tsc_revision_r4/development_inputs_v1/cold_sessions.jsonl",
+    "template-fanout": "results/tsc_revision_r4/development_inputs_v1/fanout_sessions.jsonl"
+  },
+  "input_sha256": {
+    "cold_sessions.jsonl": "36dc729793cd4f0b4b67d2f7c920f19125918819834ab077a1b0bf54e50d5bf1",
+    "fanout_sessions.jsonl": "4c2f18c06d656538b8c44bf15dcc49c4e77efa35b7bda8d32a7e8e4a57fb1ad4"
+  },
+  "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+  "previous_catalog": "configs/tsc_revision_r3_catalog_v1.json",
+  "selected_client": "scripts/tsc_revision_r4_live.py",
+  "profile": "balanced",
+  "generation_protocol": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+  "clock": "DEVELOPMENT original shared-wave closed loop. Same scheduling/cost definition for all three controls. Does not establish same-exogenous-arrival p99 superiority.",
+  "formal_protocol_requirement": "Freeze exogenous arrival offsets for raw/previous/new before formal forwards; keep shared-wave scheduling unless separately declared. All validation waiting and final drain inside full wall.",
+  "metrics": [
+    "all-route/compiled/fallback official score and ANY/.01/.03/.05 drops",
+    "coverage and early/late rejection reasons",
+    "actual GPU calls/failures/full costs",
+    "pre/post predicted vs observed labelled outcomes with selective-label boundary",
+    "global/predefined-family/template/tenant/request tail latency",
+    "actual certified-prefix hits and forecast warm misses"
+  ],
+  "quality_threshold": 0.03,
+  "minimum_nonRULER_coverage_required_for_selection": true,
+  "one_fresh_service_process_per_cell": true,
+  "policy_order": "Rotate per atomic study/model block; all3 policies on sameGPU",
+  "new_validation_model_outcomes_used": false,
+  "no_positive_result_promised": true
+}

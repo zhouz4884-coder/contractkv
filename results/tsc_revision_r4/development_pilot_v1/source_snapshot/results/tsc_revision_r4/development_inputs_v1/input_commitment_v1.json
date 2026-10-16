@@ -1,0 +1,41 @@
+{
+  "development_only": true,
+  "all_sources_previously_observed": true,
+  "selection": "First2/first1 per family of observedR3; add knownQwen doc99 and observedR2Llama doc181 to cold",
+  "source_file_hashes": {
+    "results/tsc_revision_r3/inputs/heldout_sealed_sessions_v1.jsonl": "835f9e843b8423ead3f540d5825e2a736f46e7e9600f86cfe12961cf60dad73c",
+    "results/tsc_revision_r2/inputs/heldout_sealed_sessions_v1.jsonl": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725"
+  },
+  "files": {
+    "cold_sessions.jsonl": {
+      "sha256": "36dc729793cd4f0b4b67d2f7c920f19125918819834ab077a1b0bf54e50d5bf1",
+      "sources": 12,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:74",
+        "RULER:niah_single_1:ruler:17",
+        "LongBench:hotpotqa:hotpotqa:doc:139",
+        "LongBench:hotpotqa:hotpotqa:doc:91",
+        "LongBench:narrativeqa:narrativeqa:doc:129",
+        "LongBench:narrativeqa:narrativeqa:doc:30",
+        "LongBench:qasper:qasper:doc:83",
+        "LongBench:qasper:qasper:doc:146",
+        "RepoBench:python_v1.1:Eanya-Tonic/MihiroToolbox",
+        "RepoBench:python_v1.1:DSaurus/threestudio-4dfy",
+        "LongBench:narrativeqa:narrativeqa:doc:99",
+        "LongBench:narrativeqa:narrativeqa:doc:181"
+      ]
+    },
+    "fanout_sessions.jsonl": {
+      "sha256": "4c2f18c06d656538b8c44bf15dcc49c4e77efa35b7bda8d32a7e8e4a57fb1ad4",
+      "sources": 5,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:74",
+        "LongBench:hotpotqa:hotpotqa:doc:139",
+        "LongBench:narrativeqa:narrativeqa:doc:129",
+        "LongBench:qasper:qasper:doc:83",
+        "RepoBench:python_v1.1:Eanya-Tonic/MihiroToolbox"
+      ]
+    }
+  },
+  "new_validation_sources_used": false
+}
