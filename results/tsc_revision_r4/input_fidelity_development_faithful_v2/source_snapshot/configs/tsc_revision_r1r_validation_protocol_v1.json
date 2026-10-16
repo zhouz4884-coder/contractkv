@@ -1,0 +1,24 @@
+{
+  "schema_version": "tsc-r1r.validation-protocol.v1",
+  "frozen_before_heldout_execution": true,
+  "seed": 10672126,
+  "models": ["Qwen3-8B", "Mistral-7B-Instruct-v0.3", "Llama-3.1-8B-Instruct"],
+  "families": ["RULER", "HotpotQA", "NarrativeQA", "Qasper", "RepoBench"],
+  "runtime": {"concurrency": 2, "temperature": 0, "top_p": 1, "seed": 14014, "dtype": "float16", "max_model_len": 16384, "shadow_chunk_tokens": 128, "shadow_round_tokens": 128},
+  "layout": {"stable_word_limit": 1500, "stable_pieces": 16, "ladder": {"L0": 0.0, "L1": 0.25, "L2": 0.75, "L3": 1.0}},
+  "free_generation": {"budgets": {"RULER": 128, "HotpotQA": 128, "NarrativeQA": 256, "Qasper": 256, "RepoBench": 384}},
+  "studies": {
+    "single-session": {"source_templates": 50, "tenants_per_template": 1, "fresh_repeats": 3, "policies": ["raw-order", "query-full", "query-prefix"], "expected_cells": 27, "expected_future_generations": 12150},
+    "template-fanout": {"source_templates": 10, "selection": "first two committed heldout sources per family, before any heldout outcomes", "tenants_per_template": 10, "fresh_repeats": 3, "policies": ["raw-order", "query-prefix"], "expected_cells": 18, "expected_future_generations": 16200}
+  },
+  "heldout_sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079",
+  "quality_threshold": 0.03,
+  "slack_ms": 0,
+  "query_binding": "exact query + system + stable content + model + generation settings + renderer + policy; metadata-only tool suffix schema",
+  "new_query_route": "first business occurrence raw; its actual output supplies witness; allowed frozen level descent",
+  "prefix_read": "matching engine-approved hash chains only, one block guard, all answer/EOS rows checked",
+  "cost_boundary": "all first raw business calls, warm requests, failed attempts, tokenization, verification, controller waits included in full wall; readiness TTFT measured directly; server startup excluded equally",
+  "success_is_not_required_for_completion": true,
+  "no_heldout_retuning": true,
+  "interpretation": "source-disjoint benchmark-derived controlled traces; template reuse opportunity is prescribed, not estimated production prevalence; correlated requests clustered by source template"
+}

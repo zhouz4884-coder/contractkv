@@ -1,0 +1,740 @@
+{
+  "schema_version": "tsc-r4.CODE_PREFIX-output-contract-audit.v1",
+  "source_sha256": "86f009f217735c18762a3610e839d612e704839ef15c2a5331845feb58afdb33",
+  "input_sha256": "80c82fc121bfcd0da3a6f699f36187d02a8fde3cb1866a7402c89b200890f0b5",
+  "new_GPU_requests": 0,
+  "frozen_input_policy_or_scoring_changed": false,
+  "source_provenance": [
+    {
+      "path": "scripts/prepare_dataset_samples.py",
+      "sha256": "60ed004c2afe778fb041d5d6f01bfd67ac23bd34ea053bd2b1161f787aa6df28"
+    },
+    {
+      "path": "scripts/phase13b_fresh_policy_quality_replay.py",
+      "sha256": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63"
+    },
+    {
+      "path": "scripts/phase12e_cache_aware_posc.py",
+      "sha256": "a8e36563b6e725a865a28d91d356368830e3b5759e88076c39a5859bdac33e6d"
+    },
+    {
+      "path": "scripts/phase14c_full_pool_qc_inputs.py",
+      "sha256": "7e5c64bfd8e707bd1f07f309d5ef42b7012d120c76bc169e978fc387d776f6f4"
+    },
+    {
+      "path": "scripts/phase22_llama_layout_ladder.py",
+      "sha256": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_output_contract.py",
+      "sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf"
+    }
+  ],
+  "CODE_PREFIX_in_QC_CODE_TYPES": false,
+  "source_records": [
+    {
+      "namespace": "r4-heldout-1e796a925bb792cf",
+      "source_group": "RepoBench:python_v1.1:IEIT-Yuan/Yuan-2.0",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 224,
+      "CODE_PREFIX_capped_words": 224,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "        print(' > padded vocab (size: {}) with {} dummy tokens '",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": false,
+            "reason": "python_syntax_SyntaxError"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 7)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 6)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "invalid syntax (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:SyntaxError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-47c8a6c7b8e17bbc",
+      "source_group": "RepoBench:python_v1.1:Jisshubot/JISSHU_BOT",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 494,
+      "CODE_PREFIX_capped_words": 0,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "        user = message.from_user.id\r",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": true,
+            "reason": "one_parseable_python_statement"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 18)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 17)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-2edaa70c89785a7d",
+      "source_group": "RepoBench:python_v1.1:AGI-Collective/Robin",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 357,
+      "CODE_PREFIX_capped_words": 357,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "                max_new_tokens=self.max_new_tokens,",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": true,
+            "reason": "one_parseable_python_statement"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "'(' was never closed (<unknown>, line 109)"
+              },
+              "compile_command_status": "incomplete"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "'(' was never closed (<unknown>, line 108)"
+              },
+              "compile_command_status": "incomplete"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "invalid syntax (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:SyntaxError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-4192a976ef8cce1b",
+      "source_group": "RepoBench:python_v1.1:spla-tam/SplaTAM",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 506,
+      "CODE_PREFIX_capped_words": 0,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "    parser = argparse.ArgumentParser()",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": true,
+            "reason": "one_parseable_python_statement"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 39)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 38)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-ba6f7cc65d77b1a1",
+      "source_group": "RepoBench:python_v1.1:zju3dv/4K4D",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 548,
+      "CODE_PREFIX_capped_words": 0,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "                                    [0.0185, 0.1353, -0.9906]]),",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": false,
+            "reason": "python_syntax_SyntaxError"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 15)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 14)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-bed083d776e754eb",
+      "source_group": "RepoBench:python_v1.1:intellerce/controlanimate",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 170,
+      "CODE_PREFIX_capped_words": 0,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "        if not self.use_lcm:",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": false,
+            "reason": "python_syntax_IndentationError"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "expected an indented block after 'if' statement on line 65 (<unknown>, line 65)"
+              },
+              "compile_command_status": "incomplete"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "expected an indented block after 'if' statement on line 64 (<unknown>, line 64)"
+              },
+              "compile_command_status": "incomplete"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-b6c49689b7254f16",
+      "source_group": "RepoBench:python_v1.1:LFhase/GALA",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 371,
+      "CODE_PREFIX_capped_words": 80,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "        if self.pooling.lower() == 'asap':",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": false,
+            "reason": "python_syntax_IndentationError"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 16)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 15)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "invalid syntax (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:SyntaxError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-1f29f1f8c3fa2fd7",
+      "source_group": "RepoBench:python_v1.1:camenduru/magicanimate-hf",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 373,
+      "CODE_PREFIX_capped_words": 0,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "            if \"motion_modules\" in key:",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": false,
+            "reason": "python_syntax_IndentationError"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "expected an indented block after 'if' statement on line 130 (<unknown>, line 130)"
+              },
+              "compile_command_status": "incomplete"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "expected an indented block after 'if' statement on line 129 (<unknown>, line 129)"
+              },
+              "compile_command_status": "incomplete"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-a1544f8dbe299a0d",
+      "source_group": "RepoBench:python_v1.1:KieDani/Towards_3D_Object_Localization",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 816,
+      "CODE_PREFIX_capped_words": 416,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "        fig = plt.figure()",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": true,
+            "reason": "one_parseable_python_statement"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 3)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 2)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "invalid syntax (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:SyntaxError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "r4-heldout-654aff6c492bb19d",
+      "source_group": "RepoBench:python_v1.1:AILab-CVC/GroupMixFormer",
+      "query": "Complete the next line of code.",
+      "CODE_PREFIX_original_words": 417,
+      "CODE_PREFIX_capped_words": 417,
+      "volatility": 1.0,
+      "cache_stability": 1.0,
+      "older_cache_aware_stability_predicate": false,
+      "R4_fixed_recipe_unchanged_if_volatility_set_zero": {
+        "L0": true,
+        "L1": true,
+        "L2": true,
+        "L3": true
+      },
+      "reference_targets": [
+        {
+          "reference_text": "    linear_scaled_lr = config.TRAIN.BASE_LR * config.DATA.BATCH_SIZE * dist.get_world_size() / 512.0",
+          "reference_lines": 1,
+          "independent_statement_check": {
+            "passed": true,
+            "reason": "one_parseable_python_statement"
+          },
+          "full_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 13)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            },
+            "first_prefix_line_is_path_metadata": true,
+            "path_metadata_excluded_probe": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "IndentationError",
+                "message": "unexpected indent (<unknown>, line 12)"
+              },
+              "compile_command_status": "syntax_or_context_error:IndentationError"
+            }
+          },
+          "old_capped_prefix_continuation_probes": {
+            "verbatim_prefix_plus_output": {
+              "ast_syntax": {
+                "parsed": false,
+                "error_type": "SyntaxError",
+                "message": "invalid syntax (<unknown>, line 1)"
+              },
+              "compile_command_status": "syntax_or_context_error:SyntaxError"
+            },
+            "first_prefix_line_is_path_metadata": false
+          }
+        }
+      ]
+    }
+  ],
+  "observed_first_repeat_contract_checks": [
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "namespace": "r4-heldout-1e796a925bb792cf",
+      "query_scope": "5b1007ab7b87469a72a2b1fcf52153bf38c80994b51e5305f0a01113ebe6f572",
+      "actual_online_check": {
+        "passed": true,
+        "reason": "one_parseable_python_statement"
+      },
+      "output_text_unchanged": "<think>\n\n</think>\n\nafter = orig_vocab_size + (multiple - orig_vocab_size % multiple) % multiple",
+      "frozen_task_score": 0.28,
+      "full_original_prefix_plus_output_probes": {
+        "verbatim_prefix_plus_output": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 7)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        },
+        "first_prefix_line_is_path_metadata": true,
+        "path_metadata_excluded_probe": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 6)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        }
+      },
+      "raw_file_sha256": "56a906a4c4b492c0284ad0b15b5fe983978c763a6f66d6b0247a9b137f4d2774"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "namespace": "r4-heldout-1e796a925bb792cf",
+      "query_scope": "0d1e7675073a406041bfb4bedbbd72359b4c7ba72a0f2403639f850b9b1146f6",
+      "actual_online_check": {
+        "passed": true,
+        "reason": "one_parseable_python_statement"
+      },
+      "output_text_unchanged": "<think>\n\n</think>\n\nafter += 1",
+      "frozen_task_score": 0.09,
+      "full_original_prefix_plus_output_probes": {
+        "verbatim_prefix_plus_output": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 7)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        },
+        "first_prefix_line_is_path_metadata": true,
+        "path_metadata_excluded_probe": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 6)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        }
+      },
+      "raw_file_sha256": "56a906a4c4b492c0284ad0b15b5fe983978c763a6f66d6b0247a9b137f4d2774"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "namespace": "r4-heldout-1e796a925bb792cf",
+      "query_scope": "4635384ca06d7e62df69f9caec4e9c823040b467ba5ffc85345b1025a9b6fbd5",
+      "actual_online_check": {
+        "passed": true,
+        "reason": "one_parseable_python_statement"
+      },
+      "output_text_unchanged": "<think>\n\n</think>\n\nafter += 1",
+      "frozen_task_score": 0.09,
+      "full_original_prefix_plus_output_probes": {
+        "verbatim_prefix_plus_output": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 7)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        },
+        "first_prefix_line_is_path_metadata": true,
+        "path_metadata_excluded_probe": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 6)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        }
+      },
+      "raw_file_sha256": "56a906a4c4b492c0284ad0b15b5fe983978c763a6f66d6b0247a9b137f4d2774"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "namespace": "r4-heldout-47c8a6c7b8e17bbc",
+      "query_scope": "53d274e631ae56b457d79a0ae93e5854fa9b4e3134f19b5ff26a3216f0e897e6",
+      "actual_online_check": {
+        "passed": false,
+        "reason": "python_syntax_SyntaxError"
+      },
+      "output_text_unchanged": "<think>\n\n</think>\n\nThe next line of code is: `class script(object):`",
+      "frozen_task_score": 0.15,
+      "full_original_prefix_plus_output_probes": {
+        "verbatim_prefix_plus_output": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 18)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        },
+        "first_prefix_line_is_path_metadata": true,
+        "path_metadata_excluded_probe": {
+          "ast_syntax": {
+            "parsed": false,
+            "error_type": "IndentationError",
+            "message": "unexpected indent (<unknown>, line 17)"
+          },
+          "compile_command_status": "syntax_or_context_error:IndentationError"
+        }
+      },
+      "raw_file_sha256": "56a906a4c4b492c0284ad0b15b5fe983978c763a6f66d6b0247a9b137f4d2774"
+    }
+  ],
+  "reference_targets_failing_independent_statement_check": 5,
+  "reference_target_count": 10,
+  "interpretation": [
+    "CODE_PREFIX has inconsistent low-level stability annotations. The older cache-aware predicate reads volatility, whereas the current R4 fixed layout recipe uses explicit volatile types and ignores these two numeric fields.",
+    "All four R4 layout outputs were CPU-checked unchanged after setting only CODE_PREFIX volatility to zero. This is not a live speed measurement or proof that older compiler paths were unaffected.",
+    "A next-line reference can be an incomplete standalone statement. Reference incompatibility identifies a possible task-contract mismatch, not an automatic count of observed false rejections.",
+    "Prefix concatenation and compile_command are diagnostics only. Filename metadata, surrounding incomplete scopes and legitimate fragments can prevent parsing; success does not prove semantic correctness.",
+    "Observed syntax failures remain distinct from reference-target failures. For example explanatory prose around code may correctly fail the existing standalone check even when some references are fragments.",
+    "All outputs and frozen scores remain unchanged. No new gate is selected or deployed by this audit."
+  ]
+}

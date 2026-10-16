@@ -1,0 +1,47 @@
+{
+  "schema_version": "tsc-r4.external-prompt-order-source-audit.v1",
+  "upstream_repository": "https://github.com/Azure-Samples/azure-search-openai-demo.git",
+  "upstream_commit": "558ffd397eddcfe4da5c85ebc285796b367eb9b2",
+  "fetched_at_UTC": "2026-10-16T10:17:10.821836+00:00",
+  "files": [
+    {
+      "upstream_path": "app/backend/approaches/chatreadretrieveread.py",
+      "url": "https://github.com/Azure-Samples/azure-search-openai-demo/blob/558ffd397eddcfe4da5c85ebc285796b367eb9b2/app/backend/approaches/chatreadretrieveread.py",
+      "sha256": "b7a05012d89c727bf4c6ab0e9bc3a3464e7c299114e46784a7e5cfe770801494",
+      "bytes": 23190
+    },
+    {
+      "upstream_path": "app/backend/approaches/promptmanager.py",
+      "url": "https://github.com/Azure-Samples/azure-search-openai-demo/blob/558ffd397eddcfe4da5c85ebc285796b367eb9b2/app/backend/approaches/promptmanager.py",
+      "sha256": "f3c0b67e3f1efabfda3c6326eb93b850d48082f4c765d87792f4a4243ad5471c",
+      "bytes": 3966
+    },
+    {
+      "upstream_path": "app/backend/approaches/prompts/chat_answer.user.jinja2",
+      "url": "https://github.com/Azure-Samples/azure-search-openai-demo/blob/558ffd397eddcfe4da5c85ebc285796b367eb9b2/app/backend/approaches/prompts/chat_answer.user.jinja2",
+      "sha256": "fc9add97d321168af8be093db0289752e7d2a95978a4e196e9d26dc71f160f8a",
+      "bytes": 161
+    },
+    {
+      "upstream_path": "LICENSE",
+      "url": "https://github.com/Azure-Samples/azure-search-openai-demo/blob/558ffd397eddcfe4da5c85ebc285796b367eb9b2/LICENSE",
+      "sha256": "26c151e623c750e7b0ad7d564a01d9edade307c1fc4905376d8be5efe51bacd1",
+      "bytes": 1070
+    }
+  ],
+  "static_findings": [
+    "PromptManager orders system, past conversation messages, then the new user message.",
+    "The answer user template places user_query before the text_sources loop.",
+    "ChatReadRetrieveReadApproach supplies the query, retrieved text sources and past messages to that builder."
+  ],
+  "conditional_inference": "If source text is byte-identical across two authorized requests but preceding query/history differs, exact-prefix caching cannot automatically recover those later source tokens. This is a conditional ordering example, not a measured frequency or a ContractKV behavioral qualification.",
+  "claims_not_supported": [
+    "The original Table I numeric values",
+    "85percent stable token production prevalence",
+    "Production exact-query or source-repeat frequency",
+    "ContractKV safety/performance on arbitrary application histories"
+  ],
+  "new_GPU_requests": 0,
+  "downloaded_code_executed": false,
+  "license_file_retained": true
+}

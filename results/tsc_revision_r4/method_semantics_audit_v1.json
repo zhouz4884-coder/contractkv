@@ -1,0 +1,183 @@
+{
+  "schema_version": "tsc-r4.method-semantics-audit.v1",
+  "analysis_added_after_primary_freeze": true,
+  "source_sha256": "53172ce606d87a368e241d5d611b4422adeff2e5c17b2aca5353ca20659a3d69",
+  "new_GPU_requests": 0,
+  "submitted_tex": {
+    "path": "submission/contractkv_tsc.tex",
+    "sha256": "67ca869c5932dfee6e6d06024dff7d42c9088f049e1d8ac4d95220fd1eaedbce",
+    "modified_by_this_audit": false
+  },
+  "source_functions": [
+    {
+      "path": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "function": "verify_template",
+      "first_line": 118,
+      "last_line": 149,
+      "function_AST_sha256": "f9481d7bada011b88dd7777a12a11b3b9d938030b427ffeef60c2ca479744a90"
+    },
+    {
+      "path": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "function": "scope_record",
+      "first_line": 99,
+      "last_line": 115,
+      "function_AST_sha256": "387ca3dd65cb656be3a3e7a461b5e2ec81faaa487bae8aef6e53eb2f558ef262"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b",
+      "function": "query_scope",
+      "first_line": 9,
+      "last_line": 23,
+      "function_AST_sha256": "c67b03beb2f410950821fb9ffd55a030c1621b3d92b30da63757d2d8631b61ad"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_live.py",
+      "sha256": "25521ad831b98f40b2a5c5235c217681b888301fdb94beedc3b043cbd23bb057",
+      "function": "register",
+      "first_line": 39,
+      "last_line": 77,
+      "function_AST_sha256": "655ad9602532b6a35405d0f6d83cd987a005f46388788f2421fe2a4125cb6ccf"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+      "function": "register",
+      "first_line": 16,
+      "last_line": 72,
+      "function_AST_sha256": "adf8ebfc7c3be555154840cd60679fe2e0dfeedd034450a5546206e21cf0cbf2"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_output_contract.py",
+      "sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785",
+      "function": "register",
+      "first_line": 18,
+      "last_line": 35,
+      "function_AST_sha256": "319156a1bc87a021ce3619397ef41e7d58ecb3a7323fd891b1df011ee48aca6c"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431",
+      "function": "register",
+      "first_line": 82,
+      "last_line": 104,
+      "function_AST_sha256": "4a185516666e35d8485d2db6b906de7ee01573c41b2324d2c47acd2c96848e32"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b",
+      "function": "verification_request",
+      "first_line": 28,
+      "last_line": 44,
+      "function_AST_sha256": "b90a412f1d8a3a1634b3ee150204ee318d7f5e29784f626b345746ddda0e3d82"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474",
+      "function": "main",
+      "first_line": 32,
+      "last_line": 139,
+      "function_AST_sha256": "bb4d1f8c2521bba919e55ef339b9ca5c2fb079efadb61e8625378238273184c8"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf",
+      "function": "main",
+      "first_line": 33,
+      "last_line": 146,
+      "function_AST_sha256": "8523bff50b5d66e978967d7daafd0d91a51db1b08a32933033580e1cbc6541a3"
+    },
+    {
+      "path": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "function": "check_binding",
+      "first_line": 55,
+      "last_line": 72,
+      "function_AST_sha256": "ee73056f06a14ebe066c7ff07fad12bc089663dbcc5a30f030d336df89c8239a"
+    },
+    {
+      "path": "results/tsc_revision_r4/validation_closed_v1/source_snapshot/third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/core/sched/scheduler.py",
+      "sha256": "f95158dd3d7f66b38cc9982f4a064e5a1c3143f8537aada3ef2e62535ea24223",
+      "function": "_finalize_contractkv_verify",
+      "first_line": 1885,
+      "last_line": 2027,
+      "function_AST_sha256": "35809142a648f5d6a323a2e3a436bf216bcd24b6aca1e4ad941fdf7a214e5b73"
+    },
+    {
+      "path": "results/tsc_revision_r4/validation_closed_v1/source_snapshot/third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/sched/scheduler.py",
+      "sha256": "c6b81d22a578239381ef419e88bb06b03f20666ef5350c223f916f247f0cd071",
+      "function": "_finalize_contractkv_verify",
+      "first_line": 1887,
+      "last_line": 2055,
+      "function_AST_sha256": "62ecdf453cee16e7ae00f2901f71d27593450626770367b3404f66e928723bb3"
+    }
+  ],
+  "observed_static_facts": {
+    "original_template_task_runner_reference_prompt": "compiled candidate_messages",
+    "original_template_scope_record_keys": [
+      "model_identity",
+      "tokenizer_identity",
+      "service_template_version",
+      "stable_content_hash",
+      "layout_hash",
+      "policy_hash",
+      "qualification_hash",
+      "authorization_domain",
+      "service_epoch",
+      "private_suffix_excluded"
+    ],
+    "query_bound_scope_hash_keys": [
+      "query",
+      "system",
+      "stable",
+      "model",
+      "budget",
+      "seed",
+      "temperature",
+      "policy_hash",
+      "renderer_version"
+    ],
+    "metadata_only_values_bound_by_query_hash": false,
+    "R1R_slice_to_R2_margin_verified_PASS_publication_body_AST_equal": true,
+    "formal_positive_floor_versions": {
+      "R2": {
+        "path": "configs/tsc_revision_r2_selected_catalog_v2.json",
+        "sha256": "7349b32577be8d84dc750cbb7369d3a167c5baa60dd9ed9a1df7598a1bbc6925",
+        "raw_floor": 0.0625,
+        "candidate_floor": 0.0625,
+        "online_verification_attempt_limit": 1
+      },
+      "R3": {
+        "path": "configs/tsc_revision_r3_catalog_v1.json",
+        "sha256": "0da0a6f030f7309d7bed9174a905f2e1d56d0dc62e134ec6f65aa346df9f2249",
+        "raw_floor": 0.0625,
+        "candidate_floor": 0.125,
+        "online_verification_attempt_limit": 1
+      }
+    }
+  },
+  "interpretation": [
+    "Original deployment-template attestation follows prior route qualification and compiled-path self-consistency. It does not directly attest raw equivalence of every future private query.",
+    "R1R changes witness provenance to the actual first raw business answer and changes behavioral reuse keys to (template namespace, query scope). It is a controlled mode change, not merely a renamed original template check.",
+    "R2 adds one-shot admission, pointwise margins/EOS evidence and complete prompt IDs/cost gates; R3 tightens floors and Python-output eligibility. These are bounded admission repairs, not new CALC or PSTP algorithms.",
+    "R4 adds restrictive empirical scope eligibility and engineering cost/tail admission. Do not introduce these as new headline contributions or continue optimizing every performance cell.",
+    "The verified-PASS publication branch is structurally equal between the frozen R1R-slice and R2-margin backends. This static check does not prove every original/backend code byte unchanged or replace live publication tests.",
+    "Template namespaces still permit cross-tenant physical prefix sharing. Distinct behavioral scope count U changes full qualification work; fixed-U tenant amortization is supported separately from arbitrary unique-query streams.",
+    "Old scope failures remain failures within the old declared empirical range. A later contraction cannot retroactively relabel them outside the original scope.",
+    "R4 clients and original signed real-task binding controls must be described with their actual enforcement boundaries; do not claim two independent certificate objects or a new adversarial public-endpoint defense."
+  ],
+  "revision_scope": {
+    "retain_contributions": [
+      "CALC",
+      "Scoped Behavioral Certification",
+      "PSTP",
+      "Service-Template Certificate"
+    ],
+    "no_new_certificate_system": true,
+    "no_new_performance_optimization_matrix": true,
+    "finish_running_frozen_independent_validation": true,
+    "continue_only_for_core_in_scope_reproducible_failure_or_invariant_violation": true
+  }
+}
