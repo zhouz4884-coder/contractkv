@@ -1,0 +1,65 @@
+{
+  "schema_version": "tsc-r4.development-repeat-check.v1",
+  "development_only": true,
+  "profile": "balanced",
+  "targets": [
+    {
+      "study": "single-session",
+      "model": "qwen"
+    },
+    {
+      "study": "template-fanout",
+      "model": "mistral"
+    }
+  ],
+  "policies": [
+    "raw-order",
+    "risk-tail"
+  ],
+  "new_repeats": [
+    2,
+    3
+  ],
+  "expected_cells": 8,
+  "expected_actual_generations": 2480,
+  "expected_future_requests": 2232,
+  "input_files": {
+    "single-session": "results/tsc_revision_r4/development_inputs_v1/cold_sessions.jsonl",
+    "template-fanout": "results/tsc_revision_r4/development_inputs_v1/fanout_sessions.jsonl"
+  },
+  "studies": {
+    "single-session": 1,
+    "template-fanout": 10
+  },
+  "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+  "previous_catalog": "configs/tsc_revision_r3_catalog_v1.json",
+  "generation_protocol": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+  "clock": "Original closed-loop shared two-request waves, unchanged frozen149 client and balanced profile.",
+  "purpose": "One-process source-only bootstrap showed Qcold+2.278ms and Mfan+25.976ms p99. Add exactly2 fresh paired process repeats, combine originalr1 withr2/r3; do not sample until significance changes.",
+  "original_pilot_archive_sha256": "5374bcb14de621bfda2bd80aeac45d251c04a41a180acfd0590bdaa6f10ac640",
+  "no_new50_model_forward": true,
+  "policy_changed": false,
+  "gpu_assignment": {
+    "2": 1,
+    "3": 0
+  },
+  "policy_order": {
+    "2-single-session": [
+      "risk-tail",
+      "raw-order"
+    ],
+    "2-template-fanout": [
+      "raw-order",
+      "risk-tail"
+    ],
+    "3-single-session": [
+      "raw-order",
+      "risk-tail"
+    ],
+    "3-template-fanout": [
+      "risk-tail",
+      "raw-order"
+    ]
+  },
+  "selection_rule": "Use combined paired source/repeat p99 interval for flagged conditions, not one-process source-only interval. Preserve point estimates and all regressions. New formal50 must remain unseen until selection."
+}

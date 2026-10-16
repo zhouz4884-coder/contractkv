@@ -1,0 +1,156 @@
+{
+  "schema_version": "tsc-r2.input-commitment.v1",
+  "timestamp": "2026-10-15T09:41:28.618232+00:00",
+  "protocol_sha256": "d0c5fa95da44d7bcc8d73aafaab2ec947b0f0b289118296be86c539959a64aa1",
+  "source_pool_sha256": "d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "prior_excluded_source_groups": 302,
+  "excluded_source_groups": 362,
+  "excluded_source_set_sha256": "8de3f51e483bd1586f69bde7aeeca702d1bfe09765b56adca0d44ef8e0743a4b",
+  "exclusion_files": [
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_development_sessions_v1.jsonl",
+      "sha256": "06e10921fdcae55d831897d67146f90332fb89c17390c133f172d5ebb3af0436"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_heldout_sessions_v1.jsonl",
+      "sha256": "16aba12577becbc261b950fac59aa6d0a4477744aec709ca787a91fcf28203d7"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/free_generation_sessions_v1.jsonl",
+      "sha256": "20baa66b1cdba60f9f9454aa5d1fb2e64cb285a0b67603ab2fbd3f5147c3e482"
+    },
+    {
+      "file": "results/scale_up/qwen3_14b_tp2_v0/frozen_sessions_v0.jsonl",
+      "sha256": "3209dcf46d4095d9c204ad9d18ff754461a6db80f87fb0463bc5010520583ec3"
+    },
+    {
+      "file": "results/end_to_end/phase19b_untouched_sessions_v0.jsonl",
+      "sha256": "4c03379809e960b400a44b161b5d5203a0653e778f539c7d14a0291cee45a78a"
+    },
+    {
+      "file": "results/mistral/development_sessions_v0.jsonl",
+      "sha256": "bb9a3dd2baafcdbf1f6494856bdc4e60b69ba1191eb071c5cfc54577cb37bb9e"
+    },
+    {
+      "file": "results/mistral/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "e10fd2200de1cbcc2bf17ce35793c5210266f41b4694a70999188f5c9b96a634"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/development_sessions_v0.jsonl",
+      "sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "fbc70da5fc6323934ee6999b068f16ec64417002a53fa2e26c2db8c70219ff54"
+    },
+    {
+      "file": "results/cross_model/phase19c_calibration_sessions_v0.jsonl",
+      "sha256": "e2ad433dd94357811f723f74cff8fcddef6945fae780f13b43e80ec42e04b73f"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/development_sessions_v1.jsonl",
+      "sha256": "d8d2bf87c861b58c83a48df7a9ef62a91c5cc7f062b0455939e5d383470b99c1"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079"
+    }
+  ],
+  "development_contains_two_selected_prior_failures": true,
+  "development_is_not_heldout": true,
+  "new_heldout_selection_uses_outcomes": false,
+  "new_heldout_disjoint_from_all_excluded_and_development": true,
+  "new_heldout_frozen_before_policy_selection": true,
+  "cohorts": {
+    "development": {
+      "file": "development_sessions_v1.jsonl",
+      "sha256": "f990e5f429fed3bd99187c91b8b28aefc5e95b78f5a06fa7a50142b1e08ea6b5",
+      "sessions": 12,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:144",
+        "RULER:niah_single_1:ruler:40",
+        "LongBench:hotpotqa:hotpotqa:doc:47",
+        "LongBench:hotpotqa:hotpotqa:doc:36",
+        "LongBench:narrativeqa:narrativeqa:doc:190",
+        "LongBench:narrativeqa:narrativeqa:doc:13",
+        "LongBench:qasper:qasper:doc:80",
+        "LongBench:qasper:qasper:doc:182",
+        "RepoBench:python_v1.1:AMAAI-Lab/Video2Music",
+        "RepoBench:python_v1.1:AI-Application-and-Integration-Lab/DGUA_FAS",
+        "LongBench:hotpotqa:hotpotqa:doc:79",
+        "LongBench:narrativeqa:narrativeqa:doc:35"
+      ],
+      "families": {
+        "RULER": 2,
+        "HotpotQA": 3,
+        "NarrativeQA": 3,
+        "Qasper": 2,
+        "RepoBench": 2
+      }
+    },
+    "heldout_sealed": {
+      "file": "heldout_sealed_sessions_v1.jsonl",
+      "sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725",
+      "sessions": 50,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:29",
+        "RULER:niah_single_1:ruler:66",
+        "RULER:niah_single_1:ruler:9",
+        "RULER:niah_single_1:ruler:160",
+        "RULER:niah_single_1:ruler:79",
+        "RULER:niah_single_1:ruler:65",
+        "RULER:niah_single_1:ruler:193",
+        "RULER:niah_single_1:ruler:128",
+        "RULER:niah_single_1:ruler:124",
+        "RULER:niah_single_1:ruler:76",
+        "LongBench:hotpotqa:hotpotqa:doc:192",
+        "LongBench:hotpotqa:hotpotqa:doc:128",
+        "LongBench:hotpotqa:hotpotqa:doc:34",
+        "LongBench:hotpotqa:hotpotqa:doc:95",
+        "LongBench:hotpotqa:hotpotqa:doc:170",
+        "LongBench:hotpotqa:hotpotqa:doc:7",
+        "LongBench:hotpotqa:hotpotqa:doc:94",
+        "LongBench:hotpotqa:hotpotqa:doc:148",
+        "LongBench:hotpotqa:hotpotqa:doc:98",
+        "LongBench:hotpotqa:hotpotqa:doc:119",
+        "LongBench:narrativeqa:narrativeqa:doc:27",
+        "LongBench:narrativeqa:narrativeqa:doc:33",
+        "LongBench:narrativeqa:narrativeqa:doc:173",
+        "LongBench:narrativeqa:narrativeqa:doc:81",
+        "LongBench:narrativeqa:narrativeqa:doc:112",
+        "LongBench:narrativeqa:narrativeqa:doc:181",
+        "LongBench:narrativeqa:narrativeqa:doc:130",
+        "LongBench:narrativeqa:narrativeqa:doc:45",
+        "LongBench:narrativeqa:narrativeqa:doc:89",
+        "LongBench:narrativeqa:narrativeqa:doc:111",
+        "LongBench:qasper:qasper:doc:144",
+        "LongBench:qasper:qasper:doc:50",
+        "LongBench:qasper:qasper:doc:67",
+        "LongBench:qasper:qasper:doc:158",
+        "LongBench:qasper:qasper:doc:27",
+        "LongBench:qasper:qasper:doc:53",
+        "LongBench:qasper:qasper:doc:28",
+        "LongBench:qasper:qasper:doc:115",
+        "LongBench:qasper:qasper:doc:179",
+        "LongBench:qasper:qasper:doc:175",
+        "RepoBench:python_v1.1:rehg-lab/RAVE",
+        "RepoBench:python_v1.1:Meituan-AutoML/MobileVLM",
+        "RepoBench:python_v1.1:medkit-lib/medkit",
+        "RepoBench:python_v1.1:HICAI-ZJU/iMoLD",
+        "RepoBench:python_v1.1:CASIA-IVA-Lab/FLAP",
+        "RepoBench:python_v1.1:ahayler/s4c",
+        "RepoBench:python_v1.1:e-p-armstrong/augmentoolkit",
+        "RepoBench:python_v1.1:CineMingle/CineMingle",
+        "RepoBench:python_v1.1:Algomancer/The-Daily-Train",
+        "RepoBench:python_v1.1:violet-sto/HN-GFN"
+      ],
+      "families": {
+        "RULER": 10,
+        "HotpotQA": 10,
+        "NarrativeQA": 10,
+        "Qasper": 10,
+        "RepoBench": 10
+      }
+    }
+  }
+}
