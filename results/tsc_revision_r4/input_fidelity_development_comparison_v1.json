@@ -1,0 +1,787 @@
+{
+  "schema_version": "tsc-r4.task-fidelity-four-grid-comparison.v1",
+  "analysis_source_sha256": "45e569e3ff442d3da8fd0b2dcc7c3056bd7d236105bab69a64a8a6ffac8c4099",
+  "new_GPU_requests": 0,
+  "added_after_primary_freeze": true,
+  "scoring_or_admission_changed": false,
+  "conditions": [
+    {
+      "condition": "head",
+      "freeze_sha256": "34e612a22829aca723d30f2cc61799fbee91bfecbc37a3aeaf4842bf9dafd7a3",
+      "raw_file_sha256": "6a73d6d6df395fc1f0a0978ee5849d14163735a8934be670a505d35bec8e61c0",
+      "policy_file_sha256": "be3bdac66ea0eec94e6900d59fa370959349be5cf5d88622494eb2198c2ed8eb",
+      "raw_full_wall_s": 739.3776112627238,
+      "policy_full_wall_s": 711.9053740035743,
+      "full_wall_throughput_ratio": 1.0385897315322297,
+      "GPU_qualification_calls": 3,
+      "qualification_RPC_ms_sum": 1950.6033584475517,
+      "scope_failure_reasons": {
+        "observation_scope_has_no_declared_exact_reuse": 8,
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 2,
+        "raw_output_contract:python_syntax_SyntaxError": 1
+      },
+      "pre_gate_denial_reasons": {},
+      "family_populations": [
+        {
+          "family": "HotpotQA",
+          "population": "all_business",
+          "pairs": 200,
+          "first_mean_task_score": 0.0,
+          "second_mean_task_score": 0.0,
+          "first_positive_score_answers": 0,
+          "second_positive_score_answers": 0,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            }
+          ],
+          "first_output_tokens": 8900,
+          "second_output_tokens": 8900,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 0,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 1462.554362709634,
+          "policy_readiness_TTFT_p99_ms": 1499.0011013904586,
+          "raw_new_prefill_tokens": 532012,
+          "policy_new_prefill_tokens": 532012
+        },
+        {
+          "family": "HotpotQA",
+          "population": "future",
+          "pairs": 180,
+          "first_mean_task_score": 0.0,
+          "second_mean_task_score": 0.0,
+          "first_positive_score_answers": 0,
+          "second_positive_score_answers": 0,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            }
+          ],
+          "first_output_tokens": 8010,
+          "second_output_tokens": 8010,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 0,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 1461.814229413867,
+          "policy_readiness_TTFT_p99_ms": 1468.9224500581624,
+          "raw_new_prefill_tokens": 478710,
+          "policy_new_prefill_tokens": 478710
+        },
+        {
+          "family": "HotpotQA",
+          "population": "warm",
+          "pairs": 20,
+          "first_mean_task_score": 0.0,
+          "second_mean_task_score": 0.0,
+          "first_positive_score_answers": 0,
+          "second_positive_score_answers": 0,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            }
+          ],
+          "first_output_tokens": 890,
+          "second_output_tokens": 890,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 0,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 1477.7723981905729,
+          "policy_readiness_TTFT_p99_ms": 1526.9986743386833,
+          "raw_new_prefill_tokens": 53302,
+          "policy_new_prefill_tokens": 53302
+        },
+        {
+          "family": "RepoBench",
+          "population": "all_business",
+          "pairs": 200,
+          "first_mean_task_score": 0.1256,
+          "second_mean_task_score": 0.12575,
+          "first_positive_score_answers": 200,
+          "second_positive_score_answers": 200,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 4,
+              "second_score_lower": 1,
+              "within_threshold": 195
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            }
+          ],
+          "first_output_tokens": 18096,
+          "second_output_tokens": 18090,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 38,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 4158.668740615249,
+          "policy_readiness_TTFT_p99_ms": 4189.889078969136,
+          "raw_new_prefill_tokens": 1113400,
+          "policy_new_prefill_tokens": 986360
+        },
+        {
+          "family": "RepoBench",
+          "population": "future",
+          "pairs": 180,
+          "first_mean_task_score": 0.12066666666666667,
+          "second_mean_task_score": 0.12083333333333333,
+          "first_positive_score_answers": 180,
+          "second_positive_score_answers": 180,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 4,
+              "second_score_lower": 1,
+              "within_threshold": 175
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            }
+          ],
+          "first_output_tokens": 15576,
+          "second_output_tokens": 15570,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 30,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 4160.551631972194,
+          "policy_readiness_TTFT_p99_ms": 4175.999785577878,
+          "raw_new_prefill_tokens": 1001700,
+          "policy_new_prefill_tokens": 901540
+        },
+        {
+          "family": "RepoBench",
+          "population": "warm",
+          "pairs": 20,
+          "first_mean_task_score": 0.17,
+          "second_mean_task_score": 0.17,
+          "first_positive_score_answers": 20,
+          "second_positive_score_answers": 20,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            }
+          ],
+          "first_output_tokens": 2520,
+          "second_output_tokens": 2520,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 8,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 4151.806020070799,
+          "policy_readiness_TTFT_p99_ms": 4196.713350885548,
+          "raw_new_prefill_tokens": 111700,
+          "policy_new_prefill_tokens": 84820
+        }
+      ]
+    },
+    {
+      "condition": "faithful",
+      "freeze_sha256": "0e8418b55f773b5a8efb14598ed6c3e5bdcdbbf1f27729362d0a4d3ecd055e39",
+      "raw_file_sha256": "eb5938a7e3a6e7083b3df433d1639528ee0804b3000f1ac126fcde277e9df95e",
+      "policy_file_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d",
+      "raw_full_wall_s": 1113.2751842099242,
+      "policy_full_wall_s": 996.8873574421741,
+      "full_wall_throughput_ratio": 1.116751231619969,
+      "GPU_qualification_calls": 9,
+      "qualification_RPC_ms_sum": 20305.042662657797,
+      "scope_failure_reasons": {
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 5,
+        "observation_scope_has_no_declared_exact_reuse": 3
+      },
+      "pre_gate_denial_reasons": {},
+      "family_populations": [
+        {
+          "family": "HotpotQA",
+          "population": "all_business",
+          "pairs": 200,
+          "first_mean_task_score": 0.22222222222222224,
+          "second_mean_task_score": 0.22222222222222224,
+          "first_positive_score_answers": 100,
+          "second_positive_score_answers": 100,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            }
+          ],
+          "first_output_tokens": 5300,
+          "second_output_tokens": 5300,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 56,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 8436.672460199334,
+          "policy_readiness_TTFT_p99_ms": 8547.48096298892,
+          "raw_new_prefill_tokens": 2085412,
+          "policy_new_prefill_tokens": 1721492
+        },
+        {
+          "family": "HotpotQA",
+          "population": "future",
+          "pairs": 180,
+          "first_mean_task_score": 0.22222222222222224,
+          "second_mean_task_score": 0.22222222222222224,
+          "first_positive_score_answers": 90,
+          "second_positive_score_answers": 90,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            }
+          ],
+          "first_output_tokens": 4770,
+          "second_output_tokens": 4770,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 56,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 8424.852598183788,
+          "policy_readiness_TTFT_p99_ms": 8462.567197033204,
+          "raw_new_prefill_tokens": 1876770,
+          "policy_new_prefill_tokens": 1512850
+        },
+        {
+          "family": "HotpotQA",
+          "population": "warm",
+          "pairs": 20,
+          "first_mean_task_score": 0.22222222222222224,
+          "second_mean_task_score": 0.22222222222222224,
+          "first_positive_score_answers": 10,
+          "second_positive_score_answers": 10,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            }
+          ],
+          "first_output_tokens": 530,
+          "second_output_tokens": 530,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 0,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 8432.938722413965,
+          "policy_readiness_TTFT_p99_ms": 8543.167155580595,
+          "raw_new_prefill_tokens": 208642,
+          "policy_new_prefill_tokens": 208642
+        },
+        {
+          "family": "RepoBench",
+          "population": "all_business",
+          "pairs": 200,
+          "first_mean_task_score": 0.364,
+          "second_mean_task_score": 0.364,
+          "first_positive_score_answers": 200,
+          "second_positive_score_answers": 200,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 200
+            }
+          ],
+          "first_output_tokens": 5050,
+          "second_output_tokens": 5050,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 56,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 6163.994659991004,
+          "policy_readiness_TTFT_p99_ms": 10094.608565042725,
+          "raw_new_prefill_tokens": 1430100,
+          "policy_new_prefill_tokens": 1240372
+        },
+        {
+          "family": "RepoBench",
+          "population": "future",
+          "pairs": 180,
+          "first_mean_task_score": 0.36666666666666664,
+          "second_mean_task_score": 0.36666666666666664,
+          "first_positive_score_answers": 180,
+          "second_positive_score_answers": 180,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 180
+            }
+          ],
+          "first_output_tokens": 4320,
+          "second_output_tokens": 4320,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 56,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 6130.991598502733,
+          "policy_readiness_TTFT_p99_ms": 10116.192285991274,
+          "raw_new_prefill_tokens": 1286730,
+          "policy_new_prefill_tokens": 1097002
+        },
+        {
+          "family": "RepoBench",
+          "population": "warm",
+          "pairs": 20,
+          "first_mean_task_score": 0.33999999999999997,
+          "second_mean_task_score": 0.33999999999999997,
+          "first_positive_score_answers": 20,
+          "second_positive_score_answers": 20,
+          "thresholds": [
+            {
+              "threshold": 0,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.01,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.03,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            },
+            {
+              "threshold": 0.05,
+              "second_score_higher": 0,
+              "second_score_lower": 0,
+              "within_threshold": 20
+            }
+          ],
+          "first_output_tokens": 730,
+          "second_output_tokens": 730,
+          "first_length_stops": 0,
+          "second_length_stops": 0,
+          "compiled_pairs": 0,
+          "compiled_output_ID_divergences": 0,
+          "compiled_any_score_decrease": 0,
+          "raw_readiness_TTFT_p99_ms": 6173.281284375116,
+          "policy_readiness_TTFT_p99_ms": 6227.675485019572,
+          "raw_new_prefill_tokens": 143370,
+          "policy_new_prefill_tokens": 143370
+        }
+      ]
+    }
+  ],
+  "raw_input_condition_comparisons": [
+    {
+      "first_condition": "head",
+      "second_condition": "faithful",
+      "family": "HotpotQA",
+      "population": "all_business",
+      "pairs": 200,
+      "first_mean_task_score": 0.0,
+      "second_mean_task_score": 0.22222222222222224,
+      "first_positive_score_answers": 0,
+      "second_positive_score_answers": 100,
+      "thresholds": [
+        {
+          "threshold": 0,
+          "second_score_higher": 100,
+          "second_score_lower": 0,
+          "within_threshold": 100
+        },
+        {
+          "threshold": 0.01,
+          "second_score_higher": 100,
+          "second_score_lower": 0,
+          "within_threshold": 100
+        },
+        {
+          "threshold": 0.03,
+          "second_score_higher": 100,
+          "second_score_lower": 0,
+          "within_threshold": 100
+        },
+        {
+          "threshold": 0.05,
+          "second_score_higher": 100,
+          "second_score_lower": 0,
+          "within_threshold": 100
+        }
+      ],
+      "first_output_tokens": 8900,
+      "second_output_tokens": 5300,
+      "first_length_stops": 0,
+      "second_length_stops": 0,
+      "source_groups": [
+        "LongBench:hotpotqa:hotpotqa:doc:164",
+        "LongBench:hotpotqa:hotpotqa:doc:175"
+      ]
+    },
+    {
+      "first_condition": "head",
+      "second_condition": "faithful",
+      "family": "HotpotQA",
+      "population": "future",
+      "pairs": 180,
+      "first_mean_task_score": 0.0,
+      "second_mean_task_score": 0.22222222222222224,
+      "first_positive_score_answers": 0,
+      "second_positive_score_answers": 90,
+      "thresholds": [
+        {
+          "threshold": 0,
+          "second_score_higher": 90,
+          "second_score_lower": 0,
+          "within_threshold": 90
+        },
+        {
+          "threshold": 0.01,
+          "second_score_higher": 90,
+          "second_score_lower": 0,
+          "within_threshold": 90
+        },
+        {
+          "threshold": 0.03,
+          "second_score_higher": 90,
+          "second_score_lower": 0,
+          "within_threshold": 90
+        },
+        {
+          "threshold": 0.05,
+          "second_score_higher": 90,
+          "second_score_lower": 0,
+          "within_threshold": 90
+        }
+      ],
+      "first_output_tokens": 8010,
+      "second_output_tokens": 4770,
+      "first_length_stops": 0,
+      "second_length_stops": 0,
+      "source_groups": [
+        "LongBench:hotpotqa:hotpotqa:doc:164",
+        "LongBench:hotpotqa:hotpotqa:doc:175"
+      ]
+    },
+    {
+      "first_condition": "head",
+      "second_condition": "faithful",
+      "family": "RepoBench",
+      "population": "all_business",
+      "pairs": 200,
+      "first_mean_task_score": 0.1256,
+      "second_mean_task_score": 0.364,
+      "first_positive_score_answers": 200,
+      "second_positive_score_answers": 200,
+      "thresholds": [
+        {
+          "threshold": 0,
+          "second_score_higher": 200,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.01,
+          "second_score_higher": 200,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.03,
+          "second_score_higher": 200,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.05,
+          "second_score_higher": 200,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        }
+      ],
+      "first_output_tokens": 18096,
+      "second_output_tokens": 5050,
+      "first_length_stops": 0,
+      "second_length_stops": 0,
+      "source_groups": [
+        "RepoBench:python_v1.1:IEIT-Yuan/Yuan-2.0",
+        "RepoBench:python_v1.1:Jisshubot/JISSHU_BOT"
+      ]
+    },
+    {
+      "first_condition": "head",
+      "second_condition": "faithful",
+      "family": "RepoBench",
+      "population": "future",
+      "pairs": 180,
+      "first_mean_task_score": 0.12066666666666667,
+      "second_mean_task_score": 0.36666666666666664,
+      "first_positive_score_answers": 180,
+      "second_positive_score_answers": 180,
+      "thresholds": [
+        {
+          "threshold": 0,
+          "second_score_higher": 180,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.01,
+          "second_score_higher": 180,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.03,
+          "second_score_higher": 180,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        },
+        {
+          "threshold": 0.05,
+          "second_score_higher": 180,
+          "second_score_lower": 0,
+          "within_threshold": 0
+        }
+      ],
+      "first_output_tokens": 15576,
+      "second_output_tokens": 4320,
+      "first_length_stops": 0,
+      "second_length_stops": 0,
+      "source_groups": [
+        "RepoBench:python_v1.1:IEIT-Yuan/Yuan-2.0",
+        "RepoBench:python_v1.1:Jisshubot/JISSHU_BOT"
+      ]
+    }
+  ],
+  "limitations": [
+    "Four previously observed sources, two per family, one fresh process per cell; development only.",
+    "Tenants and repeated query wrappers are correlated; no independent test or process confidence interval.",
+    "Input repair combines label-blind packing and contiguous segment rendering; their effects are not separated.",
+    "Raw/policy score differences do not establish strict behavioral equivalence, including improvements.",
+    "Full service wall is end-to-end; summed qualification RPC time is descriptive work, not additive critical path."
+  ]
+}

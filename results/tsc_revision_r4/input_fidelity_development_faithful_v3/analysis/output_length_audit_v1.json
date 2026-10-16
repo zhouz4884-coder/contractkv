@@ -1,0 +1,45 @@
+{
+  "schema_version": "tsc-r4.output-length-audit.v1",
+  "cells": [
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "raw-order",
+      "repeat": 1,
+      "business_requests": 400,
+      "actual_all_business_output_tokens": 10350,
+      "actual_warm_output_tokens": 1260,
+      "actual_future_output_tokens": 9090,
+      "raw_sha256": "eb5938a7e3a6e7083b3df433d1639528ee0804b3000f1ac126fcde277e9df95e"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "business_requests": 400,
+      "actual_all_business_output_tokens": 10350,
+      "actual_warm_output_tokens": 1260,
+      "actual_future_output_tokens": 9090,
+      "raw_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d"
+    }
+  ],
+  "comparison": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "paired_repeats": 1,
+      "raw_all_business_output_tokens": 10350,
+      "policy_all_business_output_tokens": 10350,
+      "policy_minus_raw_tokens": 0,
+      "policy_to_raw_decode_token_ratio": 1.0
+    }
+  ],
+  "includes_initial_raw_and_all_future_requests": true,
+  "served_outputs_or_budgets_changed": false,
+  "is_a_causal_prefill_speedup_decomposition": false,
+  "analysis_source_sha256": "fe67f05d2d1f2930a9801a4a27af68a21579a95a13a43e339ea4371c779bb850"
+}

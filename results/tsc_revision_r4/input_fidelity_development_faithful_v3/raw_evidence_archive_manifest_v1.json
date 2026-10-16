@@ -1,0 +1,34 @@
+{
+  "schema_version": "tsc-r4.task-fidelity-study-archive.v1",
+  "study": "input_fidelity_development_faithful_v3",
+  "archive": "input_fidelity_development_faithful_v3_raw_evidence_v1.tar.gz",
+  "archive_sha256": "f0204303df44764520a9d3a334cda9beaeafca09c142801948d2b2b6360a4278",
+  "archive_bytes": 22075615,
+  "member_files": 269,
+  "cases": [
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "errors": [],
+      "business_requests": 400,
+      "future_requests": 360,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "errors": [],
+      "business_requests": 400,
+      "future_requests": 360,
+      "verification_calls": 9,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 108,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    }
+  ],
+  "experimental_execution_complete_scientific_success_separate": true,
+  "actual_prompt_output_ids_requests_metrics_runtime_source_and_analysis_included": true
+}

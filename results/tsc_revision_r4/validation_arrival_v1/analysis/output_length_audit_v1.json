@@ -1,0 +1,101 @@
+{
+  "schema_version": "tsc-r4.output-length-audit.v1",
+  "cells": [
+    {
+      "cell": "single-session_mistral_previous-refined_r1",
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "previous-refined",
+      "repeat": 1,
+      "business_requests": 500,
+      "actual_all_business_output_tokens": 27071,
+      "actual_warm_output_tokens": 2646,
+      "actual_future_output_tokens": 24425,
+      "raw_sha256": "4c46c718636c91bdd548fb610890eb2fd7a0ab81e592b64fdcb6f479410cf94e"
+    },
+    {
+      "cell": "single-session_mistral_raw-order_r1",
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "raw-order",
+      "repeat": 1,
+      "business_requests": 500,
+      "actual_all_business_output_tokens": 26879,
+      "actual_warm_output_tokens": 2646,
+      "actual_future_output_tokens": 24233,
+      "raw_sha256": "76a93ebd63c67e6cc607350f302bdeda8bf6657b8a222ae693ea5f3d40b399c5"
+    },
+    {
+      "cell": "single-session_qwen_previous-refined_r1",
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "policy": "previous-refined",
+      "repeat": 1,
+      "business_requests": 500,
+      "actual_all_business_output_tokens": 14208,
+      "actual_warm_output_tokens": 1522,
+      "actual_future_output_tokens": 12686,
+      "raw_sha256": "0ff7e164cbb71501f5c21452fc3cd4fa0bb4e87f311542435a38d34e929c1801"
+    },
+    {
+      "cell": "single-session_qwen_raw-order_r1",
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "policy": "raw-order",
+      "repeat": 1,
+      "business_requests": 500,
+      "actual_all_business_output_tokens": 14279,
+      "actual_warm_output_tokens": 1522,
+      "actual_future_output_tokens": 12757,
+      "raw_sha256": "b179bda137e35253d6111c44c4b4badc34951afab72b22989d0d172c05724243"
+    },
+    {
+      "cell": "single-session_qwen_risk-tail_r1",
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "business_requests": 500,
+      "actual_all_business_output_tokens": 14261,
+      "actual_warm_output_tokens": 1522,
+      "actual_future_output_tokens": 12739,
+      "raw_sha256": "421dfb484cd3d320db467847aa49957480f9a77323ac4229af5d14d38fdf464a"
+    }
+  ],
+  "comparison": [
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "previous-refined",
+      "paired_repeats": 1,
+      "raw_all_business_output_tokens": 26879,
+      "policy_all_business_output_tokens": 27071,
+      "policy_minus_raw_tokens": 192,
+      "policy_to_raw_decode_token_ratio": 1.007143122884036
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "policy": "previous-refined",
+      "paired_repeats": 1,
+      "raw_all_business_output_tokens": 14279,
+      "policy_all_business_output_tokens": 14208,
+      "policy_minus_raw_tokens": -71,
+      "policy_to_raw_decode_token_ratio": 0.9950276630016107
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "paired_repeats": 1,
+      "raw_all_business_output_tokens": 14279,
+      "policy_all_business_output_tokens": 14261,
+      "policy_minus_raw_tokens": -18,
+      "policy_to_raw_decode_token_ratio": 0.9987394075215351
+    }
+  ],
+  "includes_initial_raw_and_all_future_requests": true,
+  "served_outputs_or_budgets_changed": false,
+  "is_a_causal_prefill_speedup_decomposition": false,
+  "analysis_source_sha256": "fe67f05d2d1f2930a9801a4a27af68a21579a95a13a43e339ea4371c779bb850"
+}

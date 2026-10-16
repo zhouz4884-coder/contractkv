@@ -1,0 +1,22 @@
+{
+  "schema_version": "tsc-r4.strata-calibration.v1",
+  "errors": [],
+  "paired_request_count": 13500,
+  "paired_future_requests": 12150,
+  "scope_count": 1620,
+  "warm_forecasts_with_GPU_probe": 228,
+  "warm_forecast_actual_misses": 0,
+  "request_level_retained": true,
+  "strata": [
+    "global",
+    "predefined family",
+    "source template",
+    "tenant",
+    "individual request"
+  ],
+  "partial": false,
+  "not_a_formal_probability_guarantee": true,
+  "new_rejected_scope_outcomes_not_probed": true,
+  "raw_path_lower_boundary": "Observed raw minimum/percentiles and matched L0 routes are reported; no immutable hardware floor or universal p99 improvement is inferred.",
+  "latency_population": "Primary global/family/template/tenant/route strata retain the prespecified future requests; additional all_business_global/family rows include initial warm/first raw requests. Full wall includes every business request in both cases."
+}

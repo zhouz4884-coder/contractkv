@@ -1,0 +1,61 @@
+{
+  "schema_version": "tsc-r4.all-business-quality.v1",
+  "added_after_primary_freeze": true,
+  "new_GPU_requests": 0,
+  "primary_future_estimand_and_counts_unchanged": true,
+  "turn_zero_are_actual_business_answers_not_server_warmup": true,
+  "source_sha256": "d4dd15961f1a8a2830ea9d81707596bc48cd3067b8891b609097a2c611ff63e0",
+  "paired_csv_sha256": "6215dfdbf3936fee364021c675f1d76da989cf6c7c13ca352112084fa22db7d8",
+  "provenance": [
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "raw_sha256": "6a73d6d6df395fc1f0a0978ee5849d14163735a8934be670a505d35bec8e61c0",
+      "policy_sha256": "be3bdac66ea0eec94e6900d59fa370959349be5cf5d88622494eb2198c2ed8eb"
+    }
+  ],
+  "summary": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "paired_business_answers": 400,
+      "compiled_answers": 38,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "paired_business_answers": 360,
+      "compiled_answers": 30,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "paired_business_answers": 40,
+      "compiled_answers": 8,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    }
+  ],
+  "boundary": "All-business adds turn-zero answers, including already certified reuse by later tenants. Repeats, tenants and protocols remain correlated; no universal zero-risk claim."
+}

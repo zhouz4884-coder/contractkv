@@ -1,0 +1,40 @@
+{
+  "schema_version": "tsc-r4.live-completion-audit.v1",
+  "execution_complete": true,
+  "missing_cells": [],
+  "complete_cells": 2,
+  "expected_cells": 2,
+  "measured_futures": 720,
+  "expected_futures": 720,
+  "cases": [
+    {
+      "cell": "template-fanout_qwen_raw-order_r1",
+      "errors": [],
+      "business_requests": 400,
+      "future_requests": 360,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "errors": [],
+      "business_requests": 400,
+      "future_requests": 360,
+      "verification_calls": 9,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 108,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    }
+  ],
+  "development_only": true,
+  "scientific_success_is_separate": true,
+  "ci_unit": "Cold: two-source readiness-wave cohort. Fanout: source template including all tenants. Joint paired fresh repeats. Pilot has one repeat and cannot establish repeat uncertainty.",
+  "mean_bootstrap_draws": 3000,
+  "p99_bootstrap_draws": 2000,
+  "p99_bootstrap_seed": 10672129,
+  "full_wall_uncertainty": "Paired repeat min/max, not a source-cluster wall confidence interval."
+}

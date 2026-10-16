@@ -1,0 +1,450 @@
+{
+  "schema_version": "tsc-r4.scope-object-amortization-audit.v1",
+  "partial": false,
+  "study_root": "results/tsc_revision_r4/input_fidelity_development_faithful_v3",
+  "study_development_only": true,
+  "freeze_sha256": "0e8418b55f773b5a8efb14598ed6c3e5bdcdbbf1f27729362d0a4d3ecd055e39",
+  "analysis_source_sha256": "6268c440aaa38f7de5e499ff50ad0d3f634abbd9ff28b41c6497df8371b3824b",
+  "new_GPU_requests": 0,
+  "frozen_primary_policy_or_analysis_changed": false,
+  "records": [
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4-heldout-1e796a925bb792cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 2,
+      "distinct_returned_certificate_hashes": 2,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "41cb1ae32ec0b27fc8a0825cf0b34f6c221a49761f54f89f30a706d0a593cedc",
+          "stable_prefix_tokens": 3447
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 56,
+      "compiled_future_requests": 56,
+      "compiled_requests_with_actual_prefix_hit": 56,
+      "scope_records": [
+        {
+          "query_scope": "2a87b76cee86602f6bf3627729678dd028d99c60abbe20459163cbe4c7b2201f",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "b4e55fd2ecdfce79f518ec440aedeb33ae827a23702ceff6567193f6891b6581",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "de00ee08019dfa9776d3e3dd082f3e66110da912c43fc9765cc27e92a75c9068",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d",
+      "summary_sha256": "55bbe53a24e3cde6cadfcda7adb1782b855e869433c72c6b0bd723034c4dd7f9"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4-heldout-47c8a6c7b8e17bbc",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "61e74a95d64ac4190edb025436d983ce09da28a9cbb7249b83f16bdcfced634f",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "6f317e8122b82595a5b13b775b8a57e2f9edbeaaa1627e0f1e71121f0f20fd82",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "f5b8c1e6769ec8f47e287fd367ad5b009a4b984e4fbd2557f0d595b66607ff3e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d",
+      "summary_sha256": "55bbe53a24e3cde6cadfcda7adb1782b855e869433c72c6b0bd723034c4dd7f9"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4-heldout-a8d92a44b3ca4f7d",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 2,
+      "distinct_returned_certificate_hashes": 2,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "da00ac145ebe8aa4ef9e9efcedee36b43e963b68d25f563a8c7868e62ef40da2",
+          "stable_prefix_tokens": 6780
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 56,
+      "compiled_future_requests": 56,
+      "compiled_requests_with_actual_prefix_hit": 56,
+      "scope_records": [
+        {
+          "query_scope": "2a0f788cd7f772ba4590a8df69242d6baf90e01d4e62d9e97802f47c9f0dc7fc",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "866773651b0cc7afbeba58952f9bd360349a7ddcb18f0e4061163b52680c61b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "ce9dda4f128208af7e472a732bac6ecd56f4da1695ff9898e35b70c724c1d08c",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d",
+      "summary_sha256": "55bbe53a24e3cde6cadfcda7adb1782b855e869433c72c6b0bd723034c4dd7f9"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4-heldout-e188a69bc4facd2c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "0c673bfec1e7886e7b3fe5b2afa5328808a95ef511c5ba2756fcb2f4dd4d9611",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "9b624acbdcd4b68d6281addc00cfbe0909a5acd94ae208bd682f1e6c668ddc5c",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "cc3cbf02e0f9ccade7f227ac63ab0cb2d9e5b57225f7372dce9c9249b4f69bdb",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "e5d5d2aa6685e794672a1112a887f74615e3515eb97c708a52478f8e950cb50d",
+      "summary_sha256": "55bbe53a24e3cde6cadfcda7adb1782b855e869433c72c6b0bd723034c4dd7f9"
+    }
+  ],
+  "source_provenance": [
+    {
+      "logical_path": "scripts/tsc_revision_r4_live.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_live_fixed.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r1r_query_scope.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_cost_policy.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_admission.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_business_stream.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r2_business_stream.py",
+      "sha256": "148d3310e32edb1480d3212db39611ec11ec286037be3e4b8f6bc9234dde0c4e",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_policy_v2.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_development_faithful_v3/source_snapshot/scripts/tsc_revision_r4_policy_v2.py",
+      "sha256": "03820f79fb6ec125b321e05c9809c916eee20589cb993bf2684c45702c5f6c8d",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_service_template_quality_live.py",
+      "source_read": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_open_loop_service.py",
+      "source_read": "scripts/tsc_open_loop_service.py",
+      "sha256": "25332bf50061498bd6241289dfec831b05c1c1607c9c6ad2d6e15bffae53b586",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_real_task_open_loop.py",
+      "source_read": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/contractkv_certificate_binding.py",
+      "source_read": "scripts/contractkv_certificate_binding.py",
+      "sha256": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc",
+      "from_this_study_frozen_snapshot": false
+    }
+  ],
+  "original_granularity_evidence": {
+    "path": "results/tsc_service/certificate_granularity_ablation_v0.csv",
+    "sha256": "2a810c5d849d2a45d219b3917efd7d850dfb1d6a52939a41cb7053f296c62b1f",
+    "rows_unmodified": [
+      {
+        "policy": "D0-native-apc",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "0.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "2250.1582222222223",
+        "mean_template_prefix_hit_ratio": "0.021752000605939754",
+        "mean_mean_ttft_ms": "852.3535582331851",
+        "mean_p99_ttft_ms": "2084.7964500666662",
+        "mean_slo_compliant_goodput_rps": "0.7703637733671186",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D1-frozen-safe",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.625054359703704",
+        "mean_p99_ttft_ms": "87.93770950666666",
+        "mean_slo_compliant_goodput_rps": "0.8306503025215155",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-session-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "125.0",
+        "mean_transaction_commits": "125.0",
+        "mean_verification_fanout": "9.0",
+        "mean_unhidden_verification_ms_per_future_request": "25.049263978997867",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "50.165333333333336",
+        "mean_template_prefix_hit_ratio": "0.9781908061008241",
+        "mean_mean_ttft_ms": "64.02114142222223",
+        "mean_p99_ttft_ms": "89.51263054666666",
+        "mean_slo_compliant_goodput_rps": "0.8306482457468276",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-template-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "5.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "225.0",
+        "mean_unhidden_verification_ms_per_future_request": "3.2360756275830447",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.90782557185185",
+        "mean_p99_ttft_ms": "88.02215113333332",
+        "mean_slo_compliant_goodput_rps": "0.8306512322979503",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      }
+    ]
+  },
+  "implementation_findings": [
+    "R4 client gates and decisions use (template namespace, query scope); tenant sessions sharing that pair reuse its decision.",
+    "R4 prefix-state forecasts use template namespace and stable-prefix hash. Verification and compiled business use a template namespace cache salt.",
+    "R4 stores a joint per-scope registration result. These two indexes do not demonstrate two independently signed or separately enforced certificate objects.",
+    "The older deployment-template modes attest a compiled-path reference after prospective qualification. R4 uses a real raw business witness. Their attestation semantics and costs must remain separate.",
+    "Signed binding checks in the original real-task serving control plane are distinct from R4 controlled-client query eligibility; this audit does not establish a new public-endpoint authentication defense."
+  ],
+  "complexity_and_limits": [
+    "For T template objects and U observed behavioral scope keys, the R4 controller stores O(T+U) state and creates O(U) prospective decisions. Each selected key has at most one GPU attempt.",
+    "For M requests in a fixed authorized scope set, control checks are O(M) and behavioral model work can be amortized across tenants. O(1) per template requires U to be treated as fixed.",
+    "When distinct behavioral scopes grow with request count, model attestation work may grow linearly if admitted; no measurement here establishes production query repetition prevalence.",
+    "Current benchmark reuse hints are operator-declared fixed three-query patterns, not a measured production reuse predictor.",
+    "A repeated stable-prefix hash is not an independently signed template certificate, a count of distinct newly allocated blocks, or a universal future-behavior guarantee.",
+    "The metadata-only scope schema intentionally ignores allowed metadata values. It defines an empirical class; unchanged task evidence does not prove model-output invariance.",
+    "Original granularity rows use their own frozen deployment protocol. Do not subtract their latency from R4 or call this CPU accounting a new live scaling experiment."
+  ]
+}

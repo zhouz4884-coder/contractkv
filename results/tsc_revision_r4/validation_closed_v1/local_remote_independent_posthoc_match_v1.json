@@ -1,0 +1,114 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 12,
+  "files": [
+    {
+      "file": "all_business_quality_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "824e3fa504b236bcf697eb30062f326becc8487ea760cbcc5a78d41580d2fb70",
+      "independent_sha256": "824e3fa504b236bcf697eb30062f326becc8487ea760cbcc5a78d41580d2fb70"
+    },
+    {
+      "file": "all_business_quality_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "4461210387727e372c89aad2b68c5443d60a35f7a6eac9b5d4eed76643645eab",
+      "independent_sha256": "d8fc3202b29da799576e03d99c161f0c787fd43434fc4ba713d9b0ff9ec3cc73"
+    },
+    {
+      "file": "evidence_availability_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "c3037e6157585922c22d6219502e3dace7ca43860445a7737dee62f8a1dbf7ca",
+      "independent_sha256": "713f2e0602a254173a49c630e1997aeed5667b8780d89d6c0bb92577268a8f50"
+    },
+    {
+      "file": "fallback_metric_analysis_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "9679d0f6ec562edcf5d322a44ed51460ab9be0a019e4a3e1874a18b76cb17adf",
+      "independent_sha256": "4bc6d4d2a1a25494e43546768c343c8a4b976f21684d290edc81f1a2a669ad7b"
+    },
+    {
+      "file": "fallback_repeat_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "8bcbe6fe7bd02edf6ee97b25300b9420843cff3e07c33e458d68fc0a2c778bcf",
+      "independent_sha256": "445577dcb65c36beecaaddadf98ee826557fc6794b7c7d19d3ddf9d977e141db"
+    },
+    {
+      "file": "family_tail_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "3918fb72f3b67d12b0ce415d9c74de6236438c68a81d7509915649534de7a20a",
+      "independent_sha256": "b06c3e4a4effed0891ab6bf429b7e2339f0d6dfc76fe5fc59b35cb18ef6ad40b"
+    },
+    {
+      "file": "independent_actual_prompt_ID_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "c4fa3acbe605c6b813650b4c4a87816dd6421269b7ebd784110d36ec35c78a49",
+      "independent_sha256": "38322227d2054f2b67958f2fcb04a55cd43a4a2df77348edb4e817d08286328b"
+    },
+    {
+      "file": "physical_prefix_accounting_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "5138f0dfe17b954396ba745fabd190b891e1ef648c01a2d3a0bcf060d94e92c3",
+      "independent_sha256": "2b9403fd5c21484a660cff36abe6d29cfd4734c517dde857420ed410add8264c"
+    },
+    {
+      "file": "raw_repeat_balance_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b850b75a3a07ce6e315ffe987380914bdbac4b5fe8b90f76564ea23f96affc31",
+      "independent_sha256": "c785e9b99bf91874b50cd6fda3bd5fe599a61376aa6196ba4187aff938eda877"
+    },
+    {
+      "file": "routing_attribution_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "63199282df2c9d524455da2d1061ee3a66ca0b908c6ae592a9867777018284f7",
+      "independent_sha256": "03956d150fab8f2c0486f6f32e3c4f5d9ed9fd46ea88575c2f4b9832a5a474d6"
+    },
+    {
+      "file": "scope_object_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b1f3faa2e4e20fd54cf9b4fa842da31cb39ed517d6028502ad44bbf30fe281dd",
+      "independent_sha256": "37cefae0af857d002361d527c19de149d828e507dc0b73a8d9bc36363e83318b"
+    },
+    {
+      "file": "score_balance_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "7a25f17236af5429e52e674580d89a72811598a9d00b4f6cff8240b5980c4e95",
+      "independent_sha256": "2b49b563a2a1221057453fa2d801aaf595a7b213764162ef9a878069d21c5b5f"
+    }
+  ],
+  "script_sha256": "67bfba6170e83c02e4afbbfc234ca7bdf6833d1e2a59f5b016a2e0a09be42e2a",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "Different Python runtime versions may differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed. Actual runtime versions are recorded separately in runtime manifests.",
+  "explicit_inventory_only_reconciliation": [
+    {
+      "model": "Qwen3-8B",
+      "all_copied_tokenizer_files_match": true,
+      "remote_additional_model_weight_index": {
+        "model.safetensors.index.json": "f9fdbcb91c23971c13ec5d5f2573d2349e8f61f2f049371ec699281748fdb1bc"
+      },
+      "matches_frozen_model_registry": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "all_copied_tokenizer_files_match": true,
+      "remote_additional_model_weight_index": {
+        "model.safetensors.index.json": "e489ba553b87cde188d921b1a8283c2e0b9d33d635b88147d96ff0fcd6250016"
+      },
+      "matches_frozen_model_registry": true
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "all_copied_tokenizer_files_match": true,
+      "remote_additional_model_weight_index": {
+        "model.safetensors.index.json": "146776fce3f6db1103aa6f249e65ee5544c5923ce6f971b092eee79aa6e5d37b"
+      },
+      "matches_frozen_model_registry": true
+    }
+  ],
+  "all_27000_business_and_468_candidate_prompt_ID_checks_exact": true,
+  "scientific_fields_or_decisions_ignored": false,
+  "raw_remote_actual_ID_audit_sha256": "8ec53cfa543b7906eeefe416a7f71c19fadbe717447a430eabeeea786a913c94",
+  "boundary": "Localtokenizeronlycopiesexcludeweightindexmetadata. Remoteoriginalrecordchecksoneadditionalmodel.safetensors.index.jsonpermodel. Allthreeextrasmatchfrozenregistry; onlythesethreeinventoryadditionsnormalized, originalrecordspreserved. AllactualIDs,countsroutescoresandothermetadataunmodified."
+}

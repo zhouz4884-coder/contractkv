@@ -1,0 +1,49 @@
+{
+  "schema_version": "tsc-r4.CPU-posthoc-preparation-incident.v1",
+  "new_GPU_requests": 0,
+  "first_attempt": "Independent CPU helper failed before first analysis output because scope_object_audit.py and nine other posthoc scripts had not been copied to remote. Public sources already exist; this is operational transport only.",
+  "remedy": "Upload only ten previously absent public posthoc scripts byte-exact; leave existing frozen physical_prefix_accounting.py unchanged; rerun CPU helper only during GPU downtime.",
+  "source_files": [
+    {
+      "path": "scripts/tsc_revision_r4_scope_object_audit.py",
+      "sha256": "6268c440aaa38f7de5e499ff50ad0d3f634abbd9ff28b41c6497df8371b3824b"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_family_tail_audit.py",
+      "sha256": "23da0f9201f2c39cf7fe44b1998f008f1624f54f4a8a82da3d04c80224bf9675"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_all_business_quality.py",
+      "sha256": "d4dd15961f1a8a2830ea9d81707596bc48cd3067b8891b609097a2c611ff63e0"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_routing_attribution.py",
+      "sha256": "5cb461f3fc962cdfbc70318d55ed6ca77e001c481b2d5939229864e7df0e1752"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fallback_analyze.py",
+      "sha256": "bed2e6951fed1c71b99286851821b747e46764423133e3ca35c28cd8ac447836"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fallback_repeat_audit.py",
+      "sha256": "7ebf7353d1569bff5ed09d6078c93b7f68c3aa346cab943b5f058005d0a9d730"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_evidence_availability.py",
+      "sha256": "27b7811829548fceeb78782daf06da85a66bfa1f4f191e535346e070792144ed"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_score_balance.py",
+      "sha256": "c768922122230ece4538f940303ca07d303cb79faeec1295b730567bad9ba55b"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_raw_repeat_balance.py",
+      "sha256": "8fb02eed578c4d2c1248400eb61380bcbc4ade3b2f8cb60c98b93e7b29224d25"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_actual_prompt_audit.py",
+      "sha256": "81a7e471b95b6827d9ee1085cbdc9cfa0c404d7522340af4445968190cf9e880"
+    }
+  ],
+  "runtime_label_correction": "Actual serving-environment CPU interpreter is Python3.10.20, verified directly2026-10-16. Prior narrative helper reason strings sayingremote3.11were inaccurate labels. Preserve old outputs; actual per-cell runtime manifests and all numeric comparisons remain authoritative. New comparator reason omits unverified version labels; tolerance/count criteria unchanged."
+}
