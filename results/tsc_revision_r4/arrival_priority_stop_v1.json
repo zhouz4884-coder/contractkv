@@ -1,0 +1,39 @@
+{
+  "schema_version": "tsc-r4.user-priority-stop.v1",
+  "timestamp_UTC": "2026-10-16T11:56:29.553075+00:00",
+  "authorization": "Latest direct user asks us to judge whether old fixed-arrival measurement should continue or repair should take priority, says repair is urgent. Agent selects repair based on confirmed task-input defects and the completed36-cell closed-loop evidence.",
+  "decision": "Stop dispatch loops only. Allow already-running cells to finish and perform their own normal GPU cleanup. Do not launch further old-input cells. Preserve every completed and partial result; do not claim54-cell completion.",
+  "expected_original_closed_cells": 36,
+  "original_arrival_planned_cells": 54,
+  "no_arrival_quality_or_latency_results_used_for_decision": true,
+  "frozen_source_input_policy_scoring_clocks_unchanged": true,
+  "workers": [
+    {
+      "worker_pid": 3267740,
+      "parent_pid": 3267710,
+      "signal": "SIGSTOP",
+      "children_left_running": [
+        {
+          "pid": 3473132,
+          "command": "bash scripts/run_tsc_revision_r4_validation.sh "
+        }
+      ],
+      "state_after_signal": "State:\tR (running)"
+    },
+    {
+      "worker_pid": 3267741,
+      "parent_pid": 3267710,
+      "signal": "SIGSTOP",
+      "children_left_running": [
+        {
+          "pid": 3475229,
+          "command": "bash scripts/run_tsc_revision_r4_validation.sh "
+        }
+      ],
+      "state_after_signal": "State:\tR (running)"
+    }
+  ],
+  "GPU_processes_not_signalled": true,
+  "followup": "After current run_cell children exit, terminate only stopped dispatch workers and let original controller exit. Archive full closed36 and explicitly partial arrival data, then prepare/preregister new dispatch dependency for identical fidelity four-grid.",
+  "no_new_fidelity_GPU_yet": true
+}

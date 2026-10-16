@@ -1,10 +1,10 @@
 # ContractKV Task-Fidelity Validation：输入修复与有限配对验证
 
-更新：当前有效开发版本为 `input_fidelity_development_{head,faithful}_v2`，各冻结 225 个文件。此前公开的 v1（各 221 个文件）未执行任何新输入 GPU 请求，因生成前发现的内部标签问题而保留为未执行原型。原 R4 的 90 单元不改动。
+更新：用户明确优先修复并仅要求 Markdown 记录。当前开发版本为 `input_fidelity_development_{head,faithful}_v3`，各冻结 226 个文件；输入、渲染器和方法与 v2 相同，只调整执行前置条件。已完成旧 R4 闭环 36 单元，旧固定到达实验停止后续派发，当前两个单元自然收尾，已跑与未跑部分明确区分。v1 与 v2 开发版本均未执行新输入 GPU 请求，继续保留。
 
 ## 目标与边界
 
-本轮修复已确认的任务输入构造缺陷，保留 CALC、Scoped Behavioral Certification、PSTP 和 Service-Template Certificate 四项贡献。原 R4 的 90 个冻结单元继续执行，所有不利结果保留。本记录不是新的实验成功报告；正文与最终 Response Letter 的整合暂缓。
+本轮修复已确认的任务输入构造缺陷，保留 CALC、Scoped Behavioral Certification、PSTP 和 Service-Template Certificate 四项贡献。原 R4 冻结方法、输入和评分不改，所有已完成与部分结果保留；旧固定到达的 54 单元原计划保持为未完成，不将未跑单元计作结果。本记录不是新的实验成功报告；正文与最终 Response Letter 的整合暂缓。
 
 历史 renderer 在词数裁剪时折叠空白，并可能裁掉 RepoBench 的代码补全前缀。问题影响原稿部分主实验及后续补强，不能只称为 R4 的个别输入缺陷。历史输入、实际逐请求输入和标记任务三者的证据边界见 `tsc_revision_phase3_historical_input_audit_zh.md`。原 Table I 的 85.0%/2.4% 尚未恢复数据到统计量的完整来源链，不能标记为已复现。
 
@@ -28,14 +28,14 @@
 
 方法、分数、margin、typed metadata scope、单次认证、原 R4 收益校准与发布机制保持不变。RepoBench 仍用原 `one_python_statement` 检查，没有取消语法保护，没有重写模型输出。先观察纯输入修复的作用，才能决定是否需要那一对事先限定的任务契约兼容性开发对照。
 
-当前两个开发冻结各含 225 个文件：
+当前两个开发冻结各含 226 个文件：
 
 | 条件 | freeze SHA256 |
 | --- | --- |
-| 旧输入 | `abfc1439e601f483a0a53e9b8b5d2ff7393971c6f8363d3f21e2d5666f30cdb7` |
-| 保真输入 | `47258158983f5b2b173f8d3c327c4ae55de42dcf75aea9ac323069b1ee9fc11f` |
+| 旧输入 | `34e612a22829aca723d30f2cc61799fbee91bfecbc37a3aeaf4842bf9dafd7a3` |
+| 保真输入 | `0e8418b55f773b5a8efb14598ed6c3e5bdcdbbf1f27729362d0a4d3ecd055e39` |
 
-冻结不代表已执行。新 GPU 请求必须等待原 R4 全部 90 个单元完成、归档验证通过、相关 GPU worker 退出，以及本轮公开预注册提交得到远端 SHA 核验。
+冻结不代表已执行。按用户最新优先级，先核验并归档完整闭环 36 单元及明确标记的固定到达部分结果，确认当前单元正常收尾、旧调度退出和 GPU 清空，再运行本轮同样的四单元开发对照。新前置条件会在首个新输入 forward 前公开归档并核验 SHA。该调整基于已确认的输入缺陷和用户的紧急修复需求，没有查看固定到达质量或时延结果后挑选停止位置。
 
 ## 输出契约的有限处理
 
@@ -47,7 +47,7 @@
 
 既有排除来源的字节及原服务轨迹的规范化哈希已核对：462 个 pre-R4 来源、50 个 R4 来源及额外旧服务来源合并后，共排除 567 个唯一来源；尚未打开候选池进行新验证来源选择。开发后锁定输入协议与方法，再按固定哈希顺序选择 source-disjoint 的 3 个 HotpotQA 和 3 个 RepoBench 来源。只允许共同窗口中关键字段容量资格筛选，并记录每个不支持候选；不按答案可达性、任务准确率、认证覆盖或速度筛选。三模型、三重复、raw/ContractKV 共 18 个单元。原 Mistral/Llama RepoBench L0 保留，不能为了非 RULER 覆盖临时扩大原资格。
 
-报告绝对任务分数、正向/负向/无实质变化、输出与见证分歧、全路由及编译覆盖、拒绝归因、实际前缀命中、全成本与分层尾延迟。保留所有失败，不追求每个模型或 p99 都改善。完成这项有限验证及必要审计后，给出实验停止决定和两份实验文档；仅可复现的核心机制缺陷允许必要局部修复，不再展开新的算法或无限矩阵。
+报告绝对任务分数、正向/负向/无实质变化、输出与见证分歧、全路由及编译覆盖、拒绝归因、实际前缀命中、全成本与分层尾延迟。保留所有失败，不追求每个模型或 p99 都改善。完成这项有限验证及必要审计后，给出实验停止决定和两份 Markdown 实验记录；仅可复现的核心机制缺陷允许必要局部修复，不再展开新的算法或无限矩阵。
 
 ## 证据入口
 
@@ -55,6 +55,6 @@
 - `results/tsc_revision_r4/input_fidelity_development_inputs_v3/independent_input_integrity_v2.json`
 - `results/tsc_revision_r4/full_input_window_audit_v1.json`
 - `results/tsc_revision_r4/code_prefix_contract_audit_v1.json`
-- `configs/tsc_revision_r4_input_fidelity_plan_v3.json`
-- `results/tsc_revision_r4/input_fidelity_development_head_v2/freeze.json`
-- `results/tsc_revision_r4/input_fidelity_development_faithful_v2/freeze.json`
+- `configs/tsc_revision_r4_input_fidelity_plan_v4.json`
+- `results/tsc_revision_r4/input_fidelity_development_head_v3/freeze.json`
+- `results/tsc_revision_r4/input_fidelity_development_faithful_v3/freeze.json`

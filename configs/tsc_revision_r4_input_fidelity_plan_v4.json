@@ -1,0 +1,165 @@
+{
+  "schema_version": "tsc-r4.task-fidelity-repair-first.v4",
+  "supersedes_unexecuted_draft": [
+    "configs/tsc_revision_r4_input_fidelity_plan_v1.json",
+    "configs/tsc_revision_r4_input_fidelity_plan_v2.json",
+    "input_fidelity_development_head_v1 and input_fidelity_development_faithful_v1: public but never GPU-executed",
+    "input_fidelity_development_{head,faithful}_v2: identical method/input but superseded execution dependency after direct user urgency steering; no GPU execution"
+  ],
+  "basis": "Historical input loss, full-input tokenizer windows, CODE_PREFIX metadata audit and task-contract compatibility audit; no new validation outputs have been observed; before the first new-input GPU forward, CPU inspection found 10/10 CODE_PREFIX fields interrupted by internal chunk headings in actual rendered user messages",
+  "unchanged": [
+    "all completed and partial old R4 results, frozen inputs/methods/scorers/clocks; original54-cell arrival plan retained as incomplete",
+    "CALC algorithm",
+    "PSTP backend",
+    "model weights",
+    "temperature and seed",
+    "official frozen task scorers",
+    "raw/candidate/EOS floors",
+    "metadata scope schema",
+    "single-shot qualification",
+    "R4 balanced cost calibration"
+  ],
+  "CPU_prerequisites": [
+    "Complete historical source/launcher/input-byte audit including explicit unresolved Table I numeric provenance",
+    "Complete all-fifty-source head/full chat-template window audit on three serving tokenizers",
+    "Protect complete CODE_PREFIX and query bytes; preserve retained context whitespace and record every omission",
+    "Audit whether CODE_PREFIX metadata fields affect current decisions; do not change unused fields to claim a speed repair",
+    "Separate standalone Python statement compatibility from next-line completion semantics and actual observed syntax rejections",
+    "Require each packed source segment to occur contiguously in actual raw user prompt; require complete CODE_PREFIX in both raw and the actual inherited selected candidate. Stored-chunk concatenation alone is insufficient."
+  ],
+  "input_packing": {
+    "full_first": true,
+    "protected_segment_types": [
+      "SYS_PROMPT",
+      "USER_QUERY",
+      "CODE_PREFIX",
+      "TOOL_OBS",
+      "CHAT_HISTORY",
+      "SCRATCHPAD"
+    ],
+    "optional_segment_types": [
+      "RAG_CHUNK",
+      "DOC_CONTEXT",
+      "SYNTHETIC_CONTEXT",
+      "REPO_CONTEXT",
+      "REPO_IMPORT",
+      "REPO_CLASS",
+      "REPO_FUNCTION"
+    ],
+    "optional_context_rule": "Deterministic original head/tail paragraph or line units with explicit omission marker; original retained whitespace preserved, no split-and-space rejoin",
+    "maximum_search_units_per_segment": 512,
+    "quick_fit_guard_tokens": 128,
+    "final_fit": "Every declared tenant/turn/model raw and selected candidate complete chat template plus unchanged family output budget must fit the actual 16384 window",
+    "critical_overflow": "Report unsupported input without cutting CODE_PREFIX/query or substituting a favorable source after model outcomes",
+    "forbidden_inputs_to_packing": [
+      "gold answer text or position",
+      "task score",
+      "model output",
+      "margin",
+      "certificate outcome",
+      "timing gain"
+    ],
+    "shared_task_content": "Raw and ContractKV receive the same packed task text; only the existing legal CALC layout differs",
+    "online_generation_protocol": "stable_word_limit=0 on already packed faithful sources, preventing a second whitespace-destroying pass",
+    "rendering": "Coalesce only adjacent, consecutive pieces of the same original segment under one outside heading. Preserve all CALC nodes, their order, levels and dependency edges. No internal heading inserted in raw code/doc text. All actual selected CODE_PREFIX layouts must preserve the entire prefix contiguously or fail preflight explicitly.",
+    "type_consistency": "Isolated builder corrects CODE_PREFIX volatility=0/cache_stability=1, without changing text/order/dependencies or current R4 layout decisions."
+  },
+  "known_source_development": {
+    "model": "qwen",
+    "sources": "The first two HotpotQA and first two RepoBench sources from the original frozen R4 fan-out subset",
+    "source_count": 4,
+    "repeats": 1,
+    "tenants_per_template": 10,
+    "turns": 10,
+    "concurrency": 2,
+    "primary_four_grid": [
+      "old-head historical-renderer raw",
+      "old-head historical-renderer unchanged R4",
+      "faithful packed contiguous-renderer raw",
+      "faithful packed contiguous-renderer unchanged R4"
+    ],
+    "primary_cells": 4,
+    "primary_business_generations": 1600,
+    "contract_local_repair": "Only after input-only DEV evidence and task semantics support a necessary next-line compatibility repair. At most one fixed prefix-compatible guard with syntax/prose rejection and its own fresh raw/risk pair; no blanket bypass, no gold online, no model-output rewrite, no heldout tuning.",
+    "maximum_extra_contract_cells": 2,
+    "maximum_extra_business_generations": 800,
+    "comparison": "Any fragment variant receives its own fresh raw/risk paired cells. Preserve the input-only unchanged-rule arm to avoid attributing a contract change to input fidelity.",
+    "interpretation": "Previously observed development sources, single fresh repeat; no independent-validation or process-uncertainty claim",
+    "rendering_change_boundary": "Input packing plus preservation of original segment text in the displayed prompt are one input-protocol repair; the four-grid cannot separately assign causality to word budget versus internal-heading removal.",
+    "execution_order": [
+      "GPU0 head/raw",
+      "GPU0 faithful/risk",
+      "GPU0 faithful/raw",
+      "GPU0 head/risk"
+    ]
+  },
+  "independent_validation": {
+    "source_selection_seed": 10672146,
+    "families": [
+      "HotpotQA",
+      "RepoBench"
+    ],
+    "new_sources_per_family": 3,
+    "source_pool": "results/workload/phase14d_full_pool_v2.jsonl",
+    "exclusions": "All pre-R4 committed exclusion cohorts, all 50 R4 sources, and recovered original task-bearing and marker service sources",
+    "selection": "Hash order within family; common-engine critical-field capacity eligibility only. Pack optional context by the fixed rule; record all capacity-ineligible candidates. Never filter by gold location, raw accuracy, output stability, qualification or speed.",
+    "models": [
+      "qwen",
+      "mistral",
+      "llama"
+    ],
+    "repeats": 3,
+    "policies": [
+      "raw-order",
+      "risk-tail"
+    ],
+    "input_condition": "faithful packed task content",
+    "study": "template-fanout",
+    "tenants_per_template": 10,
+    "turns": 10,
+    "concurrency": 2,
+    "expected_cells": 18,
+    "expected_business_generations": 10800,
+    "expected_future_generations": 9720,
+    "expected_paired_future_requests": 4860,
+    "admission_version": "Select only from the input-only original R4 rule and at most one necessary task-contract compatibility repair, using known-source development before freezing these new sources; no margin/cost refitting",
+    "fixed_L0_families": "Inherited R4 Mistral/Llama RepoBench L0 remains L0; do not enlarge its calibrated family qualification to force non-RULER coverage",
+    "fresh_process_per_cell": true,
+    "policy_order": {
+      "1": [
+        "raw-order",
+        "risk-tail"
+      ],
+      "2": [
+        "risk-tail",
+        "raw-order"
+      ],
+      "3": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    "GPU_assignment": "Counterbalanced model-repeat paired blocks across two lanes; same lane within each raw/risk pair",
+    "source_uncertainty": "Three independent source clusters per family and three fresh processes; retain wide descriptive intervals and do not claim population coverage or universal p99 improvement"
+  },
+  "clock_and_cost": "Closed-loop two-request readiness waves; all actual business/controller/candidate preparation/qualification and waits charged in service wall. Offline immutable input trace packing and tokenizer-only audits are separately reported CPU work shared by raw and ContractKV, not hidden GPU savings.",
+  "Table_I_repair_evidence": "Do not invent provenance for old 85/2.4 literals. Record real application template ordering separately from prevalence; measure reproducible stable-input spans and native APC counters on the new faithful workload using the same actual serving logs.",
+  "report_all": [
+    "absolute raw/policy family scores",
+    "positive/negative/no-material score change",
+    "output and witness ID divergence",
+    "all-route and compiled coverage",
+    "each rejection reason",
+    "GPU attempts and scopes",
+    "actual prefix-hit and new-prefill tokens",
+    "cache objects and zero rejected publication",
+    "full wall and backend/readiness TTFT/p99",
+    "raw repeated-run variability and length stops",
+    "input omissions/critical preservation and CPU preparation provenance",
+    "Unexecuted pre-forward prototypes and renderer discovery; no prototype is counted as live evidence"
+  ],
+  "dispatch_dependency": "Direct user reprioritized repair over finishing the old fixed-arrival matrix. First close/audit/archive the complete36-cell closed panel and explicitly partial fixed-arrival panel, after allowing the two active cells to finish. Require stop completion, no owned GPU workers, verified public prospective freeze and unchanged input/method before the same four-grid. Do not claim54-cell completion and do not resume old dispatch loops.",
+  "finite_scope": "Same four known-source development cells plus at most one evidence-justified task-contract pair, then one independent eighteen-cell validation. The remaining old-input fixed-arrival cells are not dispatched now. No new workload/model/threshold search.",
+  "deliverables": "Two Markdown experiment records only after actual repair, bounded validation and audits. No DOCX; manuscript text integration later.",
+  "priority_decision_record": "results/tsc_revision_r4/arrival_priority_stop_v1.json"
+}
