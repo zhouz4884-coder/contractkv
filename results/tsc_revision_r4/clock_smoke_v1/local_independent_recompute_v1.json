@@ -1,0 +1,84 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 12,
+  "files": [
+    {
+      "file": "completion_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "bf69ecfe5d23a47e79ecec38a5a4a5eb02d030498323d260006217d709064e99",
+      "independent_sha256": "5f6588c21e433ff23e4d4f2914be5542e0e63159f3a6d238141f3dca1a47626a"
+    },
+    {
+      "file": "gate_calibration_scopes_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "793f4a646efc60d265fef6180b9df188d90bc21d1823df0109382867bebb5cee",
+      "independent_sha256": "793f4a646efc60d265fef6180b9df188d90bc21d1823df0109382867bebb5cee"
+    },
+    {
+      "file": "gate_calibration_summary_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "a30761e551a12368222246cebe26e2f6d5d5199a89e74b4c3c7b841e7178ef21",
+      "independent_sha256": "a30761e551a12368222246cebe26e2f6d5d5199a89e74b4c3c7b841e7178ef21"
+    },
+    {
+      "file": "latency_strata_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "eeeca588e9c5f9b211e88bacf1f71ca8a849173c5eedc757e2db8133d0c8c13a",
+      "independent_sha256": "eeeca588e9c5f9b211e88bacf1f71ca8a849173c5eedc757e2db8133d0c8c13a"
+    },
+    {
+      "file": "performance_by_cell_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "3479987410eaed7e9942369257979e7d3604da4b09f625aede97b3150be6aa6f",
+      "independent_sha256": "3479987410eaed7e9942369257979e7d3604da4b09f625aede97b3150be6aa6f"
+    },
+    {
+      "file": "performance_comparison_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "a7b15f4f7ba84207973fc507bd06e7b6d47073130240806dd745383c8b127aef",
+      "independent_sha256": "a7b15f4f7ba84207973fc507bd06e7b6d47073130240806dd745383c8b127aef"
+    },
+    {
+      "file": "quality_pairs_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "6ac24047e0d59e269df876739d59b04a29e150f1a878bc344f6de6520e47f0c3",
+      "independent_sha256": "6ac24047e0d59e269df876739d59b04a29e150f1a878bc344f6de6520e47f0c3"
+    },
+    {
+      "file": "quality_summary_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "691c79fdc424d831a4dbd02d9b8a256ea597b4ac6e2a7dcce3015752db40b30c",
+      "independent_sha256": "691c79fdc424d831a4dbd02d9b8a256ea597b4ac6e2a7dcce3015752db40b30c"
+    },
+    {
+      "file": "request_latency_pairs_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b8cc78f229904bbe5d1daef04e8e69381972b8d9f5c82e33f43df69489aa478b",
+      "independent_sha256": "b8cc78f229904bbe5d1daef04e8e69381972b8d9f5c82e33f43df69489aa478b"
+    },
+    {
+      "file": "scope_decisions_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "7aaab01f8b39833c0e0d787fe964a7fafa9c9f004f0a0806bf960b9befe7e11f",
+      "independent_sha256": "7aaab01f8b39833c0e0d787fe964a7fafa9c9f004f0a0806bf960b9befe7e11f"
+    },
+    {
+      "file": "strata_calibration_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "03f9015d302b30ea158025a92a87cee72818e4fffc78aa534c72325519f8448d",
+      "independent_sha256": "8150233ac8cbc34ad60a7a511403db9499e9e0f86efa42a3cf807f87839fc91e"
+    },
+    {
+      "file": "warm_forecast_audit_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "774ce9581d3f8d6947a1998e7fa4e95847010c7a6e5c4f569d3c0db19c376493",
+      "independent_sha256": "774ce9581d3f8d6947a1998e7fa4e95847010c7a6e5c4f569d3c0db19c376493"
+    }
+  ],
+  "script_sha256": "63b31f31c055ca7c9558647f48754ae2d46f99720af586280aa871507c106301",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "LocalPython3.13 and remotePython3.11 differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed."
+}

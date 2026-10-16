@@ -57,6 +57,7 @@ def main():
              'tsc_revision_r4_arrival_protocol.py','tsc_revision_r2_tail_bootstrap.py'])
     names+=['tsc_revision_r2_margin_smoke.py','tsc_revision_r2_margin_policy.py']
     if a.study=='development_repeat_check_v1':names+=['tsc_revision_r4_repeat_summary.py']
+    if a.study in ('validation_closed_v1','validation_arrival_v1'):names+=['tsc_revision_r4_output_length_audit.py']
     for name in names:shutil.copyfile(root/'scripts'/name,code/name)
     files=[p for p in base.rglob('*') if p.is_file() and 'progress_analysis' not in p.relative_to(base).parts and not p.name.endswith(('.pid','.partial','.tar.gz')) and '.tar.gz.part' not in p.name and not p.name.startswith('raw_evidence_')]
     files+=logs+[post,root/'third_party/licenses/vllm-Apache-2.0.txt',root/'third_party/licenses/README.md']

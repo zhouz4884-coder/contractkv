@@ -1,0 +1,30 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 3,
+  "files": [
+    {
+      "file": "combined_performance_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "c64e675a636e5582183ff63afc7ea717e209c0e0038aabe442f79cb59d74c8d2",
+      "independent_sha256": "c64e675a636e5582183ff63afc7ea717e209c0e0038aabe442f79cb59d74c8d2"
+    },
+    {
+      "file": "completion_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "d9fe1b07d27003e1698a2adb1a2d3e6e6c6c475d9363d923c3059da85d6c85ab",
+      "independent_sha256": "543e37c744468ccc7fceee00a166cdcf8e4977b484027d2393d597ef3c5195c9"
+    },
+    {
+      "file": "quality_pairs_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b3d88c8d08c4a51be99560162d8b7c18a54c6b72fae83d14ca6290760e494d41",
+      "independent_sha256": "b3d88c8d08c4a51be99560162d8b7c18a54c6b72fae83d14ca6290760e494d41"
+    }
+  ],
+  "script_sha256": "63b31f31c055ca7c9558647f48754ae2d46f99720af586280aa871507c106301",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "LocalPython3.13 and remotePython3.11 differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed."
+}

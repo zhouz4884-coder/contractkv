@@ -1,0 +1,377 @@
+{
+  "schema_version": "tsc-r4.model-specific-arrival-calibration.v2",
+  "development_freeze_sha256": "2ff5c212ffb2fbfc2dd1ded4d395f599685188aa0f730e69a038d03ec3c0dfa3",
+  "only_observed_development_raw_timings": true,
+  "new_validation_model_outcomes_used": false,
+  "offered_load": 0.8,
+  "common_across_policies_within_model": true,
+  "model_specific_nominal_load": true,
+  "amendment": "Before any formal new50 forwards, replace common slowest-model absolute trace with each model own observed mean-wave service at the same prespecified nominal .8 load. All policies within model/repeat remain exactly paired. The old common-rate generator and any derived v1 tables remain preserved.",
+  "boundary": "New-source service demand can differ from development: actual achieved utilization need not equal .8. This is one frozen synthetic offered-load point, not a production trace or universal p99 guarantee.",
+  "sources": [
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_llama_raw-order_r1/raw.jsonl",
+      "sha256": "a616f1edf84b02e49634ccbb12ed26c6e61d048830836b4c7170bbed1cbbf937"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_mistral_raw-order_r1/raw.jsonl",
+      "sha256": "617031f1147f1c4406b2aad7be99c286dd17899d26d385500ed2b97f62f708b2"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_qwen_raw-order_r1/raw.jsonl",
+      "sha256": "a49a2f37c6cf2856e1347a646c65a92a2160c7912bca72fa002b9799ab82319d"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_llama_raw-order_r1/raw.jsonl",
+      "sha256": "d53fcf0c55158a2269d76f6f429dbb9e7f24263e0b5408dfb5fb121e9732bf9b"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_mistral_raw-order_r1/raw.jsonl",
+      "sha256": "0e0556a896fb158e468f1cd3519b5ddd32e505428db3a58a476e4dfdecf0bb0d"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_qwen_raw-order_r1/raw.jsonl",
+      "sha256": "332cec8ba8944eb71c2429699298b32715fb5c1a81c9885cb52b1d663e5a57dc"
+    }
+  ],
+  "duration_records": [
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 1.9888864556327461,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 2.1494967711390927,
+      "waves": 20
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "family": "Qasper",
+      "mean_wave_service_s": 1.5174899464007467,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "family": "RULER",
+      "mean_wave_service_s": 0.92540317135863,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Qwen3-8B",
+      "family": "RepoBench",
+      "mean_wave_service_s": 2.9042547069024294,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 2.793508706567809,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 2.658060635253787,
+      "waves": 20
+    },
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "Qasper",
+      "mean_wave_service_s": 2.641496133478358,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "RULER",
+      "mean_wave_service_s": 0.8702521310653537,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "RepoBench",
+      "mean_wave_service_s": 7.33776860977523,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 2.017204736312851,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 2.165067375754006,
+      "waves": 20
+    },
+    {
+      "study": "single-session",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "Qasper",
+      "mean_wave_service_s": 1.668710075551644,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "RULER",
+      "mean_wave_service_s": 0.6940148824360222,
+      "waves": 10
+    },
+    {
+      "study": "single-session",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "RepoBench",
+      "mean_wave_service_s": 9.36894972701557,
+      "waves": 10
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 1.525906429514289,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 1.3878772467002272,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "family": "Qasper",
+      "mean_wave_service_s": 1.3261138547025622,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "family": "RULER",
+      "mean_wave_service_s": 0.9353437473531813,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "family": "RepoBench",
+      "mean_wave_service_s": 3.459245627541095,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 1.63008051071316,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 1.4238327849190682,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "Qasper",
+      "mean_wave_service_s": 1.8250046972651035,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "RULER",
+      "mean_wave_service_s": 0.8690130474325269,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "RepoBench",
+      "mean_wave_service_s": 9.556236767331137,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "HotpotQA",
+      "mean_wave_service_s": 2.127152889762074,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "NarrativeQA",
+      "mean_wave_service_s": 1.2377629961725325,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "Qasper",
+      "mean_wave_service_s": 1.5830548640247435,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "RULER",
+      "mean_wave_service_s": 0.6992059757001698,
+      "waves": 50
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "RepoBench",
+      "mean_wave_service_s": 5.245745635647327,
+      "waves": 50
+    }
+  ],
+  "files": {
+    "single-session": {
+      "Qwen3-8B": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r1.json",
+          "sha256": "48b8900510c168be6626181de4719439d6d6b0ade737e0a786d32188a3d64647",
+          "waves": 250,
+          "last_offset_s": 590.8779252362926
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r2.json",
+          "sha256": "c74cae4361d44f2cefb7ec6654cca468172a2511dc03437822d09d0589ca51b3",
+          "waves": 250,
+          "last_offset_s": 589.7142744271613
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r3.json",
+          "sha256": "d557fab8f38b6e2f75a46d816511d4cf38a6773839709112a733b4d606f2c729",
+          "waves": 250,
+          "last_offset_s": 590.017735013342
+        }
+      },
+      "Mistral-7B-Instruct-v0.3": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r1.json",
+          "sha256": "d81e3b710cacb03f6aa646a9636c468c7d60e7efbc06183b6a11a69c9a44ed42",
+          "waves": 250,
+          "last_offset_s": 1012.3621835678239
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r2.json",
+          "sha256": "2ed2604eef36572db92e2510eaf89b5cc8f6540b08648f0ba77b96c5e9006bfa",
+          "waves": 250,
+          "last_offset_s": 1010.8072311412418
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r3.json",
+          "sha256": "6aacafefcd297f7683151d8727fe1d1d2c6bf7d8e599d31de714808ce2d2e317",
+          "waves": 250,
+          "last_offset_s": 1010.8729714640459
+        }
+      },
+      "Llama-3.1-8B-Instruct": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r1.json",
+          "sha256": "b8fc89453e585a579879c8ef43de5301ecf6e71605efce17119b3f257bff0229",
+          "waves": 250,
+          "last_offset_s": 985.163972230047
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r2.json",
+          "sha256": "63574a383613b1c4e746b665d826fb15b710e687f0db5121c560991c37ead33e",
+          "waves": 250,
+          "last_offset_s": 985.0009248957471
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r3.json",
+          "sha256": "cb89dd1a023553cc5848d0fb3e51a961ae8fe37a2a435161ea9c0a8bf8c447be",
+          "waves": 250,
+          "last_offset_s": 983.176186941669
+        }
+      }
+    },
+    "template-fanout": {
+      "Qwen3-8B": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r1.json",
+          "sha256": "3039cb712c514fee40420bf0930ebb933367bdf64f31a11fa24285d6074d74b7",
+          "waves": 500,
+          "last_offset_s": 1078.850387668412
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r2.json",
+          "sha256": "331cd52c4049e0e0729dae59a6b13d50d627ac1262bed1b864481ab33e9f0db4",
+          "waves": 500,
+          "last_offset_s": 1073.4300365152883
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r3.json",
+          "sha256": "1f23a593acc5ce58416fd78bb246cae717b27c93ac7bf7434a2741f8368064b8",
+          "waves": 500,
+          "last_offset_s": 1076.123497764405
+        }
+      },
+      "Mistral-7B-Instruct-v0.3": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r1.json",
+          "sha256": "5a6b40b7e75c3628bce252598630c319b4e674c512dfe3980c636ef07b650a21",
+          "waves": 500,
+          "last_offset_s": 1906.9205336786908
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r2.json",
+          "sha256": "b05e43de12461102a2aa7cd95decac2e84a47f756f22c546e180f392fd0a8cdb",
+          "waves": 500,
+          "last_offset_s": 1896.0214023476417
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r3.json",
+          "sha256": "04610180ca61bbfdc2d955dc5fdfe5b4ff3e8b15cebd8b717a1bcfd28390322e",
+          "waves": 500,
+          "last_offset_s": 1902.3075261066333
+        }
+      },
+      "Llama-3.1-8B-Instruct": {
+        "1": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r1.json",
+          "sha256": "e9f902e70a5e623c914d27de95e146cb04acdb07d50be7d3e532c6abe60189ec",
+          "waves": 500,
+          "last_offset_s": 1359.9778732454517
+        },
+        "2": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r2.json",
+          "sha256": "829b3adf21beb17d34e877befb6d72c29e7eff231d2a31305e2bf8adbf1c5446",
+          "waves": 500,
+          "last_offset_s": 1352.051388797357
+        },
+        "3": {
+          "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r3.json",
+          "sha256": "ffa413cb501d7b1fe9099637f6a386cb64fcacfef3f539013ace9105014fb103",
+          "waves": 500,
+          "last_offset_s": 1356.510758463569
+        }
+      }
+    }
+  },
+  "generator_sha256": "5d14cbcf10629a76e597af9c861077cd65beaaffbc73a78278e1c98846d5256d",
+  "base_trace_generator_sha256": "d0683be556daab69cf3289cc34d445ea2811c65d9cecb04ceb04c83dca841004"
+}

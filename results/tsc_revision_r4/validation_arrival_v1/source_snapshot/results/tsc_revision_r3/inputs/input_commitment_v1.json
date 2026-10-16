@@ -1,0 +1,139 @@
+{
+  "schema_version": "tsc-r3.fresh-input-commitment.v1",
+  "timestamp": "2026-10-15T20:24:38.954636+00:00",
+  "seed": 10672130,
+  "excluded_sources": 412,
+  "exclusion_files": [
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_development_sessions_v1.jsonl",
+      "sha256": "06e10921fdcae55d831897d67146f90332fb89c17390c133f172d5ebb3af0436"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_heldout_sessions_v1.jsonl",
+      "sha256": "16aba12577becbc261b950fac59aa6d0a4477744aec709ca787a91fcf28203d7"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/free_generation_sessions_v1.jsonl",
+      "sha256": "20baa66b1cdba60f9f9454aa5d1fb2e64cb285a0b67603ab2fbd3f5147c3e482"
+    },
+    {
+      "file": "results/scale_up/qwen3_14b_tp2_v0/frozen_sessions_v0.jsonl",
+      "sha256": "3209dcf46d4095d9c204ad9d18ff754461a6db80f87fb0463bc5010520583ec3"
+    },
+    {
+      "file": "results/end_to_end/phase19b_untouched_sessions_v0.jsonl",
+      "sha256": "4c03379809e960b400a44b161b5d5203a0653e778f539c7d14a0291cee45a78a"
+    },
+    {
+      "file": "results/mistral/development_sessions_v0.jsonl",
+      "sha256": "bb9a3dd2baafcdbf1f6494856bdc4e60b69ba1191eb071c5cfc54577cb37bb9e"
+    },
+    {
+      "file": "results/mistral/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "e10fd2200de1cbcc2bf17ce35793c5210266f41b4694a70999188f5c9b96a634"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/development_sessions_v0.jsonl",
+      "sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "fbc70da5fc6323934ee6999b068f16ec64417002a53fa2e26c2db8c70219ff54"
+    },
+    {
+      "file": "results/cross_model/phase19c_calibration_sessions_v0.jsonl",
+      "sha256": "e2ad433dd94357811f723f74cff8fcddef6945fae780f13b43e80ec42e04b73f"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/development_sessions_v1.jsonl",
+      "sha256": "d8d2bf87c861b58c83a48df7a9ef62a91c5cc7f062b0455939e5d383470b99c1"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079"
+    },
+    {
+      "file": "results/tsc_revision_r2/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725"
+    }
+  ],
+  "source_pool_sha256": "d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "excluded_set_sha256": "0ca19bf497f6e85cc586d96babcbe3e835b0440ab5bfe3556e34400c9520488b",
+  "cohorts": {
+    "heldout_sealed_sessions_v1.jsonl": {
+      "sha256": "835f9e843b8423ead3f540d5825e2a736f46e7e9600f86cfe12961cf60dad73c",
+      "sources": 50,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:74",
+        "RULER:niah_single_1:ruler:17",
+        "RULER:niah_single_1:ruler:21",
+        "RULER:niah_single_1:ruler:87",
+        "RULER:niah_single_1:ruler:123",
+        "RULER:niah_single_1:ruler:55",
+        "RULER:niah_single_1:ruler:43",
+        "RULER:niah_single_1:ruler:63",
+        "RULER:niah_single_1:ruler:33",
+        "RULER:niah_single_1:ruler:100",
+        "LongBench:hotpotqa:hotpotqa:doc:139",
+        "LongBench:hotpotqa:hotpotqa:doc:91",
+        "LongBench:hotpotqa:hotpotqa:doc:84",
+        "LongBench:hotpotqa:hotpotqa:doc:58",
+        "LongBench:hotpotqa:hotpotqa:doc:16",
+        "LongBench:hotpotqa:hotpotqa:doc:60",
+        "LongBench:hotpotqa:hotpotqa:doc:112",
+        "LongBench:hotpotqa:hotpotqa:doc:138",
+        "LongBench:hotpotqa:hotpotqa:doc:87",
+        "LongBench:hotpotqa:hotpotqa:doc:144",
+        "LongBench:narrativeqa:narrativeqa:doc:129",
+        "LongBench:narrativeqa:narrativeqa:doc:30",
+        "LongBench:narrativeqa:narrativeqa:doc:99",
+        "LongBench:narrativeqa:narrativeqa:doc:86",
+        "LongBench:narrativeqa:narrativeqa:doc:140",
+        "LongBench:narrativeqa:narrativeqa:doc:117",
+        "LongBench:narrativeqa:narrativeqa:doc:79",
+        "LongBench:narrativeqa:narrativeqa:doc:62",
+        "LongBench:narrativeqa:narrativeqa:doc:168",
+        "LongBench:narrativeqa:narrativeqa:doc:32",
+        "LongBench:qasper:qasper:doc:83",
+        "LongBench:qasper:qasper:doc:146",
+        "LongBench:qasper:qasper:doc:22",
+        "LongBench:qasper:qasper:doc:196",
+        "LongBench:qasper:qasper:doc:24",
+        "LongBench:qasper:qasper:doc:92",
+        "LongBench:qasper:qasper:doc:163",
+        "LongBench:qasper:qasper:doc:190",
+        "LongBench:qasper:qasper:doc:112",
+        "LongBench:qasper:qasper:doc:10",
+        "RepoBench:python_v1.1:Eanya-Tonic/MihiroToolbox",
+        "RepoBench:python_v1.1:DSaurus/threestudio-4dfy",
+        "RepoBench:python_v1.1:DLYuanGod/TinyGPT-V",
+        "RepoBench:python_v1.1:caglarkucuk/earthformer-satellite-to-radar",
+        "RepoBench:python_v1.1:choderalab/chiron",
+        "RepoBench:python_v1.1:LasticXYZ/price-simulation",
+        "RepoBench:python_v1.1:aliyun/pai-python-sdk",
+        "RepoBench:python_v1.1:8none1/idealLED",
+        "RepoBench:python_v1.1:Linear95/APO",
+        "RepoBench:python_v1.1:modelscope/normal-depth-diffusion"
+      ]
+    },
+    "heldout_fanout_v1.jsonl": {
+      "sha256": "0e7092f8d53d7da525e4b74957e3f404a24093e8df7061b7b55c54995f5d068d",
+      "sources": 10,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:74",
+        "RULER:niah_single_1:ruler:17",
+        "LongBench:hotpotqa:hotpotqa:doc:139",
+        "LongBench:hotpotqa:hotpotqa:doc:91",
+        "LongBench:narrativeqa:narrativeqa:doc:129",
+        "LongBench:narrativeqa:narrativeqa:doc:30",
+        "LongBench:qasper:qasper:doc:83",
+        "LongBench:qasper:qasper:doc:146",
+        "RepoBench:python_v1.1:Eanya-Tonic/MihiroToolbox",
+        "RepoBench:python_v1.1:DSaurus/threestudio-4dfy"
+      ]
+    }
+  },
+  "selection_uses_model_outputs_or_scores": false,
+  "frozen_before_new_admission_policy_forward_requests": true,
+  "previous50_now_observed_development_and_not_relabelled_as_unseen": true
+}

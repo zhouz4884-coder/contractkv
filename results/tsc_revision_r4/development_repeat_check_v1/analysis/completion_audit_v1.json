@@ -1,0 +1,177 @@
+{
+  "schema_version": "tsc-r4.development-repeat-completion.v1",
+  "execution_complete": true,
+  "cases": [
+    {
+      "cell": "single-session_qwen_raw-order_r2",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "single-session_qwen_risk-tail_r2",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 6,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 14,
+      "pre_information_rejections": 30,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "single-session_qwen_raw-order_r3",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "single-session_qwen_risk-tail_r3",
+      "errors": [],
+      "business_requests": 120,
+      "future_requests": 108,
+      "verification_calls": 6,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 14,
+      "pre_information_rejections": 30,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "template-fanout_mistral_raw-order_r2",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 5,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 160,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 2
+    },
+    {
+      "cell": "template-fanout_mistral_raw-order_r3",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 0,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 0,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 0
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "errors": [],
+      "business_requests": 500,
+      "future_requests": 450,
+      "verification_calls": 5,
+      "rejected_published_tokens": 0,
+      "actual_compiled_cache_hits": 160,
+      "pre_information_rejections": 0,
+      "post_information_rejections": 2
+    }
+  ],
+  "complete_cells": 8,
+  "expected_cells": 8,
+  "measured_futures": 2232,
+  "expected_futures": 2232,
+  "combined_pairs_with_original_r1": 1674,
+  "parent_pilot_archive_sha256": "5374bcb14de621bfda2bd80aeac45d251c04a41a180acfd0590bdaa6f10ac640",
+  "parent_inputs": [
+    {
+      "cell": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_qwen_raw-order_r1",
+      "raw_sha256": "a49a2f37c6cf2856e1347a646c65a92a2160c7912bca72fa002b9799ab82319d",
+      "repeat": 1,
+      "original_pilot": true
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_qwen_risk-tail_r1",
+      "raw_sha256": "4fdd58bf2fd51e9465ec903bb780942da8885f7a8d05deecde8667e2d05ab6c3",
+      "repeat": 1,
+      "original_pilot": true
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/single-session_qwen_raw-order_r2",
+      "raw_sha256": "73d9f1d60c241d2d376410ce7eee380b23252c7870d7cd5bac602e3725dddacb",
+      "repeat": 2,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/single-session_qwen_risk-tail_r2",
+      "raw_sha256": "6b308a9fab9f7ba9a3046e67fba0b37db249c62f9bdeb2978ddb18b007feeef1",
+      "repeat": 2,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/single-session_qwen_raw-order_r3",
+      "raw_sha256": "5a8d3bec35a9ed21e907665754277257cc5e845dc9c6e431b04956e50bdb8c72",
+      "repeat": 3,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/single-session_qwen_risk-tail_r3",
+      "raw_sha256": "9cf945722574ebf9a5fe55e35b6306cc050135b9b0ebada51eecfec39be39ec4",
+      "repeat": 3,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_mistral_raw-order_r1",
+      "raw_sha256": "0e0556a896fb158e468f1cd3519b5ddd32e505428db3a58a476e4dfdecf0bb0d",
+      "repeat": 1,
+      "original_pilot": true
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_mistral_risk-tail_r1",
+      "raw_sha256": "086770106ad1407c777b04b6082a4e74dd3d9242efc8f928fd0c7de7f51f0305",
+      "repeat": 1,
+      "original_pilot": true
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/template-fanout_mistral_raw-order_r2",
+      "raw_sha256": "5fc1f3f47e522027a5e28fa1fa2d12b1a9b47680796eb9ce730eb2cd496f9dfc",
+      "repeat": 2,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/template-fanout_mistral_risk-tail_r2",
+      "raw_sha256": "013ec6480215cbd35c2fe1804d850b90c3217bb2fec8a7945c76d47f9a2b61bd",
+      "repeat": 2,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/template-fanout_mistral_raw-order_r3",
+      "raw_sha256": "5dbaaca741091abeaec0045b92bf959d8f7f29a17580e9b546a3d8fd6d04aed2",
+      "repeat": 3,
+      "original_pilot": false
+    },
+    {
+      "cell": "results/tsc_revision_r4/development_repeat_check_v1/cells/template-fanout_mistral_risk-tail_r3",
+      "raw_sha256": "834098211a0531f312a993e0f5dd0a9ff128038c863715f252d3dfdacd9a9fa9",
+      "repeat": 3,
+      "original_pilot": false
+    }
+  ],
+  "scientific_success_is_separate": true,
+  "policy_unchanged": true,
+  "new50_model_outcomes_used": false
+}

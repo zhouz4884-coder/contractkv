@@ -1,0 +1,21 @@
+{
+  "schema_version":"tsc-r2.controlled-long-explicit-format.v1",
+  "models":["qwen","mistral","llama"],
+  "fresh_repeats":3,
+  "conditions":["original-instruction","explicit-schema"],
+  "array_sizes":[128,160],
+  "array_start":1001,
+  "output_cap":1536,
+  "futures_per_condition":2,
+  "original_system":"/no_think Follow the request exactly. Complete the entire requested array.",
+  "explicit_system":"/no_think Follow the request exactly. Output only a JSON array of integers. The output must start with [ and end with ]. Do not write labels, [JSON_ARRAY], XML tags, prose, or Markdown fences. Every element must be a JSON integer, for example 1001, never a quoted string, float, or boolean. Finish the entire requested array.",
+  "128_primary_score":"Import the unchanged score function from tsc_revision_r1r_long_horizon.py; report strict plain-JSON/integer diagnostics separately",
+  "160_score":"Separately declared larger-content task: exact sequence 1001..1160, all values type int, valid JSON list. It is not a replacement or repair of the original 128-item score.",
+  "length_claim":"Use actual returned token IDs, natural EOS and strict schema. No output-length claim from cap alone; no decorative padding or guided decoding.",
+  "admission":"Same selected pointwise floors as development catalog; additionally raw full-output minimum including EOS before GPU verification. No margin relaxation for long outputs.",
+  "benefit_gate":"This controlled mechanistic audit tests qualification and format, not a production serving rollout; prospective-reuse economics are assessed in the separate serving study.",
+  "expected_actual_generations":180,
+  "expected_paired_futures":72,
+  "all_results_retained":true,
+  "no_promise_all_models_pass":true
+}
