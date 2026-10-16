@@ -1,0 +1,690 @@
+{
+  "schema_version": "tsc-r4.known-case-diagnosis.v1",
+  "cell": "qwen_gpu1",
+  "execution_complete": true,
+  "counts": {
+    "free": 54,
+    "full_logprob": 24,
+    "verification_request": 6,
+    "verification_response": 6
+  },
+  "metric_rows": [
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c1-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c1-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c1-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c1-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c1-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c1-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c1-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c1-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r1-c1-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r1-c1-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c1-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c1-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c2-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c2-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c2-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c2-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c2-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c2-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r1-c2-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r1-c2-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r1-c2-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r1-c2-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r1-c2-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-raw-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c2-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c2-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c2-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c2-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c2-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c2-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c2-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c2-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r2-c2-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r2-c2-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c2-warm-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c1-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c1-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c1-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c1-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c1-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c1-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r2-c1-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r2-c1-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r2-c1-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r2-c1-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r2-c1-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r2-c1-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c1-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c1-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c1-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c1-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c1-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c1-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c1-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c1-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r3-c1-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r3-c1-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c1-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c1-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-raw-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-cold-candidate-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c2-full-raw-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c2-full-raw-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c2-full-raw-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c2-full-raw-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c2-full-candidate-t1",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c2-full-candidate-t1-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "cmpl-qwen_gpu1-r3-c2-full-candidate-t7",
+      "engine_request_id": "cmpl-qwen_gpu1-r3-c2-full-candidate-t7-0",
+      "role": "full_logprob",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "qwen_gpu1-r3-c2-certificate-verify",
+      "engine_request_id": "qwen_gpu1-r3-c2-certificate-verify",
+      "role": "verification_request",
+      "matches": true,
+      "prefix_hit_tokens": 0,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t7-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t7-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2720,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t7-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t7-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t1-n1",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t1-n1",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2752,
+      "scheduler_running_requests": 1
+    },
+    {
+      "request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t1-n0",
+      "engine_request_id": "chatcmpl-qwen_gpu1-r3-c2-warm-t1-n0",
+      "role": "free",
+      "matches": true,
+      "prefix_hit_tokens": 2800,
+      "scheduler_running_requests": 2
+    }
+  ],
+  "actual_historical_prompt_IDs_all_match": true,
+  "raw_sha256": "1f158a7ef688b8e156f7377e1f4efc990c41279756c5852c5a3dfca95d01ddf8",
+  "selected_known_failure_not_unseen_validation": true,
+  "performance_claim": false,
+  "batch_boundary": "Concurrency label denotes simultaneous HTTP twins; actual ModelRunner shapes recorded separately. Full-logprob and verification calls are sequential singleton controls."
+}

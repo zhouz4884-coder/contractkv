@@ -1,0 +1,48 @@
+{
+  "schema_version": "tsc-r4.known-control-audit.v1",
+  "execution_complete": true,
+  "errors": [],
+  "cases": [
+    {
+      "cell": "qwen_gpu0",
+      "actual_requests": 84,
+      "unique_engine_IDs": 84,
+      "free": 54,
+      "full": 24,
+      "qualification": 6,
+      "actual_ModelRunner_steps": 1506,
+      "all_actual_active_counts": [
+        1,
+        2
+      ],
+      "actual_qualified_warm_generations": 18,
+      "warm_hit_min": 2720,
+      "warm_hit_max": 2800,
+      "cold_control_hits_zero": true
+    },
+    {
+      "cell": "qwen_gpu1",
+      "actual_requests": 84,
+      "unique_engine_IDs": 84,
+      "free": 54,
+      "full": 24,
+      "qualification": 6,
+      "actual_ModelRunner_steps": 1509,
+      "all_actual_active_counts": [
+        1,
+        2
+      ],
+      "actual_qualified_warm_generations": 18,
+      "warm_hit_min": 2720,
+      "warm_hit_max": 2800,
+      "cold_control_hits_zero": true
+    }
+  ],
+  "actual_requests": 168,
+  "candidate_pairs": 72,
+  "candidate_material_drops": 36,
+  "cold_warm_output_differences": 0,
+  "selected_known_failure_not_unseen_efficacy": true,
+  "performance_claim": false,
+  "all_scope_quality_failures_retained": true
+}

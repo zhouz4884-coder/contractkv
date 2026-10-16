@@ -1,0 +1,46 @@
+{
+  "schema_version": "tsc-r4.complete-study-archive.v1",
+  "archive": "diagnosis_v1_raw_evidence_v1.tar.gz",
+  "archive_sha256": "227a59e05023e361624365c539ae2271e128d522bc05131e8fb7ecc29301f943",
+  "archive_bytes": 12521964,
+  "member_files": 161,
+  "study": "diagnosis_v1",
+  "cases": [
+    {
+      "cell": "qwen_gpu0",
+      "actual_requests": 84,
+      "unique_engine_IDs": 84,
+      "free": 54,
+      "full": 24,
+      "qualification": 6,
+      "actual_ModelRunner_steps": 1506,
+      "all_actual_active_counts": [
+        1,
+        2
+      ],
+      "actual_qualified_warm_generations": 18,
+      "warm_hit_min": 2720,
+      "warm_hit_max": 2800,
+      "cold_control_hits_zero": true
+    },
+    {
+      "cell": "qwen_gpu1",
+      "actual_requests": 84,
+      "unique_engine_IDs": 84,
+      "free": 54,
+      "full": 24,
+      "qualification": 6,
+      "actual_ModelRunner_steps": 1509,
+      "all_actual_active_counts": [
+        1,
+        2
+      ],
+      "actual_qualified_warm_generations": 18,
+      "warm_hit_min": 2720,
+      "warm_hit_max": 2800,
+      "cold_control_hits_zero": true
+    }
+  ],
+  "experimental_execution_complete_scientific_success_separate": true,
+  "actual_prompt_output_ids_requests_metrics_runtime_source_and_analysis_included": true
+}
