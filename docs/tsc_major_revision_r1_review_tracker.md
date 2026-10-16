@@ -1,5 +1,14 @@
 # Major Revision: Reviewer-to-Evidence Tracker
 
+Latest evidence update (2026-10-16): the historical Phase-1/2 entries below are
+preserved. The current 36-item experimental response record is
+`docs/tsc_revision_reviewer_experiment_response_zh.md`, and the consolidated
+experiment record is `docs/tsc_revision_supplementary_experiment_record_zh.md`.
+R4 closed-loop36 is complete; fixed-arrival5/54 remains explicitly partial.
+The four input-fidelity development cells are complete, with a retained p99
+regression. Independent faithful-input validation has not started and awaits
+the user's scientific choice. Neither document claims submission readiness.
+
 Readiness: **Phase-1 and the authorized Phase-2 experiment round complete and archived;
 remaining quality/economics/tail targets documented; manuscript not ready to submit**.
 The submitted manuscript is preserved. This tracker does not claim that the
