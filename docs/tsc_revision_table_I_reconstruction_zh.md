@@ -68,3 +68,17 @@
 三模型扩展使用 `tsc_revision_r4_table_I_reconstruction_v2.py`：官方 chat template 会修剪部分 user 字符串边缘空白，v2 只对该显式边缘变换作跨度对齐，依然逐请求要求实际 IDs 匹配。它也修正了 v1 将空 segment 中间位置误计为辅助边界 token 的问题；v1 稳定正文、命中量、比例等主统计不受影响。对旧/保真 Qwen 各 400 行重算，主统计逐项完全一致，辅助边界计数差异逐项保留。
 
 此外已对正在验证的新六来源，检查三模型全部 1800 个 tenant/turn 组合、raw 和候选共 3600 个最终 chat 文本：完整 CODE_PREFIX 仍连续保留，query 非空白字符没有丢失。该 CPU 检查不替代完成后的实际服务 IDs/质量审计。
+
+## 独立六来源：三模型三重复完成
+
+主验证完成后，逐条重建 5,400 个实际 raw 业务输入，保留 18 个模型/来源完整 IDs 与 segment 映射；原生 tokenizer 与本地 tokenizer-only 的 JSON/逐请求 CSV 独立重算完全一致。下表为未来请求；初始业务和全业务另外保存。
+
+| 模型 | 未来请求 | 稳定正文占输入，token 加权 | 来源宏平均占比 | native 总命中占输入 | 稳定正文自身恢复率 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Llama-3.1-8B-Instruct | 1620 | 98.35748% | 97.78824% | 1.11426% | 0.03108% |
+| Mistral-7B-Instruct-v0.3 | 1620 | 98.47711% | 98.02703% | 0.98540% | 0.03411% |
+| Qwen3-8B | 1620 | 98.51952% | 97.97318% | 0.94962% | 0.03012% |
+
+新六来源来自预注册选择，全部请求保留；本表属于受控模板服务输入，仍不是生产布局或共享频率测量。三个指标的分母没有改变。它提供可复核的新数值证据，可以在修稿时据实替代无来源链的精确原值；不能把新表称为恢复了原稿统计。
+
+结果：`results/tsc_revision_r4/table_I_reconstruction_independent_primary_v1.json/.csv`；独立核对：`input_fidelity_validation_v1/TableI_local_remote_recompute_v1.json`。原始数字的历史来源缺口仍明确保留。

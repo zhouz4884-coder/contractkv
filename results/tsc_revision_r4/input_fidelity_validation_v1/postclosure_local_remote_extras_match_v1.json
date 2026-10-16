@@ -1,0 +1,36 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 4,
+  "files": [
+    {
+      "file": "fallback_metric_analysis_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "4779dbfdd19f4223bc683f2a7663dbe4164a75cf3a0ce2d7aa919c6a3889a30a",
+      "independent_sha256": "fe2714425be4f6afc8d475ca3e337d6b2749829b46ba6a59d205cc07cf3808c5"
+    },
+    {
+      "file": "fallback_repeat_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "90f3a5f4c4cb84596583b51a2246c19b69abfde87004423f4622c035ad047771",
+      "independent_sha256": "ac1ef28268675859e3c62f1b3048ca407689d200cf30696167e4bdb2b35cfd18"
+    },
+    {
+      "file": "fidelity_utility_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "a1d45ffa0d741f7c9dea2730fab7401d545f2c0589b865aa02793a27acdeff3a",
+      "independent_sha256": "79a1f1c6064f1445b96fbbfaf82ec0b4fc87761fc3e9e61410a381bb775b6bf2"
+    },
+    {
+      "file": "raw_repeat_balance_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "31a99b32b722f29d47c3b683a6dcd5d9bd8fbec7453d9129da788ac0558ad00f",
+      "independent_sha256": "13ac93f39ca295a0402c28299baad03e10675aea4f3106fe345bd72ed95377f7"
+    }
+  ],
+  "script_sha256": "67bfba6170e83c02e4afbbfc234ca7bdf6833d1e2a59f5b016a2e0a09be42e2a",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "Different Python runtime versions may differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed. Actual runtime versions are recorded separately in runtime manifests."
+}

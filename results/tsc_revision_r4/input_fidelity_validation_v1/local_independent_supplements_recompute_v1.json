@@ -1,0 +1,48 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 6,
+  "files": [
+    {
+      "file": "all_business_quality_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "f9e8b24135193a0444a160bfd070be78ac8384d4eef8e9986d5fdccddc11a9e2",
+      "independent_sha256": "f9e8b24135193a0444a160bfd070be78ac8384d4eef8e9986d5fdccddc11a9e2"
+    },
+    {
+      "file": "all_business_quality_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b39004cae94e5ed8e296f64c0d05821687f9f69a1508dea0ef8b828bed2eeb0c",
+      "independent_sha256": "3c35d0bab34b699331c28e6f81b7c7b54314c8e1f21818d6dee158b5f1689068"
+    },
+    {
+      "file": "independent_actual_prompt_ID_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "50ec5ae044de1219c8d0633e8ce490978824072989999df582ef614e5a399a40",
+      "independent_sha256": "8d833e2db11a4785dea7813b099a01906330764c2f60b67294495bba229ed556"
+    },
+    {
+      "file": "routing_attribution_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "5a4d6d7ecb9587f002a02dbfa69870a772749639655500c7de280bc7e634a2ce",
+      "independent_sha256": "1bff678d76531718e690ddd3557b32eed4ea1423fd9732c39c0609facd0a9c5f"
+    },
+    {
+      "file": "scope_object_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "4ddf532d84c96607c59d7cbc9fbb9ec6e18923e902120b63add90874de099611",
+      "independent_sha256": "a340a7b14621ee7f673e47dfbadf4a3093c2ad4306c0c9d7ef7785667f9d43a2"
+    },
+    {
+      "file": "score_balance_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "8257a6051319a5441e84ddf11a0c15541b335cbf0cf94393a5171f1355ec2787",
+      "independent_sha256": "6b0d44d7996216871d5a1f56772a9d4c88277e7237bc6ca1e92139d65a7b968f"
+    }
+  ],
+  "script_sha256": "67bfba6170e83c02e4afbbfc234ca7bdf6833d1e2a59f5b016a2e0a09be42e2a",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "Different Python runtime versions may differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed. Actual runtime versions are recorded separately in runtime manifests."
+}

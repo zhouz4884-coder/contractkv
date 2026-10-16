@@ -1,0 +1,185 @@
+{
+  "schema_version": "tsc-r4.all-business-quality.v1",
+  "added_after_primary_freeze": true,
+  "new_GPU_requests": 0,
+  "primary_future_estimand_and_counts_unchanged": true,
+  "turn_zero_are_actual_business_answers_not_server_warmup": true,
+  "source_sha256": "d4dd15961f1a8a2830ea9d81707596bc48cd3067b8891b609097a2c611ff63e0",
+  "paired_csv_sha256": "f9e8b24135193a0444a160bfd070be78ac8384d4eef8e9986d5fdccddc11a9e2",
+  "provenance": [
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "raw_sha256": "4dbb7be00ecfd545b13a5c33d17309885f380c3fe5180c7649ab952d1262c483",
+      "policy_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "raw_sha256": "05bc3e3f3ad78489aaebcbd945d72a671aafdf24d9793f48c0561b3f15aa0afb",
+      "policy_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "raw_sha256": "9a498fff0f4a5fdaf330f542da172ac1816c3eff3e85b1fbf2f05aa8df9ac26c",
+      "policy_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "raw_sha256": "4afa921cc28239b3ef6505391e39ac71cb6a9c660de5c2e0083ff937f61dbb72",
+      "policy_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "raw_sha256": "2d370fd79b702e0fcf6cc20f349bacd62e020d62e8bae3ad68ce25b318067678",
+      "policy_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "raw_sha256": "c00e8358b4e2b135b439b1c9d1ab1fe3fff64b9cee3f8b9ff45f174d17e2850b",
+      "policy_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "raw_sha256": "d883e70d4c890416a6016cf84ece6103a80bd76369897ef59bf55d5b05b9cb31",
+      "policy_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "raw_sha256": "51c3788870099bae2f9bafbf482f11e192e31b313da89c9453821e7018415b31",
+      "policy_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "raw_sha256": "0a3b0fa20fb9d2f6f6d8452da92cfed9c016e27aca439789ae7575a6f12db32c",
+      "policy_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790"
+    }
+  ],
+  "summary": [
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "paired_business_answers": 1800,
+      "compiled_answers": 342,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 3,
+      "all_route_material_drops": 3
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "paired_business_answers": 1620,
+      "compiled_answers": 270,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 3,
+      "all_route_material_drops": 3
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "paired_business_answers": 180,
+      "compiled_answers": 72,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "paired_business_answers": 1800,
+      "compiled_answers": 366,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 1,
+      "all_route_material_drops": 1
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "paired_business_answers": 1620,
+      "compiled_answers": 342,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "paired_business_answers": 180,
+      "compiled_answers": 24,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 1,
+      "all_route_material_drops": 1
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "paired_business_answers": 1800,
+      "compiled_answers": 732,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "paired_business_answers": 1620,
+      "compiled_answers": 684,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "paired_business_answers": 180,
+      "compiled_answers": 48,
+      "compiled_material_drops": 0,
+      "compiled_any_score_decreases": 0,
+      "compiled_output_ID_divergences": 0,
+      "compiled_ID_divergences_from_witness": 0,
+      "fallback_material_drops": 0,
+      "all_route_material_drops": 0
+    }
+  ],
+  "boundary": "All-business adds turn-zero answers, including already certified reuse by later tenants. Repeats, tenants and protocols remain correlated; no universal zero-risk claim."
+}

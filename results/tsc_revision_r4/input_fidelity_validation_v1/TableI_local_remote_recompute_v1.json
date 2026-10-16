@@ -1,0 +1,24 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 2,
+  "files": [
+    {
+      "file": "table_I_reconstruction_independent_primary_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "0dd71fe061d4b31ec41d702579121531de724c87f50e9f6b95a496adec681458",
+      "independent_sha256": "0dd71fe061d4b31ec41d702579121531de724c87f50e9f6b95a496adec681458"
+    },
+    {
+      "file": "table_I_reconstruction_independent_primary_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "54b6a9a1080998d0b65c5f64a3dfde6e452fd6b96b64483c625c589b0f4c6a35",
+      "independent_sha256": "9fbe8b58852b5442ed3324faf53fd88c81d092f2c29885bb7a4f4f8b41843e48"
+    }
+  ],
+  "script_sha256": "67bfba6170e83c02e4afbbfc234ca7bdf6833d1e2a59f5b016a2e0a09be42e2a",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "Different Python runtime versions may differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed. Actual runtime versions are recorded separately in runtime manifests."
+}

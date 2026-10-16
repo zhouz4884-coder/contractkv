@@ -1,0 +1,3670 @@
+{
+  "schema_version": "tsc-r4.scope-object-amortization-audit.v1",
+  "partial": false,
+  "study_root": "results/tsc_revision_r4/input_fidelity_validation_v1",
+  "study_development_only": false,
+  "freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "analysis_source_sha256": "6268c440aaa38f7de5e499ff50ad0d3f634abbd9ff28b41c6497df8371b3824b",
+  "new_GPU_requests": 0,
+  "frozen_primary_policy_or_analysis_changed": false,
+  "records": [
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "270a37e0903eed95ed4d7f68fd85e3234e25e87ea1f2e1b36fa8ec12c1ab704f",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4aaa6bbd55262485a1097acf99cffdec3260b323bb7ffca2f814b2219f881218",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebc5510875377b764541e87f28ca789fadbce83136c8cd91b933835f2f649d9c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "b7db04306c2647c311080856864a08567f43f98ba5d148b3f691f65e98bb4b77",
+          "stable_prefix_tokens": 10139
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2cd1308a9f239733d076e4fca1add527cbf014a67c9305d461a62065839f56c6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4ce0113933a8dfb2c46e9897916931d656dece1478e304d2d0a58079deaa08e5",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "66af566f43b10862320b1ee67ac049eee96d30c5a10553165bae6a0fc0cfdaf1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "454fe73fd68794aecf05eff8bdc2fb8b05531842a899b606f77d392a800902ce",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7718dacbee9fef9a07b83d13fb0746a5658e49a5b3db4f443780a9510bfce6fe",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "bcc4d90950033f72754ad8452bf7fea9abb5f247f20548792d857adc234f1598",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "721a809059e755cf41f93f6deeb22b1274937a8c150f01c71e5c49aa57500961",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "dccbe681a0b71e399e9e282707074d0a5480e38bb9e5fa41e539438f1d64786b",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "de3771cc4c790e3ab053db8e55f12024fc98dfd93c0d6f42b87a42bac507335c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "90d85d5a3233f343c49f38eb41fc55c228ee704d8f1e01a8d5dbbe2146ae14b0",
+          "stable_prefix_tokens": 11048
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2ba2f0342f290fd3115362fb11f008a799094a5d8103be149556fdecf40854ae",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "3be73aaec575ea37cb501bfbeacae1120b61375860b81c01d9dbcc40a7215aba",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a213fc02348d4258a4fdee57c65a2b7f51d4acaefa9e24f6c547e9d3de4bfdb7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a8c94265f1d956fecd787a1e630d05b2efa2a5100e55a1585f691f73fd8b52ed",
+          "stable_prefix_tokens": 8613
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "401ebc4d81979a2ff37746a9f5554bd5b2f67e4a2030f70252ec072f9bd661a6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4f4fcb2107b5f97dc7dab6ac83c8feaa8d1fb21786497ae741005b133f1bf3b1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "d22c4628469269203dfb108893636a4c9c41bbf6480ccf23bdc898f08d0cd892",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63",
+      "summary_sha256": "05d7d72211c5ea1d2dec96c6bdd17a04af45cc288b27cecc032e144d87d2343a"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "270a37e0903eed95ed4d7f68fd85e3234e25e87ea1f2e1b36fa8ec12c1ab704f",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4aaa6bbd55262485a1097acf99cffdec3260b323bb7ffca2f814b2219f881218",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebc5510875377b764541e87f28ca789fadbce83136c8cd91b933835f2f649d9c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "b7db04306c2647c311080856864a08567f43f98ba5d148b3f691f65e98bb4b77",
+          "stable_prefix_tokens": 10139
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2cd1308a9f239733d076e4fca1add527cbf014a67c9305d461a62065839f56c6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4ce0113933a8dfb2c46e9897916931d656dece1478e304d2d0a58079deaa08e5",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "66af566f43b10862320b1ee67ac049eee96d30c5a10553165bae6a0fc0cfdaf1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "454fe73fd68794aecf05eff8bdc2fb8b05531842a899b606f77d392a800902ce",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7718dacbee9fef9a07b83d13fb0746a5658e49a5b3db4f443780a9510bfce6fe",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "bcc4d90950033f72754ad8452bf7fea9abb5f247f20548792d857adc234f1598",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "721a809059e755cf41f93f6deeb22b1274937a8c150f01c71e5c49aa57500961",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "dccbe681a0b71e399e9e282707074d0a5480e38bb9e5fa41e539438f1d64786b",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "de3771cc4c790e3ab053db8e55f12024fc98dfd93c0d6f42b87a42bac507335c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "90d85d5a3233f343c49f38eb41fc55c228ee704d8f1e01a8d5dbbe2146ae14b0",
+          "stable_prefix_tokens": 11048
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2ba2f0342f290fd3115362fb11f008a799094a5d8103be149556fdecf40854ae",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "3be73aaec575ea37cb501bfbeacae1120b61375860b81c01d9dbcc40a7215aba",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a213fc02348d4258a4fdee57c65a2b7f51d4acaefa9e24f6c547e9d3de4bfdb7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a8c94265f1d956fecd787a1e630d05b2efa2a5100e55a1585f691f73fd8b52ed",
+          "stable_prefix_tokens": 8613
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "401ebc4d81979a2ff37746a9f5554bd5b2f67e4a2030f70252ec072f9bd661a6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4f4fcb2107b5f97dc7dab6ac83c8feaa8d1fb21786497ae741005b133f1bf3b1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "d22c4628469269203dfb108893636a4c9c41bbf6480ccf23bdc898f08d0cd892",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad",
+      "summary_sha256": "5196dd3cbe334f3bf05623b2b0932ab6e0d29ca358cb6526d70d4e39140533c6"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "270a37e0903eed95ed4d7f68fd85e3234e25e87ea1f2e1b36fa8ec12c1ab704f",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4aaa6bbd55262485a1097acf99cffdec3260b323bb7ffca2f814b2219f881218",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebc5510875377b764541e87f28ca789fadbce83136c8cd91b933835f2f649d9c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "b7db04306c2647c311080856864a08567f43f98ba5d148b3f691f65e98bb4b77",
+          "stable_prefix_tokens": 10139
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2cd1308a9f239733d076e4fca1add527cbf014a67c9305d461a62065839f56c6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4ce0113933a8dfb2c46e9897916931d656dece1478e304d2d0a58079deaa08e5",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "66af566f43b10862320b1ee67ac049eee96d30c5a10553165bae6a0fc0cfdaf1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "454fe73fd68794aecf05eff8bdc2fb8b05531842a899b606f77d392a800902ce",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7718dacbee9fef9a07b83d13fb0746a5658e49a5b3db4f443780a9510bfce6fe",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "bcc4d90950033f72754ad8452bf7fea9abb5f247f20548792d857adc234f1598",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "721a809059e755cf41f93f6deeb22b1274937a8c150f01c71e5c49aa57500961",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "dccbe681a0b71e399e9e282707074d0a5480e38bb9e5fa41e539438f1d64786b",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "de3771cc4c790e3ab053db8e55f12024fc98dfd93c0d6f42b87a42bac507335c",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "90d85d5a3233f343c49f38eb41fc55c228ee704d8f1e01a8d5dbbe2146ae14b0",
+          "stable_prefix_tokens": 11048
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "2ba2f0342f290fd3115362fb11f008a799094a5d8103be149556fdecf40854ae",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "3be73aaec575ea37cb501bfbeacae1120b61375860b81c01d9dbcc40a7215aba",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a213fc02348d4258a4fdee57c65a2b7f51d4acaefa9e24f6c547e9d3de4bfdb7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a8c94265f1d956fecd787a1e630d05b2efa2a5100e55a1585f691f73fd8b52ed",
+          "stable_prefix_tokens": 8613
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 38,
+      "compiled_future_requests": 30,
+      "compiled_requests_with_actual_prefix_hit": 23,
+      "scope_records": [
+        {
+          "query_scope": "401ebc4d81979a2ff37746a9f5554bd5b2f67e4a2030f70252ec072f9bd661a6",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "4f4fcb2107b5f97dc7dab6ac83c8feaa8d1fb21786497ae741005b133f1bf3b1",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "d22c4628469269203dfb108893636a4c9c41bbf6480ccf23bdc898f08d0cd892",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "post_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790",
+      "summary_sha256": "800065f3994e8c9fb8cada935523586c08d100e8878ffbaca350400bd4fb9669"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "27e020cb1b5eda7166436213949e2a567d2d2ad386079d97c1b1747cd49b3986",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "47a6abe7a9849cb5188529fc072abeab158133c93b7bdc4a82ce931e4ccc74c3",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "deb2c327b05d1efcf5c8251aa15409bdae52b3f421e9478df1fed85a61f71510",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 2,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "887663cda3ffd64cc8f68a332e0bc33fccebb6764f125cd1b608167ff356fb20",
+          "stable_prefix_tokens": 11753
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 2,
+      "compiled_all_business_requests": 28,
+      "compiled_future_requests": 28,
+      "compiled_requests_with_actual_prefix_hit": 14,
+      "scope_records": [
+        {
+          "query_scope": "028e45009c67b772026893491cc175f115ee8b02f122453fbe5a27bcecd40cfc",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "8b76a7c9961ef9daef375e191601d820aed13a80483750fc20018042df11a4f9",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "b27f9634f54f170ddf464eb8e34d4355741ff46e8f58ff56ae52e5803d5e40ab",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "0470f84982b51d1ddf70cb45fdbde07a593632afa4ce1452f6be97cc901e1abf",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "2e35a3a955f345337ac68eece88c6649e3acac05d26346415a07042fbf434aeb",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebdcf6153652a07bd27ffb166268b0dd61735552b5fc5410c72a47296229a6fd",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3db995d43a4af4db2cbfa9a648e16f930a17aef46569db26fc2d0f815b43e3e1",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "6e6d2f1eeb0c2a6fee46bdea08cc1815476877f19596af78ff28c70b499b4733",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d5faf0b33ad7d110ab4b3f52e16dedf376dc3631529fb3e08fb3c30f776b1a05",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "212c4789909c020f02d97407fa7175dca5ec4fd1acd6dc10fa037ef5eadb365c",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "90f879f319054f1cea41713e3159de7d2dfa34249566364e21f5561194c73a04",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "e682d9aa2d8d891ca7964661084173c05b9f66d35bc403fbadf0daea62bd4a3f",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "71c9df8350e587dfa8de89c50cad5f3d6f75194d5c5090f9645b61b83207e4a6",
+          "stable_prefix_tokens": 9945
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "07d7aedaf556b9846327b09b0100e6a3d4960656d92245e2645a28fbcf68e799",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "aeb18104bdce2d86517144f4f59f5c2fbea7a5dd557822b677384efe1a89ea96",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d2b2dbcc29ca8de5d2b3591380f1905669422e4cde792bd9939e664b9b7e4532",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490",
+      "summary_sha256": "c892ef2efd0879d08ef751ee073788bd949912e67aa09e8ad595f7bbaca3ee1b"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "27e020cb1b5eda7166436213949e2a567d2d2ad386079d97c1b1747cd49b3986",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "47a6abe7a9849cb5188529fc072abeab158133c93b7bdc4a82ce931e4ccc74c3",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "deb2c327b05d1efcf5c8251aa15409bdae52b3f421e9478df1fed85a61f71510",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 2,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "887663cda3ffd64cc8f68a332e0bc33fccebb6764f125cd1b608167ff356fb20",
+          "stable_prefix_tokens": 11753
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 2,
+      "compiled_all_business_requests": 28,
+      "compiled_future_requests": 28,
+      "compiled_requests_with_actual_prefix_hit": 14,
+      "scope_records": [
+        {
+          "query_scope": "028e45009c67b772026893491cc175f115ee8b02f122453fbe5a27bcecd40cfc",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "8b76a7c9961ef9daef375e191601d820aed13a80483750fc20018042df11a4f9",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "b27f9634f54f170ddf464eb8e34d4355741ff46e8f58ff56ae52e5803d5e40ab",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "0470f84982b51d1ddf70cb45fdbde07a593632afa4ce1452f6be97cc901e1abf",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "2e35a3a955f345337ac68eece88c6649e3acac05d26346415a07042fbf434aeb",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebdcf6153652a07bd27ffb166268b0dd61735552b5fc5410c72a47296229a6fd",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3db995d43a4af4db2cbfa9a648e16f930a17aef46569db26fc2d0f815b43e3e1",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "6e6d2f1eeb0c2a6fee46bdea08cc1815476877f19596af78ff28c70b499b4733",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d5faf0b33ad7d110ab4b3f52e16dedf376dc3631529fb3e08fb3c30f776b1a05",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "212c4789909c020f02d97407fa7175dca5ec4fd1acd6dc10fa037ef5eadb365c",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "90f879f319054f1cea41713e3159de7d2dfa34249566364e21f5561194c73a04",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "e682d9aa2d8d891ca7964661084173c05b9f66d35bc403fbadf0daea62bd4a3f",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "71c9df8350e587dfa8de89c50cad5f3d6f75194d5c5090f9645b61b83207e4a6",
+          "stable_prefix_tokens": 9945
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "07d7aedaf556b9846327b09b0100e6a3d4960656d92245e2645a28fbcf68e799",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "aeb18104bdce2d86517144f4f59f5c2fbea7a5dd557822b677384efe1a89ea96",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d2b2dbcc29ca8de5d2b3591380f1905669422e4cde792bd9939e664b9b7e4532",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7",
+      "summary_sha256": "4b164853331325cc0274f7755c8bc83b4a7aec1d0df6878cd3119ed08b04798c"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "27e020cb1b5eda7166436213949e2a567d2d2ad386079d97c1b1747cd49b3986",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "47a6abe7a9849cb5188529fc072abeab158133c93b7bdc4a82ce931e4ccc74c3",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "deb2c327b05d1efcf5c8251aa15409bdae52b3f421e9478df1fed85a61f71510",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 2,
+      "issued_behavioral_scope_records": 1,
+      "distinct_returned_certificate_hashes": 1,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "887663cda3ffd64cc8f68a332e0bc33fccebb6764f125cd1b608167ff356fb20",
+          "stable_prefix_tokens": 11753
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 2,
+      "compiled_all_business_requests": 28,
+      "compiled_future_requests": 28,
+      "compiled_requests_with_actual_prefix_hit": 14,
+      "scope_records": [
+        {
+          "query_scope": "028e45009c67b772026893491cc175f115ee8b02f122453fbe5a27bcecd40cfc",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "8b76a7c9961ef9daef375e191601d820aed13a80483750fc20018042df11a4f9",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "b27f9634f54f170ddf464eb8e34d4355741ff46e8f58ff56ae52e5803d5e40ab",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "0470f84982b51d1ddf70cb45fdbde07a593632afa4ce1452f6be97cc901e1abf",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "2e35a3a955f345337ac68eece88c6649e3acac05d26346415a07042fbf434aeb",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ebdcf6153652a07bd27ffb166268b0dd61735552b5fc5410c72a47296229a6fd",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 0,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3db995d43a4af4db2cbfa9a648e16f930a17aef46569db26fc2d0f815b43e3e1",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "6e6d2f1eeb0c2a6fee46bdea08cc1815476877f19596af78ff28c70b499b4733",
+          "business_requests": 30,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d5faf0b33ad7d110ab4b3f52e16dedf376dc3631529fb3e08fb3c30f776b1a05",
+          "business_requests": 40,
+          "decision_records": 0,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "212c4789909c020f02d97407fa7175dca5ec4fd1acd6dc10fa037ef5eadb365c",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "90f879f319054f1cea41713e3159de7d2dfa34249566364e21f5561194c73a04",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "e682d9aa2d8d891ca7964661084173c05b9f66d35bc403fbadf0daea62bd4a3f",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "71c9df8350e587dfa8de89c50cad5f3d6f75194d5c5090f9645b61b83207e4a6",
+          "stable_prefix_tokens": 9945
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "07d7aedaf556b9846327b09b0100e6a3d4960656d92245e2645a28fbcf68e799",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "aeb18104bdce2d86517144f4f59f5c2fbea7a5dd557822b677384efe1a89ea96",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d2b2dbcc29ca8de5d2b3591380f1905669422e4cde792bd9939e664b9b7e4532",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd",
+      "summary_sha256": "9e219eba556be5d6720acd1d448a7c5d6eafc9b235e7d3cfecb2627d20431f99"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 2,
+      "distinct_returned_certificate_hashes": 2,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "d8217c48bef33f7e06b9ffd78161939a0a940af9728bb3d53749e91c100f1053",
+          "stable_prefix_tokens": 6279
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 56,
+      "compiled_future_requests": 56,
+      "compiled_requests_with_actual_prefix_hit": 56,
+      "scope_records": [
+        {
+          "query_scope": "20e9e7a2f56dcd2b871fe33ffece7e5f75843f0dc29535f3414675d82ff73f4c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "242e77adf6a098f10da7edc465d9594fc5050d046280adea0a8750271eec2bd2",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "54f597eddc596ed7c38622e2fed3d83d810460a29e8ce2e0b872196abe54c0f8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a3acc855912414f336dbbcae076beabefc8451d676c483f2a8c38c2014bf88db",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "a588da09f3f72359b05c36561d63f6974e2ad4bc028dea5e14d87846e2ea7366",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d524efdc206e8d7df3821b85a2f95145d89a620fbb0b24c5dfadc4e9c964f922",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "20cdfe6d85d7ca47a8d10a9b8f6b9eced83835ae4ea20763406bf54b183bd5cd",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_IndentationError": 1
+          }
+        },
+        {
+          "query_scope": "54184a77b9f92548fa5962ce8c4549e54da3f071b1b7fabb17bcfcc21c59e385",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "9ea343bef5ffaecc22d27c821bdf962fc8bb371f73c5ff78c201310a508d5a4a",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3583758d042d7a023818adcc53df9635ac0cac2451b4f6d2b0ba9c309065af46",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "3b02dda702449d522306e2bcae30709a72935f3e4562b94d87936172f991bbe9",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d82904c6c26fef52b4ea257a5760abe51c18cc158d6bf47b187e7eb19f933af0",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "0557e8692f2c989a508c64835efb3ad675c2b687f9a0381f0a1e6f739dccbd1f",
+          "stable_prefix_tokens": 14212
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "9f0889d4f9248c3e5ac0dce21dc9f5a192792bc97799ac0c502100df1f9c7933",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "b93a2dbf1318b4625a593f5f2db91d73ce1198dc2242dac079f49fc4d4bca332",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ca0904532194bed8f64093375476d0815d7813eb3a708a49c1bb54e8872add95",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "e9e9d3778ff413bacbd374db921ed2d160f415bbf551a8308c3c71c65fb93382",
+          "stable_prefix_tokens": 12062
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "79c6bb974a56c8fd96a4497f6fda561de960efcff85e799b9e833d7bf48c5f26",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ab08462b4011c6dfb44f4defe959badcbd24b2c9b0b79fc5070ae1d165fe1a81",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d4f7e87ed4609f43d186a7c3ef3ebdb8c4e08ca493b0779bfecb217f11d12734",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed",
+      "summary_sha256": "245797746761b86cb1dd59a368bc9ccf772794a2531184e6c702dfcf50273d52"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 2,
+      "distinct_returned_certificate_hashes": 2,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "d8217c48bef33f7e06b9ffd78161939a0a940af9728bb3d53749e91c100f1053",
+          "stable_prefix_tokens": 6279
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 56,
+      "compiled_future_requests": 56,
+      "compiled_requests_with_actual_prefix_hit": 56,
+      "scope_records": [
+        {
+          "query_scope": "20e9e7a2f56dcd2b871fe33ffece7e5f75843f0dc29535f3414675d82ff73f4c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "242e77adf6a098f10da7edc465d9594fc5050d046280adea0a8750271eec2bd2",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "54f597eddc596ed7c38622e2fed3d83d810460a29e8ce2e0b872196abe54c0f8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a3acc855912414f336dbbcae076beabefc8451d676c483f2a8c38c2014bf88db",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "a588da09f3f72359b05c36561d63f6974e2ad4bc028dea5e14d87846e2ea7366",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d524efdc206e8d7df3821b85a2f95145d89a620fbb0b24c5dfadc4e9c964f922",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "20cdfe6d85d7ca47a8d10a9b8f6b9eced83835ae4ea20763406bf54b183bd5cd",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_IndentationError": 1
+          }
+        },
+        {
+          "query_scope": "54184a77b9f92548fa5962ce8c4549e54da3f071b1b7fabb17bcfcc21c59e385",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "9ea343bef5ffaecc22d27c821bdf962fc8bb371f73c5ff78c201310a508d5a4a",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3583758d042d7a023818adcc53df9635ac0cac2451b4f6d2b0ba9c309065af46",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "3b02dda702449d522306e2bcae30709a72935f3e4562b94d87936172f991bbe9",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d82904c6c26fef52b4ea257a5760abe51c18cc158d6bf47b187e7eb19f933af0",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "0557e8692f2c989a508c64835efb3ad675c2b687f9a0381f0a1e6f739dccbd1f",
+          "stable_prefix_tokens": 14212
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "9f0889d4f9248c3e5ac0dce21dc9f5a192792bc97799ac0c502100df1f9c7933",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "b93a2dbf1318b4625a593f5f2db91d73ce1198dc2242dac079f49fc4d4bca332",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ca0904532194bed8f64093375476d0815d7813eb3a708a49c1bb54e8872add95",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "e9e9d3778ff413bacbd374db921ed2d160f415bbf551a8308c3c71c65fb93382",
+          "stable_prefix_tokens": 12062
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "79c6bb974a56c8fd96a4497f6fda561de960efcff85e799b9e833d7bf48c5f26",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ab08462b4011c6dfb44f4defe959badcbd24b2c9b0b79fc5070ae1d165fe1a81",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d4f7e87ed4609f43d186a7c3ef3ebdb8c4e08ca493b0779bfecb217f11d12734",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363",
+      "summary_sha256": "f34a868e7da1e43616b08c86002e9fea5771019864db264578dbd396b4972f9f"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 2,
+      "distinct_returned_certificate_hashes": 2,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "d8217c48bef33f7e06b9ffd78161939a0a940af9728bb3d53749e91c100f1053",
+          "stable_prefix_tokens": 6279
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 56,
+      "compiled_future_requests": 56,
+      "compiled_requests_with_actual_prefix_hit": 56,
+      "scope_records": [
+        {
+          "query_scope": "20e9e7a2f56dcd2b871fe33ffece7e5f75843f0dc29535f3414675d82ff73f4c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "242e77adf6a098f10da7edc465d9594fc5050d046280adea0a8750271eec2bd2",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "54f597eddc596ed7c38622e2fed3d83d810460a29e8ce2e0b872196abe54c0f8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a3acc855912414f336dbbcae076beabefc8451d676c483f2a8c38c2014bf88db",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "a588da09f3f72359b05c36561d63f6974e2ad4bc028dea5e14d87846e2ea7366",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d524efdc206e8d7df3821b85a2f95145d89a620fbb0b24c5dfadc4e9c964f922",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "20cdfe6d85d7ca47a8d10a9b8f6b9eced83835ae4ea20763406bf54b183bd5cd",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_IndentationError": 1
+          }
+        },
+        {
+          "query_scope": "54184a77b9f92548fa5962ce8c4549e54da3f071b1b7fabb17bcfcc21c59e385",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "9ea343bef5ffaecc22d27c821bdf962fc8bb371f73c5ff78c201310a508d5a4a",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3583758d042d7a023818adcc53df9635ac0cac2451b4f6d2b0ba9c309065af46",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "3b02dda702449d522306e2bcae30709a72935f3e4562b94d87936172f991bbe9",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "d82904c6c26fef52b4ea257a5760abe51c18cc158d6bf47b187e7eb19f933af0",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "0557e8692f2c989a508c64835efb3ad675c2b687f9a0381f0a1e6f739dccbd1f",
+          "stable_prefix_tokens": 14212
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "9f0889d4f9248c3e5ac0dce21dc9f5a192792bc97799ac0c502100df1f9c7933",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "b93a2dbf1318b4625a593f5f2db91d73ce1198dc2242dac079f49fc4d4bca332",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ca0904532194bed8f64093375476d0815d7813eb3a708a49c1bb54e8872add95",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "e9e9d3778ff413bacbd374db921ed2d160f415bbf551a8308c3c71c65fb93382",
+          "stable_prefix_tokens": 12062
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "79c6bb974a56c8fd96a4497f6fda561de960efcff85e799b9e833d7bf48c5f26",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ab08462b4011c6dfb44f4defe959badcbd24b2c9b0b79fc5070ae1d165fe1a81",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "d4f7e87ed4609f43d186a7c3ef3ebdb8c4e08ca493b0779bfecb217f11d12734",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61",
+      "summary_sha256": "81b3dfc0ff1dcdeb47ca25453f48a92aeb203e075009f4f35c9fa37ab5bf9160"
+    }
+  ],
+  "source_provenance": [
+    {
+      "logical_path": "scripts/tsc_revision_r4_live.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_live_fixed.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r1r_query_scope.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_cost_policy.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_admission.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_business_stream.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r2_business_stream.py",
+      "sha256": "148d3310e32edb1480d3212db39611ec11ec286037be3e4b8f6bc9234dde0c4e",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_policy_v2.py",
+      "source_read": "results/tsc_revision_r4/input_fidelity_validation_v1/source_snapshot/scripts/tsc_revision_r4_policy_v2.py",
+      "sha256": "03820f79fb6ec125b321e05c9809c916eee20589cb993bf2684c45702c5f6c8d",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_service_template_quality_live.py",
+      "source_read": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_open_loop_service.py",
+      "source_read": "scripts/tsc_open_loop_service.py",
+      "sha256": "25332bf50061498bd6241289dfec831b05c1c1607c9c6ad2d6e15bffae53b586",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_real_task_open_loop.py",
+      "source_read": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/contractkv_certificate_binding.py",
+      "source_read": "scripts/contractkv_certificate_binding.py",
+      "sha256": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc",
+      "from_this_study_frozen_snapshot": false
+    }
+  ],
+  "original_granularity_evidence": {
+    "path": "results/tsc_service/certificate_granularity_ablation_v0.csv",
+    "sha256": "2a810c5d849d2a45d219b3917efd7d850dfb1d6a52939a41cb7053f296c62b1f",
+    "rows_unmodified": [
+      {
+        "policy": "D0-native-apc",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "0.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "2250.1582222222223",
+        "mean_template_prefix_hit_ratio": "0.021752000605939754",
+        "mean_mean_ttft_ms": "852.3535582331851",
+        "mean_p99_ttft_ms": "2084.7964500666662",
+        "mean_slo_compliant_goodput_rps": "0.7703637733671186",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D1-frozen-safe",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.625054359703704",
+        "mean_p99_ttft_ms": "87.93770950666666",
+        "mean_slo_compliant_goodput_rps": "0.8306503025215155",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-session-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "125.0",
+        "mean_transaction_commits": "125.0",
+        "mean_verification_fanout": "9.0",
+        "mean_unhidden_verification_ms_per_future_request": "25.049263978997867",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "50.165333333333336",
+        "mean_template_prefix_hit_ratio": "0.9781908061008241",
+        "mean_mean_ttft_ms": "64.02114142222223",
+        "mean_p99_ttft_ms": "89.51263054666666",
+        "mean_slo_compliant_goodput_rps": "0.8306482457468276",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-template-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "5.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "225.0",
+        "mean_unhidden_verification_ms_per_future_request": "3.2360756275830447",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.90782557185185",
+        "mean_p99_ttft_ms": "88.02215113333332",
+        "mean_slo_compliant_goodput_rps": "0.8306512322979503",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      }
+    ]
+  },
+  "implementation_findings": [
+    "R4 client gates and decisions use (template namespace, query scope); tenant sessions sharing that pair reuse its decision.",
+    "R4 prefix-state forecasts use template namespace and stable-prefix hash. Verification and compiled business use a template namespace cache salt.",
+    "R4 stores a joint per-scope registration result. These two indexes do not demonstrate two independently signed or separately enforced certificate objects.",
+    "The older deployment-template modes attest a compiled-path reference after prospective qualification. R4 uses a real raw business witness. Their attestation semantics and costs must remain separate.",
+    "Signed binding checks in the original real-task serving control plane are distinct from R4 controlled-client query eligibility; this audit does not establish a new public-endpoint authentication defense."
+  ],
+  "complexity_and_limits": [
+    "For T template objects and U observed behavioral scope keys, the R4 controller stores O(T+U) state and creates O(U) prospective decisions. Each selected key has at most one GPU attempt.",
+    "For M requests in a fixed authorized scope set, control checks are O(M) and behavioral model work can be amortized across tenants. O(1) per template requires U to be treated as fixed.",
+    "When distinct behavioral scopes grow with request count, model attestation work may grow linearly if admitted; no measurement here establishes production query repetition prevalence.",
+    "Current benchmark reuse hints are operator-declared fixed three-query patterns, not a measured production reuse predictor.",
+    "A repeated stable-prefix hash is not an independently signed template certificate, a count of distinct newly allocated blocks, or a universal future-behavior guarantee.",
+    "The metadata-only scope schema intentionally ignores allowed metadata values. It defines an empirical class; unchanged task evidence does not prove model-output invariance.",
+    "Original granularity rows use their own frozen deployment protocol. Do not subtract their latency from R4 or call this CPU accounting a new live scaling experiment."
+  ]
+}

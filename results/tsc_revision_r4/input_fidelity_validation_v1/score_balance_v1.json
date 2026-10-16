@@ -1,0 +1,4290 @@
+{
+  "schema_version": "tsc-r4.paired-score-balance.v1",
+  "partial": false,
+  "source_sha256": "c768922122230ece4538f940303ca07d303cb79faeec1295b730567bad9ba55b",
+  "freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "new_GPU_requests": 0,
+  "scoring_changed": false,
+  "paired_cells": 9,
+  "all_business_pairs": 5400,
+  "records": [
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1800,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 11,
+      "exact_score_equal": 1780,
+      "output_ID_divergences": 26,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 11,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 11,
+          "no_material_change": 1780
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1792
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1792
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1458,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 11,
+      "exact_score_equal": 1438,
+      "output_ID_divergences": 26,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 11,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 11,
+          "no_material_change": 1438
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1450
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1450
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 342,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 342,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666665,
+      "policy_mean_score": 0.06666666666666665,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 558,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 558,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666667,
+      "policy_mean_score": 0.06666666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 558
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 558
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 558
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 342,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 342,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666665,
+      "policy_mean_score": 0.06666666666666665,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 11,
+      "exact_score_equal": 880,
+      "output_ID_divergences": 26,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 11,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": 0.06027777777777778,
+      "policy_mean_score": 0.06038888888888889,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 11,
+          "no_material_change": 880
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 892
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 892
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 11,
+      "exact_score_equal": 880,
+      "output_ID_divergences": 26,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 11,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": 0.06027777777777778,
+      "policy_mean_score": 0.06038888888888889,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 11,
+          "no_material_change": 880
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 892
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 892
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1620,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 7,
+      "exact_score_equal": 1604,
+      "output_ID_divergences": 22,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 7,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 7,
+          "no_material_change": 1604
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1612
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1612
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1350,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 7,
+      "exact_score_equal": 1334,
+      "output_ID_divergences": 22,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 7,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 7,
+          "no_material_change": 1334
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1342
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 1342
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 270,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 270,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666665,
+      "policy_mean_score": 0.06666666666666665,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 540,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 540,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666667,
+      "policy_mean_score": 0.06666666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 540
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 540
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 540
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 270,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 270,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666667,
+      "policy_mean_score": 0.06666666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 270
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 7,
+      "exact_score_equal": 794,
+      "output_ID_divergences": 22,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 7,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": 0.056802469135802475,
+      "policy_mean_score": 0.056975308641975315,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 7,
+          "no_material_change": 794
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 802
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 802
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 9,
+      "any_score_decrease": 7,
+      "exact_score_equal": 794,
+      "output_ID_divergences": 22,
+      "ID_divergence_with_score_increase": 9,
+      "ID_divergence_with_score_decrease": 7,
+      "ID_divergence_with_equal_score": 6,
+      "raw_mean_score": 0.056802469135802475,
+      "policy_mean_score": 0.056975308641975315,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 9,
+          "material_decrease": 7,
+          "no_material_change": 794
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 802
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 802
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 180,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 4,
+      "exact_score_equal": 176,
+      "output_ID_divergences": 4,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 4,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 4,
+          "no_material_change": 176
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 108,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 4,
+      "exact_score_equal": 104,
+      "output_ID_divergences": 4,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 4,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 4,
+          "no_material_change": 104
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 108
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 108
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 72,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 72,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666665,
+      "policy_mean_score": 0.06666666666666665,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666667,
+      "policy_mean_score": 0.06666666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 72,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 72,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06666666666666667,
+      "policy_mean_score": 0.06666666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 4,
+      "exact_score_equal": 86,
+      "output_ID_divergences": 4,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 4,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.09155555555555556,
+      "policy_mean_score": 0.09111111111111113,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 4,
+          "no_material_change": 86
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 4,
+      "exact_score_equal": 86,
+      "output_ID_divergences": 4,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 4,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.09155555555555556,
+      "policy_mean_score": 0.09111111111111113,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 4,
+          "no_material_change": 86
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1800,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 1797,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 1797
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 1797
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1800
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1434,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 1431,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 1431
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 1431
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1434
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 366,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 366,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.1257533931446975,
+      "policy_mean_score": 0.1257533931446975,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 534,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 534,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.03404129930754259,
+      "policy_mean_score": 0.03404129930754259,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 534
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 534
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 534
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 366,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 366,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.25956284153005466,
+      "policy_mean_score": 0.25956284153005466,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 366
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 897,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.13482222222222223,
+      "policy_mean_score": 0.13486666666666666,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 897
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 897
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 897,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.13482222222222223,
+      "policy_mean_score": 0.13486666666666666,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 897
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 897
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1620,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 1620,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1278,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 1278,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1278
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1278
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1278
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 342,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 342,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.11959716790634665,
+      "policy_mean_score": 0.11959716790634665,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 468,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 468,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.029644670949018778,
+      "policy_mean_score": 0.029644670949018778,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 468
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 468
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 468
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 342,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 342,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.24269005847953215,
+      "policy_mean_score": 0.24269005847953215,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 342
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.1362962962962963,
+      "policy_mean_score": 0.1362962962962963,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.1362962962962963,
+      "policy_mean_score": 0.1362962962962963,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 180,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 177,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 177
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 177
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 156,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 153,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 153
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 153
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 156
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 24,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 24,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.18115942028985507,
+      "policy_mean_score": 0.18115942028985507,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 66,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 66,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.06521739130434784,
+      "policy_mean_score": 0.06521739130434784,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 24,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 24,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 87,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.12155555555555556,
+      "policy_mean_score": 0.12200000000000001,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 87
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 87
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 87,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.12155555555555556,
+      "policy_mean_score": 0.12200000000000001,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 87
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 87
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1800,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 1800,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1800
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1800
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1800
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1068,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 1068,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1068
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1068
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1068
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 732,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 732,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.3824561403508772,
+      "policy_mean_score": 0.3824561403508772,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 336,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 336,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.18515037593984962,
+      "policy_mean_score": 0.18515037593984962,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 564,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 564,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.23566666666666666,
+      "policy_mean_score": 0.23566666666666666,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 732,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 732,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.21631147540983606,
+      "policy_mean_score": 0.21631147540983606,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 732
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 168,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 168,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32,
+      "policy_mean_score": 0.32,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1620,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 1620,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 1620
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 936,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 936,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 936
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 936
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 936
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 684,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 684,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 684
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 684
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 684
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.38011695906432746,
+      "policy_mean_score": 0.38011695906432746,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 294,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 294,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.16970998925886144,
+      "policy_mean_score": 0.16970998925886144,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 516,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 516,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.23814814814814816,
+      "policy_mean_score": 0.23814814814814816,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 642,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 642,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.2167289719626168,
+      "policy_mean_score": 0.2167289719626168,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 642
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 642
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 642
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 168,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 168,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32,
+      "policy_mean_score": 0.32,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 180,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 180,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 132,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 132,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 48,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 48,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.4035087719298246,
+      "policy_mean_score": 0.4035087719298246,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 42,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 42,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.2932330827067669,
+      "policy_mean_score": 0.2932330827067669,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 48,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 48,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.21333333333333332,
+      "policy_mean_score": 0.21333333333333332,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.21333333333333332,
+      "policy_mean_score": 0.21333333333333332,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    }
+  ],
+  "source_records": [
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 186,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 186,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 114,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 114,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 186,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 186,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 114,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 114,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 186,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 186,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19999999999999998,
+      "policy_mean_score": 0.19999999999999998,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 186
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 114,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 114,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19999999999999998,
+      "policy_mean_score": 0.19999999999999998,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 114
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 4,
+      "any_score_decrease": 8,
+      "exact_score_equal": 288,
+      "output_ID_divergences": 15,
+      "ID_divergence_with_score_increase": 4,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 3,
+      "raw_mean_score": 0.0281,
+      "policy_mean_score": 0.027966666666666667,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 4,
+          "material_decrease": 8,
+          "no_material_change": 288
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 3,
+      "raw_mean_score": 0.098,
+      "policy_mean_score": 0.098,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 5,
+      "any_score_decrease": 3,
+      "exact_score_equal": 292,
+      "output_ID_divergences": 8,
+      "ID_divergence_with_score_increase": 5,
+      "ID_divergence_with_score_decrease": 3,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.05473333333333334,
+      "policy_mean_score": 0.055200000000000006,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 292
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 292
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 5,
+          "material_decrease": 3,
+          "no_material_change": 292
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.31746031746031744,
+      "policy_mean_score": 0.31746031746031744,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.33687943262411346,
+      "policy_mean_score": 0.33687943262411346,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 216,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 216,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 216
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 216
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 216
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 84,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 84,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.0,
+      "policy_mean_score": 0.0,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 84
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 84
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 84
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.04154589371980676,
+      "policy_mean_score": 0.04154589371980676,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 2,
+      "any_score_decrease": 1,
+      "exact_score_equal": 297,
+      "output_ID_divergences": 3,
+      "ID_divergence_with_score_increase": 2,
+      "ID_divergence_with_score_decrease": 1,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.09546666666666667,
+      "policy_mean_score": 0.0956,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 297
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 2,
+          "material_decrease": 1,
+          "no_material_change": 297
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.26699999999999996,
+      "policy_mean_score": 0.26699999999999996,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.041999999999999996,
+      "policy_mean_score": 0.041999999999999996,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.14736842105263157,
+      "policy_mean_score": 0.14736842105263157,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 132,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 132,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32,
+      "policy_mean_score": 0.32,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 132
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 168,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 168,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32,
+      "policy_mean_score": 0.32,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 168
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.275,
+      "policy_mean_score": 0.275,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.112,
+      "policy_mean_score": 0.112,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    }
+  ],
+  "cell_provenance": [
+    {
+      "cell": "template-fanout_llama_risk-tail_r1",
+      "raw_sha256": "d883e70d4c890416a6016cf84ece6103a80bd76369897ef59bf55d5b05b9cb31",
+      "policy_sha256": "9776d49ff3b5901afd0147a6cb6b5d37bbd0fa72f4c91db7a76bd10728ebfd63"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r2",
+      "raw_sha256": "51c3788870099bae2f9bafbf482f11e192e31b313da89c9453821e7018415b31",
+      "policy_sha256": "311b1d428d0f25122699f9429dfd4e6cc3838c07c917c450fd720a4729c016ad"
+    },
+    {
+      "cell": "template-fanout_llama_risk-tail_r3",
+      "raw_sha256": "0a3b0fa20fb9d2f6f6d8452da92cfed9c016e27aca439789ae7575a6f12db32c",
+      "policy_sha256": "ad45b779f90f5b9eefb09229a91d016ea63be8a072ec617ab34b232fd624b790"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r1",
+      "raw_sha256": "4afa921cc28239b3ef6505391e39ac71cb6a9c660de5c2e0083ff937f61dbb72",
+      "policy_sha256": "3b0e82a542e65b640304f32b87c5e859fcd33cf962e5f6466db72e1c6b8d5490"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r2",
+      "raw_sha256": "2d370fd79b702e0fcf6cc20f349bacd62e020d62e8bae3ad68ce25b318067678",
+      "policy_sha256": "8995c3e4e69fc6fab71ab51d5a2af8e92cc1bae9e91248cce5ebcb55f46ef8b7"
+    },
+    {
+      "cell": "template-fanout_mistral_risk-tail_r3",
+      "raw_sha256": "c00e8358b4e2b135b439b1c9d1ab1fe3fff64b9cee3f8b9ff45f174d17e2850b",
+      "policy_sha256": "369d2a485267645d77824ac9b1595e58804c6d1435f76a56eb431c90bafd78bd"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "raw_sha256": "4dbb7be00ecfd545b13a5c33d17309885f380c3fe5180c7649ab952d1262c483",
+      "policy_sha256": "62910a175d625abb61a1ce2c0d3d7f820e4b1a4703ee0dde9a3146b2c19dcbed"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "raw_sha256": "05bc3e3f3ad78489aaebcbd945d72a671aafdf24d9793f48c0561b3f15aa0afb",
+      "policy_sha256": "f664c4565ff93d72f53cdf80742f0fc71259d6d847707a03ed7c56a0d3747363"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "raw_sha256": "9a498fff0f4a5fdaf330f542da172ac1816c3eff3e85b1fbf2f05aa8df9ac26c",
+      "policy_sha256": "902818db54893f2c17aa79d2b3c5ef1329b3789b3f6b1520c4e1928703dbfa61"
+    }
+  ],
+  "all_material_change_cases_gt0_03": [
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant04",
+      "turn_id": 9,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.1,
+      "policy_score": 0.03,
+      "delta_score_policy_minus_raw": -0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 68,
+      "policy_output_tokens": 367,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant07",
+      "turn_id": 3,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.03,
+      "policy_score": 0.1,
+      "delta_score_policy_minus_raw": 0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 367,
+      "policy_output_tokens": 68,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant09",
+      "turn_id": 9,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.03,
+      "policy_score": 0.1,
+      "delta_score_policy_minus_raw": 0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 367,
+      "policy_output_tokens": 68,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant01",
+      "turn_id": 3,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.03,
+      "policy_score": 0.1,
+      "delta_score_policy_minus_raw": 0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 367,
+      "policy_output_tokens": 68,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant04",
+      "turn_id": 3,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.03,
+      "policy_score": 0.1,
+      "delta_score_policy_minus_raw": 0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 367,
+      "policy_output_tokens": 68,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant04",
+      "turn_id": 6,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.1,
+      "policy_score": 0.03,
+      "delta_score_policy_minus_raw": -0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 68,
+      "policy_output_tokens": 367,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant07",
+      "turn_id": 3,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.03,
+      "policy_score": 0.1,
+      "delta_score_policy_minus_raw": 0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 367,
+      "policy_output_tokens": 68,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Llama-3.1-8B-Instruct",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "session_id": "r4f-heldout-7c9917eef38842b2-tenant09",
+      "turn_id": 9,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.1,
+      "policy_score": 0.03,
+      "delta_score_policy_minus_raw": -0.07,
+      "first_output_ID_divergence": 55,
+      "raw_output_tokens": 68,
+      "policy_output_tokens": 367,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "warm",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "session_id": "r4f-heldout-42c3e0019c558805-tenant02",
+      "turn_id": 0,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.05,
+      "policy_score": 0.09,
+      "delta_score_policy_minus_raw": 0.039999999999999994,
+      "first_output_ID_divergence": 5,
+      "raw_output_tokens": 259,
+      "policy_output_tokens": 119,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "warm",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "session_id": "r4f-heldout-42c3e0019c558805-tenant04",
+      "turn_id": 0,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.05,
+      "policy_score": 0.09,
+      "delta_score_policy_minus_raw": 0.039999999999999994,
+      "first_output_ID_divergence": 5,
+      "raw_output_tokens": 259,
+      "policy_output_tokens": 119,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "warm",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "session_id": "r4f-heldout-42c3e0019c558805-tenant02",
+      "turn_id": 0,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.09,
+      "policy_score": 0.05,
+      "delta_score_policy_minus_raw": -0.039999999999999994,
+      "first_output_ID_divergence": 5,
+      "raw_output_tokens": 119,
+      "policy_output_tokens": 259,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    }
+  ],
+  "interpretation": [
+    "Delta is policy score minus matched raw score. Strict >tau and <-tau thresholds preserve the original material-effect convention.",
+    "Both improvements and regressions are retained. No material change at tau does not imply identical outputs or behavioral equivalence.",
+    "A compiled output-ID difference remains a behavioral divergence even when task score improves. Certification is not evaluated as an answer-optimization method.",
+    "ALL-family score means are deliberately omitted because benchmark metrics differ. Per-family means use unchanged recorded scores checked in primary/all-business audits.",
+    "All-business includes tenant turn-zero reuse; future primary outcomes remain separately identified. Source records preserve clustering and do not imply independent request events."
+  ]
+}
