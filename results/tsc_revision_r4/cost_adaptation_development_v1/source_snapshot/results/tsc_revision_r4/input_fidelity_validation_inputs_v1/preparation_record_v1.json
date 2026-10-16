@@ -1,0 +1,633 @@
+{
+  "schema_version": "tsc-r4.independent-fidelity-input-preparation.v1",
+  "source_sha256": "b50c9f53bd9412af1124787c7ff4bdb38ce6996e9e12a2fb295120cf1692a9e4",
+  "source_pool_sha256": "d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "exclusions_sha256": "8f58be01a4daa0d5021b5ed37ae864f4e045dc383c1b39d8798533d79167b519",
+  "excluded_unique_sources": 567,
+  "selection_seed": 10672146,
+  "sources": 6,
+  "selected_source_groups": [
+    "LongBench:hotpotqa:hotpotqa:doc:69",
+    "LongBench:hotpotqa:hotpotqa:doc:19",
+    "LongBench:hotpotqa:hotpotqa:doc:109",
+    "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+    "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+    "RepoBench:python_v1.1:sinoyou/nelf-pro"
+  ],
+  "selected_sources_disjoint_from_all_567_prior": true,
+  "candidates_examined_in_frozen_hash_order": [
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "selection_hash": "006c30b47bacb147136990d7218ca6d6c61842aa85e38728641130dcad9920f3",
+      "critical_capacity_eligible": true,
+      "status": "optional_context_cropped_to_window"
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "selection_hash": "039cdd7338eb3ca3c0e679173706b946c3f579e65a5b79264b0a75b1f32ae66b",
+      "critical_capacity_eligible": true,
+      "status": "optional_context_cropped_to_window"
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "selection_hash": "03fa474da76ad027cd53892e53437c04d5d264f7f9d119d1ac77f9426f1f6704",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "family": "RepoBench",
+      "selection_hash": "010eee67072caf234bb51f7a12702921bd000df48939a431becc2c3e78802331",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "selection_hash": "021c373201c29525dc98626b0994991dbcb16bf795fa0d2cdc17db51b61f7137",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "family": "RepoBench",
+      "selection_hash": "025d977ffb11ea17cd64e508db6610509baf74e4f046e2b469acb24b4773f508",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    }
+  ],
+  "source_ledgers": [
+    {
+      "status": "optional_context_cropped_to_window",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 71237,
+          "retained_original_characters": 58535,
+          "original_units": 43,
+          "retained_units": 37,
+          "kept_original_character_ranges": [
+            [
+              0,
+              18282
+            ],
+            [
+              30984,
+              71237
+            ]
+          ],
+          "omitted_original_character_range": [
+            18282,
+            30984
+          ],
+          "original_text_sha256": "76e231d1a9ddad043a341f7f748dc69280c053d16e3a8570be3a628be76ba08b",
+          "packed_text_sha256": "87ec4ada4ce0121e048985c15e41edea2eb1a66d7076820b3070a01f02917ca6"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 43,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 1,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 0,
+            "first_failure": {
+              "model": "Qwen3-8B",
+              "tenant": 0,
+              "turn": 0,
+              "prompt_plus_budget": 17331
+            },
+            "completed_model_maxima": {}
+          }
+        },
+        {
+          "stage": "protected_fields_all_variants",
+          "retained_optional_units": 0,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 296,
+              "Mistral-7B-Instruct-v0.3": 342,
+              "Llama-3.1-8B-Instruct": 303
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 22,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 7557,
+              "Mistral-7B-Instruct-v0.3": 8435,
+              "Llama-3.1-8B-Instruct": 7248
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 33,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 11620,
+              "Mistral-7B-Instruct-v0.3": 12931,
+              "Llama-3.1-8B-Instruct": 11129
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 38,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16429
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 14777
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 35,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 13116,
+              "Mistral-7B-Instruct-v0.3": 14609,
+              "Llama-3.1-8B-Instruct": 12558
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 36,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14071,
+              "Mistral-7B-Instruct-v0.3": 15659,
+              "Llama-3.1-8B-Instruct": 13462
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 37,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14425,
+              "Mistral-7B-Instruct-v0.3": 16059,
+              "Llama-3.1-8B-Instruct": 13799
+            }
+          }
+        },
+        {
+          "stage": "selected_input_all_variants",
+          "retained_optional_units": 37,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14425,
+              "Mistral-7B-Instruct-v0.3": 16059,
+              "Llama-3.1-8B-Instruct": 13799
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 16.041392699989956,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-8306ed450c777c06",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "family": "HotpotQA",
+      "original_segments_sha256": "63ca0bbc4a44654202ac038af77b61753195d17aab9e1e471d78c7119e7f0beb"
+    },
+    {
+      "status": "optional_context_cropped_to_window",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 67592,
+          "retained_original_characters": 58887,
+          "original_units": 54,
+          "retained_units": 48,
+          "kept_original_character_ranges": [
+            [
+              0,
+              30550
+            ],
+            [
+              39255,
+              67592
+            ]
+          ],
+          "omitted_original_character_range": [
+            30550,
+            39255
+          ],
+          "original_text_sha256": "815cc08a36dcbc8705f5a0bb8468f64db02f18f79355c34200ea3f879306a74f",
+          "packed_text_sha256": "a6fef54763dfe62293659581a7921d7324409a72ffb600c25a3762e8ea252251"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 54,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 101,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 0,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 0,
+              "turn": 0,
+              "prompt_plus_budget": 18034
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 16278
+            }
+          }
+        },
+        {
+          "stage": "protected_fields_all_variants",
+          "retained_optional_units": 0,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 302,
+              "Mistral-7B-Instruct-v0.3": 348,
+              "Llama-3.1-8B-Instruct": 317
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 27,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 11168,
+              "Mistral-7B-Instruct-v0.3": 12347,
+              "Llama-3.1-8B-Instruct": 10832
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 41,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 12432,
+              "Mistral-7B-Instruct-v0.3": 13771,
+              "Llama-3.1-8B-Instruct": 12030
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 48,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14216,
+              "Mistral-7B-Instruct-v0.3": 15814,
+              "Llama-3.1-8B-Instruct": 13757
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 51,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16777
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 15108
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 49,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16537
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 14889
+            }
+          }
+        },
+        {
+          "stage": "selected_input_all_variants",
+          "retained_optional_units": 48,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14216,
+              "Mistral-7B-Instruct-v0.3": 15814,
+              "Llama-3.1-8B-Instruct": 13757
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 20.16759500000626,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-5670fab0be2cd8a7",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "family": "HotpotQA",
+      "original_segments_sha256": "0e340f80086cbbb15cb3c3000bdd1c8f41afe719b86860e8b9e9349dc113ed0c"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 47399,
+          "retained_original_characters": 47399,
+          "original_units": 44,
+          "retained_units": 44,
+          "kept_original_character_ranges": [
+            [
+              0,
+              47399
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "27df907df710ce5513ce4a3a2efc41cd40ead2e8dd6a558fbf76fa5fc5f88c14",
+          "packed_text_sha256": "27df907df710ce5513ce4a3a2efc41cd40ead2e8dd6a558fbf76fa5fc5f88c14"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 44,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 12274,
+              "Mistral-7B-Instruct-v0.3": 13520,
+              "Llama-3.1-8B-Instruct": 11638
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 9.89280040000449,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-bfbc3a2b9185b0e2",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "family": "HotpotQA",
+      "original_segments_sha256": "8a6a6a9a035c34e65975411c8e260fe93d1009e50496567e68db2af90bc6d1cf"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 5669,
+          "retained_original_characters": 5669,
+          "original_units": 157,
+          "retained_units": 157,
+          "kept_original_character_ranges": [
+            [
+              0,
+              5669
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "6c7daf1fe2e2af544eb002fdda6ed0b000878ad797e753f2ca62fc9f933be560",
+          "packed_text_sha256": "6c7daf1fe2e2af544eb002fdda6ed0b000878ad797e753f2ca62fc9f933be560"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 157,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 3315,
+              "Mistral-7B-Instruct-v0.3": 4144,
+              "Llama-3.1-8B-Instruct": 3320
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 1.6587348000030033,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-7c8785cd8df24c32",
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "family": "RepoBench",
+      "original_segments_sha256": "d0943323eab82dc21d44c5a9996f40098e75fc2315c517200c33ea203af7e920"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 23946,
+          "retained_original_characters": 23946,
+          "original_units": 282,
+          "retained_units": 282,
+          "kept_original_character_ranges": [
+            [
+              0,
+              23946
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "c67f23cc1344cec8445e02ebfc2995ecf5c2ad23621d0fdb0f67ab83ff850864",
+          "packed_text_sha256": "c67f23cc1344cec8445e02ebfc2995ecf5c2ad23621d0fdb0f67ab83ff850864"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 282,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 6745,
+              "Mistral-7B-Instruct-v0.3": 9168,
+              "Llama-3.1-8B-Instruct": 6728
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 3.2163394000090193,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-42c3e0019c558805",
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "family": "RepoBench",
+      "original_segments_sha256": "3b9904bf4088d117a1696889ce3c5ac0503044b16d79feb21002b02a3ab6b607"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 40641,
+          "retained_original_characters": 40641,
+          "original_units": 477,
+          "retained_units": 477,
+          "kept_original_character_ranges": [
+            [
+              0,
+              40641
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "aa4ae0f7dd7c36fc86db3ff42e96be6b56f85010cd6b9f436c774bd9b307fb7d",
+          "packed_text_sha256": "aa4ae0f7dd7c36fc86db3ff42e96be6b56f85010cd6b9f436c774bd9b307fb7d"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 477,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 11241,
+              "Mistral-7B-Instruct-v0.3": 14363,
+              "Llama-3.1-8B-Instruct": 11222
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 6.2007477000006475,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4f-heldout-7c9917eef38842b2",
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "family": "RepoBench",
+      "original_segments_sha256": "1d1c0d6d71205431bb3211e6cd5ce0cee17e26e4d1162f66a82fe78642f7d1da"
+    }
+  ],
+  "data_files": [
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/original_selected_sessions_v1.jsonl",
+      "rows": 6,
+      "sha256": "d1d7562f32642fc866a9b14a9b3ef8ad6f74f61524303fd569d3c8e8eb64bf2e"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/faithful_selected_sessions_v1.jsonl",
+      "rows": 6,
+      "sha256": "876eed3937fb428f2d8fbf04e66efa93403da40f6a948aea05aec97f6159d4fa"
+    }
+  ],
+  "packer_sha256": "635f24ef45e0cf1234f319af9152d71b208d3213cd20fa18d095fc4d07eb957a",
+  "renderer_sha256": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c",
+  "catalog_sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb",
+  "generation_sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05",
+  "model_registry_sha256": "1cafa8d210ca76079bff2bf7d4bafb243fad1c3dd210af7c6dfc4cd9c8fa3b4e",
+  "total_preparation_CPU_wall_s": 57.25373949998175,
+  "reference_labels_or_answer_positions_used_for_selection_or_packing": false,
+  "model_outcomes_observed": false,
+  "new_GPU_requests": 0,
+  "capacity_checked_raw_and_actual_selected_candidates": true,
+  "all_selected_source_variants_per_model_tenant_turn": 300,
+  "no_cost_calibration_or_scope_changes": true
+}

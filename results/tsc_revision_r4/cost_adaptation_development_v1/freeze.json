@@ -1,0 +1,1184 @@
+{
+  "schema_version": "tsc-r2.prospective-scope-freeze.v1",
+  "timestamp": "2026-10-16T15:03:23.743965+00:00",
+  "protocol": {
+    "schema_version": "tsc-r4.single-cost-candidate-DEV.v1",
+    "development_only": true,
+    "models": [
+      "qwen"
+    ],
+    "policies": [
+      "raw-order",
+      "risk-tail",
+      "cost-adapted"
+    ],
+    "repeats": 1,
+    "studies": {
+      "template-fanout": 10
+    },
+    "expected_cells": 3,
+    "expected_actual_generations": 1200,
+    "expected_future_requests": 1080,
+    "input_files": {
+      "template-fanout": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/development_faithful_sessions_v3.jsonl"
+    },
+    "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+    "previous_catalog": "configs/tsc_revision_r3_catalog_v1.json",
+    "generation_protocol": "configs/tsc_revision_r4_input_fidelity_preserved_generation_v1.json",
+    "profile": "balanced",
+    "inherited_generation_fields_used": [
+      "runtime",
+      "layout",
+      "free_generation.budgets"
+    ],
+    "admission_override": "One fixed candidate level per scope and at most one GPU attempt; inherited legacy descent text is not used by the selected R4 clients.",
+    "CPU_input_length_preflight": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/independent_input_integrity_v2.json",
+    "input_adaptation": {
+      "stable_word_limit": 0,
+      "stable_pieces": 16,
+      "text_processing": "Frozen label-blind original head/tail context substrings; complete CODE_PREFIX/query, whitespace and omission ledgers. Adjacent pieces of the same original segment are rendered contiguously under one outside heading; no internal injected labels. CALC node order/levels/dependencies unchanged.",
+      "metadata_correction": "CODE_PREFIX volatility=0 and cache_stability=1; 200 layouts and corresponding prompts unchanged.",
+      "task_defining_fields_not_truncated": true
+    },
+    "metric_boundary": "Preserve the frozen LongBench-style QA F1, RULER substring matching and legacy SequenceMatcher-based RepoBench edit-similarity implementation. No scorer is changed; no exact author RepoBench reproduction or semantic-correctness guarantee is claimed.",
+    "selected_client": "scripts/tsc_revision_r4_cost_study_live_v1.py",
+    "clock": "Original closed-loop shared-wave readiness; all planning and synchronous qualification included in wall; paired throughput capacity measurement.",
+    "full_cost_boundary": "Server startup/pre-measurement infrastructure checks excluded identically; every actual business/controller/GPU qualification/failed attempt included. Audit/flush after drain reported separately.",
+    "source_cluster_units": "Four previously observed faithful DEV sources, two per family; one process per policy, not independent validation.",
+    "policy_order": {
+      "1": [
+        "raw-order",
+        "cost-adapted",
+        "risk-tail"
+      ]
+    },
+    "score_thresholds": [
+      0,
+      0.01,
+      0.03,
+      0.05
+    ],
+    "latency_strata": [
+      "global",
+      "predefined family",
+      "template",
+      "tenant",
+      "request"
+    ],
+    "nonuniform_tail_results_retained": true,
+    "no_test_retuning": true,
+    "reuse_hints_not_production_repetition_measurements": true,
+    "cost_forecast_limits": "Development bootstrap predictors estimate early eligibility and qualification issuance, not post-certificate application-error probability. They are empirical, not formal risk bounds. The gate credits only currently observed issued-prefix warmth, not speculative future qualifications warming other query scopes. False negatives and capacity/tail tradeoffs are retained.",
+    "dynamic_scope_boundary": {
+      "key": "authorized template namespace and exact query digest; stable compiled prefix hash must match",
+      "digest_binds": "query text, full system message, stable segments, model, output budget, seed14014, temperature0, policy hash and renderer version",
+      "observation_schema": "[PRIVATE_TOOL_OBS] revision_session=<alnum_or_underscore_or_hyphen>; turn=<digits>; status=ready|completed|idle; no additional answer evidence. All fields must match the complete regex; CHAT_HISTORY/SCRATCHPAD are unqualified.",
+      "first_occurrence": "actual raw business output with complete answer/EOS witness before one single-shot qualification",
+      "query_shared_eligibility": "short nonabstaining answer; literal stable-context span or nonliteral raw minimum strictly above .125; backend raw .0625 and candidate/EOS .125 floors retained",
+      "nonshareable": "References failing the normalized <=16-word, nonabstaining, literal-or-margin eligibility receive exact-observation-only classification with no declared exact reuse and therefore L0. This is a structural heuristic, not a semantic detector of every free-form answer; it imposes no separate hard token-length limit.",
+      "scope_invalidation": "new query digest/namespace or changed stable content cannot reuse the old qualification; inherited dependency/layout eligibility remains required",
+      "changing_observation": "only the declared benchmark sessions are empirically audited. Reference eligibility is a heuristic; first-path qualification does not prove all future observation variants preserve free-generation behavior."
+    },
+    "new_sources": 0,
+    "prior_sources_excluded": null,
+    "no_positive_result_promised": true,
+    "selected_auditor": "scripts/tsc_revision_r4_cost_study_summary_v1.py",
+    "task_fidelity_condition": "faithful",
+    "parent_R4_freeze_sha256": "9bb61b7c7e47ff564e30d974a3580892e3f83719679e2c1f27cd9d95c35d12c4",
+    "input_preparation_record_sha256": "242d95f558ef3449efa1433136d2fd7658b308f71ec5a164e2459611af43555e",
+    "output_contract_version": "unchanged-one-python-statement",
+    "input_adapter": "task-fidelity-contiguous-segment-text-v2",
+    "cost_calibration": "Original risk-tail gate preserved as the original-policy control. Cost-adapted uses one fixed DEV-only cold-envelope profile and incremental fan-out wait allowance. Original probability and saving-cap terms unchanged.",
+    "cross_condition_clock_boundary": "All three fresh-process cells onGPU0,otherGPUidle;identicalclosed-loop2requestwaveclockandfullcost.",
+    "scope_boundary": "Existing exact query/typed metadata rules, raw/candidate/EOS floors, single-shot and inherited L0 unchanged.",
+    "parent_faithful_development_freeze_sha256": "0e8418b55f773b5a8efb14598ed6c3e5bdcdbbf1f27729362d0a4d3ecd055e39",
+    "source_selection_seed": 10672146,
+    "formal_acceptance_boundary": "One DEV candidate and fixed selection criteria only; if it fails retain negatives and skip conditional independent cost validation.",
+    "primary_method_frozen_before_any_new_source_model_output": true,
+    "cost_adaptation_uses_only_preexisting_development_logs": true,
+    "formal_heldout_outputs_forbidden_for_cost_rule_selection": true,
+    "cost_profile": "results/tsc_revision_r4/development_cost_profile_candidate_v1.json",
+    "cost_profile_sha256": "be21959e9bde139b7fd0ecdec7f64bea089f9858b929f737accc232882ce4c8f",
+    "cost_selection_plan": "configs/tsc_revision_r4_cost_adaptation_plan_v1.json",
+    "additional_conservative_quality_veto": "All-route material drops must not exceed the original-policy control; this is fixed before any cost DEV output, in addition to the plan minimum checks.",
+    "no_primary6_model_outputs_used_for_cost_selection": true,
+    "known_primary18_completion_required_before_GPU_dispatch": true,
+    "prior_faithful_validation_freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f"
+  },
+  "files": [
+    {
+      "path": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+      "sha256": "c00d70623d3f081f7197f919e19430356ad5f2b5fc7eb6aa209122904715c935"
+    },
+    {
+      "path": "configs/tsc_revision_r2_backend_commitment_v1.json",
+      "sha256": "62b24d690c2bec3a1de75512db764c28b1d0edf15cd11a377ed080caf478eabe"
+    },
+    {
+      "path": "configs/tsc_revision_r2_development_plan_v1.json",
+      "sha256": "8dd4a78e1919dbe86f70226d8a25af6b2a58d3b81ed3186e4ce81f73197e7864"
+    },
+    {
+      "path": "configs/tsc_revision_r2_long_format_v1.json",
+      "sha256": "0a6d83d78c8f0db7ced9c2ae35d668f8c45de6d6cf0a415d4aad359012c1282d"
+    },
+    {
+      "path": "configs/tsc_revision_r2_long_format_v2.json",
+      "sha256": "002d22f60fdb1e432b4ccf2587fbef6c50dc1f65b935cca0afb2427f68797404"
+    },
+    {
+      "path": "configs/tsc_revision_r2_profile_v1.json",
+      "sha256": "e874d8e138b980dde9fcc79d250b9747e4419511b47bb2cf0dc70ac32c27a3ae"
+    },
+    {
+      "path": "configs/tsc_revision_r2_selected_catalog_v1.json",
+      "sha256": "77f11aa886a9a0a57a4a12cbcbb2499a1edb5faf1e7f0532eee766b2f48d12a3"
+    },
+    {
+      "path": "configs/tsc_revision_r2_selected_catalog_v2.json",
+      "sha256": "7349b32577be8d84dc750cbb7369d3a167c5baa60dd9ed9a1df7598a1bbc6925"
+    },
+    {
+      "path": "configs/tsc_revision_r2_validation_v1.json",
+      "sha256": "3f1b053732ce268ce837d3d903475ee3b557cbaa36aacf24c56248843ba0f88f"
+    },
+    {
+      "path": "configs/tsc_revision_r3_catalog_v1.json",
+      "sha256": "0da0a6f030f7309d7bed9174a905f2e1d56d0dc62e134ec6f65aa346df9f2249"
+    },
+    {
+      "path": "configs/tsc_revision_r3_validation_v1.json",
+      "sha256": "c06366eb6fde6cfd373d77607ac99cd2006691b280487dc2b21df93fae7d59bf"
+    },
+    {
+      "path": "configs/tsc_revision_r4_clock_smoke_v1.json",
+      "sha256": "3e1219d98e86db074dba64c03282551c96a551c02eaea0f01f6673c8a3573cc5"
+    },
+    {
+      "path": "configs/tsc_revision_r4_cost_adaptation_plan_v1.json",
+      "sha256": "f7e0c42c27f42408531acfb16bbfd3e4f0d66930b4913ee86d7108c342847443"
+    },
+    {
+      "path": "configs/tsc_revision_r4_cost_development_v1.json",
+      "sha256": "a9638791892e167edeb14c3fb074297013d24e3bf4f2e6fa3095d3e1a235d1a7"
+    },
+    {
+      "path": "configs/tsc_revision_r4_development_pilot_v1.json",
+      "sha256": "e57540cf5bb5db4170f775723935f1a9ec05f2fefca5288768fd01d34319c2a5"
+    },
+    {
+      "path": "configs/tsc_revision_r4_development_plan_v2.json",
+      "sha256": "10094896fe63113285208cfd3d3ec31f1733edae5c55d13df4cd159b3515c799"
+    },
+    {
+      "path": "configs/tsc_revision_r4_development_repeat_check_v1.json",
+      "sha256": "894462f396e27a28b961a9e59c925ddf03fd3af2ffebb3b0dd4e91f971674a0e"
+    },
+    {
+      "path": "configs/tsc_revision_r4_fidelity_development_faithful_v3.json",
+      "sha256": "862e55c1681beb009264d772329e0e8d5b4e735b51641e0f79d8cb45ab14dbfe"
+    },
+    {
+      "path": "configs/tsc_revision_r4_fidelity_development_head_v3.json",
+      "sha256": "1d766d82176cc3ea2edfb20d045abf9bc57026dcd144637d715e51e3b30358f4"
+    },
+    {
+      "path": "configs/tsc_revision_r4_fidelity_validation_v1.json",
+      "sha256": "e680c27b04a3d2e7202528dc7abdc127ce142d8b6d2172765369e6ac785a963d"
+    },
+    {
+      "path": "configs/tsc_revision_r4_input_fidelity_head_generation_v1.json",
+      "sha256": "b3b3d626723cf3ae673df9c6f021c6256441fec5b411cd85dc6fc41becc66e2a"
+    },
+    {
+      "path": "configs/tsc_revision_r4_input_fidelity_plan_v4.json",
+      "sha256": "e64d87f5c967e623694115bdb7df36566639e4cde316fa38edff008b5d433690"
+    },
+    {
+      "path": "configs/tsc_revision_r4_input_fidelity_preserved_generation_v1.json",
+      "sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05"
+    },
+    {
+      "path": "configs/tsc_revision_r4_known_diagnosis_v1.json",
+      "sha256": "6d930a0a10c670d2989f49984674f078b7725682cfbf436868f1f47e645bd7ac"
+    },
+    {
+      "path": "configs/tsc_revision_r4_validation_arrival_v1.json",
+      "sha256": "c9e96782caf51851b05e8b815e9bdb98a8d14d52c11541c11936562afd858e35"
+    },
+    {
+      "path": "configs/tsc_revision_r4_validation_closed_v1.json",
+      "sha256": "607eca0796e4f7776aa1972d400775a31b1919547e47fa29a9243c93e544a048"
+    },
+    {
+      "path": "results/tsc_revision_r1r/inputs/heldout_fanout_sessions_v1.jsonl",
+      "sha256": "1b2c5585df1bc34888371b6d97fbdf4b18ecf312b84b27c85e204e94cf8bf06f"
+    },
+    {
+      "path": "results/tsc_revision_r1r/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079"
+    },
+    {
+      "path": "results/tsc_revision_r2/batch_reuse_v1/analysis/completion_audit_v1.json",
+      "sha256": "4cb69270722d02a42188d0bc912c3f2241ee9b7be4d897ca3434d90d9f50018c"
+    },
+    {
+      "path": "results/tsc_revision_r2/batch_reuse_v1/mistral/raw.jsonl",
+      "sha256": "0383c2fc4c882b8cd65ca47b4e01cf493219dd81a84486df593f38058d5757c6"
+    },
+    {
+      "path": "results/tsc_revision_r2/batch_reuse_v1/mistral/raw.summary.json",
+      "sha256": "c7f86ab09656d2567babda6fff9f4e782e9b4d0e9c5dc94fbb439e281b188be4"
+    },
+    {
+      "path": "results/tsc_revision_r2/catalog_v2_remote_recheck_v1.json",
+      "sha256": "69ca0141144665b9020692ecbf1271318edd88b3865ba86f9490de86930581ee"
+    },
+    {
+      "path": "results/tsc_revision_r2/inputs/development_sessions_v1.jsonl",
+      "sha256": "f990e5f429fed3bd99187c91b8b28aefc5e95b78f5a06fa7a50142b1e08ea6b5"
+    },
+    {
+      "path": "results/tsc_revision_r2/inputs/heldout_fanout_v1.commitment.json",
+      "sha256": "e0fffc471e2ea130dd72b71237e79a42287e7321899db430645632753c204228"
+    },
+    {
+      "path": "results/tsc_revision_r2/inputs/heldout_fanout_v1.jsonl",
+      "sha256": "047963b35f0d105b84e0ed6fe2d341323830fd04498a741d5e9f0e2bb0aad052"
+    },
+    {
+      "path": "results/tsc_revision_r2/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725"
+    },
+    {
+      "path": "results/tsc_revision_r2/inputs/input_commitment_v1.json",
+      "sha256": "c32494afbdd272f0e05dff47d8647351eebff418a44c3a9d071631a97d8d12c7"
+    },
+    {
+      "path": "results/tsc_revision_r2/model_registry_v1.json",
+      "sha256": "e9b23a31b5715bc40a8e873ba30fd765c5e58a32d2d761ba70c51e72bbdc00bd"
+    },
+    {
+      "path": "results/tsc_revision_r2/profile_v1/analysis/completion_audit_v1.json",
+      "sha256": "6ed08346da02709effa378ea931a4ee8f728e3c4f789c59b2edb5a8e4e351160"
+    },
+    {
+      "path": "results/tsc_revision_r2/profile_v1/analysis/selection_input_v1.json",
+      "sha256": "34422bf2a2a9352fe4397702b8d17f46dd2b11a6d867421769429c7d22e6e360"
+    },
+    {
+      "path": "results/tsc_revision_r2/validation_v1/development_review_v1.json",
+      "sha256": "1b01fb57cf6a375edbfa622bb078fc8cd1e71b629debeb5a8f0d2ddf4a7d19d8"
+    },
+    {
+      "path": "results/tsc_revision_r2/validation_v1/launcher_gpu_assignment_v1.csv",
+      "sha256": "65e46819935f778ee02e2db935954de375f5501c519e243f6a8acaf68aa0f43a"
+    },
+    {
+      "path": "results/tsc_revision_r3/inputs/heldout_fanout_v1.jsonl",
+      "sha256": "0e7092f8d53d7da525e4b74957e3f404a24093e8df7061b7b55c54995f5d068d"
+    },
+    {
+      "path": "results/tsc_revision_r3/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "835f9e843b8423ead3f540d5825e2a736f46e7e9600f86cfe12961cf60dad73c"
+    },
+    {
+      "path": "results/tsc_revision_r3/inputs/input_commitment_v1.json",
+      "sha256": "cc4c80c745f6d21435d983f3e0595f1042aacd5840d02771c78364eec2fb6dae"
+    },
+    {
+      "path": "results/tsc_revision_r3/validation_v1/development_review_v1.json",
+      "sha256": "9513a225d58ca7372612ffb21de2fef0b1ef8456131c4bcb87a9d7d57cc3a177"
+    },
+    {
+      "path": "results/tsc_revision_r3/validation_v1/launcher_gpu_assignment_v1.csv",
+      "sha256": "28e544785757e0ba9115f3f81ca2c6469ebbeb192c7bc6d2767606947ae061c7"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrival_priority_stop_v1.json",
+      "sha256": "a56babfeba8d0e281f916f61a663b5c89c828c7bae135000dd538f75a235d68b"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/arrival_commitment_v2.json",
+      "sha256": "7ef4d9b3ad5c0c4a95c931e9a37e807bbf02e2061109f024245bf66a155aae6c"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/local_independent_recompute_v1.json",
+      "sha256": "9b5b3171d5d4d14be6c99e5e928e6c0d9d03e6cf57e883dc6383bd2229f7923a"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r1.json",
+      "sha256": "b8fc89453e585a579879c8ef43de5301ecf6e71605efce17119b3f257bff0229"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r2.json",
+      "sha256": "63574a383613b1c4e746b665d826fb15b710e687f0db5121c560991c37ead33e"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_llama_r3.json",
+      "sha256": "cb89dd1a023553cc5848d0fb3e51a961ae8fe37a2a435161ea9c0a8bf8c447be"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r1.json",
+      "sha256": "d81e3b710cacb03f6aa646a9636c468c7d60e7efbc06183b6a11a69c9a44ed42"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r2.json",
+      "sha256": "2ed2604eef36572db92e2510eaf89b5cc8f6540b08648f0ba77b96c5e9006bfa"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_mistral_r3.json",
+      "sha256": "6aacafefcd297f7683151d8727fe1d1d2c6bf7d8e599d31de714808ce2d2e317"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r1.json",
+      "sha256": "48b8900510c168be6626181de4719439d6d6b0ade737e0a786d32188a3d64647"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r2.json",
+      "sha256": "c74cae4361d44f2cefb7ec6654cca468172a2511dc03437822d09d0589ca51b3"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/single-session_qwen_r3.json",
+      "sha256": "d557fab8f38b6e2f75a46d816511d4cf38a6773839709112a733b4d606f2c729"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r1.json",
+      "sha256": "e9f902e70a5e623c914d27de95e146cb04acdb07d50be7d3e532c6abe60189ec"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r2.json",
+      "sha256": "829b3adf21beb17d34e877befb6d72c29e7eff231d2a31305e2bf8adbf1c5446"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_llama_r3.json",
+      "sha256": "ffa413cb501d7b1fe9099637f6a386cb64fcacfef3f539013ace9105014fb103"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r1.json",
+      "sha256": "5a6b40b7e75c3628bce252598630c319b4e674c512dfe3980c636ef07b650a21"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r2.json",
+      "sha256": "b05e43de12461102a2aa7cd95decac2e84a47f756f22c546e180f392fd0a8cdb"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_mistral_r3.json",
+      "sha256": "04610180ca61bbfdc2d955dc5fdfe5b4ff3e8b15cebd8b717a1bcfd28390322e"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r1.json",
+      "sha256": "3039cb712c514fee40420bf0930ebb933367bdf64f31a11fa24285d6074d74b7"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r2.json",
+      "sha256": "331cd52c4049e0e0729dae59a6b13d50d627ac1262bed1b864481ab33e9f0db4"
+    },
+    {
+      "path": "results/tsc_revision_r4/arrivals_v2/template-fanout_qwen_r3.json",
+      "sha256": "1f23a593acc5ce58416fd78bb246cae717b27c93ac7bf7434a2741f8368064b8"
+    },
+    {
+      "path": "results/tsc_revision_r4/clock_smoke_v1/arrivals.json",
+      "sha256": "2126eed5c97311e2f91d067761325e7f61c99030a7ad1d4653411f068a59b8ca"
+    },
+    {
+      "path": "results/tsc_revision_r4/clock_smoke_v1/sessions.jsonl",
+      "sha256": "e07717509f4948ecb01b152e7fbf4e45886cf2bc44c1a3fad444aa551ea648f0"
+    },
+    {
+      "path": "results/tsc_revision_r4/cost_adaptation_development_assignment_v1.json",
+      "sha256": "420872063ea3ef4f389792de5225a913f237d2b717fb689669aaac515d926c13"
+    },
+    {
+      "path": "results/tsc_revision_r4/cost_study_baseline_auditor_equivalence_v1.json",
+      "sha256": "6c28bea7c3240f3e86f9f99208f1f231f85ec09d3dd7baddeecad38c9fa73499"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_cost_adapter_full_stage_replay_v1.json",
+      "sha256": "a825f5f05fff430d955fa00fac0712af38cc21d5ba0cc739118ed892a0203962"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_cost_profile_candidate_v1.json",
+      "sha256": "be21959e9bde139b7fd0ecdec7f64bea089f9858b929f737accc232882ce4c8f"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_cost_profile_offline_replay_v1.json",
+      "sha256": "0428d0a06eefbab9ac905701312ea24103b078d7120bbfcafd12afbcf3856424"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+      "sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_inputs_v1/cold_sessions.jsonl",
+      "sha256": "36dc729793cd4f0b4b67d2f7c920f19125918819834ab077a1b0bf54e50d5bf1"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_inputs_v1/fanout_sessions.jsonl",
+      "sha256": "4c2f18c06d656538b8c44bf15dcc49c4e77efa35b7bda8d32a7e8e4a57fb1ad4"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_inputs_v1/input_commitment_v1.json",
+      "sha256": "4b769915f00ca711ff9480430df69ff02073b81d02ed68964dd8033002b22c66"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/development_review_v1.json",
+      "sha256": "edb274ebf921ff2cb0333d258e776fe5f6e5408139222a154991b353108df6c1"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/launcher_gpu_assignment_v1.csv",
+      "sha256": "9a8efffd13423b51a7052d2455b465e4a9e62e20bff8728f6ce0ca5350b11cd9"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_qualification_cost_audit_v1.json",
+      "sha256": "dbe8e188aad8b80389c03a727a896dd8ac8554310aa32f51a11e5c03e23426b5"
+    },
+    {
+      "path": "results/tsc_revision_r4/environment_preflight_v1.json",
+      "sha256": "8d16af0ccfd82708af6f27e51bc15351b0b6a84f10d91eab9392b0f0e4e2d10b"
+    },
+    {
+      "path": "results/tsc_revision_r4/fidelity_additional_service_exclusion_proof_v1.json",
+      "sha256": "01d3bfa2cbba397fba317bcb4c04e5a5a2493e0ebd8ce6acebd12cbf5d87a9e7"
+    },
+    {
+      "path": "results/tsc_revision_r4/fidelity_complete_exclusion_audit_v1.json",
+      "sha256": "8f58be01a4daa0d5021b5ed37ae864f4e045dc383c1b39d8798533d79167b519"
+    },
+    {
+      "path": "results/tsc_revision_r4/fidelity_render_contiguity_diagnostic_v1.json",
+      "sha256": "96d9210d55ec25dd6a7ad5346e6bce27e01b4e26b93d7ceb7c873ee44a482c42"
+    },
+    {
+      "path": "results/tsc_revision_r4/formal_input_length_preflight_v1.json",
+      "sha256": "dcb860b5cda763d718b808a33b3970e8654be36c7c92686dff6c76065472ad18"
+    },
+    {
+      "path": "results/tsc_revision_r4/formal_selection_v1.json",
+      "sha256": "9baed0e0b96f4d7f8ea033c1ae2cf7e45791c56b92fec206cae2ba58c71e1af7"
+    },
+    {
+      "path": "results/tsc_revision_r4/full_input_window_audit_v1.json",
+      "sha256": "9b755df930ac644653345768db71f1ca78259581f82e93aa88601cf650bf7fee"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_assignment_v3.json",
+      "sha256": "f892a72a64d7b187fedd0bbd7b463ff0f36ed147490e9209e55b91153acf7454"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/all_known_faithful_sessions_v3.jsonl",
+      "sha256": "9aafad29a6a64f044b2410a51fafa96d54cf2db04a6e404d116428afbb9329e8"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/development_faithful_sessions_v3.jsonl",
+      "sha256": "b76b77e85241108d618a8ebbf43f0f9e943df02c3db094dafe69923324022dbe"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/development_old_head_sessions_v3.jsonl",
+      "sha256": "9babb3f0ea21429c14182e0069057d03f7c122db3e36d6eaf5a0e80ec4676ca6"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/independent_input_integrity_v2.json",
+      "sha256": "2b86311b00b00a7382e42295dbc1993137a6737395f87c48fe876bea7110c97d"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/preparation_record_v3.json",
+      "sha256": "242d95f558ef3449efa1433136d2fd7658b308f71ec5a164e2459611af43555e"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_assignment_v1.json",
+      "sha256": "310228f10154e25b6be4dcc270161f5ac7a1386fe78dac6c907085c830a3bd5c"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/faithful_selected_sessions_v1.jsonl",
+      "sha256": "876eed3937fb428f2d8fbf04e66efa93403da40f6a948aea05aec97f6159d4fa"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/independent_input_integrity_v1.json",
+      "sha256": "f71e85864f0161ceba0c0145e0500c9ac38ed57e0b4e0e2e7c3ffee7afc6a40b"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/original_selected_sessions_v1.jsonl",
+      "sha256": "d1d7562f32642fc866a9b14a9b3ef8ad6f74f61524303fd569d3c8e8eb64bf2e"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/preparation_record_v1.json",
+      "sha256": "bb13e2d159573dfad72f44eea4abe3df248d24c290158789f867d11ff7e149e5"
+    },
+    {
+      "path": "results/tsc_revision_r4/input_fidelity_validation_route_v1.json",
+      "sha256": "33e6d683a5990701392a423eae58de2ba4b087dbe35d82a95e65c8108221dee2"
+    },
+    {
+      "path": "results/tsc_revision_r4/inputs/heldout_fanout_v1.jsonl",
+      "sha256": "58038c85d9022cfbe37923e8e5e032ba2a8360c8fce03d802c71925c9050c35d"
+    },
+    {
+      "path": "results/tsc_revision_r4/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "80c82fc121bfcd0da3a6f699f36187d02a8fde3cb1866a7402c89b200890f0b5"
+    },
+    {
+      "path": "results/tsc_revision_r4/inputs/input_commitment_v1.json",
+      "sha256": "aeb8c7ab4025c7344d6cd31dcd5094b517df99916a4b4a33e30d042ca05848c5"
+    },
+    {
+      "path": "results/tsc_revision_r4/known_case_v1/actual_prompt_ids_v1.json",
+      "sha256": "ee85ed0442e5ad206c2dae2490cf5683f66660ee37b15416711f79937d8fc387"
+    },
+    {
+      "path": "results/tsc_revision_r4/known_case_v1/sessions.jsonl",
+      "sha256": "2dd6f01ed3de7b222480647ebb834a40fdf86f8e7d3ee2c3ef66a301c9035220"
+    },
+    {
+      "path": "results/tsc_revision_r4/model_registry_v1.json",
+      "sha256": "1cafa8d210ca76079bff2bf7d4bafb243fad1c3dd210af7c6dfc4cd9c8fa3b4e"
+    },
+    {
+      "path": "results/tsc_revision_r4/phase2_integrity_preflight_v1.json",
+      "sha256": "cb8474db0d15d824239d40b5a95415b7e45ee370a5885973685aaad4505c156d"
+    },
+    {
+      "path": "results/tsc_revision_r4/validation_closed_v1/launcher_gpu_assignment_v1.csv",
+      "sha256": "dabb981e4acc681728d66ef48c68d2788502e0790b39290d8bbe713fc0d424fc"
+    },
+    {
+      "path": "scripts/close_tsc_revision_r4_cost_development_v1.sh",
+      "sha256": "78ff7853b2fa886e0bc374917bf0ea85bf0efa53acf441616ed8cb49166595ae"
+    },
+    {
+      "path": "scripts/close_tsc_revision_r4_fidelity_validation_v1.sh",
+      "sha256": "e97ce3712002e05f284449ccc402e743bebf4f33f39dddbc8052278e01f624ba"
+    },
+    {
+      "path": "scripts/contractkv_frozen_policy.py",
+      "sha256": "f41b50786dfa4c0b267de332528311185767cecc0a6ee7877188a475e1ddc5c4"
+    },
+    {
+      "path": "scripts/contractkv_pstp.py",
+      "sha256": "df655b668e78f72767e40bef0910e09200514058269d3146035dcd51f092f41d"
+    },
+    {
+      "path": "scripts/contractkv_quiescence.py",
+      "sha256": "e70dc31c85496a2ec86656a2e4a95b6f02717101a3a20df0a7394d3de8120629"
+    },
+    {
+      "path": "scripts/contractkv_shadow_parking.py",
+      "sha256": "9d93fb59cd5fe8abe8f658f27048580076755e94ad831aa84acac9517130f47c"
+    },
+    {
+      "path": "scripts/contractkv_transaction.py",
+      "sha256": "aa70a13fad31a691fe963eff50226979c549a7ee9d4c7d8fab229ca753b12776"
+    },
+    {
+      "path": "scripts/contractkv_verifier.py",
+      "sha256": "1577682ac36cf5756a84335a768e83701809cb050b30aa057fd0844a2489c572"
+    },
+    {
+      "path": "scripts/phase12_posc_layout_compiler.py",
+      "sha256": "123f2352965f3d6c2addabe6019e5a44aa49ce9e5afece01117bb556ac032478"
+    },
+    {
+      "path": "scripts/phase12_prefix_cache_ab.py",
+      "sha256": "3aa96b47cac2a1e32feef892675906d12c1e846f664de17cf772bc8f487c2597"
+    },
+    {
+      "path": "scripts/phase12_task_quality_sanity.py",
+      "sha256": "9391b5f8b186ae32cfdbfe62b632b4bed4f68965db3137805fdf9c2d2ee26eaa"
+    },
+    {
+      "path": "scripts/phase12e_cache_aware_posc.py",
+      "sha256": "a8e36563b6e725a865a28d91d356368830e3b5759e88076c39a5859bdac33e6d"
+    },
+    {
+      "path": "scripts/phase12e_multiturn_trajectory_builder.py",
+      "sha256": "a2127874b16b2a29a88a1f3786a390a7fd0fadf543eeecef0fbb5e8c751c5187"
+    },
+    {
+      "path": "scripts/phase12f_real_vllm_caposc_replay.py",
+      "sha256": "857713f21b2f53d81aaf7a759b7fc40de4810528fbecad21bea50ee4b1a683fc"
+    },
+    {
+      "path": "scripts/phase13b_fresh_policy_quality_replay.py",
+      "sha256": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63"
+    },
+    {
+      "path": "scripts/phase16r_verifier_live.py",
+      "sha256": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105"
+    },
+    {
+      "path": "scripts/phase17_live_common.py",
+      "sha256": "298f92081ca467730af1669f8f62328e1c5310f3de60b98d11bef182b66e01ae"
+    },
+    {
+      "path": "scripts/phase20a_official_quality.py",
+      "sha256": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51"
+    },
+    {
+      "path": "scripts/phase22_llama_layout_ladder.py",
+      "sha256": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r1r_validation.sh",
+      "sha256": "9287ef856ac404bc9e6048b1525625c3b028a5c851426ced09e54c9422891d77"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r2_long_format.sh",
+      "sha256": "b54e6f341e5424665545d42cbce2beb8cdc49d8e8392ee966f07a83ac2c49b1a"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r2_long_format_v2.sh",
+      "sha256": "c6d21dccd75716da0e2c0f6bb177c582267077318da19e5f0bb67eae205927bd"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r2_profile.sh",
+      "sha256": "65933b904861fef43ddec1cb691de8d0e42205b667111308ca9438f95e3ba076"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r2_validation.sh",
+      "sha256": "f7cd7919e3b0cb939eaa90ef636bd7a848d3eb5faf55fdfea2e353548cbffa2d"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r3_validation.sh",
+      "sha256": "68a59a977ba34b331f91da9bd60b69495b5cf244a148ff76b7289872faf1fdc1"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_clock_smoke.sh",
+      "sha256": "614c53ef8d186a29b81777b1378fde586bff96f8fdd04139f60e6cea30c96d57"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_cost_development_v1.sh",
+      "sha256": "21e8b7a901a826a9b79047b605e8cf1575e741a6ad6b5a9397b2350cd5905c3b"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_development_pilot.sh",
+      "sha256": "2ddd402217fe3b41c9370f5ff28376360e6a08a592f8f93ab2bad0884bca9ef4"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_fidelity_development_v3.sh",
+      "sha256": "cc0340f7db10b51ce8acae288e10020b7c1f68f5f8a4a364a3ae9dcd03d53f7c"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_fidelity_validation_v1.sh",
+      "sha256": "1a2f25b01ff25cc324b6cbb539311e9cd74a4b2924f3d284e7a45ede5c0dcdfb"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_known_diagnosis.sh",
+      "sha256": "d795c580f846a9cf9e0874b7a868cc8648ff72fe54e912dfe9b34681c30df7f5"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_repeat_check.sh",
+      "sha256": "a62c3b2884c79c1eb99c4d4465ca893df200b0b3321744fa5f7d30801e73c31c"
+    },
+    {
+      "path": "scripts/run_tsc_revision_r4_validation.sh",
+      "sha256": "5d006e658caacbdc024bef2e11acd5a2c087eafc1b044d3fc02ba641f2772bee"
+    },
+    {
+      "path": "scripts/run_vllm_server.sh",
+      "sha256": "353969bc3975e2f1b78292999bf1826dec2013a3fe985000d3382a2dd4b612ce"
+    },
+    {
+      "path": "scripts/stop_vllm_server.sh",
+      "sha256": "59e7a557e209d28c0fdf2a3954c11c5a97aff7068b10feaeff4d52e07f161d0b"
+    },
+    {
+      "path": "scripts/summarize_submission_supplement.py",
+      "sha256": "5c5b93a53c4394f01d446082478dab1a94cba5d4fdac1870af11fd20088a14ea"
+    },
+    {
+      "path": "scripts/tsc_revision_build_inputs.py",
+      "sha256": "d3101601922d5745704f7e551b4bee789c43384c72dd57fc08395d77751f844b"
+    },
+    {
+      "path": "scripts/tsc_revision_live.py",
+      "sha256": "3339cfec899aa64c850b96a4292f592e0b22fe8853de002663916be4872c1dc9"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_business_stream.py",
+      "sha256": "7a59915ea6ba6dc4550d4204d14fccb46a109c6d9148555f3519c5ccc12124a2"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_freeze_validation.py",
+      "sha256": "9221b6cbc947a96984977eeb35950729e3747d83ecca9c8ac6b8ddc68ec06597"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_live.py",
+      "sha256": "25521ad831b98f40b2a5c5235c217681b888301fdb94beedc3b043cbd23bb057"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_long_horizon.py",
+      "sha256": "4ff04d10d4b892607ed00d311da652e4e87d09b826a7f7d18b7acecc6408870d"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_output_horizon.py",
+      "sha256": "ee14eb22c1ba65ccd59acf5385e472be88a1a3ac967f73e2797c7762b3548b74"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_prefix_smoke.py",
+      "sha256": "18bd496ec37497e77daf9a5fbb0300e3b36ecb970f8a7790b9add9c61fc9f1df"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_validation_manifest.py",
+      "sha256": "9886c56f4dfa016f5acf37226d26cc89a339efc44d2cf374b6a028460847b7fa"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_witness_decisions.py",
+      "sha256": "ccd673f0dd081538e098791ff6b81ea15f20e0844f0669cdfa6d315895bd648e"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_benefit_policy.py",
+      "sha256": "4add592dd07b31b73397219b93eadce45526998f9585852d765080484e2c8d2f"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_business_stream.py",
+      "sha256": "148d3310e32edb1480d3212db39611ec11ec286037be3e4b8f6bc9234dde0c4e"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_execution_trace.py",
+      "sha256": "682c3ecfc15eb72fa52ff8ffe998826f4ff6a0d7c5aa8d5a17a373c9d1bc2b7e"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_freeze_scope.py",
+      "sha256": "c358c4c2f6e05ca4904b60a4cd3933f7aa4be1f03278b6277952a8fbe8d4d119"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_freeze_validation.py",
+      "sha256": "326ba790667b6aeb7ff55dce0d3c80bbf159c295acf1b9956bee49f1888510ce"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_live.py",
+      "sha256": "f28ff9a89aaff3bcba844de5aaae00e885bcef65e77ddd3801d91a4e7eda887f"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_live_summary.py",
+      "sha256": "86c6ccac9f294d2d70a71588a35705a11c634cc481fde5e78f4b518635059c8b"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_live_v2.py",
+      "sha256": "f782eaf3d8d480aa097bcd3e03a75038c71324a9a71decd75dcc5304ee445f85"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_long_format.py",
+      "sha256": "18f73e65b88e48310d1b65a65347186582ed59d80c9be00c604e8696c5f8adeb"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_make_fanout.py",
+      "sha256": "5de09eaf26a2f0373ee19005f76ce867e2d96bac063511119dfbf72703dca226"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_margin_policy.py",
+      "sha256": "bd69b3406aa70367afa6ea512b7ccdc9689fc28e73ece29ecb318f7d29cd2258"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_margin_smoke.py",
+      "sha256": "e4dd8ba245b8c5ff9b8504cae1b4c1e67b4f545dd6242a06a5b1623f718e21f7"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_model_registry.py",
+      "sha256": "5b7dbe3bc73c69993863d89d73a2a72cb1a31ba105053db55a4d1e04fad40987"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_prefix_smoke_logged.py",
+      "sha256": "d104d4cf8bd75185e57004b981d77298ffa0fb8659dac4c5d072bdc213c17952"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_profile.py",
+      "sha256": "219add86f2db17552131d012437805f3564e174174368edd746ecf53b53e6f7d"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_runtime_manifest.py",
+      "sha256": "57eaa95862b84df4dd3e7b7c689636fd7a7909c519dc2a3c75991ddb076dffa4"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_runtime_manifest_v2.py",
+      "sha256": "0a880546d3733ba48a3d43752324e748a6c1802b396f652720bc5bffca18977c"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_select_policy.py",
+      "sha256": "8ce3731b2df6f32b37ae2e59fc8960b940d647c51e3ad60ea22237b8f8967a0c"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_select_policy_known_guard.py",
+      "sha256": "5689995d20633033f1539b90d3143b05453b243ce9724780912bc8793ca58ab0"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_tail_bootstrap.py",
+      "sha256": "cdc04636e7929020503e2aee61934324e7262b5ae23bb13d07024fb3ccd07010"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_freeze_inputs.py",
+      "sha256": "d79427075562e569c065d93e946f0971f5ae7d011113c717111445f712e8049b"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_freeze_validation.py",
+      "sha256": "0c03e01af0b2b59df01e17c731e5e041fc4bbaede664fc86af308ac8e6c1755c"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_live.py",
+      "sha256": "956185685fc5a982d154b465bcf9bf4404b71cf04d022a0c5b2d7d7a98feae73"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_live_summary.py",
+      "sha256": "111d0ec57f000e4cdb50806673a2e154938dea792a6586a618d53e7c6a9d054f"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_output_contract.py",
+      "sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_actual_prompt_audit.py",
+      "sha256": "81a7e471b95b6827d9ee1085cbdc9cfa0c404d7522340af4445968190cf9e880"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_all_business_quality.py",
+      "sha256": "d4dd15961f1a8a2830ea9d81707596bc48cd3067b8891b609097a2c611ff63e0"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_arrival_protocol.py",
+      "sha256": "d5486ef86e76ad06cacd64fb020445c9c6afe9fc03b4e92b646ee4d26eb5be26"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_audit_cell.py",
+      "sha256": "bbf599fd4fdff76f9f970d24be50b2f7438b70292bacc54d22a82d9c405d0f50"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_augment_costs.py",
+      "sha256": "27e6f75bb26c80f35fb0b0811e6d5e5437224f7c8c451c16da4dd6a328908e76"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_build_cost_profile_v1.py",
+      "sha256": "8b6251b34a214fc1bc20adf3cf2e93e8c94cecbc01915298f39891d312f971ab"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_DEV_decision_v1.py",
+      "sha256": "16775829e0d19811b894d708650d4514d9992f3e1f6d7e12889059c783289dc5"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_adapter_v1.py",
+      "sha256": "945bd8968724b85dc3271eb07b900cde46b7846c913b4a5fd22598f05e9f32be"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_study_audit_cell_v1.py",
+      "sha256": "1c72c4577c9e32c47dc86f4a5e29560b405e14a3447cd0c347b440ce7f604644"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_study_live_v1.py",
+      "sha256": "fbe697bb29683bf35c2b063d12f16685882f06f9be1dec96ccee3b8c1a9c2331"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_study_routing_v1.py",
+      "sha256": "e1602cb54c4187fe5e29743ef1c62d137ed811475f7bcc606ee1fa26984aa8a0"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_study_summary_v1.py",
+      "sha256": "de6ecd1da59ea5b1ced500fb1c4971d9cbe2d4a13df1c5316818226910ad53d5"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_diagnose_prior.py",
+      "sha256": "d503880fbed301b2b095e4003ee694d1b0e4fb1ca33c7e80ae18d0ac96c2472e"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_adapter.py",
+      "sha256": "d136957b1d385f137d409b43738e0c6579771f8e4a82bb613c4f5b31cf7b7ae2"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_adapter_v2.py",
+      "sha256": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_input_proof_v2.py",
+      "sha256": "5bf0656e132508a1eb93af8e63ccd15971058731e4ce0fbeae9eefe05e94bfc4"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_live_v2.py",
+      "sha256": "3957966edbe5d0031afcd92f016cdac6ff6edeb25c88cb72f06d4f6f4e613d6f"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_summary_v2.py",
+      "sha256": "9bb381ae98b142943ba9603c3815b0bdbf0845d4377d5cd10fa1d6f039be94d7"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_validation_input_proof_v1.py",
+      "sha256": "afa6f5f9e0b5aa964bf535719d8d586e9e0102cf867ffb3b5e5e7f51dd29145c"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_validation_remote_preflight_v1.py",
+      "sha256": "e6f9625ed7df37ea2150b43b9a126d97dcddcaf25fa64e8e6952cf2574af897c"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fit_costs.py",
+      "sha256": "6a6432412913133572e366202c047205e78b4a6a7074e1e3a84f39ee49707b36"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fit_costs_v2.py",
+      "sha256": "b5e7cc4538975f71a8339d315b24aea8a93a1656fc0d5158e66b772859d25fb1"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_cost_development_v1.py",
+      "sha256": "411789c78b2769ffab50c149fa15c21a444905995ec5390f688468fe22400a93"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_fidelity_development_v3.py",
+      "sha256": "24fe393de4cc6f6c6ad5c4d247034e20935bebdf457f76a34d19e6f61bb247e5"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_fidelity_validation_v1.py",
+      "sha256": "8b5dd79a2ff56f6cad8f87eb26c976eec939065adbcdfd8682c31088d48817a6"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_inputs.py",
+      "sha256": "8f498f8bfc3931d19a78c9f0263073c8adfaf19153370bc605a16eb1e0e040b8"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_known_diagnosis.py",
+      "sha256": "7193476db6dab1f21fbb6646351f9ce0c6d75188188597aba0cf506058719e5d"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_pilot.py",
+      "sha256": "b84babb73d2c3a806f62e6a0c0e65c85e3613b6b768b8a455d2724ad2fa48706"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_repeat_check.py",
+      "sha256": "14ff9c6f74b313b6bc164cbceb0f76c157cecd7ca17982bf3a772a6bbc189854"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_freeze_validation.py",
+      "sha256": "668c85db58ee27bcbfe6247a031c9e250cc76e5ab7879bd1a474b456b0d0f99f"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_full_input_window_audit.py",
+      "sha256": "49f74c200be44a863a9d125d20130ac08250ee9582b96ec57edd2c8825798815"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_input_fidelity.py",
+      "sha256": "635f24ef45e0cf1234f319af9152d71b208d3213cd20fa18d095fc4d07eb957a"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_input_lengths.py",
+      "sha256": "c83d88a36d68aee242c8cb431a52f30cc209a9c0005756e91c7b275b9afde39a"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_known_diagnosis.py",
+      "sha256": "e629d2d453ec9d7df6804e00ece84880e54bf6ed30b3f7f8f10a17610dd9cc4c"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live_summary.py",
+      "sha256": "f332fc074a864df8df1472109b71a9335d672c01d40cd7fd79e646cf2b0ee92b"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_make_arrivals.py",
+      "sha256": "d0683be556daab69cf3289cc34d445ea2811c65d9cecb04ceb04c83dca841004"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_make_arrivals_v2.py",
+      "sha256": "5d14cbcf10629a76e597af9c861077cd65beaaffbc73a78278e1c98846d5256d"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_make_pilot_inputs.py",
+      "sha256": "cb1377eb9d1fe59948665588f069dd5a666c3840f537c9ecdb84366a7f0560af"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_output_length_audit.py",
+      "sha256": "fe67f05d2d1f2930a9801a4a27af68a21579a95a13a43e339ea4371c779bb850"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_package_cost_development_v1.py",
+      "sha256": "36884f2abd285ac2468360e6c25f7076eb8fb55b752997f23d10d14eb06e5850"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_package_fidelity_v3.py",
+      "sha256": "b8a78ffeeb2b29ca480826ea29919b0ac3fc05059f95ff7a999b7c436f4281ba"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_package_fidelity_validation_v1.py",
+      "sha256": "b651c7e44139570babfe439acfb2c5099ed88609a068c949be149fcaf5b1ae61"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_physical_prefix_accounting.py",
+      "sha256": "6c8be4363604bbf062e4d33f31052734d884f2a12c90f94d9c2288acbfa03f5a"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_policy.py",
+      "sha256": "c809f5f4f2c7e17c34d7fcf284d2559c44830fdacae39426df3498f67f86aa29"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_policy_v2.py",
+      "sha256": "03820f79fb6ec125b321e05c9809c916eee20589cb993bf2684c45702c5f6c8d"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_prepare_clock_smoke.py",
+      "sha256": "2d3a6c6470d0871f920859a931cb15333b66d9a92aa41fbc112ad19d362e67f9"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_prepare_fidelity_development_v3.py",
+      "sha256": "b3d98db707e0f054d7eb8a3f30880a290731ecacfc2c2df680fe8ee4859f0767"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_prepare_fidelity_validation_v1.py",
+      "sha256": "b50c9f53bd9412af1124787c7ff4bdb38ce6996e9e12a2fb295120cf1692a9e4"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_prepare_known_case.py",
+      "sha256": "d0bf26718031fc37a71df879daba444f7a5c1aed0721b0e40988b1824d9b5e7e"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_repeat_summary.py",
+      "sha256": "0c2c896caecdcf36089cceb83ba3651b921cc665a25ac4d455e8930f1155bf30"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_routing_attribution.py",
+      "sha256": "5cb461f3fc962cdfbc70318d55ed6ca77e001c481b2d5939229864e7df0e1752"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_scope_object_audit.py",
+      "sha256": "6268c440aaa38f7de5e499ff50ad0d3f634abbd9ff28b41c6497df8371b3824b"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_score_balance.py",
+      "sha256": "c768922122230ece4538f940303ca07d303cb79faeec1295b730567bad9ba55b"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_strata_calibration.py",
+      "sha256": "1b46d78b2d8657d6a11a046c71ad2584fbbbf2cfb0650712f40a9142ceca5cb7"
+    },
+    {
+      "path": "scripts/tsc_revision_summarize.py",
+      "sha256": "b73ffcc8e22e71f1fd241774980882063a4e2d9507268c63d59ee1bc3e96ff42"
+    },
+    {
+      "path": "tests/test_tsc_revision_r1r_query_scope.py",
+      "sha256": "66ef3753f4b4ac4bcf3c4fc70e62ae18c8e46adfd548bf925ab6abb45edd7522"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_arrival_protocol.py",
+      "sha256": "d49f822852cbc1a89f88513a1d01e86bb9ea8f03ad90084ab46139f9d70e14f1"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_cost_policy.py",
+      "sha256": "a9b982129912d7be4d04d46ec3f06412bc89ad14a74c2269ac104a09e6ab2077"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_fidelity_renderer.py",
+      "sha256": "a468f4fd52c02f12eac6669f8566787572ea0ec25b13dc589b12d56b2cebcdb8"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_fidelity_selection.py",
+      "sha256": "fb0f3e427626b93d4894488979c00d6be39836f80eeb9380d319fb5168d37846"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_input_fidelity.py",
+      "sha256": "a2c5dca70b270acd7f97868dd92964c4407e48587ba3a217c73ba6a065189458"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_make_arrivals.py",
+      "sha256": "0214ec5f21cd7459d29d0544f4c23a8f0bf4c13c6f436e732eedbe779cec9f35"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_model_arrivals.py",
+      "sha256": "1ef73735d8f575f78ace2c776a78b0bdfad482210b3ab46f6ad7385d22061865"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_policy.py",
+      "sha256": "f589c30ee5d21a0f4de37ec54e072025c2d45073e6e1dff0da12ed9cfb2ab768"
+    },
+    {
+      "path": "tests/test_tsc_revision_r4_policy_v2.py",
+      "sha256": "f3de4f001d5492b4d98c633593e99398b7be864254cda717735b0165f80ef2f7"
+    },
+    {
+      "path": "third_party/patches/contractkv_r2_pointwise_margin_v1.patch",
+      "sha256": "37670b7395372f91417f16e395e8ea27ad867ef03ec26cd4501de4815c8508c9"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/entrypoints/openai/api_server.py",
+      "sha256": "be4c266ef8bc78c29dd428d1220a6495cba45f12df167eb9f70f7755d56380fc"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/core/sched/scheduler.py",
+      "sha256": "f95158dd3d7f66b38cc9982f4a064e5a1c3143f8537aada3ef2e62535ea24223"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/engine/__init__.py",
+      "sha256": "24c9d57fc8a9494d70a2d362238093fbb83ed8e0f9a0b2651f2f62075448a250"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/engine/async_llm.py",
+      "sha256": "bc50153706d6d1dfa1e052fcb6b027ab7ccf7616f5c0d2692a5dd63e90a211fb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r1r-slice/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "6d5207b52b67370ad6b58e3a0c317c49940b5bda260aba5b31cda3bafd02bd38"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/api_server.py",
+      "sha256": "c4d70f5d299a059faaf8ca0d3a8d72f0e92065dc376d3a810ca7028c404c2db2"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/protocol.py",
+      "sha256": "2aeb7b0f48ada6f30babc056bdcaafe190d63f221b6ca29aa7df925abc90cd97"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/serving_chat.py",
+      "sha256": "aff95a0c5dff9fdd87d8cd531c81f471de3c42f36ddd63bc65a0b7d05ff53beb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/entrypoints/openai/serving_completion.py",
+      "sha256": "2888b73119f04d1bca187581abc1bf727e49276bbfb66b60b5ff2b50b79985e9"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/sched/scheduler.py",
+      "sha256": "c6b81d22a578239381ef419e88bb06b03f20666ef5350c223f916f247f0cd071"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/engine/__init__.py",
+      "sha256": "593187fdc0f8faf4f00f9c8c34f92c1e971a31ad7edfc0f7bd2e0461ed5fde77"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/engine/async_llm.py",
+      "sha256": "bc50153706d6d1dfa1e052fcb6b027ab7ccf7616f5c0d2692a5dd63e90a211fb"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "47527c7b52b58ab77d6a038f6b6cda5ec726539fd5c9b4c2891210569a176653"
+    }
+  ],
+  "static_local_import_closure_not_line_execution_trace": true,
+  "known_source_cost_DEV_only": true,
+  "one_candidate_no_safety_scope_changes": true,
+  "primary18_results_not_used_to_select_cost_parameters": true,
+  "primary18_still_unmodified": true,
+  "next_independent_cost_sources_not_yet_selected": true
+}

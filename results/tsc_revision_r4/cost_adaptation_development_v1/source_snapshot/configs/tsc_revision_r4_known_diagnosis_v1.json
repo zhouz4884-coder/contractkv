@@ -1,0 +1,21 @@
+{
+  "schema_version": "tsc-r4.phase3-known-diagnosis-plan.v1",
+  "phase": 3,
+  "case": "Qwen3-8B NarrativeQA doc99, exact historical cold-session prompts",
+  "devices": [0, 1],
+  "turns": [1, 7],
+  "layouts": ["raw", "L3 candidate"],
+  "cache_conditions": ["unique cold salt", "actual issued matching salt"],
+  "HTTP_concurrency_conditions": [1, 2],
+  "sequential_repeats": 3,
+  "raw_margin_floor": 0.0625,
+  "candidate_and_eos_floor": 0.125,
+  "expected_rows_per_gpu": {"free":54,"full_logprob":24,"verification_request":6,"verification_response":6},
+  "total_actual_model_requests_two_GPUs":168,
+  "free_generation_logprobs": "Full actual output IDs and top-2 generation logprobs, including natural EOS when returned",
+  "teacher_forced_controls": "Same actual raw t1 witness forced on exact raw/candidate t1/t7 IDs, plus one logged continuation token",
+  "actual_model_runner_trace": true,
+  "selected_observed_source_development_only": true,
+  "new_heldout_outcomes_used": false,
+  "performance_claim": false
+}

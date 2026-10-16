@@ -1,0 +1,125 @@
+{
+  "schema_version": "tsc-r4.final-chat-critical-fields-CPU-audit.v1",
+  "source_sha256": "c493ca79f74630a0ccfd3ef51827a52f75d17b03d2a0fb40f9be656696dc93d5",
+  "primary_freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "all_1800_model_source_tenant_turn_variants_checked_both_raw_and_candidate": true,
+  "complete_CODE_PREFIX_bytes_retained_contiguously_after_final_chat_template": true,
+  "query_nonwhitespace_characters_unchanged": true,
+  "counts": {
+    "Qwen3-8B|raw|requests": 600,
+    "Qwen3-8B|selected_candidate|requests": 600,
+    "Qwen3-8B|raw|complete_CODE_PREFIX": 300,
+    "Qwen3-8B|selected_candidate|complete_CODE_PREFIX": 300,
+    "Mistral-7B-Instruct-v0.3|raw|requests": 600,
+    "Mistral-7B-Instruct-v0.3|selected_candidate|requests": 600,
+    "Mistral-7B-Instruct-v0.3|raw|complete_CODE_PREFIX": 300,
+    "Mistral-7B-Instruct-v0.3|selected_candidate|complete_CODE_PREFIX": 300,
+    "Llama-3.1-8B-Instruct|raw|requests": 600,
+    "Llama-3.1-8B-Instruct|selected_candidate|requests": 600,
+    "Llama-3.1-8B-Instruct|raw|user_edge_whitespace_trimmed": 100,
+    "Llama-3.1-8B-Instruct|selected_candidate|user_edge_whitespace_trimmed": 100,
+    "Llama-3.1-8B-Instruct|raw|complete_CODE_PREFIX": 300,
+    "Llama-3.1-8B-Instruct|selected_candidate|complete_CODE_PREFIX": 300
+  },
+  "edge_trim_examples": [
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 0,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 0,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 1,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 1,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 2,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 2,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 3,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 3,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 4,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 4,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 5,
+      "view": "raw",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 5,
+      "view": "selected_candidate",
+      "leading_whitespace_characters": 0,
+      "trailing_whitespace_characters": 1
+    }
+  ],
+  "new_GPU_requests": 0,
+  "this_is_not_actual_API_ID_or_model_quality_evidence": true,
+  "actual_service_ID_audit_remains_separate": true
+}

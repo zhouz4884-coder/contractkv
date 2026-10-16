@@ -1,0 +1,35 @@
+{
+  "schema_version": "tsc-r4.input-fidelity-generation.v1",
+  "condition": "head",
+  "frozen_parent_protocol": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+  "runtime": {
+    "concurrency": 2,
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014,
+    "dtype": "float16",
+    "max_model_len": 16384,
+    "shadow_chunk_tokens": 128,
+    "shadow_round_tokens": 128
+  },
+  "layout": {
+    "stable_word_limit": 1500,
+    "stable_pieces": 16,
+    "ladder": {
+      "L0": 0.0,
+      "L1": 0.25,
+      "L2": 0.75,
+      "L3": 1.0
+    }
+  },
+  "free_generation": {
+    "budgets": {
+      "RULER": 128,
+      "HotpotQA": 128,
+      "NarrativeQA": 256,
+      "Qasper": 256,
+      "RepoBench": 384
+    }
+  },
+  "boundary": "Same R4 client, algorithm, model generation and scoring; only the input word cap and its whitespace transformation branch differ. Prospective study freeze and selected input commitment are separate."
+}

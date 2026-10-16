@@ -1,0 +1,104 @@
+{
+  "schema_version": "tsc-r4.single-cost-candidate-DEV.v1",
+  "development_only": true,
+  "models": [
+    "qwen"
+  ],
+  "policies": [
+    "raw-order",
+    "risk-tail",
+    "cost-adapted"
+  ],
+  "repeats": 1,
+  "studies": {
+    "template-fanout": 10
+  },
+  "expected_cells": 3,
+  "expected_actual_generations": 1200,
+  "expected_future_requests": 1080,
+  "input_files": {
+    "template-fanout": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/development_faithful_sessions_v3.jsonl"
+  },
+  "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+  "previous_catalog": "configs/tsc_revision_r3_catalog_v1.json",
+  "generation_protocol": "configs/tsc_revision_r4_input_fidelity_preserved_generation_v1.json",
+  "profile": "balanced",
+  "inherited_generation_fields_used": [
+    "runtime",
+    "layout",
+    "free_generation.budgets"
+  ],
+  "admission_override": "One fixed candidate level per scope and at most one GPU attempt; inherited legacy descent text is not used by the selected R4 clients.",
+  "CPU_input_length_preflight": "results/tsc_revision_r4/input_fidelity_development_inputs_v3/independent_input_integrity_v2.json",
+  "input_adaptation": {
+    "stable_word_limit": 0,
+    "stable_pieces": 16,
+    "text_processing": "Frozen label-blind original head/tail context substrings; complete CODE_PREFIX/query, whitespace and omission ledgers. Adjacent pieces of the same original segment are rendered contiguously under one outside heading; no internal injected labels. CALC node order/levels/dependencies unchanged.",
+    "metadata_correction": "CODE_PREFIX volatility=0 and cache_stability=1; 200 layouts and corresponding prompts unchanged.",
+    "task_defining_fields_not_truncated": true
+  },
+  "metric_boundary": "Preserve the frozen LongBench-style QA F1, RULER substring matching and legacy SequenceMatcher-based RepoBench edit-similarity implementation. No scorer is changed; no exact author RepoBench reproduction or semantic-correctness guarantee is claimed.",
+  "selected_client": "scripts/tsc_revision_r4_cost_study_live_v1.py",
+  "clock": "Original closed-loop shared-wave readiness; all planning and synchronous qualification included in wall; paired throughput capacity measurement.",
+  "full_cost_boundary": "Server startup/pre-measurement infrastructure checks excluded identically; every actual business/controller/GPU qualification/failed attempt included. Audit/flush after drain reported separately.",
+  "source_cluster_units": "Four previously observed faithful DEV sources, two per family; one process per policy, not independent validation.",
+  "policy_order": {
+    "1": [
+      "raw-order",
+      "cost-adapted",
+      "risk-tail"
+    ]
+  },
+  "score_thresholds": [
+    0,
+    0.01,
+    0.03,
+    0.05
+  ],
+  "latency_strata": [
+    "global",
+    "predefined family",
+    "template",
+    "tenant",
+    "request"
+  ],
+  "nonuniform_tail_results_retained": true,
+  "no_test_retuning": true,
+  "reuse_hints_not_production_repetition_measurements": true,
+  "cost_forecast_limits": "Development bootstrap predictors estimate early eligibility and qualification issuance, not post-certificate application-error probability. They are empirical, not formal risk bounds. The gate credits only currently observed issued-prefix warmth, not speculative future qualifications warming other query scopes. False negatives and capacity/tail tradeoffs are retained.",
+  "dynamic_scope_boundary": {
+    "key": "authorized template namespace and exact query digest; stable compiled prefix hash must match",
+    "digest_binds": "query text, full system message, stable segments, model, output budget, seed14014, temperature0, policy hash and renderer version",
+    "observation_schema": "[PRIVATE_TOOL_OBS] revision_session=<alnum_or_underscore_or_hyphen>; turn=<digits>; status=ready|completed|idle; no additional answer evidence. All fields must match the complete regex; CHAT_HISTORY/SCRATCHPAD are unqualified.",
+    "first_occurrence": "actual raw business output with complete answer/EOS witness before one single-shot qualification",
+    "query_shared_eligibility": "short nonabstaining answer; literal stable-context span or nonliteral raw minimum strictly above .125; backend raw .0625 and candidate/EOS .125 floors retained",
+    "nonshareable": "References failing the normalized <=16-word, nonabstaining, literal-or-margin eligibility receive exact-observation-only classification with no declared exact reuse and therefore L0. This is a structural heuristic, not a semantic detector of every free-form answer; it imposes no separate hard token-length limit.",
+    "scope_invalidation": "new query digest/namespace or changed stable content cannot reuse the old qualification; inherited dependency/layout eligibility remains required",
+    "changing_observation": "only the declared benchmark sessions are empirically audited. Reference eligibility is a heuristic; first-path qualification does not prove all future observation variants preserve free-generation behavior."
+  },
+  "new_sources": 0,
+  "prior_sources_excluded": null,
+  "no_positive_result_promised": true,
+  "selected_auditor": "scripts/tsc_revision_r4_cost_study_summary_v1.py",
+  "task_fidelity_condition": "faithful",
+  "parent_R4_freeze_sha256": "9bb61b7c7e47ff564e30d974a3580892e3f83719679e2c1f27cd9d95c35d12c4",
+  "input_preparation_record_sha256": "242d95f558ef3449efa1433136d2fd7658b308f71ec5a164e2459611af43555e",
+  "output_contract_version": "unchanged-one-python-statement",
+  "input_adapter": "task-fidelity-contiguous-segment-text-v2",
+  "cost_calibration": "Original risk-tail gate preserved as the original-policy control. Cost-adapted uses one fixed DEV-only cold-envelope profile and incremental fan-out wait allowance. Original probability and saving-cap terms unchanged.",
+  "cross_condition_clock_boundary": "All three fresh-process cells onGPU0,otherGPUidle;identicalclosed-loop2requestwaveclockandfullcost.",
+  "scope_boundary": "Existing exact query/typed metadata rules, raw/candidate/EOS floors, single-shot and inherited L0 unchanged.",
+  "parent_faithful_development_freeze_sha256": "0e8418b55f773b5a8efb14598ed6c3e5bdcdbbf1f27729362d0a4d3ecd055e39",
+  "source_selection_seed": 10672146,
+  "formal_acceptance_boundary": "One DEV candidate and fixed selection criteria only; if it fails retain negatives and skip conditional independent cost validation.",
+  "primary_method_frozen_before_any_new_source_model_output": true,
+  "cost_adaptation_uses_only_preexisting_development_logs": true,
+  "formal_heldout_outputs_forbidden_for_cost_rule_selection": true,
+  "cost_profile": "results/tsc_revision_r4/development_cost_profile_candidate_v1.json",
+  "cost_profile_sha256": "be21959e9bde139b7fd0ecdec7f64bea089f9858b929f737accc232882ce4c8f",
+  "cost_selection_plan": "configs/tsc_revision_r4_cost_adaptation_plan_v1.json",
+  "additional_conservative_quality_veto": "All-route material drops must not exceed the original-policy control; this is fixed before any cost DEV output, in addition to the plan minimum checks.",
+  "no_primary6_model_outputs_used_for_cost_selection": true,
+  "known_primary18_completion_required_before_GPU_dispatch": true,
+  "prior_faithful_validation_freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f"
+}

@@ -1,0 +1,168 @@
+{
+  "schema_version": "tsc-r4.DEV-cost-profile-candidate.v1",
+  "source_sha256": "8b6251b34a214fc1bc20adf3cf2e93e8c94cecbc01915298f39891d312f971ab",
+  "DEV_audit_sha256": "dbe8e188aad8b80389c03a727a896dd8ac8554310aa32f51a11e5c03e23426b5",
+  "original_catalog_sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb",
+  "cold_envelopes": {
+    "Llama-3.1-8B-Instruct|NarrativeQA|L2": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 1,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 2329,
+        "observed_max_prompt_tokens": 2329,
+        "observed_max_RPC_ms": 718.3380755595863,
+        "original_cold_GPU_p90_ms": 726.741233933717,
+        "conservative_observed_RPC_envelope_ms": 718.3380755595863
+      }
+    ],
+    "Llama-3.1-8B-Instruct|RULER|L3": [
+      {
+        "bucket_upper_tokens": 2048,
+        "RPCs": 3,
+        "source_clusters": 2,
+        "observed_min_prompt_tokens": 1403,
+        "observed_max_prompt_tokens": 1410,
+        "observed_max_RPC_ms": 845.5257266759872,
+        "original_cold_GPU_p90_ms": 438.91804618760943,
+        "conservative_observed_RPC_envelope_ms": 845.5257266759872
+      }
+    ],
+    "Mistral-7B-Instruct-v0.3|HotpotQA|L2": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 3,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 3048,
+        "observed_max_prompt_tokens": 3048,
+        "observed_max_RPC_ms": 893.0287850089371,
+        "original_cold_GPU_p90_ms": 898.8906041719019,
+        "conservative_observed_RPC_envelope_ms": 893.0287850089371
+      }
+    ],
+    "Mistral-7B-Instruct-v0.3|RULER|L3": [
+      {
+        "bucket_upper_tokens": 2048,
+        "RPCs": 5,
+        "source_clusters": 2,
+        "observed_min_prompt_tokens": 1624,
+        "observed_max_prompt_tokens": 1628,
+        "observed_max_RPC_ms": 925.0895972363651,
+        "original_cold_GPU_p90_ms": 473.8490714225918,
+        "conservative_observed_RPC_envelope_ms": 925.0895972363651
+      }
+    ],
+    "Qwen3-8B|HotpotQA|L3": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 1,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 2665,
+        "observed_max_prompt_tokens": 2665,
+        "observed_max_RPC_ms": 844.2917983047664,
+        "original_cold_GPU_p90_ms": 855.8100645430386,
+        "conservative_observed_RPC_envelope_ms": 844.2917983047664
+      },
+      {
+        "bucket_upper_tokens": 8192,
+        "RPCs": 2,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 6872,
+        "observed_max_prompt_tokens": 6880,
+        "observed_max_RPC_ms": 2303.551061078906,
+        "original_cold_GPU_p90_ms": 855.8100645430386,
+        "conservative_observed_RPC_envelope_ms": 2303.551061078906
+      }
+    ],
+    "Qwen3-8B|NarrativeQA|L3": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 1,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 2314,
+        "observed_max_prompt_tokens": 2314,
+        "observed_max_RPC_ms": 745.6701369956136,
+        "original_cold_GPU_p90_ms": 773.3289210591465,
+        "conservative_observed_RPC_envelope_ms": 745.6701369956136
+      }
+    ],
+    "Qwen3-8B|Qasper|L3": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 1,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 2564,
+        "observed_max_prompt_tokens": 2564,
+        "observed_max_RPC_ms": 830.5504908785224,
+        "original_cold_GPU_p90_ms": 844.5176936220378,
+        "conservative_observed_RPC_envelope_ms": 830.5504908785224
+      }
+    ],
+    "Qwen3-8B|RULER|L3": [
+      {
+        "bucket_upper_tokens": 2048,
+        "RPCs": 7,
+        "source_clusters": 2,
+        "observed_min_prompt_tokens": 1498,
+        "observed_max_prompt_tokens": 1502,
+        "observed_max_RPC_ms": 943.1932778097689,
+        "original_cold_GPU_p90_ms": 483.2892578560859,
+        "conservative_observed_RPC_envelope_ms": 943.1932778097689
+      }
+    ],
+    "Qwen3-8B|RepoBench|L3": [
+      {
+        "bucket_upper_tokens": 4096,
+        "RPCs": 3,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 3481,
+        "observed_max_prompt_tokens": 3525,
+        "observed_max_RPC_ms": 1152.5524500757456,
+        "original_cold_GPU_p90_ms": 2027.3331532254815,
+        "conservative_observed_RPC_envelope_ms": 1152.5524500757456
+      },
+      {
+        "bucket_upper_tokens": 8192,
+        "RPCs": 1,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 5998,
+        "observed_max_prompt_tokens": 5998,
+        "observed_max_RPC_ms": 2015.030185226351,
+        "original_cold_GPU_p90_ms": 2027.3331532254815,
+        "conservative_observed_RPC_envelope_ms": 2015.030185226351
+      },
+      {
+        "bucket_upper_tokens": 16384,
+        "RPCs": 3,
+        "source_clusters": 1,
+        "observed_min_prompt_tokens": 10964,
+        "observed_max_prompt_tokens": 10972,
+        "observed_max_RPC_ms": 4033.5561740212142,
+        "original_cold_GPU_p90_ms": 2027.3331532254815,
+        "conservative_observed_RPC_envelope_ms": 4033.5561740212142
+      }
+    ]
+  },
+  "active_candidate_models": [
+    "Qwen3-8B"
+  ],
+  "bucket_boundaries_fixed_before_counterfactual": [
+    2048,
+    4096,
+    8192,
+    16384
+  ],
+  "unsupported_model_family_level_length": "raw_fallback_for_adapted_model_no_extrapolation_past_largest_profile_bucket",
+  "unproven_current_residency": "use_cold_envelope_even_if_hash_was_published",
+  "gain_estimator": "preserve_original_calibrated_prefill_token_cap_and_probability_terms",
+  "fanout_wait_allowance": "use_existing_DEV_raw_global_ready_p99_as_explicit_additional_sync_controller_budget",
+  "single_session": "unchanged",
+  "new_independent_outputs_used": false,
+  "tail_runtime_guarantee": false,
+  "limitations": [
+    "Sparse correlated DEV sources; empirical cost envelope, not a probabilistic upper confidence bound.",
+    "Only Qwen has newly measured long-input DEV costs; no cost-adapted three-model claim.",
+    "Bucket support is an empirical calibration domain, not a proof for every intermediate prompt.",
+    "Actual online efficacy and quality require a separately frozen live A/B."
+  ]
+}

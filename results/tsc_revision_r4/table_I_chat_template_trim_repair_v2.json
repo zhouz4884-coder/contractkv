@@ -1,0 +1,156 @@
+{
+  "schema_version": "tsc-r4.TableI-chat-template-trim-compatibility.v2",
+  "original_failure": "v1CPUchar-spanlookupfailedonLlamaNarrativeQAwithonequerytrailingblank;actualAPI-IDequalityalreadypassed.",
+  "repair": "v2mapsstrictwhole-useredge-trimmingonly;othertransformationsstillfail. Italsoexcludeszero-lengthbodyrangesfromboundary-overlapdiagnostics.",
+  "old_Qwen_primary_results_unchanged": [
+    {
+      "condition": "head",
+      "400requestrows_all_primary_count_fields_exact_equal": true,
+      "all_primary_summary_values_exact_equal": true,
+      "auxiliary_empty_segment_boundary_corrections": [
+        {
+          "model": "Qwen3-8B",
+          "population": "all_business",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              8100,
+              7800
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "all_business",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              4900,
+              4600
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "future",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              7290,
+              7020
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "future",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              4410,
+              4140
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "warm",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              810,
+              780
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "warm",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              490,
+              460
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "condition": "faithful",
+      "400requestrows_all_primary_count_fields_exact_equal": true,
+      "all_primary_summary_values_exact_equal": true,
+      "auxiliary_empty_segment_boundary_corrections": [
+        {
+          "model": "Qwen3-8B",
+          "population": "all_business",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              700,
+              500
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "all_business",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              500,
+              300
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "future",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              630,
+              450
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "future",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              450,
+              270
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "warm",
+          "family": "ALL",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              70,
+              50
+            ]
+          }
+        },
+        {
+          "model": "Qwen3-8B",
+          "population": "warm",
+          "family": "RepoBench",
+          "changes": {
+            "stable_boundary_tokens_excluded": [
+              50,
+              30
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "auxiliary_boundary_bug": "v1countedtokenstraddlinganEMPTYdeclaredsegmentasboundaryalthoughtherewerenostablebodycharacters;onlyexcluded-boundaryauxiliarycountschange. Stable/native/token-ratioresultsunchanged.",
+  "new_GPU_requests": 0,
+  "old_v1_source_and_results_preserved": true
+}
