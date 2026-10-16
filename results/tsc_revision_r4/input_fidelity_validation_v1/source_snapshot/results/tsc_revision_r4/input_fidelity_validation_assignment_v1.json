@@ -1,0 +1,87 @@
+{
+  "schema_version": "tsc-r4.fidelity-independent-assignment.v1",
+  "paired_same_device": true,
+  "blocks": [
+    {
+      "model": "qwen",
+      "repeat": 1,
+      "GPU_lane": 0,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    {
+      "model": "mistral",
+      "repeat": 1,
+      "GPU_lane": 1,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    {
+      "model": "llama",
+      "repeat": 1,
+      "GPU_lane": 0,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    {
+      "model": "qwen",
+      "repeat": 2,
+      "GPU_lane": 1,
+      "policy_order": [
+        "risk-tail",
+        "raw-order"
+      ]
+    },
+    {
+      "model": "mistral",
+      "repeat": 2,
+      "GPU_lane": 0,
+      "policy_order": [
+        "risk-tail",
+        "raw-order"
+      ]
+    },
+    {
+      "model": "llama",
+      "repeat": 2,
+      "GPU_lane": 1,
+      "policy_order": [
+        "risk-tail",
+        "raw-order"
+      ]
+    },
+    {
+      "model": "qwen",
+      "repeat": 3,
+      "GPU_lane": 0,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    {
+      "model": "mistral",
+      "repeat": 3,
+      "GPU_lane": 1,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    },
+    {
+      "model": "llama",
+      "repeat": 3,
+      "GPU_lane": 0,
+      "policy_order": [
+        "raw-order",
+        "risk-tail"
+      ]
+    }
+  ]
+}

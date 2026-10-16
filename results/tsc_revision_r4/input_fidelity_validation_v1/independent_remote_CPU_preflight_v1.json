@@ -1,0 +1,100 @@
+{
+  "schema_version": "tsc-r4.independent-fidelity-native-tokenizer-preflight.v1",
+  "source_sha256": "e6f9625ed7df37ea2150b43b9a126d97dcddcaf25fa64e8e6952cf2574af897c",
+  "freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "input_preparation_sha256": "bb13e2d159573dfad72f44eea4abe3df248d24c290158789f867d11ff7e149e5",
+  "sources": 6,
+  "declared_model_tenant_turn_variants": 1800,
+  "actual_raw_and_selected_candidate_prompts_checked": true,
+  "all_selected_variants_fit_and_preserve_critical_fields": true,
+  "native_and_copied_tokenizer_window_checks_exact": true,
+  "selection_prefix_hash_order_verified": true,
+  "source_disjointness_verified": true,
+  "new_GPU_requests": 0,
+  "results": [
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 14425,
+          "Mistral-7B-Instruct-v0.3": 16059,
+          "Llama-3.1-8B-Instruct": 13799
+        }
+      }
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 14216,
+          "Mistral-7B-Instruct-v0.3": 15814,
+          "Llama-3.1-8B-Instruct": 13757
+        }
+      }
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 12274,
+          "Mistral-7B-Instruct-v0.3": 13520,
+          "Llama-3.1-8B-Instruct": 11638
+        }
+      }
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 3315,
+          "Mistral-7B-Instruct-v0.3": 4144,
+          "Llama-3.1-8B-Instruct": 3320
+        }
+      }
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 6745,
+          "Mistral-7B-Instruct-v0.3": 9168,
+          "Llama-3.1-8B-Instruct": 6728
+        }
+      }
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "fit": {
+        "fits": true,
+        "checked_request_variants": 300,
+        "all_declared_variants_checked": true,
+        "conservative_guard_tokens": 0,
+        "max_prompt_plus_budget_by_model": {
+          "Qwen3-8B": 11241,
+          "Mistral-7B-Instruct-v0.3": 14363,
+          "Llama-3.1-8B-Instruct": 11222
+        }
+      }
+    }
+  ]
+}

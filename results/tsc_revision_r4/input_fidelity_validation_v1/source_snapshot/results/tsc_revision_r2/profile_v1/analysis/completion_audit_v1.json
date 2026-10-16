@@ -1,0 +1,44 @@
+{
+  "schema_version": "tsc-r2.development-profile-audit.v1",
+  "execution_complete": true,
+  "errors": [],
+  "cases": [
+    {
+      "model": "qwen",
+      "actual_generations": 556,
+      "qualification_calls": 108,
+      "issued": 85,
+      "actual_paired_compiled_controls": 340,
+      "rejected_published_tokens": 0,
+      "metric_joins": 664,
+      "declared_gpu_lane": "0",
+      "raw_sha256": "9c7652b278d0ddc216966dfae02f0ab71af64b45d53f8fc72080c13cdd1218f8"
+    },
+    {
+      "model": "mistral",
+      "actual_generations": 300,
+      "qualification_calls": 72,
+      "issued": 39,
+      "actual_paired_compiled_controls": 156,
+      "rejected_published_tokens": 0,
+      "metric_joins": 372,
+      "declared_gpu_lane": "1",
+      "raw_sha256": "d0bd36803a116f08d3414e47658c4b775dcf651dca8f5bba901f2dc3cb8c84a6"
+    },
+    {
+      "model": "llama",
+      "actual_generations": 304,
+      "qualification_calls": 54,
+      "issued": 40,
+      "actual_paired_compiled_controls": 160,
+      "rejected_published_tokens": 0,
+      "metric_joins": 358,
+      "declared_gpu_lane": "1",
+      "raw_sha256": "faa7b9a48d19d4480496b1678e4b9242d73ccda5700cb8e99cfbb0350e5607a7"
+    }
+  ],
+  "frozen_files": 63,
+  "all_candidate_calls_are_post_issued_actual_reuse_controls": true,
+  "unexecuted_candidates_are_not_real_raw_fallbacks": true,
+  "not_end_to_end_policy_efficacy": true
+}

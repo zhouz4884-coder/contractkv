@@ -1,0 +1,33 @@
+{
+  "timestamp_UTC": "2026-10-16T12:00:16.301105+00:00",
+  "sources_already_observed": true,
+  "no_new_source_selection": true,
+  "cells": [
+    {
+      "condition": "head",
+      "policy": "raw-order",
+      "gpu_lane": 0,
+      "repeat": 1
+    },
+    {
+      "condition": "faithful",
+      "policy": "risk-tail",
+      "gpu_lane": 0,
+      "repeat": 1
+    },
+    {
+      "condition": "faithful",
+      "policy": "raw-order",
+      "gpu_lane": 0,
+      "repeat": 1
+    },
+    {
+      "condition": "head",
+      "policy": "risk-tail",
+      "gpu_lane": 0,
+      "repeat": 1
+    }
+  ],
+  "reason": "Same device for all four cells; reverse raw/risk order across input conditions; no policy threshold/contract tuning.",
+  "execution_requires_closed36_and_explicit_partial_arrival_priority_stop": true
+}
