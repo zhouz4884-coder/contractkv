@@ -1,11 +1,11 @@
 # Major Revision: Reviewer-to-Evidence Tracker
 
-Readiness: **Phase-1 experiments complete and archived: R1, query-bound repair,
-actual-long-output and known-counterexample controls; manuscript not ready to submit**.
+Readiness: **Phase-1 and the authorized Phase-2 experiment round complete and archived;
+remaining quality/economics/tail targets documented; manuscript not ready to submit**.
 The submitted manuscript is preserved. This tracker does not claim that the
 manuscript or response letter has already been revised.
 
-Task mode: **triage-only** for a **major revision**. Response-package readiness
+Task mode: **completed experimental supplements and targeted optimization** for a **major revision**. Response-package readiness
 is **draft_with_placeholders**, because manuscript locations and text revisions
 are not yet assigned. Experimental completion and
 submission readiness are separate states.
@@ -17,6 +17,23 @@ long-output cells (135 actual generations), and 9/9 known-case policy cells
 remote closure verifies all 83 prospective source/input checks and no owned
 resident GPU process. Two compiled quality regressions remain in the new main
 cohort. Targeted optimization is the separately authorized second phase.
+
+Phase-2 closure is summarized in `docs/tsc_revision_phase2_summary_zh.md`.
+Two independently frozen cohorts cover 90 cells and 67,500 actual business
+generations. The first cohort retains seven compiled material score drops;
+the amended second cohort retains three drops from one Qwen NarrativeQA unit.
+The second cohort has 4,965 compiled paired futures, including 3,612 fan-out
+compiled futures with no score or output-ID change. Its cold-session
+full-wall gains are 1.074/1.006/1.001x raw and fan-out gains are
+1.833/1.101/1.067x. Stable cold gains and common p99 improvement are not
+established. All three models have separately declared >512-token correct,
+admitted long-output conditions; Llama's 224-item stress failure is retained.
+Eleven completed studies have local per-member verification/recomputation,
+2,005 archive members including repeated snapshots and 22 rehashed parts.
+Remote closure checks 729 Phase-2 source/snapshot commitments, six dispatch
+commitments, the original 83 checks and no owned resident GPU worker.
+Residuals and proposed next checks are in
+`docs/tsc_revision_phase2_next_stage_issues_zh.md`; a new GPU round has not begun.
 
 The decision letter is identified by SHA256
 `e5b12656164650d7d9d13fd9377ded67b346b7963d5893735d84354173fea03d`.

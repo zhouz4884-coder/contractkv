@@ -2,7 +2,7 @@
 
 > **2026-10-15 大修补强第一阶段已完成。** [总报告](docs/tsc_major_revision_phase1_summary_zh.md)汇总原 R1、query 绑定补测、真实长输出、失败案例对照和完整成本；[详细结果](docs/tsc_major_revision_r1r_results_zh.md)保留所有退化与回退。下方 2026-07-20 内容记录原投稿版本，新受控变体的结果单独解释。
 
-> **第二阶段仍在进行。** 已完成[最小 margin 诊断](docs/tsc_revision_phase2_margin_preflight_v1_zh.md)、[开发标定](docs/tsc_revision_phase2_development_profile_v1_zh.md)、[开发服务试跑](docs/tsc_revision_phase2_development_pilot_v1_zh.md)与[长输出格式条件](docs/tsc_revision_phase2_long_format_results_zh.md)。独立新 50 来源的正式三重复矩阵已冻结并启动，主结果尚未确认。
+> **2026-10-16 第二阶段本轮实验已完成并复核。** [总报告](docs/tsc_revision_phase2_summary_zh.md)汇总两批独立验证（90 cells/67500 次业务生成）及长输出。最新一批十租户完整吞吐为 raw 的 1.833/1.101/1.067 倍；仍有一个 Qwen 来源的三次编译 F1 下降，冷会话稳定收益和三模型 p99 共同改善尚未达成。[完整新验证结果](docs/tsc_revision_phase2_second_independent_results_zh.md)与[下一阶段问题台账](docs/tsc_revision_phase2_next_stage_issues_zh.md)保留反例、原因线索及候选修正；未自动启动新 GPU 矩阵。手稿及逐点回复尚未据此完成修改。
 
 > **Certified Prompt Layout Compilation and Transactional Prefix Reuse for Multi-Tenant LLM Services**
 

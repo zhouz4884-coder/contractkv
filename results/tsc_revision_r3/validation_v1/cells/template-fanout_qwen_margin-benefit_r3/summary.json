@@ -1,0 +1,23 @@
+{
+  "schema_version": "tsc-r3.contract-margin-live.v1",
+  "cell": "template-fanout_qwen_margin-benefit_r3",
+  "study": "template-fanout",
+  "policy": "margin-benefit",
+  "repeat": 3,
+  "execution_complete": true,
+  "futures": 900,
+  "expected_futures": 900,
+  "successful_futures": 900,
+  "all_actual_metric_joins": 1025,
+  "sessions_sha256": "0e7092f8d53d7da525e4b74957e3f404a24093e8df7061b7b55c54995f5d068d",
+  "protocol_sha256": "c00d70623d3f081f7197f919e19430356ad5f2b5fc7eb6aa209122904715c935",
+  "catalog_sha256": "0da0a6f030f7309d7bed9174a905f2e1d56d0dc62e134ec6f65aa346df9f2249",
+  "tenants_per_template": 10,
+  "wall_s_including_all_setup_and_verification": 478.0309409121983,
+  "post_measurement_audit_wall_s": 1.085229099728167,
+  "verification_calls": 25,
+  "verification_ms_total": 10872.98298906535,
+  "compiled_future_requests": 630,
+  "raw_file_sha256": "be16a207e98994b2e606214102372d1292eb3146435f8696791153db127526c6",
+  "boundary": "Service wall includes actual planning, business, scoring/logging and all synchronous qualification waits. Same two-request wave readiness barrier as legacy. Post-measurement flush/audit is reported separately, excluded for all policies. Reference is the real first raw business output."
+}
