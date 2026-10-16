@@ -43,7 +43,9 @@ def audit_cell(directory,expected,freeze_sha,catalog):
     business=[r for r in rows if r['row_type'] in ('warm','future')];positions=[(r['session_id'],r['turn_id']) for r in business]
     if len(set(positions))!=len(positions) or set(positions)!={(sid,t) for sid in expected for t in range(10)}:errors.append('session/turn coverage')
     if len({r['request_id'] for r in business})!=len(business):errors.append('duplicate business ID')
-    owners={(r['certificate_namespace'],r['query_scope']):r for r in business if r['scope_first_decision_business']}
+    owners={}
+    for r in business:
+        if r['scope_first_decision_business']:owners.setdefault((r['certificate_namespace'],r['query_scope']),r)
     requests={};responses={};decisions={};witnesses={};plans={};contracts={};scope_checks={};postgates={};prefixes=defaultdict(dict)
     attempts=published=compiled_hits=0;prepared_cache={}
     def reconstructed(row):
@@ -167,8 +169,10 @@ def audit_cell(directory,expected,freeze_sha,catalog):
     for r in business:waves[order[r['session_id']]//protocol['runtime']['concurrency'],r['turn_id']].append(r)
     last={};arrival_rows=None
     if closed.get('arrival_protocol'):
-        arrival_path=root/'source_snapshot'/config['arrival_files'][closed['study']][str(closed['repeat'])]
+        tables=config['arrival_files'][closed['study']]
+        arrival_path=root/'source_snapshot'/(tables[str(closed['repeat'])] if str(closed['repeat']) in tables else tables[model][str(closed['repeat'])])
         arrival_rows,arrival_sha,arrival_trace=load_arrivals(arrival_path,closed['sessions_sha256'],list(expected),closed['tenants_per_template'],protocol['runtime']['concurrency'])
+        if arrival_trace.get('model_identity',model)!=model:errors.append('arrival model binding')
         if closed['arrival_protocol']!='frozen_exogenous_shared_wave' or closed['arrival_trace_sha256']!=arrival_sha:errors.append('frozen arrival binding')
         if closed['arrival_requests']!=len(business) or closed['planned_last_arrival_offset_s']!=arrival_trace['waves'][-1]['ready_offset_s']:errors.append('arrival coverage declaration')
     for (cohort,turn),items in sorted(waves.items()):

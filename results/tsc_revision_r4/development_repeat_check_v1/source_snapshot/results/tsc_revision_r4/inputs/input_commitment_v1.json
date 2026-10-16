@@ -1,0 +1,152 @@
+{
+  "schema_version": "tsc-r4.phase3-input-commitment.v1",
+  "timestamp": "2026-10-16T02:27:46.703494+00:00",
+  "phase": 3,
+  "seed": 10672131,
+  "excluded_sources": 462,
+  "exclusion_files": [
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_development_sessions_v1.jsonl",
+      "sha256": "06e10921fdcae55d831897d67146f90332fb89c17390c133f172d5ebb3af0436"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/hotpot_heldout_sessions_v1.jsonl",
+      "sha256": "16aba12577becbc261b950fac59aa6d0a4477744aec709ca787a91fcf28203d7"
+    },
+    {
+      "file": "results/tsc_revision_r1/inputs/free_generation_sessions_v1.jsonl",
+      "sha256": "20baa66b1cdba60f9f9454aa5d1fb2e64cb285a0b67603ab2fbd3f5147c3e482"
+    },
+    {
+      "file": "results/scale_up/qwen3_14b_tp2_v0/frozen_sessions_v0.jsonl",
+      "sha256": "3209dcf46d4095d9c204ad9d18ff754461a6db80f87fb0463bc5010520583ec3"
+    },
+    {
+      "file": "results/end_to_end/phase19b_untouched_sessions_v0.jsonl",
+      "sha256": "4c03379809e960b400a44b161b5d5203a0653e778f539c7d14a0291cee45a78a"
+    },
+    {
+      "file": "results/mistral/development_sessions_v0.jsonl",
+      "sha256": "bb9a3dd2baafcdbf1f6494856bdc4e60b69ba1191eb071c5cfc54577cb37bb9e"
+    },
+    {
+      "file": "results/mistral/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "e10fd2200de1cbcc2bf17ce35793c5210266f41b4694a70999188f5c9b96a634"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/development_sessions_v0.jsonl",
+      "sha256": "244d05adf30f2f276a8cfa28eab972d22d5f8919d590a8b168a2b29acdcf4b31"
+    },
+    {
+      "file": "results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl",
+      "sha256": "fbc70da5fc6323934ee6999b068f16ec64417002a53fa2e26c2db8c70219ff54"
+    },
+    {
+      "file": "results/cross_model/phase19c_calibration_sessions_v0.jsonl",
+      "sha256": "e2ad433dd94357811f723f74cff8fcddef6945fae780f13b43e80ec42e04b73f"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/development_sessions_v1.jsonl",
+      "sha256": "d8d2bf87c861b58c83a48df7a9ef62a91c5cc7f062b0455939e5d383470b99c1"
+    },
+    {
+      "file": "results/tsc_revision_r1r/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "2ea4c808eea49f9dde385b8b3caa411a5296907d219a74238c7f6728c2ac3079"
+    },
+    {
+      "file": "results/tsc_revision_r2/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725"
+    },
+    {
+      "file": "results/tsc_revision_r3/inputs/heldout_sealed_sessions_v1.jsonl",
+      "sha256": "835f9e843b8423ead3f540d5825e2a736f46e7e9600f86cfe12961cf60dad73c"
+    }
+  ],
+  "excluded_set_sha256": "f2f79f17adbd6c76eea535efb78260d45eb0071725f69ae9f174014048b818c6",
+  "source_pool_sha256": "d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "parent_commitment_sha256": "cc4c80c745f6d21435d983f3e0595f1042aacd5840d02771c78364eec2fb6dae",
+  "unused_sources_before_selection": {
+    "RULER": 113,
+    "HotpotQA": 85,
+    "NarrativeQA": 112,
+    "Qasper": 115,
+    "RepoBench": 361
+  },
+  "cohorts": {
+    "heldout_sealed_sessions_v1.jsonl": {
+      "sha256": "80c82fc121bfcd0da3a6f699f36187d02a8fde3cb1866a7402c89b200890f0b5",
+      "sources": 50,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:75",
+        "RULER:niah_single_1:ruler:132",
+        "RULER:niah_single_1:ruler:85",
+        "RULER:niah_single_1:ruler:112",
+        "RULER:niah_single_1:ruler:72",
+        "RULER:niah_single_1:ruler:91",
+        "RULER:niah_single_1:ruler:70",
+        "RULER:niah_single_1:ruler:84",
+        "RULER:niah_single_1:ruler:154",
+        "RULER:niah_single_1:ruler:159",
+        "LongBench:hotpotqa:hotpotqa:doc:175",
+        "LongBench:hotpotqa:hotpotqa:doc:164",
+        "LongBench:hotpotqa:hotpotqa:doc:184",
+        "LongBench:hotpotqa:hotpotqa:doc:143",
+        "LongBench:hotpotqa:hotpotqa:doc:176",
+        "LongBench:hotpotqa:hotpotqa:doc:27",
+        "LongBench:hotpotqa:hotpotqa:doc:43",
+        "LongBench:hotpotqa:hotpotqa:doc:140",
+        "LongBench:hotpotqa:hotpotqa:doc:62",
+        "LongBench:hotpotqa:hotpotqa:doc:186",
+        "LongBench:narrativeqa:narrativeqa:doc:120",
+        "LongBench:narrativeqa:narrativeqa:doc:5",
+        "LongBench:narrativeqa:narrativeqa:doc:118",
+        "LongBench:narrativeqa:narrativeqa:doc:159",
+        "LongBench:narrativeqa:narrativeqa:doc:154",
+        "LongBench:narrativeqa:narrativeqa:doc:144",
+        "LongBench:narrativeqa:narrativeqa:doc:42",
+        "LongBench:narrativeqa:narrativeqa:doc:72",
+        "LongBench:narrativeqa:narrativeqa:doc:78",
+        "LongBench:narrativeqa:narrativeqa:doc:103",
+        "LongBench:qasper:qasper:doc:49",
+        "LongBench:qasper:qasper:doc:94",
+        "LongBench:qasper:qasper:doc:194",
+        "LongBench:qasper:qasper:doc:7",
+        "LongBench:qasper:qasper:doc:3",
+        "LongBench:qasper:qasper:doc:97",
+        "LongBench:qasper:qasper:doc:193",
+        "LongBench:qasper:qasper:doc:143",
+        "LongBench:qasper:qasper:doc:77",
+        "LongBench:qasper:qasper:doc:132",
+        "RepoBench:python_v1.1:IEIT-Yuan/Yuan-2.0",
+        "RepoBench:python_v1.1:Jisshubot/JISSHU_BOT",
+        "RepoBench:python_v1.1:AGI-Collective/Robin",
+        "RepoBench:python_v1.1:spla-tam/SplaTAM",
+        "RepoBench:python_v1.1:zju3dv/4K4D",
+        "RepoBench:python_v1.1:intellerce/controlanimate",
+        "RepoBench:python_v1.1:LFhase/GALA",
+        "RepoBench:python_v1.1:camenduru/magicanimate-hf",
+        "RepoBench:python_v1.1:KieDani/Towards_3D_Object_Localization",
+        "RepoBench:python_v1.1:AILab-CVC/GroupMixFormer"
+      ]
+    },
+    "heldout_fanout_v1.jsonl": {
+      "sha256": "58038c85d9022cfbe37923e8e5e032ba2a8360c8fce03d802c71925c9050c35d",
+      "sources": 10,
+      "source_groups": [
+        "RULER:niah_single_1:ruler:75",
+        "RULER:niah_single_1:ruler:132",
+        "LongBench:hotpotqa:hotpotqa:doc:175",
+        "LongBench:hotpotqa:hotpotqa:doc:164",
+        "LongBench:narrativeqa:narrativeqa:doc:120",
+        "LongBench:narrativeqa:narrativeqa:doc:5",
+        "LongBench:qasper:qasper:doc:49",
+        "LongBench:qasper:qasper:doc:94",
+        "RepoBench:python_v1.1:IEIT-Yuan/Yuan-2.0",
+        "RepoBench:python_v1.1:Jisshubot/JISSHU_BOT"
+      ]
+    }
+  },
+  "selection_uses_model_outputs_or_scores": false,
+  "new_phase3_model_outcomes_used": false,
+  "all_previous_R2_and_R3_outcomes_are_observed_development": true
+}

@@ -1,0 +1,226 @@
+{
+  "schema_version": "tsc-r4.development-fallback-variation-triage.v1",
+  "offline_after_outputs_only": true,
+  "source_group": "LongBench:narrativeqa:narrativeqa:doc:129",
+  "session_id": "r3-heldout-4a1d9a5f4190d1cb",
+  "turn": 3,
+  "gold_answers_for_offline_metric_inspection_only": [
+    "Eliza favors her son over her daughter."
+  ],
+  "outputs": {
+    "raw-order": {
+      "request_id": "chatcmpl-single-session_mistral_raw-order_r1-r3-heldout-4a1d9a5f4190d1cb-t3",
+      "output_text": " Eliza favors her son over her other children.",
+      "output_token_ids": [
+        10819,
+        29476,
+        8324,
+        1502,
+        1327,
+        2734,
+        1522,
+        1327,
+        1567,
+        3204,
+        29491,
+        2
+      ],
+      "prompt_ids_sha256": "8ef831e5d8860606b7da3869ea4e4e88ebb1e2939d081fbc14abf637e331e9a4",
+      "prompt_tokens": 2617,
+      "effective_level": "L0",
+      "prefix_hit_tokens": 112,
+      "new_prefill_tokens": 2505,
+      "task_score": 0.7999999999999999,
+      "finish_reason": "stop",
+      "query_scope": "74c5c90c563fd74324a5a6b97031f4f0ec99b69addff5e4cfb23d78379309d75",
+      "prompt_IDs_match_raw": true
+    },
+    "risk-tail": {
+      "request_id": "chatcmpl-single-session_mistral_risk-tail_r1-r3-heldout-4a1d9a5f4190d1cb-t3",
+      "output_text": " Eliza favors her son over the other children.",
+      "output_token_ids": [
+        10819,
+        29476,
+        8324,
+        1502,
+        1327,
+        2734,
+        1522,
+        1040,
+        1567,
+        3204,
+        29491,
+        2
+      ],
+      "prompt_ids_sha256": "8ef831e5d8860606b7da3869ea4e4e88ebb1e2939d081fbc14abf637e331e9a4",
+      "prompt_tokens": 2617,
+      "effective_level": "L0",
+      "prefix_hit_tokens": 112,
+      "new_prefill_tokens": 2505,
+      "task_score": 0.7142857142857143,
+      "finish_reason": "stop",
+      "query_scope": "74c5c90c563fd74324a5a6b97031f4f0ec99b69addff5e4cfb23d78379309d75",
+      "prompt_IDs_match_raw": true,
+      "first_output_ID_divergence": 7
+    },
+    "previous-refined": {
+      "request_id": "chatcmpl-single-session_mistral_previous-refined_r1-r3-heldout-4a1d9a5f4190d1cb-t3",
+      "output_text": " Eliza favors her son over her other children.",
+      "output_token_ids": [
+        10819,
+        29476,
+        8324,
+        1502,
+        1327,
+        2734,
+        1522,
+        1327,
+        1567,
+        3204,
+        29491,
+        2
+      ],
+      "prompt_ids_sha256": "8ef831e5d8860606b7da3869ea4e4e88ebb1e2939d081fbc14abf637e331e9a4",
+      "prompt_tokens": 2617,
+      "effective_level": "L0",
+      "prefix_hit_tokens": 112,
+      "new_prefill_tokens": 2505,
+      "task_score": 0.7999999999999999,
+      "finish_reason": "stop",
+      "query_scope": "74c5c90c563fd74324a5a6b97031f4f0ec99b69addff5e4cfb23d78379309d75",
+      "prompt_IDs_match_raw": true,
+      "first_output_ID_divergence": -1
+    }
+  },
+  "evidence": {
+    "raw-order": {
+      "input_raw_file_sha256": "617031f1147f1c4406b2aad7be99c286dd17899d26d385500ed2b97f62f708b2",
+      "scope_verifications": []
+    },
+    "risk-tail": {
+      "input_raw_file_sha256": "a36c211cfe8149b2d9a4dfc8cd7ef1bef6e12f9253508601d834900b9836c38b",
+      "scope_verifications": [
+        {
+          "failure_reason": "pre_reference_expected_net_rejected",
+          "GPU_calls": 0,
+          "issued": false
+        },
+        {
+          "failure_reason": "pre_reference_expected_net_rejected",
+          "GPU_calls": 0,
+          "issued": false
+        },
+        {
+          "failure_reason": "pre_reference_expected_net_rejected",
+          "GPU_calls": 0,
+          "issued": false
+        }
+      ]
+    },
+    "previous-refined": {
+      "input_raw_file_sha256": "6fc4114d9040f2441e666dcac15b44a0f71a20e2b381941680406c2b2b655a3c",
+      "scope_verifications": [
+        {
+          "failure_reason": "pointwise_raw_answer_or_eos_margin_below_floor",
+          "GPU_calls": 0,
+          "issued": false
+        },
+        {
+          "failure_reason": "",
+          "GPU_calls": 1,
+          "issued": true
+        },
+        {
+          "failure_reason": "",
+          "GPU_calls": 1,
+          "issued": true
+        }
+      ]
+    }
+  },
+  "mechanism_cause_status": "unresolved; same prompt IDs are necessary but do not identify numerical/batch/cache cause. No generation or scorer was changed.",
+  "offline_metric_explanation": {
+    "scorer_sha256": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51",
+    "details": {
+      "raw-order": {
+        "normalized_prediction": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "her",
+          "other",
+          "children"
+        ],
+        "normalized_reference": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "her",
+          "daughter"
+        ],
+        "prediction_words": 8,
+        "reference_words": 7,
+        "overlapping_words_with_multiplicity": 6,
+        "unchanged_frozen_F1": 0.7999999999999999
+      },
+      "risk-tail": {
+        "normalized_prediction": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "other",
+          "children"
+        ],
+        "normalized_reference": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "her",
+          "daughter"
+        ],
+        "prediction_words": 7,
+        "reference_words": 7,
+        "overlapping_words_with_multiplicity": 5,
+        "unchanged_frozen_F1": 0.7142857142857143
+      },
+      "previous-refined": {
+        "normalized_prediction": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "her",
+          "other",
+          "children"
+        ],
+        "normalized_reference": [
+          "eliza",
+          "favors",
+          "her",
+          "son",
+          "over",
+          "her",
+          "daughter"
+        ],
+        "prediction_words": 8,
+        "reference_words": 7,
+        "overlapping_words_with_multiplicity": 6,
+        "unchanged_frozen_F1": 0.7999999999999999
+      }
+    },
+    "observed_text_change": "her other children -> the other children; one output token differs at index7; both outputs retain Eliza favors her son.",
+    "interpretation": "The measured F1 decrease is explained by the unchanged article-removal and word-overlap formula: overlap6/length8 versus overlap5/length7 against reference length7. This is a descriptive text comparison, not a new semantic correctness score.",
+    "retained_material_drop": true,
+    "generation_and_metric_changed": false,
+    "numerical_cause": "Unknown; same prompt IDs, same112 native prefix-hit tokens and2505 newly prefilled tokens do not identify a causal batch/numerical mechanism."
+  }
+}

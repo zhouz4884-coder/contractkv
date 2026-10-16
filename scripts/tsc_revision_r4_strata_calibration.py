@@ -5,6 +5,7 @@ import csv
 import json
 from pathlib import Path
 import statistics
+import random
 import sys
 if __package__ in (None,''):sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from scripts.tsc_revision_summarize import read,write
@@ -38,8 +39,7 @@ def main():
         summary,business,plans,decisions,first,witness=compact(path)
         model=business[0]['model'];study=summary['study'];policy=summary['policy'];repeat=summary['repeat']
         for r in business:
-            if r['row_type']!='future':continue
-            perf.append({k:r[k] for k in ('study','model','policy','repeat','source_group','family','session_id','turn_id','effective_level','ready_ttft_ms','ttft_ms','latency_ms')})
+            perf.append({k:r[k] for k in ('row_type','study','model','policy','repeat','source_group','family','session_id','turn_id','effective_level','ready_ttft_ms','ttft_ms','latency_ms')})
             perf[-1].update({'ready_latency_ms':r.get('ready_latency_ms',r['latency_ms']+r['ready_ttft_ms']-r['ttft_ms']),
                             'queue_before_controller_ms':r.get('queue_before_controller_ms',0.),'controller_to_submit_ms':r.get('controller_to_submit_ms',max(0,r['ready_ttft_ms']-r['ttft_ms']))})
         if policy!='risk-tail':continue
@@ -87,7 +87,9 @@ def main():
         if ref:pairs.append({**r,**{'raw_'+k:ref[k] for k in ('ready_ttft_ms','ready_latency_ms','ttft_ms','latency_ms','queue_before_controller_ms','controller_to_submit_ms')}})
     strata=[];groups=defaultdict(list)
     for r in pairs:
-        for kind,value in [('global','ALL'),('family',r['family']),('template',r['source_group']),('tenant',r['session_id'])]:
+        memberships=[('all_business_global','ALL'),('all_business_family',r['family'])]
+        if r['row_type']=='future':memberships += [('global','ALL'),('family',r['family']),('template',r['source_group']),('tenant',r['session_id']),('route','L0' if r['effective_level']=='L0' else 'compiled')]
+        for kind,value in memberships:
             groups[r['study'],r['model'],r['policy'],kind,value].append(r)
     for (study,model,policy,kind,value),rows in sorted(groups.items()):
         out={'study':study,'model':model,'policy':policy,'stratum':kind,'value':value,'pairs':len(rows),'sources':len({r['source_group'] for r in rows}),'repeats':len({r['repeat'] for r in rows})}
@@ -95,7 +97,7 @@ def main():
             for prefix in ('raw_',''):
                 values=[r[prefix+field] for r in rows]
                 out[prefix+field+'_mean']=statistics.fmean(values)
-                for q in (.5,.95,.99,1.):out[prefix+field+'_p'+str(int(q*100))]=percentile(values,q)
+                for q in (0.,.5,.95,.99,1.):out[prefix+field+'_p'+str(int(q*100))]=percentile(values,q)
         out['p99_ready_reduction_pct']=100*(1-out['ready_ttft_ms_p99']/out['raw_ready_ttft_ms_p99'])
         # Source/tenant rows are descriptive; few-source family intervals are explicitly exploratory.
         if kind=='family' and not a.allow_partial:
@@ -106,10 +108,11 @@ def main():
         for group in ('ALL',r['family']):groups[r['study'],r['model'],group].append(r)
     for (study,model,family),rows in sorted(groups.items()):
         labelled=[r for r in rows if r['control_supported_joint_label'] is not None]
-        rejected=[r for r in rows if not r['pre_allowed']]
+        rejected=[r for r in rows if not r['pre_allowed'] and r['pre_reason']!='inherited_family_L0']
         matchedreject=[r for r in rejected if r['control_supported_joint_label'] is not None]
         observed=[r for r in rows if r['actual_gpu_calls']]
         calibration.append({'study':study,'model':model,'family':family,'plans':len(rows),'pre_rejections':len(rejected),
+                            'inherited_L0_plans':sum(r['pre_reason']=='inherited_family_L0' for r in rows),
                             'actual_gpu_calls':sum(r['actual_gpu_calls'] for r in rows),'actual_gpu_issued':sum(r['actual_issued'] for r in observed),
                             'actual_gpu_pass_rate_selected_only':statistics.fmean(r['actual_issued'] for r in observed) if observed else None,
                             'identity_and_level_matched_control_labels':len(labelled),'control_supported_joint_successes':sum(r['control_supported_joint_label'] for r in labelled),
@@ -119,13 +122,31 @@ def main():
                             'previous_control_GPU_calls_screened_matched':sum(r['previous_control_gpu_calls'] or 0 for r in matchedreject),
                             'previous_control_rpc_ms_screened_matched':sum(r['previous_control_rpc_ms'] or 0 for r in matchedreject),
                             'selection_bias_boundary':'Accepted-only pass rate is selective; control labels require same first raw input/output IDs and candidate level. No unseen rejected-scope success label is invented.'})
+    bins=[];groups=defaultdict(list)
+    for r in gate_rows:
+        if r['control_supported_joint_label'] is not None and r['p_joint_lower'] is not None:
+            groups[r['study'],r['model'],min(3,int(float(r['p_joint_lower'])*4))].append(r)
+    for (study,model,index),rows in sorted(groups.items()):
+        sources=defaultdict(list)
+        for r in rows:sources[r['source_group']].append(r)
+        keys=sorted(sources);rng=random.Random(10672135);values=[]
+        for _ in range(2000):
+            chosen=[r for key in rng.choices(keys,k=len(keys)) for r in sources[key]]
+            values.append(statistics.fmean(r['control_supported_joint_label'] for r in chosen))
+        bins.append({'study':study,'model':model,'joint_lower_bin':f'[{index/4},{(index+1)/4}'+(']' if index==3 else ')'),
+                     'matched_control_labels':len(rows),'distinct_sources':len(keys),'mean_predicted_joint_lower':statistics.fmean(float(r['p_joint_lower']) for r in rows),
+                     'control_supported_joint_success_fraction':statistics.fmean(r['control_supported_joint_label'] for r in rows),
+                     'source_cluster_descriptive_success_ci95_low':percentile(values,.025),'source_cluster_descriptive_success_ci95_high':percentile(values,.975),
+                     'boundary':'Descriptive matched-control labels with correlated queries/repeats in source clusters; lower bootstrap predictor is not a calibrated formal guarantee. Unmatched/rejected unknown labels excluded.'})
     a.output.mkdir(parents=True,exist_ok=True)
-    for name,rows in [('request_latency_pairs_v1.csv',pairs),('latency_strata_v1.csv',strata),('gate_calibration_scopes_v1.csv',gate_rows),('gate_calibration_summary_v1.csv',calibration),('warm_forecast_audit_v1.csv',warm_records)]:
+    for name,rows in [('request_latency_pairs_v1.csv',pairs),('latency_strata_v1.csv',strata),('gate_calibration_scopes_v1.csv',gate_rows),('gate_calibration_summary_v1.csv',calibration),('gate_calibration_bins_v1.csv',bins),('warm_forecast_audit_v1.csv',warm_records)]:
         if rows:write(a.output/name,rows)
-    result={'schema_version':'tsc-r4.strata-calibration.v1','errors':errors,'paired_request_count':len(pairs),'scope_count':len(gate_rows),
+    result={'schema_version':'tsc-r4.strata-calibration.v1','errors':errors,'paired_request_count':len(pairs),'paired_future_requests':sum(r['row_type']=='future' for r in pairs),'scope_count':len(gate_rows),
             'warm_forecasts_with_GPU_probe':len(warm_records),'warm_forecast_actual_misses':sum(r['forecast_warm_miss'] for r in warm_records),
             'request_level_retained':True,'strata':['global','predefined family','source template','tenant','individual request'],
-            'partial':a.allow_partial,'not_a_formal_probability_guarantee':True,'new_rejected_scope_outcomes_not_probed':True}
+            'partial':a.allow_partial,'not_a_formal_probability_guarantee':True,'new_rejected_scope_outcomes_not_probed':True,
+            'raw_path_lower_boundary':'Observed raw minimum/percentiles and matched L0 routes are reported; no immutable hardware floor or universal p99 improvement is inferred.',
+            'latency_population':'Primary global/family/template/tenant/route strata retain the prespecified future requests; additional all_business_global/family rows include initial warm/first raw requests. Full wall includes every business request in both cases.'}
     (a.output/'strata_calibration_audit_v1.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps(result))
 
 

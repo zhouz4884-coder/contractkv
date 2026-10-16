@@ -1,0 +1,29 @@
+{
+  "schema_version": "tsc-r4.audit-incident.v1",
+  "timestamp": "2026-10-16T04:05:10.137210+00:00",
+  "stage": "Development audit, before formal test freeze",
+  "observed_error": "scope case reconstruction in two completed template fanout risk cells",
+  "cause": "Dict comprehension chose the last simultaneous first-decision tenant; gate was constructed once for first tenant. Both tenant rows intentionally flag first decision before qualification.",
+  "checks": [
+    {
+      "model": "qwen",
+      "plans": 15,
+      "stored_case_equals_first_owner": 15,
+      "stored_case_equals_last_owner": 0,
+      "difference_only_private_tool_observation": 15
+    },
+    {
+      "model": "llama",
+      "plans": 9,
+      "stored_case_equals_first_owner": 9,
+      "stored_case_equals_last_owner": 0,
+      "difference_only_private_tool_observation": 9
+    }
+  ],
+  "repair": "Choose first chronological first-decision owner with setdefault, consistent with gate construction and LP witness ownership.",
+  "GPU_raw_results_edited": false,
+  "frozen149_sources_changed": false,
+  "old_auditor_sha256": "841bb614d6f3b5564a94ef5005ea4139a7b26fb22775dd8db56c677e165001ce",
+  "new_auditor_sha256": "64638779f9638ee03541c37e98ad3c490a894437440680e8dbf651002f5d104b",
+  "revalidation": "Rerun all completed cells; final complete audit remains required before packaging and formal freeze."
+}

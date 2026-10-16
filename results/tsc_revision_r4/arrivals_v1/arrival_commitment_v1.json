@@ -1,0 +1,299 @@
+{
+  "schema_version": "tsc-r4.arrival-calibration.v1",
+  "development_freeze_sha256": "2ff5c212ffb2fbfc2dd1ded4d395f599685188aa0f730e69a038d03ec3c0dfa3",
+  "only_observed_development_raw_timings": true,
+  "new_validation_model_outcomes_used": false,
+  "selection": "Maximum across three models of observed mean raw wave service per predefined family and study; one prespecified load .8 and deterministic uniform .9..1.1 interarrival jitter.",
+  "offered_load": 0.8,
+  "sources": [
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_llama_raw-order_r1/raw.jsonl",
+      "sha256": "a616f1edf84b02e49634ccbb12ed26c6e61d048830836b4c7170bbed1cbbf937"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_mistral_raw-order_r1/raw.jsonl",
+      "sha256": "617031f1147f1c4406b2aad7be99c286dd17899d26d385500ed2b97f62f708b2"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/single-session_qwen_raw-order_r1/raw.jsonl",
+      "sha256": "a49a2f37c6cf2856e1347a646c65a92a2160c7912bca72fa002b9799ab82319d"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_llama_raw-order_r1/raw.jsonl",
+      "sha256": "d53fcf0c55158a2269d76f6f429dbb9e7f24263e0b5408dfb5fb121e9732bf9b"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_mistral_raw-order_r1/raw.jsonl",
+      "sha256": "0e0556a896fb158e468f1cd3519b5ddd32e505428db3a58a476e4dfdecf0bb0d"
+    },
+    {
+      "path": "results/tsc_revision_r4/development_pilot_v1/cells/template-fanout_qwen_raw-order_r1/raw.jsonl",
+      "sha256": "332cec8ba8944eb71c2429699298b32715fb5c1a81c9885cb52b1d663e5a57dc"
+    }
+  ],
+  "duration_records": [
+    {
+      "study": "single-session",
+      "family": "HotpotQA",
+      "common_mean_wave_service_s": 2.793508706567809,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 2.017204736312851,
+          "waves": 10
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 2.793508706567809,
+          "waves": 10
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 1.9888864556327461,
+          "waves": 10
+        }
+      ]
+    },
+    {
+      "study": "single-session",
+      "family": "NarrativeQA",
+      "common_mean_wave_service_s": 2.658060635253787,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 2.165067375754006,
+          "waves": 20
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 2.658060635253787,
+          "waves": 20
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 2.1494967711390927,
+          "waves": 20
+        }
+      ]
+    },
+    {
+      "study": "single-session",
+      "family": "Qasper",
+      "common_mean_wave_service_s": 2.641496133478358,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 1.668710075551644,
+          "waves": 10
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 2.641496133478358,
+          "waves": 10
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 1.5174899464007467,
+          "waves": 10
+        }
+      ]
+    },
+    {
+      "study": "single-session",
+      "family": "RULER",
+      "common_mean_wave_service_s": 0.92540317135863,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 0.6940148824360222,
+          "waves": 10
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 0.8702521310653537,
+          "waves": 10
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 0.92540317135863,
+          "waves": 10
+        }
+      ]
+    },
+    {
+      "study": "single-session",
+      "family": "RepoBench",
+      "common_mean_wave_service_s": 9.36894972701557,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 9.36894972701557,
+          "waves": 10
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 7.33776860977523,
+          "waves": 10
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 2.9042547069024294,
+          "waves": 10
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "family": "HotpotQA",
+      "common_mean_wave_service_s": 2.127152889762074,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 2.127152889762074,
+          "waves": 50
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 1.63008051071316,
+          "waves": 50
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 1.525906429514289,
+          "waves": 50
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "family": "NarrativeQA",
+      "common_mean_wave_service_s": 1.4238327849190682,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 1.2377629961725325,
+          "waves": 50
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 1.4238327849190682,
+          "waves": 50
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 1.3878772467002272,
+          "waves": 50
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "family": "Qasper",
+      "common_mean_wave_service_s": 1.8250046972651035,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 1.5830548640247435,
+          "waves": 50
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 1.8250046972651035,
+          "waves": 50
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 1.3261138547025622,
+          "waves": 50
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "family": "RULER",
+      "common_mean_wave_service_s": 0.9353437473531813,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 0.6992059757001698,
+          "waves": 50
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 0.8690130474325269,
+          "waves": 50
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 0.9353437473531813,
+          "waves": 50
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "family": "RepoBench",
+      "common_mean_wave_service_s": 9.556236767331137,
+      "observed_model_groups": [
+        {
+          "model": "Llama-3.1-8B-Instruct",
+          "mean_wave_service_s": 5.245745635647327,
+          "waves": 50
+        },
+        {
+          "model": "Mistral-7B-Instruct-v0.3",
+          "mean_wave_service_s": 9.556236767331137,
+          "waves": 50
+        },
+        {
+          "model": "Qwen3-8B",
+          "mean_wave_service_s": 3.459245627541095,
+          "waves": 50
+        }
+      ]
+    }
+  ],
+  "files": {
+    "single-session": {
+      "1": {
+        "path": "results/tsc_revision_r4/arrivals_v1/single-session_r1.json",
+        "sha256": "09c3625d250735f3ff936e96eed865262161d6d177d93d80c6fbca1e3cb783e1",
+        "waves": 250,
+        "last_offset_s": 1140.3097137559478
+      },
+      "2": {
+        "path": "results/tsc_revision_r4/arrivals_v1/single-session_r2.json",
+        "sha256": "bdc9c759a8edfb143e87b4c7beb8172ae90a78ebf422493130c1079ca0c97d6f",
+        "waves": 250,
+        "last_offset_s": 1139.2829300615233
+      },
+      "3": {
+        "path": "results/tsc_revision_r4/arrivals_v1/single-session_r3.json",
+        "sha256": "45c1717cddb04989b4c0308670f608abe6866fe21aaf708c0b5b8f91f5e1544e",
+        "waves": 250,
+        "last_offset_s": 1138.483285026097
+      }
+    },
+    "template-fanout": {
+      "1": {
+        "path": "results/tsc_revision_r4/arrivals_v1/template-fanout_r1.json",
+        "sha256": "9cf3f7e4327f680f1d210e237006c7613111c3050a625622d75c2ffe59342b7d",
+        "waves": 500,
+        "last_offset_s": 1977.686845634796
+      },
+      "2": {
+        "path": "results/tsc_revision_r4/arrivals_v1/template-fanout_r2.json",
+        "sha256": "531a4a358dbcce8375b01c7478e7d8b601e2315dc82dcc531b13bfedc493806b",
+        "waves": 500,
+        "last_offset_s": 1966.2772338817767
+      },
+      "3": {
+        "path": "results/tsc_revision_r4/arrivals_v1/template-fanout_r3.json",
+        "sha256": "2471e39b7e85dfe151e3463fc08b909b3e315753391c6e986ff9a80aa3422788",
+        "waves": 500,
+        "last_offset_s": 1973.051853774096
+      }
+    }
+  },
+  "generator_sha256": "d0683be556daab69cf3289cc34d445ea2811c65d9cecb04ceb04c83dca841004"
+}

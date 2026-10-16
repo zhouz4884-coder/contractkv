@@ -14,7 +14,7 @@ import csv
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--study',choices=('diagnosis_v1','development_pilot_v1','clock_smoke_v1','validation_closed_v1','validation_arrival_v1'),required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--study',choices=('diagnosis_v1','development_pilot_v1','clock_smoke_v1','development_repeat_check_v1','validation_closed_v1','validation_arrival_v1'),required=True);a=p.parse_args()
     root=a.root.resolve();base=root/'results/tsc_revision_r4'/a.study
     proof=json.loads((base/'analysis/completion_audit_v1.json').read_text(encoding='utf-8'))
     if not proof['execution_complete']:raise ValueError('All expected actual cells and audits must complete')
@@ -32,12 +32,13 @@ def main():
         dispatch_count=len(dispatch['files'])
     post=root/'results/tsc_revision_r4'/('post_'+a.study+'_original_freeze_audit_v1.json')
     subprocess.run([sys.executable,str(root/'scripts/tsc_revision_r1r_freeze_audit.py'),'--root',str(root),'--output',str(post)],check=True)
-    prefix={'diagnosis_v1':'diagnosis_','development_pilot_v1':'pilot_','clock_smoke_v1':'clock_',
+    prefix={'diagnosis_v1':'diagnosis_','development_pilot_v1':'pilot_','clock_smoke_v1':'clock_','development_repeat_check_v1':'repeat_',
             'validation_closed_v1':'closed_','validation_arrival_v1':'arrival_'}[a.study]
     logs=list((root/'logs/tsc_revision_r4').glob(prefix+'*_server.log'))
     logs+=list((root/'logs/tsc_revision_r4').glob(a.study+'*'))
+    if a.study in ('validation_closed_v1','validation_arrival_v1'):logs.append(root/'logs/tsc_revision_r4/validation_v1.log')
     snapshots={'diagnosis_v1':'diagnosis_snapshot_v1.sh','development_pilot_v1':'development_pilot_snapshot_v1.sh',
-               'clock_smoke_v1':'clock_smoke_snapshot_v1.sh','validation_closed_v1':'validation_snapshot_v1.sh','validation_arrival_v1':'validation_snapshot_v1.sh'}
+               'clock_smoke_v1':'clock_smoke_snapshot_v1.sh','development_repeat_check_v1':'repeat_check_snapshot_v1.sh','validation_closed_v1':'validation_snapshot_v1.sh','validation_arrival_v1':'validation_snapshot_v1.sh'}
     logs.append(root/'logs/tsc_revision_r4'/snapshots[a.study])
     owned=set();pattern=re.compile(r'\((?:APIServer|EngineCore_DP\d+|Worker_TP\d+)\s+pid=(\d+)\)')
     for path in logs:
@@ -55,6 +56,7 @@ def main():
             ['tsc_revision_r4_live_summary.py','tsc_revision_r4_audit_cell.py','tsc_revision_r4_strata_calibration.py',
              'tsc_revision_r4_arrival_protocol.py','tsc_revision_r2_tail_bootstrap.py'])
     names+=['tsc_revision_r2_margin_smoke.py','tsc_revision_r2_margin_policy.py']
+    if a.study=='development_repeat_check_v1':names+=['tsc_revision_r4_repeat_summary.py']
     for name in names:shutil.copyfile(root/'scripts'/name,code/name)
     files=[p for p in base.rglob('*') if p.is_file() and 'progress_analysis' not in p.relative_to(base).parts and not p.name.endswith(('.pid','.partial','.tar.gz')) and '.tar.gz.part' not in p.name and not p.name.startswith('raw_evidence_')]
     files+=logs+[post,root/'third_party/licenses/vllm-Apache-2.0.txt',root/'third_party/licenses/README.md']

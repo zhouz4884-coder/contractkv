@@ -1,0 +1,139 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 13,
+  "files": [
+    {
+      "file": "completion_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "466fc764ba0c8359d08f2889f8992e15ed4abdd2ab8b6feff8deedbf22fdd1c6",
+      "independent_sha256": "ad0a2677516b8c7a116e67e548f98b8be89c90bd75f4e6423de7418329d9f5ab"
+    },
+    {
+      "file": "gate_calibration_bins_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "1b05876d5c1d26645947bf0c677ad76e9dc586e35c5382e48dc3944e4a630edf",
+      "independent_sha256": "1b05876d5c1d26645947bf0c677ad76e9dc586e35c5382e48dc3944e4a630edf"
+    },
+    {
+      "file": "gate_calibration_scopes_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "c2953b26d01e49278c7e4e83ef6af87c9ff0ac490a2fe755d95f1c1f8f66665d",
+      "independent_sha256": "c2953b26d01e49278c7e4e83ef6af87c9ff0ac490a2fe755d95f1c1f8f66665d"
+    },
+    {
+      "file": "gate_calibration_summary_v1.csv",
+      "parsed_exact_equal": false,
+      "reference_sha256": "f20b7c7883010ad7e44195ade30d21a0ed90080a9b85892c47f1a2b1ce177e5e",
+      "independent_sha256": "3025e6a09c4dae203888d8e18cd0c0e225a7780db1f16128c6c868b4bcce11f3"
+    },
+    {
+      "file": "latency_strata_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "ca1c4a10f2d65e57cf3f574f532bd145fa77e7f255fe29503aa26fa3cf768727",
+      "independent_sha256": "ca1c4a10f2d65e57cf3f574f532bd145fa77e7f255fe29503aa26fa3cf768727"
+    },
+    {
+      "file": "performance_by_cell_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "4dc0c3f3e9ab3aec43aac06ee8f02cdf23a34862d74d72cec73edc9fedb97ced",
+      "independent_sha256": "4dc0c3f3e9ab3aec43aac06ee8f02cdf23a34862d74d72cec73edc9fedb97ced"
+    },
+    {
+      "file": "performance_comparison_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "d13b91114c2712b853b89462ae635f4024f065f71b615c3819829807da1b24e6",
+      "independent_sha256": "d13b91114c2712b853b89462ae635f4024f065f71b615c3819829807da1b24e6"
+    },
+    {
+      "file": "quality_pairs_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "0a555f27e9cf704112e861659b25be45a4b6ff368038dee0c5f49abe9e06c7e3",
+      "independent_sha256": "0a555f27e9cf704112e861659b25be45a4b6ff368038dee0c5f49abe9e06c7e3"
+    },
+    {
+      "file": "quality_summary_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "888105fe3226f06a20c999d75db457b01f34165b5bd6110b799dc725dc68f41b",
+      "independent_sha256": "888105fe3226f06a20c999d75db457b01f34165b5bd6110b799dc725dc68f41b"
+    },
+    {
+      "file": "request_latency_pairs_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "0a3b9f86630fa4c913ed63378ed40538ed3b1e1390594eba2ece31c225f719a0",
+      "independent_sha256": "0a3b9f86630fa4c913ed63378ed40538ed3b1e1390594eba2ece31c225f719a0"
+    },
+    {
+      "file": "scope_decisions_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "7c5325220726905d6d4a86984a72d79679545b4f80936f82bf2ee7133be32084",
+      "independent_sha256": "7c5325220726905d6d4a86984a72d79679545b4f80936f82bf2ee7133be32084"
+    },
+    {
+      "file": "strata_calibration_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "ec271b71400f9bfd0d871843c52d1e197857da3d33ac771c326a15d3221a1da2",
+      "independent_sha256": "c46a1f8796b4f8c2ebee9e3213ecf2edd73a21f831f1a4690df3c3095424cab8"
+    },
+    {
+      "file": "warm_forecast_audit_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "ff769ab1d42cbd086fb85e89cedd6769428e80379df174fab220c62f1ef9b7df",
+      "independent_sha256": "ff769ab1d42cbd086fb85e89cedd6769428e80379df174fab220c62f1ef9b7df"
+    }
+  ],
+  "script_sha256": "63b31f31c055ca7c9558647f48754ae2d46f99720af586280aa871507c106301",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [
+    {
+      "field": "gate_calibration_summary_v1.csv/0/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "9.499999999999995",
+      "independent": "9.5",
+      "absolute_difference": 5.329070518200751e-15
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/1/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "1.9999999999999998",
+      "independent": "2.0",
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/6/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "7.499999999999998",
+      "independent": "7.5",
+      "absolute_difference": 1.7763568394002505e-15
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/7/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "0.9999999999999999",
+      "independent": "1.0",
+      "absolute_difference": 1.1102230246251565e-16
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/12/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "12.66666666666666",
+      "independent": "12.666666666666666",
+      "absolute_difference": 5.329070518200751e-15
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/14/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "1.6666666666666667",
+      "independent": "1.6666666666666665",
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/17/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "1.7500000000000002",
+      "independent": "1.75",
+      "absolute_difference": 2.220446049250313e-16
+    },
+    {
+      "field": "gate_calibration_summary_v1.csv/30/predicted_joint_lower_sum_over_control_labelled",
+      "reference": "7.583333333333334",
+      "independent": "7.583333333333333",
+      "absolute_difference": 8.881784197001252e-16
+    }
+  ],
+  "max_absolute_numeric_difference": 5.329070518200751e-15,
+  "reason": "LocalPython3.13 and remotePython3.11 differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed."
+}
