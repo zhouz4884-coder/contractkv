@@ -1,0 +1,48 @@
+{
+  "schema_version": "tsc-r4.phase3-development-plan.v2",
+  "phase": 3,
+  "observed_calibration_source": "results/tsc_revision_r3/validation_v1",
+  "previous_R3_is_observed_development": true,
+  "formal_new50_is_not_used_for_selection": true,
+  "raw_margin_floor": 0.0625,
+  "candidate_and_eos_floor": 0.125,
+  "scope_prototype": "Short literal answer or short nonabstaining nonliteral answer with raw minimum > existing .125 ambiguity boundary may share query scope; otherwise exact observation scope without assumed reuse.",
+  "max_literal_answer_words": 16,
+  "pass_probability": "Estimate joint early-eligibility and backend passing from observed references/responses; source-cluster bootstrap lower 10th percentile, 2000 draws, seed10672132. Correlated repeats and queries remain in the same source unit.",
+  "marginal_saving": "Calibrate paired backend TTFT difference per actual prefill-token reduction, not raw total TTFT per input token. Report these as development predictors, validate all performance with actual full wall.",
+  "cost_components": [
+    "candidate planning",
+    "actual complete qualification including rejected requests",
+    "nonnegative matched raw-witness latency difference as a conservative logprob cost diagnostic"
+  ],
+  "cost_quantile_grid": [
+    0.9,
+    0.95
+  ],
+  "minimum_expected_net_ms_grid": [
+    0,
+    100
+  ],
+  "cold_tail_budget_multiplier_grid": [
+    0.9,
+    1.0
+  ],
+  "tail_budget_reference": "Observed development raw global p99 by model. Estimated baseline-family p95 TTFT plus predicted complete qualification must fit; this forecast is not a hard runtime guarantee.",
+  "pre_gate": "Cheap family/model/registered-reuse check before candidate tokenization or business logprob request; preparation CPU cost is still measured.",
+  "declared_query_call_hints_per_tenant": [
+    4,
+    3,
+    3
+  ],
+  "reuse_hint_boundary": "Fixed ten-turn benchmark declaration, not observed future model outputs or production query frequency.",
+  "online_verification_attempt_limit": 1,
+  "development_selection": "First reject configurations with observed compiled material loss or zero non-RULER coverage. Then prefer measured full-wall benefit subject to no demonstrated tail worsening. Preserve all tried variants and fallback quality. Do not treat offline proxy optimization as serving evidence.",
+  "scheduling": "Keep a matched original-wave control. Independent-session or asynchronous qualification is a separately declared candidate; raw/policy share arrivals and scheduling, and background drain remains inside full cost.",
+  "no_positive_result_promised": true,
+  "nonliteral_ambiguity_boundary": 0.125,
+  "source_probability_prior": [
+    1,
+    1
+  ],
+  "amendment": "Observed literal-only v1 eliminates normal inferred answers and all Hotpot fanout prototype coverage. Keep v1 results; broaden structural eligibility before any new validation outcomes."
+}

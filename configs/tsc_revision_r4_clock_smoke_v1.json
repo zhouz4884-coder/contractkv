@@ -1,0 +1,33 @@
+{
+  "schema_version": "tsc-r4.clock-smoke.v1",
+  "development_only": true,
+  "models": [
+    "qwen"
+  ],
+  "policies": [
+    "raw-order",
+    "risk-tail"
+  ],
+  "studies": {
+    "single-session": 1
+  },
+  "repeats": 1,
+  "expected_cells": 2,
+  "expected_actual_generations": 40,
+  "expected_future_requests": 36,
+  "input_files": {
+    "single-session": "results/tsc_revision_r4/clock_smoke_v1/sessions.jsonl"
+  },
+  "arrival_files": {
+    "single-session": {
+      "1": "results/tsc_revision_r4/clock_smoke_v1/arrivals.json"
+    }
+  },
+  "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+  "previous_catalog": "configs/tsc_revision_r3_catalog_v1.json",
+  "generation_protocol": "configs/tsc_revision_r1r_validation_protocol_v1.json",
+  "profile": "balanced",
+  "clock": "All waves at0, same barrier and all queue/controller costs included.",
+  "no_validation_inputs_used": true,
+  "not_efficacy_evidence": true
+}
