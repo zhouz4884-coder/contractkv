@@ -1,0 +1,42 @@
+{
+  "schema_version": "tsc-r4.fixed-DEV-cost-candidate-selection.v1",
+  "source_sha256": "16775829e0d19811b894d708650d4514d9992f3e1f6d7e12889059c783289dc5",
+  "freeze_sha256": "e046da50dd1ca642e9457f14969580e4c698b94e3e1b42ca143837fd9a798da5",
+  "checks": {
+    "no_compiled_ID_divergence": true,
+    "no_compiled_any_score_decrease": true,
+    "all_route_material_drops_not_increased": true,
+    "compiled_future_coverage_retained_at_least_80pct": true,
+    "full_wall_lower_than_fresh_original": true,
+    "full_wall_lower_than_fresh_raw": true,
+    "RepoBench_ready_p99_lower_than_original": true,
+    "rejected_GPU_RPC_work_lower": true
+  },
+  "all_prespecified_DEV_checks_pass": true,
+  "maximum_conditional_independent_Q_cells": 9,
+  "original_compiled_futures": 112.0,
+  "adapted_compiled_futures": 112.0,
+  "RepoBench_ready_p99_ms": {
+    "risk-tail": 10134.576164907778,
+    "cost-adapted": 6171.3996102055535
+  },
+  "failed_GPU_RPC_work_ms": {
+    "risk-tail": 15385.686602443457,
+    "cost-adapted": 3439.7891708649695
+  },
+  "all_route_material_drops": {
+    "risk-tail": 0,
+    "cost-adapted": 0
+  },
+  "global_ready_p99_ms": {
+    "risk-tail": 8484.51370228082,
+    "cost-adapted": 8429.36309255194
+  },
+  "raw_versus_policy_full_wall_s": {
+    "raw-order": 1113.6917796782218,
+    "risk-tail": 995.6685101580806,
+    "cost-adapted": 983.4121016999707
+  },
+  "new_heldout_model_outputs_used_for_selection": false,
+  "limits": "One DEV process, four known sources. Point selection is not a confidence claim. If false, retain the negative and stop this candidate; no new grid or reruns until favorable."
+}

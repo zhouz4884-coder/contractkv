@@ -1,0 +1,711 @@
+{
+  "schema_version": "tsc-r4.independent-fidelity-input-preparation.v1",
+  "source_sha256": "18d1806514306d0083a271f0b9d7e13c2ee4d98994203fe03623dc4c362ed767",
+  "source_pool_sha256": "d175f60b39bd050b43be994e58918a033c3cfe7a00f972df71804a92db5e605c",
+  "exclusions_sha256": "8f58be01a4daa0d5021b5ed37ae864f4e045dc383c1b39d8798533d79167b519",
+  "excluded_unique_sources": 573,
+  "primary_six_exclusion_record_sha256": "bb13e2d159573dfad72f44eea4abe3df248d24c290158789f867d11ff7e149e5",
+  "combined_excluded_set_sha256": "3fa69798c68f75a49844c06e09dd232a7f9979fbc38fe05d05367e85d1abbcf8",
+  "selection_seed": 10672146,
+  "sources": 6,
+  "selected_source_groups": [
+    "LongBench:hotpotqa:hotpotqa:doc:177",
+    "LongBench:hotpotqa:hotpotqa:doc:57",
+    "LongBench:hotpotqa:hotpotqa:doc:116",
+    "RepoBench:python_v1.1:Infleqtion/qLDPC",
+    "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+    "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything"
+  ],
+  "selected_sources_disjoint_from_all_573_prior": true,
+  "candidates_examined_in_frozen_hash_order": [
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:177",
+      "family": "HotpotQA",
+      "selection_hash": "0d1a8c20a841fb88c1c4ce2f102bd733fb40691648933ec1e37b72874d6f14bc",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "family": "HotpotQA",
+      "selection_hash": "0f8c6b61b5b06ca53c2b2ac463672d0017cd9d34250f28696915dc86a6c07f72",
+      "critical_capacity_eligible": true,
+      "status": "optional_context_cropped_to_window"
+    },
+    {
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "family": "HotpotQA",
+      "selection_hash": "15c2ff945e91ecfa9e40eb92d70eacd98b197b98b8882399f92aef9d204a1a72",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "selection_hash": "036a7f0f1d93f7ce896d8b0ebe99292c5e5491bb144f13a1ede8ce27aa5b1106",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+      "family": "RepoBench",
+      "selection_hash": "03723f068f9290683b55b28f0360c15fb338c20bf8174a2e62c3da4e171a6baa",
+      "critical_capacity_eligible": true,
+      "status": "optional_context_cropped_to_window"
+    },
+    {
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "family": "RepoBench",
+      "selection_hash": "04e7f2bee6560a63ac9b6ca833b3d4eb768fd65668217b83157734bd4e80490b",
+      "critical_capacity_eligible": true,
+      "status": "full_original_text_preserved"
+    }
+  ],
+  "source_ledgers": [
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 60260,
+          "retained_original_characters": 60260,
+          "original_units": 39,
+          "retained_units": 39,
+          "kept_original_character_ranges": [
+            [
+              0,
+              60260
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "e2ef4acbd41967c577103d1a6fcef780993fcc2754de62c74c8c2a9080a19217",
+          "packed_text_sha256": "e2ef4acbd41967c577103d1a6fcef780993fcc2754de62c74c8c2a9080a19217"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 39,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14007,
+              "Mistral-7B-Instruct-v0.3": 15748,
+              "Llama-3.1-8B-Instruct": 13528
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 12.81715700001223,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:177",
+      "family": "HotpotQA",
+      "original_segments_sha256": "7ac091eea1ad03249e90ee1a2d4e64c777ef8a5a9131d818c2de01a7cd15ae1b"
+    },
+    {
+      "status": "optional_context_cropped_to_window",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 70056,
+          "retained_original_characters": 58021,
+          "original_units": 83,
+          "retained_units": 67,
+          "kept_original_character_ranges": [
+            [
+              0,
+              32577
+            ],
+            [
+              44612,
+              70056
+            ]
+          ],
+          "omitted_original_character_range": [
+            32577,
+            44612
+          ],
+          "original_text_sha256": "e42fcca8384170f97092ca5fa8e60a1fd9fdf52002734441c3749ee443d06fb4",
+          "packed_text_sha256": "cb408eb1e7fcf1d12209254c29406feed8be62b479df598f61bf3aa53279dd02"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 83,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 1,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 0,
+            "first_failure": {
+              "model": "Qwen3-8B",
+              "tenant": 0,
+              "turn": 0,
+              "prompt_plus_budget": 17390
+            },
+            "completed_model_maxima": {}
+          }
+        },
+        {
+          "stage": "protected_fields_all_variants",
+          "retained_optional_units": 0,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 316,
+              "Mistral-7B-Instruct-v0.3": 363,
+              "Llama-3.1-8B-Instruct": 327
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 42,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 7016,
+              "Mistral-7B-Instruct-v0.3": 7850,
+              "Llama-3.1-8B-Instruct": 6693
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 63,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 13820,
+              "Mistral-7B-Instruct-v0.3": 15388,
+              "Llama-3.1-8B-Instruct": 13192
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 73,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 17504
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 15749
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 68,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16268
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 14624
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 65,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14092,
+              "Mistral-7B-Instruct-v0.3": 15691,
+              "Llama-3.1-8B-Instruct": 13446
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 66,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14376,
+              "Mistral-7B-Instruct-v0.3": 16013,
+              "Llama-3.1-8B-Instruct": 13717
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 67,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14544,
+              "Mistral-7B-Instruct-v0.3": 16192,
+              "Llama-3.1-8B-Instruct": 13873
+            }
+          }
+        },
+        {
+          "stage": "selected_input_all_variants",
+          "retained_optional_units": 67,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14544,
+              "Mistral-7B-Instruct-v0.3": 16192,
+              "Llama-3.1-8B-Instruct": 13873
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 14.503733799996553,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "family": "HotpotQA",
+      "original_segments_sha256": "cc9bd526ac249df0acf711b20435583af8ad435ea479db9f2ff7e166312603a0"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 1,
+          "segment_type": "RAG_CHUNK",
+          "original_characters": 51987,
+          "retained_original_characters": 51987,
+          "original_units": 68,
+          "retained_units": 68,
+          "kept_original_character_ranges": [
+            [
+              0,
+              51987
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "9779be246fb921242473d22112577b4484c9f693a9d8a667ba53230d0e0c1969",
+          "packed_text_sha256": "9779be246fb921242473d22112577b4484c9f693a9d8a667ba53230d0e0c1969"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 68,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 14747,
+              "Mistral-7B-Instruct-v0.3": 15932,
+              "Llama-3.1-8B-Instruct": 13456
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 10.724329499993473,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "family": "HotpotQA",
+      "original_segments_sha256": "7d9dff9a1f9251780d3a3a69741d7f095ec6655be2039380fe3336bd7faa7375"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 14760,
+          "retained_original_characters": 14760,
+          "original_units": 385,
+          "retained_units": 385,
+          "kept_original_character_ranges": [
+            [
+              0,
+              14760
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "039ffa0825b396d4c035d53e60e2cc555741bd784db2487e976b3d8d02fdb148",
+          "packed_text_sha256": "039ffa0825b396d4c035d53e60e2cc555741bd784db2487e976b3d8d02fdb148"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 385,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 6202,
+              "Mistral-7B-Instruct-v0.3": 7545,
+              "Llama-3.1-8B-Instruct": 6192
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 2.801712200016482,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "original_segments_sha256": "54cd9a81c0694c17ee5c6cddd2dc7b5e9befe4a513b2f2d0dd30c07ee88345c7"
+    },
+    {
+      "status": "optional_context_cropped_to_window",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 176733,
+          "retained_original_characters": 52013,
+          "original_units": 485,
+          "retained_units": 136,
+          "kept_original_character_ranges": [
+            [
+              0,
+              24034
+            ],
+            [
+              148754,
+              176733
+            ]
+          ],
+          "omitted_original_character_range": [
+            24034,
+            148754
+          ],
+          "original_text_sha256": "203e1f65cf6df910c44df53bb208c127622310da22e0a131fc8332126f79324d",
+          "packed_text_sha256": "a3725de9201be1617af5001df6c35d10daa6b5f700aa2cf8e4cf34eba1e26bb9"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 485,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 1,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 0,
+            "first_failure": {
+              "model": "Qwen3-8B",
+              "tenant": 0,
+              "turn": 0,
+              "prompt_plus_budget": 37332
+            },
+            "completed_model_maxima": {}
+          }
+        },
+        {
+          "stage": "protected_fields_all_variants",
+          "retained_optional_units": 0,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 1628,
+              "Mistral-7B-Instruct-v0.3": 2034,
+              "Llama-3.1-8B-Instruct": 1639
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 243,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 1,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Qwen3-8B",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 18811
+            },
+            "completed_model_maxima": {}
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 121,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 10489,
+              "Mistral-7B-Instruct-v0.3": 14570,
+              "Llama-3.1-8B-Instruct": 10468
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 182,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 20809
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 14776
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 151,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 17661
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 12541
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 136,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 9,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 11541,
+              "Mistral-7B-Instruct-v0.3": 16208,
+              "Llama-3.1-8B-Instruct": 11520
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 143,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16864
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 11993
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 139,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16485
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 11736
+            }
+          }
+        },
+        {
+          "stage": "conservative_tokenizer_search",
+          "retained_optional_units": 137,
+          "result": {
+            "fits": false,
+            "checked_request_variants": 4,
+            "all_declared_variants_checked": false,
+            "conservative_guard_tokens": 128,
+            "first_failure": {
+              "model": "Mistral-7B-Instruct-v0.3",
+              "tenant": 9,
+              "turn": 0,
+              "prompt_plus_budget": 16276
+            },
+            "completed_model_maxima": {
+              "Qwen3-8B": 11597
+            }
+          }
+        },
+        {
+          "stage": "selected_input_all_variants",
+          "retained_optional_units": 136,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 11541,
+              "Mistral-7B-Instruct-v0.3": 16208,
+              "Llama-3.1-8B-Instruct": 11520
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 9.717141700006323,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "source_group": "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+      "family": "RepoBench",
+      "original_segments_sha256": "0f0f73340cbfe4a358455d4047cadbccc61fe9963d095d9b6e64209486c5d81d"
+    },
+    {
+      "status": "full_original_text_preserved",
+      "segment_ledger": [
+        {
+          "segment_index": 0,
+          "segment_type": "REPO_CONTEXT",
+          "original_characters": 14631,
+          "retained_original_characters": 14631,
+          "original_units": 370,
+          "retained_units": 370,
+          "kept_original_character_ranges": [
+            [
+              0,
+              14631
+            ]
+          ],
+          "omitted_original_character_range": null,
+          "original_text_sha256": "5d444fe86397d662a355827ad93cdf2225b1196b1562518af2d2868a54173237",
+          "packed_text_sha256": "5d444fe86397d662a355827ad93cdf2225b1196b1562518af2d2868a54173237"
+        }
+      ],
+      "protected_fields_preserved": true,
+      "retained_whitespace_preserved": true,
+      "fit_calls": [
+        {
+          "stage": "full_input_all_variants",
+          "retained_optional_units": 370,
+          "result": {
+            "fits": true,
+            "checked_request_variants": 300,
+            "all_declared_variants_checked": true,
+            "conservative_guard_tokens": 0,
+            "max_prompt_plus_budget_by_model": {
+              "Qwen3-8B": 3982,
+              "Mistral-7B-Instruct-v0.3": 5148,
+              "Llama-3.1-8B-Instruct": 3973
+            }
+          }
+        }
+      ],
+      "new_model_requests": 0,
+      "input_preparation_CPU_wall_s": 1.8817984999914188,
+      "selection_boundary": "Input text, type and tokenizer window only; no reference labels, answer locations, scores, margins or qualifications are inspected.",
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "family": "RepoBench",
+      "original_segments_sha256": "e5f14d6cecbbfad791da9cdf2697f2702aa07c22eab998c4c529f26175efc082"
+    }
+  ],
+  "data_files": [
+    {
+      "path": "results/tsc_revision_r4/cost_adaptation_validation_inputs_v1/original_selected_sessions_v1.jsonl",
+      "rows": 6,
+      "sha256": "88b29e3830076513f0c2ecefb38596cf6b4608d7044553550505933f747d95db"
+    },
+    {
+      "path": "results/tsc_revision_r4/cost_adaptation_validation_inputs_v1/faithful_selected_sessions_v1.jsonl",
+      "rows": 6,
+      "sha256": "850a9825f2830392cd008420eb79bb6d9a68e985c364aaf59addbd32154e0695"
+    }
+  ],
+  "packer_sha256": "635f24ef45e0cf1234f319af9152d71b208d3213cd20fa18d095fc4d07eb957a",
+  "renderer_sha256": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c",
+  "catalog_sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb",
+  "generation_sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05",
+  "model_registry_sha256": "1cafa8d210ca76079bff2bf7d4bafb243fad1c3dd210af7c6dfc4cd9c8fa3b4e",
+  "total_preparation_CPU_wall_s": 52.52099839999573,
+  "reference_labels_or_answer_positions_used_for_selection_or_packing": false,
+  "model_outcomes_observed": false,
+  "new_GPU_requests": 0,
+  "capacity_checked_raw_and_actual_selected_candidates": true,
+  "all_selected_source_variants_per_model_tenant_turn": 300,
+  "no_cost_calibration_or_scope_changes": true
+}

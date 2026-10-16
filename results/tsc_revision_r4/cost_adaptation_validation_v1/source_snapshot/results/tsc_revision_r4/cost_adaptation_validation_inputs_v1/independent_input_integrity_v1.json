@@ -1,0 +1,185 @@
+{
+  "schema_version": "tsc-r4.independent-validation-input-proof.v1",
+  "analysis_source_sha256": "70ca290d3287944def99bedb5244c9c537e4ddbdefbed43f1e0e53c9c79c7f05",
+  "preparation_record_sha256": "2ae93e398100a8d96fb6dd2fc5119d0994ab2009bb7865ed53e410beaafb7455",
+  "adapter_source_sha256": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c",
+  "sources": 6,
+  "layout_checks": 24,
+  "new_GPU_requests": 0,
+  "counts": [
+    {
+      "family": "HotpotQA",
+      "status": "full_original_text_preserved",
+      "sources": 2
+    },
+    {
+      "family": "HotpotQA",
+      "status": "optional_context_cropped_to_window",
+      "sources": 1
+    },
+    {
+      "family": "RepoBench",
+      "status": "full_original_text_preserved",
+      "sources": 2
+    },
+    {
+      "family": "RepoBench",
+      "status": "optional_context_cropped_to_window",
+      "sources": 1
+    }
+  ],
+  "rows": [
+    {
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "family": "HotpotQA",
+      "status": "full_original_text_preserved",
+      "protected_fields": [
+        {
+          "index": 0,
+          "type": "SYS_PROMPT",
+          "text_sha256": "15ca6955705ecdca3633a11a4837fb779307e07ac5bd628969be3d32ee50243f"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "a4847f340e80d3443fb83f703b0b61a81bb8dc28c781c2aebb7de11e527e79e6"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 14007,
+        "Mistral-7B-Instruct-v0.3": 15748,
+        "Llama-3.1-8B-Instruct": 13528
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    },
+    {
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "family": "HotpotQA",
+      "status": "optional_context_cropped_to_window",
+      "protected_fields": [
+        {
+          "index": 0,
+          "type": "SYS_PROMPT",
+          "text_sha256": "15ca6955705ecdca3633a11a4837fb779307e07ac5bd628969be3d32ee50243f"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "c3dbf8fa5113f9a771f4b0b397f0ba36228cb7ba105d5434c5cd485f88655ab0"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 14544,
+        "Mistral-7B-Instruct-v0.3": 16192,
+        "Llama-3.1-8B-Instruct": 13873
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    },
+    {
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "family": "HotpotQA",
+      "status": "full_original_text_preserved",
+      "protected_fields": [
+        {
+          "index": 0,
+          "type": "SYS_PROMPT",
+          "text_sha256": "15ca6955705ecdca3633a11a4837fb779307e07ac5bd628969be3d32ee50243f"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "748496a554a3befb7ac0f2035f4ce33c8fb49cb398a79cb4424f1c7ce683525c"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 14747,
+        "Mistral-7B-Instruct-v0.3": 15932,
+        "Llama-3.1-8B-Instruct": 13456
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    },
+    {
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "family": "RepoBench",
+      "status": "full_original_text_preserved",
+      "protected_fields": [
+        {
+          "index": 1,
+          "type": "CODE_PREFIX",
+          "text_sha256": "2c28688eef14ed465cae4af9f5d2a7504c9c522c61255667e45f74a49b2fee85"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "4b255be3a627eadacf3866e9f0b378ef347d8811114cc7c505bf9a9dea7e3582"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 6202,
+        "Mistral-7B-Instruct-v0.3": 7545,
+        "Llama-3.1-8B-Instruct": 6192
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    },
+    {
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "family": "RepoBench",
+      "status": "optional_context_cropped_to_window",
+      "protected_fields": [
+        {
+          "index": 1,
+          "type": "CODE_PREFIX",
+          "text_sha256": "7fed6f34aa97f6ec4718f63cb90d7d062923c83f2969de43c08173f79cde3183"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "4b255be3a627eadacf3866e9f0b378ef347d8811114cc7c505bf9a9dea7e3582"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 11541,
+        "Mistral-7B-Instruct-v0.3": 16208,
+        "Llama-3.1-8B-Instruct": 11520
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    },
+    {
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "family": "RepoBench",
+      "status": "full_original_text_preserved",
+      "protected_fields": [
+        {
+          "index": 1,
+          "type": "CODE_PREFIX",
+          "text_sha256": "d24a01bcdd72396f0d547124d11d32b11ca6ccbe0fa792cc608d3c4da65dfb00"
+        },
+        {
+          "index": 2,
+          "type": "USER_QUERY",
+          "text_sha256": "4b255be3a627eadacf3866e9f0b378ef347d8811114cc7c505bf9a9dea7e3582"
+        }
+      ],
+      "final_max_prompt_plus_budget_by_model": {
+        "Qwen3-8B": 3982,
+        "Mistral-7B-Instruct-v0.3": 5148,
+        "Llama-3.1-8B-Instruct": 3973
+      },
+      "four_layouts_and_rendered_text_unchanged_by_type_fix": true,
+      "query_scope_inputs_and_budget_unchanged_by_input_formatter": true,
+      "actual_raw_contains_each_packed_segment_contiguously": true
+    }
+  ],
+  "execution_complete": true,
+  "boundary": "Stored bytes, logical layout invariance and contiguous raw segment rendering on CPU. Renderer version is transitively bound by the new full policy freeze hash. No model quality or serving behavior claim."
+}

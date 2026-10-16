@@ -1,0 +1,37 @@
+{
+  "timestamp_UTC": "2026-10-16T22:31:26.430074+00:00",
+  "balanced_three_policy_order": true,
+  "paired_same_device": true,
+  "blocks": [
+    {
+      "repeat": 1,
+      "model": "qwen",
+      "GPU_lane": 0,
+      "policy_order": [
+        "raw-order",
+        "cost-adapted",
+        "risk-tail"
+      ]
+    },
+    {
+      "repeat": 2,
+      "model": "qwen",
+      "GPU_lane": 1,
+      "policy_order": [
+        "risk-tail",
+        "raw-order",
+        "cost-adapted"
+      ]
+    },
+    {
+      "repeat": 3,
+      "model": "qwen",
+      "GPU_lane": 0,
+      "policy_order": [
+        "cost-adapted",
+        "risk-tail",
+        "raw-order"
+      ]
+    }
+  ]
+}

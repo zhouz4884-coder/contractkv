@@ -1,0 +1,43 @@
+{
+  "schema_version": "tsc-r4.bounded-DEV-cost-adaptation-plan.v1",
+  "primary_18_unchanged": true,
+  "selection_evidence": "Only76qualificationRPCsfromfourpreexistingDEVroots;newindependentmodeloutputsnotreadforcostselection",
+  "candidate_profile": "results/tsc_revision_r4/development_cost_profile_candidate_v1.json",
+  "candidate_profile_sha256": "be21959e9bde139b7fd0ecdec7f64bea089f9858b929f737accc232882ce4c8f",
+  "active_candidate_model": "Qwen3-8B",
+  "cost_rule": "Length-bucket monotone maximum of measured zero-prefix-read GPU RPCs, never below original model/family coldP90; use cold cost when full residency unproven. Unsupported model/family/level/length falls back, with no source-name filter.",
+  "fanout_tail_rule": "Existing DEVrawglobalp99 becomes an explicit additional synchronous-controller allowance. The old decide() compares baseline_p95+cost+information with baseline_p95+allowance. This is a forecast budget, not a runtime p99 guarantee.",
+  "gain_rule": "Keep original probability terms, calibrated token-reduction cap and per-token saving. Do not simultaneously enlarge predicted savings.",
+  "safety_and_service_unchanged": ["CALC", "PSTP", "metadata_scope", "raw/candidate/EOSfloors", "single-shot", "Pythonoutputcontract", "greedyseed", "frozenmetrics", "two-requestclosed-loopreadiness"],
+  "offline_result_not_live_efficacy": {"old_GPU_attempts":9,"old_issued_scopes":4,"old_issued_scopes_still_allowed":4,"old_attempts_would_skip":3},
+  "DEV_budget": {
+    "sources": "SamefourknownfaithfulDEVinputs",
+    "model": "qwen",
+    "policies": ["raw-order", "risk-tail", "cost-adapted"],
+    "fresh_process_repeats": 1,
+    "cells": 3,
+    "business_requests": 1200,
+    "future_requests": 1080,
+    "GPU": "sameGPU0foralltogetherafterprimary18,otherGPUidle",
+    "reason": "Three-wayfreshraw/original/adaptedcontrolpreservesbaselinequalityandfull-costcomparability;singlerepeatonlyDEV"
+  },
+  "conditional_independent_budget": {
+    "maximum_cells": 9,
+    "model": "qwen",
+    "policies": ["raw-order", "risk-tail", "cost-adapted"],
+    "fresh_repeats": 3,
+    "sources": "Another3HotpotQAand3RepoBench,hash-orderandcriticalcapacityonly,excludeall567priorPLUSprimarysix;notselecteduntilDEVdecision",
+    "reason": "Freshsourcesavoidsambiguityfromreusingtheprimarysixaftertheiralreadyrunningrawgeneration. Same-source3-waypairedmeasurementwithfreshmatchedrawpreventscomparingdifferenttimeperiodsasifdirectcausal.",
+    "candidate_parameters_must_not_change_from_this_profile": true
+  },
+  "conditional_selection_gate": [
+    "No unexplained compiled output-ID or score degradation versus fresh raw; retain all-route differences",
+    "At least80percent of original compiled future coverage retained",
+    "Full service wall lower than fresh original R4 and positive fullwallgainversusfreshraw",
+    "Target RepoBench readinessp99 lower than fresh original R4 and actual synchronous rejected qualificationwork reduced",
+    "Reportglobalp99andallfamiliesevenifnotimproved;doNOTclaimDEVpointasgeneralSLOguarantee"
+  ],
+  "maximum_additional_GPU_cells_after_primary18": 12,
+  "if_DEV_fails": "Retainnegativecandidateanddonotrunconditionalnine;noparametergridorrepeatsuntilsignificancechanges",
+  "no_new_certificate_network_or_async_scheduler": true
+}

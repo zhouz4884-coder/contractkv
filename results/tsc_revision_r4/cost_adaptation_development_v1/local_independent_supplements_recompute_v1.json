@@ -1,0 +1,54 @@
+{
+  "independent_local_recomputation_complete": true,
+  "files_compared": 7,
+  "files": [
+    {
+      "file": "all_business_quality_v1.csv",
+      "parsed_exact_equal": true,
+      "reference_sha256": "9bb88f9e0a00333dc88e2a6f4503a4b8a2c26413161d7b7f6341c3db64375464",
+      "independent_sha256": "9bb88f9e0a00333dc88e2a6f4503a4b8a2c26413161d7b7f6341c3db64375464"
+    },
+    {
+      "file": "all_business_quality_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "e677458fd82ed657b0bd77bb1ddf31566624d53bea018670210379bdd6288ae4",
+      "independent_sha256": "7f43f05b16f4eef4a4b6eda472a39c5802c764a84c759f97e3bda4e8f880738e"
+    },
+    {
+      "file": "fixed_DEV_decision_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "0666267eac8366b0fe76be8a4a9de2dcdac708c87b46e8997da7d5252857abe7",
+      "independent_sha256": "ab9b7cfffdc997e8f57b6004fa0fbb9ca7d5c0a6d56c9147c9e885e62f5ec678"
+    },
+    {
+      "file": "independent_actual_prompt_ID_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "e9d3112bd23e8a232f631ae2fb7134c57db43f685159f14509b535aae7a83e24",
+      "independent_sha256": "fb38578394a3c1c7d91d16227a5d773b881931251c675f8f2bb9590491ee2c4e"
+    },
+    {
+      "file": "routing_attribution_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "b5422a5c2079165a3985a650d9afea77663cdc547fac766d4fad1505e264c1cb",
+      "independent_sha256": "efb8fe73c969d9c3ea5990e74515b228c02c3a1017d5561e1ee67bc9725abf19"
+    },
+    {
+      "file": "scope_object_audit_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "70b351d9b581c3436bb8b30cbf23a71ef6792ba7bcdceb1007213690c89b4c75",
+      "independent_sha256": "35f4d1074466a77ec9847521c4118145936b7cc82c95fdb0fdd6086151807ddd"
+    },
+    {
+      "file": "score_balance_v1.json",
+      "parsed_exact_equal": true,
+      "reference_sha256": "6e89a223e25fb08b45c4430bbfee2aed0a80e8730b635f2f36819cf49ef33483",
+      "independent_sha256": "4d1e828f7ff2b7ad87c8ae312cffd5667cc74b84dc6b776807e73bb8dc17fc32"
+    }
+  ],
+  "script_sha256": "67bfba6170e83c02e4afbbfc234ca7bdf6833d1e2a59f5b016a2e0a09be42e2a",
+  "byte_transport_is_separate": true,
+  "comparison": "All nonnumeric values and integer counts exact; only finite numeric roundoff within absolute/relative1e-12 allowed. Every differing value is retained.",
+  "roundoff_differences": [],
+  "max_absolute_numeric_difference": 0,
+  "reason": "Different Python runtime versions may differ in floating-point sum accumulation; scientific source code, raw evidence, routes and score decisions remain fixed. Actual runtime versions are recorded separately in runtime manifests."
+}
