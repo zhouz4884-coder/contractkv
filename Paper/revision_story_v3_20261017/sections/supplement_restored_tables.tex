@@ -1,0 +1,76 @@
+\section{Input Structure and Displacement}
+\label{sec:s-input}
+We use the frozen input manifests and their measured tokenizer-position ledger to quantify how prompt compilation changes the input. Table~\ref{tab:s-raw-orders} distinguishes prepared dataset fields from the controlled serving sequence, including the metadata observation introduced by the runner. It covers all five workload families and every observed serving-order pattern.
+
+Let $a_i$ and $b_i$ be the zero-based token positions of segment $i$'s rendered header marker in raw and candidate chat prompts. We report $d_i=b_i-a_i$, the fraction with changed ordinal index, the fraction with $d_i\ne0$, mean $|d_i|$, nearest-rank P95 $|d_i|$, and the signed range. Header markers are included; these are not body-only token offsets. Every archived record reports that direct tokenization and tokenization of the rendered chat text agree. The present CPU aggregation checks its arithmetic and completeness, without rerunning model or tokenizer inference. Table~\ref{tab:s-displacement} does not identify an attention or RoPE causal mechanism.
+
+\begin{table*}[t]
+\centering\small
+\caption{Frozen five-family input order before CALC. Prepared fields come from the archived session inputs; serving order is reconstructed from every recorded raw-order index. Repeated superscripts denote contiguous compiler units, not extra documents.}
+\label{tab:s-raw-orders}
+\begin{tabular}{@{}lP{5.1cm}P{8.1cm}@{}}
+\toprule
+Family & Prepared task fields & Rendered serving segments\\
+\midrule
+RULER & SYS$\rightarrow$SYN$\rightarrow$QUERY & SYS$\rightarrow$OBS$\rightarrow$SYN$^{16}$$\rightarrow$QUERY\\
+HotpotQA & SYS$\rightarrow$RAG$\rightarrow$QUERY & SYS$\rightarrow$OBS$\rightarrow$RAG$^{16}$$\rightarrow$QUERY\\
+NarrativeQA & SYS$\rightarrow$RAG$\rightarrow$QUERY & SYS$\rightarrow$OBS$\rightarrow$RAG$^{16}$$\rightarrow$QUERY\\
+Qasper & SYS$\rightarrow$RAG$\rightarrow$QUERY & SYS$\rightarrow$OBS$\rightarrow$RAG$^{16}$$\rightarrow$QUERY\\
+RepoBench & REPO$\rightarrow$CODE$\rightarrow$QUERY & SYS$\rightarrow$OBS$\rightarrow$REPO$^{16}$$\rightarrow$CODE$^k\rightarrow$QUERY\\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}\footnotesize SYS, OBS and QUERY denote SYS\_PROMPT, TOOL\_OBS and USER\_QUERY. RAG, SYN, REPO and CODE denote RAG\_CHUNK, SYNTHETIC\_CONTEXT, REPO\_CONTEXT and CODE\_PREFIX. For RepoBench, $k\in\{1,6,16\}$; the runner adds a SYS segment even when the prepared task has no system body. Outer chat-control tokens are outside this segment-order view. The metadata-only OBS is a controlled runner field, not a claim about production prevalence.
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\caption{Input displacement from 4,695 archived segment observations in 240 model/session inputs (three tokenizers over 80 session inputs). Candidate levels follow the frozen per-model policy, including L0, and are not conditioned on verifier success. These nested observations are not 4,695 independent task sources. Percentages and means are segment-weighted.}
+\label{tab:s-displacement}
+\begin{tabular}{@{}lrrrrrl@{}}
+\toprule
+Family & Segments & Ordinal moved (\%) & Token moved (\%) & Mean $|d_i|$ & P95 $|d_i|$ & Signed range\\
+\midrule
+RULER & 570 & 89.5 & 89.5 & 114.31 & 1243 & [-65, 1471]\\
+HotpotQA & 2,280 & 73.6 & 73.6 & 141.45 & 1593 & [-66, 3118]\\
+NarrativeQA & 570 & 82.6 & 82.6 & 153.56 & 1479 & [-64, 3030]\\
+Qasper & 570 & 29.8 & 29.8 & 52.21 & 49 & [-49, 2377]\\
+RepoBench & 705 & 30.5 & 30.5 & 70.27 & 49 & [-49, 4449]\\
+ALL & 4,695 & 64.9 & 64.9 & 118.10 & 66 & [-66, 4449]\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Complementary Serving Controls}
+\label{sec:s-serving}
+\begin{table}[t]
+\centering\small
+\caption{Deployment-template density replay from 10 to 80 registered identities, three fresh processes per policy/point. The class-specific SLOs are 750/1,500/3,000 ms; the pool has 2,386 blocks. Block columns average process peaks. Client concurrency is four and server max-num-seqs is eight. Identities are not simultaneous GPU requests.}
+\label{tab:s-density}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+IDs & Raw req/s & CKV req/s & Raw blocks & CKV blocks\\
+\midrule
+10 & 0.900 & 9.408 & 525.67 & 146.00\\
+20 & 1.032 & 10.781 & 530.00 & 149.00\\
+30 & 1.059 & 10.532 & 530.00 & 149.00\\
+40 & 1.073 & 11.057 & 530.00 & 149.00\\
+60 & 1.112 & 11.072 & 530.00 & 149.00\\
+80 & 1.152 & 11.033 & 530.00 & 149.00\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Separate bounded-input RULER audit. Cold and fan-out traces are pooled only within this declared protocol, not with the faithful 16K HotpotQA/RepoBench cohort.}
+\label{tab:s-ruler}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & Cold C/N & Fan-out C/N & Total C/N\\
+\midrule
+Qwen & 210/270 & 516/540 & 726/810\\
+Mistral & 210/270 & 516/540 & 726/810\\
+Llama & 210/270 & 516/540 & 726/810\\
+\bottomrule
+\end{tabular}
+\end{table}

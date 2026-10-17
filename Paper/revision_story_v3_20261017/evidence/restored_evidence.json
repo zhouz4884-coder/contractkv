@@ -1,0 +1,544 @@
+{
+  "segment_observations": 4695,
+  "model_session_inputs": 240,
+  "displacement_statistics": [
+    {
+      "family": "RULER",
+      "segments": 570,
+      "ordinal_moved": 510,
+      "token_moved": 510,
+      "mean_abs_tokens": 114.31228070175439,
+      "p95_abs_tokens": 1243,
+      "signed_min": -65,
+      "signed_max": 1471
+    },
+    {
+      "family": "HotpotQA",
+      "segments": 2280,
+      "ordinal_moved": 1679,
+      "token_moved": 1679,
+      "mean_abs_tokens": 141.4482456140351,
+      "p95_abs_tokens": 1593,
+      "signed_min": -66,
+      "signed_max": 3118
+    },
+    {
+      "family": "NarrativeQA",
+      "segments": 570,
+      "ordinal_moved": 471,
+      "token_moved": 471,
+      "mean_abs_tokens": 153.55964912280703,
+      "p95_abs_tokens": 1479,
+      "signed_min": -64,
+      "signed_max": 3030
+    },
+    {
+      "family": "Qasper",
+      "segments": 570,
+      "ordinal_moved": 170,
+      "token_moved": 170,
+      "mean_abs_tokens": 52.21228070175439,
+      "p95_abs_tokens": 49,
+      "signed_min": -49,
+      "signed_max": 2377
+    },
+    {
+      "family": "RepoBench",
+      "segments": 705,
+      "ordinal_moved": 215,
+      "token_moved": 215,
+      "mean_abs_tokens": 70.26808510638298,
+      "p95_abs_tokens": 49,
+      "signed_min": -49,
+      "signed_max": 4449
+    },
+    {
+      "family": "ALL",
+      "segments": 4695,
+      "ordinal_moved": 3045,
+      "token_moved": 3045,
+      "mean_abs_tokens": 118.10202342917998,
+      "p95_abs_tokens": 66,
+      "signed_min": -66,
+      "signed_max": 4449
+    }
+  ],
+  "raw_order_patterns": {
+    "HotpotQA": [
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "RAG_CHUNK",
+            16
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 120
+      }
+    ],
+    "RULER": [
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "SYNTHETIC_CONTEXT",
+            16
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 30
+      }
+    ],
+    "NarrativeQA": [
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "RAG_CHUNK",
+            16
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 30
+      }
+    ],
+    "Qasper": [
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "RAG_CHUNK",
+            16
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 30
+      }
+    ],
+    "RepoBench": [
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "REPO_CONTEXT",
+            16
+          ],
+          [
+            "CODE_PREFIX",
+            1
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 21
+      },
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "REPO_CONTEXT",
+            16
+          ],
+          [
+            "CODE_PREFIX",
+            16
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 6
+      },
+      {
+        "segments": [
+          [
+            "SYS_PROMPT",
+            1
+          ],
+          [
+            "TOOL_OBS",
+            1
+          ],
+          [
+            "REPO_CONTEXT",
+            16
+          ],
+          [
+            "CODE_PREFIX",
+            6
+          ],
+          [
+            "USER_QUERY",
+            1
+          ]
+        ],
+        "model_session_inputs": 3
+      }
+    ]
+  },
+  "ruler_audit": [
+    {
+      "model": "Qwen",
+      "cold_compiled": 210,
+      "cold_pairs": 270,
+      "fanout_compiled": 516,
+      "fanout_pairs": 540,
+      "compiled": 726,
+      "pairs": 810,
+      "coverage_pct": 89.62962962962963
+    },
+    {
+      "model": "Mistral",
+      "cold_compiled": 210,
+      "cold_pairs": 270,
+      "fanout_compiled": 516,
+      "fanout_pairs": 540,
+      "compiled": 726,
+      "pairs": 810,
+      "coverage_pct": 89.62962962962963
+    },
+    {
+      "model": "Llama",
+      "cold_compiled": 210,
+      "cold_pairs": 270,
+      "fanout_compiled": 516,
+      "fanout_pairs": 540,
+      "compiled": 726,
+      "pairs": 810,
+      "coverage_pct": 89.62962962962963
+    }
+  ],
+  "native_d0": {
+    "policy": "D0-native-apc",
+    "goodput": 0.06641228785859125,
+    "min": 0.026236176728707525,
+    "max": 0.09668623002545398,
+    "repeats": 5
+  },
+  "deployment_width": [
+    {
+      "model": "Qwen3-8B",
+      "ttft_reduction": 37.81071925586949,
+      "prefill_reduction": 59.12963199352208,
+      "slack_s": 2,
+      "execution_SLO_multiplier": 2.832441381365549,
+      "zero_slack_cost_supplement_pct": 17.50068545095588
+    },
+    {
+      "model": "Qwen3-14B TP=2",
+      "ttft_reduction": 44.68754076425449,
+      "prefill_reduction": 60.5700279016402,
+      "slack_s": 2,
+      "execution_SLO_multiplier": 2.9155337469112297,
+      "zero_slack_cost_supplement_pct": 10.588495293661088
+    },
+    {
+      "model": "Mistral-7B",
+      "ttft_reduction": 31.716215753439343,
+      "prefill_reduction": 39.46292455165468,
+      "slack_s": 2,
+      "execution_SLO_multiplier": 1.2608128912553074,
+      "zero_slack_cost_supplement_pct": -2.843324223039523
+    },
+    {
+      "model": "Llama-3.1-8B",
+      "ttft_reduction": 29.408255395147194,
+      "prefill_reduction": 30.97326315414785,
+      "slack_s": 6,
+      "execution_SLO_multiplier": 1.1889701206467724,
+      "zero_slack_cost_supplement_pct": 7.691799771039361
+    }
+  ],
+  "density": [
+    {
+      "tenants": 10,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 0.9000682067259704,
+      "peak_used_blocks": 525.6666666666666,
+      "minimum_free_blocks": 1860.3333333333333
+    },
+    {
+      "tenants": 10,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 9.407992363981556,
+      "peak_used_blocks": 146.0,
+      "minimum_free_blocks": 2240.0
+    },
+    {
+      "tenants": 20,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.0322498906266626,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 20,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 10.78089768231309,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 30,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.0591195200336125,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 30,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 10.532412222964783,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 40,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.073137427468879,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 40,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.056892464222805,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 60,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.112437803169902,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 60,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.071546580145192,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 80,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.1519680131572492,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 80,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.032735995641136,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    }
+  ],
+  "frozen_gate": [
+    {
+      "point_id": "0",
+      "lane": "0",
+      "stable_prefix_tokens": "1500",
+      "future_reuses": "8",
+      "tool_slack_ms": "3500",
+      "certificate_issued": "True",
+      "gate_accepted": "False",
+      "effective_policy": "raw-fallback",
+      "observed_net_benefit_ms": "0.0",
+      "observed_net_benefit_fraction": "0.0",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "1",
+      "lane": "0",
+      "stable_prefix_tokens": "3000",
+      "future_reuses": "12",
+      "tool_slack_ms": "500",
+      "certificate_issued": "True",
+      "gate_accepted": "True",
+      "effective_policy": "ContractKV",
+      "observed_net_benefit_ms": "7044.757876545191",
+      "observed_net_benefit_fraction": "0.5881292913165774",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "2",
+      "lane": "0",
+      "stable_prefix_tokens": "5000",
+      "future_reuses": "10",
+      "tool_slack_ms": "1500",
+      "certificate_issued": "True",
+      "gate_accepted": "True",
+      "effective_policy": "ContractKV",
+      "observed_net_benefit_ms": "10842.677316628397",
+      "observed_net_benefit_fraction": "0.6940422703620943",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "3",
+      "lane": "0",
+      "stable_prefix_tokens": "3500",
+      "future_reuses": "6",
+      "tool_slack_ms": "6000",
+      "certificate_issued": "True",
+      "gate_accepted": "False",
+      "effective_policy": "raw-fallback",
+      "observed_net_benefit_ms": "0.0",
+      "observed_net_benefit_fraction": "0.0",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    }
+  ],
+  "source_hashes": [
+    {
+      "path": "aggregate_summary_v0.csv",
+      "sha256": "ebc20d5f73d25295e54abc866a87632635d4637702642faee93b15304c6a6ae9"
+    },
+    {
+      "path": "free_generation_sessions_v1.jsonl",
+      "sha256": "20baa66b1cdba60f9f9454aa5d1fb2e64cb285a0b67603ab2fbd3f5147c3e482"
+    },
+    {
+      "path": "fresh_cost_decomposition_v1.csv",
+      "sha256": "fa3c459b8cb244304dfd43b29c61aaea43d2701ed591413f7a1509cb456b5595"
+    },
+    {
+      "path": "heldout_gate_v1.csv",
+      "sha256": "b363162086933ee7823f163c8532fc201448805f1d9fa1e596e2681f9a5d0fe2"
+    },
+    {
+      "path": "heldout_scope_aggregate_v0.csv",
+      "sha256": "3075982e3ec78490994791ff1a82562107d46ab56bfe1a2dd1ac6a452a03268d"
+    },
+    {
+      "path": "hotpot_heldout_sessions_v1.jsonl",
+      "sha256": "16aba12577becbc261b950fac59aa6d0a4477744aec709ca787a91fcf28203d7"
+    },
+    {
+      "path": "matched_baseline_quality_thresholds_v1.csv",
+      "sha256": "d5adf580fe11beaa4a0c9883e1bf975014d02194bba109839f755b2103d90b58"
+    },
+    {
+      "path": "multi_tenant_aggregate_v0.csv",
+      "sha256": "f0f2ffa1553f466e551eea9ec82a6c7603455a1320099964f0ebcece66637906"
+    },
+    {
+      "path": "multi_tenant_cell_summary_v0.csv",
+      "sha256": "bd83a325dc9045868b62cd54a60c5ef18e7831e14e3ed4db23cfc2efda2af046"
+    },
+    {
+      "path": "quality_summary_v1.csv",
+      "sha256": "1c2c368450cf5f4850e861f015d4a568b1fe8594c3177258bec2975f1908103f"
+    },
+    {
+      "path": "real_task_open_loop_summary_v1.csv",
+      "sha256": "19ba7a3f5c8f55dae392ea433cbd432d34109558b601ded61a98e072ef544c92"
+    },
+    {
+      "path": "run_tsc_multi_tenant.sh",
+      "sha256": "c2e6dd42d7848b28cc4b935e72580eb314e0358703e36d40e7cd96b0fae19785"
+    },
+    {
+      "path": "segment_token_displacement_summary_v1.csv",
+      "sha256": "920411ef725cdb3c74e1ef60ef45a62a54d462bf9cd603b73c7819abb2dd8335"
+    },
+    {
+      "path": "segment_token_displacement_v1.csv",
+      "sha256": "cc1da5b0c61ae0df0123460ede83266745867c090aa4bf1de0ed70e34d928f52"
+    },
+    {
+      "path": "submission_repeat_aggregate_v0.csv",
+      "sha256": "ee801fb7e99a0485171f5b514bbc14377886d71492099d7ed41f214939b79e84"
+    },
+    {
+      "path": "submission_repeat_cells_v0.csv",
+      "sha256": "05d16f64ac4eac4ada5f5a0ffe21ce338a88a4a759a117909b3fde366a2d3be4"
+    }
+  ],
+  "new_GPU_measurements": 0,
+  "tokenizer_rerun": false,
+  "execution_SLO_note": "Archived goodput factors use business execution wall; they are not full-wall qualification-charged throughput.",
+  "gate_note": "Rejected operating points also have diagnostic PASS/COMMITTED results; no avoided-call claim."
+}

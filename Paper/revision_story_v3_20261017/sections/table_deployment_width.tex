@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering\small
+\caption{Five-family deployment breadth, three process repetitions. All percentages are reductions. The slack column charges residual verification; zero-slack figures use separately measured diagnostic registration costs amortized over future requests, not a matched slack ablation. Prefill concerns the deployment cohort.}
+\label{tab:deployment-width}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Configuration & \shortstack{Net TTFT\\slack} & \shortstack{Zero-slack\\supp.} & Prefill & \shortstack{Slack\\(s)}\\
+\midrule
+Qwen3-8B & 37.81\% & 17.50\% & 59.13\% & 2\\
+Qwen3-14B TP=2 & 44.69\% & 10.59\% & 60.57\% & 2\\
+Mistral-7B & 31.72\% & -2.84\% & 39.46\% & 2\\
+Llama-3.1-8B & 29.41\% & 7.69\% & 30.97\% & 6\\
+\bottomrule
+\end{tabular}
+\end{table}

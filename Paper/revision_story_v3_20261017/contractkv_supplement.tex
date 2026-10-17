@@ -1,0 +1,45 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm,algorithmic}
+\usepackage{graphicx,booktabs,array,multirow}
+\usepackage{microtype}
+\usepackage{dblfloatfix}
+\usepackage{url}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{cite}
+\newcommand{\ckv}{\textsc{ContractKV}}
+\newcommand{\raw}{\mathrm{raw}}
+\newcommand{\cand}{\mathrm{cand}}
+\newcommand{\Pass}{\textsc{Pass}}
+\newcommand{\Fail}{\textsc{Fail}}
+\newcommand{\LCP}{\operatorname{LCP}}
+\newcommand{\Hash}{\operatorname{H}}
+\newcommand{\ind}{\mathbf{1}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newtheorem{definition}{Definition}
+\interdisplaylinepenalty=2500
+\setcounter{topnumber}{2}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\dbltopfraction}{0.92}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\hypersetup{pdftitle={ContractKV: Certified Prompt Compilation for Transactional Prefix Reuse in Multi-Tenant LLM Services},pdfauthor={Bin Zhou and Xi Cao},pdfsubject={Figure-integrated restructuring of the 17 October 2026 revision draft}}
+
+\begin{document}
+\title{ContractKV: Supplemental Experimental Record}
+\author{Bin~Zhou and Xi~Cao}
+\maketitle
+\noindent This supplement provides input-layout measurements, serving controls and detailed experimental outcomes. Protocol labels distinguish qualification granularity, input construction and timing. Source records and aggregation code accompany the tables; section and table numbering is local to this supplement.
+
+\renewcommand{\thesection}{S-\Roman{section}}
+\renewcommand{\thetable}{S-\Roman{table}}
+\input{sections/supplement_restored_tables}
+\input{sections/supplement_service_breadth}
+\input{sections/supplement_evaluation}
+\input{references_supplement}
+\end{document}
