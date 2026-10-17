@@ -22,7 +22,7 @@ The mechanism predicts two gains: sharing a qualification reduces its cost per u
 
 \input{sections/table_deployment_width}
 
-Table~\ref{tab:deployment-width} tests five-family breadth in four deployment configurations, including 14B tensor parallelism: net mean TTFT improves 29.41--44.69\% under residual-verification accounting. The independent zero-slack registration-cost supplement has its own inputs and amortization denominator; it is not a matched slack ablation of these rows. Execution-clock SLO statistics are also reported separately.
+Table~\ref{tab:deployment-width} tests five-family breadth in four deployment configurations, including 14B tensor parallelism. Its recorded residual-RPC convention gives 29.41--44.69\% mean-TTFT reduction, not complete service wall. A matched-request supplement reaccounts zero slack and identifies missing intermediate Llama timers. Independent registration-cost measurements retain their own inputs/denominators. Execution-clock SLO statistics are also reported separately.
 
 We expect a net gain when enough admitted requests reuse a stable prefix to repay first-use qualification. Figure~\ref{fig:performance} tests this on the same source set, with no tool slack and successful and failed attempts included. Throughput improves by 1.619$\times$ on Qwen, 1.109$\times$ on Mistral, and 1.070$\times$ on Llama. The process ranges are 1.615--1.623$\times$, 1.107--1.110$\times$, and 1.068--1.072$\times$. These are complete service gains rather than prefill-only estimates.
 
@@ -92,7 +92,7 @@ Figure~\ref{fig:governance} isolates governance from layout opportunity. D1 uses
 \label{fig:governance}
 \end{figure}
 
-Behaviorally harmful, dependency-valid candidates provide the complementary test. In each of two controlled 20-case sets, all ten harmful candidates are rejected with zero newly promoted candidate tokens. A 14B control also checks actual post-decision outputs against raw scores. Live hook, concurrency, cancellation, duplicate, timeout and authenticated-binding controls exercise publication. The separate 325,000-operation stress study tests the in-memory state machine and is not counted as GPU serving evidence.
+Behaviorally harmful, dependency-valid candidates provide the complementary test. In each of two controlled 20-case sets, all ten harmful candidates are rejected with zero newly promoted candidate tokens. A 14B control also checks actual post-decision outputs against raw scores. Live hook, concurrency, cancellation, duplicate and timeout controls exercise publication; CPU binding tests exercise the request-side check. The separate 325,000-operation stress study tests the in-memory state machine and is not counted as GPU serving evidence.
 
 \subsubsection{The unit of amortization}
 \label{sec:deployment}

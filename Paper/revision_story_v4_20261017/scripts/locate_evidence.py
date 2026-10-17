@@ -54,7 +54,11 @@ topics=[('R2.6 input displacement','supplement','tab:s-displacement'),('R3.1 raw
  ('independent zero-slack cost supplement','supplement','tab:zeroslack'),
  ('six-source model outcomes','supplement','tab:s-source-results'),
  ('registration trust cases','supplement','tab:s-manifest'),
- ('open-arrival interval','supplement','tab:s-open-ci')]
+ ('open-arrival interval','supplement','tab:s-open-ci'),
+ ('separate five-family structural controls','supplement','tab:s-five-family-structure'),
+ ('same-source structural input comparison','supplement','tab:s-structure-paired'),
+ ('original matched-request RPC accounting and missing timers','supplement','tab:s-matched-original-cost'),
+ ('actual deployment-client binding boundary','supplement','tab:s-client-binding')]
 with (root/'audit/paper_evidence_topics.csv').open('w',encoding='utf-8',newline='') as f:
     w=csv.DictWriter(f,fieldnames=['topic']+list(records[0]));w.writeheader()
     for topic,doc,label in topics:w.writerow({'topic':topic,**look[(doc,label)]})

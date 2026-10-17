@@ -1,0 +1,10 @@
+case,actual_reject,expected_reject,errors,expectation_matched,interpretation
+authorized_template,False,False,[],True,valid operator-owned shared prefix
+untrusted_client_reuses_operator_manifest,True,True,"[""client_cannot_register_shared_state""]",True,metadata alone cannot grant registration authority
+forged_operator_identity,True,True,"[""manifest_signature_mismatch"", ""untrusted_issuer""]",True,identity and signature mismatch
+changed_content_stale_hash,True,True,"[""content_hash_mismatch""]",True,hash verifies declared bytes
+explicit_private_publication,True,True,"[""declared_private_or_mutable_publication""]",True,declared private segment cannot be shared
+mutable_shared_segment,True,True,"[""declared_private_or_mutable_publication""]",True,declared mutable segment cannot be shared
+missing_authorization,True,True,"[""missing_version_or_authorization_scope""]",True,registration scope must be explicit
+stale_signed_version,True,True,"[""manifest_signature_mismatch""]",True,lifecycle identity cannot be changed under old tag
+trusted_operator_mislabels_private_as_public,False,False,[],True,TRUST_BOUNDARY: valid hash/signature cannot infer confidentiality; operator misconfiguration is not prevented

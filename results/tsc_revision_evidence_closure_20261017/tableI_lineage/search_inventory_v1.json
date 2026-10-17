@@ -1,0 +1,363 @@
+{
+  "qoder_task_file_history_files": 44,
+  "table_literal_snapshot_matches": [
+    {
+      "file": "cd648b0d0d95729b@v1",
+      "bytes": 74844,
+      "sha256": "971986fe853aa6014764d54792f7d4633c06474871fa02a2a03d6e929e3682e2",
+      "contains_table_literals": true
+    },
+    {
+      "file": "cd648b0d0d95729b@v2",
+      "bytes": 78103,
+      "sha256": "24aaa0f9703e5828ba153a61cc8f89e59d2088d481c2f8bf273cbc919653693e",
+      "contains_table_literals": true
+    },
+    {
+      "file": "cd648b0d0d95729b@v3",
+      "bytes": 77603,
+      "sha256": "a98485e2c570ef8504eb392b65554b1b784745d38a163e00bae109094b9b3adf",
+      "contains_table_literals": true
+    },
+    {
+      "file": "cd648b0d0d95729b@v4",
+      "bytes": 72172,
+      "sha256": "832041fd68c4d828958568160a74e136645a79174b29b5692a82a65729e23b31",
+      "contains_table_literals": true
+    },
+    {
+      "file": "cd648b0d0d95729b@v5",
+      "bytes": 72177,
+      "sha256": "86ff8f0a27fdab7670f7110567d4f7cfb58ebfeda4366d7b32c34fcc9c53f7ae",
+      "contains_table_literals": true
+    }
+  ],
+  "unreachable_numeric_hits": [
+    {
+      "blob": "9c6475c3fbe266ac768886dc42d1dd32d0405c25",
+      "bytes": 84625,
+      "contexts": [
+        "fix. In our controlled structured-service traces, 85.0\\% of prompt tokens are stable, yet native automatic prefix caching recovers only 2.4\\%. We present ContractKV, a service cont",
+        "        & 91.2\\% & 2.8\\% \\\\\nHotpotQA            & 82.4\\% & 2.1\\% \\\\\nNarrativeQA         & 78.6\\% & 1.9\\% \\\\\nQasper              & 84.1\\% & 2.4\\% \\\\\nRepoBench           & 88.7\\% & 2",
+        "& 2.6\\% \\\\\n\\midrule\n\\textbf{Mean}       & \\textbf{85.0\\%} & \\textbf{2.4\\%} \\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}\n\n\\begin{figure*}[t]\n\\centering\n\\includegraphics[width=\\textwidth"
+      ],
+      "has_table_family_vector": true
+    },
+    {
+      "blob": "4ee7ab526c39785bef6e4153308fa0ebbcb3cbcf",
+      "bytes": 154754,
+      "contexts": [
+        " In repeated agent, retrieval, and code services, 85.0\\% of prompt tokens are stable, yet native automatic prefix caching recovers only 2.4\\%. We present ContractKV, a service cont",
+        "       & 91.2\\% & 2.8\\% \\\\\n-HotpotQA            & 82.4\\% & 2.1\\% \\\\\n-NarrativeQA         & 78.6\\% & 1.9\\% \\\\\n-Qasper              & 84.1\\% & 2.4\\% \\\\\n-RepoBench           & 88.7\\% ",
+        "2.6\\% \\\\\n-\\midrule\n-\\textbf{Mean}       & \\textbf{85.0\\%} & \\textbf{2.4\\%} \\\\\n+\\begin{tabular}{@{}lrrr@{}}\n+\\toprule\n+Model & Stable body $\\rho_s$ & Native hits $\\rho_h$ & $\\rho_{s"
+      ],
+      "has_table_family_vector": true
+    }
+  ],
+  "early_offline_census_checks": [
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "RULER",
+        "niah_single_1"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 93.488179178764,
+      "stable_request_macro_pct": 93.48804641048227,
+      "raw_LCP_over_stable_pooled_pct": 1.419698314108252,
+      "raw_LCP_over_stable_request_macro_pct": 1.4198100988245148,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "RepoBench",
+        "python_repository_completion"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 92.90928050052138,
+      "stable_request_macro_pct": 92.49990679724786,
+      "raw_LCP_over_stable_pooled_pct": 0.0,
+      "raw_LCP_over_stable_request_macro_pct": 0.0,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "LongBench",
+        "hotpotqa"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 99.4003289507289,
+      "stable_request_macro_pct": 99.22133059830719,
+      "raw_LCP_over_stable_pooled_pct": 0.09592326139088729,
+      "raw_LCP_over_stable_request_macro_pct": 0.12979684337031802,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "LongBench",
+        "qasper"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 98.9322191272052,
+      "stable_request_macro_pct": 98.68045374399628,
+      "raw_LCP_over_stable_pooled_pct": 0.18770530267480057,
+      "raw_LCP_over_stable_request_macro_pct": 0.232049167476048,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "LongBench",
+        "narrativeqa"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 99.66021661460832,
+      "stable_request_macro_pct": 99.53511975163313,
+      "raw_LCP_over_stable_pooled_pct": 0.06502387459929038,
+      "raw_LCP_over_stable_request_macro_pct": 0.09043464149724614,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "LongBench",
+        "lcc"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 97.99069537396251,
+      "stable_request_macro_pct": 97.55203064946602,
+      "raw_LCP_over_stable_pooled_pct": 0.41010110569567343,
+      "raw_LCP_over_stable_request_macro_pct": 0.5036938162551439,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\segment_fabric\\segment_forest_canonical_slots_v0.csv",
+      "group": [
+        "LongBench",
+        "repobench-p"
+      ],
+      "rows": 20,
+      "stable_pooled_pct": 91.96403061027499,
+      "stable_request_macro_pct": 87.64117370861607,
+      "raw_LCP_over_stable_pooled_pct": 0.12595251590150514,
+      "raw_LCP_over_stable_request_macro_pct": 0.23802510971970653,
+      "claim_boundary": "layout_equivalence_required_not_model_scored"
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v0.csv",
+      "group": [
+        "RepoBench",
+        "python_repository_completion"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 96.9118593180356,
+      "stable_request_macro_pct": 96.72146552365167,
+      "raw_LCP_over_stable_pooled_pct": 1.13299402522682,
+      "raw_LCP_over_stable_request_macro_pct": 1.2082504685200324,
+      "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v0.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "mixed_long_history"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 93.70370370370371,
+      "stable_request_macro_pct": 93.31693121693121,
+      "raw_LCP_over_stable_pooled_pct": 2.5296442687747036,
+      "raw_LCP_over_stable_request_macro_pct": 2.4050268913092947,
+      "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v0.csv",
+      "group": [
+        "LongBench",
+        "hotpotqa"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 99.7539807284904,
+      "stable_request_macro_pct": 99.66866271858379,
+      "raw_LCP_over_stable_pooled_pct": 0.0876892512160033,
+      "raw_LCP_over_stable_request_macro_pct": 0.11862538634619395,
+      "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v0.csv",
+      "group": [
+        "LongBench",
+        "qasper"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 99.4831113823181,
+      "stable_request_macro_pct": 99.36242129045071,
+      "raw_LCP_over_stable_pooled_pct": 0.18473750676528955,
+      "raw_LCP_over_stable_request_macro_pct": 0.22834082760142058,
+      "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v0.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "tool_function"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 92.5233644859813,
+      "stable_request_macro_pct": 92.5233644859813,
+      "raw_LCP_over_stable_pooled_pct": 3.2323232323232323,
+      "raw_LCP_over_stable_request_macro_pct": 3.232323232323233,
+      "claim_boundary": "Offline compiler census over source-backed/synthetic agent traces; estimates reusable prefix opportunity, not live cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v1.csv",
+      "group": [
+        "RepoBench",
+        "python_repository_completion"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 96.9118593180356,
+      "stable_request_macro_pct": 96.72146552365167,
+      "raw_LCP_over_stable_pooled_pct": 1.13299402522682,
+      "raw_LCP_over_stable_request_macro_pct": 1.2082504685200324,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v1.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "mixed_long_history"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 93.70370370370371,
+      "stable_request_macro_pct": 93.31693121693121,
+      "raw_LCP_over_stable_pooled_pct": 2.5296442687747036,
+      "raw_LCP_over_stable_request_macro_pct": 2.4050268913092947,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v1.csv",
+      "group": [
+        "LongBench",
+        "hotpotqa"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 99.7539807284904,
+      "stable_request_macro_pct": 99.66866271858379,
+      "raw_LCP_over_stable_pooled_pct": 0.0876892512160033,
+      "raw_LCP_over_stable_request_macro_pct": 0.11862538634619395,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v1.csv",
+      "group": [
+        "LongBench",
+        "qasper"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 99.4831113823181,
+      "stable_request_macro_pct": 99.36242129045071,
+      "raw_LCP_over_stable_pooled_pct": 0.18473750676528955,
+      "raw_LCP_over_stable_request_macro_pct": 0.22834082760142058,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v1.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "tool_function"
+      ],
+      "rows": 100,
+      "stable_pooled_pct": 92.5233644859813,
+      "stable_request_macro_pct": 92.5233644859813,
+      "raw_LCP_over_stable_pooled_pct": 3.2323232323232323,
+      "raw_LCP_over_stable_request_macro_pct": 3.232323232323233,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v2.csv",
+      "group": [
+        "RepoBench",
+        "python_repository_completion"
+      ],
+      "rows": 380,
+      "stable_pooled_pct": 93.80087413288423,
+      "stable_request_macro_pct": 93.45470102154158,
+      "raw_LCP_over_stable_pooled_pct": 0.944952043683783,
+      "raw_LCP_over_stable_request_macro_pct": 1.0072809535534264,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v2.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "mixed_long_history"
+      ],
+      "rows": 380,
+      "stable_pooled_pct": 38.25385694249649,
+      "stable_request_macro_pct": 36.82240822169706,
+      "raw_LCP_over_stable_pooled_pct": 15.3987167736022,
+      "raw_LCP_over_stable_request_macro_pct": 14.683446929253885,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v2.csv",
+      "group": [
+        "LongBench",
+        "hotpotqa"
+      ],
+      "rows": 380,
+      "stable_pooled_pct": 98.88878786304359,
+      "stable_request_macro_pct": 98.80713389786992,
+      "raw_LCP_over_stable_pooled_pct": 0.1451762595336731,
+      "raw_LCP_over_stable_request_macro_pct": 0.15795153130546816,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v2.csv",
+      "group": [
+        "LongBench",
+        "qasper"
+      ],
+      "rows": 380,
+      "stable_pooled_pct": 98.63092904743237,
+      "stable_request_macro_pct": 98.49969950939504,
+      "raw_LCP_over_stable_pooled_pct": 0.21964034416596023,
+      "raw_LCP_over_stable_request_macro_pct": 0.24084805738379916,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    },
+    {
+      "file": "results\\workload\\phase14a_opportunity_census_raw_v2.csv",
+      "group": [
+        "SyntheticAgentTrace",
+        "tool_function"
+      ],
+      "rows": 380,
+      "stable_pooled_pct": 35.775862068965516,
+      "stable_request_macro_pct": 35.76419863217365,
+      "raw_LCP_over_stable_pooled_pct": 23.081800887761574,
+      "raw_LCP_over_stable_request_macro_pct": 23.111995104039167,
+      "claim_boundary": "Offline compiler census; raw and CAPOSC LCP use their own policy-state ledgers, not live vLLM cache hits."
+    }
+  ],
+  "git_unreachable_blobs": 1745,
+  "unreachable_blobs_examined_under_2MB": 1732,
+  "remote_text_file_scan": {
+    "files_scanned": 1421,
+    "hits": [
+      {
+        "path": "scripts/tsc_revision_r4_table_I_reconstruction_v2.py",
+        "match": "tokens':hit/prompt,\n            'stable_native_recovery_fraction_of_stable_body_tokens':stable_hit/stable if stable else None,\n            'stable_native_r"
+      }
+    ]
+  },
+  "limits": [
+    "The inventory is scoped to the project and the linked writing task, not every device or cloud account.",
+    "All early offline estimates are labelled by their original evidence class and were not rebranded as live cache measurements.",
+    "All 1745 unreachable blobs were examined in the bounded follow-up, including textual ZIP members; this does not rule out external or unsaved measurements."
+  ],
+  "all_unreachable_blobs_examined": 1745,
+  "large_blob_followup": "large_blob_followup_v1.json"
+}

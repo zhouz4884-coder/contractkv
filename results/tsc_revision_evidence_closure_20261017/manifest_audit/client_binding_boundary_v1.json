@@ -1,0 +1,169 @@
+{
+  "cases": [
+    {
+      "case": "valid_binding",
+      "binding_errors": [],
+      "compiled_route_admissible": true,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "tenant_label_not_bound_by_domain_wildcard",
+      "binding_errors": [],
+      "compiled_route_admissible": true,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_model_identity",
+      "binding_errors": [
+        "model_id_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_model_revision",
+      "binding_errors": [
+        "model_revision_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_tokenizer",
+      "binding_errors": [
+        "tokenizer_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_chat_template_hash",
+      "binding_errors": [
+        "chat_template_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_runtime_revision",
+      "binding_errors": [
+        "runtime_revision_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_qualification_hash",
+      "binding_errors": [
+        "qualification_manifest_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_policy_hash",
+      "binding_errors": [
+        "policy_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_authorization_domain",
+      "binding_errors": [
+        "authorization_domain_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_service_epoch",
+      "binding_errors": [
+        "service_template_epoch_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_stable_content_hash",
+      "binding_errors": [
+        "stable_prefix_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_layout_hash",
+      "binding_errors": [
+        "layout_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_private_suffix_excluded",
+      "binding_errors": [
+        "private_suffix_not_excluded"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_template",
+      "binding_errors": [
+        "service_template_id_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "changed_generation_budget",
+      "binding_errors": [
+        "generation_config_hash_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "missing_signed_binding",
+      "binding_errors": [
+        "signed_binding_missing"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "bad_authentication_tag",
+      "binding_errors": [
+        "signature_mismatch"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    },
+    {
+      "case": "expired_binding",
+      "binding_errors": [
+        "certificate_expired"
+      ],
+      "compiled_route_admissible": false,
+      "evidence_type": "CPU source-extracted controlled-client binding check"
+    }
+  ],
+  "case_count": 19,
+  "binding_error_cases": 17,
+  "actual_enforcement_location": "Trusted controlled-service client before compiled/raw route selection",
+  "network_authentication_proxy_implemented_by_this_test": false,
+  "live_registration_helper_integrated": false,
+  "individual_tenant_identity_check": "This client binds tenant_id=* within the operator-configured authorization domain; it is not a per-tenant access-control service.",
+  "request_function_source_lines": {
+    "binding_check": 103,
+    "model_send": 113
+  },
+  "source_sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+  "new_model_calls": 0,
+  "limits": [
+    "Binding mismatch selects raw routing; it does not mean that no backend raw request is sent.",
+    "The separate nine-case manifest helper does not infer confidentiality or run as a public registration endpoint.",
+    "A trusted caller/controller must mediate engine access. Arbitrary direct untrusted engine clients are outside this evaluated boundary."
+  ]
+}

@@ -105,7 +105,7 @@ A service-template certificate organizes the identity and lifecycle of reusable 
 \begin{equation}
  C_\Theta=\langle I,V,H_s,L,P,Q,A,E,\Sigma\rangle,
 \end{equation}
-$I$ identifies the model/runtime execution, $V$ the template version, $H_s$ its stable content, $L$ its layout, $P$ the verifier policy, $Q$ the qualification manifest, $A$ the authorization domain, $E$ the epoch, and $\Sigma$ the authentication tag. The authenticated deployment path uses HMAC-SHA256 and checks the complete binding before forwarding a request.
+$I$ identifies the model/runtime execution, $V$ the template version, $H_s$ its stable content, $L$ its layout, $P$ the verifier policy, $Q$ the qualification manifest, $A$ the authorization domain, $E$ the epoch, and $\Sigma$ the authentication tag. The evaluated deployment client uses HMAC-SHA256 and checks the complete binding before selecting the compiled route.
 
 The controlled query client keeps admission decisions at $(\textit{namespace},q)$ and prefix associations at $(\textit{namespace},H_s)$; these are records, not a second backend-signed certificate. Several query decisions may authorize the same physical prefix. Changed bindings prevent reuse; changed deployment objects require lifecycle re-registration.
 

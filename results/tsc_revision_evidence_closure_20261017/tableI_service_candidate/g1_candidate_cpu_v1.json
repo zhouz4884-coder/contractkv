@@ -1,0 +1,61 @@
+{
+  "candidate": "Frozen service-locality g1 / Qwen / r1 / 80% load / native APC",
+  "selection_reason": "125 sessions: 25 distinct source groups per family, matching the old table sample topology",
+  "future_requests": 1125,
+  "prompt_lengths_match_observed": true,
+  "actual_full_prompt_IDs_recorded": false,
+  "new_GPU_requests": 0,
+  "is_original_TableI_reproduction": false,
+  "summaries": [
+    {
+      "family": "HotpotQA",
+      "requests": 225,
+      "sources": 25,
+      "stable_body_ratio_pct": 95.56503861370743,
+      "total_native_hit_ratio_pct": 0.02457148670932123,
+      "stable_recovery_pct": 0.0024104807703896544
+    },
+    {
+      "family": "NarrativeQA",
+      "requests": 225,
+      "sources": 25,
+      "stable_body_ratio_pct": 95.5379943405342,
+      "total_native_hit_ratio_pct": 0.0,
+      "stable_recovery_pct": 0.0
+    },
+    {
+      "family": "Qasper",
+      "requests": 225,
+      "sources": 25,
+      "stable_body_ratio_pct": 95.29051987767583,
+      "total_native_hit_ratio_pct": 0.026359414738619632,
+      "stable_recovery_pct": 0.0025933273686803856
+    },
+    {
+      "family": "RULER",
+      "requests": 225,
+      "sources": 25,
+      "stable_body_ratio_pct": 91.56325956249201,
+      "total_native_hit_ratio_pct": 0.09096982360382642,
+      "stable_recovery_pct": 0.023285597857724997
+    },
+    {
+      "family": "RepoBench",
+      "requests": 225,
+      "sources": 25,
+      "stable_body_ratio_pct": 97.00673158617084,
+      "total_native_hit_ratio_pct": 0.01742805481123238,
+      "stable_recovery_pct": 0.0
+    }
+  ],
+  "limits": [
+    "Offline stable-body attribution is joined to measured prompt lengths and hit counts; full old prompt IDs are unavailable.",
+    "This candidate uses a marker service task and future turns 1-9; it is not silently substituted for the original motivation statistic."
+  ],
+  "source_sha256": "eda3a986fa8ec4edfb4534d82bcfb25819f764dfc69f1c85d4aef787196d2863",
+  "frozen_input_canonical_hash_matches": true,
+  "input_canonical_sha256": "bb52011ed1d0210e05b847ef563751fd7df172bf85df75c21466692d8d953b1e",
+  "input_file_sha256": "419cd01563f4699daa34d9cbdd6da9349f4a77aae3bea4229ec3a928c8cda5cc",
+  "raw_file_sha256": "d0facb2194bbb9114cfee473e9551c8d0e0c9fe2484757b9931266bcd26623f0",
+  "families_matching_original_stable_ratio_to_one_decimal": 0
+}

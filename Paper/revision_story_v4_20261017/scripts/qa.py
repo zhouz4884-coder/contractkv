@@ -94,6 +94,21 @@ for row in new['source_files']:assert sha(root/'evidence'/row['file'])==row['sha
 broad=(root/'sections/table_deployment_width.tex').read_text()
 assert 'Zero-slack' not in broad and '17.50' not in broad and '-2.84' not in broad
 assert len(re.findall(r'\d+\.\d+\\%',broad))==8
+closure_cost=json.loads((root/'evidence/closure_tableIII_cost_v1.json').read_text())
+assert closure_cost['all_four_original_reported_means_reproduced']
+assert not closure_cost['all_four_full_verification_costs_closed']
+assert sum(r['missing_verifier_RPC_timings'] for r in closure_cost['summary'])==33
+closure_structure=json.loads((root/'evidence/closure_tableI_crosswalk_v1.json').read_text())
+assert len(closure_structure['rows'])==51 and not closure_structure['original_85_2_4_reproduced']
+binding=json.loads((root/'evidence/closure_binding_boundary_v1.json').read_text())
+assert binding['case_count']==19 and binding['binding_error_cases']==17
+assert not binding['network_authentication_proxy_implemented_by_this_test']
+assert not binding['live_registration_helper_integrated']
+supp_text=' '.join(fitz.open(root/'contractkv_supplement.pdf')[i].get_text() for i in range(summaries[1]['pages']))
+for number in ['16.81','28.91','34.39','2.83','19.74','20.37','147/147','126/126','72/72','75/108']:
+    assert number in supp_text,number
+for label in ['tab:s-five-family-structure','tab:s-structure-paired','tab:s-matched-original-cost','tab:s-client-binding']:
+    assert '\\newlabel{'+label+'}' in (root/'contractkv_supplement.aux').read_text()
 for phrase in ["earlier table's exact numerical provenance",'earlier adapter','revised renderer','TABLE INSERTION PENDING']:
     assert phrase not in sections,phrase
 record={'status':'PASS','restored_segments':4695,'model_session_inputs':240,'tables_and_cohort_sources_verified':True,'layout':{'double_column_figures':[1,2],'single_column_figures':[3,4,5,6]},'manuscripts':summaries,'figures':vectors,
@@ -104,6 +119,10 @@ record={'status':'PASS','restored_segments':4695,'model_session_inputs':240,'tab
         'compiled_pair_denominators_and_prefill_arithmetic_checked':True,
         'source_data_sha256':sha(root/'figures/figure_data_v7.json'),
         'all_six_vector_figures':True,'independent_measurements_added':0,
+        'historical_original_report_arithmetic_reproduced':True,
+        'historical_full_controller_cost_closed':False,
+        'original_TableI_measurement_reproduced':False,
+        'additional_CPU_binding_cases':19,'binding_errors_deny_compiled':17,
         'bibliographic_metadata':'Original keys retained; row/field reordering citation added from reviewer suggestion and verified primary source; numbering checked.'}
 (root/'audit/manuscript_QA.json').write_bytes((json.dumps(record,indent=2)+'\n').encode())
 print(json.dumps({'status':'PASS','main_pages':summaries[0]['pages'],'supplement_pages':summaries[1]['pages'],'vector_figures':len(vectors)}))

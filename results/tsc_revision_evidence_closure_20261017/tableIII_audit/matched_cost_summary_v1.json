@@ -1,0 +1,263 @@
+{
+  "schema_version": "contractkv.original-tableIII-matched-cost.v1",
+  "source_sha256": "af967cfc05467e7ee79999219c2a9ba91fbb5aa0ef5beee71123bbfcf64efbd9",
+  "summary": [
+    {
+      "model": "qwen",
+      "reported_reduction_pct_reproduced": 37.810719255869486,
+      "zero_slack_recorded_RPC_legacy_denominator_pct": 16.81362696982478,
+      "zero_slack_recorded_RPC_all_future_pct": 28.910086522454606,
+      "future_pairs": 1350,
+      "verifier_RPC_calls": 147,
+      "timed_verifier_RPC_calls": 147,
+      "missing_verifier_RPC_timings": 0,
+      "incomplete_raw_reference_generations": 3,
+      "missing_controller_canary_timings": 3,
+      "zero_slack_status": "Exact reaccounting of recorded verifier-RPC component"
+    },
+    {
+      "model": "qwen14",
+      "reported_reduction_pct_reproduced": 44.68754076425449,
+      "zero_slack_recorded_RPC_legacy_denominator_pct": 34.39023543136248,
+      "zero_slack_recorded_RPC_all_future_pct": 34.39023543136248,
+      "future_pairs": 675,
+      "verifier_RPC_calls": 72,
+      "timed_verifier_RPC_calls": 72,
+      "missing_verifier_RPC_timings": 0,
+      "incomplete_raw_reference_generations": 3,
+      "missing_controller_canary_timings": 3,
+      "zero_slack_status": "Exact reaccounting of recorded verifier-RPC component"
+    },
+    {
+      "model": "mistral",
+      "reported_reduction_pct_reproduced": 31.71621575343934,
+      "zero_slack_recorded_RPC_legacy_denominator_pct": 2.834066384718899,
+      "zero_slack_recorded_RPC_all_future_pct": 19.74402487401095,
+      "future_pairs": 1350,
+      "verifier_RPC_calls": 126,
+      "timed_verifier_RPC_calls": 126,
+      "missing_verifier_RPC_timings": 0,
+      "incomplete_raw_reference_generations": 24,
+      "missing_controller_canary_timings": 24,
+      "zero_slack_status": "Exact reaccounting of recorded verifier-RPC component"
+    },
+    {
+      "model": "llama",
+      "reported_reduction_pct_reproduced": 29.408255395147194,
+      "zero_slack_recorded_RPC_legacy_denominator_pct": 20.367545023469308,
+      "zero_slack_recorded_RPC_all_future_pct": 20.367545023469308,
+      "future_pairs": 1350,
+      "verifier_RPC_calls": 108,
+      "timed_verifier_RPC_calls": 75,
+      "missing_verifier_RPC_timings": 33,
+      "incomplete_raw_reference_generations": 0,
+      "missing_controller_canary_timings": 150,
+      "zero_slack_status": "Upper bound on reduction: intermediate failed-call timings missing"
+    }
+  ],
+  "raw_record_sources": [
+    {
+      "model": "qwen",
+      "repeat": 1,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat1/raw-order.jsonl",
+      "sha256": "37e620f4c4a91e443cc7e0858b5f6d8443bffa9e250dd41dfc12c3f3573767b9",
+      "records": 500
+    },
+    {
+      "model": "qwen",
+      "repeat": 1,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat1/contractkv-full.jsonl",
+      "sha256": "6b95198d2dc92c4f6c1aeaea470d75f789ddbf6ad2028111c0d0d960de316331",
+      "records": 500
+    },
+    {
+      "model": "qwen",
+      "repeat": 2,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat2/raw-order.jsonl",
+      "sha256": "0565dcee9babf4c52a0f292ce5eb9a10dfa4a7d6b4a51d64f20eba3ed7639267",
+      "records": 500
+    },
+    {
+      "model": "qwen",
+      "repeat": 2,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat2/contractkv-full.jsonl",
+      "sha256": "5848673ca536f48da664adc369ea089e15041b0a1c003ebbbe6b560b32189389",
+      "records": 500
+    },
+    {
+      "model": "qwen",
+      "repeat": 3,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat3/raw-order.jsonl",
+      "sha256": "7b2d198b3fd5d61e60edaed6e2a16c57b80d3116e4f5404f09e041b6b04e3e7c",
+      "records": 500
+    },
+    {
+      "model": "qwen",
+      "repeat": 3,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/qwen/repeat3/contractkv-full.jsonl",
+      "sha256": "6414045f3f0d83c90f54c19f62e0278f2e448d96d4808e1995692f46b3fb6968",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 1,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat1/raw-order.jsonl",
+      "sha256": "92fbd14ab839214e69462cdddcb91fc7711d42866fa8c6223ab355c39f249a47",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 1,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat1/contractkv-full.jsonl",
+      "sha256": "bf2da0826a43893a34791209b8679d10bf267f1e7132e81e8cf0112bb3585e8f",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 2,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat2/raw-order.jsonl",
+      "sha256": "49c5f281bb2b58f346993e87db3113d76a983cbe0219db3c78f5dd8b0a6e20b9",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 2,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat2/contractkv-full.jsonl",
+      "sha256": "7b0f9265d4f2d21f299391ace44f995c12a2cf6274d7cf85cbdf5e7092b76f76",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 3,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat3/raw-order.jsonl",
+      "sha256": "7e11ce03fe7fa34c65528f8c5b4c0142b64f8a12ff0ca0acfd1f32412c28cef8",
+      "records": 500
+    },
+    {
+      "model": "mistral",
+      "repeat": 3,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/submission_repeats/mistral/repeat3/contractkv-full.jsonl",
+      "sha256": "7edf59379b75487bb042d935448cb506416fd6918c8fdaa0eb7063358d565eb4",
+      "records": 500
+    },
+    {
+      "model": "qwen14",
+      "repeat": 1,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r1/r1-raw.jsonl",
+      "sha256": "0834e44622776920e99f07b9d1a18bb0a7060bbba262e435fed11133164d5d89",
+      "records": 250
+    },
+    {
+      "model": "qwen14",
+      "repeat": 1,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r1/r1-contract.jsonl",
+      "sha256": "7a383d317cfb1bc16d94b97df8f5a560e9b05a4189dc86736cec4d2a3f429b57",
+      "records": 250
+    },
+    {
+      "model": "qwen14",
+      "repeat": 2,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r2/r2-raw.jsonl",
+      "sha256": "3b7eccbfa763b7a802ba99714b420cc5e68ac789a138e4101d732cd220f91f91",
+      "records": 250
+    },
+    {
+      "model": "qwen14",
+      "repeat": 2,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r2/r2-contract.jsonl",
+      "sha256": "4dfcefa82194a401ecdb8efbe2872144b59798e216d7c99a362142e0d10bc0c9",
+      "records": 250
+    },
+    {
+      "model": "qwen14",
+      "repeat": 3,
+      "policy": "raw",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r3/r3-raw.jsonl",
+      "sha256": "2d10a6d629a6608dc1123999442f3b0cecdf106f5d550e6421e47b4c115aab61",
+      "records": 250
+    },
+    {
+      "model": "qwen14",
+      "repeat": 3,
+      "policy": "strategy",
+      "path": "results/tsc_revision_evidence_closure_20261017/original_tableIII/results/scale_up/qwen3_14b_tp2_v0/r3/r3-contract.jsonl",
+      "sha256": "ee9bf87b7b53bd9aaa9b3d23f3372ae6bd81d414f47619b669f45b6669d6004f",
+      "records": 250
+    },
+    {
+      "model": "llama",
+      "repeat": 1,
+      "policy": "raw",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat1/r1-raw.jsonl",
+      "sha256": "5ea775449979ea639ae1ba88584df131ed6f422e7a3f27675025ac49a616cb74",
+      "records": 500
+    },
+    {
+      "model": "llama",
+      "repeat": 1,
+      "policy": "strategy",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat1/r1-contract.jsonl",
+      "sha256": "6ab141567cad19370121d364343e6e689722fbf07b84d0e563f04208ffe78551",
+      "records": 500
+    },
+    {
+      "model": "llama",
+      "repeat": 2,
+      "policy": "raw",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat2/r2-raw.jsonl",
+      "sha256": "302bec6073186693a40c3431e75e1d0d9beaf4ce68e007da8edf46282f847e46",
+      "records": 500
+    },
+    {
+      "model": "llama",
+      "repeat": 2,
+      "policy": "strategy",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat2/r2-contract.jsonl",
+      "sha256": "e280780fd8f942c7a04089111db0eb4d95e1d2fe5d142f44edd8df35ba82c391",
+      "records": 500
+    },
+    {
+      "model": "llama",
+      "repeat": 3,
+      "policy": "raw",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat3/r3-raw.jsonl",
+      "sha256": "abdb53a273a3b12668996b85ae30d7a53c3d8f408148dfd2452be996890f917d",
+      "records": 500
+    },
+    {
+      "model": "llama",
+      "repeat": 3,
+      "policy": "strategy",
+      "path": "results/cross_model/llama_broad_generalization_r3/repeat3/r3-contract.jsonl",
+      "sha256": "c17901258857d0cc295b3e87019cb350bdb0ff2565c6e146ff5d37821f7e5f14",
+      "records": 500
+    }
+  ],
+  "new_GPU_requests": 0,
+  "all_four_original_reported_means_reproduced": true,
+  "all_four_full_verification_costs_closed": false,
+  "limits": [
+    "Verifier-RPC costs are not full canary/controller wall or live readiness TTFT.",
+    "Qwen/Mistral originally divide residual cost by certified future requests; Qwen14/Llama use all future requests.",
+    "Incomplete raw references are rejected before verifier invocation; their lost generation/controller times are not silently treated as zero.",
+    "Llama discards intermediate rejected-attempt timings and retains the final successful call only, or zero after complete rejection.",
+    "The Llama zero-slack numbers are upper bounds on improvement, not complete-cost performance results.",
+    "Three-process mean values are not source-level confidence intervals."
+  ]
+}

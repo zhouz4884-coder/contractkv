@@ -1,0 +1,72 @@
+{
+  "status": "Writing lineage located; original measurement lineage not located",
+  "first_visible_table_insertion": {
+    "timestamp_UTC": "2026-07-19T10:58:14.283Z",
+    "session_line": 1295,
+    "tool": "Edit",
+    "target_path": "D:\\VLA_QWEN\\contract kv\\submission\\contractkv_tsc.tex",
+    "old_text": "% ============================================================\n% Placeholder sections for subsequent writing\n% ============================================================\n\n\\section{Background and Motivation}\n\\label{sec:background}\n\n% To be written.",
+    "table_text": "\\begin{table}[t]\n\\centering\n\\caption{Structural blind spot: stable content vastly exceeds physical prefix recovery across five service families (Qwen3-8B, 10-turn sessions).}\n\\label{tab:motivation}\n\\small\n\\begin{tabular}{@{}lcc@{}}\n\\toprule\n\\textbf{Service Family} & \\textbf{Stable Ratio $\\rho_s$} & \\textbf{Native Recovery $\\rho_p$} \\\\\n\\midrule\nRULER (NIAH)        & 91.2\\% & 2.8\\% \\\\\nHotpotQA            & 82.4\\% & 2.1\\% \\\\\nNarrativeQA         & 78.6\\% & 1.9\\% \\\\\nQasper              & 84.1\\% & 2.4\\% \\\\\nRepoBench           & 88.7\\% & 2.6\\% \\\\\n\\midrule\n\\textbf{Mean}       & \\textbf{85.0\\%} & \\textbf{2.4\\%} \\\\\n\\bottomrule\n\\end{tabular}\n\\end{table}",
+    "new_text_sha256": "3f852354eded3e3086b61dea5c9a62484bc200578b550aabc7cab07797c85c23"
+  },
+  "visible_tool_results_examined_before_insertion": 813,
+  "earlier_complete_target_vectors_in_visible_tool_results": [],
+  "plot_source": {
+    "path": "C:\\Users\\LENOVO\\.qoderworkcn\\workspace\\mri0jcwxlbhztija\\gen_tsc_figures.py",
+    "sha256": "68da3389954be02d744fb896999af04657e145dd508e844e0e4358635b3877af",
+    "literal_constants": {
+      "stable_ratio": {
+        "line": 49,
+        "value": [
+          91.2,
+          82.4,
+          78.6,
+          84.1,
+          88.7
+        ]
+      },
+      "native_recovery": {
+        "line": 50,
+        "value": [
+          2.8,
+          2.1,
+          1.9,
+          2.4,
+          2.6
+        ]
+      }
+    },
+    "writing_actions": [
+      {
+        "timestamp_UTC": "2026-07-19T11:15:00.587Z",
+        "session_line": 1437,
+        "tool": "Write",
+        "target_path": "C:\\Users\\LENOVO\\.qoderworkcn\\workspace\\mri0jcwxlbhztija\\gen_tsc_figures.py"
+      }
+    ]
+  },
+  "source_session_sha256": "6fc4ded0d5a0f15fd1b892ac0e424166d1d5f0ed3c64b44e3c0f50e1e7d81402",
+  "git_snapshots": [
+    {
+      "commit_and_author_date": "c377031cb4c6c7f83924a307f1871a1040b53b22 2026-07-20T23:09:55+08:00",
+      "file": "README_ContractKV.md",
+      "blob_sha256": "4e8b54039af2bc38439b4c197ef1f989820e6894739f50d2e6375dfab1286c9c"
+    },
+    {
+      "commit_and_author_date": "dcfa7d2f69b2448e579555a65781d2084a1bf568 2026-07-22T17:51:36+08:00",
+      "file": "submission/contractkv_tsc.tex",
+      "blob_sha256": "2783089ed47a52fb5b21083c8d231256587f183ef82e989924ba9c7bb2677830"
+    }
+  ],
+  "arithmetic_only": {
+    "mean_stable_pct": 85.0,
+    "mean_recovery_pct_before_rounding": 2.3600000000000003
+  },
+  "measurement_reproduction": false,
+  "limits": [
+    "Visible writing actions and plotting constants are not raw measurements.",
+    "No conclusion about a human author's intent is established.",
+    "An earlier measurement outside the examined records is not ruled out.",
+    "Neither the multi-turn-history hypothesis nor a prior numeric snapshot has been authenticated."
+  ]
+}

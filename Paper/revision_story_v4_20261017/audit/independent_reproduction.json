@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "reproduction_directory": "D:\\VLA_QWEN\\contract kv\\.artifacts\\story_v4_reproduction_20261017_02",
+  "reproduction_directory": "D:\\VLA_QWEN\\contract kv\\.artifacts\\story_v4a_reproduction_20261017_03",
   "fresh_generated_exports": 18,
-  "byte_identical_generated_outputs": 27,
+  "byte_identical_generated_outputs": 28,
   "compared_files": [
     "figures/fig1_architecture.pdf",
     "figures/fig2_full_cost_benefits.pdf",
@@ -27,23 +27,61 @@
     "sections/supplement_restored_tables.tex",
     "sections/supplement_service_breadth.tex",
     "sections/supplement_revision_audit.tex",
+    "sections/supplement_evidence_closure.tex",
     "evidence/restored_evidence.json",
     "evidence/revision_audit_evidence.json",
     "audit/evidence_locations.csv",
     "audit/paper_evidence_topics.csv"
   ],
+  "commands": [
+    {
+      "script": "restore_evidence.py",
+      "exit_code": 0
+    },
+    {
+      "script": "restore_revision_audit.py",
+      "exit_code": 0
+    },
+    {
+      "script": "restore_closure_tables.py",
+      "exit_code": 0
+    },
+    {
+      "script": "plot_figures.py",
+      "exit_code": 0
+    },
+    {
+      "script": "plot_architecture.py",
+      "exit_code": 0
+    },
+    {
+      "script": "build.py",
+      "exit_code": 0
+    },
+    {
+      "script": "qa.py",
+      "exit_code": 0
+    },
+    {
+      "script": "locate_evidence.py",
+      "exit_code": 0
+    }
+  ],
   "manuscripts": [
     {
       "file": "contractkv_tsc_story_v4.pdf",
       "pages": 12,
-      "all_page_text_equal": true
+      "all_page_text_equal": true,
+      "all_half_scale_page_pixels_equal": true
     },
     {
       "file": "contractkv_supplement.pdf",
-      "pages": 7,
-      "all_page_text_equal": true
+      "pages": 8,
+      "all_page_text_equal": true,
+      "all_half_scale_page_pixels_equal": true
     }
   ],
-  "comparison": "Vector exports, generated tables, source aggregations and label CSVs are byte-identical. Manuscripts are compared page-by-page for text and page count; PDF byte identity is not claimed.",
-  "new_model_calls": 0
+  "comparison": "Generated exports, tables, aggregates and indices are byte-identical. Manuscript pages have equal text and half-scale rendered pixels; PDF byte identity is not claimed.",
+  "new_model_calls": 0,
+  "historical_missing_data_not_imputed": true
 }

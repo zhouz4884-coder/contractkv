@@ -112,8 +112,8 @@ def main():
             assert abs(charged-float(c['net_mean_ttft_ms']))<1e-7
             assert abs(1-charged/float(c['raw_mean_ttft_ms'])-float(c['net_mean_ttft_reduction']))<1e-9
         r['zero_slack_cost_supplement_pct']=100*statistics.fmean(float(c['net_mean_ttft_reduction']) for c in selected)
-    broad=latex_table('Deployment-qualified breadth over five workflow families, three repetitions/configuration. Net TTFT charges residual verification after the stated slack; prefill uses the same cohort.',
-      'tab:deployment-width','lrrr',r'Configuration & Net TTFT reduction & Prefill & Slack (s)',
+    broad=latex_table('Deployment-qualified breadth over five families, three repetitions/configuration. TTFT uses recorded residual-RPC accounting after the stated slack, not complete service wall; the supplemental cost audit identifies missing attempt timers. Prefill uses the same cohort.',
+      'tab:deployment-width','lrrr',r'Configuration & \shortstack{Recorded TTFT\\reduction} & Prefill & Slack (s)',
       [[r['model'],f"{r['ttft_reduction']:.2f}\\%",f"{r['prefill_reduction']:.2f}\\%",r['slack_s']] for r in legacy])
     write('sections/table_deployment_width.tex',broad);write('sections/table_frozen_gate.tex',gatetable)
     write('sections/supplement_restored_tables.tex',r'''\section{Input Structure and Displacement}
@@ -150,7 +150,8 @@ Let $a_i$ and $b_i$ be the zero-based token positions of segment $i$'s rendered 
     record={'segment_observations':len(displacement),'model_session_inputs':len(cases),'displacement_statistics':statistics_rows,
       'raw_order_patterns':{f:[{'segments':list(pattern),'model_session_inputs':count} for pattern,count in pp.items()] for f,pp in patterns.items()},
       'ruler_audit':ruler,'native_d0':native,'deployment_width':legacy,'density':density,'frozen_gate':gates,
-      'source_hashes':[{'path':p.name,'sha256':sha(p)} for p in sorted(E.iterdir()) if p.is_file() and p.name!='restored_evidence.json'],
+      'source_hashes':[{'path':p.name,'sha256':sha(p)} for p in sorted(E.iterdir())
+                       if p.is_file() and p.name not in {'restored_evidence.json','revision_audit_evidence.json'}],
       'new_GPU_measurements':0,'tokenizer_rerun':False,
       'execution_SLO_note':'Archived goodput factors use business execution wall; they are not full-wall qualification-charged throughput.',
       'gate_note':'Rejected operating points also have diagnostic PASS/COMMITTED results; no avoided-call claim.'}

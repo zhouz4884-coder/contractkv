@@ -122,7 +122,7 @@ D1 isolates the performance of a prequalified frozen layout; D2 adds registratio
 
 The complementary test is a candidate that should not be published. In two separate 20-case controlled sets, all ten unsafe layouts in each set are rejected and all rejected transactions publish zero candidate tokens. A 14B control additionally checks real post-decision responses against raw task scores. These cases demonstrate the value missing from a layout-only performance number: behaviorally unsupported candidates do not acquire shared-cache visibility through the registration path.
 
-The existing lifecycle suite separately records live source-hook, concurrency, cancellation, duplicate, timeout, and authenticated-binding controls. The 325,000-operation stress study exercises the in-memory transactional state machine; it is not counted as GPU service requests. The empirical behavioral test and the transactional publication property remain separately attributable components of the system.
+The lifecycle suite records live source-hook, concurrency, cancellation, duplicate and timeout controls. Binding perturbation tests separately check request-side client functions on CPU. The 325,000-operation stress study exercises the in-memory transactional state machine; it is not counted as GPU service requests. The empirical behavioral test and the transactional publication property remain separately attributable components of the system.
 
 \subsection{Template Amortization and Deployment Economics}
 \label{sec:deployment}
