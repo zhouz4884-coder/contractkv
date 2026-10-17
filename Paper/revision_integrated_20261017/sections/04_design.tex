@@ -1,0 +1,123 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{ContractKV Design}
+\label{sec:design}
+
+ContractKV implements a compile--certify--promote--reuse lifecycle over the engine's native prefix cache. The layout compiler creates the opportunity; the certifier establishes behavioral evidence; PSTP publishes an authorized prefix; and the service-template registry lets subsequent requests reuse the result. Qualification and physical cache residency have separate lifetimes.
+
+
+
+
+\subsection{An End-to-End Request Example}
+Figure~\ref{fig:architecture} follows a retrieval template whose changing observation precedes a stable document. CALC moves eligible document content ahead of the observation. Under query-qualified execution, the first raw business response supplies a witness. A successful check commits the stable blocks; later authorized requests in that query scope select the same layout, reuse resident blocks, and compute their private suffixes. A new query requires a separate decision, but may map to the same stable-prefix identity. Rejection preserves the served raw response and promotes no candidate state.
+
+\subsection{Contract-Aware Layout Compiler}
+\label{sec:calc}
+CALC operates on the registered dependency graph. Stable segments may be split into contiguous, character-preserving units to construct a bounded layout ladder. A stable-priority topological traversal moves only eligible units, respects dependency edges, and breaks ties by original order. For the 16-unit ladder, L1, L2, and L3 expose 4, 12, and 16 eligible units, respectively; L0 retains raw order. Full retokenization determines the actual stable-prefix boundary of each rendered candidate.
+
+A source-disjoint development stage establishes the allowed model--family--layout combinations and freezes the policy before evaluation. The deployment studies use the registered ladder and its allowed descent policy. The final query-qualified implementation chooses one development-fixed candidate per scope and performs at most one GPU qualification attempt. Inherited L0 families retain raw execution.
+
+The task-preserving renderer keeps essential fields and source whitespace intact (Section~\ref{sec:implementation}). For an expanded graph $G'=(V',E')$, priority topological construction costs $O(|E'|+|V'|\log|V'|)$ per fixed candidate; model-backed qualification remains the dominant admission work.
+
+\subsection{Scoped Behavioral Certification}
+\label{sec:scope}
+\subsubsection{Witnesses and token-path checks}
+A behavioral witness is a completed model-generated output trajectory associated with a rendered input and execution identity. Query-qualified execution obtains it from the actual first raw business response, avoiding a separate raw generation solely to create a reference. Write its nonterminal witness tokens as $\mathbf y=(y_1,\ldots,y_L)$ and its natural terminal token as $e$; the recorded output IDs include both. The verifier evaluates the compiled prompt on the forced history $\mathbf y$, including termination.
+
+For token $z$ at output position $i$, define its next-token margin as
+\begin{equation}
+ m_i(x,z)=\log p_\theta(z\mid x,\mathbf y_{<i})-
+ \max_{v\ne z}\log p_\theta(v\mid x,\mathbf y_{<i}).
+\label{eq:margin}
+\end{equation}
+The raw witness supplies its own per-position margins. The candidate must choose each witness token, and the terminal token, as its top choice. In the evaluated query-qualified protocol, the raw floor is 0.0625 and the candidate and terminal floors are 0.125:
+\begin{equation}
+\begin{aligned}
+ m_i(x_{\raw},y_i)&\geq\tau_{\raw},\\
+ m_i(x_{\cand},y_i)&\geq\tau_{\cand},\quad i=1,\ldots,L,\\
+ m_{L+1}(x_{\cand},e)&\geq\tau_{\cand}.
+\end{aligned}
+\label{eq:agreement}
+\end{equation}
+The raw terminal margin is also checked. Complete witness IDs, finite margins, the stop protocol, and the publication boundary are required for acceptance. The task-score threshold used in evaluation is separate from these model-level conditions.
+
+For identical next-token distributions at verification and execution, agreement through the terminal token yields the same greedy sequence by induction. Finite-precision and execution-shape differences make this an execution condition, not a universal runtime theorem. Scope binding separately specifies which subsequent input instances may consume that evidence; free-running experiments measure their actual behavior. Greedy decoding, the output budget, stop settings, and model/runtime identity are part of the evaluated execution protocol.
+
+\subsubsection{Two evaluated qualification protocols}
+\emph{Deployment-qualified execution} first qualifies a model--workflow--layout route on development trajectories. Registration then uses a representative \emph{compiled-prompt} trajectory to attest and publish an immutable deployment object. Subsequent requests use that route under its registered template, identity, authorization, and lifecycle conditions. Behavioral support for later private inputs comes from the prospective qualification and the separately measured template-quality audit.
+
+\emph{Query-qualified execution} associates each decision with $(\textit{namespace},q)$, where $q$ hashes the exact query, system message, stable segments, model identity, generation budget and settings, renderer version, and policy. Its witness is the first real \emph{raw-prompt} response in that scope. These protocols use the same compile/verify/publish architecture, but their witness origins and qualification granularity remain explicit.
+
+The query-qualified experiments permit a declared metadata-only observation schema containing session identity, turn, and status, with no additional answer evidence. History and scratchpad segments are outside that schema. The shared-scope eligibility rule accepts a short, non-abstaining reference of at most 16 normalized words when it is a literal stable-context span, or when its raw minimum margin is strictly above 0.125. References failing this rule are classified as requiring an exact-observation scope; the evaluated trace declares no such repeated observations, so those requests remain raw. A further Python statement check is retained for the declared RepoBench subset. These conditions bound the evaluated empirical class; neither the metadata schema nor a positive margin proves invariance for every possible metadata value.
+
+\subsubsection{Compact in-engine verification}
+The verifier runs on the serving model backend. Previously approved, hash-matching resident prefix blocks can be reused during verification; a one-block guard and the answer/stop checks protect the verification boundary. The executor collects the rows needed for the witness and termination rather than exporting full prompt-logprob tensors. It returns a compact decision and publication record.
+
+\begin{algorithm}[t]
+\small
+\caption{Single-shot query qualification. All work remains on the service clock.}
+\label{alg:query}
+\begin{algorithmic}[1]
+\REQUIRE Registered $\Theta$, request $r$, frozen policy
+\STATE Render raw input; derive scope $q$; look up $(\Theta,q)$
+\IF{an issued qualification matches this request}
+  \STATE Check compiled-prefix identity; serve with native lookup
+  \STATE \textbf{return} the business response
+\ENDIF
+\STATE Apply the pre-reference gate; serve $r$ in raw order
+\IF{$q$ is new and selected for qualification}
+  \STATE Reserve $q$; retain the actual raw response as witness
+  \IF{witness/scope/output checks and post-reference gate pass}
+    \STATE Verify one frozen candidate on witness tokens and EOS
+    \IF{PASS and valid publication binding}
+      \STATE PSTP commits the eligible prefix; record qualification
+    \ELSE
+      \STATE Abort with zero candidate promotion; record rejection
+    \ENDIF
+  \ELSE
+    \STATE Record the raw-route decision without GPU qualification
+  \ENDIF
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Prefix-Selective Transactional Promotion}
+\label{sec:pstp}
+PSTP makes a verifier decision a shared-cache event. Candidate KV initially resides outside the shared prefix index. The state machine advances through \textsc{Private}, \textsc{Verifying}, \textsc{Verified}, and \textsc{Committed}; unsuccessful paths end in \textsc{Aborted}.
+
+Let $L_s$ be the candidate's stable boundary, $L_{\rm cert}$ the authorized prompt-prefix boundary, and $L_{\rm lcp}$ the exact token LCP between the candidate request and its certified prompt. The promoted length is
+\begin{equation}
+ L_{\rm commit}=B\left\lfloor
+ \frac{\min(L_s,L_{\rm cert},L_{\rm lcp})}{B}\right\rfloor.
+\label{eq:commit}
+\end{equation}
+The scheduler-thread insertion of the eligible block hashes is the publication linearization point. The corresponding KV tensors are already allocated; commit changes their visibility in the shared index rather than copying the tensors.
+
+A non-pass, incomplete result, timeout, duplicate transaction, identity conflict, or invalid scope prevents new candidate publication. Cleanup releases private candidate resources. Raw execution can still populate the engine's ordinary cache, so the transactional property is about candidate promotion rather than freezing the entire cache domain.
+
+After a successful commit, the native cache manager governs residency and reference counts. Its reclamation of an unreferenced block removes a physical reuse opportunity without invalidating the behavioral evidence. A later admitted request can recompute a missing prefix under the qualified layout. Section~\ref{sec:residency} verifies this separation using actual lookup, publication, and reclamation events.
+
+\subsection{Service-Template Certificates and Amortization}
+\label{sec:template}
+A service-template certificate organizes the identity and lifecycle of reusable compiled state. The deployment representation is
+\begin{equation}
+ C_\Theta=\langle I,V,H_s,L,P,Q,A,E,\Sigma\rangle,
+\end{equation}
+$I$ identifies the model/runtime execution, $V$ the template version, $H_s$ its stable content, $L$ its layout, $P$ the verifier policy, $Q$ the qualification manifest, $A$ the authorization domain, $E$ the epoch, and $\Sigma$ the authentication tag. The authenticated deployment path uses HMAC-SHA256 and checks the complete binding before forwarding a request.
+
+The query-qualified implementation records joint registration decisions at $(\textit{namespace},q)$ and stable-prefix associations at $(\textit{namespace},H_s)$. This lets several qualified queries refer to the same reusable prefix and lets authorized tenants consume the same query decision. Changes to the bound identity or scope prevent reuse of the old decision; deployment lifecycle controls enforce revocation and re-registration for changed deployment objects.
+
+The amortization units are explicit. For $N$ sessions sharing one deployment-qualified template, session-scoped registration performs $O(N)$ attestations, whereas deployment registration performs $O(1)$ attestation plus per-request checks. For $T$ template identities, $U$ observed query scopes, and $M$ requests, the query-qualified controller maintains $O(T+U)$ state and $O(U)$ scope decisions, with at most one GPU attempt per selected scope. For a fixed query directory, increasing tenant fan-out increases reuse without increasing the directory's qualification count.
+
+\subsection{Benefit Admission}
+\label{sec:benefit}
+Qualification consumes service resources before later requests realize savings. ContractKV therefore separates the decision to \emph{invest in evidence} from the decision to \emph{accept the candidate}. A frozen benefit policy estimates remaining authorized uses, marginal prefill savings, information-gathering cost, and GPU verification cost. In the two-stage query-qualified controller, the pre-reference estimate has the form
+\begin{equation}
+ \widehat G_{\rm pre}=\widehat p_E\widehat p_{P\mid E}\widehat R\widehat{\Delta t}
+ -\widehat C_{\rm info}-\widehat p_E\widehat C_{\rm GPU}.
+\end{equation}
+After an eligible witness is available, the GPU decision uses the conditional pass estimate and the full predicted GPU cost. Observed prefix publication selects the calibrated cold/warm cost state, and the gate discounts native reuse already available to raw execution. Predictions are frozen before held-out evaluation.
+
+The evaluated default applies a predicted waiting-budget test in cold sessions and uses expected aggregate benefit in template fan-out. We evaluate a separate length-aware waiting-budget variant in Section~\ref{sec:costvariant}. Benefit admission can reduce qualification attempts; it never substitutes for the token-path or publication checks.

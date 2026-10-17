@@ -1,0 +1,42 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm,algorithmic}
+\usepackage{graphicx,booktabs,array,multirow}
+\usepackage{microtype}
+\usepackage{dblfloatfix}
+\usepackage{url}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{cite}
+\newcommand{\ckv}{\textsc{ContractKV}}
+\newcommand{\raw}{\mathrm{raw}}
+\newcommand{\cand}{\mathrm{cand}}
+\newcommand{\Pass}{\textsc{Pass}}
+\newcommand{\Fail}{\textsc{Fail}}
+\newcommand{\LCP}{\operatorname{LCP}}
+\newcommand{\Hash}{\operatorname{H}}
+\newcommand{\ind}{\mathbf{1}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newtheorem{definition}{Definition}
+\interdisplaylinepenalty=2500
+\setcounter{topnumber}{2}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\dbltopfraction}{0.92}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\hypersetup{pdftitle={ContractKV: Certified Prompt Compilation for Transactional Prefix Reuse in Multi-Tenant LLM Services},pdfauthor={Bin Zhou and Xi Cao},pdfsubject={Figure-integrated restructuring of the 17 October 2026 revision draft}}
+
+\begin{document}
+\title{ContractKV: Supplemental Experimental Record}
+\author{Bin~Zhou and Xi~Cao}
+\maketitle
+\noindent This supplement preserves the detailed evaluation supplied in the author's 17 October text draft. It complements the restructured main paper: numerical results, unsuccessful variants, historical protocols and their boundaries are retained. No experiment was rerun for figure integration. Section and table numbers here are local to this supplement.
+
+\paragraph{Structural-table provenance.} The main paper replaces the historical Table I with newly reconstructed actual prompt IDs, declared stable-body spans and measured native hits. The original 85.0/2.4 and 82.4/2.1 percentages do not have a closed archived source-to-statistic chain. The new ratios use explicit denominators and are not claimed as a recovery of those exact values. Detailed source-macro and token-weighted results are indexed in the evidence register.
+\input{sections/supplement_evaluation}
+\input{references_supplement}
+\end{document}

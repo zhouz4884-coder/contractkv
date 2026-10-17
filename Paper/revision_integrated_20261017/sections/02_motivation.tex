@@ -1,0 +1,53 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Background and Motivation}
+\label{sec:background}
+
+\subsection{The Gap Between Repetition and Prefix Reuse}
+A causal language model first computes prompt states during prefill, then generates output autoregressively. Native prefix caching reuses a leading sequence whose tokens and cache identity match a resident entry~\cite{vllm2023,sglang2024}. For fully rendered prompt $\mathbf{t}$, let $\mathcal P(\mathcal R)$ be the token prefixes represented by resident state under the matching cache identity. The block-aligned reuse opportunity is
+\begin{equation}
+\begin{aligned}
+ k^*&=\max\{k:\mathbf{t}_{1:k}\in\mathcal P(\mathcal R)\},\\
+ k_B(\mathbf{t},\mathcal R)&=B\left\lfloor k^*/B\right\rfloor,
+\end{aligned}
+\label{eq:native}
+\end{equation}
+where $B$ is the block size. Byte-identical text outside that leading sequence offers a layout opportunity. Its KV state also depends on preceding tokens and positions~\cite{vllm2023}.
+
+A concrete application example comes from a fixed revision of Azure's RAG demonstration: its conversation builder appends history before the current user message, and its user template places the query before the retrieved sources~\cite{azuretemplate}. If those earlier fields change while some sources repeat, native prefix continuity ends before the repeated sources. This code example establishes a realizable request order; the measurement below independently quantifies the effect in controlled template traces.
+
+\subsection{Measuring the Structural Opportunity}
+We reconstruct stability and native reuse from actual API prompt IDs, the frozen renderer's segment spans, and scheduler-recorded prefix hits. Let $n_r$ be the prompt length, $S_r$ the set of token positions fully contained in manifest-declared stable body segments, and $h_r$ the measured native hit length. Three distinct token-weighted quantities are
+\begin{equation}
+\begin{aligned}
+ \rho_s&=\frac{\sum_r |S_r|}{\sum_r n_r},\qquad
+ \rho_h=\frac{\sum_r h_r}{\sum_r n_r},\\
+ \rho_{s\mid h}&=\frac{\sum_r|S_r\cap\{1,\ldots,h_r\}|}{\sum_r|S_r|}.
+\end{aligned}
+\label{eq:ratios}
+\end{equation}
+The first describes stable content, the second all native hits, and the third recovery of the stable body itself. The full-prompt denominator includes chat-control tokens and headings; the stable body excludes wrappers and cross-boundary tokens. Source-macro averages are calculated separately.
+
+\begin{table}[t]
+\centering\small
+\caption{Measured structural opportunity in the six-template, task-preserving cohort. Each row contains 1,620 future raw requests across three repetitions. Ratios are token-weighted and use Eq.~\eqref{eq:ratios}.}
+\label{tab:motivation}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & Stable body $\rho_s$ & Native hits $\rho_h$ & $\rho_{s\mid h}$\\
+\midrule
+Qwen3-8B & 98.520\% & 0.950\% & 0.030\%\\
+Mistral-7B & 98.477\% & 0.985\% & 0.034\%\\
+Llama-3.1-8B & 98.357\% & 1.114\% & 0.031\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:motivation} shows that the task-preserving requests contain substantial repeated context but recover little of that stable body in raw order. The ratios describe controlled template traces, not production sharing frequencies. They are a new actual-ID reconstruction; the earlier table's exact numerical provenance was not recovered and its percentages are not reused.
+
+\subsection{From a Layout Opportunity to a Shared Service Object}
+Moving stable content forward addresses continuity, but leaves two decisions unresolved. First, the candidate must preserve the manifest's ordering constraints and obtain behavioral evidence for its intended use. Second, publishing candidate KV into a shared index must be all-or-nothing at an authorized boundary. A partially checked prefix, stale template identity, or overbroad qualification can affect requests other than the one that created it.
+
+\emph{qualification authorizes reuse, publication exposes an eligible prefix, and residency determines the reuse actually obtained}.

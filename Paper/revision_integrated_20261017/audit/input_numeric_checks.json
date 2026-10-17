@@ -1,0 +1,69 @@
+{
+  "primary": [
+    {
+      "model": "Qwen3-8B",
+      "compiled_future": 684,
+      "future_pairs": 1620,
+      "throughput": 1.6190395738566918,
+      "raw_prefill": 6008336,
+      "business_prefill": 3204304,
+      "qualification_prefill": 73580,
+      "coverage_pct": 42.22222222222222,
+      "business_prefill_reduction_pct": 46.66902783066726,
+      "total_prefill_reduction_pct": 45.444395919269496
+    },
+    {
+      "model": "Mistral-7B",
+      "compiled_future": 342,
+      "future_pairs": 1620,
+      "throughput": 1.1090718476802217,
+      "raw_prefill": 7074492,
+      "business_prefill": 5986864,
+      "qualification_prefill": 51760,
+      "coverage_pct": 21.11111111111111,
+      "business_prefill_reduction_pct": 15.373937803590698,
+      "total_prefill_reduction_pct": 14.642295164090935
+    },
+    {
+      "model": "Llama-3.1-8B",
+      "compiled_future": 270,
+      "future_pairs": 1620,
+      "throughput": 1.0702809289103583,
+      "raw_prefill": 5822228,
+      "business_prefill": 5149118,
+      "qualification_prefill": 38807,
+      "coverage_pct": 16.666666666666668,
+      "business_prefill_reduction_pct": 11.561038145534663,
+      "total_prefill_reduction_pct": 10.894506364230327
+    }
+  ],
+  "compiled_future_total": 1296,
+  "compiled_business_total": 1440,
+  "primary_business_generations": 10800,
+  "secondary_original": {
+    "compiled_future": 774,
+    "pairs": 1620,
+    "raw_wall": 5850.767,
+    "policy_wall": 3245.633,
+    "recomputed_wall_multiplier_from_rounded_input": 1.8026582179808992
+  },
+  "secondary_adapted": {
+    "compiled_future": 258,
+    "pairs": 1620,
+    "raw_wall": 5850.767,
+    "policy_wall": 5468.913,
+    "recomputed_wall_multiplier_from_rounded_input": 1.0698226503146055
+  },
+  "diagnosis": {
+    "business": 138,
+    "qualifications": 4,
+    "compiled": 62,
+    "full": 49,
+    "zero": 12,
+    "partial": 1,
+    "trace_matched_misses": 13,
+    "immediate_full": 12,
+    "immediate_controls": 12
+  },
+  "audit_boundary": "Arithmetic recomputation from source-reported values. No GPU experiment or raw-log scientific reproduction performed in this manuscript-writing session."
+}

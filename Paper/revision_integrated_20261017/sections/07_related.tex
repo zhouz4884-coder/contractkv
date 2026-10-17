@@ -1,0 +1,15 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Related Work}
+\label{sec:related}
+
+\noindent\textbf{Physical and cross-position reuse.}
+PagedAttention provides block-based KV memory management and sharing~\cite{vllm2023}; SGLang's RadixAttention organizes reusable prefixes for structured language-model programs~\cite{sglang2024}. Prompt Cache exposes reusable modules through explicit schemas~\cite{promptcache2024}. CacheBlend selectively recomputes information when combining cached passages~\cite{cacheblend2025}, while EPIC uses position-independent composition with LegoLink~\cite{epic2025}. CacheSlide and MiniPIC further explore cross-position or position-independent reuse~\cite{cacheslide2026,minipic2026}. These systems establish a rich space of reuse mechanisms. ContractKV contributes a control-plane protocol that couples a dependency-valid layout, behavioral evidence, and an authorization-bound commit before transformed state enters that space as a shared object.
+
+\noindent\textbf{Application and service scheduling.}
+Parrot's Semantic Variables expose application dataflow to the serving system~\cite{parrot2024}. Llumnix dynamically schedules serving requests across instances~\cite{llumnix2024}; Sarathi-Serve addresses prefill/decode throughput--latency interference~\cite{sarathi2024}; and Preble combines prompt reuse with distributed load balancing~\cite{preble2025}. DistServe and Mooncake separate serving stages or distribute KV storage and computation~\cite{distserve2024,mooncake2025}. These mechanisms govern resource placement and execution. ContractKV instead determines when a compiled representation is eligible for publication and authorized reuse within one cache domain. Its waiting and residency measurements identify where model-backed qualification and native scheduling interact.
+
+\noindent\textbf{Cost models, contracts, and cache privacy.}
+Vidur combines experimental profiling with predictive models to estimate serving behavior~\cite{vidur2024}; our cost-policy study makes the support-domain and coverage consequences of a small frozen profile explicit. Classical service contracts such as WSLA associate measurable service obligations with monitoring and enforcement~\cite{wsla2003}. ContractKV binds a reusable model-execution artifact to evidence, identity, authorization, and a transactional boundary. Work on prompt leakage and audits of prompt-cache sharing demonstrates that cache timing is itself an observable privacy channel~\cite{iknow2025,auditing2025}. Those results motivate separating authorization-controlled cache state from protection against timing inference.
