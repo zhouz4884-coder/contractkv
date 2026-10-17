@@ -36,6 +36,7 @@
 | C14 | [Table I 重建与分母](tsc_revision_table_I_reconstruction_zh.md)；[独立新来源统计](../results/tsc_revision_r4/table_I_reconstruction_independent_primary_v1.json) | 新可复核统计；原精确数字来源仍不冒充恢复 |
 | C15 | [自主决策记录](tsc_revision_autonomous_decisions_20261016_zh.md)；[成本与输入文献核对](tsc_revision_cost_fidelity_literature_notes_zh.md) | 固定候选 DEV 通过、独立九单元完成；不作为默认替换；文献启发不代替实测 |
 | C16 | [成本修复及独立负结果](tsc_revision_phase3_cost_repair_results_zh.md)；[独立九单元](../results/tsc_revision_r4/cost_adaptation_validation_v1/) | 固定候选 DEV/新来源检验、支持域归因、覆盖/吞吐/p99 权衡、全部 L0 raw 控制 |
+| C17 | [零命中与物理驻留诊断](tsc_revision_residency_results_20261017_zh.md)；[逐请求因果连接](../results/tsc_revision_residency_20261017/probe_analysis_v1/) | 原189条异常全量CPU审计，三模型138请求/4认证机制探针；13次缺口均记录原生驱逐；未证明局部Bug |
 
 ## 编辑要求
 
@@ -115,6 +116,14 @@
 ## 固定成本修复的新增记录
 
 三路 DEV 通过预设条件：112/360 编译覆盖保留，GPU 认证 9→6，RepoBench p99 10.13→6.17 秒，完整 wall 995.67→983.41 秒；两策略各 400 个业务配对全部 IDs/分数与 raw 相同。单次开发点不作普遍尾延迟结论。另六来源九单元已冻结，完成后追加全部结果，不自动继续新矩阵。详见[成本修复记录](tsc_revision_phase3_cost_repair_results_zh.md)。
+
+## 2026-10-17追加：物理驻留与零命中归因
+
+回应R1.1/R1.8的性能与小pool解释、R2.3复现性、R3.2完整成本：对9个risk-tail cell的5,400条业务及189条部分/零命中完成CPU连接，另核对全部1,440条compiled的实际LCP及首16 IDs。LCP均覆盖提交边界，未见前缀IDs不匹配。
+
+三个已知来源追加有界诊断，138条业务、4次认证。62条compiled含13次缺失命中，均直接观察到相应hash的最后native映射被refcount=0回收、随后lookup前为空；提交后立即复用12/12完整。全部实际Prompt IDs及138条输出IDs匹配归档，但不是新来源质量验证，不加入R1.4a的held-out分母。
+
+本轮未发现支持修改CALC/PSTP或缓存身份代码的局部缺陷，按预先分支停止扩大GPU矩阵。旧189条没有完整历史eviction日志，不能把新探针当作逐案历史因果证明；不据token算术上限抬高吞吐或声称p99优化。实际资源与只读观测边界见C17，正文未修改。
 
 ## 本次实验收口判断
 
