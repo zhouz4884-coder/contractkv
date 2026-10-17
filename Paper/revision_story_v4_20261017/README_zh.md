@@ -1,35 +1,40 @@
-# ContractKV 第三版正文：服务对象与服务收益（2026-10-17）
+# ContractKV Story V4 正文与排版版（2026-10-17）
 
-本版以7月25日实际投稿的四项贡献为锚点，以保真自由生成和完整成本实证为基础，恢复Service-Template Certificate、认证摊销、SLO与跨租户扩展的叙事位置。没有新GPU实验、模型推理、认证算法或阈值调整。
+保留 V3，完成 Fig.1 对象语义、成本口径分离、Manifest 信任边界与相关证据呈现。实验数据、规则和四项核心贡献不变；没有新 GPU 实验。
 
 ## 阅读入口
 
-- [12页主文](contractkv_tsc_story_v4.pdf)
-- [6页补充材料](contractkv_supplement.pdf)
-- [修改与取舍记录](audit/story_v3_decisions_zh.md)
-- [证据位置索引](audit/evidence_locations.csv)：实际PDF页码、章节/图表号和TeX源行，供正文确认后写Response Letter使用；不是已完成的回复信。
-- [实际QA](audit/manuscript_QA.json)与[独立复现](audit/independent_reproduction.json)
+- [12 页主文](contractkv_tsc_story_v4.pdf)
+- [7 页补充材料](contractkv_supplement.pdf)
+- [本轮修改记录](audit/story_v4_decisions_zh.md)
+- [实际 QA](audit/manuscript_QA.json)与[独立重建记录](audit/independent_reproduction.json)
+- [最终证据位置](audit/evidence_locations.csv)：实际 PDF 页码、图表号及 TeX 源行；不是 PDF 印刷行号或 Response Letter。
 
-## 主要变化
+主文第 12 页右栏实际预留四分之一页的作者简介区，暂为空白。正式作者文字/照片确认后替换 `sections/author_biographies.tex`，再检查分页。未编造作者资料。
 
-摘要、Introduction、Contribution 4和Conclusion明确连接模板身份、授权生命周期、25倍调用摊销与7.7倍未隐藏成本优势。主文保留严格全wall结果和真实负面数据；p99、作用域及归因限制放在实验和Discussion中集中解释。
+## 优先核查的位置
 
-Fig.1精修证书治理关系和block-aligned certified prefix；Fig.2保留；Fig.3增加分协议RULER条；Fig.4保留D1/D2治理代价及低调D0绝对参照，不写21.5倍标题；Fig.5/6保留，另以表恢复10–80身份扩展与四点冻结收益门禁。Fig.1/2双栏，Fig.3–6单栏。
+Fig.1 位于第 2 页；新增协议 Table II 位于第 4 页。V3 原成本 Table II 现在为第 7 页 Table III，仅保留部署 cohort 的残余 slack 结果；独立零 slack 诊断成本在补表 S-XIII。
 
-补充材料正式交付五家族原始顺序、4695条segment位移及定义、密度趋势、RULER分组、执行时钟SLO、方法职责比较、冻结门禁和四方法matched-native质量分布。CPU聚合检查了原位移记录的算术和完整性，没有重新运行tokenizer来替代原测量。
+Manifest 信任边界在第 11 页 §VIII.B。补充第 7 页集中给出六来源×三模型结果（S-XVI）、九例注册 helper（S-XVII）与开放到达绝对 Goodput 增量区间（S-XVIII）。CPU helper 仍未接入 live endpoint，可信运营者的语义误声明仍会通过。区间从冻结记录恢复，未重新 bootstrap。
 
-## 源码与复现
+Fig.1–2 双栏，Fig.3–6 单栏。图均为矢量 PDF/可编辑文字 SVG，并有 600-dpi PNG。Fig.2/3/4/6 与 V3 保持逐字节相同。
 
-入口为`contractkv_tsc_story_v4.tex`；`sections/`为正文及生成表；`figures/`为实际嵌入的矢量PDF、SVG与600-dpi PNG；`evidence/`保存本次恢复分析使用的冻结输入和表。
+## 复现
+
+在本目录执行，依赖见 `requirements.txt`，字体与 LaTeX 要求见英文 README。
 
 ```powershell
-python scripts/restore_evidence.py
-python scripts/plot_figures.py
-python scripts/plot_architecture.py
-python scripts/build.py
-python scripts/qa.py
+python -B scripts/restore_evidence.py
+python -B scripts/restore_revision_audit.py
+python -B scripts/plot_figures.py
+python -B scripts/plot_architecture.py
+python -B scripts/build.py
+python -B scripts/qa.py
+python -B scripts/locate_evidence.py
+python -B scripts/package.py
 ```
 
-绘图和QA依赖见`requirements.txt`，字体为当前Windows的Arial。编译使用随包的禁用shell-escape包装器，需要TeX Live/MiKTeX与IEEEtran。`evidence/run_tsc_multi_tenant.sh`仅作历史配置来源，复现上述图表不运行GPU脚本。
+当前交付的 QA 以 `manuscript_QA.json` 和 `independent_reproduction.json` 为准。保留的 V7 数据文件用于未改动的历史图表证据，不代表本轮 QA。旧版本及其验证记录仍在原目录。
 
-`input_*`审计文件是历史输入快照；当前导航以`evidence_locations.csv`为准。旧7月投稿、V9图和12页整合稿均保留。正文尚待作者审阅，正式Response Letter按当前计划在正文确认后逐条撰写。
+这是正文审阅包，Response Letter 按用户要求在正文确认后再写。
