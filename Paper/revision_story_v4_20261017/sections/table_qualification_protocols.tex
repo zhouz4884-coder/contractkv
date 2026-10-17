@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Two evaluated qualification protocols share the in-engine verifier/PSTP backend, with distinct request-side admission records and checks.}
+\label{tab:qualification-protocols}
+\begin{tabular}{@{}P{.58in}P{1.25in}P{1.32in}@{}}
+\toprule
+& Deployment-qualified & Query-qualified\\
+\midrule
+Witness & Compiled trajectory on a development-qualified route & First real raw business reply in the selected scope\\
+Admission & Authenticated template binding and lifecycle checks & Controlled-client lookup at $(\mathrm{namespace},q)$\\
+Identity & Model/runtime, version, layout, policy, authorization, epoch & Exact bound inputs/settings and policy; prefix association at $(\mathrm{namespace},H_s)$\\
+Cost unit & $O(1)$ attestation per registered template & $O(U)$ decisions for $U$ scopes; at most one GPU attempt per selected scope\\
+Evidence & Registration, amortization, open arrival and density & Free-running task pairs and complete service wall\\
+\bottomrule
+\end{tabular}
+\end{table}

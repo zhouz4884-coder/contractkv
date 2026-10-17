@@ -1,0 +1,24 @@
+% Changed: make the manifest trust boundary concrete; consolidate repeated scope qualifications.
+% Protected: CPU/live distinction, observed failures, timing-channel and platform limits.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\subsection{What the Service Contract Establishes}
+Token-path certification is relative behavioral evidence under bound execution conditions, not an answer-correctness oracle. Figure~\ref{fig:behavior} therefore separates output agreement from raw utility. The query-qualified class assumes a repeated authorized directory and metadata-only observations; arbitrary evolving histories and new tool evidence are outside it. Unique-query streams offer little amortization, and production query-repeat frequencies were not measured. Table~\ref{tab:qualification-protocols} states the different evidence and cost units of the two implemented paths.
+
+\subsection{Trust Model and Manifest Registration}
+\label{sec:trust}
+The operator is trusted to define template ownership, segment types, dependencies, sharing domains and versions. The controller, model/runtime and cache manager lie within the trusted service boundary; tenant-supplied labels are not registration authority. The CPU registration helper checks issuer/role, segment identities, authentication tags, content hashes, version/domain fields, and consistency of publication with declared stability and visibility. These checks validate a declaration's authority and consistency, not its semantic truth.
+
+Consider tenant A's private \texttt{TOOL\_OBS}. If the trusted operator wrongly declares its bytes \textsc{Stable}, marks them domain-shared, and authorizes tenant B in that domain, a correct hash and HMAC do not establish that sharing is appropriate. The mistake can authorize private content as a shared prefix. The hash proves byte identity; the HMAC authenticates the operator's binding. Neither classifies confidentiality. The operator must keep tenant-specific observations outside the shared declaration.
+
+The nine-case CPU registration-helper audit rejects seven malformed or unauthorized declarations, accepts the legitimate case, and also accepts that trusted semantic mislabel (supplement). The helper is separate from the live endpoint. Authenticated deployment admission and in-engine PSTP tests establish their respective identity and publication boundaries; they do not demonstrate detection of operator disclosure mistakes.
+
+Even correctly authorized sharing can reveal cache-hit timing within its domain~\cite{iknow2025,auditing2025}. ContractKV does not implement a timing-channel defense. P4 is cache-state authorization, not a comprehensive application confidentiality boundary.
+
+\subsection{Workload and Platform Boundaries}
+The inherited Python-output check excludes some legal next-line fragments. All omitted spans, L0 score changes and unsuccessful variants remain archived; source counts and platform settings are specified in Section~\ref{sec:protocol}.
+
+The three known-source cache probes diagnose reclamation, not every earlier miss. The partial query-qualified fixed-arrival study (5/54 cells) supplies no capacity claim. The vLLM 0.25.1 audit is not a port; distributed domains require coordinated lifecycle and publication. Practically, qualify where authorized reuse repays its service-clock cost, including residency.

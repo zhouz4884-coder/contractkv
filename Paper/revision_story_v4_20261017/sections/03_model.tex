@@ -1,0 +1,41 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Service Model and Design Objectives}
+\label{sec:model}
+
+\subsection{Structured Requests and Registered Dependencies}
+A structured request $r=(s_1,\ldots,s_m)$ contains application segments. Each segment carries an identifier, original content, a stability type, and a registered content identity. We retain three types: \textsc{Stable}, \textsc{Mutable}, and \textsc{Query}. Stable content belongs to an immutable template version; mutable content includes observations and changing state; query content carries the current task. A query may recur within an authorized directory while remaining outside the promoted stable prefix.
+
+The trusted operator manifest defines segment boundaries, separators, stability, dependencies, and the sharing domain (Section~\ref{sec:trust}). Unregistered tenant content remains private. A segment dependency graph $G_r=(V,E,\lambda)$ associates each edge with a data, causal, or positional ordering constraint. A layout $\pi$ is legal when it is a topological order of $G_r$:
+\begin{equation}
+ (s_i,s_j)\in E\quad\Longrightarrow\quad
+ \operatorname{pos}_{\pi}(s_i)<\operatorname{pos}_{\pi}(s_j).
+\end{equation}
+
+All cache identities and prefix boundaries are computed from the fully rendered prompt $\mathbf{t}_{\pi}$, including the model's chat template. Per-segment token counts guide construction, but exact boundaries follow retokenization; concatenation can change tokenization at segment edges. Let $P(\pi)$ denote the token boundary of the leading shareable stable content. CALC provides a bounded candidate set $\Pi_L(G_r)$ containing raw order L0 and registered compiled levels. Behavioral qualification selects among these legal candidates.
+
+\subsection{Templates, Qualifications, and Cache Identity}
+A service template
+\begin{equation}
+ \Theta=(V,\mathbf S,\mathcal A,\mathcal P,\mathcal M,F)
+\end{equation}
+binds a version $V$, stable content $\mathbf S$, an authorized tenant set $\mathcal A$, a frozen policy $\mathcal P$, its manifest $\mathcal M$, and declared fan-out $F$. The input may interleave stable and private segments; stable-first order is a compilation result.
+
+ContractKV uses two related identities. A \emph{behavioral qualification} determines whether a request may use a particular compiled layout. A \emph{stable-prefix identity} identifies the corresponding reusable KV prefix within its authorized template namespace. Several admitted query scopes can map to the same stable-prefix identity.
+
+Execution identity binds the model, tokenizer/chat template, decoding/stopping settings, policy and runtime. Section~\ref{sec:template} defines the complete template and lifecycle binding.
+
+\subsection{Publication and Service Objectives}
+ContractKV aims to turn admissible structural reuse into lower complete service cost while preserving the following publication properties.
+
+\noindent\textbf{P1: Evidence-gated publication.} Candidate compiled state becomes shared only after a completed verifier pass and a valid publication binding.
+
+\noindent\textbf{P2: Stable-prefix confinement.} PSTP publishes complete blocks within the stable, certified, exact-match boundary. Mutable and query suffixes are excluded from this promotion.
+
+\noindent\textbf{P3: Atomic failure handling.} A failed, incomplete, expired, or conflicting transaction contributes no newly promoted candidate blocks. Raw-order execution remains the service fallback.
+
+\noindent\textbf{P4: Authorization-bound reuse.} The deployment control path validates template identity and authorization before admitting reuse, and separates cache namespaces across incompatible sharing domains.
+
+These properties concern admission and publication. We assess behavior with paired free-running outputs and task scores, and efficiency with native hits and complete service wall time.

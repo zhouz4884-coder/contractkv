@@ -1,0 +1,54 @@
+\section{Reuse Mechanisms and Serving Breadth}
+\label{sec:s-mechanisms}
+\begin{table}[t]
+\centering\small
+\caption{Complementary execution-clock SLO statistics for the four-configuration deployment cohort. These ratios use archived business-batch execution wall, not complete qualification-charged service wall. Deadlines are configuration-specific and matched within each raw/ContractKV pair. Net TTFT in the main table separately adds residual verification exposure.}
+\label{tab:s-execution-slo}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Configuration & SLO multiplier & Slack (s)\\
+\midrule
+Qwen3-8B & 2.832$\times$ & 2\\
+Qwen3-14B TP=2 & 2.916$\times$ & 2\\
+Mistral-7B & 1.261$\times$ & 2\\
+Llama-3.1-8B & 1.189$\times$ & 6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table*}[t]
+\centering\small
+\caption{Comparison of published mechanisms and their role in this study. The table compares responsibilities and evaluated evidence, not unreported security capabilities of the other systems.}
+\label{tab:s-mechanisms}
+\begin{tabular}{@{}lP{6.5cm}P{7.3cm}@{}}
+\toprule
+System & Published mechanism / reuse unit & Relationship to the present evaluation\\
+\midrule
+SGLang~\cite{sglang2024} & RadixAttention organizes exact-prefix KV reuse for structured LLM programs. & A native reuse substrate; the separate frozen-layout transfer test does not implement ContractKV certification or PSTP.\\
+Prompt Cache~\cite{promptcache2024} & A schema defines reusable prompt modules and their positional treatment. & Modular reuse design; discussed as a distinct way to expose reusable attention state.\\
+CacheBlend~\cite{cacheblend2025} & Cached passages are fused with selective recomputation of token KV. & Matched-native paired task outcomes are measured; cross-stack speeds are not ranked.\\
+EPIC~\cite{epic2025} & Position-independent caching with LegoLink to address document-boundary attention effects. & A different execution mechanism; no direct EPIC performance reproduction is claimed.\\
+Parrot~\cite{parrot2024} & Semantic Variables expose application input/output dataflow to the serving system. & Application dependency information motivates service-aware control; its optimization target is application execution.\\
+ContractKV & A dependency-valid stable-prefix layout is bound to behavioral qualification, authorization/lifecycle identity and a transactional publication boundary. & Same-engine admission/publication controls, template amortization, free-running task pairs and physical reuse are measured separately.\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\input{sections/table_frozen_gate}
+\begin{table*}[t]
+\centering\small
+\caption{Matched-native paired task-score distributions (2,250 pairs/method). Increases and decreases use the declared 0.03 threshold. Each row retains its own baseline and prompt/runtime configuration; these means are not a common cross-stack accuracy or speed comparison.}
+\label{tab:s-native-quality}
+\begin{tabular}{@{}lP{3.1cm}rrrr@{}}
+\toprule
+Method & Matched reference & Reference mean & Method mean & Increases & Decreases\\
+\midrule
+CacheBlend adaptation & cacheblend\_raw & 0.333210 & 0.339817 & 331 & 224\\
+ContractKV & vllm\_apc & 0.353780 & 0.353744 & 0 & 2\\
+Manual layout control & vllm\_apc & 0.353780 & 0.356323 & 60 & 39\\
+SGLang frozen layout & sglang\_raw & 0.353739 & 0.353874 & 2 & 2\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\paragraph{CacheBlend interpretation.} The controlled LMCache integration uses 32-token chunks and a separator-matched reference, while ContractKV uses raw order on its own runtime. The paired 0.03 statistic and these configurations differ from CacheBlend's published aggregate-quality evaluation. The adapter's positive mean-score change coexists with individual decreases; this is a controlled quality comparison, not a reproduction of the authors' performance configuration or a causal cross-stack risk ratio.

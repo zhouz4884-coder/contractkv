@@ -1,0 +1,43 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Implementation and Measurement}
+\label{sec:implementation}
+
+\subsection{Integration with the Serving Engine}
+The prototype targets the vLLM 0.10.2 V1 scheduler and cache manager. It comprises a request-side compiler and qualification controller, an in-engine verification executor, and PSTP hooks at cache-index publication. Model weights and attention kernels remain unchanged. Candidate identities are derived after full prompt rendering and tokenization. Verification and compiled business requests use the policy hash and template namespace in their cache salt.
+
+Table~\ref{tab:qualification-protocols} gives the request-side boundaries: an authenticated deployment proxy checks the HMAC template binding and lifecycle, whereas the controlled query client checks its frozen identities, scope decision and prefix association. Both invoke the in-engine verifier/PSTP path. The separate manifest-validation helper in Section~\ref{sec:trust} is not an integrated endpoint check.
+
+Compiler and publication overheads measured in the deployment implementation are 0.389 ms mean for CALC, 0.249 ms for the residency lookup, 0.109 ms for the template-scope check, and 0.636 ms for PSTP finalization. The query-qualified studies measure their complete controller path afresh rather than importing these component timings as constants.
+
+\subsection{Task-Preserving Input Construction}
+The adapter retains each source in full when it fits the common 16K window. Otherwise a fixed head/tail rule crops optional paragraph/code-line substrings, protecting the complete question and code prefix, original order/whitespace and an omission ledger. Selection never inspects answers, outputs, scores, margins or qualification. Adjacent pieces of one source segment remain contiguous in both routes.
+
+Both routes receive the same retained content, checked against every declared model/tenant/turn/layout condition including chat template and output reserve. Independent tokenization is compared with actual API prompt IDs. Common offline packing is reported separately; request rendering, planning and verification remain on the service clock.
+
+The input-construction experiment compares fixed-word-cap, whitespace-normalized packing with structure-preserving rendering under the same window, admission rules and scorer. This isolates how task-critical content affects absolute quality and admissible reuse (Section~\ref{sec:fidelity}).
+
+\subsection{Execution Environment and Timing}
+The primary hardware is two RTX 3090 GPUs with 24 GB each. Single-model cells use one GPU; Qwen3-14B uses tensor parallelism across two GPUs in the deployment evaluation. The query-qualified environment is Python 3.10.20, PyTorch 2.8.0+cu128, vLLM 0.10.2, transformers 4.55.2, Triton 3.4.0, and FP16. Model checkpoints, tokenizers, runtime files, inputs, and policy identities are recorded per cell. The primary task-preserving cells use two concurrent requests; ten registered tenants per source describe sharing fan-out, not ten simultaneous GPU requests.
+
+A fresh server process is used for each cell. The closed-loop client runs one tenant pair through ten rounds, then advances to the next pair. The next round becomes ready when the preceding business wave finishes; synchronous qualification performed between waves contributes to subsequent readiness delay. For request $r$,
+\begin{equation}
+ T^{\rm ready}_{\rm TTFT}(r)=t_{\rm first}(r)-t_{\rm ready}(r).
+\end{equation}
+Full service wall includes all business responses, first-use raw witnesses, planning, information and verification calls, unsuccessful attempts, waiting, scoring, logging, and final drain. Server startup, common pre-measurement infrastructure checks, configuration loading, and immutable input preparation have separately declared boundaries.
+
+Closed-loop throughput is completed business requests divided by full service wall. The paired multiplier is the raw wall divided by the ContractKV wall for an equal request population. In the separate fixed-arrival deployment studies, SLO goodput counts responses meeting a specified readiness deadline per unit service time. Their arrival traces and workload protocol are reported separately.
+
+Broad deployment measurements use an explicit residual-verification accounting rule,
+\begin{equation}
+ C_{\rm exposed}=\max(C_{\rm verify}-\Delta_{\rm slack},0),
+\label{eq:slack}
+\end{equation}
+with 2,000 ms slack for Qwen/Mistral and 6,000 ms for the broad Llama protocol. All new query-qualified results use the directly measured complete service clock with zero slack. Component RPC sums provide a work breakdown alongside the directly measured wall clock.
+
+\subsection{Physical Accounting and Reproducibility}
+At initial scheduler allocation, actual prompt IDs and native hit count $h_r$ give $n_r-h_r$ newly required prefill tokens, with separate verification counters. These measure work; latency is measured directly.
+
+Source groups, policy settings, and selection rules are frozen before each independent cohort is opened. Repetitions use new processes and recorded device/policy assignments. Statistical summaries preserve source-template clusters and process repetition; tenant and query repetitions remain within their source cluster. The artifact supplies request-level data, model/runtime manifests, source snapshots, scripts, and archive checksums. The supplemental record preserves the extended tables and unsuccessful variants.\footnote{\url{https://github.com/zhouz4884-coder/contractkv}. The experimental evidence is pinned to commit \texttt{9bf891af}; full paths and hashes are listed in the supplementary evidence register.}
