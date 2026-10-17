@@ -1,0 +1,47 @@
+{
+  "schema_version": "tsc-residency.probe-freeze.v1",
+  "base_primary_freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "maximum_business": 138,
+  "planned_verification_replays": 4,
+  "maximum_verification": 9,
+  "new_sources": 0,
+  "same_16K_window_memory_fraction_point88_and_two_max_sequences": true,
+  "original_witness_replay_diagnostic_only": true,
+  "no_formal_performance_claim": true,
+  "files": [
+    {
+      "path": "scripts/tsc_revision_residency_probe_v1.py",
+      "sha256": "a9da90495dd6fd01c2f3f407f4399617c8edcfd2fe7de330fd0e9c1994e74b95"
+    },
+    {
+      "path": "scripts/run_tsc_revision_residency_probe_v1.sh",
+      "sha256": "914f0fa3d1a056a273af2449d5e1c588e20ddb7286900835e207f28f2b9ed389"
+    },
+    {
+      "path": "scripts/tsc_residency_trace_v1/sitecustomize.py",
+      "sha256": "18ef0ce1c3a74b5a149b3205da1c1efb1d9efae85d6cbafd3112432127e9c515"
+    },
+    {
+      "path": "results/tsc_revision_residency_20261017/probe_plan_v1.json",
+      "sha256": "471fde852c2e83730f86b22fec0cf055d4ae126c65f5cf1cf19da0a2f9d3cdf5"
+    },
+    {
+      "path": "third_party/vllm-contractkv-tsc-r2-margin/vllm/v1/core/kv_cache_manager.py",
+      "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+    }
+  ],
+  "remote_native_read_only_hook_sources": [
+    {
+      "file": "block_pool.py",
+      "sha256": "1122ed808606e1a266995113505417401baa5fa7c42afa372314462c38790876"
+    },
+    {
+      "file": "kv_cache_utils.py",
+      "sha256": "c69ce881133c859f041d44ccdc8c1de1cc6b16a91f986f7da060d476719a13cf"
+    },
+    {
+      "file": "single_type_kv_cache_manager.py",
+      "sha256": "5a6f45fc2d01ce01d43038eae1a329b8f97f56224a44e48e9838aefeb1719c6e"
+    }
+  ]
+}

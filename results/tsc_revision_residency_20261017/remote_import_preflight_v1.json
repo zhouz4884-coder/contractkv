@@ -1,0 +1,12 @@
+{
+  "no_model_forward": true,
+  "hooks_installed": true,
+  "signatures": {
+    "get_computed_blocks": "(self, request: vllm.v1.request.Request) -> tuple[vllm.v1.core.kv_cache_manager.KVCacheBlocks, int]",
+    "allocate_slots": "(self, request: vllm.v1.request.Request, num_new_tokens: int, num_new_computed_tokens: int = 0, new_computed_blocks: Optional[vllm.v1.core.kv_cache_manager.KVCacheBlocks] = None, num_lookahead_tokens: int = 0, delay_cache_blocks: bool = False, num_encoder_tokens: int = 0) -> Optional[vllm.v1.core.kv_cache_manager.KVCacheBlocks]",
+    "cache_blocks": "(self, request: vllm.v1.request.Request, num_computed_tokens: int) -> None",
+    "free": "(self, request: vllm.v1.request.Request) -> None"
+  },
+  "gpu_compute_empty": true,
+  "source_bytes_match": true
+}
