@@ -1,0 +1,558 @@
+{
+  "schema_version": "contractkv.figure-data.v6",
+  "strict": [
+    {
+      "model": "Qwen3-8B",
+      "label": "Qwen3-8B",
+      "wall_multiplier": 1.6190395738566918,
+      "repeat_wall_multipliers": [
+        1.6147574465161523,
+        1.6225960687532124,
+        1.6197550342903733
+      ],
+      "repeat_min": 1.6147574465161523,
+      "repeat_max": 1.6225960687532124,
+      "business_per_repeat": 600,
+      "future_pairs": 1620,
+      "compiled_future_pairs": 684,
+      "compiled_future_pct": 42.22222222222222,
+      "raw_L0_future_pairs": 936,
+      "raw_positive_compiled_future_pairs": 684,
+      "raw_business_prefill_per_repeat": 6008336,
+      "CKV_business_prefill_per_repeat": 3204304,
+      "qualification_prefill_per_repeat": 73580,
+      "raw_ready_p99_ms": 8561.771133523434,
+      "CKV_ready_p99_ms": 9146.632908009922,
+      "p99_reduction_CI95_low": -56.24733926474879,
+      "p99_reduction_CI95_high": 26.801523090349004,
+      "all_future_material_drops": 0
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "label": "Mistral-7B",
+      "wall_multiplier": 1.1090718476802217,
+      "repeat_wall_multipliers": [
+        1.109677821200059,
+        1.1101860162311346,
+        1.1073570354769302
+      ],
+      "repeat_min": 1.1073570354769302,
+      "repeat_max": 1.1101860162311346,
+      "business_per_repeat": 600,
+      "future_pairs": 1620,
+      "compiled_future_pairs": 342,
+      "compiled_future_pct": 21.11111111111111,
+      "raw_L0_future_pairs": 1278,
+      "raw_positive_compiled_future_pairs": 258,
+      "raw_business_prefill_per_repeat": 7074492,
+      "CKV_business_prefill_per_repeat": 5986864,
+      "qualification_prefill_per_repeat": 51760,
+      "raw_ready_p99_ms": 9418.193945600651,
+      "CKV_ready_p99_ms": 9511.26484440174,
+      "p99_reduction_CI95_low": -60.57576868141603,
+      "p99_reduction_CI95_high": -0.13716257364309037,
+      "all_future_material_drops": 0
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "label": "Llama-3.1-8B",
+      "wall_multiplier": 1.0702809289103583,
+      "repeat_wall_multipliers": [
+        1.0680909216321344,
+        1.0712298560651499,
+        1.0715205844699376
+      ],
+      "repeat_min": 1.0680909216321344,
+      "repeat_max": 1.0715205844699376,
+      "business_per_repeat": 600,
+      "future_pairs": 1620,
+      "compiled_future_pairs": 270,
+      "compiled_future_pct": 16.666666666666668,
+      "raw_L0_future_pairs": 1350,
+      "raw_positive_compiled_future_pairs": 90,
+      "raw_business_prefill_per_repeat": 5822228,
+      "CKV_business_prefill_per_repeat": 5149118,
+      "qualification_prefill_per_repeat": 38807,
+      "raw_ready_p99_ms": 7851.2832141062245,
+      "CKV_ready_p99_ms": 7905.660099312661,
+      "p99_reduction_CI95_low": -16.78363093481201,
+      "p99_reduction_CI95_high": 0.15130593696531802,
+      "all_future_material_drops": 3
+    }
+  ],
+  "behavior_audits": [
+    {
+      "label": "Earlier bounded-input audit",
+      "compiled_future_pairs": 2442,
+      "ID_divergences": 0,
+      "raw_positive_pairs": 2442,
+      "distinct_sources": 50,
+      "distinct_compiled_sources": 12,
+      "studies": [
+        "single-session",
+        "template-fanout"
+      ],
+      "all_route_material_drops": 33
+    },
+    {
+      "label": "Faithful held-out validation",
+      "compiled_future_pairs": 1296,
+      "ID_divergences": 0,
+      "raw_positive_pairs": 1032,
+      "distinct_sources": 6,
+      "distinct_compiled_sources": 4,
+      "studies": [
+        "template-fanout"
+      ],
+      "all_route_material_drops": 3
+    }
+  ],
+  "d1_d2": [
+    {
+      "policy": "D1-frozen-safe",
+      "goodput": 1.4715087453081068,
+      "min": 1.4188051843326281,
+      "max": 1.5704272063370055,
+      "repeats": 5,
+      "registration_wall_s": 4.505133787915111,
+      "verifier_calls": 0.0
+    },
+    {
+      "policy": "D2-template-contractkv",
+      "goodput": 1.4275187738605095,
+      "min": 1.3664864382309263,
+      "max": 1.527783731581354,
+      "repeats": 5,
+      "registration_wall_s": 14.571781318075955,
+      "verifier_calls": 4.0
+    }
+  ],
+  "live_rejection": [
+    {
+      "model": "Qwen3-8B",
+      "bad_layouts": 10,
+      "rejected": 10,
+      "published_rejected_tokens": 0
+    },
+    {
+      "model": "Qwen3-14B, TP=2",
+      "bad_layouts": 10,
+      "rejected": 10,
+      "published_rejected_tokens": 0
+    }
+  ],
+  "granularity": [
+    {
+      "policy": "D2-session-contractkv",
+      "calls_per_trace": 125.0,
+      "unhidden_ms_per_future_request": 25.049263978997867,
+      "repeats": 3,
+      "future_requests_total": 3375
+    },
+    {
+      "policy": "D2-template-contractkv",
+      "calls_per_trace": 5.0,
+      "unhidden_ms_per_future_request": 3.2360756275830447,
+      "repeats": 3,
+      "future_requests_total": 3375
+    }
+  ],
+  "open_arrival_load": [
+    {
+      "load_pct": 60.0,
+      "raw_goodput": 0.14337281456290782,
+      "CKV_goodput": 0.6230277957911651
+    },
+    {
+      "load_pct": 80.0,
+      "raw_goodput": 0.17266776354327149,
+      "CKV_goodput": 0.8306512322979503
+    },
+    {
+      "load_pct": 100.0,
+      "raw_goodput": 0.17180712116414268,
+      "CKV_goodput": 1.0382487689445883
+    },
+    {
+      "load_pct": 120.0,
+      "raw_goodput": 0.1530057873617996,
+      "CKV_goodput": 1.245819541658266
+    },
+    {
+      "load_pct": 140.0,
+      "raw_goodput": 0.10878026354651983,
+      "CKV_goodput": 1.4533736324917337
+    }
+  ],
+  "density": [
+    {
+      "tenants": 10,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 0.9000682067259704,
+      "peak_used_blocks": 525.6666666666666,
+      "minimum_free_blocks": 1860.3333333333333
+    },
+    {
+      "tenants": 10,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 9.407992363981556,
+      "peak_used_blocks": 146.0,
+      "minimum_free_blocks": 2240.0
+    },
+    {
+      "tenants": 20,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.0322498906266626,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 20,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 10.78089768231309,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 30,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.0591195200336125,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 30,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 10.532412222964783,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 40,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.073137427468879,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 40,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.056892464222805,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 60,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.112437803169902,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 60,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.071546580145192,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    },
+    {
+      "tenants": 80,
+      "policy": "D0-native-apc",
+      "tiered_SLO_goodput": 1.1519680131572492,
+      "peak_used_blocks": 530.0,
+      "minimum_free_blocks": 1856.0
+    },
+    {
+      "tenants": 80,
+      "policy": "D2-full-contractkv",
+      "tiered_SLO_goodput": 11.032735995641136,
+      "peak_used_blocks": 149.0,
+      "minimum_free_blocks": 2237.0
+    }
+  ],
+  "sharing": [
+    {
+      "sharing_pct": 0,
+      "TTFT_reduction_pct": -3.1997938842171836
+    },
+    {
+      "sharing_pct": 25.0,
+      "TTFT_reduction_pct": 21.70270745255306
+    },
+    {
+      "sharing_pct": 50.0,
+      "TTFT_reduction_pct": 43.61789934649226
+    },
+    {
+      "sharing_pct": 75.0,
+      "TTFT_reduction_pct": 93.33768643857005
+    },
+    {
+      "sharing_pct": 100,
+      "TTFT_reduction_pct": 93.34859511244957
+    }
+  ],
+  "residency": [
+    {
+      "active_templates": 5,
+      "distribution": "round_robin",
+      "net_TTFT_reduction_pct": 93.68568186393298,
+      "CKV_prefix_hit_pct": 98.18820921615819
+    },
+    {
+      "active_templates": 5,
+      "distribution": "zipf",
+      "net_TTFT_reduction_pct": 94.25757663285005,
+      "CKV_prefix_hit_pct": 98.29580088139711
+    },
+    {
+      "active_templates": 25,
+      "distribution": "round_robin",
+      "net_TTFT_reduction_pct": 0.3627321106318582,
+      "CKV_prefix_hit_pct": 0.0
+    },
+    {
+      "active_templates": 25,
+      "distribution": "zipf",
+      "net_TTFT_reduction_pct": 84.62920573837265,
+      "CKV_prefix_hit_pct": 83.43508114394068
+    },
+    {
+      "active_templates": 50,
+      "distribution": "round_robin",
+      "net_TTFT_reduction_pct": 0.6447249179432624,
+      "CKV_prefix_hit_pct": 0.0
+    },
+    {
+      "active_templates": 50,
+      "distribution": "zipf",
+      "net_TTFT_reduction_pct": 73.39668992390538,
+      "CKV_prefix_hit_pct": 69.57044046846586
+    }
+  ],
+  "additional_Qwen_validation": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "paired_repeats": "3",
+      "pairs": "1620",
+      "ci_cluster_unit": "source template including all ten tenants",
+      "full_wall_goodput_multiplier": "1.802658233251139",
+      "paired_repeat_multiplier_min": "1.7984455943331576",
+      "paired_repeat_multiplier_max": "1.8080434833162706",
+      "raw_ready_mean_ms": "4661.931763640835",
+      "policy_ready_mean_ms": "2484.5282264154425",
+      "ready_mean_reduction_pct": "46.70603620171615",
+      "ready_mean_cluster_repeat_ci95_low": "4.195004762946564",
+      "ready_mean_cluster_repeat_ci95_high": "83.12872805088598",
+      "raw_ready_p99_ms": "8793.875994705595",
+      "policy_ready_p99_ms": "13386.89427421894",
+      "p99_reduction_cluster_repeat_ci95_low": "-60.03458054935271",
+      "p99_reduction_cluster_repeat_ci95_high": "10.942747042476576",
+      "new_vs_previous_full_wall_goodput_multiplier": "",
+      "new_vs_previous_p99_reduction_pct": "",
+      "new_vs_previous_p99_reduction_ci95_low": "",
+      "new_vs_previous_p99_reduction_ci95_high": "",
+      "compiled_future_pairs": 774
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "paired_repeats": "3",
+      "pairs": "1620",
+      "ci_cluster_unit": "source template including all ten tenants",
+      "full_wall_goodput_multiplier": "1.0698226335075602",
+      "paired_repeat_multiplier_min": "1.06866289989449",
+      "paired_repeat_multiplier_max": "1.0707549909095708",
+      "raw_ready_mean_ms": "4661.931763640835",
+      "policy_ready_mean_ms": "4336.265412430325",
+      "ready_mean_reduction_pct": "6.9856524660106505",
+      "ready_mean_cluster_repeat_ci95_low": "-0.4393878085305219",
+      "ready_mean_cluster_repeat_ci95_high": "28.399059099609026",
+      "raw_ready_p99_ms": "8793.875994705595",
+      "policy_ready_p99_ms": "8801.919248863123",
+      "p99_reduction_cluster_repeat_ci95_low": "-0.8201010769398824",
+      "p99_reduction_cluster_repeat_ci95_high": "0.13451117429181814",
+      "new_vs_previous_full_wall_goodput_multiplier": "",
+      "new_vs_previous_p99_reduction_pct": "",
+      "new_vs_previous_p99_reduction_ci95_low": "",
+      "new_vs_previous_p99_reduction_ci95_high": "",
+      "compiled_future_pairs": 258
+    }
+  ],
+  "matched_quality_tables": [
+    {
+      "method": "cacheblend",
+      "matched_baseline": "cacheblend_raw",
+      "family": "ALL",
+      "threshold": "0.03",
+      "paired_requests": "2250",
+      "baseline_mean_score": "0.3332098562064104",
+      "candidate_mean_score": "0.33981718269476624",
+      "mean_quality_drop": "-0.006607326488355815",
+      "material_regressions": "224",
+      "material_regression_rate": "0.09955555555555555",
+      "material_improvements": "331",
+      "exact_score_ties": "1398",
+      "claim_boundary": "Each method versus its native matched baseline; no 112x cross-stack causal safety ratio."
+    },
+    {
+      "method": "contractkv",
+      "matched_baseline": "vllm_apc",
+      "family": "ALL",
+      "threshold": "0.03",
+      "paired_requests": "2250",
+      "baseline_mean_score": "0.3537803691558354",
+      "candidate_mean_score": "0.3537442156238679",
+      "mean_quality_drop": "3.615353196748546e-05",
+      "material_regressions": "2",
+      "material_regression_rate": "0.0008888888888888889",
+      "material_improvements": "0",
+      "exact_score_ties": "2239",
+      "claim_boundary": "Each method versus its native matched baseline; no 112x cross-stack causal safety ratio."
+    },
+    {
+      "method": "manual_oracle",
+      "matched_baseline": "vllm_apc",
+      "family": "ALL",
+      "threshold": "0.03",
+      "paired_requests": "2250",
+      "baseline_mean_score": "0.3537803691558354",
+      "candidate_mean_score": "0.3563228910146057",
+      "mean_quality_drop": "-0.0025425218587703364",
+      "material_regressions": "39",
+      "material_regression_rate": "0.017333333333333333",
+      "material_improvements": "60",
+      "exact_score_ties": "2100",
+      "claim_boundary": "Each method versus its native matched baseline; no 112x cross-stack causal safety ratio."
+    },
+    {
+      "method": "sglang_certified",
+      "matched_baseline": "sglang_raw",
+      "family": "ALL",
+      "threshold": "0.03",
+      "paired_requests": "2250",
+      "baseline_mean_score": "0.3537390852503654",
+      "candidate_mean_score": "0.3538740593611535",
+      "mean_quality_drop": "-0.00013497411078806427",
+      "material_regressions": "2",
+      "material_regression_rate": "0.0008888888888888889",
+      "material_improvements": "2",
+      "exact_score_ties": "2244",
+      "claim_boundary": "Each method versus its native matched baseline; no 112x cross-stack causal safety ratio."
+    }
+  ],
+  "legacy_slack_TTFT": [
+    {
+      "model": "Mistral-7B",
+      "net_TTFT_reduction_pct": 31.716215753439343,
+      "tool_slack_ms": 2000,
+      "repeats": 3
+    },
+    {
+      "model": "Qwen3-8B",
+      "net_TTFT_reduction_pct": 37.81071925586949,
+      "tool_slack_ms": 2000,
+      "repeats": 3
+    },
+    {
+      "model": "Qwen3-14B TP=2",
+      "net_TTFT_reduction_pct": 44.68754076425449,
+      "tool_slack_ms": 2000,
+      "repeats": 3
+    },
+    {
+      "model": "Llama-3.1-8B",
+      "net_TTFT_reduction_pct": 29.408255395147194,
+      "tool_slack_ms": 6000,
+      "repeats": 3
+    }
+  ],
+  "frozen_gate_table": [
+    {
+      "point_id": "0",
+      "lane": "0",
+      "stable_prefix_tokens": "1500",
+      "future_reuses": "8",
+      "tool_slack_ms": "3500",
+      "certificate_issued": "True",
+      "gate_accepted": "False",
+      "effective_policy": "raw-fallback",
+      "observed_net_benefit_ms": "0.0",
+      "observed_net_benefit_fraction": "0.0",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "1",
+      "lane": "0",
+      "stable_prefix_tokens": "3000",
+      "future_reuses": "12",
+      "tool_slack_ms": "500",
+      "certificate_issued": "True",
+      "gate_accepted": "True",
+      "effective_policy": "ContractKV",
+      "observed_net_benefit_ms": "7044.757876545191",
+      "observed_net_benefit_fraction": "0.5881292913165774",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "2",
+      "lane": "0",
+      "stable_prefix_tokens": "5000",
+      "future_reuses": "10",
+      "tool_slack_ms": "1500",
+      "certificate_issued": "True",
+      "gate_accepted": "True",
+      "effective_policy": "ContractKV",
+      "observed_net_benefit_ms": "10842.677316628397",
+      "observed_net_benefit_fraction": "0.6940422703620943",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    },
+    {
+      "point_id": "3",
+      "lane": "0",
+      "stable_prefix_tokens": "3500",
+      "future_reuses": "6",
+      "tool_slack_ms": "6000",
+      "certificate_issued": "True",
+      "gate_accepted": "False",
+      "effective_policy": "raw-fallback",
+      "observed_net_benefit_ms": "0.0",
+      "observed_net_benefit_fraction": "0.0",
+      "raw_completion_rate": "1.0",
+      "contract_completion_rate": "1.0",
+      "raw_quality_sanity_rate": "1.0",
+      "contract_quality_sanity_rate": "1.0",
+      "verify_decision": "PASS",
+      "txn_state": "COMMITTED",
+      "claim_boundary": "Frozen gate selected on the development grid. Rejected lanes are reported as raw fallback; contract measurements on rejected lanes are diagnostic only."
+    }
+  ],
+  "protocol_boundaries": {
+    "strict": "16K faithful inputs; greedy; closed loop; zero tool slack; six held-out sources; three fresh-process pairs/model.",
+    "prefill": "Mean count per process, 600 business requests; initial scheduler prompt-minus-native-hit counters, certification counted separately; not GPU-kernel time.",
+    "fig4": "Panel a five-process same-engine control; panel b live legal-layout controls; panel c three-process deployment-template granularity ablation. Do not merge their denominators.",
+    "fig5_6": "Original deployment-template protocols, distinct from strict raw-witness validation. 80 tenant identities do not mean 80 simultaneous GPU requests.",
+    "sharing_correction": "Fig6 old generator displayed 0.0% at zero sharing. Paired source CSV yields the actual negative point; no clipping."
+  }
+}
