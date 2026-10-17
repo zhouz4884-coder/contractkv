@@ -50,15 +50,18 @@ for p in sorted((root/'figures').glob('fig[1-6]_*.pdf')):
     doc=fitz.open(p);assert not doc[0].get_images()
     svg=p.with_suffix('.svg');nodes=[el.tag.rsplit('}',1)[-1] for el in ET.parse(svg).getroot().iter()]
     assert nodes.count('text')>0 and 'image' not in nodes
-    png=Image.open(p.with_suffix('.png'));assert png.width==4296
+    png=Image.open(p.with_suffix('.png'));assert abs(png.width-doc[0].rect.width/72*600)<=1
     vectors.append({'file':p.name,'sha256':sha(p),'editable_SVG_text_nodes':nodes.count('text'),
                     'PNG_pixels':list(png.size),'PNG_DPI':list(png.info['dpi'])})
 assert len(vectors)==6
-figqa=json.loads((root/'figures/render_manifest_v8.json').read_text())
+figqa=json.loads((root/'figures/render_manifest_v9.json').read_text())
 assert figqa['all_text_inside_canvas'] and figqa['all_text_collision_checks_pass']
-arch=json.loads((root/'figures/architecture_QA_v8.json').read_text())
+arch=json.loads((root/'figures/architecture_QA_v9.json').read_text())
 assert not arch['figure']['text_outside_canvas'] and not arch['figure']['text_bbox_collisions']
-record={'status':'PASS','manuscripts':summaries,'figures':vectors,
+sections='\n'.join(p.read_text(encoding='utf-8') for p in sorted((root/'sections').glob('[0-9]*.tex')))
+assert len(re.findall(r'\\begin\{figure\*\}',sections))==2
+assert len(re.findall(r'\\begin\{figure\}',sections))==4
+record={'status':'PASS','layout':{'double_column_figures':[1,2],'single_column_figures':[3,4,5,6]},'manuscripts':summaries,'figures':vectors,
         'compiled_pair_denominators_and_prefill_arithmetic_checked':True,
         'source_data_sha256':sha(root/'figures/figure_data_v7.json'),
         'all_six_vector_figures':True,'independent_measurements_added':0,

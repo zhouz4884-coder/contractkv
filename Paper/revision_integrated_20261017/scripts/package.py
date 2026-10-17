@@ -9,7 +9,7 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 qa=json.loads((root/'audit/manuscript_QA.json').read_text())
 assert qa['status']=='PASS'
 source='\n'.join(p.read_text(encoding='utf-8') for p in sorted((root/'sections').glob('[0-9]*.tex')))
-figure_blocks=re.findall(r'\\begin\{figure\*\}(.*?)\\end\{figure\*\}',source,re.S)
+figure_blocks=re.findall(r'\\begin\{figure\*?\}(.*?)\\end\{figure\*?\}',source,re.S)
 captions=[re.search(r'\\caption\{(.*?)\}\s*\\label\{fig:([^}]+)\}',block,re.S).groups()
           for block in figure_blocks]
 stems=['fig1_architecture','fig2_full_cost_benefits','fig3_coverage_and_fidelity','fig4_transaction_and_amortization','fig5_service_goodput_and_kv_savings','fig6_locality_and_residency']

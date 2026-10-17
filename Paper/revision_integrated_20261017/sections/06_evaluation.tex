@@ -53,12 +53,12 @@ A separate six-source Qwen cohort supplies an independent content check: unchang
 \label{sec:quality}
 Compilation must obtain its gain within the admitted behavioral scope. Figure~\ref{fig:behavior} reports both scope coverage and free-running evidence. All 1,296 compiled future pairs have identical output IDs and unchanged scores. Including initial business rounds gives 1,440 compiled pairs with the same outcome. HotpotQA contributes compiled requests for every model; Qwen additionally admits RepoBench, whereas Mistral/Llama keep the inherited L0 route.
 
-\begin{figure*}[t]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig3_coverage_and_fidelity.pdf}
-\caption{Behavioral evidence with explicit coverage and denominators. (a) Each model/task cell contains 810 future pairs; hatched cells inherit L0 rather than fail GPU certification. (b) The historical five-family audit and faithful primary cohort have zero compiled output-ID differences. Lower bars count raw references receiving positive task-score credit within each model's faithful compiled subset; positive credit is not complete answer correctness. (c) A fixed logged Qwen/HotpotQA sequence links its raw witness, PASS, COMMITTED candidate prefix, and later identical output. Full records are in the artifact.}
+\includegraphics[width=\columnwidth]{figures/fig3_coverage_and_fidelity.pdf}
+\caption{Qualification coverage and free-running evidence. (a) Each model/task cell has 810 future pairs; hatched cells inherit L0. (b) Output-ID differences and raw-reference positive-score counts within compiled subsets. Positive credit is not complete correctness. (c) One logged Qwen/HotpotQA witness, PASS, committed prefix and later identical output; full records are archived.}
 \label{fig:behavior}
-\end{figure*}
+\end{figure}
 
 Behavioral preservation and absolute utility remain different outcomes. Qwen's 684 admitted raw references all receive positive score credit; the counts are 258/342 for Mistral and 90/270 for Llama. Llama preserves 180 zero-F1 future references from two HotpotQA sources, and Mistral preserves 84 from one source. Neither exact agreement nor positive partial credit establishes semantic correctness.
 
@@ -82,12 +82,12 @@ This diagnoses an input effect, not an accuracy improvement caused by ContractKV
 \label{sec:ablation}
 A frozen safe layout isolates available reuse, whereas governance should determine which candidates acquire shared visibility. Figure~\ref{fig:governance} examines both questions on deployment-qualified controls. D1 uses a prequalified layout without online registration; D2 adds verification and transactional registration. Mean 500-ms SLO goodput is 1.472 versus 1.428 requests/s, retaining 97.0\% of D1's mean. Their TTFTs are 194.95 and 194.72 ms. D2 is not claimed to outperform an already safe D1 route.
 
-\begin{figure*}[t]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig4_transaction_and_amortization.pdf}
-\caption{Deployment-qualified governance and amortization, shown as distinct controls. (a) Holding layout/locality fixed, template registration reduces calls 125 to 5 per 1,125-future-request trace and unhidden cost 25.05 to 3.24 ms/request; three processes. (b) Live 8B and 14B TP2 tests each reject 10/10 harmful dependency-valid candidates, with zero promotion of rejected candidate state. (c) Same-engine D1/D2 mean 500-ms SLO goodput; whiskers denote five-process min--max, not confidence intervals.}
+\includegraphics[width=\columnwidth]{figures/fig4_transaction_and_amortization.pdf}
+\caption{Separate deployment controls. (a) Registration granularity with fixed layout/locality; three processes and 1,125 future requests/trace. (b) Each 8B/14B TP2 probe rejects 10/10 harmful candidates with zero rejected-candidate promotion. (c) Same-engine D1/D2 500-ms SLO goodput; whiskers are five-process min--max, not confidence intervals.}
 \label{fig:governance}
-\end{figure*}
+\end{figure}
 
 Behaviorally harmful, dependency-valid candidates provide the complementary test. In each of two controlled 20-case sets, all ten harmful candidates are rejected with zero newly promoted candidate tokens. A 14B control also checks actual post-decision outputs against raw scores. Live source-hook, concurrency, cancellation, duplicate, timeout, and authenticated-binding controls exercise the publication boundary. The separate 325,000-operation stress study tests the in-memory state machine and is not counted as GPU serving evidence.
 
@@ -99,21 +99,21 @@ Query-qualified execution has a different amortization unit. The second Qwen coh
 
 \subsection{Where Do Service and Residency Benefits Hold?}
 \label{sec:residency}
-\begin{figure*}[t]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig5_service_goodput_and_kv_savings.pdf}
-\caption{Separate deployment-template service studies. (a) Open-arrival 500-ms SLO goodput: at 80\% calibrated load, native APC and ContractKV deliver 0.173 and 0.831 requests/s, an absolute gain of 0.658. The 4.81$\times$ ratio belongs to that point. (b) In 80-identity density replay, peak used blocks fall 530 to 149 within a 2,386-block pool. The same cells report 1.152/11.033 requests/s under class-specific 750/1,500/3,000-ms SLOs. Registered tenants are not concurrent GPU requests; the two panels use different protocols.}
+\includegraphics[width=\columnwidth]{figures/fig5_service_goodput_and_kv_savings.pdf}
+\caption{Distinct deployment protocols. (a) Open-arrival 500-ms SLO goodput; the 4.81$\times$ ratio is the 80\%-load point. (b) The same 80-identity density cells supply both allocator occupancy and goodput under class-specific 750/1,500/3,000-ms SLOs, with a 2,386-block pool. Registered identities are not simultaneous GPU requests.}
 \label{fig:service}
-\end{figure*}
+\end{figure}
 
 Figure~\ref{fig:service} tests a separately qualified deployment workload at fixed arrival loads and in bounded-concurrency density replay. It shows absolute SLO goodput as well as allocator occupancy, rather than presenting closed-loop throughput as capacity. At 80 identities, used blocks decrease by 71.9\%, leaving 381 more free blocks. Density goodput and block values come from the same cells, but do not isolate headroom as the sole cause of improved throughput. These marker-bearing service traces have a separate task-quality audit and are distinct from the task-bearing primary cohort.
 
-\begin{figure*}[t]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig6_locality_and_residency.pdf}
-\caption{Operating region in frozen deployment workloads. (a) The pale band marks the observed 50--75\% sharing interval; the zero-sharing $-3.2$\% result remains visible. (b) Round-robin and Zipf access show how reuse distance and hot-set skew affect net mean TTFT. The axis is measured TTFT reduction, not a direct residency fraction. The band is not a universal threshold.}
+\includegraphics[width=\columnwidth]{figures/fig6_locality_and_residency.pdf}
+\caption{Operating region in frozen deployment workloads. (a) The shaded 50--75\% sharing interval is an observed transition, not a universal threshold. (b) Access-pattern sensitivity to reuse distance and hot-set skew. Both axes report TTFT reduction; neither is a direct residency fraction.}
 \label{fig:region}
-\end{figure*}
+\end{figure}
 
 Figure~\ref{fig:region} explains why sharing count alone is insufficient. Benefit rises sharply over an observed sharing interval, but round-robin access to a larger working set nearly eliminates it. A qualified object still needs resident physical blocks. In the primary cohort, 189 compiled business requests have incomplete hits: 135 Llama zero hits, 42 Mistral zero hits, and 12 Qwen partial hits. All 1,440 compiled business requests match the certified prefix IDs and commit boundary; each incomplete-hit request has a later full-hit peer in its two-request wave.
 

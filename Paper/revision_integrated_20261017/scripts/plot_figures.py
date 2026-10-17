@@ -27,7 +27,7 @@ def style():
     old.set_style(8)
     plt.rcParams.update({'axes.titlesize':8.4,'axes.labelsize':7.5,'xtick.labelsize':7.1,
         'ytick.labelsize':7.1,'legend.fontsize':7.0,'savefig.bbox':None,'axes.linewidth':.7,
-        'svg.hashsalt':'contractkv-v8-20261017','figure.facecolor':'white','axes.facecolor':'white'})
+        'svg.hashsalt':'contractkv-v9-20261017','figure.facecolor':'white','axes.facecolor':'white'})
 
 
 def title(ax,letter,text,pad=8):ax.set_title(f'({letter}) {text}',loc='left',pad=pad,fontweight='bold')
@@ -54,7 +54,7 @@ def save(fig,out,stem):
     files={}
     for ext in ('pdf','svg','png'):
         p=out/(stem+'.'+ext);kw={}
-        if ext=='pdf':kw['metadata']={'Creator':'ContractKV measured-data figures v8','CreationDate':None,'ModDate':None}
+        if ext=='pdf':kw['metadata']={'Creator':'ContractKV measured-data figures v9','CreationDate':None,'ModDate':None}
         if ext=='svg':kw['metadata']={'Date':None}
         if ext=='png':kw['dpi']=600
         fig.savefig(p,**kw)
@@ -111,157 +111,110 @@ def figure2(d,out):
     save(fig,out,'fig2_full_cost_benefits')
 
 
+
 def figure3(d,out):
-    style();fig=plt.figure(figsize=(7.16,3.30))
-    tag(fig,'Frozen behavioral scopes · task-level coverage and measured output-ID fidelity')
-    a=fig.add_axes([.145,.44,.325,.365]);b=fig.add_axes([.60,.44,.375,.365])
-    values=np.array([[x['coverage_pct'] for x in z['family_coverage']] for z in d['strict']])
-    cmap=LinearSegmentedColormap.from_list('qualified_reuse',['#EFF8F5','#087C70'])
+    style();fig=plt.figure(figsize=(3.45,4.3))
+    fig.text(.5,.975,'Faithful held-out · query-scoped protocol',ha='center',va='top',fontsize=6.6,color=MUTED)
+    a=fig.add_axes([.255,.655,.71,.215]);values=np.array([[r['coverage_pct'] for r in z['family_coverage']] for z in d['strict']])
+    cmap=LinearSegmentedColormap.from_list('coverage',['#EFF8F5','#087C70'])
     for i,z in enumerate(d['strict']):
         for j,r in enumerate(z['family_coverage']):
             inherited=r['inherited_L0'];color='#EDF0F2' if inherited else cmap(values[i,j]/70)
-            a.add_patch(Rectangle((j-.5,i-.5),1,1,fc=color,ec='white',lw=2,
-                                 hatch='///' if inherited else None))
-            if inherited:
-                a.add_patch(Rectangle((j-.5,i-.5),1,1,fc='none',ec='#B6BEC5',lw=.5,hatch='///'))
-                a.text(j,i,'Inherited L0\n0 / 810',ha='center',va='center',fontsize=7.8,color=MUTED,
-                       bbox=dict(fc='#EDF0F2',ec='none',pad=.3))
-            else:
-                a.text(j,i,f"{r['coverage_pct']:.1f}%\n{r['compiled_pairs']} / 810",ha='center',va='center',
-                       fontsize=8.4,color='white' if values[i,j]>50 else INK,weight='bold',linespacing=1.5)
-    a.set(xlim=(-.5,1.5),ylim=(2.5,-.5),xticks=[0,1],xticklabels=['HotpotQA','RepoBench'],
-          yticks=[0,1,2],yticklabels=[z['label'] for z in d['strict']])
-    a.tick_params(length=0)
+            a.add_patch(Rectangle((j-.5,i-.5),1,1,fc=color,ec='white',lw=1.5))
+            if inherited:a.add_patch(Rectangle((j-.5,i-.5),1,1,fc='none',ec='#B6BEC5',lw=.4,hatch='///'))
+            label='Inherited L0\n0 / 810' if inherited else f"{r['coverage_pct']:.1f}%\n{r['compiled_pairs']} / 810"
+            a.text(j,i,label,ha='center',va='center',fontsize=7.1,color=MUTED if inherited else ('white' if values[i,j]>50 else INK),weight='normal' if inherited else 'bold',bbox=dict(fc=color,ec='none',pad=.2))
+    a.set(xlim=(-.5,1.5),ylim=(2.5,-.5),xticks=[0,1],xticklabels=['HotpotQA','RepoBench'],yticks=[0,1,2],yticklabels=['Qwen3-8B','Mistral-7B','Llama3.1-8B'])
+    a.tick_params(length=0,labelsize=6.8)
     for spine in a.spines.values():spine.set_visible(False)
-    title(a,'a','Task-level compiled coverage')
-    a.text(.5,-.18,'810 future pairs / model / task family',transform=a.transAxes,ha='center',fontsize=6.8,color=MUTED)
-    b.set_axis_off();title(b,'b','Observed output-ID differences')
-    for yy,r in zip((.84,.64),d['behavior_audits']):
-        label='Earlier audit (50 sources)' if r['distinct_sources']==50 else 'Faithful held-out (6 sources)'
-        b.text(0,yy,label,va='center',fontsize=7.3)
-        b.text(1,yy,f"{r['ID_divergences']} / {r['compiled_future_pairs']:,}",ha='right',va='center',color=CKV,weight='bold',fontsize=9)
-    b.axhline(.52,color=GRID,lw=.65)
-    b.text(0,.43,'Compiled subset: raw reference score > 0',fontsize=7.1,color=MUTED)
-    for yy,name,r in zip((.30,.16,.02),('Qwen','Mistral','Llama'),d['strict']):
-        ratio=r['raw_positive_compiled_future_pairs']/r['compiled_future_pairs']
-        b.text(0,yy,name,fontsize=7.1,va='center')
-        b.add_patch(Rectangle((.29,yy-.026),.37,.052,fc='#E2E8EB',ec='none'))
-        b.add_patch(Rectangle((.29,yy-.026),.37*ratio,.052,fc=REUSE,ec='none'))
-        b.text(1,yy,f"{r['raw_positive_compiled_future_pairs']} / {r['compiled_future_pairs']}",ha='right',va='center',fontsize=7.3,color=REUSE,weight='bold')
-    b.set(xlim=(0,1),ylim=(-.035,1))
-    c=fig.add_axes([.065,.045,.91,.235]);c.set_axis_off()
-    t=d['measured_trace'];title(c,'c','One logged Qwen / HotpotQA sequence: t0 → t3',pad=4)
-    labels=[('Raw witness, t0','7 output IDs',RAW),('Verification PASS','same query scope',REUSE),
-            ('PSTP COMMITTED',f"{t['committed_full_blocks']} candidate blocks",CKV),
-            ('Later answer, t3','same 7 output IDs',REUSE)]
+    title(a,'a','Compiled coverage',pad=7)
+    a.text(.5,-.24,'810 future pairs / model / task family',transform=a.transAxes,ha='center',fontsize=6.3,color=MUTED)
+    b=fig.add_axes([.09,.29,.86,.245]);b.set_axis_off();title(b,'b','Observed output-ID differences',pad=7)
+    for yy,r,label in zip((.90,.71),d['behavior_audits'],('Earlier audit (50 sources)','Faithful held-out (6 sources)')):
+        b.text(0,yy,label,fontsize=6.9,va='center');b.text(1,yy,f"0 / {r['compiled_future_pairs']:,}",ha='right',va='center',fontsize=8.1,color=CKV,weight='bold')
+    b.axhline(.58,color=GRID,lw=.6);b.text(0,.48,'Compiled subset: raw-reference score > 0',fontsize=6.6,color=MUTED)
+    for yy,name,r in zip((.34,.18,.02),('Qwen','Mistral','Llama'),d['strict']):
+        ratio=r['raw_positive_compiled_future_pairs']/r['compiled_future_pairs'];b.text(0,yy,name,fontsize=6.8,va='center')
+        b.add_patch(Rectangle((.27,yy-.026),.40,.052,fc='#E2E8EB',ec='none'));b.add_patch(Rectangle((.27,yy-.026),.40*ratio,.052,fc=REUSE,ec='none'))
+        b.text(1,yy,f"{r['raw_positive_compiled_future_pairs']} / {r['compiled_future_pairs']}",ha='right',va='center',fontsize=7,color=REUSE,weight='bold')
+    b.set(xlim=(0,1),ylim=(-.035,1),xticks=[],yticks=[])
+    c=fig.add_axes([.07,.025,.89,.16]);c.set_axis_off();title(c,'c','Logged Qwen / HotpotQA sequence',pad=6)
+    labels=[('Raw t0','7 IDs',RAW),('PASS','same scope',REUSE),('COMMITTED','888 blocks',CKV),('Later t3','same 7 IDs',REUSE)]
     for i,(first,second,color) in enumerate(labels):
-        x=.01+.25*i
-        c.add_patch(Rectangle((x,.19),.215,.52,fc='white',ec=color,lw=.8))
-        c.text(x+.1075,.45,first+'\n'+second,ha='center',va='center',fontsize=7.1,linespacing=1.5,color=INK)
-        if i<3:c.annotate('',xy=(x+.25,.45),xytext=(x+.22,.45),arrowprops=dict(arrowstyle='->',lw=.8,color=MUTED))
-    c.text(.5,.015,f"Later native hit: {t['later_native_hit_tokens']:,} tokens · exact records in artifact",ha='center',fontsize=6.7,color=MUTED)
-    save(fig,out,'fig3_coverage_and_fidelity')
+        xx=i*.255;c.add_patch(Rectangle((xx,.36),.225,.42,fc='white',ec=color,lw=.65));c.text(xx+.1125,.57,first+'\n'+second,ha='center',va='center',fontsize=6.2,linespacing=1.4)
+        if i<3:c.annotate('',xy=(xx+.255,.57),xytext=(xx+.229,.57),arrowprops=dict(arrowstyle='->',lw=.7,color=MUTED))
+    c.text(.5,.10,'Later native hit: 14,240 tokens · records in artifact',ha='center',fontsize=6.2,color=MUTED)
+    c.set(xlim=(-.01,1),ylim=(0,1),xticks=[],yticks=[]);save(fig,out,'fig3_coverage_and_fidelity')
 
 
 def figure4(d,out):
-    style();fig=plt.figure(figsize=(7.16,3.10));tag(fig,'Deployment-template controls · certificate granularity, live rejection, and same-engine service')
-    fig.text(.075,.875,'(a) Certificate amortization',weight='bold',fontsize=8.5)
-    a1=fig.add_axes([.135,.61,.27,.17]);a2=fig.add_axes([.135,.205,.27,.17])
-    for ax,field,lim,label,format_,headline in [
-        (a1,'calls_per_trace',150,'Verifier calls / trace','{:.0f}','25× fewer calls'),
-        (a2,'unhidden_ms_per_future_request',31,'Unhidden ms / future request','{:.2f}','7.7× lower cost')]:
-        values=[z[field] for z in d['granularity']]
-        ax.barh([1,0],values,.52,color=[LIGHT,CKV],ec=[RAW,INK],lw=.5)
-        for y,value in zip([1,0],values):ax.text(value+lim*.035,y,format_.format(value),va='center',fontsize=7.5,color=CKV if y==0 else MUTED,weight='bold')
-        ax.set(yticks=[1,0],yticklabels=['Session','Template'],xlim=(0,lim),xlabel=label)
-        ax.set_xticks([0,50,100,150] if ax is a1 else [0,10,20,30]);gx(ax)
-        ax.text(0,1.15,headline,transform=ax.transAxes,fontsize=13.5 if ax is a1 else 12.3,color=CKV,weight='bold')
-    b=fig.add_axes([.50,.205,.19,.60]);b.set_axis_off();title(b,'b','Fail-closed promotion')
-    states=[(.77,.15,'Harmful candidate',RAW),(.49,.15,'Certification FAIL',REJECT),
-            (.16,.22,'0 rejected-candidate\nKV blocks promoted',CKV)]
-    for yy,hh,label,color in states:
-        b.add_patch(Rectangle((.01,yy),.98,hh,fc='white',ec=color,lw=.8))
-        b.text(.5,yy+hh/2,label,ha='center',va='center',fontsize=7.2,color=color,weight='bold' if color==REJECT else 'normal')
-    for high,low in ((.77,.64),(.49,.38)):
-        b.annotate('',xy=(.5,low+.01),xytext=(.5,high-.01),arrowprops=dict(arrowstyle='->',color=MUTED,lw=.8))
-    b.text(.5,.005,'8B: 10/10 rejected\n14B TP2: 10/10 rejected',ha='center',va='bottom',fontsize=6.9,color=MUTED,linespacing=1.4)
-    c=fig.add_axes([.80,.32,.175,.30]);title(c,'c','Goodput under\ngovernance',pad=43)
-    fig.text(.8875,.76,f"{d['governance_goodput_retained_pct']:.1f}%",ha='center',color=CKV,weight='bold',fontsize=10.5)
-    fig.text(.8875,.70,'D1 goodput retained',ha='center',fontsize=7.1,color=MUTED)
-    values=[z['goodput'] for z in d['d1_d2']]
-    c.barh([1,0],values,.46,color=[D1,CKV],ec=INK,lw=.5)
+    style();fig=plt.figure(figsize=(3.45,4.55))
+    fig.text(.08,.963,'(a) Certificate amortization',fontsize=8.2,weight='bold')
+    a1=fig.add_axes([.27,.772,.66,.092]);a2=fig.add_axes([.27,.542,.66,.092])
+    for ax,field,lim,label,fmt,headline,y in [(a1,'calls_per_trace',150,'Verifier calls / trace','{:.0f}','25× fewer calls',.902),(a2,'unhidden_ms_per_future_request',31,'Unhidden ms / future request','{:.2f}','7.7× lower cost',.672)]:
+        values=[r[field] for r in d['granularity']];ax.barh([1,0],values,.51,color=[LIGHT,CKV],ec=[RAW,INK],lw=.45)
+        for yy,v in zip([1,0],values):ax.text(v+lim*.035,yy,fmt.format(v),va='center',fontsize=7.1,color=MUTED if yy else CKV,weight='bold')
+        ax.set(yticks=[1,0],yticklabels=['Session','Template'],xlim=(0,lim),xlabel=label,xticks=[0,50,100,150] if ax is a1 else [0,10,20,30]);ax.tick_params(labelsize=6.8);ax.xaxis.label.set_fontsize(6.8);gx(ax)
+        fig.text(.27,y,headline,fontsize=11,color=CKV,weight='bold')
+    fig.text(.08,.451,'(b) Fail-closed promotion',fontsize=8.2,weight='bold')
+    b=fig.add_axes([.08,.327,.86,.087]);b.set_axis_off()
+    for i,(label,col) in enumerate([('Harmful\ncandidate',RAW),('Certification\nFAIL',REJECT),('0 candidate blocks\npromoted',CKV)]):
+        xx=i*.35;b.add_patch(Rectangle((xx,.12),.30,.78,fc='white',ec=col,lw=.75));b.text(xx+.15,.51,label,ha='center',va='center',fontsize=6.6,color=col)
+        if i<2:b.annotate('',xy=(xx+.35,.51),xytext=(xx+.305,.51),arrowprops=dict(arrowstyle='->',color=MUTED,lw=.7))
+    b.set(xlim=(-.01,1.01),ylim=(0,1));fig.text(.5,.303,'8B and 14B TP2: each 10/10 harmful candidates rejected',ha='center',fontsize=6.1,color=MUTED)
+    fig.text(.08,.247,'(c) Goodput under governance',fontsize=8.2,weight='bold')
+    c=fig.add_axes([.24,.096,.53,.112]);c.barh([1,0],[r['goodput'] for r in d['d1_d2']],.46,color=[D1,CKV],ec=INK,lw=.45)
     for yy,r in zip([1,0],d['d1_d2']):
-        c.errorbar(r['goodput'],yy,xerr=[[r['goodput']-r['min']],[r['max']-r['goodput']]],fmt='none',ecolor=INK,lw=.8,capsize=2)
-        c.text(.63,yy,f"{r['goodput']:.3f}",va='center',ha='center',fontsize=7.4,color='white' if yy==0 else INK,weight='bold')
-    c.set(yticks=[1,0],yticklabels=['D1','D2'],xlim=(0,1.85),xticks=[0,.8,1.6],xlabel='500-ms SLO req/s');gx(c)
-    fig.text(.8875,.15,'Whiskers: 5-repeat min–max',ha='center',fontsize=6.3,color=MUTED)
-    fig.text(.8875,.055,'Verifier calls / trace\nD1: 0 · D2: 4',ha='center',fontsize=6.9,color=COST,linespacing=1.4)
+        c.errorbar(r['goodput'],yy,xerr=[[r['goodput']-r['min']],[r['max']-r['goodput']]],fmt='none',ecolor=INK,lw=.7,capsize=2)
+        c.text(.65,yy,f"{r['goodput']:.3f}",ha='center',va='center',fontsize=7,color='white' if yy==0 else INK,weight='bold')
+    c.set(yticks=[1,0],yticklabels=['D1','D2'],xlim=(0,1.85),xticks=[0,.8,1.6]);c.tick_params(labelsize=6.8);gx(c)
+    fig.text(.87,.158,'97.0%\nof D1',ha='center',va='center',fontsize=9.0,color=CKV,weight='bold',linespacing=1.5)
+    fig.text(.50,.031,'500-ms SLO req/s · whiskers: 5-repeat min–max',ha='center',fontsize=6.2,color=MUTED)
+    fig.text(.50,.010,'Verifier calls / trace: D1 = 0, D2 = 4',ha='center',fontsize=6.2,color=COST)
     save(fig,out,'fig4_transaction_and_amortization')
 
 
 def figure5(d,out):
-    style();fig=plt.figure(figsize=(7.16,2.95));tag(fig,'Deployment-template evaluation · open-arrival and density studies shown separately')
-    a=fig.add_axes([.08,.205,.42,.61]);title(a,'a','Open arrival: 500-ms SLO')
-    rows=d['open_arrival_load'];x=[z['load_pct'] for z in rows];raw=[z['raw_goodput'] for z in rows];ckv=[z['CKV_goodput'] for z in rows]
-    a.plot(x,raw,'o--',color=RAW,ms=4,lw=1.2,label='Native APC')
-    a.plot(x,ckv,'s-',color=CKV,ms=4,lw=1.7,label='ContractKV')
-    r=rows[1];delta=r['CKV_goodput']-r['raw_goodput'];ratio=r['CKV_goodput']/r['raw_goodput']
-    a.axvline(80,color=GRID,ls=(0,(3,2)),lw=.9,zorder=0)
-    a.scatter([80,80],[raw[1],ckv[1]],c=[RAW,CKV],s=40,ec='white',lw=.7,zorder=4)
-    a.annotate('',xy=(80,ckv[1]),xytext=(80,raw[1]),arrowprops=dict(arrowstyle='<->',color=CKV,lw=.9))
-    a.text(76,.995,f'CKV {ckv[1]:.3f}',ha='right',color=CKV,fontsize=7.0)
-    a.text(76,.265,f'Raw {raw[1]:.3f}',ha='right',color=RAW,fontsize=7.0)
-    a.text(105,.57,f'+{delta:.3f}',ha='center',color=CKV,fontsize=12.0,weight='bold')
-    a.text(105,.44,'SLO-compliant req/s',ha='center',color=CKV,fontsize=7.2)
-    a.text(105,.32,f'{ratio:.2f}× at 80% load',ha='center',color=MUTED,fontsize=7)
-    a.set(xlim=(56,144),ylim=(0,1.7),xticks=x,yticks=[0,.5,1,1.5],xlabel='Offered load (% raw calibration)',ylabel='SLO goodput (req/s)');gy(a)
-    a.legend(loc='upper left',fontsize=7.1)
-    fig.text(.66,.875,'(b) 80-identity density replay',fontsize=8.4,weight='bold')
-    dens=[z for z in d['density'] if z['tenants']==80]
-    rr=next(z for z in dens if z['policy']=='D0-native-apc');kk=next(z for z in dens if z['policy']=='D2-full-contractkv')
-    headroom=kk['minimum_free_blocks']-rr['minimum_free_blocks']
-    fig.text(.81,.795,f'+{headroom:.0f} free blocks',ha='center',color=CKV,fontsize=11,weight='bold')
-    fig.text(.81,.748,f"{100*(1-kk['peak_used_blocks']/rr['peak_used_blocks']):.1f}% fewer used · pool = 2,386",ha='center',color=MUTED,fontsize=7.0)
-    b1=fig.add_axes([.66,.56,.31,.15]);b2=fig.add_axes([.66,.205,.31,.16])
-    for ax,values,limit,label,fmt in [
-        (b1,[rr['peak_used_blocks'],kk['peak_used_blocks']],650,'Peak used KV blocks','{:.0f}'),
-        (b2,[rr['tiered_SLO_goodput'],kk['tiered_SLO_goodput']],14,'Tiered-SLO goodput (req/s)','{:.3f}')]:
-        ax.barh([1,0],values,.5,color=[RAW,CKV],ec=INK,lw=.5)
-        for yy,v in zip([1,0],values):ax.text(v+limit*.035,yy,fmt.format(v),va='center',fontsize=7.3,weight='bold',color=MUTED if yy else CKV)
-        ax.set(yticks=[1,0],yticklabels=['Raw','CKV'],xlim=(0,limit),xlabel=label)
-        ax.xaxis.label.set_fontsize(7);gx(ax)
-        ax.set_xticks([0,200,400,600] if ax is b1 else [0,4,8,12])
-    b2.text(.5,1.18,'Same density cells; class-specific SLOs',transform=b2.transAxes,ha='center',fontsize=6.9,color=MUTED)
-    fig.text(.81,.025,'Registered tenants, not concurrent GPU requests',ha='center',fontsize=6.4,color=MUTED)
+    style();fig=plt.figure(figsize=(3.45,4.7));fig.text(.5,.979,'Deployment-template studies · separate protocols',ha='center',va='top',fontsize=6.4,color=MUTED)
+    a=fig.add_axes([.16,.585,.79,.315]);title(a,'a','Open arrival: 500-ms SLO',pad=7)
+    rows=d['open_arrival_load'];x=[r['load_pct'] for r in rows];raw=[r['raw_goodput'] for r in rows];ckv=[r['CKV_goodput'] for r in rows]
+    a.plot(x,raw,'o--',color=RAW,ms=3.4,lw=1.1,label='Native APC');a.plot(x,ckv,'s-',color=CKV,ms=3.4,lw=1.5,label='ContractKV')
+    r=rows[1];delta=r['CKV_goodput']-r['raw_goodput'];a.axvline(80,color=GRID,ls=(0,(3,2)),lw=.8)
+    a.annotate('',xy=(80,ckv[1]),xytext=(80,raw[1]),arrowprops=dict(arrowstyle='<->',color=CKV,lw=.8))
+    a.text(76,.98,f'{ckv[1]:.3f}',ha='right',fontsize=6.7,color=CKV);a.text(76,.28,f'{raw[1]:.3f}',ha='right',fontsize=6.7,color=RAW)
+    a.text(109,.61,f'+{delta:.3f} req/s',ha='center',fontsize=9.0,color=CKV,weight='bold');a.text(109,.39,'4.81× at 80% load',ha='center',fontsize=6.5,color=MUTED)
+    a.set(xlim=(56,144),ylim=(0,1.7),xticks=x,yticks=[0,.5,1,1.5],xlabel='Offered load (% raw calibration)',ylabel='SLO goodput (req/s)');a.tick_params(labelsize=6.8);a.xaxis.label.set_fontsize(7);a.yaxis.label.set_fontsize(7);a.legend(loc='upper left',fontsize=6.7);gy(a)
+    fig.text(.08,.458,'(b) 80-identity density replay',fontsize=8.2,weight='bold')
+    dens=[r for r in d['density'] if r['tenants']==80];rr=next(r for r in dens if r['policy']=='D0-native-apc');kk=next(r for r in dens if r['policy']=='D2-full-contractkv')
+    fig.text(.55,.417,'+381 free blocks · 71.9% fewer used',ha='center',fontsize=8.0,color=CKV,weight='bold')
+    b1=fig.add_axes([.27,.306,.65,.069]);b2=fig.add_axes([.27,.122,.65,.069])
+    for ax,values,limit,label,fmt in [(b1,[rr['peak_used_blocks'],kk['peak_used_blocks']],650,'Peak used blocks (pool = 2,386)','{:.0f}'),(b2,[rr['tiered_SLO_goodput'],kk['tiered_SLO_goodput']],14,'Tiered-SLO goodput (req/s)','{:.3f}')]:
+        ax.barh([1,0],values,.5,color=[RAW,CKV],ec=INK,lw=.45)
+        for yy,v in zip([1,0],values):ax.text(v+limit*.035,yy,fmt.format(v),va='center',fontsize=7.0,weight='bold',color=MUTED if yy else CKV)
+        ax.set(yticks=[1,0],yticklabels=['Raw','CKV'],xlim=(0,limit),xlabel=label,xticks=[0,200,400,600] if ax is b1 else [0,4,8,12]);ax.tick_params(labelsize=6.6);ax.xaxis.label.set_fontsize(6.7);gx(ax)
+    fig.text(.5,.216,'Same density cells; class-specific SLOs',ha='center',fontsize=6.4,color=MUTED)
+    fig.text(.5,.016,'Registered tenants, not concurrent GPU requests',ha='center',fontsize=6.3,color=MUTED)
     save(fig,out,'fig5_service_goodput_and_kv_savings')
 
 
 def figure6(d,out):
-    style();fig=plt.figure(figsize=(7.16,2.75));tag(fig,'Frozen deployment workloads · observed locality transition and access-pattern sensitivity')
-    gs=fig.add_gridspec(1,2,left=.08,right=.975,bottom=.24,top=.80,wspace=.34)
-    a=fig.add_subplot(gs[0,0]);b=fig.add_subplot(gs[0,1])
-    x=[z['sharing_pct'] for z in d['sharing']];v=[z['TTFT_reduction_pct'] for z in d['sharing']]
-    a.axvspan(50,75,fc=PALE,alpha=.8,zorder=0)
-    a.bar(x,v,15,color=CKV,ec=INK,lw=.5)
-    for xx,z in zip(x,v):a.text(xx,z+(2.8 if z>=0 else -3),f'{z:.1f}%',ha='center',va='bottom' if z>=0 else 'top',color=CKV,fontsize=7.2,weight='bold')
-    a.annotate('Observed transition\n50–75% sharing',xy=(62.5,65),xytext=(18,79),ha='center',
-               color='#087C70',fontsize=7.0,linespacing=1.3,
-               arrowprops=dict(arrowstyle='->',lw=.7,color=REUSE))
-    a.axhline(0,color=RAW,lw=.7)
-    a.set(xlim=(-12,112),ylim=(-13,108),xticks=x,yticks=[0,25,50,75,100],xlabel='Authorized sharing (%)',ylabel='Mean TTFT reduction (%)')
-    title(a,'a','Locality: authorized reuse');gy(a)
-    for distribution,name,color,marker in [('round_robin','Round-robin',RAW,'o'),('zipf','Zipf',CKV,'s')]:
-        rows=sorted([z for z in d['residency'] if z['distribution']==distribution],key=lambda z:z['active_templates'])
-        xx=[z['active_templates'] for z in rows];vv=[z['net_TTFT_reduction_pct'] for z in rows]
-        b.plot(xx,vv,marker=marker,color=color,ms=4.3,lw=1.6,label=name)
-        for xi,z in zip(xx,vv):
-            off=-8 if distribution=='round_robin' and xi==5 else (3 if distribution=='zipf' else -3.5)
-            b.text(xi,z+off,f'{z:.1f}%',ha='center',va='bottom' if off>0 else 'top',color=color,fontsize=7.2,weight='bold')
-    b.annotate('Near-zero benefit\nunder round-robin',xy=(25,.36),xytext=(35,27),fontsize=7.1,color=MUTED,
-               ha='center',arrowprops=dict(arrowstyle='->',color=RAW,lw=.7))
-    b.set(xlim=(1,54),ylim=(-13,108),xticks=[5,25,50],yticks=[0,25,50,75,100],xlabel='Active templates',ylabel='Net mean TTFT reduction (%)')
-    title(b,'b','Reuse distance and hot-set skew');gy(b)
-    b.legend(loc='upper center',bbox_to_anchor=(.5,-.27),ncol=2,fontsize=7.0,columnspacing=1.5)
+    style();fig=plt.figure(figsize=(3.45,4.3));fig.text(.5,.977,'Frozen deployment workloads',ha='center',va='top',fontsize=6.6,color=MUTED)
+    a=fig.add_axes([.18,.600,.77,.277]);b=fig.add_axes([.18,.176,.77,.277])
+    xx=[r['sharing_pct'] for r in d['sharing']];vv=[r['TTFT_reduction_pct'] for r in d['sharing']]
+    a.axvspan(50,75,fc=PALE,alpha=.8,zorder=0);a.bar(xx,vv,15,color=CKV,ec=INK,lw=.45)
+    for x,v in zip(xx,vv):a.text(x,v+(3 if v>=0 else -3),f'{v:.1f}%',ha='center',va='bottom' if v>=0 else 'top',fontsize=6.8,color=CKV,weight='bold')
+    a.annotate('Observed transition\n50–75% sharing',xy=(62.5,65),xytext=(17,78),ha='center',color='#087C70',fontsize=6.5,arrowprops=dict(arrowstyle='->',lw=.65,color=REUSE))
+    a.axhline(0,color=RAW,lw=.6);a.set(xlim=(-12,112),ylim=(-15,109),xticks=xx,yticks=[0,25,50,75,100],xlabel='Authorized sharing (%)',ylabel='Mean TTFT reduction (%)');title(a,'a','Locality: authorized reuse',pad=7);gy(a)
+    for dist,name,color,marker in [('round_robin','Round-robin',RAW,'o'),('zipf','Zipf',CKV,'s')]:
+        rows=sorted([r for r in d['residency'] if r['distribution']==dist],key=lambda r:r['active_templates']);x=[r['active_templates'] for r in rows];v=[r['net_TTFT_reduction_pct'] for r in rows]
+        b.plot(x,v,marker=marker,color=color,ms=3.6,lw=1.4,label=name)
+        for xi,vi in zip(x,v):
+            off=-9 if dist=='round_robin' and xi==5 else (3 if dist=='zipf' else -3.5)
+            b.text(xi,vi+off,f'{vi:.1f}%',ha='center',va='bottom' if off>0 else 'top',color=color,fontsize=6.8,weight='bold')
+    b.annotate('Near-zero benefit\nunder round-robin',xy=(25,.36),xytext=(35,28),ha='center',fontsize=6.6,color=MUTED,arrowprops=dict(arrowstyle='->',lw=.65,color=RAW))
+    b.set(xlim=(1,54),ylim=(-15,109),xticks=[5,25,50],yticks=[0,25,50,75,100],xlabel='Active templates',ylabel='Net mean TTFT reduction (%)');title(b,'b','Reuse distance and hot-set skew',pad=7);gy(b)
+    for ax in (a,b):ax.tick_params(labelsize=6.8);ax.xaxis.label.set_fontsize(7);ax.yaxis.label.set_fontsize(7)
+    b.legend(loc='upper center',bbox_to_anchor=(.5,-.36),ncol=2,fontsize=6.7,columnspacing=1)
     save(fig,out,'fig6_locality_and_residency')
 
 
@@ -278,7 +231,7 @@ def main():
             'figures':QA,'all_text_inside_canvas':all(not z['text_outside_canvas'] for z in QA),
             'all_text_collision_checks_pass':all(not z['text_bbox_collisions'] for z in QA),
             'paper_exports_include_full_caption':False,'previous_figures_preserved':True}
-    (a.output/'render_manifest_v8.json').write_bytes((json.dumps(record,indent=2)+'\n').encode())
+    (a.output/'render_manifest_v9.json').write_bytes((json.dumps(record,indent=2)+'\n').encode())
     print(json.dumps({'figures':len(QA),'out_of_bounds':{z['figure']:[x['text'] for x in z['text_outside_canvas']] for z in QA if z['text_outside_canvas']},
                       'collisions':{z['figure']:z['text_bbox_collisions'] for z in QA if z['text_bbox_collisions']}}))
 

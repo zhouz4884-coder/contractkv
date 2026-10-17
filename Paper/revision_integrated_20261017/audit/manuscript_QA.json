@@ -1,10 +1,22 @@
 {
   "status": "PASS",
+  "layout": {
+    "double_column_figures": [
+      1,
+      2
+    ],
+    "single_column_figures": [
+      3,
+      4,
+      5,
+      6
+    ]
+  },
   "manuscripts": [
     {
       "file": "contractkv_tsc_integrated.pdf",
       "pages": 12,
-      "sha256": "1671de65b091985039347394de959b65c6370ddc4c929a0c3f25e56563e5b9cd",
+      "sha256": "214365c5dfc29a7c5976dc408a08e88ddcb922c9411d6854d9842471dcce7118",
       "checks": {
         "undefined_citations_or_refs": false,
         "multiply_defined": false,
@@ -12,11 +24,11 @@
         "oversized_float": false,
         "tex_errors": false
       },
-      "embedded_fonts": 33,
+      "embedded_fonts": 32,
       "Type3_fonts": 0,
       "raster_images": 0,
       "underfull_hboxes": 3,
-      "underfull_vboxes": 3,
+      "underfull_vboxes": 1,
       "page_details": [
         {
           "page": 1,
@@ -25,67 +37,67 @@
         },
         {
           "page": 2,
-          "text_characters": 4453,
+          "text_characters": 4200,
           "figure_captions": [
             "Fig. 1. ContractKV makes a compiled stable prefix an evidence-bound service object. CALC repairs a structural prefix gap; one of two separately evaluated"
           ]
         },
         {
           "page": 3,
-          "text_characters": 5463,
+          "text_characters": 5425,
           "figure_captions": []
         },
         {
           "page": 4,
-          "text_characters": 6000,
+          "text_characters": 6210,
           "figure_captions": []
         },
         {
           "page": 5,
-          "text_characters": 5793,
+          "text_characters": 5701,
           "figure_captions": []
         },
         {
           "page": 6,
-          "text_characters": 5839,
+          "text_characters": 5783,
           "figure_captions": []
         },
         {
           "page": 7,
-          "text_characters": 5999,
+          "text_characters": 6121,
           "figure_captions": []
         },
         {
           "page": 8,
-          "text_characters": 3754,
+          "text_characters": 4209,
           "figure_captions": [
             "Fig. 2. Strict query-qualified performance on six source-disjoint HotpotQA/RepoBench templates, three processes/model, faithful 16K inputs, and zero slack.",
-            "Fig. 3. Behavioral evidence with explicit coverage and denominators. (a) Each model/task cell contains 810 future pairs; hatched cells inherit L0 rather"
+            "Fig. 3. Qualification coverage and free-running evidence. (a) Each model/task"
           ]
         },
         {
           "page": 9,
-          "text_characters": 6201,
-          "figure_captions": []
+          "text_characters": 4366,
+          "figure_captions": [
+            "Fig. 4. Separate deployment controls. (a) Registration granularity with fixed",
+            "Fig. 5. Distinct deployment protocols. (a) Open-arrival 500-ms SLO goodput;"
+          ]
         },
         {
           "page": 10,
-          "text_characters": 3380,
+          "text_characters": 5285,
           "figure_captions": [
-            "Fig. 4. Deployment-qualified governance and amortization, shown as distinct controls. (a) Holding layout/locality fixed, template registration reduces calls 125",
-            "Fig. 5. Separate deployment-template service studies. (a) Open-arrival 500-ms SLO goodput: at 80% calibrated load, native APC and ContractKV deliver"
+            "Fig. 6. Operating region in frozen deployment workloads. (a) The shaded"
           ]
         },
         {
           "page": 11,
-          "text_characters": 4757,
-          "figure_captions": [
-            "Fig. 6. Operating region in frozen deployment workloads. (a) The pale band marks the observed 50\u201375% sharing interval; the zero-sharing \u22123.2% result"
-          ]
+          "text_characters": 6693,
+          "figure_captions": []
         },
         {
           "page": 12,
-          "text_characters": 6405,
+          "text_characters": 3188,
           "figure_captions": []
         }
       ]
@@ -93,7 +105,7 @@
     {
       "file": "contractkv_supplement.pdf",
       "pages": 5,
-      "sha256": "43b79ca1ebd152b3d3a3b9b4713aee2e55c2036254e7b5e2f3fbfe94edc5b1bb",
+      "sha256": "6d8d49828efb634e03c226bdf04311fd3c50e0f146cd12753ae3f23eeafc6a7b",
       "checks": {
         "undefined_citations_or_refs": false,
         "multiply_defined": false,
@@ -138,11 +150,11 @@
   "figures": [
     {
       "file": "fig1_architecture.pdf",
-      "sha256": "4bbfba185554d91d35aafbd2817ad5841bb56907f936620999870e1cddb013a3",
-      "editable_SVG_text_nodes": 44,
+      "sha256": "125257cba83845aa587995a0a3bb0374ba75335a52ba7e0a02e5e3d4d72c38e1",
+      "editable_SVG_text_nodes": 77,
       "PNG_pixels": [
         4296,
-        2010
+        2310
       ],
       "PNG_DPI": [
         599.9988,
@@ -151,7 +163,7 @@
     },
     {
       "file": "fig2_full_cost_benefits.pdf",
-      "sha256": "512ea3e3a06109044ceb4eef2ca34f31a82a8fa00effd795a29d583e4f53f3e0",
+      "sha256": "978c4101a5afe38f232fd2171944898d2697cba7c6dc1b99a5be3b6c16875ece",
       "editable_SVG_text_nodes": 67,
       "PNG_pixels": [
         4296,
@@ -164,11 +176,11 @@
     },
     {
       "file": "fig3_coverage_and_fidelity.pdf",
-      "sha256": "93572091da8e7433dc83ed51e8ad22781f86b4ec583aef5352124008980ab159",
+      "sha256": "0f88c14a8319995e867b42459bbcbcc08a2e6f28aa65c20866e2f80c43fe7777",
       "editable_SVG_text_nodes": 42,
       "PNG_pixels": [
-        4296,
-        1980
+        2070,
+        2580
       ],
       "PNG_DPI": [
         599.9988,
@@ -177,11 +189,11 @@
     },
     {
       "file": "fig4_transaction_and_amortization.pdf",
-      "sha256": "6cfae9ba94caca32d40036a36d5bcc695bf91a8ed7c9e66a38052af73b79fe1d",
-      "editable_SVG_text_nodes": 44,
+      "sha256": "10712dbb048f8647e39184408381158ed6c1d189a3a0dbe629384f035ef3ad06",
+      "editable_SVG_text_nodes": 41,
       "PNG_pixels": [
-        4296,
-        1860
+        2070,
+        2730
       ],
       "PNG_DPI": [
         599.9988,
@@ -190,11 +202,11 @@
     },
     {
       "file": "fig5_service_goodput_and_kv_savings.pdf",
-      "sha256": "6a44e295e8c23395aa1f705ca36993194b2649c98eb943747978c44cc9cd6f66",
-      "editable_SVG_text_nodes": 43,
+      "sha256": "d92ed7d9c17c423b4e9750cfcb55530e3c391f34245e40f93dcf2e4e7cf03635",
+      "editable_SVG_text_nodes": 41,
       "PNG_pixels": [
-        4296,
-        1770
+        2070,
+        2820
       ],
       "PNG_DPI": [
         599.9988,
@@ -203,11 +215,11 @@
     },
     {
       "file": "fig6_locality_and_residency.pdf",
-      "sha256": "e363a9b51bb8a3f0a4d9887af5322d5abd4801a1f21e07ba00e22f6a7ae1c27a",
+      "sha256": "f230c61ed0e83de0317daf5406e7c24c4ba7b78a8ebc86fb47c076c07c34cc09",
       "editable_SVG_text_nodes": 42,
       "PNG_pixels": [
-        4296,
-        1650
+        2070,
+        2580
       ],
       "PNG_DPI": [
         599.9988,

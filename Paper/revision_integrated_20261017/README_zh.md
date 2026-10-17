@@ -4,7 +4,7 @@
 
 ## 直接阅读
 
-- [12页主文 PDF](contractkv_tsc_integrated.pdf)：嵌入重绘的Fig.1和微调的Fig.2–6。
+- [12页主文 PDF](contractkv_tsc_integrated.pdf)：嵌入图形化重绘的Fig.1和重新排布的Fig.2–6；Fig.1/2双栏，Fig.3–6单栏。
 - [补充实验记录 PDF](contractkv_supplement.pdf)：保留上传初稿的详细实验表、成本变体和历史结果。
 - [重构、删减和配图决策](audit/restructure_decisions_zh.md)。
 - [实际编译、数值和图形检查](audit/manuscript_QA.json)。
