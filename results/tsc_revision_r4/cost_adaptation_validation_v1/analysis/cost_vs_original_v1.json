@@ -1,0 +1,191 @@
+{
+  "schema_version": "tsc-r4.independent-cost-vs-original.v1",
+  "source_sha256": "3c992bfeb96d3c131e75f3ba529616946faf89bb5162ff4a7bb6729d851a7995",
+  "freeze_sha256": "13bb802f30bd54e4374f973ee363c8c2dd8fea1a4569cbd40f0c8050d82ab218",
+  "future_latency_records": [
+    {
+      "stratum": "family",
+      "value": "HotpotQA",
+      "future_pairs": 810,
+      "sources": 3,
+      "original_ready_p99_ms": 13893.862966713488,
+      "adapted_ready_p99_ms": 8813.583132266067,
+      "mean_reduction_pct": -135.5030201757343,
+      "mean_reduction_source_repeat_ci95": [
+        -699.9756237865448,
+        4.917578022324431
+      ],
+      "p99_reduction_pct": 36.564919681578886,
+      "p99_reduction_source_repeat_ci95": [
+        34.717410170124076,
+        38.816378796611794
+      ]
+    },
+    {
+      "stratum": "family",
+      "value": "RepoBench",
+      "future_pairs": 810,
+      "sources": 3,
+      "original_ready_p99_ms": 6372.914860756136,
+      "adapted_ready_p99_ms": 6323.024257910438,
+      "mean_reduction_pct": 1.4713859221589187,
+      "mean_reduction_source_repeat_ci95": [
+        0.10860960302105926,
+        1.890779597939729
+      ],
+      "p99_reduction_pct": 0.7828537480222719,
+      "p99_reduction_source_repeat_ci95": [
+        -0.5821233086328537,
+        37.53400842742843
+      ]
+    },
+    {
+      "stratum": "global",
+      "value": "ALL",
+      "future_pairs": 1620,
+      "sources": 6,
+      "original_ready_p99_ms": 13386.89427421894,
+      "adapted_ready_p99_ms": 8801.919248863123,
+      "mean_reduction_pct": -74.53073651276159,
+      "mean_reduction_source_repeat_ci95": [
+        -447.61087307315324,
+        3.6715667166778476
+      ],
+      "p99_reduction_pct": 34.249729111447145,
+      "p99_reduction_source_repeat_ci95": [
+        -12.145198100630994,
+        37.56936262075741
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 14163.780103717,
+      "adapted_ready_p99_ms": 8865.391668928787,
+      "mean_reduction_pct": -700.2856381296488,
+      "mean_reduction_source_repeat_ci95": [
+        -704.386528160166,
+        -697.7730943618411
+      ],
+      "p99_reduction_pct": 37.40801110995614,
+      "p99_reduction_source_repeat_ci95": [
+        37.00518467730021,
+        37.63078701434186
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "LongBench:hotpotqa:hotpotqa:doc:177",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 13443.68286833167,
+      "adapted_ready_p99_ms": 8285.87626430206,
+      "mean_reduction_pct": 5.124496860791917,
+      "mean_reduction_source_repeat_ci95": [
+        4.693932222615604,
+        5.364631430055466
+      ],
+      "p99_reduction_pct": 38.36602406160212,
+      "p99_reduction_source_repeat_ci95": [
+        37.35177171953992,
+        38.89189261983539
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 13861.935499971734,
+      "adapted_ready_p99_ms": 8722.109896070324,
+      "mean_reduction_pct": -657.3046338439768,
+      "mean_reduction_source_repeat_ci95": [
+        -658.2317189000013,
+        -656.1270393534727
+      ],
+      "p99_reduction_pct": 37.07870090660782,
+      "p99_reduction_source_repeat_ci95": [
+        36.81837864543095,
+        37.29854837268552
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 2496.22085101437,
+      "adapted_ready_p99_ms": 2482.7932781493305,
+      "mean_reduction_pct": 0.14190174850043924,
+      "mean_reduction_source_repeat_ci95": [
+        0.09485830889237601,
+        0.19491128466583296
+      ],
+      "p99_reduction_pct": 0.5379160605754496,
+      "p99_reduction_source_repeat_ci95": [
+        0.1178866702633008,
+        0.9874050045419858
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 4025.134853897619,
+      "adapted_ready_p99_ms": 4034.694312047216,
+      "mean_reduction_pct": 0.7986790377838782,
+      "mean_reduction_source_repeat_ci95": [
+        -0.16088682330241966,
+        2.2087777449753654
+      ],
+      "p99_reduction_pct": -0.23749410880831157,
+      "p99_reduction_source_repeat_ci95": [
+        -0.5440117644599729,
+        0.16571692923027515
+      ]
+    },
+    {
+      "stratum": "template",
+      "value": "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+      "future_pairs": 270,
+      "sources": 1,
+      "original_ready_p99_ms": 8562.974579539157,
+      "adapted_ready_p99_ms": 6384.578610183671,
+      "mean_reduction_pct": 1.8874240137351617,
+      "mean_reduction_source_repeat_ci95": [
+        1.844786065567472,
+        1.9248537069048943
+      ],
+      "p99_reduction_pct": 25.439710805175874,
+      "p99_reduction_source_repeat_ci95": [
+        25.048083535982368,
+        25.743634787151272
+      ]
+    }
+  ],
+  "complete_service_wall_s": {
+    "raw-order": 5850.7665903489105,
+    "risk-tail": 3245.6327452580445,
+    "cost-adapted": 5468.912703002337
+  },
+  "original_over_adapted_full_wall_multiplier": 0.5934694740101171,
+  "paired_repeat_full_wall_multipliers": [
+    0.5942147503721054,
+    0.5922174996287243,
+    0.5939827223449988
+  ],
+  "failed_GPU_RPC_work_ms": {
+    "risk-tail": 62648.23349285871,
+    "cost-adapted": 3520.6738798879087
+  },
+  "new_GPU_requests": 0,
+  "limits": [
+    "Six source clusters and three correlated process repeats, Qwen only.",
+    "Wall repeat min/max is descriptive, not a source-cluster confidence interval.",
+    "Original is the direct comparator here; both policies share the same raw controls in the primary tables.",
+    "No test-outcome-based selection or parameter update; all completed outcomes remain reported."
+  ]
+}

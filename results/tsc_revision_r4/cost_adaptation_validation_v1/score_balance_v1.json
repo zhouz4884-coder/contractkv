@@ -1,0 +1,3555 @@
+{
+  "schema_version": "tsc-r4.paired-score-balance.v1",
+  "partial": false,
+  "source_sha256": "c768922122230ece4538f940303ca07d303cb79faeec1295b730567bad9ba55b",
+  "freeze_sha256": "13bb802f30bd54e4374f973ee363c8c2dd8fea1a4569cbd40f0c8050d82ab218",
+  "new_GPU_requests": 0,
+  "scoring_changed": false,
+  "paired_cells": 6,
+  "all_business_pairs": 3600,
+  "records": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1800,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 1777,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1777
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1777
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1777
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1518,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 1495,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1495
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1495
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1495
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 877,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.2316,
+      "policy_mean_score": 0.23233333333333334,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 877
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 877
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 877
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 618,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 595,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.25058252427184463,
+      "policy_mean_score": 0.2516504854368932,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 595
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 595
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 595
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1620,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 1597,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1597
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1597
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1597
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 1362,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 1339,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1339
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1339
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 1339
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 258,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 258,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 787,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.22103703703703703,
+      "policy_mean_score": 0.22185185185185183,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 787
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 787
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 787
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 552,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 529,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.23554347826086958,
+      "policy_mean_score": 0.23673913043478262,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 529
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 529
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 529
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 258,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 258,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 180,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 180,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 156,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 156,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 156
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 156
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 156
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 24,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 24,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32666666666666666,
+      "policy_mean_score": 0.32666666666666666,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 66,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 66,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.37636363636363634,
+      "policy_mean_score": 0.37636363636363634,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 24,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 24,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19000000000000003,
+      "policy_mean_score": 0.19000000000000003,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1800,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 1782,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1782
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1782
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1782
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 954,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 936,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 936
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 936
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 936
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 846,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 846,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 846
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 846
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 846
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 900,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 900
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 336,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 336,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5080357142857143,
+      "policy_mean_score": 0.5080357142857143,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 336
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 564,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 564,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.575,
+      "policy_mean_score": 0.575,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 564
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 900,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 882,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.2316,
+      "policy_mean_score": 0.23173333333333335,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 882
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 882
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 882
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 618,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 600,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.25058252427184463,
+      "policy_mean_score": 0.2507766990291262,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 600
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 600
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 600
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "all_business",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 1620,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 1602,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1602
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1602
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 1602
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 846,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 828,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 828
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 828
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 828
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 774,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 774,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 774
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 774
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 774
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 810,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 810
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 294,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 294,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5061224489795919,
+      "policy_mean_score": 0.5061224489795919,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 294
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 516,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 516,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.575,
+      "policy_mean_score": 0.575,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 516
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 810,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 792,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.22103703703703703,
+      "policy_mean_score": 0.22118518518518518,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 792
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 792
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 792
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 552,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 534,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.23554347826086958,
+      "policy_mean_score": 0.23576086956521736,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 534
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 534
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 534
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "future",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 258,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 258,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 258
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "ALL",
+      "pairs": 180,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 180,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 180
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "L0",
+      "pairs": 108,
+      "source_groups": 6,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 108,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 108
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 108
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 108
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "ALL",
+      "route": "compiled",
+      "pairs": 72,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 72,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": null,
+      "policy_mean_score": null,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 72
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.55,
+      "policy_mean_score": 0.55,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 42,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 42,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5214285714285714,
+      "policy_mean_score": 0.5214285714285714,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 42
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 48,
+      "source_groups": 2,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 48,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.575,
+      "policy_mean_score": 0.575,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 48
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "ALL",
+      "pairs": 90,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 90,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.32666666666666666,
+      "policy_mean_score": 0.32666666666666666,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 90
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 66,
+      "source_groups": 3,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 66,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.37636363636363634,
+      "policy_mean_score": 0.37636363636363634,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 66
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "population": "warm",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 24,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 24,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19000000000000003,
+      "policy_mean_score": 0.19000000000000003,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 24
+        }
+      ]
+    }
+  ],
+  "source_records": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.4,
+      "policy_mean_score": 0.4,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:177",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.7499999999999999,
+      "policy_mean_score": 0.7499999999999999,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 17,
+      "any_score_decrease": 6,
+      "exact_score_equal": 277,
+      "output_ID_divergences": 23,
+      "ID_divergence_with_score_increase": 17,
+      "ID_divergence_with_score_decrease": 6,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.1308,
+      "policy_mean_score": 0.133,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 277
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 277
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 17,
+          "material_decrease": 6,
+          "no_material_change": 277
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "source_group": "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.374,
+      "policy_mean_score": 0.374,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.4,
+      "policy_mean_score": 0.4,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:116",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.4,
+      "policy_mean_score": 0.4,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:177",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.5,
+      "policy_mean_score": 0.5,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "family": "HotpotQA",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.7499999999999999,
+      "policy_mean_score": 0.7499999999999999,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:57",
+      "family": "HotpotQA",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.7499999999999999,
+      "policy_mean_score": 0.7499999999999999,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 10,
+      "any_score_decrease": 8,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 18,
+      "ID_divergence_with_score_increase": 10,
+      "ID_divergence_with_score_decrease": 8,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.1308,
+      "policy_mean_score": 0.1312,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 10,
+          "material_decrease": 8,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 18,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 18,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 18
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:Infleqtion/qLDPC",
+      "family": "RepoBench",
+      "route": "compiled",
+      "pairs": 282,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 282,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.19,
+      "policy_mean_score": 0.19,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 282
+        }
+      ]
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "source_group": "RepoBench:python_v1.1:alibaba-damo-academy/FunCodec",
+      "family": "RepoBench",
+      "route": "L0",
+      "pairs": 300,
+      "source_groups": 1,
+      "fresh_repeats": 3,
+      "any_score_increase": 0,
+      "any_score_decrease": 0,
+      "exact_score_equal": 300,
+      "output_ID_divergences": 0,
+      "ID_divergence_with_score_increase": 0,
+      "ID_divergence_with_score_decrease": 0,
+      "ID_divergence_with_equal_score": 0,
+      "raw_mean_score": 0.374,
+      "policy_mean_score": 0.374,
+      "thresholds": [
+        {
+          "threshold": 0.01,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.03,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        },
+        {
+          "threshold": 0.05,
+          "material_increase": 0,
+          "material_decrease": 0,
+          "no_material_change": 300
+        }
+      ]
+    }
+  ],
+  "cell_provenance": [
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "raw_sha256": "b3acee8a0e834d785400da317003a637fced515543f60aff813ae39ee48ade6e",
+      "policy_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "raw_sha256": "9ebeaf13c2943b4cd71f47f1d01c34d883f7756fef8ddd26d3c4f27615446a1f",
+      "policy_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "raw_sha256": "17e13dbf39e587e839c8914fc77155c0e99c242e5447093281eb2291e7a30330",
+      "policy_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "raw_sha256": "b3acee8a0e834d785400da317003a637fced515543f60aff813ae39ee48ade6e",
+      "policy_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "raw_sha256": "9ebeaf13c2943b4cd71f47f1d01c34d883f7756fef8ddd26d3c4f27615446a1f",
+      "policy_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "raw_sha256": "17e13dbf39e587e839c8914fc77155c0e99c242e5447093281eb2291e7a30330",
+      "policy_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e"
+    }
+  ],
+  "all_material_change_cases_gt0_03": [
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant02",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant06",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant09",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant09",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant00",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant02",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant03",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant06",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant08",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant09",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant00",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant03",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant04",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 2,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant06",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant08",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant00",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant01",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant02",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant03",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant06",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant01",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant03",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant06",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant07",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant08",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant01",
+      "turn_id": 5,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant04",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.12,
+      "policy_score": 0.06,
+      "delta_score_policy_minus_raw": -0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 10,
+      "policy_output_tokens": 11,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    },
+    {
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "row_type": "future",
+      "source_group": "RepoBench:python_v1.1:ByungKwanLee/Full-Segment-Anything",
+      "session_id": "r4c-heldout-3b4bc9c248a5831c-tenant05",
+      "turn_id": 8,
+      "family": "RepoBench",
+      "route": "L0",
+      "raw_score": 0.06,
+      "policy_score": 0.12,
+      "delta_score_policy_minus_raw": 0.06,
+      "first_output_ID_divergence": 6,
+      "raw_output_tokens": 11,
+      "policy_output_tokens": 10,
+      "raw_finish_reason": "stop",
+      "policy_finish_reason": "stop"
+    }
+  ],
+  "interpretation": [
+    "Delta is policy score minus matched raw score. Strict >tau and <-tau thresholds preserve the original material-effect convention.",
+    "Both improvements and regressions are retained. No material change at tau does not imply identical outputs or behavioral equivalence.",
+    "A compiled output-ID difference remains a behavioral divergence even when task score improves. Certification is not evaluated as an answer-optimization method.",
+    "ALL-family score means are deliberately omitted because benchmark metrics differ. Per-family means use unchanged recorded scores checked in primary/all-business audits.",
+    "All-business includes tenant turn-zero reuse; future primary outcomes remain separately identified. Source records preserve clustering and do not imply independent request events."
+  ]
+}

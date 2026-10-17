@@ -1,0 +1,2548 @@
+{
+  "schema_version": "tsc-r4.scope-object-amortization-audit.v1",
+  "partial": false,
+  "study_root": "results/tsc_revision_r4/cost_adaptation_validation_v1",
+  "study_development_only": false,
+  "freeze_sha256": "13bb802f30bd54e4374f973ee363c8c2dd8fea1a4569cbd40f0c8050d82ab218",
+  "analysis_source_sha256": "6268c440aaa38f7de5e499ff50ad0d3f634abbd9ff28b41c6497df8371b3824b",
+  "new_GPU_requests": 0,
+  "frozen_primary_policy_or_analysis_changed": false,
+  "records": [
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 1,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "4d38e5a6321690fc290596254875bc2ef3c716c56b7532f9dff317677c20e6e7",
+      "summary_sha256": "ec3d45cbf1e40d22ef2a008eff3dbf25c9f961cc8b3c29f680b1219523e6f7b3"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 2,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "8e52da1d299cea6a8e487e9e2760dabf3b155599c300105c0facdf4d35dff2fa",
+      "summary_sha256": "785ac9f2576f2ade9b67efb2a58efcb14c3e94c6e2c91a23d243d6249017206a"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "cold_online_tail_budget_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_cost-adapted_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "cost-adapted",
+      "repeat": 3,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 0,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 0,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pre_reference_expected_net_rejected": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6a075335afb8a4a15c7875c9136e84256ee8ceb4087613a1f01354807a9b863b",
+      "summary_sha256": "2552880972f6b9b1ed94d743043705e66a3b8a93f5ab588ef9173ed8cd798acd"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "ff449120ecf0692269ac9b2fa1a0ee5150d55dd365e11b49f34428ae53e6b78e",
+          "stable_prefix_tokens": 14531
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r1",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "5c1dded4a8676372a0aaae6def72428b9136ba3ac99c96c762f72c5e0ae7b08a",
+          "stable_prefix_tokens": 14309
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "f5d592f8eacc039a004eaac1eb8d15caf0ce26c3e49ad7f1e4976add5b29ccb7",
+      "summary_sha256": "abc6210d78f96594ce8fba3d26b9a8fcc0cec3bdae3b4b6a1a49fe73d59db6d2"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "ff449120ecf0692269ac9b2fa1a0ee5150d55dd365e11b49f34428ae53e6b78e",
+          "stable_prefix_tokens": 14531
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r2",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 2,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "5c1dded4a8676372a0aaae6def72428b9136ba3ac99c96c762f72c5e0ae7b08a",
+          "stable_prefix_tokens": 14309
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "ca41c2155612673136368976fa0973cf4a45ba74e86de6a0030c6db6fc566249",
+      "summary_sha256": "9dc1fd3e490f45bb15450fcea6e64a70fdc6a5d76f361c57f1b1deba95225f86"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-3b4bc9c248a5831c",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "a7856b88bbb8b4e747f7432e98f6f620c28f3af23614631440096dba463dfaf6",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        },
+        {
+          "query_scope": "ded9ea8cd961d9b0de1fb03cc08da9bd0e0f8b85b8b20683405ac7df4e9130b4",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "e793973cd8c96d8f713a9f0c791b7498251fb01ee7506855de533efbaf981c87",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "raw_output_contract:python_syntax_SyntaxError": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-90b800a8ae3a3c21",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 1,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 1,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "04b7a7a8eb153536d9eed1e310d5ec8bbfce4d653197c174480cdf06d8671ef7",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "0e4a1e4ac03b754d5c9db805454da7fdcdccbe34d40d861db66523cdaa3cf81b",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 0,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "observation_scope_has_no_declared_exact_reuse": 1
+          }
+        },
+        {
+          "query_scope": "31ae2e8cf7bc0e2a1c553300608ebfedabdc79da7c55e75a69b575642ad1e42e",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-97dc112e6275d00f",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "a22eac473e111d8cf0c8fed7f632bb9f622387765be0c2bc536ea15a9d91ee38",
+          "stable_prefix_tokens": 5738
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "23079fdc8c257f36d8af756132737a452f018e3e6ab4a270e45be149c9b8e337",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "5a06b1cbb7e645317c7abac8ed10ca732011aec17956c5a65f252fb6f599e527",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "ec14c8e217ee60ec1d8ad06db318f6e64c05b3374f97be455d1a3c10b359eabe",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-c7accd46d9fe7a3a",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "ff449120ecf0692269ac9b2fa1a0ee5150d55dd365e11b49f34428ae53e6b78e",
+          "stable_prefix_tokens": 14531
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "13c5a652df24d605000ecd3578c2c0164cffae01ccc545c1dfd9890076da8a23",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7dc7dc019823255f1db4ad588697b96c377897301ed4163cd719c3005e9dcec8",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f771ae7f4a9ddd5d3d631c1c326a75ef4acb1ce9d80605bbaee1c03078b6f1c",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-d38c7395389ea0cf",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 0,
+      "distinct_returned_certificate_hashes": 0,
+      "observed_issued_stable_prefix_hash_objects": 0,
+      "stable_prefix_hash_objects": [],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 0,
+      "compiled_future_requests": 0,
+      "compiled_requests_with_actual_prefix_hit": 0,
+      "scope_records": [
+        {
+          "query_scope": "6238d6a6d664b4e8ebf20954a8290d594ba05c1ce37363b37e47a0436408c442",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a22e10c0ced11b6dd5b9e8d687a468b4f0267ab8ea415d36a59010e0ddc7f7a4",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        },
+        {
+          "query_scope": "a3b5c70f54f6bdae804a354a4efd7985e34f907b6927ee5b6b5475cfcb8fb9b7",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": false,
+          "compiled_all_business_requests": 0,
+          "compiled_future_requests": 0,
+          "tenant_sessions_with_compiled_reuse": 0,
+          "failure_reasons": {
+            "pointwise_margin_guard:candidate_token_margin_below_floor": 1
+          }
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    },
+    {
+      "cell": "template-fanout_qwen_risk-tail_r3",
+      "study": "template-fanout",
+      "model": "Qwen3-8B",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "namespace": "r4c-heldout-dd1c762566ad29e5",
+      "observed_tenant_sessions": 10,
+      "business_requests": 100,
+      "future_requests": 90,
+      "observed_behavioral_scope_count_U": 3,
+      "prospective_plan_records": 3,
+      "decision_records": 3,
+      "GPU_attempts": 3,
+      "issued_behavioral_scope_records": 3,
+      "distinct_returned_certificate_hashes": 3,
+      "observed_issued_stable_prefix_hash_objects": 1,
+      "stable_prefix_hash_objects": [
+        {
+          "hash": "5c1dded4a8676372a0aaae6def72428b9136ba3ac99c96c762f72c5e0ae7b08a",
+          "stable_prefix_tokens": 14309
+        }
+      ],
+      "verification_requests_using_template_namespace_salt": 3,
+      "compiled_all_business_requests": 94,
+      "compiled_future_requests": 86,
+      "compiled_requests_with_actual_prefix_hit": 94,
+      "scope_records": [
+        {
+          "query_scope": "3295c64776b5bfb1e7df2f9362b18e473f021d1556653f89c2d24e10bb118549",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "7f8e28957ba52543647d13ae68536e95a60ef3899c7681f074d6cb6167b00436",
+          "business_requests": 30,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 28,
+          "compiled_future_requests": 28,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        },
+        {
+          "query_scope": "a99e9bff274acdfed6da233414599453d17f7ad6afc382fab2840d9cb282d6ea",
+          "business_requests": 40,
+          "decision_records": 1,
+          "GPU_attempts": 1,
+          "issued": true,
+          "compiled_all_business_requests": 38,
+          "compiled_future_requests": 30,
+          "tenant_sessions_with_compiled_reuse": 10,
+          "failure_reasons": {}
+        }
+      ],
+      "raw_file_sha256": "6f59efae58c6f7d3348d0ae1e0dddcb2932683bbd8626182f70c7affe93b4f0e",
+      "summary_sha256": "27349acf3b73a4087f833fad34334defffe3fc689f9f690b477fac32c1d42790"
+    }
+  ],
+  "source_provenance": [
+    {
+      "logical_path": "scripts/tsc_revision_r4_live.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_live_fixed.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r4_live_fixed.py",
+      "sha256": "1197659b4459a832a2892d109a4b4e157b281a775e5de37864263d0eee4be8cf",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r1r_query_scope.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_cost_policy.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_admission.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r2_business_stream.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r2_business_stream.py",
+      "sha256": "148d3310e32edb1480d3212db39611ec11ec286037be3e4b8f6bc9234dde0c4e",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_revision_r4_policy_v2.py",
+      "source_read": "results/tsc_revision_r4/cost_adaptation_validation_v1/source_snapshot/scripts/tsc_revision_r4_policy_v2.py",
+      "sha256": "03820f79fb6ec125b321e05c9809c916eee20589cb993bf2684c45702c5f6c8d",
+      "from_this_study_frozen_snapshot": true
+    },
+    {
+      "logical_path": "scripts/tsc_service_template_quality_live.py",
+      "source_read": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_open_loop_service.py",
+      "source_read": "scripts/tsc_open_loop_service.py",
+      "sha256": "25332bf50061498bd6241289dfec831b05c1c1607c9c6ad2d6e15bffae53b586",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/tsc_real_task_open_loop.py",
+      "source_read": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "from_this_study_frozen_snapshot": false
+    },
+    {
+      "logical_path": "scripts/contractkv_certificate_binding.py",
+      "source_read": "scripts/contractkv_certificate_binding.py",
+      "sha256": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc",
+      "from_this_study_frozen_snapshot": false
+    }
+  ],
+  "original_granularity_evidence": {
+    "path": "results/tsc_service/certificate_granularity_ablation_v0.csv",
+    "sha256": "2a810c5d849d2a45d219b3917efd7d850dfb1d6a52939a41cb7053f296c62b1f",
+    "rows_unmodified": [
+      {
+        "policy": "D0-native-apc",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "0.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "2250.1582222222223",
+        "mean_template_prefix_hit_ratio": "0.021752000605939754",
+        "mean_mean_ttft_ms": "852.3535582331851",
+        "mean_p99_ttft_ms": "2084.7964500666662",
+        "mean_slo_compliant_goodput_rps": "0.7703637733671186",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D1-frozen-safe",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "0.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "1125.0",
+        "mean_unhidden_verification_ms_per_future_request": "0.0",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.625054359703704",
+        "mean_p99_ttft_ms": "87.93770950666666",
+        "mean_slo_compliant_goodput_rps": "0.8306503025215155",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-session-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "125.0",
+        "mean_transaction_commits": "125.0",
+        "mean_verification_fanout": "9.0",
+        "mean_unhidden_verification_ms_per_future_request": "25.049263978997867",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "50.165333333333336",
+        "mean_template_prefix_hit_ratio": "0.9781908061008241",
+        "mean_mean_ttft_ms": "64.02114142222223",
+        "mean_p99_ttft_ms": "89.51263054666666",
+        "mean_slo_compliant_goodput_rps": "0.8306482457468276",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      },
+      {
+        "policy": "D2-template-contractkv",
+        "fresh_process_repeats": "3",
+        "future_requests": "3375",
+        "mean_actual_verifier_endpoint_calls": "5.0",
+        "mean_transaction_commits": "5.0",
+        "mean_verification_fanout": "225.0",
+        "mean_unhidden_verification_ms_per_future_request": "3.2360756275830447",
+        "mean_mean_prompt_tokens": "2300.192",
+        "mean_mean_new_prefill_tokens": "41.67466666666667",
+        "mean_template_prefix_hit_ratio": "0.9818820921615818",
+        "mean_mean_ttft_ms": "62.90782557185185",
+        "mean_p99_ttft_ms": "88.02215113333332",
+        "mean_slo_compliant_goodput_rps": "0.8306512322979503",
+        "mean_completion_rate": "1.0",
+        "mean_quality_sanity_rate": "1.0",
+        "mean_unauthorized_cross_domain_reused_hashes": "0.0",
+        "mean_dynamic_suffix_reuse_blocks": "0.0"
+      }
+    ]
+  },
+  "implementation_findings": [
+    "R4 client gates and decisions use (template namespace, query scope); tenant sessions sharing that pair reuse its decision.",
+    "R4 prefix-state forecasts use template namespace and stable-prefix hash. Verification and compiled business use a template namespace cache salt.",
+    "R4 stores a joint per-scope registration result. These two indexes do not demonstrate two independently signed or separately enforced certificate objects.",
+    "The older deployment-template modes attest a compiled-path reference after prospective qualification. R4 uses a real raw business witness. Their attestation semantics and costs must remain separate.",
+    "Signed binding checks in the original real-task serving control plane are distinct from R4 controlled-client query eligibility; this audit does not establish a new public-endpoint authentication defense."
+  ],
+  "complexity_and_limits": [
+    "For T template objects and U observed behavioral scope keys, the R4 controller stores O(T+U) state and creates O(U) prospective decisions. Each selected key has at most one GPU attempt.",
+    "For M requests in a fixed authorized scope set, control checks are O(M) and behavioral model work can be amortized across tenants. O(1) per template requires U to be treated as fixed.",
+    "When distinct behavioral scopes grow with request count, model attestation work may grow linearly if admitted; no measurement here establishes production query repetition prevalence.",
+    "Current benchmark reuse hints are operator-declared fixed three-query patterns, not a measured production reuse predictor.",
+    "A repeated stable-prefix hash is not an independently signed template certificate, a count of distinct newly allocated blocks, or a universal future-behavior guarantee.",
+    "The metadata-only scope schema intentionally ignores allowed metadata values. It defines an empirical class; unchanged task evidence does not prove model-output invariance.",
+    "Original granularity rows use their own frozen deployment protocol. Do not subtract their latency from R4 or call this CPU accounting a new live scaling experiment."
+  ]
+}

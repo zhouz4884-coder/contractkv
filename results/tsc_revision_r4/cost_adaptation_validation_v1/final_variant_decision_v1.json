@@ -1,0 +1,27 @@
+{
+  "timestamp_UTC": "2026-10-17T01:47:19.197788+00:00",
+  "decision_is_post_evaluation_engineering_judgment": true,
+  "cost_adapted_replaces_original_as_default": false,
+  "recommended_experimental_main_path": "Faithful input plus unchanged original strict R4; report full latency tradeoffs.",
+  "original_future_compiled": 774,
+  "adapted_future_compiled": 258,
+  "original_raw_full_wall_multiplier": 1.802658233251139,
+  "adapted_raw_full_wall_multiplier": 1.0698226335075602,
+  "direct_original_over_adapted_wall_multiplier": 0.5934694740101171,
+  "cost_denials": 36,
+  "cost_denials_with_matched_original_issuance": 18,
+  "cause": "All27HotpotQA scope-repeat decisions outside empirical cost-profile support at13.9-14.6K candidate tokens; no behavior-safety rejection inferred from this absence. Additional9RepoBench tail-budget denials.",
+  "L0_unseen_variant_policy_position_cases": 5,
+  "L0_attribution_closed": false,
+  "all_compiled_output_ID_and_score_divergences": 0,
+  "further_GPU_matrix_automatically_started": false,
+  "possible_followup_not_started": [
+    "Profile larger prompt shapes on new development data before any future cost retuning; do not fit to this test.",
+    "Investigate occasional L0-only variants if a stronger whole-route determinism claim is desired."
+  ],
+  "paper_claim_boundaries": [
+    "Finite qualified behavioral scopes and repeated authorized queries, not arbitrary unique-query O1 certification.",
+    "No universal p99 improvement or absolute QA/code correctness guarantee.",
+    "Keep all L0 changes, unsupported historical percentages and unfinished arrival5/54 explicit."
+  ]
+}
