@@ -17,7 +17,7 @@
 | F5 | TableI独立新测：125登记记录、114原文簇、三进程3,750业务/3,375future；五家族等权稳定正文94.144%、正文原生恢复0.595%。旧五行精确lineage未恢复 | `docs/tsc_TableI_independent_measurement_completed_20261018_zh.md`；`results/tsc_tableI_remeasurement_20261018/analysis_v1/` |
 | F6 | 原RULER CI、92.90/92.62工作点、原Fig5 goodput CI均从已找回原请求重算，不能与新保真服务混合 | `docs/tsc_revision_remaining_work_audit_20261018_zh.md`；`results/tsc_revision_remaining_audit_20261018/` |
 | F7 | 既有独立保真主18cells、R4完整36cells、CacheBlend native-matched质量分布、512+、位移与PSTP故障；各自原冻结分母/协议 | `docs/tsc_revision_reviewer_experiment_response_zh.md`的C01–C17索引及其原始结果；本文件不复测这些完成实验 |
-| F8 | 新保真固定到达桥梁：新6源，7/7 Raw标定、840业务已完成；Qwen12/12正式和6组编译检查完成，M/L12与隔离Gate6接续中。CPU布局720/19,440segments、native/tail4,860future和两floor固定网格已完成 | `docs/tsc_revision_final_Raw_calibration_20261018_zh.md`；`docs/tsc_revision_final_serving_qwen_completed_20261019_zh.md`；`docs/tsc_revision_final_serving_calibration_design_20261018_zh.md`；`results/tsc_final_existing_evidence_CPU_20261018/`；`results/tsc_task_faithful_open_arrival_20261018/` |
+| F8 | 新保真固定到达桥梁：新6源，7/7 Raw标定、840业务已完成；24/24主服务单元与12组编译检查完成，隔离Gate6运行中，完整统计/归档仍待验收。CPU布局720/19,440segments、native/tail4,860future和两floor固定网格已完成 | `docs/tsc_revision_final_Raw_calibration_20261018_zh.md`；`docs/tsc_revision_final_serving_qwen_completed_20261019_zh.md`；`docs/tsc_revision_final_serving_calibration_design_20261018_zh.md`；`results/tsc_final_existing_evidence_CPU_20261018/`；`results/tsc_task_faithful_open_arrival_20261018/` |
 | F9 | 五家族实际raw顺序：从3,750已保存真实请求提取全部span/角色；旧R4另500 CPU渲染与新桥梁60 CPU渲染分列；Azure固定源码/许可证/SHA重新核对 | `docs/ContractKV_Five_Family_Raw_Order_Evidence_20261018.md`；`results/tsc_final_existing_evidence_CPU_20261018/raw_order_v1/` |
 
 以下“质量下降”采用原报告阈值Δscore<−0.03，仍同时保存上升、不显著变化、精确输出ID和finish差异；0.03不是在线认证容差。重复租户/轮次不等于独立来源。RepoBench主评分是冻结的本仓库SequenceMatcher相似度，非程序执行或独立官方Levenshtein复现；正相似度不等于正确代码。
@@ -82,7 +82,7 @@
 
 ## 当前真正剩余的实验工作
 
-1. 7个Raw已验收；正式390ea831已生成，预公开实际到达/SLO/执行版本与统计addendum后，运行24正式服务单元及6隔离Gate单元。
+1. 7个Raw已验收，正式390ea831及统计addendum已经先公开后执行，24主服务单元已完整完成；只续查既有worker，完成余下6个隔离Gate单元，不重新派发。
 2. 验收相同协议中的自由生成、来源覆盖、真实物理命中、完整wall和Goodput；保留任何新反例或负收益，先归因再决定是否有必要局部修复。
 3. 对全新服务结果进行来源/租户/请求级尾归因，完整原始归档、独立复算、Git远程SHA核对。
 4. 将F8实际结果回填本矩阵、贡献矩阵、总报告与性能/尾报告；最后才安排正文与逐点回复定位。

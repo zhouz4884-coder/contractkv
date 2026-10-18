@@ -209,3 +209,12 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 实际cross414783完成12、exit0，6组compiled ID/finish全部0差异；原318277自动启动gate517543，23:07 /proc实际命令及RUNNING已核。cross watcher unified86765退出0，不再向关闭watcher写入。未重跑主24。M每重复18future/22全业务编译，L每重复16future/16全业务编译；全部12组主编译检查通过。metadata pooled wall M .999372、L .999568，不把近1计时比当SLO净收益或完整独立质量复算。
 
 已取回12 cross小summary/completion/audit/drain及正式exit/feasibility，仅聚合现存metadata写main24_completion_metadata_v1.json，未新增GPU。完整native、SLO、评分升降、Raw控制和不确定性等Gate6结束后统一验收，不在隔离测量期运行重CPU分析，也不因结果弱改条件/加点。
+
+
+## 23:17 UTC：等待Gate期间完成证据分母与最终验收清单
+
+当前只读watcher75961确认真实Gate worker517543命令匹配launch，首单元82/360、0/6完成；原supervisor318277继续运行。没有重新派发、预检或改动冻结线上代码。最后GPU结束前不在远程跑重CPU分析。
+
+本地将四MD里“24正式尚未产生”等旧描述统一为主服务24完成、Gate运行中、完整统计仍待验收；同时由已独立复算effects CSV直接展开三模型×五类共15行分母/实际变化/准入/升降分/RPC与资格费用。每模型加总与旧summary一致、所有错误准入/拒绝新增发布字段核验，无新增GPU。完整准入162次RPC与18个RPC前结束分开，避免把全部102个变化拒绝都误写为GPU verifier拒绝。
+
+新增ContractKV_Final_Experimental_Completion_Audit.md逐项列目标、实际证据与未验收项，不把文件存在或零观察事件当作全目标完成。主服务wall约0.991–1.000×与低覆盖均保留，继续原六Gate、统计、独立复算和归档后收口；不按当前结果调阈值、扩大scope、换源/改负载或新增算法。正文与Response Letter仍后置。

@@ -14,7 +14,7 @@
 - Manifest注册→绑定→真实发布→后续命中的链条已实际运行，同时证实可信语义误标及Raw原生APC不受同等隔离的风险边界。
 - TableI独立结构测量、原RULER/Goodput统计重算和五家族真实raw顺序已经可追溯，不能再依靠未恢复的旧数值链。
 
-还没有完成的关键桥梁是：**在新六来源、相同固定到达和SLO、完整服务费用下，同时测量质量、合法覆盖、物理复用和Goodput。** 当前不据Raw标定或CPU检查预写Contract收益。
+主服务24个单元已完成，正在核对的关键桥梁是：**在新六来源、相同固定到达和SLO、完整服务费用下，质量、合法覆盖、物理复用和Goodput能否同时得到支持。** 已完成的编译配对检查未观察到ID/finish变化，但新来源资格稀疏，完整wall没有显示加速；最终判断仍需完整评分、来源簇统计、原始归档和独立复算。
 
 ## 2. 五批工作与实际执行差额
 
@@ -23,8 +23,8 @@
 | 1.原TableIII完整成本 | 原部署数字计入全部资格开销后还有多少收益？ | 24/24 fresh-server cells；12配对；4,725 future pairs；完成归档/独立复算 | 四配置直接wall并非都快；A残余slack、B完整controller摊销、C实际完整wall必须分开 |
 | 2.跨模型机制必要性 | 合法重排是否仍会改变行为，认证能否阻止不支持的发布？ | 三模型×三fresh重复，180候选、720正式行为生成；与Manifest共用9cells；完成 | 102实际变化、其中30掉分全部拒绝；78获准后0变化；拒绝新增发布0 |
 | 3.Manifest/绑定/发布 | 检查实际在哪执行，误标和跨域Raw会怎样？ | 135正式GPU业务、18认证RPC、27注册拒绝控制及72后续请求；完成 | 同域18完整命中；可信误标9/9发布marker；跨域/旧epochRaw各18仍命中marker。非公网IAM/保密分类器 |
-| 4.保真固定到达桥梁 | 同协议质量保持能否转化为真实SLO服务收益？ | 7/7 Raw标定已验收；随后24正式cells，每cell360业务 | 正式Contract结果尚未产生，不填倍率 |
-| 5.消融与尾归因 | 布局/作用域/驻留/门禁如何共同决定收益和尾部？ | 既有CPU布局/位移/native/tail/margin/PSTP完成；真实隔离Gate ON/OFF6cells待执行 | 资格≠驻留；同步认证有真实尾成本；门禁真实筛除与Goodput效果仍需新GPU控制 |
+| 4.保真固定到达桥梁 | 同协议质量保持能否转化为真实SLO服务收益？ | 7/7 Raw标定已验收；24/24正式cells已完成，每cell360业务；完整分析待验收 | 210个compiled future配对无ID/finish变化；各组完整wall约0.991–1.000×，不能宣布服务加速。Goodput等完整统计待统一复核 |
+| 5.消融与尾归因 | 布局/作用域/驻留/门禁如何共同决定收益和尾部？ | 既有CPU布局/位移/native/tail/margin/PSTP完成；真实隔离Gate ON/OFF6cells运行中 | 资格≠驻留；同步认证有真实尾成本；门禁真实筛除与Goodput效果待六单元完成后判断 |
 
 两项有界补充已经完成：256-token三cells/240业务；真实Repo三cells/72业务。它们不是替换原64条件或放宽主服务预算。正式核心外另保留63次失败尝试业务及其13次RPC，不把它们悄悄删掉或加进完整cell主分母。
 
@@ -59,6 +59,31 @@
 180 Raw重复稳定，所有拒绝新增共享发布tokens为0。未认证候选的升分也保留：Mistral15次、Llama6次；升分不等于行为等价认证成功。Raw正分分母分别48/60、18/60、24/60，不能以相对保持证明答案绝对正确。
 
 这是20个受控病例/模型、三进程的有限证据，不是180个独立生产来源或一般安全保证。真实Repo另列，合成代码不冒充其next-line任务。
+
+
+### 按模型与挑战类型的完整分母
+
+下表直接摘自已经独立复算的 `local_independent_effects_v5/observed_denominator_effects_v1.csv`，没有重新运行GPU。每行12个候选条件，来自4个病例各3次进程重复；“拒绝”是完整准入决定，不能全部称为GPU verifier拒绝。三模型合计162次实际认证RPC，另18个候选在RPC之前结束。
+
+| 模型 | 类型 | 候选 | 实际变化/其中拒绝 | 不变/其中放行 | 未认证候选升分/降分 | 实际认证RPC | 完整资格均值ms | 后决策业务均值ms |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| llama-3.1-8b | code_context | 12 | 12/12 | 0/0 | 0/0 | 6 | 109.389 | 1157.323 |
+| llama-3.1-8b | eos_boundary | 12 | 3/3 | 9/9 | 0/3 | 12 | 174.648 | 102.406 |
+| llama-3.1-8b | instruction_order | 12 | 9/9 | 3/3 | 0/6 | 12 | 384.656 | 139.150 |
+| llama-3.1-8b | rag_evidence_position | 12 | 12/12 | 0/0 | 0/0 | 9 | 154.693 | 910.131 |
+| llama-3.1-8b | tool_state | 12 | 12/12 | 0/0 | 6/3 | 12 | 197.588 | 313.008 |
+| mistral-7b | code_context | 12 | 12/12 | 0/0 | 0/0 | 3 | 79.220 | 1214.507 |
+| mistral-7b | eos_boundary | 12 | 0/0 | 12/12 | 0/0 | 12 | 242.401 | 85.794 |
+| mistral-7b | instruction_order | 12 | 6/6 | 6/6 | 6/0 | 12 | 449.383 | 281.539 |
+| mistral-7b | rag_evidence_position | 12 | 9/9 | 3/3 | 9/0 | 12 | 249.342 | 346.035 |
+| mistral-7b | tool_state | 12 | 3/3 | 9/9 | 0/0 | 12 | 263.214 | 360.533 |
+| qwen3-8b | code_context | 12 | 6/6 | 6/6 | 0/3 | 12 | 262.554 | 254.385 |
+| qwen3-8b | eos_boundary | 12 | 3/3 | 9/9 | 0/3 | 12 | 263.031 | 194.879 |
+| qwen3-8b | instruction_order | 12 | 0/0 | 12/12 | 0/0 | 12 | 567.252 | 161.063 |
+| qwen3-8b | rag_evidence_position | 12 | 6/6 | 6/6 | 0/6 | 12 | 261.038 | 236.346 |
+| qwen3-8b | tool_state | 12 | 9/9 | 3/3 | 0/6 | 12 | 264.381 | 286.817 |
+
+这15行中，观察到的变化候选错误放行、不变候选拒绝、未确定响应、拒绝新增发布token/完整块、获准后ID/finish分歧均为0；变化数为0的行不定义拒绝率，不能写成0/0=100%。`code_context`为合成赋值，真实RepoBench另列。完整资格均值含CPU及RPC前工作，不是独立GPU kernel时长；后决策业务时间含真实回退/获准路径，不能从该诊断均值推出服务加速。
 
 ### 更长预算与真实代码补充
 
@@ -99,7 +124,7 @@
 
 这些证据回答不同问题，不能把来源、窗口、协议或资格不同的倍率连成因果升级曲线。详见其完成报告和`ContractKV_Service_Performance_and_Tail_Analysis.md`。
 
-## 7. 第四、五批剩余执行：保真服务桥梁与Gate
+## 7. 第四、五批：保真服务桥梁与Gate
 
 新源按704已知来源排除集及事前hash选择：另3真实Repo机制源加入排除后，桥梁Hotpot doc90/131/187及Repo humannorm/UHGEval/spira-jira-migration-advanced。九份原文彼此不同，对已知704组718条原文记录没有精确重复；不等于语义去重。选择/packing不看答案位置、模型分数或资格结果。
 
@@ -109,11 +134,13 @@
 
 每cell360业务、324future；主Goodput为全部warm+future同时满足readiness TTFT与平均TPOT/完整wall。到达、调度、设备和peer条件配对；最终backend drain计时；不把原双请求wave barrier冒称无限并发Poisson。原main启动/catalog展开在clock前，在线准备、见证、失败、队列、日志/评分、idle全部在内。无需为更好结果更改margin、EOS、scope、语法或PSTP。
 
-**这里等待实际数据，不填“通过”“加速”或“尾优化成功”。** 最终所有process/source/tenant/request层结果、Native logical work/驻留/队列及不利输出都需归档、独立复算和核Git远程SHA。
+**GPU执行完成不等于全部实证验收完成。** 最终所有process/source/tenant/request层结果、Native logical work/驻留/队列及不利输出都需归档、独立复算和核Git远程SHA。
 
 首轮预览已交付：`tsc_revision_final_serving_first_repeat_20261019_zh.md`。Qwen两load各18/324编译未来无ID变化，但scope仅1/18通过，22编译业务13full/9zero native hits；共同点wall近1，高点wall略慢但达标8→27。它不是最终三重复效果，不用小Raw基线放大倍率作主结论，也不据此更换条件。
 
-Qwen12cell阶段现已完成三重复并通过6组跨阶段检查，Mistral/Llama已接续。各load54/972 compiled future无ID变化，common pooled wall .999986×、high .990905×；绝对Goodput分别.126074002→.126569282、.013177818→.023277243req/s。原始每次点值、Raw重复与11个L0下降均保留；仍仅一个获准来源/scope，不以重复/负载数冒充新来源。阶段报告`tsc_revision_final_serving_qwen_completed_20261019_zh.md`不代替最终三模型/Gate分析。
+Qwen12cell阶段完成三重复并通过6组跨阶段检查。各load54/972 compiled future无ID变化，common pooled wall .999986×、high .990905×；绝对Goodput分别.126074002→.126569282、.013177818→.023277243req/s。原始每次点值、Raw重复与11个L0下降均保留；仍仅一个获准来源/scope，不以重复/负载数冒充新来源。阶段报告`tsc_revision_final_serving_qwen_completed_20261019_zh.md`不代替最终三模型/Gate分析。
+
+Mistral/Llama另12cell同样已完成，六组编译配对检查通过；compiled future分别54/972、48/972，完整wall合并倍率分别.999372×、.999568×。四组共同210/3888 future进入compiled；这些位置来自重复租户、轮次和进程，不能当作210个独立来源。对应当前小回执为`main24_completion_metadata_v1.json`；完整Goodput、双向质量、native与尾部仍由冻结主分析复核。隔离Gate六单元已经运行，不替换主服务Raw基线。
 
 ## 8. 工程修复与失败记录
 
@@ -137,4 +164,4 @@ Qwen12cell阶段现已完成三重复并通过6组跨阶段检查，Mistral/Llam
 
 配套三文档：`ContractKV_Contribution_Necessity_Evidence_Matrix.md`、`ContractKV_Reviewer_Experimental_Closure_Matrix.md`、`ContractKV_Service_Performance_and_Tail_Analysis.md`。36条审稿要求覆盖检查已通过；实验完成与正文/引用/排版完成分开，页行映射与正式Response Letter后置。
 
-当前未完成的是冻结服务矩阵、Gate真实效果及其最终分析/归档，不是再增加一个证书体系、采样算法、时序防御或生产trace研究线。若新数据出现有效scope内部可复现质量反例，必须先归因和最小修复；否则按本轮有界结果收口，不为追回旧最高数字无限扩展。
+当前未完成的是Gate六单元、服务完整统计及其最终分析/归档，不是再增加一个证书体系、采样算法、时序防御或生产trace研究线。若新数据出现有效scope内部可复现质量反例，必须先归因和最小修复；否则按本轮有界结果收口，不为追回旧最高数字无限扩展。

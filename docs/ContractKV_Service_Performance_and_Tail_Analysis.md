@@ -1,6 +1,6 @@
 # ContractKV：服务性能、完整费用与尾延迟分析
 
-2026-10-18。本文件按**协议与科学问题**组织结果。既有完成实验已核验；新保真固定到达24单元与隔离Gate6单元尚未完成，相关部分明确标为进行中。本文不把closed-loop吞吐写成open-arrival SLO容量，也不把deployment-qualified和query-qualified的资格语义混为一谈。
+2026-10-19。本文件按**协议与科学问题**组织结果。既有完成实验已核验；新保真固定到达主24单元已经运行完毕，隔离Gate6单元运行中；新批次完整统计、独立复算和归档仍待验收。本文不把closed-loop吞吐写成open-arrival SLO容量，也不把deployment-qualified和query-qualified的资格语义混为一谈。
 
 ## 1. 当前可支持的性能结论
 
@@ -16,8 +16,8 @@
 | 原TableIII同cohort完整计时重测 | 原历史候选/多级下降与scope不改 | 原策略参数2s/6s保留；新直接wall不抵扣slack | 四配置24cells、4,725future pairs，所有成功/失败/异常计费 | 新计时不是找回July时间戳；旧驱动未留IDs时不借新协议零分歧补造 |
 | 原R4 query-qualified闭环 | 实际首次Raw业务见证，有限query scope与回退 | 双请求共享wave的closed-loop readiness | 36cells、27,000业务；2,442 compiled future未见ID变化，全路由33下降保留 | 历史输入词数截断/代码空白适配限制外部有效性；不能拿低覆盖直接判断正常业务适用性 |
 | 独立保真query-qualified闭环 | 保真16K、同原严格scope/margin/EOS/PSTP | 新六来源、10tenant/template、三fresh重复 | 三模型完整wall Q1.619×/M1.109×/L1.070×；1,296 compiled future无ID/分数变化 | 这是closed-loop全成本，不是开放到达容量；有4个L0下降，p99不普遍改善 |
-| 本轮保真固定到达服务桥梁 | 同严格query-qualified方法与原经济门禁 | 新六来源、6tenant/template、外生双请求wave；Raw-only事前标定 | 7/7 Raw已验收，390ea831正式协议已生成，24正式未完成 | 不能提前填Contract速度/Goodput，不与旧500ms点混合 |
-| 本轮隔离Gate ON/OFF | 只关经济decide，安全资格/PSTP不变 | Qwen单GPU隔离三对，另一GPUidle | 6正式单元尚未完成 | 无隔离Raw基线，不能借并行Raw构造隔离speedup |
+| 本轮保真固定到达服务桥梁 | 同严格query-qualified方法与原经济门禁 | 新六来源、6tenant/template、外生双请求wave；Raw-only事前标定 | 7/7 Raw已验收，24/24主服务完成，完整统计待复核 | 编译配对检查通过但覆盖低，wall未加速；不能将未复核跨模型Goodput补造为正结果，不与旧500ms点混合 |
+| 本轮隔离Gate ON/OFF | 只关经济decide，安全资格/PSTP不变 | Qwen单GPU隔离三对，另一GPUidle | 6正式单元运行中 | 无隔离Raw基线，不能借并行Raw构造隔离speedup |
 
 固定目录中U个获选query scope可跨tenant分摊，但资格建立费用随U增长。本文不把“同一物理前缀可被不同query资格复用”改写成“所有query只认证一次”。
 
@@ -108,11 +108,11 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 以上是原部署/开放到达证据，不与新六源闭环倍率或本轮Raw推导SLO拼成同协议性能曲线。旧4.81区间的原方法固定cell wall、抽进程并在policy内独立抽session，其统计边界已在原数据重算审计中写明。
 
-## 7. 本轮固定到达：实际参数已冻结，效果仍待执行
+## 7. 本轮固定到达：实际参数、已完成主服务与待验收统计
 
 4个Raw-only baseline/480回答给出单endpoint容量Cq=.313519676、Cm=.198783460、Cl=.212263461req/s；共同arrival=.17890511444180737，Qwen较高点=.3291956598482794。SLO按事前Raw-P95规则得到TTFT11,700ms、平均TPOT435ms，未读Contract结果选阈值。它不是旧500ms SLA。
 
-7个Raw单元已全部结束，840业务验收通过；3个profile的双SLO达标数为107/120、89/120、8/120，最后一个高点的基线很小，不能据此夸大倍率。之后24主cell与6隔离Gate cell，每cell360业务/324future。实际formal freeze390ea831与6条arrival已生成，待预公开后执行。Raw/Contract同到达、同双请求wave barrier、同GPU与peer负载，r2换卡/先后；最后backend双idle drain在clock内。主Goodput分母为完整wall、分子为全部warm+future同时满足readiness TTFT和平均TPOT的请求；TTFT-only另列。
+7个Raw单元已全部结束，840业务验收通过；3个profile的双SLO达标数为107/120、89/120、8/120，最后一个高点的基线很小，不能据此夸大倍率。之后24主cell与6隔离Gate cell，每cell360业务/324future。实际formal freeze390ea831、6条arrival及统计addendum已经先公开后执行；24主cell已完成，Gate运行中。Raw/Contract同到达、同双请求wave barrier、同GPU与peer负载，r2换卡/先后；最后backend双idle drain在clock内。主Goodput分母为完整wall、分子为全部warm+future同时满足readiness TTFT和平均TPOT的请求；TTFT-only另列。
 
 首个正式Contract结果前增加独立统计addendum：将同一来源的tenant/turn与配对进程一起重采样，分母保留对应已测clock，只检验达标分子对这六个来源构成的敏感性。它不重建重加权后的排队/服务时间，也不作容量总体CI。保留零baseline draws；一旦有此情况，ratio区间不定义，优先绝对Goodput差。原主统计、390ea831及全部在线条件不变。
 
@@ -124,7 +124,7 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 首轮Qwen两个负载已完成配对，原始只读投影见`first_repeat_projection_v1.json`和`first_repeat_small_metrics_v1.json`。scope决定1PASS/8作用域/6负candidate margin/3语法，各点仅18/324 compiled future；获准后ID保持。高点绝对Goodput增加但Raw仅8/360达标，完整wall略慢；共同点近无净收益。该结果补充资格稀疏与不完整驻留的实际限制，不替换上文旧独立闭环的1.619×，也不在两者间作同条件因果比较。
 
-Qwen三重复阶段12/12现已完成，各load54/972 compiled future、0ID/finish变化。pooled完整wall common .999986×/high .990905×；pooled绝对Goodputcommon .126074002→.126569282，high .013177818→.023277243。高点达标46→82/1080而非整族普遍容量增长。三个重复的资格和native39full/27zero分解一致；详细过程范围、Raw输出控制及限制见`tsc_revision_final_serving_qwen_completed_20261019_zh.md`。跨模型/Gate尚未完成，不提前附完整结果CI。
+Qwen三重复阶段12/12现已完成，各load54/972 compiled future、0ID/finish变化。pooled完整wall common .999986×/high .990905×；pooled绝对Goodputcommon .126074002→.126569282，high .013177818→.023277243。高点达标46→82/1080而非整族普遍容量增长。三个重复的资格和native39full/27zero分解一致；详细过程范围、Raw输出控制及限制见`tsc_revision_final_serving_qwen_completed_20261019_zh.md`。跨模型完整统计与Gate尚未验收，不提前附完整结果CI。
 
 23:05 UTC更新：主跨模型24/24全部完成，Mistral54/972、Llama48/972 compiled future，六组编译ID/finish检查通过。metadata pooled wall各.999372/.999568；完整Goodput、评分/双向差异、native费用与CI依主分析复核，不能据近1计时比宣布总体正收益。隔离Gate6仍在运行。
 
