@@ -152,3 +152,11 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 预执行代码更新仅增加上述硬检查、分析/归档入口和先发布后执行的supervisor。远端先保存旧小源postimage于preformal_infrastructure_versions_v1，再更新正式尚未使用的小文件，记录preformal_source_update_v1.json。旧Raw worker、564文件快照、实际方法/候选/预算/准入不改；这不是GPU协议结果重跑。
 
 新增只读原文级排重：对冻结候选池中已知704个来源组对应718条记录建立完整上下文字节hash，覆盖704/704。本轮另3Repo与桥梁6源的9份完整原文彼此不同、没有任何精确已知context匹配。忽略问题和system，仅按RAG/Repo上下文与CODE_PREFIX原文；不读答案或输出，不改来源。首次CPU草稿遗漏SYNTHETIC_CONTEXT/REPO_CONTEXT类型，在结果写出前assert停止，零GPU；保留失败回执并按实际pool schema修正，v2完整覆盖。此结论不等于语义去重或所有代码片段统计独立。
+
+## 14:40 UTC 后：Raw baseline关闭与实际工作点
+
+4/4 baseline、480业务完成，原supervisor285458/worker285459实际退出0，GPU compute列表为空。Linux新六项formal CPU检查在测量结束后执行，回执formal_Linux_CPU_controls_v2与Windowsv3源SHA匹配。没有把CPU负载混入正在运行的服务测量。
+
+按原公式实际导出Cq=.313519676、Cm=.198783460、Cl=.212263461 req/s，共同到达率.178905114、Qhigh .329195660。Raw推导TTFT SLO11700ms、平均TPOT435ms。SLO较宽是本硬件长输入Raw的P95结果，不为了追goodput改成更有利阈值，不将它与旧500ms点合并。高TPOT与短输出first-to-last窗口/peer prefill重叠的线索保留；没有逐token/kernel轨迹，不唯一归因，不临时换调度算法。
+
+独立下载4份Raw原文共30,174,361 bytes，各SHA匹配。从原文重算容量/P95/SLO/正式负载精确一致。首次Windows派生文件因CRLF、其后因Python3.13/3.10浮点sum/libm的约1e-13秒offset差异未逐字节相同，两个失败CPU视图保留。最终以明确1ns容差核全部arrival offset，实际最大3.410605131648481e-13秒；成员/seed/顺序/端点相同，其他推导字段精确相同。实际执行仍只读取原Linux arrival SHA，绝不将本地重生成trace换进去。独立回执不能写成全部字节一致。

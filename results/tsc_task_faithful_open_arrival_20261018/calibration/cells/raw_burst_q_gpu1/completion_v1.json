@@ -1,0 +1,65 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "raw_burst_q_gpu1",
+    "model": "Qwen3-8B",
+    "lane": 1,
+    "wave": 0,
+    "port": 9601,
+    "arrival": "calibration/arrivals/raw_burst_v1.json",
+    "client_timeout_s": 3600
+  },
+  "outcome": {
+    "started_epoch_s": 1792333004.7554278,
+    "ended_epoch_s": 1792333390.1180842,
+    "summary": {
+      "schema_version": "tsc-r4.fixed-arrival-live.v1",
+      "arrival_trace_sha256": "aa7a7a5bdb9becbc8a35afd5334e2caf41b441152cb7e8c53d98a97852ca607b",
+      "arrival_protocol": "frozen_exogenous_shared_wave",
+      "planned_last_arrival_offset_s": 0.0,
+      "arrival_requests": 120,
+      "profile": "balanced",
+      "previous_catalog_sha256": "0da0a6f030f7309d7bed9174a905f2e1d56d0dc62e134ec6f65aa346df9f2249",
+      "cell": "raw_burst_q_gpu1",
+      "study": "template-fanout",
+      "policy": "raw-order",
+      "repeat": 1,
+      "execution_complete": true,
+      "futures": 108,
+      "expected_futures": 108,
+      "successful_futures": 108,
+      "all_actual_metric_joins": 120,
+      "sessions_sha256": "bc7bbc5ac6d827f4cb6f132a8c7891955f3331b25107188357c0b3cc68a9c2a8",
+      "protocol_sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05",
+      "catalog_sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb",
+      "tenants_per_template": 2,
+      "wall_s_including_all_setup_and_verification": 383.9988765697926,
+      "wall_begin_time": 4083015.013950826,
+      "wall_service_end_time": 4083399.012827396,
+      "post_measurement_audit_wall_s": 0.6508604031987488,
+      "verification_calls": 0,
+      "verification_ms_total": 0,
+      "compiled_future_requests": 0,
+      "raw_file_sha256": "70fea58a73edff0a95dd4a2fda91ffd7039e21b79a1394bd831704bc0ca4d19a",
+      "boundary": "Service wall includes actual planning, business, scoring/logging and all synchronous qualification waits. Identical frozen exogenous wave-arrival offsets and shared two-request dispatch barrier for all policies. Queueing, actual registration, planned idle time and final drain remain inside wall time; readiness is never reset to completion time. This fixed-load result is distinct from closed-loop capacity measurement. Post-measurement flush/audit is reported separately, excluded for all policies. Reference is the real first raw business output."
+    }
+  },
+  "held_peer_server_until_all_wave_clients_finished": true,
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "9ca1c7ee6892be5c79e0bb459f23775c773ec425875bdb255b7959529c43c2ae",
+      "bytes": 199831
+    },
+    {
+      "path": "raw.jsonl",
+      "sha256": "70fea58a73edff0a95dd4a2fda91ffd7039e21b79a1394bd831704bc0ca4d19a",
+      "bytes": 6844501
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "f264da4d4cc33da6fdf131e2d117257a71420fd9d4e79f780d2a20258893f133",
+      "bytes": 1028503
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "cell": "raw_burst_q_gpu0",
+      "request_id": "chatcmpl-raw_burst_q_gpu0-open-faithful-2b7d57aa88b7f9c8-tenant00-t9",
+      "family": "HotpotQA",
+      "turn": 9,
+      "output_tokens": 11,
+      "TPOT_ms": 353.32154212519526,
+      "output_first_to_last_ms": 3533.2154212519526,
+      "peer_submit_to_first_ms": 6888.532788027078,
+      "overlap_ms": 3432.3045783676207,
+      "raw_sha256": "879a4aa84ff45d79338ba1ad204579bccc92d782e5ec20c2f7c262b0a16b06ce",
+      "boundary": "Observed HTTP submit-to-first window, not measured pure GPU prefill; output endpoint derived algebraically from retained actual-ID TPOT. No per-token stall location or causal scheduling proof."
+    },
+    {
+      "cell": "raw_burst_q_gpu1",
+      "request_id": "chatcmpl-raw_burst_q_gpu1-open-faithful-2b7d57aa88b7f9c8-tenant00-t9",
+      "family": "HotpotQA",
+      "turn": 9,
+      "output_tokens": 11,
+      "TPOT_ms": 353.62537018954754,
+      "output_first_to_last_ms": 3536.2537018954754,
+      "peer_submit_to_first_ms": 6907.08906436339,
+      "overlap_ms": 3439.2862641252577,
+      "raw_sha256": "70fea58a73edff0a95dd4a2fda91ffd7039e21b79a1394bd831704bc0ca4d19a",
+      "boundary": "Observed HTTP submit-to-first window, not measured pure GPU prefill; output endpoint derived algebraically from retained actual-ID TPOT. No per-token stall location or causal scheduling proof."
+    },
+    {
+      "cell": "raw_burst_m_gpu0",
+      "request_id": "chatcmpl-raw_burst_m_gpu0-open-faithful-e2d4e2f988a89c57-tenant00-t2",
+      "family": "RepoBench",
+      "turn": 2,
+      "output_tokens": 24,
+      "TPOT_ms": 212.6109963890327,
+      "output_first_to_last_ms": 4890.052916947752,
+      "peer_submit_to_first_ms": 9260.081599932164,
+      "overlap_ms": 4507.115229964256,
+      "raw_sha256": "12ba9fe04dfe7a21f591f31e0ac5f1411898c87648af8e53c2aa8888e06347b0",
+      "boundary": "Observed HTTP submit-to-first window, not measured pure GPU prefill; output endpoint derived algebraically from retained actual-ID TPOT. No per-token stall location or causal scheduling proof."
+    },
+    {
+      "cell": "raw_burst_l_gpu1",
+      "request_id": "chatcmpl-raw_burst_l_gpu1-open-faithful-eda635e9902d5cfb-tenant01-t0",
+      "family": "RepoBench",
+      "turn": 0,
+      "output_tokens": 9,
+      "TPOT_ms": 395.36357863107696,
+      "output_first_to_last_ms": 3162.9086290486157,
+      "peer_submit_to_first_ms": 6485.04146002233,
+      "overlap_ms": 3116.072854027152,
+      "raw_sha256": "6516a1f880301011122c118750232ac2e5be8ac439e6f0dd0c34b3410558898e",
+      "boundary": "Observed HTTP submit-to-first window, not measured pure GPU prefill; output endpoint derived algebraically from retained actual-ID TPOT. No per-token stall location or causal scheduling proof."
+    }
+  ],
+  "new_GPU_requests": 0,
+  "no_policy_or_SLO_change": true
+}

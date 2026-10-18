@@ -23,7 +23,7 @@
 
 ## 当前 GPU 执行
 
-14:25–14:26 UTC（香港 22:25–22:26）核验：Raw-only baseline 前两个 Qwen 单元均已 120/120、completion 完整；worker 已把这两个单元记入 completed_cells，并开始同一计划中的 Mistral/Llama 单元。原 supervisor 285458 / worker 285459 继续运行，没有重复启动。
+14:40 UTC 后核验：Raw-only baseline 4/4 单元、480 次业务全部完成；原 supervisor285458/worker285459退出0。实际derived plan已经生成并独立复算，3个Raw profiles待核验公开SHA后接续。详见`tsc_revision_final_Raw_calibration_20261018_zh.md`。没有重复启动baseline。
 
 该标定最多 7 cells / 840 次 Raw 业务：4 个 baseline，之后 3 个 Qwen 负载 profiles。只用冻结公式推导负载与 SLO，不用 Contract 收益选择工作点。Raw/Contract 均保留 16K、QA128/Repo384、原 margin/scope/输出契约/PSTP。
 
