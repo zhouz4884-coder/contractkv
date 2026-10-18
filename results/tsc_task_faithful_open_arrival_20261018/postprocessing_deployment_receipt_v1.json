@@ -1,0 +1,50 @@
+{
+  "checked_epoch_s": 1792365814.2731786,
+  "PID": 525181,
+  "actual_process_command_matches_launch": true,
+  "state": {
+    "status": "WAITING_FOR_FROZEN_GPU",
+    "PID": 525181,
+    "started_epoch_s": 1792365784.573232,
+    "entry_sha256": "5bfe823db7d77981c4c3e510bf086c4974c6dbd348277952e6db7a723694cd8e",
+    "plan_sha256": "822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc",
+    "publication_sha256": "f222a80d27c88c3cadafc87c3e504d5671b3b8ff22493e4b283c06bc9bed68b9",
+    "GPU_requests": 0,
+    "stages": [],
+    "observed_GPU_status": {
+      "ready": false,
+      "live_workers": [
+        {
+          "phase": "gate",
+          "PID": 517543
+        }
+      ],
+      "completed_phases": [
+        "qwen",
+        "cross"
+      ],
+      "owned_master_live": true,
+      "recorded_master_PID": 318277
+    },
+    "last_observation_epoch_s": 1792365784.573552
+  },
+  "deployed_files_byte_equal": [
+    {
+      "path": "scripts/tsc_revision_final_postprocess_v1.py",
+      "sha256": "5bfe823db7d77981c4c3e510bf086c4974c6dbd348277952e6db7a723694cd8e",
+      "bytes": 6652
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/postprocessing_plan_v1.json",
+      "sha256": "822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc",
+      "bytes": 2733
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/postprocessing_publication_v1.json",
+      "sha256": "f222a80d27c88c3cadafc87c3e504d5671b3b8ff22493e4b283c06bc9bed68b9",
+      "bytes": 413
+    }
+  ],
+  "check_did_not_restart_any_process": true,
+  "new_GPU_requests": 0
+}

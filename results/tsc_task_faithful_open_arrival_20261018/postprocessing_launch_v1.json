@@ -1,0 +1,38 @@
+{
+  "PID": 525181,
+  "command": [
+    "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+    "-B",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_final_postprocess_v1.py",
+    "--root",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "--plan-sha256",
+    "822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc",
+    "--publication",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_task_faithful_open_arrival_20261018/postprocessing_publication_v1.json",
+    "--mode",
+    "run"
+  ],
+  "started_epoch_s": 1792365784.5170546,
+  "plan_sha256": "822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc",
+  "read_only_GPU_status_before_launch": {
+    "ready": false,
+    "live_workers": [
+      {
+        "phase": "gate",
+        "PID": 517543
+      }
+    ],
+    "completed_phases": [
+      "qwen",
+      "cross"
+    ],
+    "owned_master_live": true,
+    "recorded_master_PID": 318277,
+    "mode": "read_only_check",
+    "GPU_requests": 0
+  },
+  "new_GPU_requests": 0,
+  "CPU_only_waits_for_all_GPU_phases_and_master_exit": true,
+  "automatic_package_not_started": true
+}

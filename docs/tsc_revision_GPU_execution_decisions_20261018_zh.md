@@ -218,3 +218,12 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 本地将四MD里“24正式尚未产生”等旧描述统一为主服务24完成、Gate运行中、完整统计仍待验收；同时由已独立复算effects CSV直接展开三模型×五类共15行分母/实际变化/准入/升降分/RPC与资格费用。每模型加总与旧summary一致、所有错误准入/拒绝新增发布字段核验，无新增GPU。完整准入162次RPC与18个RPC前结束分开，避免把全部102个变化拒绝都误写为GPU verifier拒绝。
 
 新增ContractKV_Final_Experimental_Completion_Audit.md逐项列目标、实际证据与未验收项，不把文件存在或零观察事件当作全目标完成。主服务wall约0.991–1.000×与低覆盖均保留，继续原六Gate、统计、独立复算和归档后收口；不按当前结果调阈值、扩大scope、换源/改负载或新增算法。正文与Response Letter仍后置。
+
+
+## 23:23 UTC：一次性CPU后处理接续，等待GPU全部退出
+
+后处理只调用既有冻结的formal analysis、预注册source sensitivity、post integrity三入口，不改统计方法、SLO、来源或任何线上代码，也不启动GPU。新编排源和计划先在cef70e3cdb0e74848b01d46c88b60afb8b285691公开并核远程SHA，才部署并启动单一CPU进程525181。计划SHA822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc；原390ea831及ac65994e主分析SHA仍匹配。
+
+真实只读check返回75，确认Gate517543/master318277仍活跃；后处理以nice19等待，不运行重分析。部署后三文件逐字节匹配、实际/proc命令和WAITING_FOR_FROZEN_GPU状态已取回。要求三GPU阶段完成/exit0、所有实际worker与master退出后才开始CPU；新旧输出目录存在即拒绝覆盖，任一分析失败保留证据并停止，不自动重试。完成状态仍为待CPU证据同步、package、本地独立复算和最终报告，不能自动关闭研究目标。恢复时先查525181及postprocessing_v1/execution_state_v1.json，不另派发重复分析。
+
+部署失败也保留：第一次Paramiko仅用x模式创建了0-byte源码，写入时报File not open for writing；未启动任何后处理或新GPU。空文件与回执移入postprocessing_infrastructure_v1，再用wx排他写入并逐字节核验。第一次Git push网络退出128，常规HTTP1.1重试成功后才核SHA/派发。原始GPU测量、冻结文件及已完成cell均未覆盖或重跑。
