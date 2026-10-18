@@ -1,0 +1,98 @@
+{
+  "schema_version": "contractkv.real-repo-freeze.v1",
+  "protocol_sha256": "637c7d2fbe97fd8ee661cca2645b10553807fc2b23e0cee337ef6cbc5e5655c5",
+  "source_files": [
+    {
+      "path": "scripts/tsc_revision_real_repo_cases_v1.py",
+      "sha256": "b9030e5f057a40d0bc1db1abac514ee9c4459821792a3b2baa4a43a31a034016"
+    },
+    {
+      "path": "scripts/tsc_revision_real_repo_client_v1.py",
+      "sha256": "d9b65260c165aeafc1a5e0b9c0982bb6ae650d6d3a3273fe206e2ac4f73b9b1b"
+    },
+    {
+      "path": "scripts/tsc_revision_real_repo_worker_v1.py",
+      "sha256": "0927fb8b18f242f5aba7907182a48e8ae492e7a26293a3fd88ca00636b9fe4db"
+    },
+    {
+      "path": "scripts/tsc_revision_real_repo_CPU_v1.py",
+      "sha256": "85615bfb7e8fa5d6e5ea500f4b38011212b281265f696d271732730a8dff83ab"
+    },
+    {
+      "path": "scripts/tsc_revision_incomplete_reference_fix_v5.py",
+      "sha256": "24fe7c1e4621162017436f91da37f51928555dcf5d092161c0602b1053edaf03"
+    },
+    {
+      "path": "scripts/tsc_revision_budget256_worker_v2.py",
+      "sha256": "9570ec8d0148b8a6a682dfc6503eb59df912d5c1362c3df883212a5a6a5db79b"
+    },
+    {
+      "path": "scripts/tsc_revision_mechanism_worker_v3.py",
+      "sha256": "f53e5cf4c003da5eee88bf846fd7cb7e82637d984d54031e1839fc8b71d3c3a0"
+    },
+    {
+      "path": "scripts/tsc_tableIII_fullcost_worker_v3.py",
+      "sha256": "468710157930ecd2338012be90b89f4d5e7ff59f22d03b659fb432cd5646fa78"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/protocol_v1.json",
+      "sha256": "637c7d2fbe97fd8ee661cca2645b10553807fc2b23e0cee337ef6cbc5e5655c5"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/source_extra/tsc_revision_r3_output_contract.py",
+      "sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785"
+    },
+    {
+      "path": "results/tsc_revision_mechanism_controls_20261018/freeze_v3.json",
+      "sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff"
+    },
+    {
+      "path": "results/tsc_revision_mechanism_controls_20261018/backend_project_dependency_manifest_v1.json",
+      "sha256": "389011e4c1fd5fdc57270ad2445fc5c23e275c4dd9cdba822d3ade3e542bf991"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/inputs_v1/CPU_prompt_shapes_v1.jsonl",
+      "sha256": "1b6dc266dbe59ca71f86821269b158ec803242219b8260b3af2a2eb066ab3b5f"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/inputs_v1/faithful_selected_sessions_v1.jsonl",
+      "sha256": "34ec2d212c359e60c2dd8f69d0f1cac0044a07e4166a7beb883b0754f49ee948"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/inputs_v1/original_selected_sessions_v1.jsonl",
+      "sha256": "d8a61c220a41b1e1e5f88cbc50db561beae4c0da10880fa278d7759234f7e76b"
+    },
+    {
+      "path": "results/tsc_real_repobench_mechanism_20261018/inputs_v1/preparation_record_v1.json",
+      "sha256": "ef0e4b163b4d1c8e8b0a8ba55ee6b71d88f84d56a19d54f727f87079a9a27607"
+    }
+  ],
+  "parent_collector_sha256": "b88225642d4f57d4386a28c7e11f00877ff3280028ad2e8f3d363db1d41248b1",
+  "parent_freeze_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+  "parent_preflight_receipt_sha256": "2262851f17210e56064e374c47a6a7215bcf880955c80b0cc342ee3403a19eeb",
+  "unchanged_output_contract_sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785",
+  "client_AST_proof": {
+    "unchanged_setup_generate_qualify_and_behavior_loop_except_source_unit": true,
+    "source_unit_replaced_by_actual_repository_identity": true,
+    "Manifest_not_repeated": true,
+    "expected_business": 24,
+    "expected_cases": 6
+  },
+  "worker_AST_proof": {
+    "changed_assignments": [
+      "port",
+      "source",
+      "policy_hash",
+      "client"
+    ],
+    "changed_completion_count_assertions": 3,
+    "all_other_function_AST_identical": true,
+    "adapted_function_AST_sha256": "8c21d0eb6c633a0052551df7f9256628332dbd79f092afeb7c0665ee7d6c888a"
+  },
+  "actual_CPU_case_receipt_sha256": "a4924ba7aeb71edead9dd0fbd5165ea8d417a62c8c1398900641443939a466a5",
+  "no_new_model_outputs_observed": true,
+  "maximum_GPU_business_requests": 72,
+  "maximum_qualification_RPC_attempts": 18,
+  "no_production_family_eligibility_override": true,
+  "entry_point": "scripts/tsc_revision_real_repo_worker_v1.py"
+}
