@@ -1,0 +1,64 @@
+{
+  "schema_version": "contractkv.final-postprocessing-orchestration.v1",
+  "entry_sha256": "5bfe823db7d77981c4c3e510bf086c4974c6dbd348277952e6db7a723694cd8e",
+  "created_UTC": "2026-10-18T23:21:35.799713+00:00",
+  "boundary": "Post-run orchestration only; analyses/statistics were frozen earlier. No new estimand, GPU request, model/runtime copy, or method/protocol change. Package and independent recompute remain separate.",
+  "inputs": [
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_freeze_v1.json",
+      "sha256": "390ea8314f3e60f38c393c7b18873148f5e8d0af69bdeb6b89911cebe03652ff"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_protocol_v1.json",
+      "sha256": "eae1c52f02dbaed409e0b80d05316984a7b5a4adc6072afd8a44cff952ac6421"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_statistics_addendum_v1.json",
+      "sha256": "5fe5ae0b583d3c6b68be518ca4ccf4d317caa422a19c4ce2c96d780c0ac1015a"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/raw_calibration_freeze_v1.json",
+      "sha256": "f9a2b64a28952f9fa5f9929699ab60416dbbdd030f4348731d6444753af64b92"
+    },
+    {
+      "path": "scripts/tsc_revision_final_serving_analysis_v1.py",
+      "sha256": "ac65994e9770494b91583474b23119f5f4373b2f0e1d4e2ffa42f4bae8336864"
+    },
+    {
+      "path": "scripts/tsc_revision_final_goodput_cluster_sensitivity_v1.py",
+      "sha256": "bb2992f5cf49255564de2cf79012bcebf8ef99b1252ff186edd762579139dc6d"
+    },
+    {
+      "path": "scripts/tsc_revision_final_integrity_v1.py",
+      "sha256": "b7efa42397689f8ece4f8f3eb4bf15925f156e38cb45fa1d0d64b269451940cd"
+    }
+  ],
+  "steps": [
+    {
+      "name": "formal_analysis",
+      "entry": "scripts/tsc_revision_final_serving_analysis_v1.py",
+      "arguments": [
+        "--phase",
+        "formal"
+      ],
+      "output": "results/tsc_task_faithful_open_arrival_20261018/formal_analysis_v1"
+    },
+    {
+      "name": "source_sensitivity",
+      "entry": "scripts/tsc_revision_final_goodput_cluster_sensitivity_v1.py",
+      "arguments": [],
+      "output": "results/tsc_task_faithful_open_arrival_20261018/formal_goodput_source_sensitivity_v1.json"
+    },
+    {
+      "name": "post_integrity",
+      "entry": "scripts/tsc_revision_final_integrity_v1.py",
+      "arguments": [],
+      "output": "results/tsc_task_faithful_open_arrival_20261018/post_execution_integrity_v1.json"
+    }
+  ],
+  "waiting_requires_actual_matching_owned_PID_or_completed_exit": true,
+  "all_three_GPU_phases_and_master_must_exit_before_CPU_analysis": true,
+  "retry_failed_or_existing_outputs": false,
+  "read_only_mode_exit75_means_live_GPU_wait": true,
+  "new_GPU_requests": 0
+}
