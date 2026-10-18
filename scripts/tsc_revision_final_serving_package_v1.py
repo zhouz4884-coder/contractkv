@@ -31,6 +31,8 @@ def main(root):
         assert read(study/'formal'/f'{phase}_exit_v1.json')['returncode']==0
     assert read(study/'calibration_analysis_v1/summary_v1.json')['complete_cells']==7
     formal=read(study/'formal_analysis_v1/summary_v1.json');assert formal['complete_cells']==30
+    sensitivity=read(study/'formal_goodput_source_sensitivity_v1.json')
+    assert sensitivity['seed']==202610182002 and sensitivity['draws']==10000 and len(sensitivity['results'])==5
     integrity=read(study/'post_execution_integrity_v1.json')
     assert integrity['all_checked_frozen_sources_and_runtime_match'] and integrity['execution_cells']==37
     assert formal['measured_business_requests']==10800
@@ -44,6 +46,7 @@ def main(root):
         selected.append(path)
     selected += sorted((root/'scripts').glob('tsc_revision_final_*.py'))
     cpu=root/'results/tsc_final_existing_evidence_CPU_20261018'
+    assert read(cpu/'raw_order_v1/summary_v1.json')['requests']==3750
     for path in cpu.rglob('*'):
         if path.is_file() and not path.is_symlink() and (path.suffix.lower() in {'.json','.jsonl','.csv','.md','.py','.jinja2'} or path.name=='LICENSE'):
             selected.append(path)

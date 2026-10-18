@@ -40,6 +40,8 @@ def main(root,output):
             assert sha(root/row['path'])==row['sha256'],row['path'];checked[row['path']]=row['sha256']
     for row in raw['snapshot_files']:
         path=study/'source_snapshot_v1'/row['path'];assert sha(path)==row['sha256']
+    for job in read(study/'calibration/derived_profile_plan_v1.json')['profile_jobs']:
+        assert sha(study/job['arrival'])==job['arrival_sha256']
     assert sha(root/CORE/'preflight_v3/receipt_v1.json')==raw['parent_runtime_receipt_sha256']
     validate_preflight(root/CORE)
     requests=0

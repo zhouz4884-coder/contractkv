@@ -71,6 +71,8 @@ def category(reason):
     if reason=='observation_scope_has_no_declared_exact_reuse':return 'exact_observation_scope_without_declared_reuse'
     if reason=='inherited_family_L0':return 'inherited_family_L0'
     if reason.startswith('raw_output_contract:'):return 'raw_output_contract'
+    if reason=='invalid_staged_cost_features':return 'invalid_cost_features'
+    if 'incomplete' in reason or 'finish_reason' in reason:return 'incomplete_reference_or_EOS'
     if 'margin' in reason:return 'raw_margin' if 'raw' in reason else 'candidate_or_EOS_margin'
     if any(x in reason for x in ('benefit','cost','tail','net','reuse')):return 'economic_gate'
     if 'incomplete' in reason or 'finish' in reason or 'EOS' in reason:return 'incomplete_reference_or_EOS'
@@ -98,6 +100,13 @@ def audit_cell(study,job,slo,phase,scorer,samples):
     expected=120 if phase=='calibration' else 360
     assert summary['arrival_requests']==expected and summary['futures']==expected*9//10
     assert audit['result']=='completed' and audit['actual_business_prompt_ID_hashes_checked']==expected
+    trace_path=study/job['arrival'];trace=read(trace_path);expected_arrival_sha=job.get('arrival_sha256')
+    if expected_arrival_sha is None:
+        bindings={r['path']:r['sha256'] for r in read(study/'raw_calibration_freeze_v1.json')['files']}
+        expected_arrival_sha=bindings[(Path(STUDY)/job['arrival']).as_posix()]
+    assert sha(trace_path)==summary['arrival_trace_sha256']==expected_arrival_sha
+    assert trace['actual_business_requests']==expected and len(trace['waves'])==expected//2
+    assert abs(summary['wall_service_end_time']-summary['wall_begin_time']-summary['wall_s_including_all_setup_and_verification'])<1e-9
     rows=list(lines(cell/'raw.jsonl'));business=[r for r in rows if r['row_type'] in ('warm','future')]
     assert len(business)==expected and len({key(r) for r in business})==expected
     for r in business:
@@ -105,6 +114,13 @@ def audit_cell(study,job,slo,phase,scorer,samples):
         assert len(r['prompt_token_ids'])==r['prompt_tokens'] and len(r['output_token_ids'])==r['completion_tokens']
         assert r['finish_reason'] in ('stop','length')
         assert abs(r['ready_ttft_ms']-r['queue_before_controller_ms']-r['controller_to_submit_ms']-r['ttft_ms'])<1e-5
+        arrival=trace['waves'][r['wave_index']]
+        assert r['session_id'] in arrival['session_ids'] and r['turn_id']==arrival['turn']
+        assert r['planned_ready_offset_s']==arrival['ready_offset_s']
+        assert abs(r['planned_ready_time']-summary['wall_begin_time']-arrival['ready_offset_s'])<1e-8
+        assert abs(r['ready_ttft_ms']-(r['first_time']-r['planned_ready_time'])*1000)<1e-5
+        assert abs(r['ready_latency_ms']-(r['end_time']-r['planned_ready_time'])*1000)<1e-5
+        assert r['end_time']<=summary['wall_service_end_time']
         sample=samples[r['source_group']]
         score,metric,source=scorer(sample['dataset'],sample['task'],r['output_text'],sample.get('answer',''))
         assert abs(score-r['task_score'])<1e-12 and metric==r['task_metric'] and source==r['metric_source']
@@ -120,6 +136,7 @@ def audit_cell(study,job,slo,phase,scorer,samples):
     assert requested.issubset(observed)
     server_rpc=len(re.findall(r'"POST /v1/contractkv/verify HTTP/1\.[01]" 200', (cell/'server.log').read_text(encoding='utf-8',errors='replace')))
     assert server_rpc==len(requested),'Server HTTP log and request ledger disagree'
+    assert summary['verification_calls']==server_rpc
     decisions={};plans={};witnesses={};active={};registrations=[];wave_business=defaultdict(list)
     for r in rows:
         typ=r['row_type']
@@ -132,7 +149,9 @@ def audit_cell(study,job,slo,phase,scorer,samples):
     decision_wave={}
     for r in business:
         k=(r['certificate_namespace'],r['query_scope'])
-        if r['scope_first_decision_business'] and k in decisions:decision_wave.setdefault(r['wave_index'],decisions[k])
+        if r['scope_first_decision_business'] and k in decisions:
+            previous=decision_wave.setdefault(r['wave_index'],decisions[k])
+            assert (previous['certificate_namespace'],previous['query_scope'])==k,'Multiple decisions in one wave need an explicit union timing analysis'
     requests=[]
     for r in rows:
         typ=r['row_type']

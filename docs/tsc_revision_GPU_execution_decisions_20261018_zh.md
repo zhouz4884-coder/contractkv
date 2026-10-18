@@ -170,3 +170,13 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 R3.1新增实际顺序提取：直接核三份TableI原始gzip的completion SHA，读全部3,750实际messages/character_spans，交付五家族初轮/未来轮和2–18条真实历史消息的位置。旧R4另500 CPU渲染、新桥梁另60 CPU渲染，已导入源均匹配各自freeze，区别于实际GPU数量。受控TOOL_OBS包装不包含增长history，不混成同一协议；旧代码50/100 Repo渲染CODE_PREFIX为空，当前30/30完整包含。Azure固定版本两源码及MIT许可/SHA重新核对，只支持条件性布局例子，不支持生产频率或旧TableI数字。
 
 36项审稿矩阵及按协议分开的性能/尾报告已形成，服务新30单元仍标进行中。逐请求复核纠正了一处我从前摘要沿用的归因推断：54尾请求并非48前序PASS+6失败RPC，而是42前序PASS、6失败RPC、5未发RPC的scope拒绝、1无前序注册。5个scope检查约4–9ms，不能解释全部尾部。原CSV/计时不改，回执faithful_p99_outcomes_recheck_v1保留。该检查的AssertionError曾被PowerShell后续命令掩盖为整体exit0，草稿进入5bebe0c历史；后续立即更正，不改写历史。以后关键检查与发布步骤按真实返回码顺序执行，不以最后一条Git成功替代检查成功。
+
+## 15:14 UTC：全部Raw标定验收与正式协议冻结
+
+原profiles301481/301486实际退出0，7/7 Raw、840业务、756future验收通过。独立分析重新核全部实际Prompt IDs/到达SHA/预定时刻/native/评分，0认证RPC、0compiled，不能把此零数当作认证安全结果。正式prepare核Windowsv3/Linuxv2六检查源完全相同后，一次生成6到达trace、30jobs和390ea831 freeze；58个依赖文件已取回本地逐SHA一致，尚无正式CT输出。
+
+Raw .4/.7/1.05Cq三个点分别107/120、89/120、8/120双SLO达标。高点基线较小，不改lambda或SLO来美化，也不以由小分母放大的倍率当强结论。正式优先绝对Goodput/达标数/不确定性。
+
+在首个正式CT结果前新增只读统计addendum：固定原390ea831与主进程配对统计，另外联合重采样3 paired进程、每家族3来源，保留来源内所有tenant/turn；仅重加权实际达标分子、对应进程wall保持已测值。主敏感性是绝对Goodput差，不称新队列或来源总体容量CI。出现任何零baseline draw则ratio区间不定义，不加伪计数/删样本。新增GPU0，不改变条件/预算/安全门槛，作为独立文件预公开，不覆盖原freeze。
+
+本次也明确内容保真不等于原生completion包装复现：服务Repo仍用声明的instruction-following chat，CODE_PREFIX后有任务指令；实际顺序公开，不在已冻结Raw之后临时换位置或未经对照将所有M/L语法拒绝归因于它。四份指定MD现均已建立，正式30结果仍待回填，不能据文档数量宣布目标完成。

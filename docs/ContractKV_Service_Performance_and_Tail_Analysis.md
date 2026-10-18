@@ -16,7 +16,7 @@
 | 原TableIII同cohort完整计时重测 | 原历史候选/多级下降与scope不改 | 原策略参数2s/6s保留；新直接wall不抵扣slack | 四配置24cells、4,725future pairs，所有成功/失败/异常计费 | 新计时不是找回July时间戳；旧驱动未留IDs时不借新协议零分歧补造 |
 | 原R4 query-qualified闭环 | 实际首次Raw业务见证，有限query scope与回退 | 双请求共享wave的closed-loop readiness | 36cells、27,000业务；2,442 compiled future未见ID变化，全路由33下降保留 | 历史输入词数截断/代码空白适配限制外部有效性；不能拿低覆盖直接判断正常业务适用性 |
 | 独立保真query-qualified闭环 | 保真16K、同原严格scope/margin/EOS/PSTP | 新六来源、10tenant/template、三fresh重复 | 三模型完整wall Q1.619×/M1.109×/L1.070×；1,296 compiled future无ID/分数变化 | 这是closed-loop全成本，不是开放到达容量；有4个L0下降，p99不普遍改善 |
-| 本轮保真固定到达服务桥梁 | 同严格query-qualified方法与原经济门禁 | 新六来源、6tenant/template、外生双请求wave；Raw-only事前标定 | 4baseline已完成、3Raw profiles运行，24正式未完成 | 不能提前填Contract速度/Goodput，不与旧500ms点混合 |
+| 本轮保真固定到达服务桥梁 | 同严格query-qualified方法与原经济门禁 | 新六来源、6tenant/template、外生双请求wave；Raw-only事前标定 | 7/7 Raw已验收，390ea831正式协议已生成，24正式未完成 | 不能提前填Contract速度/Goodput，不与旧500ms点混合 |
 | 本轮隔离Gate ON/OFF | 只关经济decide，安全资格/PSTP不变 | Qwen单GPU隔离三对，另一GPUidle | 6正式单元尚未完成 | 无隔离Raw基线，不能借并行Raw构造隔离speedup |
 
 固定目录中U个获选query scope可跨tenant分摊，但资格建立费用随U增长。本文不把“同一物理前缀可被不同query资格复用”改写成“所有query只认证一次”。
@@ -112,7 +112,9 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 4个Raw-only baseline/480回答给出单endpoint容量Cq=.313519676、Cm=.198783460、Cl=.212263461req/s；共同arrival=.17890511444180737，Qwen较高点=.3291956598482794。SLO按事前Raw-P95规则得到TTFT11,700ms、平均TPOT435ms，未读Contract结果选阈值。它不是旧500ms SLA。
 
-3个Qwen Raw profiles已启动但尚未结束；之后24主cell与6隔离Gate cell，每cell360业务/324future。正式先冻结全部实际arrival/源/模型/参数/统计，再执行。Raw/Contract同到达、同双请求wave barrier、同GPU与peer负载，r2换卡/先后；最后backend双idle drain在clock内。主Goodput分母为完整wall、分子为全部warm+future同时满足readiness TTFT和平均TPOT的请求；TTFT-only另列。
+7个Raw单元已全部结束，840业务验收通过；3个profile的双SLO达标数为107/120、89/120、8/120，最后一个高点的基线很小，不能据此夸大倍率。之后24主cell与6隔离Gate cell，每cell360业务/324future。实际formal freeze390ea831与6条arrival已生成，待预公开后执行。Raw/Contract同到达、同双请求wave barrier、同GPU与peer负载，r2换卡/先后；最后backend双idle drain在clock内。主Goodput分母为完整wall、分子为全部warm+future同时满足readiness TTFT和平均TPOT的请求；TTFT-only另列。
+
+首个正式Contract结果前增加独立统计addendum：将同一来源的tenant/turn与配对进程一起重采样，分母保留对应已测clock，只检验达标分子对这六个来源构成的敏感性。它不重建重加权后的排队/服务时间，也不作容量总体CI。保留零baseline draws；一旦有此情况，ratio区间不定义，优先绝对Goodput差。原主统计、390ea831及全部在线条件不变。
 
 正常接收的`length`输出、Raw回退、失败注册、在线LP准备、评分/日志和planned idle都保留。启动、依赖导入、catalog与tenant展开在服务begin前，Raw/Contract一致并明确报告。一次RPC/注册的累计工作不是一份可直接从并行wall中相减的独立GPU费用。
 

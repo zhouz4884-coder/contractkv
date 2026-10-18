@@ -1,6 +1,6 @@
 # 保真固定到达服务：Raw-only baseline 标定
 
-2026-10-18 14:40 UTC 后。4/4 个 baseline fresh-server 单元、480 次真实 Raw 业务已完成，原 supervisor285458/worker285459 正常退出0。这里尚无本轮正式 ContractKV 效果。实际参数在669898c公开核SHA后，14:44 UTC启动后续3个Raw profiles，supervisor301481/worker301486，尚未完成。
+2026-10-18 15:14 UTC验收更新。4个baseline与3个Raw profiles共7/7单元、840真实业务已经完成，两个supervisor/worker均正常退出0。完整Raw分析逐请求核实际IDs、到达轨迹、native账本并复算冻结评分通过；这里尚无本轮正式ContractKV效果。
 
 ## 冻结规则推导的实际工作点
 
@@ -40,6 +40,20 @@ Windows从4份实际Raw原文（合计30,174,361 bytes，逐份SHA核验）独�
 
 独立入口：`scripts/tsc_revision_final_raw_local_recompute_v1.py`；回执：`calibration/derived_local_independent_check_v1.json`。原推导算法source SHA不变，适配只涉及输出JSON换行；CPU差异不改变模型、输入或执行参数。
 
+## 三个Raw profiles实际结果
+
+| Qwen负载点 | nominal offered req/s | 实际完整wall s | 达成吞吐req/s | 双SLO达标数 | 绝对Goodput req/s | readiness p99 ms |
+|---|---:|---:|---:|---:|---:|---:|
+| .4Cq | .125407870 | 948.352 | .126535300 | 107/120 | .112827309 | 15,409.35 |
+| .7Cq | .219463773 | 555.664 | .215957914 | 89/120 | .160168787 | 34,334.55 |
+| 1.05Cq | .329195660 | 395.354 | .303525342 | 8/120 | .020235023 | 49,830.45 |
+
+全部无length，实际Qwen pool为1,940 blocks，不能套用原2,386配置。固定计数first-arrival=0、last-arrival=(N−2)/lambda，真实结束时刻另含最后处理/drain，所以低负载达成速率可能略高于nominal；不人为补一个尾空窗或重定义分母。
+
+接近饱和点的Raw达标数很少，这是完整保留的服务现象，不因它调整lambda/SLO或增加有利点。正式结果优先报告绝对Goodput、达标数与不确定性；若倍率来自很小基线，不单独作强性能标题。
+
+在任何正式Contract结果前，另登记`formal_statistics_addendum_v1.json`：保持原primary进程配对分析不变，补充来源/进程联合重采样的**固定实际clock条件下达标分子敏感性**。不重建新queue，不称来源重采样的容量CI；若重采样出现零baseline，不删样本/加伪计数，也不报告误导的ratio区间。
+
 ## 下一个有界步骤
 
-先公开实际derived计划、3个arrival及小型完成回执并核远程SHA，再启动 `.4 / .7 / 1.05 × Cq` 的3个Qwen Raw profiles。前两个在两GPU并行，最后一个独立；全部120请求/单元。profile完成后才生成并公开24服务+6隔离Gate的actual formal freeze，之后执行，不根据Contract效果调整来源、工作点或SLO。
+上述profiles由669898c预公开后执行，已完成。正式30单元的协议/6条arrival及58个依赖文件已取回逐SHA核对；actual formal freeze SHA为`390ea8314f3e60f38c393c7b18873148f5e8d0af69bdeb6b89911cebe03652ff`。待与统计addendum一起公开核远程后启动。原390ea831冻结文件不覆盖，补充统计不改变方法、来源、请求、到达、SLO或安全门槛。

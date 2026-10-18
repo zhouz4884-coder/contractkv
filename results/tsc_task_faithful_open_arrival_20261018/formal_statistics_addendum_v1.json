@@ -1,0 +1,16 @@
+{
+  "schema_version": "contractkv.formal-statistics-addendum.v1",
+  "created_UTC": "2026-10-18T15:18:08.252182+00:00",
+  "formal_freeze_sha256": "390ea8314f3e60f38c393c7b18873148f5e8d0af69bdeb6b89911cebe03652ff",
+  "source_sha256": "bb2992f5cf49255564de2cf79012bcebf8ef99b1252ff186edd762579139dc6d",
+  "seed": 202610182002,
+  "draws": 10000,
+  "formal_GPU_cells_started": 0,
+  "formal_Contract_outputs_seen": 0,
+  "primary_protocol_and_arrivals_SLO_or_admission_unchanged": true,
+  "method": "Paired bootstrap3 observed processes and3 source clusters/family; preserve all associated tenant/turn counts; numerator is actual SLO-compliant request count; each selected process keeps its observed service wall. Absolute Goodput change is the main sensitivity statistic.",
+  "zero_denominator": "Retain zero-baseline draws; if any draw has zero baseline, report ratio interval as undefined. Never add pseudocount or drop unfavorable cells.",
+  "boundary": "Conditional source-composition sensitivity only; no reweighted wall or new queue trajectory/capacity inferred. Original paired-process primary analysis unchanged.",
+  "motivation": "Raw-only near-saturation profile yielded8/120 SLO-compliant requests; report absolute rates/counts and honest finite-source sensitivity, no load/SLO retuning.",
+  "new_GPU_requests": 0
+}

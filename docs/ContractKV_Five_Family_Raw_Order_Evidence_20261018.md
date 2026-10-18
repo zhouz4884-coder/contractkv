@@ -48,6 +48,8 @@
 
 这里的TOOL_OBS为runner事前定义的变化元数据（session/turn/status），不是从生产工具日志采样。该适配器没有增长的CHAT_HISTORY；不将TableI的十轮增长历史实验混入同一个服务时钟或资格作用域。
 
+当前服务协议的保真指**关键内容、代码空白与完整前缀保留**；它仍使用既有instruction-following chat包装，CODE_PREFIX后面还有任务指令。它不是原版RepoBench-C原生completion输入的逐字复现。这个位置差异已明确记录，不在已冻结Raw标定后临时重排或替换协议，也不据它未经对照地解释M/L的全部格式拒绝。
+
 旧R4的100个Repo渲染中有50个CODE_PREFIX节点文本为空，吻合此前5/10来源被1500词预算裁空的审计；标签仍出现在序列中不代表任务字段存在。当前六源渲染的60个USER_QUERY和30个CODE_PREFIX文本包含检查全部通过，CODE_PREFIX没有空节点。
 
 Repo源记录没有原SYS文本，因此旧R4的100个、当前30个Repo body SYS节点为空；外层TSC system消息仍存在，不能将这一点误报成缺失整个system prompt。
