@@ -1,0 +1,24 @@
+{
+  "repair_sha256": "8d3bd864f12fb4d79d275f44ef390b003ffde1eaf868ab69a84936187b719199",
+  "source_sha256": "76d90e25683c1e896063e99297d9b7159ef2cfaab7aa1c57580965901ffe4a70",
+  "proof": {
+    "only_changed_expression": "port=8990+lane -> port=_port_override(model,repeat,lane)",
+    "all_other_function_AST_identical": true,
+    "original_function_AST_sha256": "d4ee83188e105f592b341170c112d853f31f149e54a4ac924528e3e7310a299e",
+    "adapted_function_AST_sha256": "a67b3607e2f7385e90217f5fea6b756f2e417f92367ff4a5f55de40ea15c68fb"
+  },
+  "unique_ports": [
+    9202,
+    9203,
+    9204,
+    9205,
+    9206,
+    9207,
+    9208
+  ],
+  "all_ports_bindable": true,
+  "completed_cells_preserved": 2,
+  "remaining_new_cells": 7,
+  "new_GPU_requests": 0,
+  "no_model_runtime_copy_or_tokenizer_preflight_repeated": true
+}

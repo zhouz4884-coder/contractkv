@@ -1,0 +1,13 @@
+# 仅修复后续wave端口复用，保留已完成2cells
+
+原v3在12:22启动，第一wave的Qwen r1与Mistral r1均完成95次业务、20个行为候选、2个Manifest条件。12:30第二wave在socket.bind阶段报EADDRINUSE。Llama r1、Qwen r2的attempt1均为空目录，没有server/client/responses；所有已有模型进程正常退出。失败state、worker log和exit code保留。
+
+原因是原run_cell每wave都使用8990+lane；已关闭的端口很快被下一wave的非SO_REUSEADDR检查重用。随后的检查无监听/compute进程；没有捕获故障瞬间的socket拥有者，因此TIME_WAIT是有源码和复现时序支持的解释，不宣称唯一已证实原因。
+
+用户要求不重跑完成实验。本修复复用两个完整cell的18个结果/日志文件，只执行其余7cells，共665次业务、最多154次认证RPC。原freeze_v3、55份源文件、四依赖、collector、病例、模型、threshold、scope、评分、PSTP与runtime均不修改，也不重复权重/窗口预检。
+
+执行补充为port_continuation_v4.json，SHA 8d3bd864f12fb4d79d275f44ef390b003ffde1eaf868ab69a84936187b719199。新入口tsc_revision_mechanism_continue_unfinished_v4.py只对原run_cell做一个AST表达式替换：port=8990+lane改为从冻结表读取9202–9208；其余函数AST逐节点相同。GPU lane、case顺序、模型参数及2秒启动间隔保持原样。未开始的cell使用attempt2，不续跑任何部分业务。
+
+CPU检查回执SHA 0ee814b5f1e8bfe9009221cce2288eed9e1f3e6e49c454e16d9a7575161729a5，证明唯一端口均可bind、仅一个AST表达式变化、两个完成cell字节一致。原模型/runtime回执2262851f仍复用。先commit/push核对这份新回执，再执行剩余7cells；不再dispatch旧v3全矩阵。
+
+原GPU_LAUNCH_STATUS记录保留为第一次启动历史；当前以formal_continuation_v4_launch/exit、实际PID/锁和execution_state为准。完成后仍在九个总cell上统一分析，分母不会增加到11，也不会按输出好坏挑选重复。
