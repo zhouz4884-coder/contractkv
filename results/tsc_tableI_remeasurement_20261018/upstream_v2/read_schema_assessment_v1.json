@@ -1,0 +1,772 @@
+{
+  "project_Read_calls": 317,
+  "different_project_Read_paths": 280,
+  "explicit_read_errors_in_exported_text": [
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\risk_ledger\\quality_risk_ledger_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 83,
+      "message": "Error: File content (51697 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13_heterogeneous_serving_raw_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 39,
+      "message": "Error: File content (1.6MB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase20d_one_shot_official_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 71,
+      "message": "Error: File content (273.9KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\heldout_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 86,
+      "message": "Error: File content (270.5KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\development_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 88,
+      "message": "Error: File content (35922 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\heldout_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 21,
+      "message": "Error: File content (61032 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\development_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 22,
+      "message": "Error: File content (27893 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\open_loop_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 18,
+      "message": "Error: File content (295.2KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\multi_tenant_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 23,
+      "message": "Error: File content (54645 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\locality_residency_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 62,
+      "message": "Error: File content (35381 tokens) exceeds maximum allowed tokens (25000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\service_locality_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 65,
+      "message": "Error: File content (508.9KB) exceeds maximum allowed size (256KB). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file."
+    }
+  ],
+  "CSV_headers_returned": [
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\qwen3_8b_context_scaling.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 65,
+      "historical_header": "1\tmodel,max_model_len,max_num_seqs,startup_success,num_prompts,num_success,error_types,avg_ttft_ms,avg_tpot_ms,idle_gpu_mem_gb,peak_gpu_mem_gb,log_path"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\qwen3_8b_actual_context_scaling_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 66,
+      "historical_header": "1\tmodel,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\qwen3_8b_actual_context_scaling_raw.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 67,
+      "historical_header": "1\ttimestamp,run_id,model,configured_max_model_len,actual_prompt_tokens_after_chat_template,target_tokens,prompt_source,prompt_entropy_type,max_num_seqs,temperature,generation_max_tokens,ttft_ms,tpot_ms,total_latency_ms,prompt_tokens,completion_tokens,peak_gpu_mem_gb,vllm_kv_capacity,startup_success,runtime_success,error_type,error_message,log_path,gpu_monitor_path,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\model_feasibility.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 68,
+      "historical_header": "1\ttimestamp,phase,model,model_path,backend,gpu_ids,tensor_parallel_size,dtype,max_model_len,max_num_seqs,gpu_memory_utilization,port,startup_success,startup_time_sec,idle_gpu_mem_gb,peak_gpu_mem_gb,ttft_ms,tpot_ms,output_tokens,error_type,error_message,log_path,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hardware\\h2d_bandwidth.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 78,
+      "historical_header": "1\ttimestamp,direction,src,dst,block_mb,pinned,warmup_iters,iters,median_ms,mean_ms,bandwidth_gbps,error_type,error_message,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hardware\\d2h_bandwidth.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 79,
+      "historical_header": "1\ttimestamp,direction,src,dst,block_mb,pinned,warmup_iters,iters,median_ms,mean_ms,bandwidth_gbps,error_type,error_message,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hardware\\p2p_bandwidth.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 80,
+      "historical_header": "1\ttimestamp,direction,src,dst,block_mb,pinned,warmup_iters,iters,median_ms,mean_ms,bandwidth_gbps,error_type,error_message,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hardware\\copy_decode_interference.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 81,
+      "historical_header": "1\ttimestamp,mode,copy_bandwidth_GBps,decode_tpot_ms_without_copy,decode_tpot_ms_with_copy,slowdown_percent,error_type,error_message,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\datasets\\dataset_readiness.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 82,
+      "historical_header": "1\tdataset,source_zip,source_present,repo_extracted,data_available,prepare_method,sample_count,status,source_note,hf_cache_dir,error_type,error_message"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\risk_ledger\\quality_risk_ledger_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 92,
+      "historical_header": "1\tdataset,task,sample_id,segment_index,segment_type,segment_token_count,total_prompt_tokens,action,baseline_score,action_score,quality_drop,risk_class,evidence_type,evaluation_ready,note"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\llama3_8b_actual_context_scaling_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 93,
+      "historical_header": "1\tmodel,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\env\\model_integrity.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-8ad9529529ca57e8.jsonl",
+      "line": 140,
+      "historical_header": "1\tmodel,path,exists,config,tokenizer,generation_config,num_safetensors,has_index,complete_for_phase,allowed_incomplete,blocks_phase_0_2"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12_prefix_on_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 30,
+      "historical_header": "1\tlayout,num_requests,success_rate,quality_sanity_rate,slo_ttft_ms,slo_compliant_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,mean_prompt_tokens,cached_tokens_observable,mean_cached_tokens,ttft_reduction_vs_raw_pct,p95_ttft_reduction_vs_raw_pct,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12_prefix_off_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 31,
+      "historical_header": "1\tlayout,num_requests,success_rate,quality_sanity_rate,slo_ttft_ms,slo_compliant_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,mean_prompt_tokens,cached_tokens_observable,mean_cached_tokens,ttft_reduction_vs_raw_pct,p95_ttft_reduction_vs_raw_pct,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12_prefix_cache_ab_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 32,
+      "historical_header": "1\tlayout,num_requests,success_rate,quality_sanity_rate,slo_ttft_ms,slo_compliant_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,mean_prompt_tokens,cached_tokens_observable,mean_cached_tokens,ttft_reduction_vs_raw_pct,p95_ttft_reduction_vs_raw_pct,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12b_concurrent_replay_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 33,
+      "historical_header": "1\tlayout,prefix_cache_enabled,concurrency,slo_ttft_ms,total_requests,completed_requests,completion_rate,quality_sanity_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,p95_total_latency_ms,slo_compliant_requests,slo_compliant_req_per_sec,mean_prompt_tokens,cached_tokens_observable,mean_cached_tokens,ttft_reduction_vs_raw_pct,p95_ttft_reduction_vs_raw_pct,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12f_real_vllm_caposc_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 34,
+      "historical_header": "1\tpolicy,slo_ttft_ms,num_requests,completed_requests,completion_rate,quality_sanity_rate,quality_score_mean,mean_real_ttft_ms,p95_real_ttft_ms,mean_real_tpot_ms,p95_real_tpot_ms,mean_real_latency_ms,slo_compliant_requests,slo_compliant_req_per_sec,mean_estimated_lcp_tokens,mean_estimated_new_prefill_tokens,cached_tokens_observable_rate,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12f_lcp_ttft_correlation_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 35,
+      "historical_header": "1\tpolicy,x_metric,y_metric,n,pearson_r,spearman_r,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\prefix_cache\\phase12g_concurrent_caposc_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 36,
+      "historical_header": "1\tconcurrency,policy,slo_ttft_ms,num_requests,completed_requests,completion_rate,quality_sanity_rate,quality_score_mean,mean_real_ttft_ms,p95_real_ttft_ms,mean_real_tpot_ms,mean_real_latency_ms,replay_wall_time_sec,slo_compliant_requests,slo_compliant_req_per_sec,mean_estimated_lcp_tokens,mean_estimated_new_prefill_tokens,cached_tokens_observable_rate,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\real_quality_matrix_qwen3_8b_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 37,
+      "historical_header": "1\tdataset,task,condition,num_samples,mean_score,baseline_mean_score,mean_quality_drop,contains_answer_rate,exact_match_rate,token_f1_mean"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\real_quality_risk_summary_qwen3_8b_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 38,
+      "historical_header": "1\tdataset,task,condition,num_successful_requests,num_context_overflow,mean_score,baseline_mean_score,mean_quality_drop,risk_source,notes"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13_heterogeneous_serving_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 40,
+      "historical_header": "1\tpolicy,concurrency,slo_ttft_ms,num_requests,completed_requests,completion_rate,capacity_failures,quality_bad_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,slo_compliant_requests,slo_compliant_req_per_sec,compiler_overhead_ms_mean,caposc_selected_policy_mix,sspp_hidden_fraction_mean,sspp_residual_stall_ms_mean,rar_events,total_blocks_freed,mean_block_headroom_gain,total_recompute_tokens_saved,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13_heterogeneous_serving_case_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 41,
+      "historical_header": "1\tcase_type,policy,concurrency,num_requests,quality_bad_rate,mean_ttft_ms,p95_ttft_ms,slo_compliant_req_per_sec,sspp_hidden_fraction_mean,rar_events,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\qwen3_8b_actual_context_scaling_raw.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 42,
+      "historical_header": "1\ttimestamp,run_id,model,configured_max_model_len,actual_prompt_tokens_after_chat_template,target_tokens,prompt_source,prompt_entropy_type,max_num_seqs,temperature,generation_max_tokens,ttft_ms,tpot_ms,total_latency_ms,prompt_tokens,completion_tokens,peak_gpu_mem_gb,vllm_kv_capacity,startup_success,runtime_success,error_type,error_message,log_path,gpu_monitor_path,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\qwen3_8b_actual_context_scaling_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 43,
+      "historical_header": "1\tmodel,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\llama3_8b_actual_context_scaling_raw.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 44,
+      "historical_header": "1\ttimestamp,run_id,model,configured_max_model_len,actual_prompt_tokens_after_chat_template,target_tokens,prompt_source,prompt_entropy_type,max_num_seqs,temperature,generation_max_tokens,ttft_ms,tpot_ms,total_latency_ms,prompt_tokens,completion_tokens,peak_gpu_mem_gb,vllm_kv_capacity,startup_success,runtime_success,error_type,error_message,log_path,gpu_monitor_path,commit_hash"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\baselines\\llama3_8b_actual_context_scaling_summary.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 45,
+      "historical_header": "1\tmodel,configured_max_model_len,target_tokens,actual_prompt_tokens_after_chat_template,prompt_source,prompt_entropy_type,max_num_seqs,num_runs,num_success,avg_ttft_ms,p50_ttft_ms,p95_ttft_ms,avg_tpot_ms,p50_tpot_ms,p95_tpot_ms,avg_total_latency_ms,peak_gpu_mem_gb,error_types"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase15b_async_capacity_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 76,
+      "historical_header": "1\tpolicy,arrival_rate_rps,seeds,cells,all_seeds_stable,min_completed_requests,min_second_half_samples_required,mean_completion_rate,max_p95_ttft_ms,mean_slo_goodput_rps,max_end_backlog,max_queue_slope,mean_primer_latency_ms,mean_cold_start_amortized_latency_ms,max_p95_send_lag_ms,max_p99_send_lag_ms,mean_new_prefill_tokens,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase15b_shared_capacity_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 77,
+      "historical_header": "1\tpolicy,arrival_rate_rps,seeds,cells,all_seeds_stable,min_completed_requests,min_second_half_samples_required,mean_completion_rate,max_p95_ttft_ms,mean_slo_goodput_rps,max_end_backlog,max_queue_slope,mean_primer_latency_ms,mean_cold_start_amortized_latency_ms,mean_new_prefill_tokens,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase15_slc_teacher_forced_summary_v2.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 78,
+      "historical_header": "1\tpartition,dataset,task,candidates,unsafe_candidates,certificate_issued,certificate_issue_rate,unsafe_rejected,unsafe_rejection_rate,safe_candidates,safe_certified,safe_certificate_coverage,mean_token_path_match_rate,mean_minimum_logit_margin,retained_prefix_gain_fraction,mean_verification_ms,p95_verification_ms,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase15_slc_teacher_forced_summary_v1.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 79,
+      "historical_header": "1\tpartition,dataset,task,candidates,unsafe_candidates,certificate_issued,certificate_issue_rate,unsafe_rejected,unsafe_rejection_rate,safe_candidates,safe_certified,safe_certificate_coverage,mean_token_path_match_rate,mean_minimum_logit_margin,retained_prefix_gain_fraction,mean_verification_ms,p95_verification_ms,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase15d_active_tenant_interference_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 80,
+      "historical_header": "1\tseed,condition,active_requests,shadow_requests,active_success_rate,active_mean_ttft_ms,active_p95_ttft_ms,active_mean_latency_ms,active_p95_latency_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase15d_task_bearing_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 81,
+      "historical_header": "1\tsessions,future_pairs,certificate_issue_rate,future_mismatch_rate,future_mismatch_wilson95_upper,certificate_revocations,mean_quality_drop,max_quality_drop,mean_deployed_ttft_ms,p95_deployed_ttft_ms,mean_deployed_new_prefill_tokens,warm_raw_mean_ttft_ms,warm_deployed_mean_ttft_ms,warm_ttft_reduction_fraction,warm_raw_mean_new_prefill_tokens,warm_deployed_mean_new_prefill_tokens,warm_new_prefill_reduction_fraction,hidden_fraction_100ms,hidden_fraction_500ms,hidden_fraction_2000ms,violated_edge_rows,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase16e_qwen3_4b_live_ephemeral_transaction_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 82,
+      "historical_header": "1\tmodel,action,shadow_request_id,probe_request_id,shadow_success,probe_success,shadow_marker_ok,probe_marker_ok,shadow_ttft_ms,probe_ttft_ms,shadow_prompt_tokens,shadow_new_prefill_tokens,probe_prompt_tokens,probe_new_prefill_tokens,probe_cached_tokens,cache_reuse_fraction,expected_cache_visibility,gate_pass,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase16e_qwen3_4b_fair_fullcap_chunk16_interference_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 83,
+      "historical_header": "1\tmodel,condition,active_requests,active_success_rate,shadow_requests,shadow_success_rate,active_mean_ttft_ms,active_p95_ttft_ms,active_p99_ttft_ms,active_mean_latency_ms,active_p95_latency_ms,p95_penalty_ms,p95_penalty_fraction,gate_pass,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase16e_qwen3_4b_fair_fullcap_chunk32_interference_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 84,
+      "historical_header": "1\tmodel,condition,active_requests,active_success_rate,shadow_requests,shadow_success_rate,active_mean_ttft_ms,active_p95_ttft_ms,active_p99_ttft_ms,active_mean_latency_ms,active_p95_latency_ms,p95_penalty_ms,p95_penalty_fraction,gate_pass,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13_heterogeneous_serving_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 85,
+      "historical_header": "1\tpolicy,concurrency,slo_ttft_ms,num_requests,completed_requests,completion_rate,capacity_failures,quality_bad_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_total_latency_ms,slo_compliant_requests,slo_compliant_req_per_sec,compiler_overhead_ms_mean,caposc_selected_policy_mix,sspp_hidden_fraction_mean,sspp_residual_stall_ms_mean,rar_events,total_blocks_freed,mean_block_headroom_gain,total_recompute_tokens_saved,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13c_live_capacity_cliff_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 86,
+      "historical_header": "1\tpolicy,concurrency,attempted_requests,completed_requests,completion_rate,capacity_failures,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,slo_compliant_requests,slo_compliant_req_per_sec,rar_planned_rows,total_blocks_freed_planned,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase13c_live_capacity_cliff_enriched_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-ff7da64f212c2df9.jsonl",
+      "line": 87,
+      "historical_header": "1\tpolicy,concurrency,attempted_requests,completed_requests,capacity_failures,completion_rate,mean_ttft_ms,p95_ttft_ms,slo_compliant_requests,slo_compliant_req_per_sec,event_joined_rows,positive_free_block_event_rows,sum_observed_free_block_delta,sum_observed_suffix_blocks_freed,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase21_cross_model_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 65,
+      "historical_header": "1\tmodel,evaluation_status,future_requests,completion_rate,safe_coverage,unsafe_certified_sessions,fresh_future_recertification_rejections,future_quality_violation_rate,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction_vs_raw,raw_mean_new_prefill_tokens,contract_mean_new_prefill_tokens,new_prefill_reduction_vs_raw,certified_prefix_reuse_fraction,max_dynamic_suffix_reuse_tokens,diagnosis"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase21a_llama_future_turn_audit_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 67,
+      "historical_header": "1\tcandidate_finish_reason,candidate_output,candidate_score,dataset,diagnosis,dynamic_observation,error_message,error_type,fresh_certificate_issued,fresh_txn_state,fresh_verify_decision,quality_drop,quality_error,quality_metric,raw_finish_reason,raw_output,raw_score,sample_id,selected_layout,session_id,task,turn0_certificate_issued,turn_id"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase20d_one_shot_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 68,
+      "historical_header": "1\tcapacity_failures,certified_prefix_reuse_fraction,completed_requests,completion_rate,ephemeral_abort_clean_rate,foreground_p95_extra_interference_ms,max_dynamic_suffix_reuse_tokens,max_quality_drop,mean_latency_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_tpot_ms,mean_ttft_ms,net_ttft_reduction_vs_raw,new_prefill_reduction_vs_raw,p95_tpot_ms,p95_ttft_ms,policy,promotion_commit_observed_rate,promotion_success_rate,quality_violation_rate,requests,retained_prefix_gain_vs_raw,safe_coverage,tier1_coverage,tier2_attempted_count,tier2_budget_admission_rate,tier2_contract_pass_rate,tier2_incremental_coverage,tier2_invocation_rate,tier2_p95_slack_overrun_fraction,tier2_promoted_count,unsafe_certified"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase20d_one_shot_slo_curve_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 70,
+      "historical_header": "1\tcompleted,policy,slo_compliant,slo_compliant_fraction,slo_compliant_req_per_sec,slo_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\heldout_slo_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 85,
+      "historical_header": "1\tcompleted,partition,policy,slo_compliant,slo_compliant_fraction,slo_compliant_req_per_sec,slo_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\development_slo_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 87,
+      "historical_header": "1\tcompleted,partition,policy,slo_compliant,slo_compliant_fraction,slo_compliant_req_per_sec,slo_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\load_extension_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 89,
+      "historical_header": "1\tcompleted_requests,completion_rate,concurrency,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_tpot_ms,mean_ttft_ms,mean_ttft_reduction_vs_raw,new_prefill_reduction_vs_raw,p95_ttft_ms,policy,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\quality\\phase20a_official_quality_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 101,
+      "historical_header": "1\tphase,partition,load_tier,dataset,task,policy,pairs,raw_mean,policy_mean,paired_difference,bootstrap_ci_low,bootstrap_ci_high,material_drop_gt_0_03,certified,unsafe_certified,metric,metric_source"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\quality\\phase20a_slo_sensitivity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 103,
+      "historical_header": "1\tpolicy,load_tier,concurrency,slo_ms,requests,compliant_requests,compliant_req_per_sec,absolute_gain_vs_raw,multiplicative_gain_vs_raw,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\quality\\phase20a_slack_sensitivity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 104,
+      "historical_header": "1\tload_tier,concurrency,slack_ms,future_requests,observed_mean_ttft_ms,unhidden_verifier_ms_per_future,net_mean_ttft_ms,raw_mean_ttft_ms,net_reduction_vs_raw,break_even_slack_ms,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase19b_task_replay_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 106,
+      "historical_header": "1\tpolicy,load_tier,concurrency,future_requests,completion_rate,certificate_issue_rate,quality_violation_rate,output_contract_mismatch_rate,mean_quality_drop,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,mean_latency_ms,mean_prefix_hit_tokens,mean_new_prefill_tokens,mean_prefix_hit_fraction,certified_prefix_hit_fraction,max_dynamic_suffix_reuse_tokens,slo_compliant_req_per_sec,unhidden_verifier_ms_per_future_request,net_mean_ttft_ms,net_ttft_reduction_vs_raw,new_prefill_reduction_vs_raw,retained_prefix_gain_rate,slo_goodput_gain_vs_raw,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\load_extension_slo_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 136,
+      "historical_header": "1\tconcurrency,policy,slo_compliant,slo_compliant_fraction,slo_compliant_req_per_sec,slo_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase18_c3_c4_source_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 164,
+      "historical_header": "1\tcell,seeds,foreground_requests_per_condition,verifier_requests,baseline_p95_ttft_ms,live_p95_ttft_ms,pooled_p95_penalty_ms,mean_per_seed_p95_penalty_ms,median_per_seed_p95_penalty_ms,max_per_seed_p95_penalty_ms,per_seed_p95_penalty_ms,foreground_success_rate,verifier_success_rate,pending_futures,orphan_outputs,duplicate_outputs,lifecycle_gate_pass,pooled_interference_gate_pass,median_seed_interference_gate_pass,all_seed_guard_pass,gate_pass,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase18_control_plane_ablation_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-52501eed8c3ed7cf.jsonl",
+      "line": 165,
+      "historical_header": "1\tcell,trace_mode,parking,compact_result,foreground_requests,verifier_requests,baseline_p95_ttft_ms,live_p95_ttft_ms,p95_penalty_ms,active_success_rate,verifier_success_rate,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\end_to_end\\phase19b_task_replay_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 4,
+      "historical_header": "1\tpolicy,load_tier,concurrency,future_requests,completion_rate,certificate_issue_rate,quality_violation_rate,output_contract_mismatch_rate,mean_quality_drop,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,mean_latency_ms,mean_prefix_hit_tokens,mean_new_prefill_tokens,mean_prefix_hit_fraction,certified_prefix_hit_fraction,max_dynamic_suffix_reuse_tokens,slo_compliant_req_per_sec,unhidden_verifier_ms_per_future_request,net_mean_ttft_ms,net_ttft_reduction_vs_raw,new_prefill_reduction_vs_raw,retained_prefix_gain_rate,slo_goodput_gain_vs_raw,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\phase21_cross_model_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 7,
+      "historical_header": "1\tmodel,evaluation_status,future_requests,completion_rate,safe_coverage,unsafe_certified_sessions,fresh_future_recertification_rejections,future_quality_violation_rate,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction_vs_raw,raw_mean_new_prefill_tokens,contract_mean_new_prefill_tokens,new_prefill_reduction_vs_raw,certified_prefix_reuse_fraction,max_dynamic_suffix_reuse_tokens,diagnosis"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\heldout_slo_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 9,
+      "historical_header": "1\tcompleted,partition,policy,slo_compliant,slo_compliant_fraction,slo_compliant_req_per_sec,slo_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\mistral\\load_extension_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 10,
+      "historical_header": "1\tcompleted_requests,completion_rate,concurrency,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_tpot_ms,mean_ttft_ms,mean_ttft_reduction_vs_raw,new_prefill_reduction_vs_raw,p95_ttft_ms,policy,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\quality\\phase20a_slo_sensitivity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 11,
+      "historical_header": "1\tpolicy,load_tier,concurrency,slo_ms,requests,compliant_requests,compliant_req_per_sec,absolute_gain_vs_raw,multiplicative_gain_vs_raw,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\quality\\phase20a_slack_sensitivity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 12,
+      "historical_header": "1\tload_tier,concurrency,slack_ms,future_requests,observed_mean_ttft_ms,unhidden_verifier_ms_per_future,net_mean_ttft_ms,raw_mean_ttft_ms,net_reduction_vs_raw,break_even_slack_ms,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\phase18_control_plane_ablation_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-1f7392b7ae4c1b91.jsonl",
+      "line": 13,
+      "historical_header": "1\tcell,trace_mode,parking,compact_result,foreground_requests,verifier_requests,baseline_p95_ttft_ms,live_p95_ttft_ms,p95_penalty_ms,active_success_rate,verifier_success_rate,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\physical_dedup_memory_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-12b3a37e4d66c481.jsonl",
+      "line": 77,
+      "historical_header": "1\tmodel,sessions,shared_target_tokens,fresh_process_repeats,raw_completion_rate,contract_completion_rate,quality_sanity_rate,block_size,kv_bytes_per_token,kv_mib_per_block,raw_mean_effective_unique_blocks,contract_mean_effective_unique_blocks,observed_physical_blocks_saved,observed_kv_mib_saved,observed_kv_gib_saved,raw_mean_newly_allocated_blocks,contract_mean_newly_allocated_blocks,raw_mean_used_block_high_water,contract_mean_used_block_high_water,peak_used_blocks_saved,peak_used_kv_mib_saved,peak_used_kv_gib_saved,raw_mean_minimum_free_blocks,contract_mean_minimum_free_blocks,raw_peak_concurrent_logical_refs,raw_peak_concurrent_unique_blocks,raw_peak_concurrent_reference_blocks_avoided,contract_peak_shared_physical_blocks,contract_peak_logical_refs,contract_peak_concurrent_unique_blocks,contract_peak_concurrent_reference_blocks_avoided,net_concurrent_reference_blocks_avoided,net_concurrent_kv_mib_saved,net_concurrent_kv_gib_saved,contract_peak_refcount_match_rate,raw_mean_ttft_ms,contract_mean_ttft_ms,ttft_reduction,max_observed_concurrency_without_oom,oom_boundary,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-12b3a37e4d66c481.jsonl",
+      "line": 78,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_cells_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-12b3a37e4d66c481.jsonl",
+      "line": 86,
+      "historical_header": "1\tmodel,repeat,policy,source_path,future_requests,completed_requests,completion_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_task_score,peak_used_kv_blocks,minimum_free_kv_blocks,unhidden_verifier_ms_per_request,net_mean_ttft_ms,slo_ms,slo_compliant_requests,slo_compliant_req_per_sec,certificate_scope_invalid_fallback_requests,certificate_scope_invalid_admitted_requests,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-12b3a37e4d66c481.jsonl",
+      "line": 87,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\heldout_scope_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 20,
+      "historical_header": "1\tcertificate_session_coverage,certified_prefix_reuse,completion_rate,contract_mean_new_prefill_tokens,contract_mean_ttft_ms,contract_p95_ttft_ms,contract_slo_goodput,fresh_process_repeats,frozen_level,future_requests,max_dynamic_suffix_reuse_tokens,net_mean_ttft_reduction,new_prefill_reduction,p95_ttft_reduction,policy_attributable_quality_violations,quality_violations,raw_fallback_pair_differences,raw_mean_new_prefill_tokens,raw_mean_ttft_ms,raw_p95_ttft_ms,raw_slo_goodput,scope,scope_invalid_admissions,sessions,slo_goodput_gain"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\heldout_scope_repeats_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 23,
+      "historical_header": "1\tcertificate_session_coverage,certified_prefix_reuse,completion_rate,contract_mean_new_prefill_tokens,contract_mean_ttft_ms,contract_p95_ttft_ms,contract_slo_goodput,frozen_level,future_requests,max_dynamic_suffix_reuse_tokens,net_mean_ttft_reduction,new_prefill_reduction,p95_ttft_reduction,policy_attributable_quality_violations,quality_violations,raw_fallback_pair_differences,raw_mean_new_prefill_tokens,raw_mean_ttft_ms,raw_p95_ttft_ms,raw_slo_goodput,repeat,scope,scope_invalid_admissions,sessions,slo_goodput_gain"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\heldout_level_selection_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 24,
+      "historical_header": "1\teffective_level,family,repeat,requested_level,session_count"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\development_layout_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 25,
+      "historical_header": "1\tadmitted_session_coverage,certified_prefix_reuse,completion_rate,development_sessions,eligible,family,first_violating_turn,future_quality_violations,future_requests,length_stop_unsafe_admissions,level,max_dynamic_suffix_reuse_tokens,new_prefill_reduction,policy_attributable_quality_violations,raw_fallback_pair_differences,retained_prefix_gain_tokens,scope_invalid_admissions,turn0_verifier_evaluated,turn0_verifier_pass_rate"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\layout_ladder_heldout_descent_ablation_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 29,
+      "historical_header": "1\trepeat,strategy,sessions,future_requests,completion_rate,safe_completed_session_coverage,policy_attributable_quality_violations,retained_prefix_gain_tokens_vs_raw,new_prefill_reduction_vs_raw,certified_prefix_physical_reuse,max_dynamic_suffix_reuse_tokens"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\layout_ladder_ablation_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 30,
+      "historical_header": "1\tstrategy,sessions,future_requests,completion_rate,promoted_session_coverage,safe_promoted_session_coverage,safe_completed_session_coverage,unsafe_promoted_sessions,policy_attributable_quality_violations,quality_violation_rate,scope_invalid_admissions,length_stop_unsafe_admissions,mean_prefix_hit_tokens,retained_prefix_gain_tokens_vs_raw,mean_new_prefill_tokens,new_prefill_reduction_vs_raw,certified_prefix_physical_reuse,max_dynamic_suffix_reuse_tokens,L0_sessions,L1_sessions,L2_sessions,L3_sessions,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\qualification_cost_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 31,
+      "historical_header": "1\tdevelopment_sessions,families,layout_cells,development_wall_seconds,development_gpus,development_gpu_hours,qualification_manifest_bytes,runtime_lookup_iterations,runtime_lookup_mean_us,runtime_lookup_p95_us,mean_samples_for_80pct_stability,max_samples_for_80pct_stability,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\qualification_sample_stability_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 33,
+      "historical_header": "1\tfamily,frozen_level,minimum_samples_for_80pct_stability,minimum_samples_for_100pct_stability,five_session_selection_stable"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_broad_generalization_r3\\qualification_sample_stability_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 34,
+      "historical_header": "1\tfamily,samples_per_family,subsets_evaluated,full_five_session_level,selection_agreement_fraction,selected_L0_count,selected_L1_count,selected_L2_count,selected_L3_count,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\scale_up\\qwen3_14b_tp2_v0\\repeat_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 54,
+      "historical_header": "1\trepeat,sessions,concurrency,raw_completion_rate,contract_completion_rate,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,raw_p95_ttft_ms,contract_p95_ttft_ms,raw_mean_tpot_ms,contract_mean_tpot_ms,raw_mean_new_prefill_tokens,contract_mean_new_prefill_tokens,new_prefill_reduction_vs_raw,net_mean_ttft_reduction_vs_raw,p95_ttft_reduction_vs_raw,certificate_coverage,certified_prefix_physical_reuse,mean_reused_physical_blocks,peak_physical_block_count,max_dynamic_suffix_reuse_tokens,raw_slo_compliant_req_per_sec,contract_slo_compliant_req_per_sec,slo_goodput_gain_vs_raw,policy_attributable_quality_violations,raw_fallback_pair_differences"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\scale_up\\qwen3_14b_tp2_v0\\aggregate_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 55,
+      "historical_header": "1\tscope,repeats,sessions_per_repeat,raw_completion_rate,contract_completion_rate,raw_mean_ttft_ms,raw_mean_ttft_ms_min,raw_mean_ttft_ms_max,contract_mean_ttft_ms,contract_mean_ttft_ms_min,contract_mean_ttft_ms_max,contract_net_mean_ttft_ms,contract_net_mean_ttft_ms_min,contract_net_mean_ttft_ms_max,raw_p95_ttft_ms,raw_p95_ttft_ms_min,raw_p95_ttft_ms_max,contract_p95_ttft_ms,contract_p95_ttft_ms_min,contract_p95_ttft_ms_max,raw_mean_tpot_ms,contract_mean_tpot_ms,raw_mean_new_prefill_tokens,contract_mean_new_prefill_tokens,new_prefill_reduction_vs_raw,new_prefill_reduction_vs_raw_min,new_prefill_reduction_vs_raw_max,net_mean_ttft_reduction_vs_raw,net_mean_ttft_reduction_vs_raw_min,net_mean_ttft_reduction_vs_raw_max,p95_ttft_reduction_vs_raw,p95_ttft_reduction_vs_raw_min,p95_ttft_reduction_vs_raw_max,certificate_coverage,certified_prefix_physical_reuse,mean_reused_physical_blocks,peak_physical_block_count,max_dynamic_suffix_reuse_tokens,raw_slo_compliant_req_per_sec,contract_slo_compliant_req_per_sec,slo_goodput_gain_vs_raw,policy_attributable_quality_violations,raw_fallback_pair_differences"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\scale_up\\qwen3_14b_tp2_v0\\quality_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 56,
+      "historical_header": "1\trepeat,session_id,turn_id,dataset,task,raw_score,contract_score,quality_drop,output_contract_match,output_contract_type,effective_policy,certificate_issued,policy_attributable_quality_violation,raw_fallback_pair_difference"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\scale_up\\qwen3_14b_tp2_v0\\family_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 57,
+      "historical_header": "1\trepeat,family,future_pairs,mean_raw_score,mean_contract_score,mean_quality_drop,policy_attributable_quality_violations,raw_fallback_pair_differences,promoted_fraction"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 60,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_cells_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 61,
+      "historical_header": "1\tmodel,repeat,policy,source_path,future_requests,completed_requests,completion_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_task_score,peak_used_kv_blocks,minimum_free_kv_blocks,unhidden_verifier_ms_per_request,net_mean_ttft_ms,slo_ms,slo_compliant_requests,slo_compliant_req_per_sec,certificate_scope_invalid_fallback_requests,certificate_scope_invalid_admitted_requests,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_repeats\\submission_repeat_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 62,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\external_baseline\\external_system_matrix_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 79,
+      "historical_header": "1\tmodel,cell,runtime,prompt_layout,fresh_process_repeats,mean_ttft_ms,mean_p95_ttft_ms,mean_tpot_ms,mean_prompt_tokens,mean_new_prefill_tokens,mean_prefix_hit_tokens,prefill_counter_scope,total_observed_new_prefill_tokens,total_observed_prefix_hit_tokens,peak_kv_usage_fraction,peak_kv_token_slots,mean_wall_slo_goodput,mean_task_score,completion_rate,peak_kv_blocks,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_qualified_replay\\aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 80,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_qualified_replay\\cells_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 81,
+      "historical_header": "1\tmodel,repeat,policy,source_path,future_requests,completed_requests,completion_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_task_score,peak_used_kv_blocks,minimum_free_kv_blocks,unhidden_verifier_ms_per_request,net_mean_ttft_ms,slo_ms,slo_compliant_requests,slo_compliant_req_per_sec,certificate_scope_invalid_fallback_requests,certificate_scope_invalid_admitted_requests,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_qualified_replay\\pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 83,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\cross_model\\llama_qualified_replay\\quality_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 84,
+      "historical_header": "1\trepeat,session_id,turn_id,dataset,task,sample_id,raw_score,contract_score,quality_drop,quality_violation,metric,metric_source,certificate_issued,certificate_scope_valid,effective_policy"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\hard_systems\\physical_dedup_memory_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-7b45e25c1f817948.jsonl",
+      "line": 104,
+      "historical_header": "1\tmodel,sessions,shared_target_tokens,fresh_process_repeats,raw_completion_rate,contract_completion_rate,quality_sanity_rate,block_size,kv_bytes_per_token,kv_mib_per_block,raw_mean_effective_unique_blocks,contract_mean_effective_unique_blocks,observed_physical_blocks_saved,observed_kv_mib_saved,observed_kv_gib_saved,raw_mean_newly_allocated_blocks,contract_mean_newly_allocated_blocks,raw_mean_used_block_high_water,contract_mean_used_block_high_water,peak_used_blocks_saved,peak_used_kv_mib_saved,peak_used_kv_gib_saved,raw_mean_minimum_free_blocks,contract_mean_minimum_free_blocks,raw_peak_concurrent_logical_refs,raw_peak_concurrent_unique_blocks,raw_peak_concurrent_reference_blocks_avoided,contract_peak_shared_physical_blocks,contract_peak_logical_refs,contract_peak_concurrent_unique_blocks,contract_peak_concurrent_reference_blocks_avoided,net_concurrent_reference_blocks_avoided,net_concurrent_kv_mib_saved,net_concurrent_kv_gib_saved,contract_peak_refcount_match_rate,raw_mean_ttft_ms,contract_mean_ttft_ms,ttft_reduction,max_observed_concurrency_without_oom,oom_boundary,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_cross_model_bootstrap_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 42,
+      "historical_header": "1\tmodel,scope,sessions,future_requests_per_repeat,fresh_process_repeats,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,slo_ms,session_sha256,session_clusters,estimate_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,estimate_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,estimate_raw_slo_req_per_sec,bootstrap95_low_raw_slo_req_per_sec,bootstrap95_high_raw_slo_req_per_sec,estimate_contract_slo_req_per_sec,bootstrap95_low_contract_slo_req_per_sec,bootstrap95_high_contract_slo_req_per_sec,claim_boundary,net_ttft_speedup,slo_goodput_multiplier"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_cross_model_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 43,
+      "historical_header": "1\tmodel,paired_future_outputs,mean_raw_score,mean_contract_score,mean_quality_drop,max_quality_drop,quality_violations,scope_invalid_admitted,certificate_coverage,gate_pass"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_qwen_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 44,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_mistral_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 45,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_qwen_cells_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 46,
+      "historical_header": "1\tmodel,repeat,policy,source_path,future_requests,completed_requests,completion_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_task_score,peak_used_kv_blocks,minimum_free_kv_blocks,unhidden_verifier_ms_per_request,net_mean_ttft_ms,slo_ms,slo_compliant_requests,slo_compliant_req_per_sec,certificate_scope_invalid_fallback_requests,certificate_scope_invalid_admitted_requests,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_mistral_cells_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 47,
+      "historical_header": "1\tmodel,repeat,policy,source_path,future_requests,completed_requests,completion_rate,mean_ttft_ms,p95_ttft_ms,mean_tpot_ms,p95_tpot_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_task_score,peak_used_kv_blocks,minimum_free_kv_blocks,unhidden_verifier_ms_per_request,net_mean_ttft_ms,slo_ms,slo_compliant_requests,slo_compliant_req_per_sec,certificate_scope_invalid_fallback_requests,certificate_scope_invalid_admitted_requests,wall_time_s"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_qwen_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 48,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_mistral_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 49,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_qwen_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 65,
+      "historical_header": "1\tmodel,repeat,session_id,turn_id,sample_id,raw_score,contract_score,quality_drop,quality_violation,metric,metric_source,certificate_issued,certificate_scope_valid,effective_policy"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_mistral_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 66,
+      "historical_header": "1\tmodel,repeat,session_id,turn_id,sample_id,raw_score,contract_score,quality_drop,quality_violation,metric,metric_source,certificate_issued,certificate_scope_valid,effective_policy"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\common_ruler_cross_model_quality_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 99,
+      "historical_header": "1\tmodel,paired_future_outputs,mean_raw_score,mean_contract_score,mean_quality_drop,max_quality_drop,quality_violations,scope_invalid_admitted,certificate_coverage,gate_pass"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\ruler_extended_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 109,
+      "historical_header": "1\tmodel,fresh_process_repeats,mean_net_mean_ttft_reduction,min_net_mean_ttft_reduction,max_net_mean_ttft_reduction,bootstrap95_low_net_mean_ttft_reduction,bootstrap95_high_net_mean_ttft_reduction,mean_p95_ttft_reduction,min_p95_ttft_reduction,max_p95_ttft_reduction,bootstrap95_low_p95_ttft_reduction,bootstrap95_high_p95_ttft_reduction,mean_new_prefill_reduction,min_new_prefill_reduction,max_new_prefill_reduction,bootstrap95_low_new_prefill_reduction,bootstrap95_high_new_prefill_reduction,mean_slo_goodput_gain,min_slo_goodput_gain,max_slo_goodput_gain,bootstrap95_low_slo_goodput_gain,bootstrap95_high_slo_goodput_gain,all_complete,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\submission_supplement\\ruler_extended_pairs_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-2ff942f7fb39f0d6.jsonl",
+      "line": 110,
+      "historical_header": "1\tmodel,repeat,raw_mean_ttft_ms,contract_mean_ttft_ms,contract_net_mean_ttft_ms,net_mean_ttft_reduction,raw_p95_ttft_ms,contract_p95_ttft_ms,p95_ttft_reduction,raw_new_prefill_tokens,contract_new_prefill_tokens,new_prefill_reduction,raw_slo_req_per_sec,contract_slo_req_per_sec,slo_goodput_gain,raw_completion_rate,contract_completion_rate,scope_invalid_fallback_requests,scope_invalid_admitted_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\open_loop_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 17,
+      "historical_header": "1\tarrival_mode,fresh_process_cells,future_requests,load_fraction,mean_achieved_throughput_rps,mean_completion_rate,mean_max_scheduler_waiting_requests,mean_mean_gpu_utilization_percent,mean_mean_latency_ms,mean_mean_new_prefill_tokens,mean_mean_prefix_hit_tokens,mean_mean_scheduler_wait_ms,mean_mean_tpot_ms,mean_mean_ttft_ms,mean_mean_verification_ms,mean_metric_join_rate,mean_minimum_free_gpu_blocks,mean_p95_client_send_lag_ms,mean_p95_gpu_utilization_percent,mean_p95_ttft_ms,mean_p99_client_send_lag_ms,mean_p99_scheduler_wait_ms,mean_p99_ttft_ms,mean_peak_gpu_memory_mib,mean_peak_used_gpu_blocks,mean_quality_sanity_rate,mean_raw_fallback_rate,mean_slo_compliant_goodput_rps,mean_timeout_or_drop_rate,mean_unhidden_verification_ms_per_future_request,model,policy,slo_ttft_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\open_loop_pilot_capacity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 19,
+      "historical_header": "1\tfrozen_baseline_capacity_rps,model,pilot_points,selection_rule,stable_points"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\open_loop_policy_comparison_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 20,
+      "historical_header": "1\tarrival_mode,contractkv_completion_rate,contractkv_timeout_drop_rate,contractkv_vs_raw_goodput_multiplier,contractkv_vs_raw_mean_ttft_reduction,contractkv_vs_raw_new_prefill_reduction,contractkv_vs_raw_p99_ttft_reduction,load_fraction,model,raw_completion_rate,raw_timeout_drop_rate,slo_ttft_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\open_loop_session_bootstrap_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 21,
+      "historical_header": "1\tbootstrap_iterations,cluster_bootstrap_ci_high,cluster_bootstrap_ci_low,model,net_mean_ttft_reduction,sessions"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\multi_tenant_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 22,
+      "historical_header": "1\tfresh_process_cells,kind,mean_actual_verifier_endpoint_calls,mean_allowed_refcount_match_rate,mean_certificate_issue_rate,mean_cold_start_amortized_slo_goodput_rps,mean_completion_rate,mean_concurrent_shared_blocks,mean_dynamic_suffix_reuse_blocks,mean_jain_tenant_slo_fairness,mean_mean_newly_allocated_blocks,mean_mean_registration_ms,mean_mean_scope_check_ms,mean_mean_ttft_ms,mean_mean_verification_ms,mean_minimum_free_gpu_blocks,mean_p95_ttft_ms,mean_p99_ttft_ms,mean_peak_used_gpu_blocks,mean_quality_sanity_rate,mean_raw_fallback_rate,mean_registration_amortized_ms_per_request,mean_scope_check_pass_rate,mean_scope_invalid_admissions,mean_slo_compliant_goodput_rps,mean_total_registration_ms,mean_transaction_commits,mean_unauthorized_cross_tenant_reuse,mean_verification_fanout,mean_weighted_slo_goodput,policy,service_class,sharing_ratio,tenants"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\economics\\mistral_boundary_live_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 24,
+      "historical_header": "1\tpoint_id,lane,model_identity,stable_prefix_tokens,future_reuses,tool_slack_ms,concurrency,raw_completion_rate,contract_completion_rate,raw_quality_sanity_rate,contract_quality_sanity_rate,certificate_issued,effective_policy,verify_decision,txn_state,failure_reason,verification_ms,registration_ms,unhidden_verification_ms,raw_mean_ttft_ms,contract_mean_ttft_ms,saved_ms_per_turn,raw_future_wall_ms,contract_future_wall_ms,net_contract_wall_ms,observed_net_benefit_ms,observed_net_benefit_fraction,raw_warm_success,contract_warm_success,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\economics\\mistral_break_even_contour_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 25,
+      "historical_header": "1\tmodel_identity,stable_prefix_tokens,future_reuses,tool_slack_ms,median_saved_ms_per_turn,median_registration_ms,break_even_reuses,predicted_net_benefit_ms,operating_region,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\economics\\qwen_boundary_live_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 26,
+      "historical_header": "1\tpoint_id,lane,model_identity,stable_prefix_tokens,future_reuses,tool_slack_ms,concurrency,raw_completion_rate,contract_completion_rate,raw_quality_sanity_rate,contract_quality_sanity_rate,certificate_issued,effective_policy,verify_decision,txn_state,failure_reason,verification_ms,registration_ms,unhidden_verification_ms,raw_mean_ttft_ms,contract_mean_ttft_ms,saved_ms_per_turn,raw_future_wall_ms,contract_future_wall_ms,net_contract_wall_ms,observed_net_benefit_ms,observed_net_benefit_fraction,raw_warm_success,contract_warm_success,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\economics\\qwen_break_even_contour_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 39,
+      "historical_header": "1\tmodel_identity,stable_prefix_tokens,future_reuses,tool_slack_ms,median_saved_ms_per_turn,median_registration_ms,break_even_reuses,predicted_net_benefit_ms,operating_region,claim_boundary"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\lifecycle\\lifecycle_events_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 41,
+      "historical_header": "1\taffected_old_prefix_consumed,affected_prefix_hit_tokens,affected_quality_sanity,affected_request_id,affected_request_success,cache_used_blocks_after_invalidation,cache_used_blocks_after_recovery,claim_boundary,cross_version_contamination,cross_version_shared_physical_hashes,event,field,invalidation_latency_ms,old_certificate_valid,old_prime_request_id,old_prime_success,recovered_prefix_hit_tokens,recovered_quality_sanity,recovered_request_id,recovered_request_success,recovery_latency_ms,unaffected_prefix_hit_tokens,unaffected_prime_success,unaffected_quality_sanity,unaffected_request_id,unaffected_request_success"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\locality_residency_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 61,
+      "historical_header": "1\tactive_templates,arrival_distribution,fresh_process_cells,future_requests,mean_completion_rate,mean_dynamic_suffix_reuse_blocks,mean_mean_new_prefill_tokens,mean_mean_prefix_hit_tokens,mean_mean_reuse_distance_requests,mean_mean_ttft_ms,mean_p95_reuse_distance_requests,mean_p95_ttft_ms,mean_p99_ttft_ms,mean_quality_sanity_rate,mean_slo_compliant_goodput_rps,mean_template_prefix_hit_ratio,mean_unauthorized_cross_domain_reused_hashes,mean_unhidden_verification_ms_per_future_request,mean_zero_prefix_hit_after_prior_template_requests,policy,prefix_cache_evictions_observation,slo_ttft_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\locality_residency_policy_comparison_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 63,
+      "historical_header": "1\tactive_templates,arrival_distribution,contractkv_prefix_hit_ratio,mean_reuse_distance_requests,net_mean_ttft_reduction,new_prefill_reduction,raw_prefix_hit_ratio,slo_goodput_multiplier,slo_ttft_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\service_locality_aggregate_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 64,
+      "historical_header": "1\tfresh_process_cells,future_requests,load_fraction,mean_actual_verifier_endpoint_calls,mean_certificate_issue_rate,mean_committed_certificate_fanout,mean_completion_rate,mean_dynamic_suffix_reuse_blocks,mean_mean_new_prefill_tokens,mean_mean_prefix_hit_tokens,mean_mean_scope_check_ms,mean_mean_ttft_ms,mean_p95_scope_check_ms,mean_p95_ttft_ms,mean_p99_ttft_ms,mean_quality_sanity_rate,mean_raw_fallback_rate,mean_scope_check_pass_rate,mean_slo_compliant_goodput_rps,mean_template_prefix_hit_ratio,mean_transaction_commits,mean_unauthorized_cross_domain_reused_hashes,mean_unhidden_verification_ms_per_future_request,mean_verification_fanout,model,policy,slo_ttft_ms,tenants_per_template"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\service_locality_policy_comparison_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 67,
+      "historical_header": "1\tactual_verifier_endpoint_calls,certificate_issue_rate,completion_rate,load_fraction,mean_scope_check_ms,mean_ttft_reduction_vs_raw,model,new_prefill_reduction_vs_raw,p99_ttft_reduction_vs_raw,policy,quality_sanity_rate,slo_goodput_multiplier_vs_raw,slo_ttft_ms,tenants_per_template,transaction_commits,unhidden_verification_ms_per_future_request,verification_fanout"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\service_locality_slo_capacity_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 68,
+      "historical_header": "1\tcapacity_status,capacity_uplift_vs_native,model,policy,slo_sustainable_load_fraction,slo_ttft_ms"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\locality_residency_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 106,
+      "historical_header": "1\tachieved_throughput_rps,active_templates,actual_verifier_endpoint_calls,arrival_distribution,arrival_mode,arrival_rate_rps,cell_id,certificate_issue_rate,claim_boundary,committed_certificate_fanout,completed_requests,completion_rate,dynamic_suffix_reuse_blocks,experiment_version,max_scheduler_waiting_requests,mean_latency_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_reuse_distance_requests,mean_scheduler_wait_ms,mean_scope_check_ms,mean_tpot_ms,mean_ttft_ms,mean_verification_ms,metric_join_rate,minimum_free_gpu_blocks,model_identity,offered_requests,p50_ttft_ms,p95_client_send_lag_ms,p95_reuse_distance_requests,p95_scheduler_wait_ms,p95_scope_check_ms,p95_ttft_ms,p99_client_send_lag_ms,p99_scheduler_wait_ms,p99_ttft_ms,peak_used_gpu_blocks,policy,prefix_cache_evictions_observable,prefix_cache_evictions_observation,private_suffix_exclusion_rate,quality_sanity_rate,queue_wait_slope_sec_per_sec,raw_fallback_rate,repeat,scope_check_pass_rate,slo_compliant_goodput_rps,slo_compliant_requests,slo_ttft_ms,template_prefix_hit_ratio,timeout_or_drop_rate,transaction_commits,unauthorized_cross_domain_reused_hashes,unhidden_verification_ms_per_future_request,verification_fanout,zero_prefix_hit_after_prior_template_requests"
+    },
+    {
+      "path": "D:\\VLA_QWEN\\contract kv\\results\\tsc_service\\service_locality_cell_summary_v0.csv",
+      "log": "6d0a87bc-7882-47e5-9d08-242d26a8a181/subagents/agent-aExplore-77b957dfd138a738.jsonl",
+      "line": 107,
+      "historical_header": "1\tachieved_throughput_rps,actual_verifier_endpoint_calls,arrival_mode,arrival_rate_rps,cell_id,certificate_issue_rate,claim_boundary,committed_certificate_fanout,completed_requests,completion_rate,dynamic_suffix_reuse_blocks,experiment_version,load_fraction,max_scheduler_waiting_requests,mean_latency_ms,mean_new_prefill_tokens,mean_prefix_hit_tokens,mean_prompt_tokens,mean_reuse_distance_requests,mean_scheduler_wait_ms,mean_scope_check_ms,mean_tpot_ms,mean_ttft_ms,mean_verification_ms,metric_join_rate,minimum_free_gpu_blocks,model,model_identity,offered_requests,p50_ttft_ms,p95_client_send_lag_ms,p95_reuse_distance_requests,p95_scheduler_wait_ms,p95_scope_check_ms,p95_ttft_ms,p99_client_send_lag_ms,p99_scheduler_wait_ms,p99_ttft_ms,peak_used_gpu_blocks,policy,prefix_cache_evictions_observable,prefix_cache_evictions_observation,private_suffix_exclusion_rate,quality_sanity_rate,queue_wait_slope_sec_per_sec,raw_fallback_rate,repeat,scope_check_pass_rate,slo_compliant_goodput_rps,slo_compliant_requests,slo_ttft_ms,template_prefix_hit_ratio,tenants_per_template,timeout_or_drop_rate,transaction_commits,unauthorized_cross_domain_reused_hashes,unhidden_verification_ms_per_future_request,verification_fanout,zero_prefix_hit_after_prior_template_requests"
+    }
+  ],
+  "image_receipt_limitation": "Historical image pixels are not serialized in these text receipts. Figure path access is not a token-count measurement.",
+  "direct_writer_evidence": "The 25-by-10 scale is present in the historical protocol; no original stable-body token/recovery ledger was located in the visible dependency chain."
+}

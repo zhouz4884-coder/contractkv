@@ -1,0 +1,84 @@
+{
+  "evidence_type": "Restored existing raw native-cache token ledger, no new inference",
+  "original_aggregate_file": "results/tsc_revision_evidence_closure_20261017/tableI_crosswalk/crosswalk_audit_v1.json",
+  "original_aggregate_sha256": "55246ce684d6268c2cefe3d921812159065a9c511ac024941e6f08ed12106c77",
+  "underlying_ledger_files": [
+    {
+      "cohort": "independent_faithful_six_sources",
+      "file": "results/tsc_revision_r4/table_I_reconstruction_independent_primary_v1.json",
+      "sha256": "9fbe8b58852b5442ed3324faf53fd88c81d092f2c29885bb7a4f4f8b41843e48"
+    },
+    {
+      "cohort": "independent_faithful_six_sources",
+      "file": "results/tsc_revision_r4/table_I_reconstruction_independent_primary_v1.csv",
+      "sha256": "0dd71fe061d4b31ec41d702579121531de724c87f50e9f6b95a496adec681458"
+    }
+  ],
+  "rows": [
+    {
+      "cohort": "independent_faithful_six_sources",
+      "model": "Llama-3.1-8B-Instruct",
+      "study": "template-fanout",
+      "family": "ALL",
+      "future_requests": 1620,
+      "sources": 6,
+      "all_prompt_tokens": 15895710,
+      "stable_body_tokens": 15634620,
+      "native_total_hit_tokens": 177120,
+      "stable_body_hit_tokens": 4860,
+      "stable_body_fraction_pct": 98.35748135817778,
+      "source_macro_stable_fraction_pct": 97.78823713489987,
+      "native_total_hit_fraction_pct": 1.1142629048969817,
+      "stable_body_recovery_pct": 0.031084861672365557
+    },
+    {
+      "cohort": "independent_faithful_six_sources",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "study": "template-fanout",
+      "family": "ALL",
+      "future_requests": 1620,
+      "sources": 6,
+      "all_prompt_tokens": 19289610,
+      "stable_body_tokens": 18995850,
+      "native_total_hit_tokens": 190080,
+      "stable_body_hit_tokens": 6480,
+      "stable_body_fraction_pct": 98.4771076242599,
+      "source_macro_stable_fraction_pct": 98.02702517697594,
+      "native_total_hit_fraction_pct": 0.9854009490083003,
+      "stable_body_recovery_pct": 0.03411271409281501
+    },
+    {
+      "cohort": "independent_faithful_six_sources",
+      "model": "Qwen3-8B",
+      "study": "template-fanout",
+      "family": "ALL",
+      "future_requests": 1620,
+      "sources": 6,
+      "all_prompt_tokens": 16377120,
+      "stable_body_tokens": 16134660,
+      "native_total_hit_tokens": 155520,
+      "stable_body_hit_tokens": 4860,
+      "stable_body_fraction_pct": 98.51951991558956,
+      "source_macro_stable_fraction_pct": 97.97318464971121,
+      "native_total_hit_fraction_pct": 0.9496175151675019,
+      "stable_body_recovery_pct": 0.030121490009705813
+    }
+  ],
+  "independent_source_groups": [
+    "LongBench:hotpotqa:hotpotqa:doc:109",
+    "LongBench:hotpotqa:hotpotqa:doc:19",
+    "LongBench:hotpotqa:hotpotqa:doc:69",
+    "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+    "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+    "RepoBench:python_v1.1:sinoyou/nelf-pro"
+  ],
+  "three_models_are_not_18_independent_sources": true,
+  "new_125_source_survey_disjoint_from_this_cohort": true,
+  "new_model_requests": 0,
+  "presentation_limits": [
+    "Six sources, two non-RULER families, template fanout protocol; no growing generated chat history.",
+    "Declared stable-body scopes and prompt wrappers are cohort-specific. Preserve their definitions and do not pool with the new survey.",
+    "All-native hits/all input is distinct from hits on stable body/stable body.",
+    "These data support the structural motivation but do not authenticate old Table I numbers."
+  ]
+}
