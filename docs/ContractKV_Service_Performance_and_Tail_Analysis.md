@@ -126,6 +126,8 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 Qwen三重复阶段12/12现已完成，各load54/972 compiled future、0ID/finish变化。pooled完整wall common .999986×/high .990905×；pooled绝对Goodputcommon .126074002→.126569282，high .013177818→.023277243。高点达标46→82/1080而非整族普遍容量增长。三个重复的资格和native39full/27zero分解一致；详细过程范围、Raw输出控制及限制见`tsc_revision_final_serving_qwen_completed_20261019_zh.md`。跨模型/Gate尚未完成，不提前附完整结果CI。
 
+23:05 UTC更新：主跨模型24/24全部完成，Mistral54/972、Llama48/972 compiled future，六组编译ID/finish检查通过。metadata pooled wall各.999372/.999568；完整Goodput、评分/双向差异、native费用与CI依主分析复核，不能据近1计时比宣布总体正收益。隔离Gate6仍在运行。
+
 ## 8. 尚需用本轮数据回答的两个问题
 
 1. 在相同固定到达、相同SLO和完整成本下，新来源的合法复用是否转化为更多实际达标请求？Closed-loop倍率和native token节省不能替它回答。

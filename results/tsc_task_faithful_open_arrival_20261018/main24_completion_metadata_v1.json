@@ -1,0 +1,147 @@
+{
+  "complete_cells": 24,
+  "paired_cells": 12,
+  "rows": [
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "paired_processes": 3,
+      "all_business_pairs": 1080,
+      "future_pairs": 972,
+      "raw_wall_s": 6616.446668486111,
+      "contract_wall_s": 6619.303336875979,
+      "pooled_direct_wall_ratio": 0.9995684336788203,
+      "compiled_future": 48,
+      "verification_RPCs": 3,
+      "controller_work_ms": 11602.826069109142
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "paired_processes": 3,
+      "all_business_pairs": 1080,
+      "future_pairs": 972,
+      "raw_wall_s": 6497.155243115034,
+      "contract_wall_s": 6501.23625720432,
+      "pooled_direct_wall_ratio": 0.9993722710684811,
+      "compiled_future": 54,
+      "verification_RPCs": 3,
+      "controller_work_ms": 12857.999092433602
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common",
+      "paired_processes": 3,
+      "all_business_pairs": 1080,
+      "future_pairs": 972,
+      "raw_wall_s": 6036.137427222915,
+      "contract_wall_s": 6036.219774285331,
+      "pooled_direct_wall_ratio": 0.9999863578422431,
+      "compiled_future": 54,
+      "verification_RPCs": 21,
+      "controller_work_ms": 84539.3419303
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high",
+      "paired_processes": 3,
+      "all_business_pairs": 1080,
+      "future_pairs": 972,
+      "raw_wall_s": 3490.7143432926387,
+      "contract_wall_s": 3522.7540258900262,
+      "pooled_direct_wall_ratio": 0.9909049333669294,
+      "compiled_future": 54,
+      "verification_RPCs": 21,
+      "controller_work_ms": 84960.88582929224
+    }
+  ],
+  "compiled_checks": [
+    {
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 1,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 2,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 3,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 1,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 2,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 3,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 1,
+      "compiled_pairs": 16,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 2,
+      "compiled_pairs": 16,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 3,
+      "compiled_pairs": 16,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 1,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 2,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 3,
+      "compiled_pairs": 22,
+      "compiled_ID_or_finish_changes": 0
+    }
+  ],
+  "gate_still_required": true,
+  "full_native_score_tail_and_CI_analysis_pending": true,
+  "new_GPU_requests": 0
+}

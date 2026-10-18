@@ -202,3 +202,10 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 全route common13up/5down、high14up/6down均L0；同位置三个Raw控制分别出现3/5与4/6个下降变体，不能据此对另外4个或全部事件作唯一因果结论。Raw两两比较分别16/22个ID/finish变化，比较共享三个控制非新请求，不当独立样本。
 
 本组没有声明有效的compiled子集行为反例。当前合理决定是继续原M/L与Gate有界计划，而不是因Qwen低覆盖停止/换源/改scope/改Ladder。旧DEV L3选择在完整长输入上可能较激进，以及prefix/Raw工作集竞争的解释都作为未验证假说记入阶段报告，不用heldout结果为这些假说调参或追加GPU。完整30与所有源/进程敏感性、独立评分/归档仍待完成，Qwen阶段不能替代全目标。
+
+
+## 23:05 UTC：主服务24完成与隔离Gate接续
+
+实际cross414783完成12、exit0，6组compiled ID/finish全部0差异；原318277自动启动gate517543，23:07 /proc实际命令及RUNNING已核。cross watcher unified86765退出0，不再向关闭watcher写入。未重跑主24。M每重复18future/22全业务编译，L每重复16future/16全业务编译；全部12组主编译检查通过。metadata pooled wall M .999372、L .999568，不把近1计时比当SLO净收益或完整独立质量复算。
+
+已取回12 cross小summary/completion/audit/drain及正式exit/feasibility，仅聚合现存metadata写main24_completion_metadata_v1.json，未新增GPU。完整native、SLO、评分升降、Raw控制和不确定性等Gate6结束后统一验收，不在隔离测量期运行重CPU分析，也不因结果弱改条件/加点。

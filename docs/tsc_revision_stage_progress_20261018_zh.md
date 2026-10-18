@@ -33,6 +33,8 @@
 
 服务编排CPU检查已通过：六条轨迹符合原loader；Raw/Contract到达、GPU、重复成对一致；第二重复交换GPU/次序；两个server均ready才测量；同wave任一客户端失败则整个wave留作无效失败，不选择保留较好的一半。CPU检查使用fake transport，GPU请求数为零，不是效果结果。当前正式GPU执行另按实际completion记账。
 
+23:05 UTC更新：cross12/12完整、exit0，M/L六组编译检查通过，主服务24全部完成；已自动进入Gate，实际worker517543。Mistral54/972、Llama48/972 compiled future，所有主编译ID/finish检查0变化；metadata计时比各.999372/.999568。完整native/质量升降/Goodput与CI仍待统一分析。当前24/30完成，余6隔离Gate、分析、复算与归档。
+
 ## 还需要完成
 
 1. Raw7及正式预注册已完成；只续查当前318277/318282，不重复派发或重新生成390ea831。

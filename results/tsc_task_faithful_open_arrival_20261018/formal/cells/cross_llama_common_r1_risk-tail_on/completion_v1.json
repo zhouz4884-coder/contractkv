@@ -1,0 +1,75 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "cross_llama_common_r1_risk-tail_on",
+    "phase": "cross",
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 1,
+    "load": "common",
+    "policy": "risk-tail",
+    "economic_gate": "ON",
+    "lane": 1,
+    "wave": 7,
+    "port": 9715,
+    "arrival": "formal/arrivals/common_r1_v1.json",
+    "arrival_sha256": "42c15ad43020777380a0e6603076a8b6d8c7539b2e0c8c7ad905f685ae4a1348",
+    "offered_rate_requests_per_s": 0.17890511444180737,
+    "client_timeout_s": 3813,
+    "expected_business_requests": 360,
+    "expected_future_requests": 324,
+    "peer_regime": "paired colocated endpoints"
+  },
+  "outcome": {
+    "started_epoch_s": 1792352961.3320959,
+    "ended_epoch_s": 1792355132.0764167,
+    "summary": {
+      "schema_version": "tsc-r4.fixed-arrival-live.v1",
+      "arrival_trace_sha256": "42c15ad43020777380a0e6603076a8b6d8c7539b2e0c8c7ad905f685ae4a1348",
+      "arrival_protocol": "frozen_exogenous_shared_wave",
+      "planned_last_arrival_offset_s": 2001.0607361168927,
+      "arrival_requests": 360,
+      "profile": "balanced",
+      "previous_catalog_sha256": "0da0a6f030f7309d7bed9174a905f2e1d56d0dc62e134ec6f65aa346df9f2249",
+      "cell": "cross_llama_common_r1_risk-tail_on",
+      "study": "template-fanout",
+      "policy": "risk-tail",
+      "repeat": 1,
+      "execution_complete": true,
+      "futures": 324,
+      "expected_futures": 324,
+      "successful_futures": 324,
+      "all_actual_metric_joins": 361,
+      "sessions_sha256": "bc7bbc5ac6d827f4cb6f132a8c7891955f3331b25107188357c0b3cc68a9c2a8",
+      "protocol_sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05",
+      "catalog_sha256": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb",
+      "tenants_per_template": 6,
+      "wall_s_including_all_setup_and_verification": 2168.7340620318428,
+      "wall_begin_time": 4102971.415960572,
+      "wall_service_end_time": 4105140.150022604,
+      "post_measurement_audit_wall_s": 1.0180343841202557,
+      "verification_calls": 1,
+      "verification_ms_total": 3836.357119027525,
+      "compiled_future_requests": 16,
+      "raw_file_sha256": "21da8bfe51026e1e3a377de1018a512a3f3f105ba767bffe80a600a6632593af",
+      "boundary": "Service wall includes actual planning, business, scoring/logging and all synchronous qualification waits. Identical frozen exogenous wave-arrival offsets and shared two-request dispatch barrier for all policies. Queueing, actual registration, planned idle time and final drain remain inside wall time; readiness is never reset to completion time. This fixed-load result is distinct from closed-loop capacity measurement. Post-measurement flush/audit is reported separately, excluded for all policies. Reference is the real first raw business output."
+    }
+  },
+  "held_peer_server_until_all_wave_clients_finished": true,
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "1d531e9e8eeb6818ac482fd450f3725f1bc6aac0af1f44404bd24749d1c825c0",
+      "bytes": 1099554
+    },
+    {
+      "path": "raw.jsonl",
+      "sha256": "21da8bfe51026e1e3a377de1018a512a3f3f105ba767bffe80a600a6632593af",
+      "bytes": 22744061
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "0c8a19a26276a6486c95817b76338981b143bfc3fb7451697c9490950b0fce10",
+      "bytes": 3945902
+    }
+  ]
+}
