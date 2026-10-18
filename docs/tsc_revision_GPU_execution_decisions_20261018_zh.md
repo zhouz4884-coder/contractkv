@@ -94,3 +94,13 @@ repair SHA8d3bd864与CPU端口/AST回执0ee814b5在Git d4914ec公开后，12:37�
 新增服务桥梁的到达/SLO标定必须来自新保真Raw-only数据；旧R4固定到达5/54继续原样保留，不重复、不当作新服务桥梁。不同协议的结果不能合并。公开实验报告/全目标完成边界仍按五批目标，当前只完成第一批，第二/三批实际运行中。
 
 12:43核查剩余worker实际仍运行：Llama r1已产生真实chat/verify请求，Qwen r2在加载与编译。Qwen该次weights load实际272.45秒（model loading 272.83秒），随后torch.compile约57.52秒。该日志说明“暂时无responses”不能作为worker停止证据。保持现有队列，不为了缩短启动时间中断健康进程或改变已冻结cache/顺序；新协议的GPU时间估计需单列这种模型启动占用，不将它混入论文service wall。以后新冻结编排预先采用每cell唯一端口，避免再复用短期关闭的监听端口。
+
+## 12:44–12:57 UTC：修复真实raw截断的异常处理
+
+Llama r1第16个候选的raw参考达到原64-token上限。原splitter正确抛VerificationIncomplete，但SingleShotRegistrar只catch ValueError；前者继承RuntimeError，异常逃逸后客户端退出。原Raw输出/分数0、63条业务、15个完整案例、13次实际RPC均保留。Qwen r2完整完成，三个完整cell保持不动。
+
+窄修复只把该已有EOS/answer不完整条件显式返回INCOMPLETE、0RPC/0commit/L0 fallback，不延预算、不降低floor、不改scope/评分，不捕获其他RuntimeError。用实际失败见证做本地/Linux CPU回归，原方法抛异常、修复后无RPC；另15个已完成引用的非计时决策、payload及record事件全部一致。CPU响应使用已记录stub，不冒充新GPU验证。
+
+原55文件与backend/runtime继续不变；客户端wrapper在独立进程给原方法安装窄catch，再运行原collector。新的run_cell只有port和client wrapper命令两个AST表达式不同。失败实验单位是95业务fresh-server cell，不能接半个cell；仅未完成的Llama r1完整重测，其他五个未启动cell首次运行，前三个完整不重测。正式9cells/855业务，额外63条失败记录必须另列，实际观察总量将为918（若无后续失败）。
+
+v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动supervisor251069/worker251070。12:57实际/proc命令及RUNNING已核实，原model/runtime回执2262851f复用。旧243421已退出，不能再dispatch v3/v4。详情INCOMPLETE_REFERENCE_FIX_v5_zh.md。该fail-closed修复也应进入后续新冻结服务客户端；正常资格算法不变。
