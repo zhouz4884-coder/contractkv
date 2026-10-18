@@ -1,0 +1,28 @@
+{
+  "status": "complete",
+  "sets": [
+    {
+      "condition": "real_repobench_mechanism",
+      "sources": [
+        "RepoBench:python_v1.1:MrXandbadas/MrX_OAI_Assistant_Manager",
+        "RepoBench:python_v1.1:NLP-Core-Team/RealCode_eval",
+        "RepoBench:python_v1.1:ml4bio/USPNet"
+      ]
+    },
+    {
+      "condition": "task_faithful_open_arrival",
+      "sources": [
+        "LongBench:hotpotqa:hotpotqa:doc:131",
+        "LongBench:hotpotqa:hotpotqa:doc:187",
+        "LongBench:hotpotqa:hotpotqa:doc:90",
+        "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+        "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+        "RepoBench:python_v1.1:xhuangcv/humannorm"
+      ]
+    }
+  ],
+  "total_new_sources": 9,
+  "final_excluded_unique_sources": 713,
+  "all_source_sets_disjoint": true,
+  "new_GPU_requests": 0
+}
