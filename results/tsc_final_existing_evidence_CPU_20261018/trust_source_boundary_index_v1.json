@@ -1,0 +1,96 @@
+{
+  "evidence": "Static source boundary index, not new enforcement execution",
+  "new_GPU_requests": 0,
+  "freeze_v3_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+  "sources": [
+    {
+      "path": "scripts/tsc_revision_registration_audit.py",
+      "sha256": "6214ebf5eba47e3d7be9c0fc971e29752671443ec74679dbe89fbb3cf7aa6998",
+      "functions": [
+        {
+          "name": "signature",
+          "line": 17,
+          "end_line": 18,
+          "AST_sha256": "232d14801f8fedb83f7ffb408c2c9a5a214cd6959b38bb00e905ee7aba403fba"
+        },
+        {
+          "name": "registration_errors",
+          "line": 21,
+          "end_line": 38,
+          "AST_sha256": "1dceeb9802acd9c375f1573e6efff99c429397808295159aa234ea2539fa8dad"
+        }
+      ]
+    },
+    {
+      "path": "scripts/contractkv_certificate_binding.py",
+      "sha256": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc",
+      "functions": [
+        {
+          "name": "sign",
+          "line": 60,
+          "end_line": 61,
+          "AST_sha256": "50992010a2d0f002152f14e6760dc817f550765b9cb09c126cc21e6245c9005d"
+        },
+        {
+          "name": "verify_signature",
+          "line": 64,
+          "end_line": 65,
+          "AST_sha256": "730cd58a380113f11acffd0d905b2d2c2015e84b96bf4ce2de6d4684455596d9"
+        },
+        {
+          "name": "validation_errors",
+          "line": 68,
+          "end_line": 87,
+          "AST_sha256": "17038d3b75105306b1ce0bc6881542fe0718069285e52933fe9d10dba2db2f1f"
+        }
+      ]
+    },
+    {
+      "path": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "functions": [
+        {
+          "name": "issue_binding",
+          "line": 37,
+          "end_line": 52,
+          "AST_sha256": "79f53fb5443a692a9de9f95620e2c073460d526ff7ada5deada3cd08527a0d89"
+        },
+        {
+          "name": "check_binding",
+          "line": 55,
+          "end_line": 72,
+          "AST_sha256": "ee73056f06a14ebe066c7ff07fad12bc089663dbcc5a30f030d336df89c8239a"
+        }
+      ]
+    },
+    {
+      "path": "scripts/tsc_revision_mechanism_live_v3.py",
+      "sha256": "b88225642d4f57d4386a28c7e11f00877ff3280028ad2e8f3d363db1d41248b1",
+      "functions": [
+        {
+          "name": "binding_functions",
+          "line": 52,
+          "end_line": 61,
+          "AST_sha256": "30199f281ccfec923296444ebb8154eb3947b47b8231f8a858e0916a05520df3"
+        },
+        {
+          "name": "actual_plan",
+          "line": 64,
+          "end_line": 82,
+          "AST_sha256": "11ddc41474a95397ddb75cf3464f260d5b50db3823ea9f6e152111fa4a4a0334"
+        },
+        {
+          "name": "run",
+          "line": 85,
+          "end_line": 208,
+          "AST_sha256": "ea0c17e846e65db5d4a618b646dbfbfbe7e03f0147086fb1883b7d93ab601bb5"
+        }
+      ]
+    },
+    {
+      "path": "scripts/contractkv_pstp.py",
+      "sha256": "df655b668e78f72767e40bef0910e09200514058269d3146035dcd51f092f41d",
+      "functions": []
+    }
+  ]
+}
