@@ -92,3 +92,5 @@ repair SHA8d3bd864与CPU端口/AST回执0ee814b5在Git d4914ec公开后，12:37�
 保真adapter_v2的RENDER_BINDINGS覆盖原live、R1R、R4闭环及candidate_plan，但不覆盖r4_live_fixed模块本地导入的_ordered_text。新增保真固定到达wrapper在正式冻结前必须显式把该本地引用绑定到同一保真renderer，并用预检实际Prompt IDs验证Raw和compiled均一致。否则Raw保真而compiled未来又插回历史chunk heading。此处目前仅做源码审计，没有修改既有协议、产生新数据或调节scope。
 
 新增服务桥梁的到达/SLO标定必须来自新保真Raw-only数据；旧R4固定到达5/54继续原样保留，不重复、不当作新服务桥梁。不同协议的结果不能合并。公开实验报告/全目标完成边界仍按五批目标，当前只完成第一批，第二/三批实际运行中。
+
+12:43核查剩余worker实际仍运行：Llama r1已产生真实chat/verify请求，Qwen r2在加载与编译。Qwen该次weights load实际272.45秒（model loading 272.83秒），随后torch.compile约57.52秒。该日志说明“暂时无responses”不能作为worker停止证据。保持现有队列，不为了缩短启动时间中断健康进程或改变已冻结cache/顺序；新协议的GPU时间估计需单列这种模型启动占用，不将它混入论文service wall。以后新冻结编排预先采用每cell唯一端口，避免再复用短期关闭的监听端口。
