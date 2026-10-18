@@ -180,3 +180,5 @@ Raw .4/.7/1.05Cq三个点分别107/120、89/120、8/120双SLO达标。高点基�
 在首个正式CT结果前新增只读统计addendum：固定原390ea831与主进程配对统计，另外联合重采样3 paired进程、每家族3来源，保留来源内所有tenant/turn；仅重加权实际达标分子、对应进程wall保持已测值。主敏感性是绝对Goodput差，不称新队列或来源总体容量CI。出现任何零baseline draw则ratio区间不定义，不加伪计数/删样本。新增GPU0，不改变条件/预算/安全门槛，作为独立文件预公开，不覆盖原freeze。
 
 本次也明确内容保真不等于原生completion包装复现：服务Repo仍用声明的instruction-following chat，CODE_PREFIX后有任务指令；实际顺序公开，不在已冻结Raw之后临时换位置或未经对照将所有M/L语法拒绝归因于它。四份指定MD现均已建立，正式30结果仍待回填，不能据文档数量宣布目标完成。
+
+15:23:25 UTC，390ea831主freeze与统计addendum5fe5ae0b在f2c1fab预公开，并逐一核58依赖的Git blob字节/本地SHA/远程ref一致后，实际派发formal supervisor318277/qwen worker318282。15:24 /proc与两个EngineCore319110/319177已核，首wave共同/高负载Raw正在准备。主矩阵24与Gate6将按既定序列自动接续，任何未解释compiled配对变化会阻止跨阶段扩展；不重复Raw7或重新生成formal freeze。新的源/依赖/CPU回执均复用已冻结对象，没有模型/runtime副本或完整权重SHA重做。

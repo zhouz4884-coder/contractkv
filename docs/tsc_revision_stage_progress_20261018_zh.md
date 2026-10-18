@@ -23,16 +23,16 @@
 
 ## 当前 GPU 执行
 
-14:40 UTC 后核验：Raw-only baseline 4/4 单元、480 次业务全部完成；原 supervisor285458/worker285459退出0。实际derived plan已经生成并独立复算、核验公开SHA后，14:44 UTC启动3个Raw profiles，supervisor301481/worker301486。14:46实际进程与两卡EngineCore已核验，处于模型准备阶段，尚未产生正式Contract结果。详见`tsc_revision_final_Raw_calibration_20261018_zh.md`。没有重复启动baseline。
+15:23 UTC更新：Raw-only 7/7单元、840业务已全部验收；两套Raw supervisor/worker均退出0。正式390ea831协议、58个依赖文件与统计addendum在Git`f2c1fab35b74fd1136e759dca27309c69377e952`公开并逐blob/远程SHA核验后，启动formal supervisor318277、qwen worker318282。15:24实际命令、RUNNING状态和两个EngineCore319110/319177已核，首wave是共同/高负载Raw两单元。尚无完成的正式Contract效果，不重复Raw标定。
 
 该标定最多 7 cells / 840 次 Raw 业务：4 个 baseline，之后 3 个 Qwen 负载 profiles。只用冻结公式推导负载与 SLO，不用 Contract 收益选择工作点。Raw/Contract 均保留 16K、QA128/Repo384、原 margin/scope/输出契约/PSTP。
 
-正式 24 cells 与 Gate ON/OFF 6 cells **尚未开始**。服务编排 CPU 检查已通过：六条轨迹符合原 loader；Raw/Contract 到达、GPU、重复成对一致；第二重复交换 GPU/次序；两个 server 均 ready 才测量；同 wave 任一客户端失败则整个 wave 留作无效失败，不选择保留较好的一半。以上检查使用 fake transport，GPU 请求数为零，不是效果结果。
+正式24 cells与Gate ON/OFF6 cells由同一supervisor有界接续，当前开始Qwen12阶段，0正式完成。服务编排CPU检查已通过：六条轨迹符合原loader；Raw/Contract到达、GPU、重复成对一致；第二重复交换GPU/次序；两个server均ready才测量；同wave任一客户端失败则整个wave留作无效失败，不选择保留较好的一半。CPU检查使用fake transport，GPU请求数为零，不是效果结果。当前正式GPU执行另按实际completion记账。
 
 ## 还需要完成
 
-1. 完成当前 4 baseline 和随后 3 Raw profiles，冻结实际负载、SLO 与所有正式到达轨迹。原 Raw worker 和输入不重做。
-2. Qwen 两负载 12 fresh-server cells；确认执行和编译行为不变量后，Mistral/Llama 共同负载额外 12 cells。每 cell 360 次业务、324 次未来请求。
+1. Raw7及正式预注册已完成；只续查当前318277/318282，不重复派发或重新生成390ea831。
+2. 完成正在运行的Qwen两负载12 fresh-server cells；确认执行和编译行为不变量后，Mistral/Llama共同负载额外12 cells。每cell360次业务、324次未来请求。
 3. Qwen 隔离协议下 Gate ON/OFF 三对，共 6 fresh-server cells。只关闭经济判断，不绕过行为资格；不借用并行 Raw 冒称隔离加速。
 4. 分来源/进程进行 Goodput、质量双向变化、完整 wall、队列和尾延迟归因；归档全部原始结果与失败，独立复算。
 5. 完成五批总报告、贡献必要性矩阵、逐条审稿实证闭合矩阵、服务性能/尾延迟报告四份 MD，补齐 Trust matrix，commit/push 核远程 SHA。
