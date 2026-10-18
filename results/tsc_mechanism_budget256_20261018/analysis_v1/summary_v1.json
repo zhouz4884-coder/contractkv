@@ -1,0 +1,149 @@
+{
+  "status": "complete",
+  "fresh_cells": 3,
+  "business_generations": 240,
+  "candidates": 60,
+  "output_budget": 256,
+  "models": [
+    {
+      "model": "Qwen3-8B",
+      "cell": "Qwen3-8B_r1",
+      "client_wall_s": 31.543772912118584,
+      "raw_stopped": 20,
+      "raw_length_ended": 0,
+      "raw_primary_exact_correct": 16,
+      "candidates": 20,
+      "certified": 12,
+      "observed_unchecked_changes": 8,
+      "observed_unchecked_primary_drops": 6,
+      "admitted_post_changes": 0,
+      "admitted_post_primary_drops": 0,
+      "actual_qualification_RPC_attempts": 20,
+      "rejected_published_tokens": 0,
+      "complete_qualification_ms_sum": 6567.651632241905
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "cell": "Mistral-7B-Instruct-v0.3_r1",
+      "client_wall_s": 51.22975951991975,
+      "raw_stopped": 20,
+      "raw_length_ended": 0,
+      "raw_primary_exact_correct": 6,
+      "candidates": 20,
+      "certified": 10,
+      "observed_unchecked_changes": 10,
+      "observed_unchecked_primary_drops": 0,
+      "admitted_post_changes": 0,
+      "admitted_post_primary_drops": 0,
+      "actual_qualification_RPC_attempts": 17,
+      "rejected_published_tokens": 0,
+      "complete_qualification_ms_sum": 5122.6680763065815
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "cell": "Llama-3.1-8B-Instruct_r1",
+      "client_wall_s": 55.915652594994754,
+      "raw_stopped": 20,
+      "raw_length_ended": 0,
+      "raw_primary_exact_correct": 8,
+      "candidates": 20,
+      "certified": 4,
+      "observed_unchecked_changes": 16,
+      "observed_unchecked_primary_drops": 4,
+      "admitted_post_changes": 0,
+      "admitted_post_primary_drops": 0,
+      "actual_qualification_RPC_attempts": 17,
+      "rejected_published_tokens": 0,
+      "complete_qualification_ms_sum": 4049.16765447706
+    }
+  ],
+  "parent_first_repetition": [
+    {
+      "model": "Qwen3-8B",
+      "condition": "parent_64_tokens_first_frozen_repetition",
+      "cell": "cells/Qwen3-8B_r1/attempt1",
+      "raw_stopped": 20,
+      "raw_length_ended": 0,
+      "raw_primary_exact_correct": 16,
+      "raw_witnesses": 20
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "condition": "parent_64_tokens_first_frozen_repetition",
+      "cell": "cells/Mistral-7B-Instruct-v0.3_r1/attempt1",
+      "raw_stopped": 19,
+      "raw_length_ended": 1,
+      "raw_primary_exact_correct": 6,
+      "raw_witnesses": 20
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "condition": "parent_64_tokens_first_frozen_repetition",
+      "cell": "cells/Llama-3.1-8B-Instruct_r1/attempt3",
+      "raw_stopped": 19,
+      "raw_length_ended": 1,
+      "raw_primary_exact_correct": 8,
+      "raw_witnesses": 20
+    }
+  ],
+  "input_inventory": [
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Qwen3-8B_r1/attempt1/verify_trace.jsonl",
+      "sha256": "c07d345963ae3b16f7e9b47bfc48c0fdae251bebe664abf3c403bfb762537180"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Qwen3-8B_r1/attempt1/backend_trace.jsonl",
+      "sha256": "9db3050fa767c4edf8810a416cce1c14dfc302b6a1fba7b798d043f54d47fecd"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Qwen3-8B_r1/attempt1/responses.jsonl",
+      "sha256": "2a2ea5ed3f256745901caa8c2adbd883cbc961d8014e4aa69ffb2d070484d127"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Qwen3-8B_r1/attempt1/metrics.jsonl",
+      "sha256": "392054565fc95e1a2510b15daf98a0df803a387d2a663f341144fcb49b46eb2c"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/verify_trace.jsonl",
+      "sha256": "42d1baddfc0ee2903cf062d79d5941a5e7837cb2568674da310dfdf87245752a"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/backend_trace.jsonl",
+      "sha256": "55c77d685f9a13f4fa87c7edeebdd19f1883f343dd0d6adfd079495ab1e08de2"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/responses.jsonl",
+      "sha256": "3e6ebff53c88f69b163a000e0ff7a4b3c87f053c0406ef97b4ed3817693bf28e"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/metrics.jsonl",
+      "sha256": "4efacaf16677b6de207dc6e1c767dde280e79478f72fbf1005ad377a3a9361a5"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Llama-3.1-8B-Instruct_r1/attempt1/verify_trace.jsonl",
+      "sha256": "5522d428901c6db2e966901bda96f7cfef99c2bfaf846e2a295e47014b5f354c"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Llama-3.1-8B-Instruct_r1/attempt1/backend_trace.jsonl",
+      "sha256": "8e55a02834d353b302757234ea2e9bbd1715b8882887fbf73c2fa91667037636"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Llama-3.1-8B-Instruct_r1/attempt1/responses.jsonl",
+      "sha256": "27a039f26ddc87e3107f95fbf9bc74a3abf41d5d3f9127212f9a38c63e5b02db"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/cells/Llama-3.1-8B-Instruct_r1/attempt1/metrics.jsonl",
+      "sha256": "1d39edb9e2f70d1cbe7e8f183d6ae40d92b8da5ec8ccc6aa47067c474086a102"
+    }
+  ],
+  "new_GPU_requests_by_analysis": 0,
+  "no_service_performance_claim": true,
+  "one_repeat_per_model": true,
+  "exact_task_scorer_unchanged": true,
+  "limitations": [
+    "Budget sensitivity after observing truncation, not untouched held-out validation.",
+    "EOS completion and integer-only task correctness are distinct.",
+    "Trace-instrumented diagnostic wall is not serving throughput.",
+    "No automatic output-budget escalation; failures and format violations retained."
+  ]
+}
