@@ -1,0 +1,319 @@
+{
+  "status": "complete",
+  "cells": [
+    {
+      "cell": "Qwen3-8B_r1",
+      "model": "qwen3-8b",
+      "counts": {
+        "business": 95,
+        "verification": 22
+      },
+      "whole_diagnostic_client_wall_s": 35.837377846241,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r1",
+      "model": "mistral-7b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 51.08541142102331,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Qwen3-8B_r2",
+      "model": "qwen3-8b",
+      "counts": {
+        "business": 95,
+        "verification": 22
+      },
+      "whole_diagnostic_client_wall_s": 35.67553681181744,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r1",
+      "model": "llama-3.1-8b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 53.18494912562892,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r2",
+      "model": "mistral-7b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 50.54078366141766,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r2",
+      "model": "llama-3.1-8b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 53.43727772217244,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Qwen3-8B_r3",
+      "model": "qwen3-8b",
+      "counts": {
+        "business": 95,
+        "verification": 22
+      },
+      "whole_diagnostic_client_wall_s": 36.18886953499168,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r3",
+      "model": "mistral-7b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 50.79263624502346,
+      "service_performance_claim": false
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r3",
+      "model": "llama-3.1-8b",
+      "counts": {
+        "business": 95,
+        "verification": 19
+      },
+      "whole_diagnostic_client_wall_s": 53.35953422077,
+      "service_performance_claim": false
+    }
+  ],
+  "behavior_candidates": 180,
+  "manifest_business_controls": 72,
+  "registration_reject_controls": 27,
+  "all_verification_decisions": 198,
+  "maximum_GPU_calls": 198,
+  "actual_GPU_calls": 180,
+  "rejected_publication_events": 0,
+  "indeterminate_verification_responses": 0,
+  "indeterminate_with_publication": 0,
+  "behavior_by_model": [
+    {
+      "model": "llama-3.1-8b",
+      "strata": [
+        {
+          "family": "code_context",
+          "pairs": 12,
+          "safe_admitted": 0,
+          "observed_unchecked_changes": 12,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 12,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "eos_boundary",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 3,
+          "observed_unchecked_drops": 3,
+          "changed_cases_rejected": 3,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "instruction_order",
+          "pairs": 12,
+          "safe_admitted": 3,
+          "observed_unchecked_changes": 9,
+          "observed_unchecked_drops": 6,
+          "changed_cases_rejected": 9,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "rag_evidence_position",
+          "pairs": 12,
+          "safe_admitted": 0,
+          "observed_unchecked_changes": 12,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 12,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "tool_state",
+          "pairs": 12,
+          "safe_admitted": 0,
+          "observed_unchecked_changes": 12,
+          "observed_unchecked_drops": 3,
+          "changed_cases_rejected": 12,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        }
+      ]
+    },
+    {
+      "model": "mistral-7b",
+      "strata": [
+        {
+          "family": "code_context",
+          "pairs": 12,
+          "safe_admitted": 0,
+          "observed_unchecked_changes": 12,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 12,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "eos_boundary",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 0,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 0,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "instruction_order",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 6,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 6,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "rag_evidence_position",
+          "pairs": 12,
+          "safe_admitted": 0,
+          "observed_unchecked_changes": 9,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 9,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "tool_state",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 3,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 3,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        }
+      ]
+    },
+    {
+      "model": "qwen3-8b",
+      "strata": [
+        {
+          "family": "code_context",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 6,
+          "observed_unchecked_drops": 3,
+          "changed_cases_rejected": 6,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "eos_boundary",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 3,
+          "observed_unchecked_drops": 3,
+          "changed_cases_rejected": 3,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "instruction_order",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 0,
+          "observed_unchecked_drops": 0,
+          "changed_cases_rejected": 0,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "rag_evidence_position",
+          "pairs": 12,
+          "safe_admitted": 6,
+          "observed_unchecked_changes": 6,
+          "observed_unchecked_drops": 6,
+          "changed_cases_rejected": 6,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        },
+        {
+          "family": "tool_state",
+          "pairs": 12,
+          "safe_admitted": 3,
+          "observed_unchecked_changes": 9,
+          "observed_unchecked_drops": 6,
+          "changed_cases_rejected": 9,
+          "admitted_post_route_divergences": 0,
+          "admitted_post_route_finish_divergences": 0,
+          "post_route_score_drops": 0,
+          "raw_repeat_ID_changes": 0
+        }
+      ]
+    }
+  ],
+  "synthetic_mislabel_published_cells": 9,
+  "positive_hit_controls": 18,
+  "total_matching_same_domain_controls": 18,
+  "raw_other_domain_native_marker_hits": 18,
+  "raw_tokenizer_hit_decode_available": true,
+  "limitations": [
+    "Controlled synthetic mechanism challenge, not new benchmark accuracy or service capacity.",
+    "Uses observation-scoped actual-raw witnesses. Does not change inherited deployment-family eligibility or claim automatic certificate-mode switching.",
+    "The unchecked layout condition is not the previously deployed frozen-safe D1.",
+    "Optional read-only residency hooks add synchronous I/O; reported call costs are diagnostic costs, not serving-speed claims.",
+    "Two variants are controlled task instances, not two independent benchmark sources.",
+    "Manifest registration and binding mediation are a controlled trusted-client adapter, not a newly implemented public authentication gateway.",
+    "Registration roles/domains are trusted-adapter inputs; not a public IAM gateway.",
+    "Synthetic marker publication proves this configuration trust boundary; it is not an exfiltration attack or timing-channel defense.",
+    "Native raw APC uses the original unsalted fallback path. Rejecting a certified binding does not imply global raw APC isolation; actual raw hits/marker coverage are separately reported.",
+    "Raw repeat fluctuations are retained and reported; finite controlled cases do not prove universal behavior equivalence.",
+    "No benchmark-family deployment eligibility, economic threshold or serving scheduler was changed."
+  ]
+}
