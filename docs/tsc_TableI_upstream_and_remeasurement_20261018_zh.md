@@ -1,0 +1,69 @@
+# Table I：写入前依赖核查与独立重测记录
+
+日期：2026-10-18（香港时间）。本文件是研究记录，不是论文正文或 Response Letter。
+
+## 1. 本轮任务及判断
+
+按用户要求，继续向 7 月 19 日完整 Table I 写入前追查：写作工具实际读取了哪些实验文件，这些内容能否生成原表两列；若没有可核实依据，则事前冻结独立五家族多轮协议，重新测量并保留所有结果。新协议不得以接近 85.0% / 2.4% 为目标。
+
+目前的依赖核查结论是：**可见读取链支持问题动机、若干服务性能结果和 25×10 的工作负载规模，但未提供原 Table I 两列数值的测量生成链。** 不能据此断言所有外部原始记录都不存在，也不能将原数字继续描述成已核实实测。
+
+## 2. 写入前实际读过什么
+
+完整背景表写入发生在 2026-07-19 10:58:14.283 UTC（香港时间 18:58:14）。其前的直接写作读取包括：
+
+| 时间 UTC | 工具调用所在行 | 读取文件 | 对 Table I 的支持与缺口 |
+|---|---:|---|---|
+| 10:41:45 | 1183 | `submission/contractkv_manuscript.md` | 说明稳定内容被动态观察打断，报告任务、性能及共享结果；未给出原五行 stable/recovery 统计 |
+| 10:41:45 | 1184 | `submission/claim_evidence_map.md` | 将主要贡献映射到既有实验证据；没有 Table I 两列的分子、分母或计算脚本 |
+| 10:41:48 | 1188 | `submission/terminology_ledger.md` | 术语依据，不是测量表 |
+| 10:41:48 | 1189 | `docs/tsc_service_evaluation_extension_report.md` | 服务复用、TTFT、goodput、驻留报告；不是 stable-body 恢复测量 |
+| 10:43:37 | 1204 | `configs/tsc_service_evaluation_protocol.yaml` | 明确五家族、每家族 25 session、每 session 10 轮；因此规模描述有可见配置出处 |
+| 10:57:35 / 10:57:40 | 1289 / 1292 | 尚在撰写的 `submission/contractkv_tsc.tex` | 写入位置检查，不能充当此前不存在的测量依据 |
+
+更早检索子任务读过缓存 A/B、质量矩阵、teacher-forced、并发服务、认证经济性、服务 locality/residency、生命周期等 CSV/JSON/报告。原始记录共识别到 **317 次项目内 Read 调用**；调用不等于 317 个成功读取的不同数据文件，部分因尺寸限制失败，图像读取回执也不包含历史像素。
+
+逐次调用清单记录时间、文件、行号、实际返回内容哈希、错误状态与指标字段命中。仅导出五份与直接写作相关的历史文档返回内容；不导出内部推理或完整会话。可见公开文本和工具动作中，写入之前也未找到与稳定性/恢复率语境对应的目标数值来源。
+
+特别区分：旧服务结果的 `prefix_hit_ratio` 或 new-prefill 降低不是“稳定内容中被 APC 命中的比例”。即使这些表被读过，也不能直接拿它们填充原表的 $\rho_p$。
+
+依赖证据：[逐次读取与发现清单](../results/tsc_tableI_remeasurement_20261018/upstream_v2/read_dependency_audit_v1.json)、[更早可见数值动作检索](../results/tsc_tableI_remeasurement_20261018/upstream_v2/earlier_visible_numeric_actions_v1.json)。
+
+## 3. 独立协议的事前决定
+
+| 项目 | 冻结决定及理由 |
+|---|---|
+| 家族与数量 | RULER、HotpotQA、NarrativeQA、Qasper、RepoBench，各 25 个不同来源，10 轮。数量有旧配置依据，但新测量不自称恢复旧 cohort |
+| 选样 | 先排除明确可恢复的既有来源，再按 `SHA256(20261018:source)` 排序，每族取前 25。先选样再检查窗口；不按分数、输出稳定性或比率选择，不替换失败来源 |
+| 资料范围 | 版本化来源池中的 segment 类型与原文；不将参考答案或评分传入模型输入构造与选样规则 |
+| 保真与窗口 | Qwen3-8B，16K；沿用与答案无关的上下文 head/tail 裁剪，保护问题和完整 CODE_PREFIX，保留换行缩进；每来源只打包一次，十轮稳定正文相同 |
+| 多轮定义 | 同一固定来源的十个受控任务包装，不是十个独立自然问题。历史由先前实际生成的答复与问题构成；不把完整检索文档重复塞入历史 |
+| 历史预算 | 在首次生成前，按问题长度、最多 64 个输出 token 与固定 framing 余量保留最坏情况空间；不为了得到某一 stable ratio 指定历史正文长度 |
+| 引擎 | 原生 vLLM 0.10.2 APC，FP16、16-token block、单活跃请求、eager；不启用 CALC、认证或 PSTP；每来源开始前 reset，十轮内保留 cache |
+| 重复 | 三次 fresh-process；GPU0 顺序执行 r1、r3，GPU1 执行 r2。不是三个独立来源样本 |
+| 主统计 | 未来轮 1–9；warm turn 0 与全十轮另列。按族给 token-pooled 比率，五族等权均值和全局 token-pooled 值分开；source-macro 另列 |
+| 不确定性 | 按来源簇 bootstrap 2,000 次，每个来源保留三次重复与所有轮次；固定随机种子，不把重复请求当独立来源 |
+| 结果保留 | 完整输入/输出 IDs、文本、字符归属、真实 cached tokens、结束原因、窗口失败和执行错误全部保留；不事后换样本或调参 |
+
+$\rho_s=\sum stable\ body\ tokens/\sum actual\ prompt\ tokens$。
+
+$\rho_p=\sum stable\ body\ tokens\ within\ actual\ cached\ prefix/\sum stable\ body\ tokens$。
+
+另列 $\rho_h=\sum all\ cached\ tokens/\sum prompt\ tokens$。历史、问题及聊天框架不算稳定正文；跨字符边界的 token 不强行归入稳定正文。所有归属用完整 chat rendering 的 token offsets 对齐，GPU 返回的 Prompt IDs 还要逐项核对。
+
+该协议测的是**有来源依据的受控服务输入**，不是生产查询频率或自然对话总体分布，也不证明编译质量等价或系统加速。
+
+## 4. GPU 前检查与环境决定
+
+- 初始资源检查：两张 RTX 3090 均无计算进程，8TB 数据盘空间充足；所有新缓存、输出和日志均放在该数据盘。
+- 原 `contractkv-cu128` 环境有两处 vLLM Python 文件不符合安装 RECORD。为避免混入 ContractKV 修改，建立独立符号链接 overlay，仅将这两处替换为官方 v0.10.2、且 SHA256 与 RECORD 完全相符的内容；953 个登记 Python 文件全部匹配。原环境未改动。
+- Qwen 模型配置、分词器及全部权重分片重新做 SHA256 核验，与已冻结模型登记表一致。
+- 事前选定的 125 个来源全部可打包：89 个保留完整原文，36 个裁剪可选上下文；没有因 CPU 容量检查替换来源。
+- CPU 预检使用合成历史测试窗口与 token 归属，它不是模型表现结果；正式 GPU 历史只使用真实生成。
+- 在 GPU 前修正了两个接口/留档问题：vLLM V1 的 `reset_prefix_cache()` 不向外返回布尔值，因而以随后的实际冷命中为零核验 reset；冻结器的相对路径先解析为绝对路径。均发生在来源推理之前，未根据结果改实验条件。
+
+## 5. 冻结、执行和结果位置
+
+协议：[JSON](../configs/tsc_tableI_remeasurement_20261018_v1.json)。新记录根目录：`results/tsc_tableI_remeasurement_20261018/`。
+
+后续完成记录必须同时给出：发布于首次来源 forward 之前的冻结 commit/哈希、实际完成和失败数量、五家族全部结果、独立 Prompt IDs/归属复核，以及新测量与历史不可恢复表的明确关系。当前正文不预先改成新数字，Response Letter 尚不撰写。

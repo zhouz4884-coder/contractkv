@@ -1,0 +1,92 @@
+1	protocol: tsc_service_evaluation_v0
+2	status: frozen_before_measurement
+3	paper_target: IEEE Transactions on Services Computing
+4	models:
+5	  primary: Qwen3-8B
+6	  replication: Mistral-7B-Instruct-v0.3
+7	workload:
+8	  families: [RULER, HotpotQA, NarrativeQA, Qasper, RepoBench]
+9	  sessions_per_family: 25
+10	  turns_per_session: 10
+11	  future_requests_per_cell: 1125
+12	  arrival_process: Poisson open-loop
+13	  burst_process: ON/OFF at 80-percent baseline load
+14	  locality_variants:
+15	    unique: 1 tenant per stable service template
+16	    cohort: 5 tenants per stable service template
+17	    family_shared: 25 tenants per stable service template
+18	  locality_invariant: private observations, tenant IDs, requests, and arrival trace remain distinct
+19	policies:
+20	  D0: native-vllm-apc-raw-order
+21	  D1: frozen-safe-layout-only
+22	  D2-session: full-contractkv-per-session-registration-verification-ablation
+23	  D2-template: full-contractkv-service-template-attestation-and-request-scope-check
+24	load_fractions: [0.60, 0.80, 1.00, 1.20]
+25	slo_ms_primary: [500, 1000, 1500, 3000]
+26	slo_ms_auxiliary_postprocess: [750]
+27	repeats: 3
+28	service_locality_full_strength:
+29	  qwen:
+30	    cohort_5: {load_fractions: [0.80], policies: [D0, D1, D2]}
+31	    family_25: {load_fractions: [0.20, 0.40, 0.60, 0.80, 1.00, 1.20, 1.40, 2.00, 4.00, 6.00, 8.00], policies: [D0, D1, D2-Template]}
+32	  mistral:
+33	    family_25: {load_fractions: [0.80, 1.00, 1.20], policies: [D0, D2]}
+34	  expected_fresh_process_cells: 129
+35	certificate_granularity_ablation:
+36	  model: Qwen3-8B
+37	  tenants_per_template: 25
+38	  load_fraction: 0.80
+39	  future_requests: 1125
+40	  repeats: 3
+41	  policies: [D0, D1, D2-session, D2-template]
+42	  invariant: D2-session and D2-template use the same safe layout and frozen trace; only certificate-object scope changes
+43	service_template_task_quality:
+44	  templates: [RULER, HotpotQA, NarrativeQA, Qasper, RepoBench]
+45	  authorized_tenants_per_template: 10
+46	  turns_per_tenant: 10
+47	  policies: [D0, D2-template]
+48	  repeats: 3
+49	  generation_budget_file: configs/tsc_service_quality_protocol.json
+50	  paired_future_outputs: 1350
+51	  semantic_invariant: context, query, and answer are copied from one coherent source sample per deployed template
+52	  score_metrics: [RULER-string-match, LongBench-QA-F1, RepoBench-edit-similarity]
+53	locality_residency_operating_region:
+54	  active_templates: [5, 25, 50]
+55	  arrival_distributions: [round_robin, zipf]
+56	  policies: [D0, D2-template]
+57	  repeats: 3
+58	  expected_fresh_process_cells: 36
+59	  prefix_cache_evictions: unavailable_in_vllm_scheduler_probe
+60	  eviction_proxy: zero_prefix_hit_after_prior_template_request
+61	server:
+62	  dtype: float16
+63	  max_model_len: 8192
+64	  max_num_seqs: 8
+65	  generation_max_tokens: 64
+66	  gpu_memory_utilization: 0.88
+67	  isolated_compile_cache_per_cell: true
+68	correctness_gates:
+69	  completion_rate: 1.0
+70	  policy_attributable_quality_violations: 0
+71	  scope_invalid_admissions: 0
+72	  unauthorized_cross_tenant_reuse: 0
+73	  dynamic_suffix_reuse: 0
+74	  verifier_fraction_of_request_latency_max: 0.30
+75	reproducibility:
+76	  exact_request_count_required: true
+77	  partial_cell_resume_forbidden: true
+78	  rotate_policy_order: true
+79	  session_cluster_bootstrap: true
+80	  workload_sha_frozen: true
+81	claim_boundaries:
+82	  - Marker and typed task sanity are not substituted for official benchmark scoring.
+83	  - D2 registration cost and unhidden verification time must be reported separately and amortized.
+84	  - Multi-tenant claims require explicit tenant identity and sharing authorization.
+85	multi_tenant_full_strength:
+86	  stage_a: {tenants: 10, sharing: [0.0, 0.75], policies: [D0, D1, D2]}
+87	  stage_b: {tenants: 20, sharing: [0.0, 0.5, 1.0], policies: [D0, D2]}
+88	  stage_c: {tenants: 40, sharing: [0.0, 0.25, 0.5, 0.75, 1.0], policies: [D0, D2]}
+89	  density: {tenants: [10, 20, 30, 40, 60, 80], sharing: 1.0, policies: [D0, D2]}
+90	  service_classes: [Gold, Silver, Bronze]
+91	  expected_fresh_process_cells: 102
+92	
