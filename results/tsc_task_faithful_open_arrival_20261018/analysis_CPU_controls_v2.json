@@ -1,0 +1,14 @@
+{
+  "schema_version": "contractkv.final-analysis-CPU.v1",
+  "all_passed": true,
+  "new_GPU_requests": 0,
+  "checks": [
+    "actual ID first divergence handles suffix and zero denominator without pseudocount",
+    "stratified source bootstrap preserves all within-source repeats and empty compiled stratum; undefined draws retained",
+    "paired process bootstrap leaves zero-baseline Goodput ratio undefined; no favorable-pair deletion",
+    "routing keeps inherited L0, exact observation scope and output contract distinct",
+    "registration overlap is bounded correctly for already queued, late and not-yet-arrived requests; no invented exact causal timestamps"
+  ],
+  "analysis_source_sha256": "479b7a3a3a52922ddff0c7afb11a445fa197ea5b82be248c2ccc182e63ac67d2",
+  "synthetic_checks_are_not_measured_effects_or_confidence_intervals": true
+}

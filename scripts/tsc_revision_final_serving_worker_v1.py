@@ -123,21 +123,20 @@ def run_wave(root,study,jobs,policy_hash,owned):
         for item in items:raw.stop_own_group(item['process']);owned.discard(item['process'].pid)
 
 
-def qwen_feasibility(study,protocol):
+def paired_compiled_feasibility(study,protocol,phase):
     checks=[]
-    for load in ('common','high'):
-        for repeat in (1,2,3):
-            pair=[j for j in protocol['jobs'] if j['phase']=='qwen' and j['load']==load and j['repeat']==repeat]
-            assert len(pair)==2
-            data={}
-            for job in pair:
-                cell=study/'formal/cells'/job['id'];assert read(cell/'completion_v1.json')['status']=='complete'
-                rows=[json.loads(x) for x in (cell/'raw.jsonl').read_text(encoding='utf-8').splitlines()]
-                data[job['policy']]={(r['source_group'],r['tenant_id'],r['turn_id']):r for r in rows if r['row_type'] in ('warm','future')}
-            baseline=data['raw-order'];contract=data['risk-tail'];assert baseline.keys()==contract.keys() and len(baseline)==360
-            compiled=[(baseline[key],row) for key,row in contract.items() if row['effective_level']!='L0']
-            changed=[(a,b) for a,b in compiled if (a['output_token_ids'],a['finish_reason'])!=(b['output_token_ids'],b['finish_reason'])]
-            checks.append(dict(load=load,repeat=repeat,compiled_pairs=len(compiled),compiled_ID_or_finish_changes=len(changed)))
+    for model,load,repeat in sorted({(j['model'],j['load'],j['repeat']) for j in protocol['jobs'] if j['phase']==phase}):
+        pair=[j for j in protocol['jobs'] if (j['phase'],j['model'],j['load'],j['repeat'])==(phase,model,load,repeat)]
+        assert len(pair)==2
+        data={}
+        for job in pair:
+            cell=study/'formal/cells'/job['id'];assert read(cell/'completion_v1.json')['status']=='complete'
+            rows=[json.loads(x) for x in (cell/'raw.jsonl').read_text(encoding='utf-8').splitlines()]
+            data[job['policy']]={(r['source_group'],r['tenant_id'],r['turn_id']):r for r in rows if r['row_type'] in ('warm','future')}
+        baseline=data['raw-order'];contract=data['risk-tail'];assert baseline.keys()==contract.keys() and len(baseline)==360
+        compiled=[(baseline[key],row) for key,row in contract.items() if row['effective_level']!='L0']
+        changed=[(a,b) for a,b in compiled if (a['output_token_ids'],a['finish_reason'])!=(b['output_token_ids'],b['finish_reason'])]
+        checks.append(dict(model=model,load=load,repeat=repeat,compiled_pairs=len(compiled),compiled_ID_or_finish_changes=len(changed)))
     assert not any(x['compiled_ID_or_finish_changes'] for x in checks),'Compiled behavioral difference: stop and attribute before cross-model extension'
     return checks
 
@@ -165,10 +164,15 @@ def main():
         if args.phase in ('cross','gate'):
             assert read(study/'formal/qwen_execution_state_v1.json')['status']=='COMPLETE_PENDING_ANALYSIS'
             proof=study/'formal/qwen_execution_feasibility_v1.json'
-            expected=dict(checks=qwen_feasibility(study,protocol),no_parameter_or_source_changes=True)
+            expected=dict(checks=paired_compiled_feasibility(study,protocol,'qwen'),no_parameter_or_source_changes=True)
             if proof.exists():assert read(proof)==expected
             else:write(proof,expected)
-        if args.phase=='gate':assert read(study/'formal/cross_execution_state_v1.json')['status']=='COMPLETE_PENDING_ANALYSIS'
+        if args.phase=='gate':
+            assert read(study/'formal/cross_execution_state_v1.json')['status']=='COMPLETE_PENDING_ANALYSIS'
+            proof=study/'formal/cross_execution_feasibility_v1.json'
+            expected=dict(checks=paired_compiled_feasibility(study,protocol,'cross'),no_parameter_or_source_changes=True)
+            if proof.exists():assert read(proof)==expected
+            else:write(proof,expected)
         current=dict(status='RUNNING',worker_pid=os.getpid(),phase=args.phase,completed_cells=[])
         state(path,current);owned=set()
         try:

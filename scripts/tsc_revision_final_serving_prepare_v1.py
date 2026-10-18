@@ -47,6 +47,9 @@ def matrix(arrival_records,rates):
 def prepare(root):
     study=root/STUDY;derived=read(study/'calibration/derived_profile_plan_v1.json')
     assert not (study/'formal_protocol_v1.json').exists() and not (study/'formal_freeze_v1.json').exists()
+    CPU=read(study/'formal_CPU_controls_v3.json');Linux=read(study/'formal_Linux_CPU_controls_v2.json')
+    assert CPU['all_passed'] and Linux['all_passed'] and CPU['sources']==Linux['sources']
+    for row in CPU['sources']:assert sha(root/row['path'])==row['sha256']
     assert read(study/'calibration/profiles_exit_v1.json')['returncode']==0
     assert len(read(study/'calibration/profiles_execution_state_v1.json')['completed_cells'])==3
     raw_parent=read(study/'raw_calibration_freeze_v1.json')
@@ -97,7 +100,8 @@ def prepare(root):
     files=[study/'formal_protocol_v1.json',study/'calibration/derived_profile_plan_v1.json',study/'raw_calibration_freeze_v1.json',
         root/'scripts/tsc_revision_final_raw_derive_v1.py',root/'scripts/tsc_revision_final_serving_prepare_v1.py',
         root/'scripts/tsc_revision_final_serving_worker_v1.py',root/'scripts/tsc_revision_final_raw_worker_v1.py',
-        root/'scripts/tsc_revision_final_serving_CPU_v1.py',study/'formal_CPU_controls_v2.json',
+        root/'scripts/tsc_revision_final_phase_supervisor_v1.py',root/'scripts/tsc_revision_final_serving_analysis_v1.py',
+        root/'scripts/tsc_revision_final_serving_CPU_v1.py',study/'formal_CPU_controls_v3.json',study/'formal_Linux_CPU_controls_v2.json',
         root/'scripts/tsc_revision_mechanism_worker_v3.py',root/'scripts/tsc_tableIII_fullcost_worker_v3.py']
     files += [study/x['path'] for x in records.values()]
     files += [root/x['path'] for x in raw_parent['files']]

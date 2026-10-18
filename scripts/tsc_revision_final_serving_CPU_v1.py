@@ -95,6 +95,27 @@ def check(root):
             for name,value in saved.items():setattr(worker,name,value)
             for name,value in raw_saved.items():setattr(worker.raw,name,value)
         checks += ['fake one-client failure invalidates both wave cells and retains both failure records; no partial successful-cell reuse']
+        fake_jobs=[]
+        for policy in ('raw-order','risk-tail'):
+            job=dict(id='CPU-'+policy,phase='qwen',model='CPU-fixture',load='common',repeat=1,policy=policy)
+            cell=out/'formal/cells'/job['id'];cell.mkdir()
+            write(cell/'completion_v1.json',dict(status='complete'))
+            records=[]
+            for i in range(360):
+                turn=i%10;source=i//60;tenant=(i//10)%6
+                records.append(dict(row_type='warm' if turn==0 else 'future',source_group=str(source),
+                    tenant_id=f's{source}-tenant{tenant:02d}',turn_id=turn,
+                    effective_level='L3' if policy=='risk-tail' and source>=3 else 'L0',
+                    output_token_ids=[1,2],finish_reason='stop'))
+            (cell/'raw.jsonl').write_text(''.join(json.dumps(x)+'\n' for x in records),encoding='utf-8');fake_jobs.append(job)
+        proof=worker.paired_compiled_feasibility(out,dict(jobs=fake_jobs),'qwen')
+        assert len(proof)==1 and proof[0]['compiled_pairs']==180 and proof[0]['compiled_ID_or_finish_changes']==0
+        records[-1]['output_token_ids']=[1,3]
+        (cell/'raw.jsonl').write_text(''.join(json.dumps(x)+'\n' for x in records),encoding='utf-8')
+        try:worker.paired_compiled_feasibility(out,dict(jobs=fake_jobs),'qwen')
+        except AssertionError as error:assert 'Compiled behavioral difference' in str(error)
+        else:raise AssertionError('Observed compiled change must stop the automatic extension')
+        checks += ['fake360 paired requests: observed compiled ID change stops extension; it is not hidden by mean score or fallback changes']
     assert percentile([0,10,20],.95)==19 and percentile([1],.95)==1
     for name in ('tsc_revision_final_raw_derive_v1.py','tsc_revision_final_serving_prepare_v1.py','tsc_revision_final_serving_worker_v1.py'):
         ast.parse((root/'scripts'/name).read_text(encoding='utf-8'))

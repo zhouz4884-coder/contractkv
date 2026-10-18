@@ -140,3 +140,15 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 新写Raw推导与正式矩阵编排，先按冻结公式推导common=.9min(Cq,Cm,Cl)、Qhigh=1.05Cq及SLO，不能查看Contract结果后改点。正式24和Gate6代码目前只做CPU控制：轨迹/原loader绑定、配对同卡同到达、r2交换GPU/次序、双ready与全wave失败保留。Windows和Linux相同五项CPU检查通过，fake transport不作GPU效果。新代码单独部署5个小文件，原客户端/564快照/runtime不改。正式实际轨迹与freeze仍等待Raw标定结束；编排通过不等于正式服务已执行。
 
 服务数据的主要Goodput在全部warm+future中同时满足readiness TTFT和平均TPOT，分母为含计划idle、失败认证与最终drain的实际完整wall。原双请求wave barrier保持并显式报告，不冒称任意高并发开放队列。原生initial new-prefill只证明逻辑未缓存输入工作，不能当GPU毫秒或包含全部preemption重算的总量。主矩阵并行endpoint与隔离Gate协议分开，不混借Raw基线。
+
+## 14:26–14:36 UTC：预执行统计入口、硬检查与原文排重
+
+当前Raw-only仍为原worker285459；14:36 Mistral94/120、Llama106/120，Qwen两个已完成。没有新派发或停止测量。正式服务代码尚未产生任何GPU结果；CPU接线的第六项新增硬检查确认，360个fake配对中一个compiled ID变化会阻止后续模型扩展。该同样检查在跨模型完成后、Gate消融之前也执行。发现有效资格内反例时先归因，不能为继续矩阵而放宽条件。
+
+新增独立分析入口只读取原始证据和冻结scorer：复算全部业务任务分数、实际IDs/finish、scope生命周期、RPC与server access log、native块/命中及全时钟；来源簇与进程重复分开，零基线Goodput比值为undefined，不加伪计数，也不删除该cell。另用fake CPU控制验证空compiled分层、首次分歧、零分母及来源bootstrap。RepoBench冻结主指标为本仓库SequenceMatcher相似度，不冒称程序正确或独立官方Levenshtein复现。
+
+尾归因使用实际恒等式ready TTFT=排队+controller-to-submit+backend TTFT。固定到达时，前一wave注册可能发生在本请求到达前；因此只用实际interwave区间与post-registration时长给出队列重叠上下界，不虚构精确注册起止，也不把全部注册耗时归到每个等待租户。累计controller/RPC与并行关键路径不直接相加。
+
+预执行代码更新仅增加上述硬检查、分析/归档入口和先发布后执行的supervisor。远端先保存旧小源postimage于preformal_infrastructure_versions_v1，再更新正式尚未使用的小文件，记录preformal_source_update_v1.json。旧Raw worker、564文件快照、实际方法/候选/预算/准入不改；这不是GPU协议结果重跑。
+
+新增只读原文级排重：对冻结候选池中已知704个来源组对应718条记录建立完整上下文字节hash，覆盖704/704。本轮另3Repo与桥梁6源的9份完整原文彼此不同、没有任何精确已知context匹配。忽略问题和system，仅按RAG/Repo上下文与CODE_PREFIX原文；不读答案或输出，不改来源。首次CPU草稿遗漏SYNTHETIC_CONTEXT/REPO_CONTEXT类型，在结果写出前assert停止，零GPU；保留失败回执并按实际pool schema修正，v2完整覆盖。此结论不等于语义去重或所有代码片段统计独立。
