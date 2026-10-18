@@ -27,3 +27,13 @@
 这些证据关闭第五批中“是否需要重复PSTP故障压力测试”的分支：目前不重复GPU。第二、三批仍需要其独立的真实认证、发布和Manifest命中数据，CPU复用不能替代它们。
 
 尚待接续：保真输入四级布局分析、独立Open-arrival、经济门禁ON/OFF实际对照及真实RepoBench机制证据缺口。本文不是最终总报告。
+
+## 保真输入的布局阶梯已完成CPU核对
+
+`layout_v1/` 现已完成三个tokenizer、六来源、十轮、L0/L1/L2/L3，共720个完整渲染Prompt和19,440个segment实例。180个L0 Prompt IDs全部逐个等于已经归档的实际服务输入；720个布局均满足声明的DAG并适配16K预算。当前R4使用L2=0.75的冻结配置，不能与历史默认L2=0.50混称。
+
+例如HotpotQA的平均完整块前缀上限从L0的约3.67/4/5 blocks（Qwen/Mistral/Llama）增至L3的838.33/929.33/802 blocks。这些是原样渲染和完整tokenizer后的结构上限，不是实际命中、获准覆盖或加速。Llama HotpotQA的L3、Mistral/Llama RepoBench的L1–L3超出继承家族上限，表中明确标为未授权，不将其当作在线可用路径。
+
+位移只匹配同一segment内字符区间与token ID均完全相同的内部token；排除heading、chat控制与跨边界重分词token，另报匹配分母。完整prefix上限则使用全部实际渲染IDs。没有将R4单候选客户端改成在线四级下降。
+
+本地CPU分析前两次分别遇到Transformers 5.4默认返回BatchEncoding、以及部分chat模板trim首尾空白的接口差异。失败记录保留在两个CPU error JSON中，没有输出实验结果或GPU调用。显式请求ID列表、记录模板trim后，180个实际服务Prompt IDs全部匹配。没有修改被测服务环境、输入或tokenizer文件来迁就本地分析。

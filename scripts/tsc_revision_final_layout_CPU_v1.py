@@ -114,8 +114,15 @@ def main(root,output):
                         text=tok.apply_chat_template(messages,tokenize=False,add_generation_prompt=True)
                         encoded=tok(text,add_special_tokens=False,return_offsets_mapping=True)
                         assert encoded['input_ids']==ids,'Offsets must correspond to actual chat-template IDs'
-                        assert text.count(body)==1
-                        body_start=text.index(body);offsets=encoded['offset_mapping'];starts=[x[0] for x in offsets]
+                        trim_left=trim_right=0
+                        if text.count(body)==1:
+                            body_start=text.index(body)
+                        else:
+                            stripped=body.strip()
+                            assert stripped and text.count(stripped)==1,(model,sample['revision_source_group'],turn,level,'user body is not an exact or whitespace-trimmed substring')
+                            trim_left=len(body)-len(body.lstrip());trim_right=len(body)-len(body.rstrip())
+                            body_start=text.index(stripped)-trim_left
+                        offsets=encoded['offset_mapping'];starts=[x[0] for x in offsets]
                         assert starts==sorted(starts),'Non-monotonic offsets need explicit handling'
                         stable=[]
                         for sid in order:
@@ -157,6 +164,7 @@ def main(root,output):
                             level=level,level_fraction=protocol['layout']['ladder'][level],dependency_legal=not violations,
                             inherited_maximum=maximum,within_inherited_maximum=int(level[1:])<=int(maximum[1:]),
                             prompt_tokens=len(ids),output_budget=budget,within_16K=len(ids)+budget<=16384,
+                            chat_template_user_leading_trim_chars=trim_left,chat_template_user_trailing_trim_chars=trim_right,
                             rendered_stable_prefix_tokens=end,block_aligned_prefix_ceiling_tokens=(end//16)*16,
                             prefix_ceiling_full_blocks=end//16,raw_segment_text_interior_tokens=len(raw_token_map),
                             exact_matched_interior_tokens=len(matched),matched_tokens_moved=len(moved),

@@ -1,0 +1,1311 @@
+{
+  "schema_version": "contractkv.tableIII.unfinished-cells-continuation.v4",
+  "utc": "2026-10-18T11:09:44.206826+00:00",
+  "trigger": "TP2 first Raw finished; next port bind failed before Contract launch. No Contract model/server/client/request exists in that attempt.",
+  "latest_user_instruction": "Do not repeat preparation, rerun, or overwrite completed experiments. Reuse entire validated completed cells, never a partial measured cell.",
+  "supersedes": "Earlier execution-wrapper rule requiring a full pair replay even when only the second cell failed before launch. All experimental methods remain frozen.",
+  "continuation_source_sha256": "293a8b6ef6d7d618de2b48e718b3d82237946fdb8ce7d4874c84294f20f7e688",
+  "unchanged_worker_v3_sha256": "468710157930ecd2338012be90b89f4d5e7ff59f22d03b659fb432cd5646fa78",
+  "unchanged_preflight_receipt_sha256": "e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea",
+  "frozen_files": {
+    "results/tsc_tableIII_fullcost_replay_20261018/freeze_v1.json": "5491f9e6dc1a38da1ab264c62fa9993f259e5521ed9512d227f4f1cf3854242e",
+    "results/tsc_tableIII_fullcost_replay_20261018/protocol_v1.json": "66c3e68d460102cbcb34d8bf59059155bb0e08aa6e10b45895524a7ef14a1982",
+    "results/tsc_tableIII_fullcost_replay_20261018/instrumentation_CPU_check_v1.json": "162940650253b563035b6b302e2925f0bd0a4c046f0002c2c8ea9011bfa57620",
+    "results/tsc_tableIII_fullcost_replay_20261018/frozen_cohort_CPU_check_v1.json": "9fd66f56b5b1ec5d399e01355bc4fe8e89b081bc3c3e50dae08d19c83c1b1a10",
+    "scripts/tsc_tableIII_instrument_frozen_client_v1.py": "e39a474d12ac7a14a61d25a073cf21a5df57e407ae3ade3f8829c7610ea36bb6",
+    "scripts/tsc_tableIII_timing_instrumentation_check_v1.py": "61f31669d8cc70b16a78fd60aa8041c892f3c53479a4229b320a5132bdbfe4b0",
+    "scripts/tsc_tableIII_prepare_fullcost_replay_v1.py": "8e1318e09062459977d779d43d4bad03e13006d87b3fd48eb31e134e6201379f",
+    "scripts/tsc_tableIII_check_frozen_replay_v1.py": "0c082951572c02553f9df596e71f21e4264415e09fe836649fddf39dcb6f7ada",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/llama3_8b_actual_context_prompts.jsonl": "53d63a7ad784eae11a41329bd79099fe2cfa743e6b73c50197bab86b1be666a2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/phase10_5_probe_prompts.jsonl": "1e880b1b6109a018a69165a23b8e7f143af3b996199f6331a881c6e69f55951e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/phase25_deepseek_v2_lite_pair_protocol.json": "34369728501a2c2e092d696082b9c57cd6c4de7645d437d5b01d2b8c55ba8549",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/phase26_deepseek_recoverability_protocol_v0.json": "228ffe91c2434ca4deb97481acd9f70e1ca66614cdb4e27aa0aa97127df127a9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/pstp_state_machine_v1.json": "5d9860a4414183c2d2c083b6bf67147fe014e7375d4105e7051900fd50103590",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/qwen3_8b_actual_context_prompts.jsonl": "53adf0266716c52ce993edae3c0edbde69b72f0ca9c5d1e012754b185702b743",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/smoke_prompts.jsonl": "743c0021cfc7d90e36760780878e5d6a86b1866c58adb37a97cabdd42d28f67c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_frozen_family_policy.json": "84c21ea7e2270cc2c3544e0cd3eb574a364261f74e92ab3413321b78d7230249",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_llama_sota_protocol_v1.json": "2d711ea09488b4c97bce63f3fb9077ee2e72fd783a3208fab48e2a81b3ae4022",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_net_benefit_gate_v1.json": "d52f982cce4c2f5e592c3cdc38751dc13249a90cdbd0a9080eaf82a3ba6d0641",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_net_benefit_heldout_points_v1.json": "66dbe910d6aaf5f3fdc4679445199fad6e32ce687534ef65c0d61d518bda0bd0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_service_evaluation_protocol.yaml": "9fcd249d1e2b88324e110925059dc7a046075c8a32d00524a6e8af177069becd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/configs/tsc_service_quality_protocol.json": "8c8196531c62a21240fab882c2f73c4fb88f91b5b737e56a7c8080666dd09568",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/patches/vllm-0.10.2-contractkv-compact-egress.patch": "7d771041fda281f4ff329f31f7fe9f990d9618ddf660b37dfad5d92c682584d0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/__init__.py": "bfa2bb1f74bc818885561c648cbcd742b22f12ebe791306139f63bcd1cb60bf7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/analyze_llama_quality_tail.py": "8dba60129dafd37016e45d0aac5ee564c7ae4f05987dd6cabe8c381ed410e76e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_cacheblend_compatibility.py": "984d49ea3c7d6be7e3b69470926d2c17a61e52647a6723712a89e29e14eac844",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_lmcache_segment_identity.py": "6ae305a056450e4d98284d4376b1c3a21508d25dbfdc5b9fdb1e85e8c8e555fd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_tsc_quality_all_template_negative_control.py": "ce6d6bf9f86b14764c7d01f15467d480bd7126154ed57e65abaa2b019f4f0d93",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_tsc_six_task_closure.py": "d96d55d2a61e28f896d2134b8fc17bbfc44e1f769e5534d6dd950837e92e8f1d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_vllm_hook_points.py": "8333a00666db9949fded5506fa2c676a5886eb121b08cb443568ab74d8677077",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_vllm_v1_actuators.py": "8dfa126eb9323b5d215cb2d0b4ca28dae0da43fa4afc21e610c3339b532a2955",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/audit_vllm_v1_suffix_free.py": "c3b25de52d34a8080485db63d59f825445e532acf20ea212319e66d07d4037ff",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/bench_actual_context_scaling.py": "20b66a09e5923fcd3122e5c7bde0d167dc057b0167370a33bc0f6d762acf3a27",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/bench_openai_ttft_tpot.py": "253bfb390d23d30aaf6fbb9e583db8a515bc864a87345a125943d9d2575c63f0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/bench_transfer_microbench.py": "77e79bb47a3877811e05718cbbc0ef0f2ee03dda3f13c287b926e75ae85dd4a1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_agent_workload_trace.py": "0b4af5191d6d0405de1ae3c65ac8c7930c3dc61715cfb549f8376a276b872e1c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_anchor_recompute_probe_summary.py": "a74198296300a999a9157a6fdacc96106eddba6e571f49e7c1360f0e2075908a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_anchor_residency_plan.py": "5307840162218ad42a562e0a14f326224cb5ea7ddc8033d239c2b7b1702aef97",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_natural_swap_observation.py": "73a6556434c1c4ad3fc71793f3bcf11a08b9297468079caaa162814cf2214273",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_paper_artifact.py": "ceb6f054b667ec9932e7aec714b198ee1d0b95267b6ad505caca99662b81ae56",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_phase10_5c_repeat_eval.py": "a50179e029e0e357e78261d6bc1040228ef92e279a103f5b78f511b42a80d72c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_phase10_5c_tier0_eval.py": "7be587f7bf1d7061134b875b28a74c99d21e8c1e9512ebfa5db8d22fe92abf49",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_phase10_5c_tier2_eval.py": "840fc38955194a58ab7daa5325fe21056b2a66f77fe28237c66f12dae0842c00",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_phase5_inputs.py": "70a9e681d3b908cb76a797cf7095734ea4b5b0caae73a792e8ce4e4d5ec1be4c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_quality_risk_ledger_v0.py": "5b5b4ec5e61119275e98c405ab6769ba068dcea951c1c847ca02f2eb0ae89c8f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_real_quality_risk_summary.py": "a53bfbcf52ac1b2a2ffccf84b1f6e566f55381a463c32edab601283247c0ac71",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_recompute_actuator_probe_summary.py": "01638a5188acce098b2e94c50101bc8f77f904d699edcf7b6e57d58c4446e59f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_execution_inventory.py": "520cd4858897ed1ecc440949a23d839f8be9236aa687ce1221aa9977a38af1c5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_residency_arrivals.py": "b2f25e3d27c3e32649bc20c41007b7f26f88eeebc60d86d546a10fcc55b6b1be",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_service_locality_traces.py": "c3d3af5f20d8dc26a4a7adea9df987b93c8dba6632d022853ac2915c05ef64b5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_service_quality_trace.py": "7f57f3140d747d59ad01d64300950a843791aef4a6ad99949f7ca2fccb1b452f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_service_trace.py": "8d54835e988f149addf53ad0b06a7a07a439c78098527b5b30390c02af0b981e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/build_tsc_six_task_report.py": "034967aa3676f13906cd35b24a90d6a743808c37ea996316957a626d52ce8f65",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/certificate_binding_stress.py": "a87b5d7ddac63839953b69b63adfe3ffe6d9450c77bde8af0892d5ddafde812c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/check_env.py": "19f35bee4935d51256b80982a98b9b72c40f2ad4952a5f16d7032628bdcc3542",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/check_lmcache_separator.py": "04a695a3869c113fd4a19cb45e0b7453a6431aabf0ae883060ad0590f3a92035",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/check_models.py": "c232eb909909ec943f5d410b8d26fa9d38de341a69c1fc284e01b20488d0b49b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/check_ports.sh": "6f777ff62a6835d8ed77f99e6708c2587208b1a9ff0289d6ced9a5e600d69fe6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/compute_slo_sensitivity.py": "30b45e3f02d105cd658130725247ce42a8acc7e6cd1a75ed2ff2d3995b098f63",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/compute_tool_slack_sensitivity.py": "fe07ade2149c64aaace31685ce428fbf9ba04272a90e8020c5b62acbee2ac023",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_certificate_binding.py": "75f98601efef727caa33b47609532f8eddfb7255453dda16d341e20b72b240dc",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_certificate_scope.py": "f44d6df95961bd2b409311e94fc783def854018ae7a3ac1e11053045d537069f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_decision_logger.py": "95e11b791c6248c0d3ddfeb59276be0577308f19349edb28713d43b7204fddde",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_frozen_policy.py": "f41b50786dfa4c0b267de332528311185767cecc0a6ee7877188a475e1ddc5c4",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_policy_runtime.py": "ea626126f796c842815e2bb352c2689cc08d5c79b351dbe28ffe5ee4b76672de",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_pstp.py": "df655b668e78f72767e40bef0910e09200514058269d3146035dcd51f092f41d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_quiescence.py": "e70dc31c85496a2ec86656a2e4a95b6f02717101a3a20df0a7394d3de8120629",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_segment_parser.py": "c7e2d0514c8e7164b73b979fab3532f946f8d2e3634a2797a00a9ab9d655da9a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_server_proxy.py": "f198154e5beeab211e6df32bb3f7da3c0b149720766b2293f7fc2fa5db2b6606",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_shadow_parking.py": "9d93fb59cd5fe8abe8f658f27048580076755e94ad831aa84acac9517130f47c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_task_contracts.py": "82e55dbd6d4ca36804af2e89322d00e1b0d9d281488aa8104d624e8424ea6f66",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_trace.py": "c0b4b74f3820145dd22e08e6ce604dca44d09f1cb7e869d0cb5d26d9440f1752",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_transaction.py": "aa70a13fad31a691fe963eff50226979c549a7ee9d4c7d8fab229ca753b12776",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/contractkv_verifier.py": "1577682ac36cf5756a84335a768e83701809cb050b30aa057fd0844a2489c572",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/cslo_solver_v0.py": "8c32ded3ae5b083112e4cb0670887ecb14122195483d254c2a941744a8fe1295",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/evaluate_recompute_policy_quality.py": "df925dd545696276d7332ddb5bfb84015f705346d6b25eb111cacf0847170a5f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/evaluate_slo_goodput.py": "789879199a7895458cfc8abddc251a410376158b2c6d85f29fec90e8d1c05771",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/freeze_llama_task_qualification.py": "30abedf0c1e47b3758a6908ff0f6785ddaf38aff5d0992d9b6143ddfd1284bb8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/generate_actual_context_prompts.py": "30a81402fbfe8328ef79a2b2cef1eedae5f78b3e2d171da484f9e70212aeca43",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/generate_submission_package.py": "80d69fbb12eacfb0f66cbe5d0bb137422e4946470562ea02c89bc4693632d840",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_sglang_external_baseline.sh": "503b37a660fad1d45b800e1a34a4a57916e3a825460126e011e6bbdd24d59769",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_runtime_probe.py": "b39f87b351a2ccb421969c5fecd6b04efcffc91f6988dc7591ab877f47ddb098",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_anchor_recompute_probe.py": "2d46764816cc5efd85d671ef966f4b580239e487270068f608c7a73e674f698a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_compact_stop_margin.py": "bf78574aa12e476fa1bd516497c4edcc7139f670b5a4187b9bab3b8e7540fef4",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_ephemeral_shadow_hook.py": "461059048007b59c428f3285773279512b1502b98d551eb30e60ae1a823f0019",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_phase17_hook.py": "138585c4a53dc4007fa8771a198c5a3809505903e063543f237f0572a60d52a0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_prefix_metrics_probe.py": "d38c173246f36302044c1ad7afa93bc10b1c2e45d967ebd929097a6c7739d111",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_recompute_probe.py": "2eb36cc2873cc1d95a5cd245f7f2d80c5aabfcf9199182d29fb9b389e06ef48a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_residency_validator.py": "0a726afb221fcca9e3d95147b170446e1a3fbcceae3e20743ecde9d5ab58c36f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/install_vllm_v1_runtime_probe.py": "7e0d03415f10b1557d91beef2906702b5d96150b9ba7f269ffd0b42349f26cb6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/join_phase14b_prefix_metrics.py": "4938a8609a0cc157746e41f18c2ff09d1afb5deec3a367c4a0707f5583a95c12",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/merge_offline_dataset_bundle.py": "160d6e553190aa7418a093e97d261aa479d4caa4e3b005ff8524485803b422d0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/monitor_gpu.sh": "4525009e00af2a35c419041e378f37650641b58405d2b7546c5416828f67efc8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/patch_cacheblend_llama31_compat.py": "349b73d67d64a28caf826415276c12e86a51cc6cc895463a3e8d45f37dc50304",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/patch_flashinfer_sparse_import.py": "88bca99228fe29c01c65c89872091f523a65589ae95e4be33a952a1065bf86e0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/patch_lmcache_cacheblend_fp16.py": "1d1351ad16a3b4acb3c3d21f0e353314dd7308c70f4aa721058945f38ef83988",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase11_segment_fabric.py": "ec7a4b7893660897ffe62ee42646d5fc250d15c33fccfbcc66f5162ea131a1b2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12_concurrent_prefix_cache_replay.py": "fda0035fe073b6bff586500bf4946412581b1ac1c51262e78238e6ccadba3af6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12_posc_layout_compiler.py": "123f2352965f3d6c2addabe6019e5a44aa49ce9e5afece01117bb556ac032478",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12_prefix_cache_ab.py": "3aa96b47cac2a1e32feef892675906d12c1e846f664de17cf772bc8f487c2597",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12_task_quality_sanity.py": "9391b5f8b186ae32cfdbfe62b632b4bed4f68965db3137805fdf9c2d2ee26eaa",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12d_guarded_layout_replay.py": "66746c7b9fcae441394e0f08146b3c64b2119fbda629819854ab80bb530df55b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12d_mixed_agent_task_builder.py": "0ac499b030ec2b72ade75048a843f3fa1176b591d7a3b21370fcab2828142d03",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12e_cache_aware_posc.py": "a8e36563b6e725a865a28d91d356368830e3b5759e88076c39a5859bdac33e6d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12e_multiturn_replay.py": "504c19d94d79803095ead8bbe1af43b9e03e5484bfdf0c4d0547ed00faac6fb8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12e_multiturn_trajectory_builder.py": "a2127874b16b2a29a88a1f3786a390a7fd0fadf543eeecef0fbb5e8c751c5187",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12f_real_vllm_caposc_replay.py": "857713f21b2f53d81aaf7a759b7fc40de4810528fbecad21bea50ee4b1a683fc",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase12g_concurrent_caposc_replay.py": "3e54f9583310895aed08a4e97382ba2640708d7b853ea1ce88101ed0a040974c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13_heterogeneous_serving.py": "4d6238606e775328700518710a0513a12ad011f9d0000d3c16971b87a8aae8bd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13a_compiler_overhead.py": "7aba7514aeb7246d935b047774e507b0cd86d4c342cc86f892147c825289f00b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13b_fresh_policy_quality_replay.py": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13b_live_replay.py": "33138890203a87d4b0e0203c6af123db0fa20b42e97f11c6dfd489033e7164c9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13b_real_task_quality_eval.py": "aa1364629f6cc585287ea0482e6372d98b83c0ab08963dc7852fc42a7df7e2b6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13c_capacity_analysis.py": "92bcf997498ba423c4d5fcee26aa5cce1afb6e232db3c308d3c29a594cc01525",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13c_live_capacity_cliff.py": "125c6006b63a8ec03baa921fc556abfc0952f4025f2c19340b30d2d43b765563",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13c_qasper_layout_audit.py": "c16061feb9ba4bdf3cb2fbb562f1720e966b0d64ff5fc0b00af36212dc131b23",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13c_quality_analysis.py": "38af82fa78b23cc8148c2355f744c863c774a4e77ee7d1f28b4a0df7c715d357",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13d_qc_caposc_analysis.py": "b82bbdd8b577c41046ff319deb6403bfd3340fdf0b00c49e219041f4bff1a659",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase13d_qc_caposc_qasper.py": "4d661c602d48eca654b8890e12c5a1b54ace4f2b99fca843229c6bcc6ad56357",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14a_agent_trace_census.py": "79f75c3ce1aaa292a98c0725d9add948e75981798e06f0bbcdcad2e03a84daef",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14b_prefix_metrics_smoke.py": "bcdab4f2bed37a900e0f46c7ccf39adb6c0e74385ebe5faf219fc031c9e7627f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14c_full_pool_qc_inputs.py": "7e5c64bfd8e707bd1f07f309d5ef42b7012d120c76bc169e978fc387d776f6f4",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14c_qc_calibration.py": "e4e453cc27effd6ff7622ea09008f9b42c0846ac95f8db25ece0f188a51d8553",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14c_run_full_pool_quality_jobs.py": "4fe59fcdc4448d6874a7e8b9c72ffe6832cd90418c51fba7e417a4532d8b754e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14d_full_pool_builder.py": "ecde76cfa2b5d3c95598ef89bf0109195c56c751565b6d1ddb9df49ee7222ce2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14d_live_mixed_serving.py": "e33ef634bad2b56f4adc2ae90bbde9d1d5b24af4937f0f3954394ed53d53305e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14d_open_loop_capacity.py": "8c6fc22b7c3a76ddddb1cde22388f6456bfa7146b27b6e8ee4d1d907d6dbe69b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14m_physical_dedup.py": "03c584c5b413e4e82e8885562b84936c5370ed7c13b734d925d3a1a54d6dfdb7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14q_request_safety_audit.py": "80820537c8091470a7b989b1906c113b7b485f0e8ad44a534407ca63e680aa4a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14r_finalize_quality.py": "4ff8db3773d11cdd7adcedac890d2ade404443b013656be4de2ba47fab2eca01",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14r_prefix_isolation_plan.py": "0d995e4dfb0a174e01865c7e17a1b6b92ded9e15393ccb9e35582344c37a77c5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14r_qc_candidate_calibration.py": "27dc637f9c8c1c2fbf17ddc530db298380741cbba32b3ff22a86d22ea233c96a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14r_run_prefix_isolation.py": "05e8cf9af05b1462d503e2bbddf28b65525e4012e455b5a8767394a5d865cfb7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14slc_epoch_transfer.py": "0d7fff296a1af6b8e9a96fed967cffd6351ab85d3593ce2628355865642b20e0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase14slc_teacher_forced_verify.py": "e3f5ea2514526ffac624ccf7c882775a603456445e6400d9fe26100a2c72ba8c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase15a_postprocess_diagnostics.py": "f434f2339c10101aa1cd8674ba7935b33d8e260b4e56ce6953441bf10db1dcca",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase15c_cache_churn.py": "b42984f235a67bd572169fc672390e573e24b8655b2c6b44ec4da4087c8dbde1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase15c_cache_state_conflict.py": "4a0821da4d90908f380fa899ce21928244412a7a2766cbf60995b2100fb492c1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase15d_active_tenant_interference.py": "f0c574c71f66bedfad7efbab06d7de336091c82ac6692fafe61796023f614189",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase15d_task_bearing_certified_replay.py": "5517f6753ebf1c53f0a53984d23608ea264b8f36beb49da1abe19f3dc8b10857",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16a_microchunk_scheduler.py": "e6ab080efc46beecc3fd5231c0b51df96e5963868d960de1a0984f28834d2b11",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16b_ephemeral_kv_transaction.py": "8be117a7d87f6a4a85c5aeeef5cea61a5d4fdee02fb2584b0f6563c13dcd431b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16c_vllm_teacher_forced_probe.py": "282cb8fe65221f059c0916d120dc3ac6cd4b9231a1bbcbae5925d39437cd0158",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16d_drift_budget_lifecycle.py": "3b7782fffa1c2c4055d86c53a0e05cd3cee847068787c8bd3b84c5d433df9d88",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16d_real_divergence_reanalysis.py": "0f1b1dce4ef6f5034c1e17c0031952be984071bc3a41015afe2b537a3d1576c3",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16e_live_transactional_slc.py": "cd64fb02ec0c4d9c38f13b45e80fd904e7407375a97f9551bfab4411f17622b3",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16r_pstp_live.py": "4958cb5a3978199ba005b0eb73bb93c36ab8a91cd8b9a6d58dbb3d65ab5b514b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16r_quiescence_live.py": "ff98f2ad32d99988647794fd0affb5e62c4d21ba9a546a8b54db1dce28042fd9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase16r_verifier_live.py": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_calibrate_thresholds.py": "6c0e91741840dc66764d91d411e3d33b574e525aa427a0399e72ae8c631674bb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_calibration_rerun.py": "eaab54d6c38d5436b6cfbb5b6b2a93a09479bd4cd751049cae341af569096127",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_concurrency_fault_live.py": "69c18ed24e6e42dfc68872da9cd40b7b89665419b4f4524b70f6f66f29bc955a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_integrated_live.py": "d12c8f5d21d33c627f53ff8a83fad274b648dabcfcde2619abb2009176114888",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_live_common.py": "298f92081ca467730af1669f8f62328e1c5310f3de60b98d11bef182b66e01ae",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_prompt_logprob_debug.py": "74efcef539f3d6f8af522a097ea8bf2ca29eb192fad604e3443882f48eb2467b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17_verifier_quiescence_live.py": "51bf5ec305b57b4f9a88e08a7fe3b77fefd5d6cbcda2484256bee9707b02f7c5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17r_false_safe_causality_audit.py": "613778e37e8b8c418b1ce9f9b0fbecb5327c58d183d1000e5a765a4bee38809f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17r_incomplete_taxonomy.py": "943b5f2665391a9b5812e8fbd19fb588079c2092e1782a44f5156ffb2b178c11",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17r_qwen8b_integrated_live.py": "6ea6172808850c27f34a466bd4cfa34fea4dd5d2ceb0dfd94ec086f775812b96",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase17r_unsafe_label_refresh.py": "4a8b32b598572e74e92f7133ca0584e6ca94e8aa9d78366f01412d5aa43943cd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase18_compact_egress_live.py": "524c5e607113fcf4cc493c6de2600bda7359e4917d177649d72e761a96512262",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase18_compact_lifecycle_faults.py": "e36ae48c41731fa4256000887eb1c82be2fa584c6e363f507a88bff01b5b3698",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase18_compact_quiescence_live.py": "c63103ef070e3264434b4d869cb0a9810bff0249ee2242058e110d5ef91f26ae",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase18_summarize_ablation.py": "cea57541012406754099d4163d81a3703b3374e7a553c84987ba6dfc7770648f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase18_summarize_compact_cells.py": "6cf38eb29a0bb666accf95349874bb4035ec3c5ee3c73b61387f5c4f069a02df",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19_dataset_inventory.py": "89b4521596afc20791bc3e4fd1b0f82faf3776accd698ab700a270232f8965d5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19a_audit_provenance.py": "49332498495675869f06cafeb6f18b499a11c1d9be7fb8efe801d6e0c212f360",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19a_freeze_quality_summary.py": "cc032e5d4423a19e843478ede84747103da8fb98b4052338925292e108112652",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19a_rebuild_quality_pool.py": "dfe86f7a06b4b4594216319d042f8493cdecb8fbb604d23ecfbe559e05001661",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19b_build_task_sessions.py": "8c51a0ef43b02d7faf93271a0cdc9db5deafe6e5742998ef80b5e4671be6c6cb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19b_end_to_end_live.py": "5c2044bc699948883d4a33a167e86067fe4714ab36f32fede4f8243da26cf3c8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19b_summarize_net_benefit.py": "5539e46096c17e37ed3017b0f88c3f6b5cba6cec9251dfc49539898f76bb1af7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19c_finalize_model_policy.py": "5437844594de6b45e78d8c8fa16867a7caf19064b80cfd963a8989274420b758",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19c_freeze_quality_labels.py": "95abe4dcb6ef1b3b9c293e14b92d2aa0544125929f29a91ff7aee624b12455a6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase19c_prepare_cross_model.py": "b5fd57025f541cc468503353f1500bacfb369246140ac838d342e9ab6ac957d1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20a_official_quality.py": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20a_slack_sensitivity.py": "d8311090dc5ec925557e683ae563ccb03c07d8eeac996014b237e39a5acab608",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20a_slo_sensitivity.py": "030860dbf12b0575b597f69bcc0cb49cdc34a2c4fe0895f3ec6276a785151c34",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20b_llama_rejection_audit.py": "6ef746dfb74076f7c92d24d12018f3e18cd96a3ee64352e4cdfdbc4be3eb6e9a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20b_summarize_taxonomy.py": "7618bd1d2c3077b27829d70244f6d309271260ec50ee856d2c0e0ededab1f0c1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20c_freeze_two_tier_policy.py": "99f94b31f01b5f5343bce443c04d7b4b49753d33c74e8e8104e440f93ac0748c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20c_summarize_two_tier.py": "9d8a4f4895155fa30df7699beaa041ae96133066aac27d4f67f38923eb7a7de9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20c_two_tier_development.py": "563cb4b3bbadda6eb31cd41f2a6d57989f16e10c932a7f0793a50d4bc87fd9ca",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20d_build_fresh_split.py": "b7820b84ecc358dac9a7efa198f22c56ca71d3c0bc889e4e67fc7e6340fdbc6b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20d_causality_audit.py": "8a777f3ec6790b4588ba8d820f68ab2cb79dd42c8c55cdfc6b67cd6afab7daf4",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20d_summarize_one_shot.py": "fe0ea324069428f30a2861dedb73eb09e2001e017154be87c87f93efefe02863",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase20d_two_tier_live.py": "7693faed3cff2fb23e652b1dda48e50794ebfdc3645169b06e613a082786420a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase21_build_cross_model_summary.py": "d10d4c8c0a82d40d8ab6b4ad21ee88fbee01e3630fafa3df6c6d5143c97d494a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase21a_llama_future_turn_recertification_audit.py": "964be1bd55afc8664a7f4ae60c93d63c3686d2977b28eed010e95386551eb3bd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase22_llama_broad_analysis.py": "d2610b9e6efab7e50371f53e5a72618bfde9eac871637431f90ead9b0d06f32b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase22_llama_broad_live.py": "f619e0df48a582c9dc163e1580655b816a0d6797534e38609cb4c59fddbc2611",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase22_llama_layout_ladder.py": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase22r_prepare_llama_split.py": "f2f360459cb3ed4c4881215d9b5eee46032c44f7001c6bcfb6061c8e3b74cb80",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase23_layout_ablation_qualification_cost.py": "d5c5ec96eb0eaef712ab7cc286fa28b64d571f77c8054c94e635a68b2707187c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase23_prepare_qwen14_scaleup.py": "01b2c044996120dba7f24a8335479fbe341fd6ff45650b059c7dd30a0754874b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase23_qwen14_scaleup_analysis.py": "6369905846ae7c3dfbe9e4ba2149ff1f29cba264c9cc53322be3fbc78cdb4437",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase24_why_when_analysis.py": "fddfbcc74bd5e0503513bd9ceb18fca81013881fb4fae34dc1cccdb4433f8b1d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase25_deepseek_certificate_diagnostic.py": "64e17e83210a6040783badb3274420fb4598bf98a79d439e1ca1337a48552d36",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase25_deepseek_pair_analysis.py": "cd15eec6a4b319bce5108a27ef14b1fa045008b688d9bc0c1f66cfe9befd1efb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase25_prepare_deepseek_pair.py": "040b2beb761fe75ababe7ec08444c4df83a01dd4615381ab9360b58cc2289f84",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase25_prompt_budget_audit.py": "f5f822c3f9e58fbbcb5b8eb80067c93eb1c2fb0008c4a7d26d6a41918e48fd5b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26_recoverability_common.py": "3542a7e772f4ece8d2f77c73dcfc131531dacb1b20638ecc9d6b83480e984b6f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26_runtime_estimator_repair_analysis.py": "f708adc27f29c3b407fba615c54f14ebdde934532df9e3ba19c92137ca66a8e6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26_typed_behavior_contracts.py": "c752d93600382daeb1116fe7a677614a51210af8da5a03d5b26d873d6923945c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26a_backfill_prefix_tokens.py": "732916810c9b3067e9e719480db547b94cf66acb644f6dca60c56be67506faad",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26a_recoverability_analysis.py": "aea74bc0a90e342fac8567882bbd6b52ed12e47e8035aa7e51dd257d5ba0c582",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26a_recoverability_audit.py": "df08c2f142c1ec64bf8c6bfec434a764f45037425a0548151b288523dd33bfb6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26b_freeze_fused_verifier.py": "3893a3ab2f53ae2ebcb1d04b6379392ac95e8e3b45e9ed8e4d0ca7cc909143b0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26b_freeze_typed_contracts.py": "1f829a45850ed7e5f33ad1070dc651d4a3b74ff7ef2ee4626f03b5b72d4be1e0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26c_typed_transaction.py": "d20a97b473174841878b9dc5ad7c392fd0eaabf7bf0bec86f29b7d0e4ba3f384",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26d_fused_analysis.py": "91b671d7b1dd6c433c4b0f3164c94d75f89931f149e9965b02b16b4f9d4f3c3b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26d_fused_live.py": "19fd4fa5e999c0956925a9b1ac0c8c394c53d4496a0c2ca1c6aa8fc342ace1f0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26d_typed_analysis.py": "f6e602d34fd3ec6459359d58936d1fcf13df7527a817c0cff4abea4b667a2399",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26d_typed_live.py": "f8abbf6aa59ada377c4772aecf52352fb140dc56b1ff7735fc0c1af6cb8b4891",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_analysis.py": "f602a08da63f77a32f55d39f46a70c09b92f02af16902fec34c8960a178806a6",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_freeze_policy.py": "972425f2b4e950c11d096ec53c516c8d3757ce967efafc51f96e4fb41a0a6c96",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_observation_live.py": "7bb12e19a2d536cf4c5f239bfa183bf34ccf36724ce2137289614d8d9da102be",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_policy.py": "77a7ff05cd6b170d961c322ad26ed5e246b1d6d85fcdbd75d87d78de32d516d7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_prepare_fresh_heldout.py": "6e7e4d8123d905dd9a8e9be64234861d2a7c8398891057b7dc8b3651be891ddf",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26r_typed_contracts.py": "d5b2469ec1e7a01f376f670e4e5a3221c0802a83356c077c17c467442af712ec",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26s_closeout.py": "d3343ad3ded622bcfc40f0f73c2e16bfa8ed07e368ad06231031e65f4dca368b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26s_freeze_pilot_calibration.py": "d4b3ce3dcd0543de122d11edd2bbe233a9057f5d41e723a48ac4c6ec648a9ae8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phase26s_pilot_diagnosis.py": "52aab3421bf870576cd1c39f886bd1b79b139c20864d0c9a19353dccc0607645",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_freeze_manifest.py": "8b96941906f20c89c5f8cb49ba167507961309f33ce7b640cade620e69459ae2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_freeze_policy.py": "1e6f24521aa112e7077662c9f2c2e76c0bd225c8cb1db87622687e83fe10b4fd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_future_turn_quality.py": "14da1ceb927317f36d3a72db184ff4d7fb045d460284272fa1a878063ce32b7b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_logprob_payload_audit.py": "3d6fce53fa4a730d50c7d30ec9d7a3586bb00a42dc11a0599ae97ba81cfb36ec",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_prepare_mistral_split.py": "74a84935d7d472dfe10a34d40109767eaa994e24035de61a1790252ce2be491f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_protocol_audit.py": "67a6cc097198730f7c12360a3affd0b9f26435b51329a453f59184d8291596f5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/phaseM_summarize_load_extension.py": "9e41bb38835cfc2a18dc39e621373928ff94b993097092adbfe557ec09ee1b38",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/__init__.py": "210764474a7375fa1f4372507b4d2c60246ed1dfca4ea6205119540031ffacb1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/common.py": "15f45888f2558c1e13d81d6d1f01051fd81193f13ec6566fd7c32768d1eee3a9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/contractkv_indep.py": "8de14c0b771cc6fe06b0df73f18ccd4a1c81835e50deaf11e355c287d44ca9ad",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/contractkv_joint.py": "2c47b098e2055ed903661580984ba030d09ebdfe86cfafd7788abddcd2a12610",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/full_recompute.py": "5f0a6f527ed7f52c95d09f027837b6a84dc3c87cedcaf13c3f008c3520f12149",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/offload_only.py": "89e615192175f658a9f36a4eee26a4c419a6dc59d1129f8a826ebf6c46a773a9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/prefix_reuse_only.py": "e8f5011615cef8f54193382fe5e345152d382455f2de0918f473e4b76efdcbe8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/quant_only.py": "11b073fe81f5e24059a31fbaa0a98459534e76f33ceb577989fbd1db30eeb4f2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/policies/repair_only.py": "9bd5f5970f4aa345d88cf1b19f9724b0bfae4c4df9fdea3d8514e0a0c49667f3",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/prepare_dataset_samples.py": "60ed004c2afe778fb041d5d6f01bfd67ac23bd34ea053bd2b1161f787aa6df28",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/prepare_extended_ruler_sessions.py": "e941b70f559da2350bafa2a2cd8dbab5f62c1c7c75189376f393a1a4b275ad2f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/pstp_transaction_stress.py": "575dd79aa63813c0e0c2771c23bc0b911062df6a96cdd63afb08d94e2dc5ee94",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/render_tsc_service_reports.py": "dd2431688d09c455591859b0a88b916de9e8a596aa69c76e5d94c3611dbf0a17",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/repair_submission_scope_telemetry.py": "9bd684b2f4728f47af9181cb0b86c3d0a87523eab63914567210bf65f17eed98",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/resummarize_submission_results.sh": "fecebc67f5af022c228e71e598a4b637f87cb77413e877107fef8ea569c2d860",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_cacheslide_artifact_smoke.py": "663c8f13f20f35db54a414cd3cda4074e5b92c256d812f9a436afe38be1c7117",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_cacheslide_llama_smoke.py": "2c6248308f356eec7b84a4b3014f23a33922bc28bfed32442451110783f7caee",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_common_ruler_cross_model.sh": "3f76b00d4c824bb4d26709d44318625a4394d25f57d2fe86a196c2a7e62254e1",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_contractkv_controller_overhead.py": "19d91fe18a9cfc9445417698bf812a9e78851e35071978edbe007875d94725e0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_contractkv_runtime_replay.py": "1be661b8b4e5a6c8dfb53f16402710bdaf8107492dab30798a811430b6c2dff5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_extended_ruler_replay.sh": "4e99bcdeb751365685e2cc0e47b84c633877595f52bb96484bdf6e359305687c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_external_after_repeats.sh": "c13fa07473487cda7e2dc2fff44b1fec632b87a22e31d4e62570dd1d2169b0d5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_external_llama_radix_replay.py": "1ac814515528f80a3f5f4f8b5049a10a0fc76903eb41aefe1efbf13c8e7bdb08",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_external_llama_sglang_baseline.sh": "8e49ec31a5cce72f4a2f4a6e7c5ea8cb2736e4f15661fa47c094d8b772ee903e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_external_sglang_baseline.sh": "65b74eaf9479cdb89250747bc3dbcf4a112a213352cdd2f674a485fc99b62f40",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_external_sglang_raw_replay.py": "9e683e9846900ae113d956bb745f1a4a269d0e739470ce7b7aa80ae96d3adf05",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_layout_only_decomposition.sh": "ec61bb6bd56382c3de8228810cb101f81ac29392959627d64dd7d3a873b0827f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_live_workload_replay.py": "9b41f94d969a8ea737473c3907a7ae14415322784f9be00d11e1112058968c0b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama3_phase3_scaling.sh": "ec88dd31e138cb5e12129001f55a06abee0a9bc4182a97dea9090c4fcbba4ffb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_cacheblend_after_lmcache.sh": "f39a111aa55ac15d82e3f5750868de6d00cbd1a0bc68eac283140a31d911fc97",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_direct_vllm_baselines.sh": "547a3fb036a73dc8c49c201f148523ec58020cda04697526370b02a54b81ad45",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_lmcache_baselines.sh": "626adb0081bfac799b567fd818ec0a4524456b7b29d1c653500bc9f16dbabb64",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_lmcache_baselines_serial.sh": "370d7ecc10d9c888881d7826344d3af20d1e7eae2401902388382e59da251a88",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_lmcache_resume_after_cacheblend.sh": "e781e864e27d3790896b658cbfaf9b3bcfad997ae19391a44866be7806fc62be",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_llama_qualified_replay.sh": "74a3003b6f24d59cfa7e0135bf52a93d04a0196d1d7955377983c5971ce3681a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase15a_fair_replication.sh": "0d927803f471deaeaaa36d00aad39bd858b2d6b8f72f24b62f404ca7434f1030",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase15a_physical_replication.sh": "610cea0e46654a7426c49d6804a05542b3c14ca310f945bb8dfda4026831537e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase15b_shared_capacity.sh": "5ac8f909738e393ee1f40d75cbacd9e6ab63b634e60b11b9e4872f5426e2dc54",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase15c_cache_conflict.sh": "58c5275beeb65ab1c26581a94f4e7a641c3f87309b8d6f404fc28082f74bde70",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase16e_live.sh": "9e1c8512b2ea1734c628bdd704dd130d4ce5490304df840288cee6b19870892f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase16r_live.sh": "7366045fee9632a14203ad0cd711c2e32d43666abc438b55458bf9a7418f743a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17_calibration.sh": "5a904ab14cef8afa32d0794f7381c5f6481428e33d6dbe8a083f41ebe8d9bd1e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17_calibration_smoke.sh": "b1a25686d3dda7a3f53127919d3da0fcb7472bac916511b6d91011c08e5107e9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17_debug.sh": "72fb131a58a11805c3edf155ac7d3cbcec12c5f63eb3c9887b3ae5fce0a4365d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17_live.sh": "5254ad98e01601542828c83155d16c8337f322ca9e1a17d1649752518b54f81d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17_quiescence.sh": "a765d9e589cc6a09696d0407c0f3f2ec8e0ef21e06d3915f9d2f82c0f0813bdd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17r.sh": "72461ccef28f7565099fc5571c9f5f4ab7ee96be0b3ac74305b212deb684ce26",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17r_quiescence.sh": "b374f598079c8d9bbe771ffb36440894dc8fec39e87b85f18824c18bde763561",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase17r_unsafe_refresh.sh": "bf13440a7f49ad2fa29667dc5ea39a13e6028d3e1c7e83edd9a9885aa1b24709",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase18_compact_cells.sh": "520d4531c67c5d10847b1da83eb5020482acb333fbebb24e631c3666d2851acd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase19a.sh": "a1717afa0903695cb17f97fb328986194802d567cba666a3dd40a4c360d80a01",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase19b.sh": "7fe103a07fdfd5ab2bc1816a43419d8a2ac2fae52b3249d5d3df0bef594e1607",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase19c.sh": "0d040cd4726d06dcf32cde2d08cd96d7799342b5a0c8a842c9c4b4974b9f2f4f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase20b.sh": "b3300dad62f87883c724c1a5442eb02a36947a99a8582c4092536ebd55133a52",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase20c.sh": "fa120993d1ea2412007bc133a5b88a5bda36455f173267cd2d1dc8b732d1c946",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase20d.sh": "b578f5036e94b80529529062946ba848636202d4bd88107928e985a8ae5fe3ee",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase20d_two_tier_rerun.sh": "8395e9ebf3cc251bc8db8f5d9bb2eb8d08dbaf96ca4b35b575a22fae1f72eb49",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase21a.sh": "8d06a06fa3f0fcf0e8c078577ce68ae44a7a419601af8a3b2e3fb7c4d6fa6697",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase22_llama_broad.sh": "b42588ee0a2719a0a4a733cf9394d6cc905d3cd2c308fb046226785f7d15a3e8",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase22r_llama_broad.sh": "652c5a65ac21c3fd3c31cbc038238127e3f3273a264751607ca81f4c355aad34",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase23_qwen14_scaleup.sh": "e81e9bd97c056291fc21ee8d1d164f9279983aef45a9069565548b4fd5e43f26",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase25_deepseek_diagnostics.sh": "b1167d9aa4c93e181e0c0fd54fc2e2af2d4752d0b6c1f7bb9df9c8402c43b9e0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase25_deepseek_pair.sh": "5f835c706dc314d86904999c039c90f02ae95fe3d758ba98d9e173edd241bdcb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26a_deepseek_recoverability.sh": "754aea14c1fe21c2cd0a6551b02f262a5e76fc2bce7bd92576d9580298d45cb0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26d_deepseek_coder_ablations.sh": "c3db4cf9b58916210c9b3fa1b099e2628dd56f28367806d8ed9bdfec57298dbd",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26d_deepseek_coder_heldout.sh": "a5e37757ad136125760cec40ee33baa730b17e4bf52f4f0a059580005bd84e7a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26d_fused_coder.sh": "5a4c371388ae63da6dbb361b4a4d7063780494ef00001d8629594b5ce24a85bf",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26r_observation_salt_smoke.sh": "0ebd06d8a2a3516f46389228cae445bd03dcb8936bc450a98d47de4bd9b75ea5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase26r_observation_scoped.sh": "ce7e7ebc0800e9d26b23d1751070c6fb37485162079d73b5bc766c7ae06baa72",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase6_vllm_proxy_smoke.py": "5e0afaef35d8c8d959f7f0a85166f9c10f022d4eb09719873979c20b6e27429d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phase9_metadata_observer_replay.py": "fdf72f15f2cfa728714238d9ac7cadf34a0d0d2d686c70d2bf9279708f151472",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phaseM.sh": "1b4860b589700585a14a3265c20f472576c20d0095a66971fca69997a68376f5",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_phaseM_payload_audit.sh": "dc96093376ce89cbb9378b1d6d374590ec475398f8eedd2b721e69650c99278e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_physical_dedup_submission.sh": "6a9b5f75c5df7495a2050c43afaddee543235fa94ea26fd3e361b01890746bcf",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_real_quality_matrix.py": "26a57a0b25748fa372d3214db1f40673f029e6e1f6dd1706a9685d20cfe9e788",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_recompute_policy_pressure_eval.py": "28f2db8b6a363f19cc43c4b58143034dc427232d985d44ecfe22c2e6c7c7f39a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_remaining_submission_experiments.sh": "7243b00af2ab9f7050bfc2348af28bc3b47cd0a03e7ab396f1ffe04d94b6d9a3",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_submission_repeats.sh": "00c4958021f76f7c4f21eca8e1e438a10ea871684d9fa99383c9a758724eaa49",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_trace_controller_eval.py": "86487e4988663a398b45d1ad0a095888f8fce12e4a17151c742c856c44202221",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_multi_tenant.sh": "c2e6dd42d7848b28cc4b935e72580eb314e0358703e36d40e7cd96b0fae19785",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_net_benefit_heldout.sh": "a2919fb697aedc049c37ff538a43b8cc9363f7958af92b54d4413a8b24bb2c84",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_open_loop.sh": "3d7c6c8a3318606c09d443a9c0e91f7d8359c7849f35353b9bcfba8a8aa8f8cb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_real_task_open_loop.sh": "de9da9d2c614dafca9d9c104dba4a86a0d0dfdbfecac9af58e93061c7cbcd7c9",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_real_task_open_loop_serial.sh": "291be13c3372f97d65eec62508341783c9332da4ea6ebb4710a5dc692d18e7be",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_residency_sweep.sh": "7bbc0a4edd68e926cb8c6ac374fb28047e44fd773969ac616906b95dee11a898",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_service_extension.sh": "3a0412e7233768bcf25ffce23361e606a12dd671dab772fa76e0150f564cda7d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_service_lifecycle.sh": "00aedafdd9caf89d710f11fcecce37826cef802d803f5220aba86a582d493bda",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_service_locality_sweep.sh": "b853e22812a61f275bf7120fd761a1e9678cd712135765649f8bf7e112c9bc35",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_service_template_quality.sh": "63a9e1abc2f31102770449ed85680d784f459653e4dbe1d82bf69235bb832f3c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_tsc_verification_economics.sh": "086bca5ed9a8d358f8fdb1c7274f675260bbaa88e7f27a73f3a63659e8ab6f98",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/run_vllm_server.sh": "353969bc3975e2f1b78292999bf1826dec2013a3fe985000d3382a2dd4b612ce",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/runtime_kv_tensor_proxy.py": "959b2301b6d5c339ea8bf2c93ec72c3e03fcbfe25a54c29a0392a9b04d802978",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/score_common_ruler_replay.py": "8be24acd89557c65db95803f52aff4ef06ed3f99281d18b7cc75419596b989df",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/score_llama_qualified_replay.py": "e47fc9445993fe0fa333741321eae4b86f9c030fddd457693b1de5d34606203e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/send_concurrent_probe_requests.py": "ec46409849e765b9e7b8de3c9587c0671fd06bfb0ce6f666873affeb614ce222",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/send_probe_smoke_request.py": "c3948109107338144d2993d7d65b4e9b33d2f829d4713e228fe5129365b0b656",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/send_stream_probe_requests.py": "ac9f6634004ad8a8f2a0564f03235ef3eddf71098b877bbc0be700825549d135",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/setup_cacheblend_legacy_env.sh": "3c391b51cebf208f38ee5f15d6b20beda7eea7321eda5cafa3231eff60d51c50",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/setup_contractkv_cu128.sh": "5a0d1d1847bbad8d82e162e59fd64d1dbfa1e1debc93753a8393ec75b8ed9bd4",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/stop_vllm_server.sh": "59e7a557e209d28c0fdf2a3954c11c5a97aff7068b10feaeff4d52e07f161d0b",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_common_ruler_cross_model.py": "88ac819b83035a35eb90b5a3befadd3944867a55b226f62b25d648f5f46c8563",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_common_ruler_quality.py": "1c5ad3ea3b39ef8a2b83d26acde93cac149942b19e01804a1ee33d477102fe34",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_extended_ruler.py": "4081399fe8abbb990eaa709d73392c243cb7d1155b09ea2993b0d14bce79f620",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_external_system_matrix.py": "9bb26d16f142421a16700cadb3fd5047f500426e917d4daa8784e8208a73b00f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_layout_only_decomposition.py": "e47e6266fbb0c3123bc1ed321814e85a084cc53d6198decc34479e68baad0d1c",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_llama_radix_baseline.py": "4cb7415e03ae07b8622b8b47f595964c4f86f1c81709fb97fa177ab514fe5fcb",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_llama_sota_matrix.py": "60bbacd770be2562f9b35ae4a1b9a1df4e86eaa6b7db1269a830bcd16bfd4ef0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_lmcache_runtime_logs.py": "e21e5549a413583b2007c081c16aceebf83401a74b9061207bac33fa1622dd2f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase15a_fair_replication.py": "e9cbf472b0438efbc0657328075a28f8ed8ddc06f56c81f43809a296dc85b9dc",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase15a_physical_replication.py": "7ecc55f02b29c407d56be70cb189ce406a0989de4ba570b0a7e22647b4bb05a2",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase15b_shared_capacity.py": "9d27f8f1e95dd10dfdc9ca8be5dde62317ccf649c0db40da9b504626df293fe7",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase15c_cache_conflict.py": "08ab4af8f056d87c184a34a1e62c9b810770124f9d95d7390dcf7255fdcb327a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase16r_results.py": "c7fb25cdf566273d7aa4ce2dfa3abf31aea07e5088e0bba9b9d9bed263355a55",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_phase17r.py": "e64e902866923fdacfb9a05906277e0a6a1be6c46bf71478137b9aa23132fab3",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_physical_dedup_memory.py": "75c473587ca5266ad08e790c399e826f9fa6cd56d9cd69c84f64c12466098044",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_submission_repeats.py": "a9b0e9776ccc85508db8242b251094c462a3f74b2f8029aa694dffbd0a1a483e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_submission_supplement.py": "5c5b93a53c4394f01d446082478dab1a94cba5d4fdac1870af11fd20088a14ea",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_tsc_net_benefit_gate.py": "2a82ec9c4ab1e030bdb8858c2f21c0e45be5b686bfaffbf91162c8eaeb02023e",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_tsc_real_task_open_loop.py": "4d306d37625fbbeacf3210b01ee5037ce4e6eed49fcc31dd0729e4a9e0ede602",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_tsc_service_extension.py": "8639e53474a0f5af93d714aa47393676a725d8621331f520ad75c99d3f7abea0",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_tsc_submission_closure.py": "2ab044620ee7eaeef9f796c6746bf0cf4f744b6d75a62ca55ea83e830c903859",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_vllm_prefix_metrics.py": "da37c0b59819b13211266b7d0d634bf0b33028e40c64a33c45296d2020177e3f",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_vllm_residency_validator.py": "0df7bbb7763ed487a9b67d17d78f13d464e963dc6b4edb485aeb0901a910c868",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/summarize_vllm_runtime_probe.py": "9b8ec3501c20a2a74494d6444fd247aee1e0cd37ae3595086aee16b217b48697",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_multi_tenant_live.py": "488d366b79b4e22f8617dfeef18cef4579fb7bba1f2f15a1eceac6f6b23a4e30",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_open_loop_service.py": "25332bf50061498bd6241289dfec831b05c1c1607c9c6ad2d6e15bffae53b586",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_real_task_open_loop.py": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_service_lifecycle_live.py": "5ca7a741d8952f57713d4e9774971486accb070f4fee94e8cc8332adf1ac826a",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_service_template_quality_live.py": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/tsc_verification_economics_live.py": "c7df75925f7b6c7d162ab03556574f1ad5c62cdfc0f0565b64c2a5b4ec10b4fe",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/validate_tsc_locality_pilot.py": "8dc79976e8bb4147fb5b3a99c9ab629b3cb657b2287c3956aa78facba63d6000",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/verify_frozen_ruler_sessions.py": "cac2ef766e5e95224d286ffc47e377081603ce21e22561ffee12038eb1e24928",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/vllm_metadata_hook_proxy.py": "683a18ebc36967d928516b644aadd6f3ec40e9baafb780472216ee3f04672719",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/vllm_observer_stats.py": "7d4ad9db0ae668645110c3e55f7045309e4927c2baf86cd3cd5988fe64fe5498",
+    "results/tsc_tableIII_fullcost_replay_20261018/source_snapshot/scripts/vllm_prefetch_orchestrator_proxy.py": "53eb0b2791c47dcaaab6caf85433e4eddf09bc19c6d04338bcfd9b291ac6b5c3",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/end_to_end/phase19b_untouched_sessions_v0.jsonl": "4c03379809e960b400a44b161b5d5203a0653e778f539c7d14a0291cee45a78a",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/mistral/heldout_sealed_sessions_v0.jsonl": "e10fd2200de1cbcc2bf17ce35793c5210266f41b4694a70999188f5c9b96a634",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/scale_up/qwen3_14b_tp2_v0/frozen_sessions_v0.jsonl": "3209dcf46d4095d9c204ad9d18ff754461a6db80f87fb0463bc5010520583ec3",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/scale_up/qwen3_14b_tp2_v0/policy_transfer_manifest_v0.json": "8d8a05fa381aa943d3254193eb176aeb9b14741a5cf1cbd071d1f67082dc4768",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl": "fbc70da5fc6323934ee6999b068f16ec64417002a53fa2e26c2db8c70219ff54",
+    "results/tsc_tableIII_fullcost_replay_20261018/inputs/results/cross_model/llama_broad_generalization_r3/llama_broad_qualification_v0.json": "c52ba826ea0a9c53ed8b4ef35c1eb2cb340d26323250d1a08fad517d3dea0793",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_addendum_v1.json": "b20c672a6bb6995c6867be008b2d7c43c5750d29545207db0281be0be3d4ac77",
+    "scripts/tsc_tableIII_fullcost_worker_v1.py": "ee70ee527b7be88d4b2df1cad206ff66dfe73176a467fd900b7b72ad6ee91971",
+    "scripts/tsc_tableIII_orchestration_CPU_check_v1.py": "cd2fef892d862ce298530ad9ef31728e756949e4108836b950041582ce08c814",
+    "scripts/tsc_tableIII_build_launch_bundle_v1.py": "5fbb1b884dcd381e42fba59d79abbdde2c896e17f47bba9ae387e91726372b6d",
+    "results/tsc_tableIII_fullcost_replay_20261018/orchestration_CPU_check_v1.json": "7939918484718601371563ab2006065252522b15136d098b4e3bc79fb25f987c",
+    "scripts/tsc_tableIII_deploy_launch_bundle_v1.py": "f29ffd39a8c12d9d94e83c7e7e21b289e80f7ae1c705ec9567946a6c694c9bd0",
+    "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_20261018.md": "d6d72c45e123775d80157d8488f47d475e2f1ba7c39a1e6e45829397b3ef7714",
+    "results/tsc_tableIII_fullcost_replay_20261018/analysis_plan_v1.json": "e0347b40f6686842d80a4b854374d45d5fd5b72cef32f8b59c4ea8bd1b090c0a",
+    "results/tsc_tableIII_fullcost_replay_20261018/prior_model_registry_v1.json": "1cafa8d210ca76079bff2bf7d4bafb243fad1c3dd210af7c6dfc4cd9c8fa3b4e",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_addendum_v2.json": "c30a5459c662350a0a41c59938e417d8a394966988116b38a0ba361acbe572b9",
+    "scripts/tsc_tableIII_fullcost_worker_v2.py": "8798edb384a1e5cbeca6876b00f251d3aa93eef3b338b3864af8d2430dac9292",
+    "scripts/tsc_tableIII_orchestration_CPU_check_v2.py": "088e4f8d56645e77d5a4c37f2d645fc1737f9d582da7c838e2679941e60da919",
+    "results/tsc_tableIII_fullcost_replay_20261018/orchestration_CPU_check_v2.json": "1107992084a28498a41082437a2b0267c950b274d918f2b3cd68fe039375dfb6",
+    "results/tsc_tableIII_fullcost_replay_20261018/infrastructure_repair_v2.json": "d94910b21ade225a0ff44bcb4fd74bf10c22e4699cc71ae0520edad48e64e26d",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt1_preflight/model_registry_v1.json": "f498ce77473d08efd6672b8cc729f9d0b0d2d738ecd69911cdfae4def91e72eb",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt1_preflight/runtime_copy_diagnosis_v1.json": "3cfb3d7854638be4046f0a78a33dae00e37c77d453bf02f0a293579192f4560a",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_addendum_v3.json": "f37bb5f179c14b4fb7ee6ff74072d8ae475c2781ce7e142d4ce56bce75fe05ae",
+    "scripts/tsc_tableIII_fullcost_worker_v3.py": "468710157930ecd2338012be90b89f4d5e7ff59f22d03b659fb432cd5646fa78",
+    "scripts/tsc_tableIII_orchestration_CPU_check_v3.py": "a14e871d23df1103dac2b2e9fed46244f01d6c0de8bbdc624a43a54dcbf10fd0",
+    "results/tsc_tableIII_fullcost_replay_20261018/orchestration_CPU_check_v3.json": "9e90dfd974a663707ffe6f2060ebbdfa5bd68bb6b19311fd2d62a1bc90bb9e0a",
+    "results/tsc_tableIII_fullcost_replay_20261018/infrastructure_repair_v3.json": "9b449ec47f52844f9c04223bda2f831152b18175e0bfd27786423057daa701e3",
+    "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_v3_20261018.md": "3c528c45c5d5c2102cdf6055071cf7a95d16999594b220a93d805326bdd64f0e",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt3_preflight/preflight_receipt_v1.json": "e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea",
+    "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt3_preflight/preflight_inheritance_v1.json": "c746873e3f00cb21097c641d55fc30747e99b72ecb7b7010135a124e7499460a",
+    "results/tsc_tableIII_fullcost_replay_20261018/formal_attempt3_supervisor.py": "e465273c466d9cc3f35a0c1d69194d54e8ca91190bde3d7eccc5f8ebcc71d626",
+    "results/tsc_tableIII_fullcost_replay_20261018/formal_attempt3_launch_plan_v1.json": "47039d621c8d3a57b6dc27981a57f2279b401f99903de9a143d14368b6717fef"
+  },
+  "preserved_completed_files": [
+    {
+      "path": "cells/llama_r1/attempt3/contract/completion_v1.json",
+      "bytes": 1177,
+      "sha256": "73f9fb9ae1e281b5333e50850cb393b761da0f211db6340b3ce8fe458eae6b8a"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/requests.jsonl",
+      "bytes": 523759,
+      "sha256": "dce166db6d726d2fe8b4232f090f112c5914e92cfb0dd2e9a559e6847ce02290"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "247ed50c33103b18cae888d710b17e57c9c96e19882867683403bcf0ac6feee7"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 23726,
+      "sha256": "6903e7268b65bd7ce726fc7ff3eb8a5220d101dd2a1c384ac53efaf7446ceacb"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/launch_v1.json",
+      "bytes": 3933,
+      "sha256": "5392e6a10030a4510d9364f1d5e7e1d278e5b770504e11934f41b12220c8d2f9"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/metrics.jsonl",
+      "bytes": 5993063,
+      "sha256": "e3e3c5b0cd902459ef7be37c5e2c7155e07cb282ee3fc69d5900f4da2d8b0937"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/final_metrics.txt",
+      "bytes": 46471,
+      "sha256": "5a1062c176d49b438dc0e274076386748345f60073442b860568ce97335e7f0a"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/server.log",
+      "bytes": 137788,
+      "sha256": "f0437dce4a31333d153c4d3952865ac86baebaeb0d90ffc044f1f89bd0e1cc85"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/contract/client.log",
+      "bytes": 77,
+      "sha256": "8f90c630f0baebf34647a4b9f017df17e30133d837c4c71304fae4cb503911cf"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/completion_v1.json",
+      "bytes": 1174,
+      "sha256": "c4ae3f397842d687c891cf9d0fa310236d8fa2ffff2738eb8bb4e679bc732987"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/requests.jsonl",
+      "bytes": 515639,
+      "sha256": "cdebab0ff0588890f64e1989f4796d80be8051003ac336b276de3949af522312"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "b0ffde1336cb32e1f51f8d11bfaf16454fd268387f5c79209a27cba1e1b85bc7"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 11487,
+      "sha256": "50ff1235d60f24fdb588eefb3cd5bf48c5d597e865c955750778ee1df0772524"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/launch_v1.json",
+      "bytes": 3651,
+      "sha256": "5f4a0c47f62df42b57063211d28893d5937eb27dac6ea85a98560c6347083b16"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/metrics.jsonl",
+      "bytes": 5609571,
+      "sha256": "dd8c59032d6846a6fc151bbe3f879dea1dce9f91c4a0bbb083db66aae648b118"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/final_metrics.txt",
+      "bytes": 45119,
+      "sha256": "5b538821338d5dae91b2c5f4c0efb7a28bbaf65a395f808102167702ff035c5d"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/server.log",
+      "bytes": 129250,
+      "sha256": "da84ab9a285f74e434d12d8fb4cab99ffd5f94eecee06c777aaf7499c5133bf6"
+    },
+    {
+      "path": "cells/llama_r1/attempt3/raw/client.log",
+      "bytes": 76,
+      "sha256": "9250f2bda88ad4b50324ca1a0b219e1d997c2bd1c73f0f3f9f3b97751f17ada9"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/completion_v1.json",
+      "bytes": 1176,
+      "sha256": "a12a16fe486ef35926fb13834fbe686340d68f70c3808f9e29711628631ca6d6"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/requests.jsonl",
+      "bytes": 523466,
+      "sha256": "443ce657dccf4b8bbb23dbe7ec7f24cfe1e1af1764fd8c0f4d39ae2f568957d4"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "990a369ccd44a3d018603ba1437086acac75a9289801582169f9f3a8e048e7db"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 23718,
+      "sha256": "a950b51959e8d4d0e241b958577acb0a9a4295b9a0cc7e24fd7f8d3cc4ba6f66"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/launch_v1.json",
+      "bytes": 3933,
+      "sha256": "ad5fb69443f3a3be06782ee4e90d07361b62868e7853a62b3aeb9a5dc48e768a"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/metrics.jsonl",
+      "bytes": 6041143,
+      "sha256": "59c222d38d30f9f978c860cf6040145bd607f09b0fb8d8f68eb846cb515acff7"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/final_metrics.txt",
+      "bytes": 46465,
+      "sha256": "12e28df260b630d0a4ef3d119e13a060493b805505cf85fa7f192284f3c18721"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/server.log",
+      "bytes": 137788,
+      "sha256": "1fc6662483d445fb2657c21f0de37e1f5a1d6e77711f4e677ceb9d043936f257"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/contract/client.log",
+      "bytes": 77,
+      "sha256": "8f90c630f0baebf34647a4b9f017df17e30133d837c4c71304fae4cb503911cf"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/completion_v1.json",
+      "bytes": 1173,
+      "sha256": "dfb94e9303e2ac3832623c0470b7267e2b8b86f98e29571b35ae4b73eac4a0c8"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/requests.jsonl",
+      "bytes": 515942,
+      "sha256": "2425c05cfe747bedf4904b0fc24de37c906ad6d4382eb73404a057f5dae6e987"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "f86067c0246d8571d441c92a17f0c51708b52b7820ea0378503dc8fb139e85ce"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 11487,
+      "sha256": "782dbd308ae65064e89eefad09455891b1583265cf17487c6bece06124f24a0f"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/launch_v1.json",
+      "bytes": 3651,
+      "sha256": "75cf55bdb8188914b0f28752dd7e07f3220312261183ba0ddb87ce2a9fa6a076"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/metrics.jsonl",
+      "bytes": 5633459,
+      "sha256": "df3562fb4a70cfb63f56fd07dd14f0e27d71106033a6e5ab55b302d9b5f39e14"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/final_metrics.txt",
+      "bytes": 45107,
+      "sha256": "527c1b4ad43632c7b72e13f0a38bcee4209a6a4a535c19f17d38ea0de4351c0e"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/server.log",
+      "bytes": 129228,
+      "sha256": "4de7c2dadce1eda7bd3a3f94741cc14853eacd51ba99889e907ba8c99aa70b18"
+    },
+    {
+      "path": "cells/llama_r2/attempt3/raw/client.log",
+      "bytes": 76,
+      "sha256": "9250f2bda88ad4b50324ca1a0b219e1d997c2bd1c73f0f3f9f3b97751f17ada9"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/completion_v1.json",
+      "bytes": 1176,
+      "sha256": "c45668c236a516e46acee86634ce5663973526043b7763a7d4583530ef890613"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/requests.jsonl",
+      "bytes": 523159,
+      "sha256": "43ab8be736653fb0af94984d2b1e169dcf91eb270c4925d8609f4d75671d6881"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "4f7c54dc9ff9619c5b6f1b6f7e68ea1d0161d37220139f24503018fcc29d6210"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 23720,
+      "sha256": "b4076491037c5c6a3e4c9458c774ba99e1ad6a4a46c49ec5229b484b27fb22f3"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/launch_v1.json",
+      "bytes": 3933,
+      "sha256": "da2ec6452fd8f91134b652291436cc4fcfd8755c3710e000ad4f8f1b97bf67a8"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/metrics.jsonl",
+      "bytes": 6042228,
+      "sha256": "1c39dbc00d39f7c77cc766a2fd719baec2bf426b176577c25d593152c198f1a3"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/final_metrics.txt",
+      "bytes": 46463,
+      "sha256": "232de74362a1a0a4849b701914f437a3cc01fd522d8f4ce06abe6cdc2694f568"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/server.log",
+      "bytes": 137514,
+      "sha256": "4af92ed693b32872061d18607ce66c054820cfc0632a4756fcb690ae0d605aec"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/contract/client.log",
+      "bytes": 77,
+      "sha256": "8f90c630f0baebf34647a4b9f017df17e30133d837c4c71304fae4cb503911cf"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/completion_v1.json",
+      "bytes": 1174,
+      "sha256": "bb2463e56830e432684a276a644a0a95acfdba78664330b807d1d515b3a11518"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/requests.jsonl",
+      "bytes": 516054,
+      "sha256": "21a4f338fd3a3d1e8244125decde984e0650c78a21412f691d8ac6d476af9993"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "30af9aa14b2088aa9b9a538cfd6f35a7e82331f38b53b6b2345dac73717760b6"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 11487,
+      "sha256": "ec9f49881c648d5afc3677d21d9248b98e24797a1b10fe5e9e04fb0cd79104ce"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/launch_v1.json",
+      "bytes": 3651,
+      "sha256": "d2e48046f78c29ae27889c467da5d41c1631418bd8cd01093a1fc6febfff9b13"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/metrics.jsonl",
+      "bytes": 5688972,
+      "sha256": "752adf811ef0593bb29b46adfcb0211064df9370a6a24ad1ca422c47e86f3689"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/final_metrics.txt",
+      "bytes": 45123,
+      "sha256": "e65b3c78aff7e782a11699ba9072a2c552706c7a45899b45d315477fd4c0d09a"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/server.log",
+      "bytes": 128970,
+      "sha256": "f0def1db02f575dd2cee4ad8a2ad1cd5e0db8e8ee44cec525511b567d0df894e"
+    },
+    {
+      "path": "cells/llama_r3/attempt3/raw/client.log",
+      "bytes": 76,
+      "sha256": "9250f2bda88ad4b50324ca1a0b219e1d997c2bd1c73f0f3f9f3b97751f17ada9"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/completion_v1.json",
+      "bytes": 1176,
+      "sha256": "cd54c6e16215d684f9aa48ce134af8369a9784ecbae139ead56be15777e48ec9"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/requests.jsonl",
+      "bytes": 689595,
+      "sha256": "27161474c809b17f4ccff61893a8654f59133eacdbb7710d5aa53e0db23f6821"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "d25bdcd10a5864bf0bde70b85e3f03266762dbc221134e73b6e06ebd9d533ca2"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 25356,
+      "sha256": "34cab021d1f6b5094d087b4739f5bd9f9121db92012bace9c2ffcf461484e35a"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/launch_v1.json",
+      "bytes": 3724,
+      "sha256": "29cb5089421a55a7655146a0caaef69c3d586e1af01bd861496826451264ec07"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/metrics.jsonl",
+      "bytes": 6477594,
+      "sha256": "e973b8625c64f10d4b1e32e571751809adb80b36c66e142f612434ccaffd6508"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/final_metrics.txt",
+      "bytes": 45805,
+      "sha256": "9fecb01e2301908e63be096957e98ba8496314ddc0c26f27dc7632e08f4b531c"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/server.log",
+      "bytes": 140986,
+      "sha256": "4d15514a8482e14795b886ca77209a5b07b327fb309113108169a834ce867152"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "7de87b001af0b56d515474b63c0d66dc66c7b33968f346342e6fef716d78423a"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/completion_v1.json",
+      "bytes": 1155,
+      "sha256": "573387c755a0b2407723126601638be7b33b09e5885e05d3f535bc70cbcbcf07"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/requests.jsonl",
+      "bytes": 636643,
+      "sha256": "746b448990e632a86fc4601ab62b84bf446664364201cb1ad7cc6c0ddaafb55e"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "61e1629d83e66c625865117e6a302c4c5bb7de6fcf8fbbe0d36334d6bb303b3a"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "287de5d108bd5f48c8f3f16e11fd7d7bf7f37ebf03d4ad048f71295d39a92ccf"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/launch_v1.json",
+      "bytes": 3688,
+      "sha256": "a0b8cc66b22a860f3fa759586d6d2fa70d5e5f1023b46918ce82c94d8f7d4edf"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/metrics.jsonl",
+      "bytes": 5579119,
+      "sha256": "d6c74f2a3f3cd3d7069889bc0011f19cd3c08c35e85c1b18ca394e85274daeb3"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/final_metrics.txt",
+      "bytes": 44424,
+      "sha256": "1d80dccdbf2b71deed6d331b16c3e2a9f4bd4eca8cb1d51ce36f59e34f692369"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/server.log",
+      "bytes": 130893,
+      "sha256": "33347f0b373bfdc3b2fe1d53ef0da3d273270c3c0f135843697b1fadff4febaa"
+    },
+    {
+      "path": "cells/mistral_r1/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/completion_v1.json",
+      "bytes": 1177,
+      "sha256": "9ff764d97d0db4ccb978a4dbb652ccfc066365a32c1f221b5e93598643d818d3"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/requests.jsonl",
+      "bytes": 689739,
+      "sha256": "ab197ad16612ede701f96558f17599fb5c690f070c1a8131bc83570284123296"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "20a47a087445ca05a78c3cd9e5242ed85e39b1061c0c2c985ff67c44c9097e29"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 25371,
+      "sha256": "78c2432d3b31a655df029efd5152d34e8960fbec858bbe90aeb50efc99abab04"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/launch_v1.json",
+      "bytes": 3724,
+      "sha256": "a8d91f0031eb48e25f0f41cd8c3d20d9d3513784a4e8a368e74071da5cb83e6b"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/metrics.jsonl",
+      "bytes": 6471746,
+      "sha256": "16bf1b0a612d5a507299c5f9a968f8ad94f2954658613bd9e5d2b309ff14ef0d"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/final_metrics.txt",
+      "bytes": 45797,
+      "sha256": "7c4f873386fa6e2f934dded3ee33b66bd66faba3c86c370d1fcaba69d5082e8b"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/server.log",
+      "bytes": 141235,
+      "sha256": "754fa838619b70e5bed6090f6c3476afd8a25f7ef520abdf5a6441ba00102458"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "7de87b001af0b56d515474b63c0d66dc66c7b33968f346342e6fef716d78423a"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/completion_v1.json",
+      "bytes": 1153,
+      "sha256": "0f136246a9816cf839f55977eb9130bf821034e82406b515dc4adaea6aa86e2f"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/requests.jsonl",
+      "bytes": 636764,
+      "sha256": "845f1d712c7341a145642a4bab5731e1c6e07e3aef4e74ac74a0fd5b8891dbef"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 407,
+      "sha256": "7b79de2992afb86fd39eadb8ef49322d97e27a1437d48b25432ca2b2580b4ced"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 680,
+      "sha256": "053f5d78d738cd0a4ddcbe29e99c76b12c99ae3ee480aeadebd9a8faafcb582c"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/launch_v1.json",
+      "bytes": 3688,
+      "sha256": "54d609cf1e497634156842aefa02e22b9320d48cf5678917151e1d0eaf2fdfbf"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/metrics.jsonl",
+      "bytes": 5591772,
+      "sha256": "733db9e8abf15e7911e911a911518fed05730112e2fb430b6d4a6ca7bf969daf"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/final_metrics.txt",
+      "bytes": 44417,
+      "sha256": "8ba47cad1b2dfcdde5cb0f410b81a2a5edb4a2b484f33aad17e70db5db242c0c"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/server.log",
+      "bytes": 131149,
+      "sha256": "205fc150b8efc4da36cef9b414d5f159e1b91815fdf8e81535fd99d5ce3b80a7"
+    },
+    {
+      "path": "cells/mistral_r2/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/completion_v1.json",
+      "bytes": 1176,
+      "sha256": "6587c86b2368992ab35220828b88e1fca05f334c7a531661546f3fddc094f40c"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/requests.jsonl",
+      "bytes": 690040,
+      "sha256": "305fa585e114f50ffb9cbeb5282c244e7e8d588aa87ed7807724f56ec296560c"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "581cc17e339b38bad971610139ebfa40718dc852ea38f7fafd9fc6475e75ca76"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 25375,
+      "sha256": "68eda2d7035e04a0a8f2e7d7fc95936d508c72283ef74426b3e60727d8e50c4e"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/launch_v1.json",
+      "bytes": 3724,
+      "sha256": "dbd62e522383023190695699ced9692ab64eb76401d15969a585777d1623af7d"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/metrics.jsonl",
+      "bytes": 6489015,
+      "sha256": "827ec2d2bfc7ac3af06d1ed191652b70afe746120d46dcc95d287db1f7a1500a"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/final_metrics.txt",
+      "bytes": 45787,
+      "sha256": "9aeba1ea2d4924ede5e949efa4097a1b4add4e3889acdb692b551793c31a93a1"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/server.log",
+      "bytes": 141228,
+      "sha256": "0ef38cdea1bcc2ff39e0dfb70fc79ce5ab527be383112e832f9b14d1c714439f"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "7de87b001af0b56d515474b63c0d66dc66c7b33968f346342e6fef716d78423a"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/completion_v1.json",
+      "bytes": 1155,
+      "sha256": "87e62dbe2288468ee71d80b445f6e76f95af67f728f3a06106262b655d2ebcc0"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/requests.jsonl",
+      "bytes": 636738,
+      "sha256": "d28ccee69e1ea2d361818e13db5e687550a8062bd876c00d533b6cd0753f660f"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "847b23c6f802113bf00fab6112c153f51d84e6f5432ed145b918ad06fd11b186"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "6a68ceca5543a1816b329babe174523420d511ade6c0dca107a615b16165cdd9"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/launch_v1.json",
+      "bytes": 3688,
+      "sha256": "633cc9aa0d007a401a897e7d8a9e4f3261daa536870a8844283cd116edff1cec"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/metrics.jsonl",
+      "bytes": 5546805,
+      "sha256": "64f82879c63074da9c079c54eed0f1a48319aa5f3e0dddc399610f0ad45998b1"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/final_metrics.txt",
+      "bytes": 44427,
+      "sha256": "13e5d57f4f17d0cc01566e13f433ec55b07c1c07cd929658bdd02df3c159a5a8"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/server.log",
+      "bytes": 130617,
+      "sha256": "b5b6541524246ab2baf9454332d79ca2475abc6032c9a67286cd95365d6c81d9"
+    },
+    {
+      "path": "cells/mistral_r3/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/completion_v1.json",
+      "bytes": 1156,
+      "sha256": "15dde719e011159ab4d38a2ee8d4cad6339f6936f5c822c10f7272206b3ab82e"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/requests.jsonl",
+      "bytes": 295431,
+      "sha256": "bf4cd4db5d81c94cd31384e8934c9827f70e52bfbb4c7f51467a29d2fd392dfd"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "bc4c3c87bcee6855c6c6018ee4df2a40d4d8bc6d086a69328a6846af5b7d6921"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "ffd004a2b3e9b4945a4301ff071c559cbc05efd04e2d30c993203cfa4c931f3f"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/launch_v1.json",
+      "bytes": 3644,
+      "sha256": "23867ee43e834f07c32d1a970afff60f0f0cfc24f7a82549b19c0f98e6ed79a9"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/metrics.jsonl",
+      "bytes": 2520669,
+      "sha256": "bdef6256507cd9fa1320e2042683bc257fce5ffe7fc3c8f770526360e5fb581b"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/final_metrics.txt",
+      "bytes": 44331,
+      "sha256": "67501ddd568ac5783ec41e223eef6b06cf43500289298ee603cdb8761b11938a"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/server.log",
+      "bytes": 81609,
+      "sha256": "ecf06d0bf728f51d44685292624ddde391e5992f772bba64ab47cf1eac153f7d"
+    },
+    {
+      "path": "cells/qwen14_r1/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "4c244275eac50fe542f999f696d537fea52ebc3e343331cf9e080e9089736f68"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/completion_v1.json",
+      "bytes": 1177,
+      "sha256": "a28564b108318df9928b2a2089d87e8c2c090d4bbac3fc76fd2e7b4142fc3281"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/requests.jsonl",
+      "bytes": 660198,
+      "sha256": "3a68ee576048ea6e49d5df95537428121df3b7ecf12160cb72ae4882d3cbde43"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "a0678205d050e6882f8fb6cc77506b5add4a07ba04970a5c1b748b84e3b34893"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 26593,
+      "sha256": "d58c5f76a0c2c6d6ad94f357a9bbb6060965e81929082c1f60a0b6287ca40792"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/launch_v1.json",
+      "bytes": 3661,
+      "sha256": "08ff8d7688e3fd3603e640841086bd84b3e0712f0a1a915944239d6a2083eded"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/metrics.jsonl",
+      "bytes": 7769907,
+      "sha256": "7f30ff9f2a8647db367823fa200d6a44c06f6b52c2e47181d078f6f9a77dcde5"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/final_metrics.txt",
+      "bytes": 45465,
+      "sha256": "7e7f72f105e720a0a15565bc4b40b3b43ca7f0ece53864f54c6c03e9bdec2f13"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/server.log",
+      "bytes": 142659,
+      "sha256": "2c0d4766c8dbc7a0685fec2463b7fe88b65f863480cb6cfc78fb8e5a08b83014"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "3e1718f77a9960efa6576360903a45cd2b614c0bf524f2f8ea05494446418df6"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/completion_v1.json",
+      "bytes": 1155,
+      "sha256": "a5822a1e6636052506ccbe40fceccef7956b0787ffcb3b36df2cc6ec4ef8bf05"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/requests.jsonl",
+      "bytes": 597535,
+      "sha256": "d99b7ac0d3faa7cde02ed2aeaa2007b9828b793596d99cc6a22d151f2f138fb1"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "12b9c4985a3ca9e4c2315adfc210e70fc6064025b5ea06dc116ceaef93cae911"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "46d6107b864e01c7003751addd45ba69696bb58c044b236cc09373deb5a2e4e4"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/launch_v1.json",
+      "bytes": 3625,
+      "sha256": "b26f1654958a0f88a890fef84c97f620369e2326cfc95b79556b820e5fee09b3"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/metrics.jsonl",
+      "bytes": 4681235,
+      "sha256": "d9eb0bb1bb43b428c95181359c4ff20f55042e3ed90f2b430019600492bee8a7"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/final_metrics.txt",
+      "bytes": 44098,
+      "sha256": "2a1f07472db6894ee20814b67144ac877c75c39299858a57fe3307629682cd9c"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/server.log",
+      "bytes": 131108,
+      "sha256": "7eb40eb522b56f4d60da224b3538479bd1a1f737281f26c18df7944aac4881a8"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/completion_v1.json",
+      "bytes": 1177,
+      "sha256": "6931dacd760545ddc580a2c68978b3afcf548f56bfcc5f1ab9106c379d5386f8"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/requests.jsonl",
+      "bytes": 660288,
+      "sha256": "64762711f1b9f8825e1c0159b8d39202a454b4a223a13bc7463a6af0a2f071f8"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "b5db0ab289c1dc81514a5dd51a55b34030e4ed729937e11da056118fffc8ad74"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 26581,
+      "sha256": "ff0016bb1492761d253b01dde43eb611743b48994cf986239e40963afc45faee"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/launch_v1.json",
+      "bytes": 3661,
+      "sha256": "fb16606416335c7a0e1b8def115557875b94fa67c5004846af327094717e4727"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/metrics.jsonl",
+      "bytes": 7786871,
+      "sha256": "360051cf8212ddf96cf746aabe5583047cc58d563383adf7ad21a46219b0fcd6"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/final_metrics.txt",
+      "bytes": 45479,
+      "sha256": "3293f58c002a307b5b00da4f8520e7e81ade33054e0ca195c8da569053b90f8c"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/server.log",
+      "bytes": 142633,
+      "sha256": "01d76bcee437a9438b14a909b6a7641be1943db7b88309faf3cd06bf6eaebd9d"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "3e1718f77a9960efa6576360903a45cd2b614c0bf524f2f8ea05494446418df6"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/completion_v1.json",
+      "bytes": 1154,
+      "sha256": "2e891b55afe22db337b64af0cc18f25409f1b03a1482c4582bcc1042fa3db5d4"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/requests.jsonl",
+      "bytes": 597641,
+      "sha256": "f9f3efb994e5669b75e5690b5d93065ed9ad91c86900a4229cf5485dadef6cef"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "e825e827dd5fd9bdc343746f54387bc888cf7315d65df6ebf2ff4b1598ff219a"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "984deb7e2a94fcfaf0f9fe312a83ea7b0f4c49a48e11ec0e14670b3461058e00"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/launch_v1.json",
+      "bytes": 3625,
+      "sha256": "dc33a1b8a3d6cb5325b681a21ebf78474d9485fee100e5ad689a2cf5392978fd"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/metrics.jsonl",
+      "bytes": 4662469,
+      "sha256": "3c6495b24fd7923ce263327b76d6d2141f5430849a9e8f5561f432a2dbc3e082"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/final_metrics.txt",
+      "bytes": 44087,
+      "sha256": "0b81ba8d6c1e0e71e5f9d44bafe901fa4ccb5b9d77189469602de2115947cde5"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/server.log",
+      "bytes": 131355,
+      "sha256": "57e21d55b1e3231b5b9ec9fc60607613a658b526fc4e1c57141b8355c3241aa8"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/completion_v1.json",
+      "bytes": 1175,
+      "sha256": "9afcd6bf27ced1b69de432d1fbd41008c166c4917efd4808cef25a6bcaa86744"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/requests.jsonl",
+      "bytes": 660434,
+      "sha256": "720137f661b5163acde6a81efff00ce094e55bf0054444c0e3f9a003953f444f"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "dc2dc0139fbfaa51853b00606c6f98d9c3752ce2edc13b39d89db3710c804fcb"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/audit/complete_controller_events_v1.jsonl",
+      "bytes": 26591,
+      "sha256": "b75082dec867ee15555ce78cec581e8d30db270558147ea5ba6505cfb7f156e7"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/launch_v1.json",
+      "bytes": 3661,
+      "sha256": "c7dc9037726bb632014375704a2f5712583d47e69adc914b23a9d998c29eeb05"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/metrics.jsonl",
+      "bytes": 7926058,
+      "sha256": "a763cdaf0bd456ade806203a581c3903d7125991f10729bb1dde9ed27f469b48"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/final_metrics.txt",
+      "bytes": 45480,
+      "sha256": "8dfdc47aaf5cd6962d4f0692c1c1fd9b48bc460efb82b5531dc0f97a4ab13513"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/server.log",
+      "bytes": 142542,
+      "sha256": "12fccb367962c2015eddd63a4fa2514b4490e7749584c3d15122a65ce1c171a7"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/client.log",
+      "bytes": 75,
+      "sha256": "fa4e2df44f893d50f67ea65fff7f454705acfa354f3fd86ec54b217067a88f70"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/completion_v1.json",
+      "bytes": 1155,
+      "sha256": "e4dd3057d2ef80e6d10617e7582aa89723aa648dc7042504fa877e05f0901b23"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/requests.jsonl",
+      "bytes": 597469,
+      "sha256": "f13e8a5e7619d3b292e021772cdf424d317ad9b03a2bd5fe7b45145dd4ebf86f"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/audit/complete_client_wall_v1.json",
+      "bytes": 408,
+      "sha256": "47bfccea1110c99adf2085cbafbbfaec6fda76d3cf360ee237d542462ee17560"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/audit/complete_controller_events_v1.jsonl",
+      "bytes": 681,
+      "sha256": "88fc0ef6320a5b49dfdfbbeacee4ec53dc8fd9003cd5f38d87ca94842d5d13d8"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/launch_v1.json",
+      "bytes": 3625,
+      "sha256": "1892bf3560b0bfe26e9a5476df1c9c1cd1d1685921f664eaf380953b24a9d215"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/metrics.jsonl",
+      "bytes": 4701194,
+      "sha256": "0cf55ad6fb95b1efa8288ddf2c16b09129dcc9a54104558d3d1d82a0d1b64f42"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/final_metrics.txt",
+      "bytes": 44092,
+      "sha256": "38230ad4240a09d1e8bcac1b2273f19a6e09d2f5cb256c61b21b18b679113fb3"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/server.log",
+      "bytes": 131366,
+      "sha256": "c0781f04b7a28bca6279a3094e0861eb39e420bca514def71c4f188043765f74"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/client.log",
+      "bytes": 74,
+      "sha256": "9af66d1a6b84efc578132114f340424c56356187f3ece512fe6a070d2224ffe3"
+    }
+  ],
+  "completed_pair_paths": [
+    "cells/llama_r1/attempt3",
+    "cells/llama_r2/attempt3",
+    "cells/llama_r3/attempt3",
+    "cells/qwen_r1/attempt3",
+    "cells/qwen_r2/attempt3",
+    "cells/qwen_r3/attempt3",
+    "cells/mistral_r1/attempt3",
+    "cells/mistral_r2/attempt3",
+    "cells/mistral_r3/attempt3"
+  ],
+  "completed_unpaired_raw_path": "cells/qwen14_r1/attempt3/raw",
+  "remaining_cells": [
+    {
+      "repeat": 1,
+      "policy": "contract",
+      "port": 9103
+    },
+    {
+      "repeat": 2,
+      "policy": "contract",
+      "port": 9105
+    },
+    {
+      "repeat": 2,
+      "policy": "raw",
+      "port": 9104
+    },
+    {
+      "repeat": 3,
+      "policy": "raw",
+      "port": 9106
+    },
+    {
+      "repeat": 3,
+      "policy": "contract",
+      "port": 9107
+    }
+  ],
+  "unique_fresh_servers_still_total": 24,
+  "new_server_cells": 5,
+  "infrastructure_change": "Distinct preregistered loopback HTTP ports for the five unexecuted cells; unchanged original run_cell and original client. Reused completed Raw is linked read-only by convention and rehashed before/after.",
+  "temporal_boundary": "First TP2 pair has an infrastructure gap between independent fresh servers. Gap/startup is excluded in both service clocks; report it explicitly, retain first chronological valid Raw without score selection.",
+  "failure_cause_boundary": "No listener or compute PID persisted on follow-up. A recently closed port/TIME_WAIT is a plausible explanation; exact transient socket owner at failure was not captured.",
+  "no_algorithms_inputs_models_scopes_slack_margins_scores_changed": true,
+  "new_GPU_requests_at_freeze": 0
+}

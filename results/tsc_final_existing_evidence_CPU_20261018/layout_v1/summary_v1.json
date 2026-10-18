@@ -1,0 +1,1701 @@
+{
+  "status": "complete_CPU_only",
+  "new_GPU_requests": 0,
+  "actual_raw_prompt_ID_anchors": 180,
+  "layout_prompts": 720,
+  "source_count": 6,
+  "source_count_per_family": 3,
+  "models": 3,
+  "turns_per_source": 10,
+  "ladder": {
+    "L0": 0.0,
+    "L1": 0.25,
+    "L2": 0.75,
+    "L3": 1.0
+  },
+  "faithful_freeze_sha256": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+  "input_sha256": "876eed3937fb428f2d8fbf04e66efa93403da40f6a948aea05aec97f6159d4fa",
+  "source_inventory": {
+    "scripts/contractkv_pstp.py": "df655b668e78f72767e40bef0910e09200514058269d3146035dcd51f092f41d",
+    "scripts/phase12_posc_layout_compiler.py": "123f2352965f3d6c2addabe6019e5a44aa49ce9e5afece01117bb556ac032478",
+    "scripts/phase12_prefix_cache_ab.py": "3aa96b47cac2a1e32feef892675906d12c1e846f664de17cf772bc8f487c2597",
+    "scripts/phase12_task_quality_sanity.py": "9391b5f8b186ae32cfdbfe62b632b4bed4f68965db3137805fdf9c2d2ee26eaa",
+    "scripts/phase12e_cache_aware_posc.py": "a8e36563b6e725a865a28d91d356368830e3b5759e88076c39a5859bdac33e6d",
+    "scripts/phase12e_multiturn_trajectory_builder.py": "a2127874b16b2a29a88a1f3786a390a7fd0fadf543eeecef0fbb5e8c751c5187",
+    "scripts/phase12f_real_vllm_caposc_replay.py": "857713f21b2f53d81aaf7a759b7fc40de4810528fbecad21bea50ee4b1a683fc",
+    "scripts/phase13b_fresh_policy_quality_replay.py": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63",
+    "scripts/contractkv_transaction.py": "aa70a13fad31a691fe963eff50226979c549a7ee9d4c7d8fab229ca753b12776",
+    "scripts/contractkv_verifier.py": "1577682ac36cf5756a84335a768e83701809cb050b30aa057fd0844a2489c572",
+    "scripts/phase16r_verifier_live.py": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105",
+    "scripts/phase17_live_common.py": "298f92081ca467730af1669f8f62328e1c5310f3de60b98d11bef182b66e01ae",
+    "scripts/phase20a_official_quality.py": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51",
+    "scripts/phase22_llama_layout_ladder.py": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6",
+    "scripts/tsc_revision_live.py": "3339cfec899aa64c850b96a4292f592e0b22fe8853de002663916be4872c1dc9",
+    "scripts/tsc_revision_r1r_query_scope.py": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b",
+    "scripts/tsc_revision_r1r_business_stream.py": "7a59915ea6ba6dc4550d4204d14fccb46a109c6d9148555f3519c5ccc12124a2",
+    "scripts/tsc_revision_r1r_live.py": "25521ad831b98f40b2a5c5235c217681b888301fdb94beedc3b043cbd23bb057",
+    "scripts/tsc_revision_r4_fidelity_adapter.py": "d136957b1d385f137d409b43738e0c6579771f8e4a82bb613c4f5b31cf7b7ae2",
+    "scripts/tsc_revision_r4_fidelity_adapter_v2.py": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c"
+  },
+  "tokenizer_inventory": {
+    "qwen": [
+      {
+        "file": "config.json",
+        "bytes": 728,
+        "sha256": "f7c4eadfbbf522470667b797a3c89be2524832d2d599797248dc304fff447c30"
+      },
+      {
+        "file": "generation_config.json",
+        "bytes": 239,
+        "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 9732,
+        "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 11422654,
+        "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+      }
+    ],
+    "mistral": [
+      {
+        "file": "config.json",
+        "bytes": 724,
+        "sha256": "9262d15f830e511429ccd175a71680e51c656ef3a4aa7460f3e9596508d32487"
+      },
+      {
+        "file": "generation_config.json",
+        "bytes": 157,
+        "sha256": "1be59aba03aa1e31bef5bc190a3a2591ad1a754f96afcecc42bd342722447220"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 140911,
+        "sha256": "b0c776216a54c6d031866d1dff0b31715bd73f5ba87f8a30eb35e8c603dff95d"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 1961548,
+        "sha256": "60b945759e27a63c3c5c0ca675881f5a73b4aa38b5d1d6818570308d4f1a3c59"
+      },
+      {
+        "file": "tokenizer.model",
+        "bytes": 587404,
+        "sha256": "37f00374dea48658ee8f5d0f21895b9bc55cb0103939607c8185bfd1c6ca1f89"
+      },
+      {
+        "file": "special_tokens_map.json",
+        "bytes": 446,
+        "sha256": "63b489faa6ae280faead386b49f5b0de0fb72d7401dea2e3ce169f26a0b8bc2d"
+      }
+    ],
+    "llama": [
+      {
+        "file": "config.json",
+        "bytes": 855,
+        "sha256": "29e4c210b0d6ac178b16b2a255a568bdb23b581e50ca1ef6a6d071dd85704e6e"
+      },
+      {
+        "file": "generation_config.json",
+        "bytes": 184,
+        "sha256": "189fb0c0d7fd8a527db217c0a60a0e013f0394cd8800f9697a666a9e75e5f7fd"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 55351,
+        "sha256": "177c7b61e616fecb84c17ce0591acb92c6c4d60e9ac5ababfb940ff23bbcd424"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 9085657,
+        "sha256": "79e3e522635f3171300913bb421464a87de6222182a0570b9b2ccba2a964b2b4"
+      },
+      {
+        "file": "special_tokens_map.json",
+        "bytes": 296,
+        "sha256": "6f38c73729248f6c127296386e3cdde96e254636cc58b4169d3fd32328d9a8ec"
+      }
+    ]
+  },
+  "aggregates": [
+    {
+      "model": "llama",
+      "family": "HotpotQA",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 83.0,
+      "mean_full_prefix_blocks": 5.0,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "llama",
+      "family": "HotpotQA",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 3452.3333333333335,
+      "mean_full_prefix_blocks": 215.33333333333334,
+      "mean_absolute_displacement_tokens": 30.37572899031877
+    },
+    {
+      "model": "llama",
+      "family": "HotpotQA",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 9933.333333333334,
+      "mean_full_prefix_blocks": 620.3333333333334,
+      "mean_absolute_displacement_tokens": 68.28263145423527
+    },
+    {
+      "model": "llama",
+      "family": "HotpotQA",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 12844.333333333334,
+      "mean_full_prefix_blocks": 802.0,
+      "mean_absolute_displacement_tokens": 85.63269582479641
+    },
+    {
+      "model": "llama",
+      "family": "RepoBench",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 75.66666666666667,
+      "mean_full_prefix_blocks": 4.0,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "llama",
+      "family": "RepoBench",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 2018.3333333333333,
+      "mean_full_prefix_blocks": 125.66666666666667,
+      "mean_absolute_displacement_tokens": 33.76709309627778
+    },
+    {
+      "model": "llama",
+      "family": "RepoBench",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 5375.333333333333,
+      "mean_full_prefix_blocks": 335.3333333333333,
+      "mean_absolute_displacement_tokens": 71.0233925591693
+    },
+    {
+      "model": "llama",
+      "family": "RepoBench",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 6632.333333333333,
+      "mean_full_prefix_blocks": 413.6666666666667,
+      "mean_absolute_displacement_tokens": 84.81989395938952
+    },
+    {
+      "model": "mistral",
+      "family": "HotpotQA",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 73.66666666666667,
+      "mean_full_prefix_blocks": 4.0,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "mistral",
+      "family": "HotpotQA",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 3966.3333333333335,
+      "mean_full_prefix_blocks": 247.33333333333334,
+      "mean_absolute_displacement_tokens": 44.212730736462724
+    },
+    {
+      "model": "mistral",
+      "family": "HotpotQA",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 11521.333333333334,
+      "mean_full_prefix_blocks": 719.6666666666666,
+      "mean_absolute_displacement_tokens": 95.56927459759761
+    },
+    {
+      "model": "mistral",
+      "family": "HotpotQA",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 14877.333333333334,
+      "mean_full_prefix_blocks": 929.3333333333334,
+      "mean_absolute_displacement_tokens": 118.36144727796781
+    },
+    {
+      "model": "mistral",
+      "family": "RepoBench",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 67.0,
+      "mean_full_prefix_blocks": 4.0,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "mistral",
+      "family": "RepoBench",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 2691.0,
+      "mean_full_prefix_blocks": 167.66666666666666,
+      "mean_absolute_displacement_tokens": 49.64559532499891
+    },
+    {
+      "model": "mistral",
+      "family": "RepoBench",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 7124.666666666667,
+      "mean_full_prefix_blocks": 444.6666666666667,
+      "mean_absolute_displacement_tokens": 101.77142448799476
+    },
+    {
+      "model": "mistral",
+      "family": "RepoBench",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 0,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 8743.0,
+      "mean_full_prefix_blocks": 545.6666666666666,
+      "mean_absolute_displacement_tokens": 120.80718158768717
+    },
+    {
+      "model": "qwen",
+      "family": "HotpotQA",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 64.66666666666667,
+      "mean_full_prefix_blocks": 3.6666666666666665,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "qwen",
+      "family": "HotpotQA",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 3583.0,
+      "mean_full_prefix_blocks": 223.66666666666666,
+      "mean_absolute_displacement_tokens": 32.70506257447186
+    },
+    {
+      "model": "qwen",
+      "family": "HotpotQA",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 10392.0,
+      "mean_full_prefix_blocks": 649.0,
+      "mean_absolute_displacement_tokens": 75.87814966323592
+    },
+    {
+      "model": "qwen",
+      "family": "HotpotQA",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 13422.666666666666,
+      "mean_full_prefix_blocks": 838.3333333333334,
+      "mean_absolute_displacement_tokens": 94.90752811160387
+    },
+    {
+      "model": "qwen",
+      "family": "RepoBench",
+      "level": "L0",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 59.0,
+      "mean_full_prefix_blocks": 3.0,
+      "mean_absolute_displacement_tokens": 0.0
+    },
+    {
+      "model": "qwen",
+      "family": "RepoBench",
+      "level": "L1",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 2009.0,
+      "mean_full_prefix_blocks": 125.0,
+      "mean_absolute_displacement_tokens": 37.82063965272701
+    },
+    {
+      "model": "qwen",
+      "family": "RepoBench",
+      "level": "L2",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 5373.333333333333,
+      "mean_full_prefix_blocks": 335.3333333333333,
+      "mean_absolute_displacement_tokens": 81.39096554971998
+    },
+    {
+      "model": "qwen",
+      "family": "RepoBench",
+      "level": "L3",
+      "source_count": 3,
+      "prompts": 30,
+      "dependency_legal": 30,
+      "eligible_family_maximum_count": 30,
+      "within_16K_count": 30,
+      "mean_stable_prefix_tokens": 6635.333333333333,
+      "mean_full_prefix_blocks": 414.3333333333333,
+      "mean_absolute_displacement_tokens": 97.30495295341093
+    }
+  ],
+  "anchors": [
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 0,
+      "prompt_tokens": 14289,
+      "sha256": "7b4db0a05bfc7dfb6f3aa65ba7a55f9ed13b4269a2440f344e3deefd1a50b126"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 1,
+      "prompt_tokens": 14297,
+      "sha256": "1c74386ce8b6fd412840e51267b3ff6ad95e8fae4cf08b132b7b3a9ee9d5baef"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 2,
+      "prompt_tokens": 14293,
+      "sha256": "b6cce74616bf12afa11bb76e40356b27a7184aa84d478244036e83070579d5eb"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 3,
+      "prompt_tokens": 14289,
+      "sha256": "33ae322f04bd7c763292e5872cc31fa940f5a27b41bea3b9c7803b52e4707202"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 4,
+      "prompt_tokens": 14297,
+      "sha256": "853810afa282f608951060abbab88326f0ad6100531684d1ef47564d130c3799"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 5,
+      "prompt_tokens": 14293,
+      "sha256": "5aa7fe2b755b27758e99798c79ed7c3b6177b987f5d724957088444551e695e2"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 6,
+      "prompt_tokens": 14289,
+      "sha256": "32b70d5babb6656407559f6ed031510df1ea6f8eb3bf2c77ab119053090ee5a7"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 7,
+      "prompt_tokens": 14297,
+      "sha256": "77584098408447bbbb78dd6b657510100ebbe77dfe3ba8947fbdb2cb03a69f7a"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 8,
+      "prompt_tokens": 14293,
+      "sha256": "bb8564d3a7a693c446f1eb2714093c45fbcf99aa1adf64f331a7d40b7e947d7d"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 9,
+      "prompt_tokens": 14289,
+      "sha256": "f45039f02e0b6b8a197e1a69656ca844d0c2b806bc308edf13ba912eb5e10ea2"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 0,
+      "prompt_tokens": 14080,
+      "sha256": "7fec02c3f37d44f319f3a58d0e4fa284de31ea442c8923f1ba5ae89340c0a68b"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 1,
+      "prompt_tokens": 14088,
+      "sha256": "60c643c01bf5c40c0229c2497c49cb685ea24e1027f33b0fb3ae200c169c5fcb"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 2,
+      "prompt_tokens": 14084,
+      "sha256": "094d4475b10a55358321cb438105c1f288ecf4ad32f78233608b2dc30c253977"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 3,
+      "prompt_tokens": 14080,
+      "sha256": "3cd446453db52402b79b828e2e1b6875b41fb64afcafc21900473e907ee6e4e9"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 4,
+      "prompt_tokens": 14088,
+      "sha256": "1cdddc5aad2e69907a683f1a8e59e8362f9f1b8e389f9df97bf2f58d3ce1d054"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 5,
+      "prompt_tokens": 14084,
+      "sha256": "3b585f358033f94fc0bc0deb6364f8571362df9db82c2dc6b359d6738c10f1b8"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 6,
+      "prompt_tokens": 14080,
+      "sha256": "75c0a58c12f28fdd32d967464ab4d2938fba71ae9f3df9c3dcc1de96726e9b2e"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 7,
+      "prompt_tokens": 14088,
+      "sha256": "6fc4d6c317280e8640e75d6391d8808ba9d9c9cc0c02c274b8ff995dfff81961"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 8,
+      "prompt_tokens": 14084,
+      "sha256": "43ef31a55c52daa9357c08d7d9de51c81b2f64de9124391c146eb56e9d9752f3"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 9,
+      "prompt_tokens": 14080,
+      "sha256": "cc325d23d1d10bc7df7e8bc357062350c4bcdffe97bd36c94663796d4f2135af"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 0,
+      "prompt_tokens": 12138,
+      "sha256": "898d430c57281682403eae183f886e48164c9105ba773d624e6202878140db87"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 1,
+      "prompt_tokens": 12146,
+      "sha256": "68200e0c6bd23545c2574b4d96c8ab9755c794a8d39c8635595762954c2f79df"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 2,
+      "prompt_tokens": 12142,
+      "sha256": "83cc17d9a4d035962565fad2b3360a2aa0bcd61faeb46b0af8b1f1745ccff052"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 3,
+      "prompt_tokens": 12138,
+      "sha256": "ed76a0bbe1cfe1e537bda7911faefebf4800e727e7d1740f7142bece0a560e2f"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 4,
+      "prompt_tokens": 12146,
+      "sha256": "a9b74d0c73ab63032b8220d772c666adf7af61f2232202ae08ac3ac6cc0104de"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 5,
+      "prompt_tokens": 12142,
+      "sha256": "fbfb97aaea0f74cbac5bbda112bd54b0f76a0649c307fe991f34cea4caf6fb11"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 6,
+      "prompt_tokens": 12138,
+      "sha256": "f82f26451dd7f41cf35346b90b57b83d3c6212dd016565c20fb7079834d3be99"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 7,
+      "prompt_tokens": 12146,
+      "sha256": "1f22bf314f33cbe9d325d51af661d077f22e266b1a4c55c3ef53fa831518a79e"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 8,
+      "prompt_tokens": 12142,
+      "sha256": "2baf56e5c6da2f4f284dd6e8baa799d95e3eb164c14f01854a48222cfbc5fe79"
+    },
+    {
+      "model": "qwen",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 9,
+      "prompt_tokens": 12138,
+      "sha256": "94fb50b2f1516a9c10728645643f7899f87e6a3468bbdf37d68f219fe1c8f438"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 0,
+      "prompt_tokens": 2923,
+      "sha256": "8bb07cbbad41377fee6766f6c4625254eb4116f12ecbfc3568b2115bad9e62be"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 1,
+      "prompt_tokens": 2931,
+      "sha256": "8430b9f96bfa43e89a53095d48b0db4a09eeb835a1795f53ed60f48de02304c6"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 2,
+      "prompt_tokens": 2927,
+      "sha256": "c83852c4fc835f0a9d9ddc5c0400999ab5ad1be0f5c2efc47bb31b592604b7d8"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 3,
+      "prompt_tokens": 2923,
+      "sha256": "8ee49e140c7615cd65567cbf7ebd89d84c12b87c4d4ca6fb730227a565628d2c"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 4,
+      "prompt_tokens": 2931,
+      "sha256": "3c523292a28c0ee1fdf0c28e66180adeab544d635c1ad97dca21abf7efec692c"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 5,
+      "prompt_tokens": 2927,
+      "sha256": "2e0c4b468a58ad7c16af9ec3db6702e481c1d356da754cbb418937774ea17500"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 6,
+      "prompt_tokens": 2923,
+      "sha256": "e7f2061ceff24668b966b1507416273a2006afbf4cefca54e4f09f21fc07004c"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 7,
+      "prompt_tokens": 2931,
+      "sha256": "7982db1fca7c30de3b8773f6504c62439f8a6c7564c514247b8256805b0f9506"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 8,
+      "prompt_tokens": 2927,
+      "sha256": "ea011a68ca1e828dc3811ed34d4e27ba84d70c1a051f07f01af6f5488e725830"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 9,
+      "prompt_tokens": 2923,
+      "sha256": "2139ea323f165bc1408c8c278d55e72654f527b895abc61e6b8f7800c3ff27ff"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 0,
+      "prompt_tokens": 6353,
+      "sha256": "46f10ff752640cb558936f2f55599fa12a43dfe30be21befc33faade42f4e5b0"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 1,
+      "prompt_tokens": 6361,
+      "sha256": "58309624992e50067fd5037dca569989d0f3266593535d206ee22d968db1df14"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 2,
+      "prompt_tokens": 6357,
+      "sha256": "519b6870b88d1e1c982a457dcced47dbc8e796e7e9bc5a246425b417a8287439"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 3,
+      "prompt_tokens": 6353,
+      "sha256": "fcdc4a0e6499932beadb26abba769feaace77b26cbe9137e5ab5560ed45d13a5"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 4,
+      "prompt_tokens": 6361,
+      "sha256": "8137ba16c44a4621047b913ad002a9a158de5e75eb9f7a1435ee31734fb452a3"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 5,
+      "prompt_tokens": 6357,
+      "sha256": "9bf6a4f4991efce6dc57f5d92b85172423ddb33f9972cbab661f32273b383918"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 6,
+      "prompt_tokens": 6353,
+      "sha256": "57a605bed71edbae9c24762ab4f149d34633519923af4ac455cea576036883b1"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 7,
+      "prompt_tokens": 6361,
+      "sha256": "0ba6ace1d34b070dcd4a95e84a16efc3e1a60e1d94048294df9ba3345c00391a"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 8,
+      "prompt_tokens": 6357,
+      "sha256": "5d504ebd5093d22c4e1c482bb67d96367d2bad8ac5e264f03facfca1dccda7a3"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 9,
+      "prompt_tokens": 6353,
+      "sha256": "099afb2f56c9c2f3f09e0f978afb96728e9c22894f90e2d82bad53e47ce06c9d"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 0,
+      "prompt_tokens": 10849,
+      "sha256": "4cbc114f54bf116585adc6f8165cb45d98341771a9b3d70facaa34ec16116afc"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 1,
+      "prompt_tokens": 10857,
+      "sha256": "87b753b89b215f0f2027cc3f5e193e5b3c1f374d222c6e405b699e5cd2792b1c"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 2,
+      "prompt_tokens": 10853,
+      "sha256": "6671617f72773122b20d87adc0c4df076b604ca267232fc71aa4260e8c78f4b5"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 3,
+      "prompt_tokens": 10849,
+      "sha256": "a3ffa20b68b611c638f523ad7b4dfe4009e0178bb2f2dc6de031f947381c7aba"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 4,
+      "prompt_tokens": 10857,
+      "sha256": "470f06a0502c10081fc95064ba5ace3923d1e5d0525f067bdb974f5eedfcf4e1"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 5,
+      "prompt_tokens": 10853,
+      "sha256": "5f3ff8a5226af5e9296e30de518ed2ef8e5e8315918270a10b6a91a457b370c1"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 6,
+      "prompt_tokens": 10849,
+      "sha256": "8256578cfb11de3bdf7d7998627d202ff8c4f8484d1804935d7df5810fcd47e4"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 7,
+      "prompt_tokens": 10857,
+      "sha256": "54208404881a6cafc121ff8e3250ca52146d40b7a96653c7c68fd645540155f3"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 8,
+      "prompt_tokens": 10853,
+      "sha256": "4dd578650804eac6c27002aced48f16f8e167d5931bf7aee36e2d9f60ab99719"
+    },
+    {
+      "model": "qwen",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 9,
+      "prompt_tokens": 10849,
+      "sha256": "b1d8b027d5b94f57530159a92346571b1fcc16d6387dfcc31395dfab14b15c9b"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 0,
+      "prompt_tokens": 15901,
+      "sha256": "117fb0f89f64f82b06dc75f86f3ded80a71976d8795ff0f1d977e722596992e3"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 1,
+      "prompt_tokens": 15912,
+      "sha256": "1bae206a4c2bb4afb5a338397895ba486589c9056d7bef4c7dc4e562ab3f2cca"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 2,
+      "prompt_tokens": 15906,
+      "sha256": "20b6c58d07cda06312eaedb4b764388febd2c617b98b00af1e5d2eabbcd9b7d0"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 3,
+      "prompt_tokens": 15901,
+      "sha256": "15bc088ff3296e165e2dbbf65651ae8c102859ce9e079969570e4ff2212479c1"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 4,
+      "prompt_tokens": 15912,
+      "sha256": "8b0acaec5b11ed21c6d82b425ef45e5cb9b224611ff53d5096473860c2c90338"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 5,
+      "prompt_tokens": 15906,
+      "sha256": "3c8cb2f2d8dd98ad70d0013855db6449785c191bbee6f6b76e35242760e25fb5"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 6,
+      "prompt_tokens": 15901,
+      "sha256": "8a63628be0ac74cc4d8e02aa12af5fe03fe817fde7a8d5e65bc024ed8b62eaa5"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 7,
+      "prompt_tokens": 15912,
+      "sha256": "320733a91d6f444852fa650c1d2a9cc7ec9340ee29b86d1f5566becc7848d402"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 8,
+      "prompt_tokens": 15906,
+      "sha256": "f7099b7cc97bf69208846c96fc98e4eaff6efec10674c7ca0c8efa460598859b"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 9,
+      "prompt_tokens": 15901,
+      "sha256": "c1224b44363e23ac7cfc01765fed2b9041b928bb54551a3ae9df0568e6cb87f3"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 0,
+      "prompt_tokens": 15657,
+      "sha256": "790e41df4d86cdf08d93b1578c75dba1f69e90f000611f4a66e2518e4f366889"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 1,
+      "prompt_tokens": 15668,
+      "sha256": "c488fd134d2ac8edfe0491c326cda78a2c39a30d87d1812968ef9a23642d48f3"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 2,
+      "prompt_tokens": 15662,
+      "sha256": "44f020c30dfed540a010544bfce05d0fc390b499ca57ec5ac25db88057a87f3c"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 3,
+      "prompt_tokens": 15657,
+      "sha256": "32f34f60a9de1cb336e86e8a3fd3fcad3478b9df57452f47e0bbf886faace4c1"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 4,
+      "prompt_tokens": 15668,
+      "sha256": "0df21ddd5855ce110dee89818c30023faaa2080ddfc44c9770cf4dbae54703f6"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 5,
+      "prompt_tokens": 15662,
+      "sha256": "a873b645f4b5a8b3ee0dbe804575268d85ffb2885b514b2d24c247d2c3be032f"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 6,
+      "prompt_tokens": 15657,
+      "sha256": "cdffd2e9edfca921b26dba7a2d950aa486dbf36c87df14e7f39789524e14dd2a"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 7,
+      "prompt_tokens": 15668,
+      "sha256": "e47829c9f421adedb040cc2e277a9c7ffa5432b82d32718d8e508438f9e6617e"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 8,
+      "prompt_tokens": 15662,
+      "sha256": "1fd16e60bad25277686529ad8228ea11162c11cb1a76ea40b32248cd70f6daa9"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 9,
+      "prompt_tokens": 15657,
+      "sha256": "4d82df714095ef9b6dc425cf9e0fb2c8e643b275f44c0d5aea42b268ec021785"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 0,
+      "prompt_tokens": 13363,
+      "sha256": "a2820f3fc827b711dd6c64471d8813a86b80efccea324a4fd51f0691ba2db13d"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 1,
+      "prompt_tokens": 13374,
+      "sha256": "ba1ee30c3074f56f66251ca130de5713daedea48f77e18bd287da4f5820622d5"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 2,
+      "prompt_tokens": 13368,
+      "sha256": "0ccbc6b2b3d64e72d36fc4b43a683df7fe016db805766f35e46248d12003df0c"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 3,
+      "prompt_tokens": 13363,
+      "sha256": "5374785fc001882bce142eaad786c73db141b35de4213bca2311f9a6116b701c"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 4,
+      "prompt_tokens": 13374,
+      "sha256": "1157e9ef096933e8b889926c7efff33d44b435c106812f9d70a7c179897fce0e"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 5,
+      "prompt_tokens": 13368,
+      "sha256": "d34f2fdf0ecd2a2c1e49c5dcf828399f8e32c31a7c9753dcf9347f5d6128e28b"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 6,
+      "prompt_tokens": 13363,
+      "sha256": "d09c30e765e53b6fbdd69687466e6425b61952a8473050aed6beb7c56a33043f"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 7,
+      "prompt_tokens": 13374,
+      "sha256": "62c1fe1dbb4f887e15ac275e38a8101dbcfa057ae08ed9cf656987a2f1196c3c"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 8,
+      "prompt_tokens": 13368,
+      "sha256": "024dbe8ae24aef990612276647db43e92e82cd925dd6c2dd6bfdffec5b12268a"
+    },
+    {
+      "model": "mistral",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 9,
+      "prompt_tokens": 13363,
+      "sha256": "afe4c2a70ab8655beb8a0025b194b82b4fd1130196361f20665645aeefb9904a"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 0,
+      "prompt_tokens": 3749,
+      "sha256": "99d0a036e357a8f62e0066d741d40b6fcaa030364f186473c8c45693dcb4a1d6"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 1,
+      "prompt_tokens": 3760,
+      "sha256": "6f63b5b5684ecb7bee23ee8681fa905821e563469ada92c2a6e676b2e0abadcd"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 2,
+      "prompt_tokens": 3754,
+      "sha256": "1245098c18e8ba59e0d4df53b6dc61889e1bb8bb9297823fe3f646c84a3e3370"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 3,
+      "prompt_tokens": 3749,
+      "sha256": "3191bb29f94623398de0a0282aa34f01b4823efcc326783163671bcb3e90f6d1"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 4,
+      "prompt_tokens": 3760,
+      "sha256": "b227b59d8ef6d0e1e1ca2b9f4d3a80cc530c76a22dde7a1d51712ce69d1f466a"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 5,
+      "prompt_tokens": 3754,
+      "sha256": "097a6e22b2165c0ade147ce92091a1d58be452a0b957b96345aa625147a2e2d5"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 6,
+      "prompt_tokens": 3749,
+      "sha256": "80ddf516af837f5e29c87ffdb71d44473d414257ef81ad03fde8c319a63e586e"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 7,
+      "prompt_tokens": 3760,
+      "sha256": "98d514a57177d581011c849dca98e41746de8e0e1ea956d66a762cf215358d3b"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 8,
+      "prompt_tokens": 3754,
+      "sha256": "624ab9758efe3b61f13518b42a52fe3d07a342979d54b76004b69fd04f2a3a39"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 9,
+      "prompt_tokens": 3749,
+      "sha256": "67470298171712181f91f03c18ed09b907edc67c76f77ec5da2aed71be71a47c"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 0,
+      "prompt_tokens": 8773,
+      "sha256": "960e936a1139f4b0ad2bb8fc29e622ee82c375c2aa0d4fd1235f65e4a35126b7"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 1,
+      "prompt_tokens": 8784,
+      "sha256": "6e00a892b36e822d15d5e90166c3cc0cf2278642fc6783ec53a4704910b7fb28"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 2,
+      "prompt_tokens": 8778,
+      "sha256": "8828fee4c04211b75bc0d80c3bf7e258f50e71058bceb45ebfc7a59cf2da465a"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 3,
+      "prompt_tokens": 8773,
+      "sha256": "b7f8a495bbc2cf386f1d54e7f7d5c26d8c32c159fcdf0683bac006c7322b1d95"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 4,
+      "prompt_tokens": 8784,
+      "sha256": "c32fa767324db136219d7557a484c92b9212e11e7a5c6e3da5cce0e9db9b6cb6"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 5,
+      "prompt_tokens": 8778,
+      "sha256": "a17e730df541039cc0cc2bc201a1bfc8b3f8e33b46aba34835d541dfaa7ec4d5"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 6,
+      "prompt_tokens": 8773,
+      "sha256": "ebe5fe2b0637968b9a1957427121599a189140922352fbd253bfae1748d06c44"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 7,
+      "prompt_tokens": 8784,
+      "sha256": "a564db49b5ad2c01b2c7c06151c77e6ac63ece9fe698663bb002f7be6c2f3268"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 8,
+      "prompt_tokens": 8778,
+      "sha256": "5a4fb1fc9f3c9a3a5b07e32b00ad04337493294def7fda1705ebef2e5788c2ba"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 9,
+      "prompt_tokens": 8773,
+      "sha256": "19a158fc647d37eed17f115021e063dda86e5a3d67a8a994007dbcf1ba3103a2"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 0,
+      "prompt_tokens": 13968,
+      "sha256": "38004f03c2d6c97b9adc322004d54207430595a4b08c2f00861cf8f6f319bb6e"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 1,
+      "prompt_tokens": 13979,
+      "sha256": "fbbf468ba8232ed7311f6ba5ca27c093ef68b45ca80b8a5b5ad765cbd399565f"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 2,
+      "prompt_tokens": 13973,
+      "sha256": "99b26ac078fbe608a6c24b81617c65851ad43bd2961b7219a943d2d442a1d491"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 3,
+      "prompt_tokens": 13968,
+      "sha256": "0cefa62ddaf11ef7e0334867edf9b58a9aded2b486e7f5966f2211a25ba3a68f"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 4,
+      "prompt_tokens": 13979,
+      "sha256": "84d63769a10689e97edd20239f88342d6ceaa313b3433065f69a089186cd5aa9"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 5,
+      "prompt_tokens": 13973,
+      "sha256": "bdcc8cf0dfee60bb1327af274ed849b2c216c9fc898e65ff04f966bac38ca85a"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 6,
+      "prompt_tokens": 13968,
+      "sha256": "3d76f7dd7b1a03d53d6e87e8f60215ada7c64eff44005fb553ca9daa3b4a3c35"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 7,
+      "prompt_tokens": 13979,
+      "sha256": "9a712c4042d5797492f4a7c8df6c35816018c503e5f4c41a9b1ac84c05e30cd3"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 8,
+      "prompt_tokens": 13973,
+      "sha256": "6ce9bf4d99ce1853d2cd0bcc63e6834e05ec917a6accc840d748986b43ed0341"
+    },
+    {
+      "model": "mistral",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 9,
+      "prompt_tokens": 13968,
+      "sha256": "f074804140560a4ead10c671eef362229876a1ae3517a3d63b5aa4f3e4d5fae9"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 0,
+      "prompt_tokens": 13652,
+      "sha256": "43b9651c264e1e45bc7d916bbc8d6d14405c6b03370118771400e9bcf5b0b2e8"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 1,
+      "prompt_tokens": 13660,
+      "sha256": "c131b60b1e185518def043ba890e6d5c45d7027b66fa4f9fc418d375952ffd87"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 2,
+      "prompt_tokens": 13656,
+      "sha256": "31f380465112441c35ad4023b4eff06c15ca9a8797d94ed37c90c44eb4ed42bd"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 3,
+      "prompt_tokens": 13652,
+      "sha256": "313b1257cd07c71ce673b084a40dcc7e63f82cbe8c8f608fd51f45f050fc8747"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 4,
+      "prompt_tokens": 13660,
+      "sha256": "4389988f207a945ede35a7145c010202350ba5e01235b3646a2ff88f2ca3759f"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 5,
+      "prompt_tokens": 13656,
+      "sha256": "d464f1410c765874d012b11b727a7b3aee9a49ea27d0f4c81703c9399172bda8"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 6,
+      "prompt_tokens": 13652,
+      "sha256": "1a258d535bc048dc05ad588df5310740d1cf7127e4e77874e33455e5d2ce593d"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 7,
+      "prompt_tokens": 13660,
+      "sha256": "2bca6c988ff3e6b6bc29185ce0fd825e933b56da8a9ee9f716a6219181693ed5"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 8,
+      "prompt_tokens": 13656,
+      "sha256": "f42fda681167480353ce08be0d3836da3a558b86a5fbe8bab9fc9303f9115960"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "turn": 9,
+      "prompt_tokens": 13652,
+      "sha256": "75103f93fe769a1e22ca55c6655a2d67984be9dc72cce67b583afec52a130884"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 0,
+      "prompt_tokens": 13611,
+      "sha256": "63e47452f5e094a13c3fb38621189c19aaf34f30a6522c8bd8c18e86843a8a37"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 1,
+      "prompt_tokens": 13619,
+      "sha256": "c914ca38a20f9c4bebc2cfd97cd4920bb65a1fae615c69b14ae0bdef1430f74f"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 2,
+      "prompt_tokens": 13615,
+      "sha256": "38e2ae6724c7396e8421f4a1415b0a2d6f3bd3a473fbb3dea53a2781ce0285c7"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 3,
+      "prompt_tokens": 13611,
+      "sha256": "52966bb96752bdae5e4ae640754a24a1d16b8f9146659c783fe3c878b650696a"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 4,
+      "prompt_tokens": 13619,
+      "sha256": "6dddafde41bc62419b958775d47158464daeaff5662fb74aba8b6cdc5166d1b5"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 5,
+      "prompt_tokens": 13615,
+      "sha256": "275ff3eabe761c02af3bcce6b8ee2f0722e799e4155a279b411b32b51d42fa4a"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 6,
+      "prompt_tokens": 13611,
+      "sha256": "1be6ab6d1a276130ce1debd4fe969204b079581c183ce6d48f050387a95c9997"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 7,
+      "prompt_tokens": 13619,
+      "sha256": "60c2e8d8a0caa07951e90ab8156701077f59cd1ce651f75248b9e54471a8fca1"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 8,
+      "prompt_tokens": 13615,
+      "sha256": "ed33057848cebeaeec3f12aab5546a6d4f1cee04e2127bbfb348ee7e00eb78ba"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "turn": 9,
+      "prompt_tokens": 13611,
+      "sha256": "0209b6ed1dd294949351da15fcbffecaa7ca73e15bebb54e401b80af0dad2c00"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 0,
+      "prompt_tokens": 11492,
+      "sha256": "5cfce6096eb256a8bc580b0a62c364f8202734878a93d07c6bf3cb51abf5feba"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 1,
+      "prompt_tokens": 11500,
+      "sha256": "65bf09a6880789ef11f467b4501b204d471d0a7d2dd58235c41b435fe71f595f"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 2,
+      "prompt_tokens": 11496,
+      "sha256": "05f0a75ee91b7e057428a7bee75a8bd521ac8e06675c2e50d39abfae09bb8c39"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 3,
+      "prompt_tokens": 11492,
+      "sha256": "ae0bed4e4c9c27d2f75ce86d45ac09a5fb2f253d5154db876a509c71405b0fd1"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 4,
+      "prompt_tokens": 11500,
+      "sha256": "43b94d05f029f3da085f800d451db4aea90a7d8ded679674119c7ff9bb8dc11b"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 5,
+      "prompt_tokens": 11496,
+      "sha256": "56c94d12b36d835b3777632cb659d609920bd0b270e49df2c83a8473cf02f2b4"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 6,
+      "prompt_tokens": 11492,
+      "sha256": "f8bb8cf13b0409f225b368bb6ae4fe750b76f04fa10eb911ce9cce057dfb25ac"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 7,
+      "prompt_tokens": 11500,
+      "sha256": "af309e451f0d68113b06e63e5d75095569a98170b9d5fd13ba5e0fdecd9c3340"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 8,
+      "prompt_tokens": 11496,
+      "sha256": "aa1e2d308341ff1ad8db9411391ea01b761aa4667a989450e689243ba9fb2510"
+    },
+    {
+      "model": "llama",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:109",
+      "turn": 9,
+      "prompt_tokens": 11492,
+      "sha256": "f515a4ebaa56ec36be4e02c4b598ef779e1bfaa44ec8b7356077459a29d98169"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 0,
+      "prompt_tokens": 2928,
+      "sha256": "91d29be3a872f3de5f68678f21fb552785951c4d9d95254e4d979ab342a36c43"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 1,
+      "prompt_tokens": 2936,
+      "sha256": "aa62bb304e35f3c4292daa872e51ec0533f994aceb533e7878d09866ae9563a4"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 2,
+      "prompt_tokens": 2932,
+      "sha256": "b95c6cb1f348383b0f80100ad367e3b3e459cc1d347793139cb08ed72a94e93a"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 3,
+      "prompt_tokens": 2928,
+      "sha256": "d5fa13e0d612725197f894bf39c80c96463be308706634fca580388c52c6b046"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 4,
+      "prompt_tokens": 2936,
+      "sha256": "96b978043764781f25659cb959aef605e24e579fd0d645877ccc2abe61b6f67b"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 5,
+      "prompt_tokens": 2932,
+      "sha256": "7f9a9b15d14eb128373675525e591fe66006288852081fe9b93ff4883a6f19dd"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 6,
+      "prompt_tokens": 2928,
+      "sha256": "253663d6eb686b13305a1268aa29e799074fa4c0d96fb8cfc0de756d8379f1cc"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 7,
+      "prompt_tokens": 2936,
+      "sha256": "a63a4716c76f3bb2c4be9184107a81f659163f6dd17baf1d23e6b3cc536a6b4b"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 8,
+      "prompt_tokens": 2932,
+      "sha256": "53f3af12da37049c7a018fcd9cb237448617d1e204509a45fc19093dc1b0cddc"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "turn": 9,
+      "prompt_tokens": 2928,
+      "sha256": "8ae26c24ef96e8bfa826bba37a59271f197ee6ec6ea88b4fcc46018ac543ed98"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 0,
+      "prompt_tokens": 6336,
+      "sha256": "c7493ea876313a51d2435a7d75de2f861f7fb1d29e0960cc9855bd7996b8ff9a"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 1,
+      "prompt_tokens": 6344,
+      "sha256": "a494f7e566a352dbf4ee458379af633dc37f14c2ba31f229b23d19867f2523fd"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 2,
+      "prompt_tokens": 6340,
+      "sha256": "0852b7cfd910a05a4e9da56186f9d1f18801ac1737134711a80b7a3c88e0d02b"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 3,
+      "prompt_tokens": 6336,
+      "sha256": "3145d5a6dfbfca8b51583316ef0a2efba22d2843ac55f38530a4cec1e1185ecf"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 4,
+      "prompt_tokens": 6344,
+      "sha256": "140b26ce029af3b1af59ed13baed05940600ba185759a62dc435b97b2fc343a6"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 5,
+      "prompt_tokens": 6340,
+      "sha256": "3160e3abbd2a33bf04732c1738da6576a8529562967a386ae5a8d6391e9ce846"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 6,
+      "prompt_tokens": 6336,
+      "sha256": "f65eb6a825e2205496ba5842caa77fb003a2475178e133d81d959ee5a4d09e02"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 7,
+      "prompt_tokens": 6344,
+      "sha256": "8b97c5d4c63b5522e806d07742c3d0bc72855808a1f919506e25e1724c601958"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 8,
+      "prompt_tokens": 6340,
+      "sha256": "44e4424ee19517c64a6ffde92eeffb222f621adf69f4d0442d99837f604d41f0"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "turn": 9,
+      "prompt_tokens": 6336,
+      "sha256": "a146ed1929ace38f3e101e97682c3bfaec1729f7b390315c8082998f89b0bef4"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 0,
+      "prompt_tokens": 10830,
+      "sha256": "ac63a61b05058884f5bfcb2096d924b6d2de65fb80833faa8490c99837a15bd8"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 1,
+      "prompt_tokens": 10838,
+      "sha256": "c3a94e9e8d890dc598bcde66281bb481d40947c24626aed38aed567a940509e0"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 2,
+      "prompt_tokens": 10834,
+      "sha256": "4a3735a9c500b7fa782aa1ee135f5d1615c78d1d1e1fd05782d3904ff530a06c"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 3,
+      "prompt_tokens": 10830,
+      "sha256": "e1b76449fb34b269e8bcefc1ea9609b36183e1ed5a8688d33c3d6de64eb7eb30"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 4,
+      "prompt_tokens": 10838,
+      "sha256": "b3dc314bfa0b7a576f7fc5b9b1b0f0c1472bced0eb7422d4413de0f8f09f37fe"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 5,
+      "prompt_tokens": 10834,
+      "sha256": "08543217ad39a978decf1ccbcb0b72e8acf09d8cb162eb759ea760b89f4853d0"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 6,
+      "prompt_tokens": 10830,
+      "sha256": "7f0263cf3632974fc9423e53b8e201bccb287ffcf41b1e41cd6f00472debce4e"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 7,
+      "prompt_tokens": 10838,
+      "sha256": "f3ecf6de50b63c6c39275376557d9fbbb5ad694ce8e774b2a7a0387aedd6bff1"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 8,
+      "prompt_tokens": 10834,
+      "sha256": "1420828083578983b5fc0b2c7162a632863ee79b17d0451462ddd7f483892500"
+    },
+    {
+      "model": "llama",
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "turn": 9,
+      "prompt_tokens": 10830,
+      "sha256": "49415d4f133c1c349edc9a73d816c6900d3a7f21f664c7dc571ccc1ce881c015"
+    }
+  ],
+  "exclusions": "Headers, chat controls and tokens crossing segment text boundaries are excluded from the displacement metric; full rendered prefix lengths use all actual prompt IDs.",
+  "boundary": "Offline structural opportunities only, not candidate qualification, actual prefix residency/hits or GPU performance. R4 online uses one inherited candidate, not this four-level descent. Levels beyond inherited family maximum remain unauthorized."
+}
