@@ -1,0 +1,14 @@
+{
+  "schema_version": "contractkv.budget-analysis-commitment.v1",
+  "source_sha256": "7522679418e7709be086049b1fc632b35b3edf695f5dd2177acc308c9e56f61e",
+  "new_GPU_results_observed": false,
+  "comparison_rule": "For every model, show the first original frozen repetition (r1) as the 64-token descriptive baseline; 256-token results use all20 cases, single new process. No selected-case exclusion.",
+  "direct_source_checks": [
+    "Actual prompt ID hashes equal original 120-shape tokenizer precheck",
+    "Actual output length <=256 and unchanged exact scorer",
+    "actual post-route prompt/certificate/commit count and native lookup",
+    "actual loaded backend source hashes",
+    "completed response file SHA"
+  ],
+  "no_service_throughput_claim": true
+}
