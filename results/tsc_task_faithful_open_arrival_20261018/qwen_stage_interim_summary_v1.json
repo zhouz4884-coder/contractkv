@@ -1,0 +1,268 @@
+{
+  "schema_version": "contractkv.qwen-stage-interim-summary.v1",
+  "complete_cells": 12,
+  "results": [
+    {
+      "load": "common",
+      "paired_processes": 3,
+      "business_pairs": 1080,
+      "future_pairs": 972,
+      "performance_by_repeat": [
+        {
+          "repeat": 1,
+          "raw_wall_s": 2008.4814135488123,
+          "contract_wall_s": 2008.5053234132938,
+          "direct_wall_ratio": 0.9999880956927508,
+          "raw_SLO_pass": 261,
+          "contract_SLO_pass": 259,
+          "raw_goodput": 0.12994892471463584,
+          "contract_goodput": 0.12895161241586867
+        },
+        {
+          "repeat": 2,
+          "raw_wall_s": 2008.3910930491984,
+          "contract_wall_s": 2008.4404079969972,
+          "direct_wall_ratio": 0.9999754461483634,
+          "raw_SLO_pass": 245,
+          "contract_SLO_pass": 258,
+          "raw_goodput": 0.12198819286139823,
+          "contract_goodput": 0.12845788153470855
+        },
+        {
+          "repeat": 3,
+          "raw_wall_s": 2019.2649206249043,
+          "contract_wall_s": 2019.2740428750403,
+          "direct_wall_ratio": 0.9999954824110338,
+          "raw_SLO_pass": 255,
+          "contract_SLO_pass": 247,
+          "raw_goodput": 0.12628357844253782,
+          "contract_goodput": 0.12232118808813174
+        }
+      ],
+      "pooled_raw_clock_s": 6036.137427222915,
+      "pooled_contract_clock_s": 6036.219774285331,
+      "pooled_direct_wall_ratio": 0.9999863578422431,
+      "direct_ratio_range": [
+        0.9999754461483634,
+        0.9999954824110338
+      ],
+      "raw_SLO_compliant": 761,
+      "contract_SLO_compliant": 764,
+      "pooled_raw_goodput": 0.126074001656738,
+      "pooled_contract_goodput": 0.1265692815319096,
+      "absolute_goodput_change": 0.000495279875171617,
+      "compiled_business": 66,
+      "compiled_future": 54,
+      "compiled_ID_or_finish_changes": 0,
+      "all_material_up": 13,
+      "all_material_down": 5,
+      "L0_drop_outputs_also_seen_at_same_position_in_three_Raw_controls": 3,
+      "Raw_repeat_pairwise_counts": {
+        "pairs": 1080,
+        "ID_or_finish_changes": 16,
+        "material_up": 7,
+        "material_down": 9
+      },
+      "qualification_reasons": {
+        "PASS": 3,
+        "observation_scope_has_no_declared_exact_reuse": 24,
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 18,
+        "raw_output_contract:python_syntax_SyntaxError": 9
+      },
+      "compiled_native_hits": {
+        "zero": 27,
+        "full": 39
+      },
+      "by_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:131": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        },
+        "LongBench:hotpotqa:hotpotqa:doc:187": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 9,
+          "down": 2
+        },
+        "LongBench:hotpotqa:hotpotqa:doc:90": {
+          "pairs": 180,
+          "compiled_business": 66,
+          "compiled_future": 54,
+          "up": 0,
+          "down": 0
+        },
+        "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 4,
+          "down": 3
+        },
+        "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        },
+        "RepoBench:python_v1.1:xhuangcv/humannorm": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        }
+      }
+    },
+    {
+      "load": "high",
+      "paired_processes": 3,
+      "business_pairs": 1080,
+      "future_pairs": 972,
+      "performance_by_repeat": [
+        {
+          "repeat": 1,
+          "raw_wall_s": 1161.9775144900195,
+          "contract_wall_s": 1179.7584049659781,
+          "direct_wall_ratio": 0.9849283629587946,
+          "raw_SLO_pass": 8,
+          "contract_SLO_pass": 27,
+          "raw_goodput": 0.006884814809442437,
+          "contract_goodput": 0.022886041655942792
+        },
+        {
+          "repeat": 2,
+          "raw_wall_s": 1148.9261782546528,
+          "contract_wall_s": 1151.8707532351837,
+          "direct_wall_ratio": 0.9974436585248296,
+          "raw_SLO_pass": 10,
+          "contract_SLO_pass": 21,
+          "raw_goodput": 0.008703779397899278,
+          "contract_goodput": 0.018231212087830757
+        },
+        {
+          "repeat": 3,
+          "raw_wall_s": 1179.8106505479664,
+          "contract_wall_s": 1191.1248676888645,
+          "direct_wall_ratio": 0.9905012333737511,
+          "raw_SLO_pass": 28,
+          "contract_SLO_pass": 34,
+          "raw_goodput": 0.023732621829609116,
+          "contract_goodput": 0.028544446449153636
+        }
+      ],
+      "pooled_raw_clock_s": 3490.7143432926387,
+      "pooled_contract_clock_s": 3522.7540258900262,
+      "pooled_direct_wall_ratio": 0.9909049333669294,
+      "direct_ratio_range": [
+        0.9849283629587946,
+        0.9974436585248296
+      ],
+      "raw_SLO_compliant": 46,
+      "contract_SLO_compliant": 82,
+      "pooled_raw_goodput": 0.013177818485316161,
+      "pooled_contract_goodput": 0.02327724257707225,
+      "absolute_goodput_change": 0.01009942409175609,
+      "compiled_business": 66,
+      "compiled_future": 54,
+      "compiled_ID_or_finish_changes": 0,
+      "all_material_up": 14,
+      "all_material_down": 6,
+      "L0_drop_outputs_also_seen_at_same_position_in_three_Raw_controls": 4,
+      "Raw_repeat_pairwise_counts": {
+        "pairs": 1080,
+        "ID_or_finish_changes": 22,
+        "material_up": 15,
+        "material_down": 7
+      },
+      "qualification_reasons": {
+        "PASS": 3,
+        "observation_scope_has_no_declared_exact_reuse": 24,
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 18,
+        "raw_output_contract:python_syntax_SyntaxError": 9
+      },
+      "compiled_native_hits": {
+        "zero": 27,
+        "full": 39
+      },
+      "by_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:131": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        },
+        "LongBench:hotpotqa:hotpotqa:doc:187": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 9,
+          "down": 3
+        },
+        "LongBench:hotpotqa:hotpotqa:doc:90": {
+          "pairs": 180,
+          "compiled_business": 66,
+          "compiled_future": 54,
+          "up": 0,
+          "down": 0
+        },
+        "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 5,
+          "down": 3
+        },
+        "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        },
+        "RepoBench:python_v1.1:xhuangcv/humannorm": {
+          "pairs": 180,
+          "compiled_business": 0,
+          "compiled_future": 0,
+          "up": 0,
+          "down": 0
+        }
+      }
+    }
+  ],
+  "new_GPU_requests": 0,
+  "final_three_model_and_gate_analysis_still_required": true,
+  "boundary": "These actual counts and process ranges are interim; no source-population or causal-background-noise attribution. All load/repeat samples share six sources.",
+  "inputs": [
+    {
+      "path": "first_repeat_projection_v1.json",
+      "sha256": "64d8ac1e148e270a2bd83137419e1e64f7a1423f69fd376277f73d1992780af6"
+    },
+    {
+      "path": "first_repeat_small_metrics_v1.json",
+      "sha256": "bc838df9f6a170d7dc9fe04c82cc98907d195ae5249edaaf150ddecfa64bb92d"
+    },
+    {
+      "path": "repeat2_projection_v1.json",
+      "sha256": "b2f2a1b8f6afd4131fcd1ce5d131bce847d9dc1b8b9b401f5b8193fa3f4a4c5b"
+    },
+    {
+      "path": "repeat2_small_metrics_v1.json",
+      "sha256": "9d1b73670d575b51a3f3142277906077cd6a6ac0b24380d308c55ad0ed312006"
+    },
+    {
+      "path": "repeat3_projection_v1.json",
+      "sha256": "dcc4e1ee6dcfb8870343c1e4402416c2574311ef05de49277108209ffbd7425e"
+    },
+    {
+      "path": "repeat3_small_metrics_v1.json",
+      "sha256": "6ee24be24714f672f535ce0b617c60fe77eba296cdcc176b5b8076401eb10a5d"
+    }
+  ],
+  "entry_sha256": "48166e03e06f515e60065a997b104556056037f83da2168e3da7fe1051a8337b"
+}

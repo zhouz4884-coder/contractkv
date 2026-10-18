@@ -113,6 +113,8 @@
 
 首轮预览已交付：`tsc_revision_final_serving_first_repeat_20261019_zh.md`。Qwen两load各18/324编译未来无ID变化，但scope仅1/18通过，22编译业务13full/9zero native hits；共同点wall近1，高点wall略慢但达标8→27。它不是最终三重复效果，不用小Raw基线放大倍率作主结论，也不据此更换条件。
 
+Qwen12cell阶段现已完成三重复并通过6组跨阶段检查，Mistral/Llama已接续。各load54/972 compiled future无ID变化，common pooled wall .999986×、high .990905×；绝对Goodput分别.126074002→.126569282、.013177818→.023277243req/s。原始每次点值、Raw重复与11个L0下降均保留；仍仅一个获准来源/scope，不以重复/负载数冒充新来源。阶段报告`tsc_revision_final_serving_qwen_completed_20261019_zh.md`不代替最终三模型/Gate分析。
+
 ## 8. 工程修复与失败记录
 
 1. 原端口复用、跨Python AST空字段、缺EOS的异常类型未捕获等均单列修复，保存原源、失败、公开freeze和实际派发。只重测未完成受影响实验单位；已完成cell保持不动。

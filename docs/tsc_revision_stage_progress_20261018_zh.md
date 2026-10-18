@@ -29,6 +29,8 @@
 
 正式24 cells与Gate ON/OFF6 cells由同一supervisor有界接续。16:35 UTC后，Qwen首次重复两个负载的4单元完整完成，第二重复按换GPU/反序的原计划接续。首轮各18/324 compiled future无ID/finish变化，但覆盖仅5.56%；共同Goodput .129948925→.128951612，较高负载 .006884815→.022886042req/s（8→27/360，基线小）。wall倍率.999988/.984928，负结果保留。新数据不是三重复结论。详细分解见`tsc_revision_final_serving_first_repeat_20261019_zh.md`。
 
+19:01 UTC更新：Qwen12/12完整、exit0，6组编译配对检查全部通过；同一318277已启动cross worker414783，开始Mistral/Llama共同负载。Qwen三重复每load54/972 compiled future无ID变化，只涉及一个来源/scope；common pooled Goodput .126074002→.126569282、wall .999986×；high .013177818→.023277243、wall .990905×。12/30完成仍非全目标完成；不把小baseline倍率当主结论。详见`tsc_revision_final_serving_qwen_completed_20261019_zh.md`。
+
 服务编排CPU检查已通过：六条轨迹符合原loader；Raw/Contract到达、GPU、重复成对一致；第二重复交换GPU/次序；两个server均ready才测量；同wave任一客户端失败则整个wave留作无效失败，不选择保留较好的一半。CPU检查使用fake transport，GPU请求数为零，不是效果结果。当前正式GPU执行另按实际completion记账。
 
 ## 还需要完成

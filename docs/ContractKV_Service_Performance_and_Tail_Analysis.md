@@ -124,6 +124,8 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 首轮Qwen两个负载已完成配对，原始只读投影见`first_repeat_projection_v1.json`和`first_repeat_small_metrics_v1.json`。scope决定1PASS/8作用域/6负candidate margin/3语法，各点仅18/324 compiled future；获准后ID保持。高点绝对Goodput增加但Raw仅8/360达标，完整wall略慢；共同点近无净收益。该结果补充资格稀疏与不完整驻留的实际限制，不替换上文旧独立闭环的1.619×，也不在两者间作同条件因果比较。
 
+Qwen三重复阶段12/12现已完成，各load54/972 compiled future、0ID/finish变化。pooled完整wall common .999986×/high .990905×；pooled绝对Goodputcommon .126074002→.126569282，high .013177818→.023277243。高点达标46→82/1080而非整族普遍容量增长。三个重复的资格和native39full/27zero分解一致；详细过程范围、Raw输出控制及限制见`tsc_revision_final_serving_qwen_completed_20261019_zh.md`。跨模型/Gate尚未完成，不提前附完整结果CI。
+
 ## 8. 尚需用本轮数据回答的两个问题
 
 1. 在相同固定到达、相同SLO和完整成本下，新来源的合法复用是否转化为更多实际达标请求？Closed-loop倍率和native token节省不能替它回答。

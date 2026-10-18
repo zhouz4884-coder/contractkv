@@ -1,0 +1,399 @@
+{
+  "schema_version": "contractkv.completed-pair-small-metrics.v1",
+  "results": [
+    {
+      "cell": "qwen_qwen3_common_r3_raw-order_on",
+      "load": "common",
+      "policy": "raw-order",
+      "repeat": 3,
+      "business": 360,
+      "wall_s": 2019.2649206249043,
+      "SLO_compliant": 255,
+      "absolute_goodput": 0.12628357844253782,
+      "achieved_throughput": 0.17828269897770044,
+      "actual_GPU_verification_calls": 0,
+      "complete_controller_work_ms": 0,
+      "business_logical_new_prefill_tokens": 3552952,
+      "compiled_business": 0,
+      "compiled_native_hit_classes": {},
+      "compiled_hit_records": [],
+      "length_events": 0
+    },
+    {
+      "cell": "qwen_qwen3_high_r3_raw-order_on",
+      "load": "high",
+      "policy": "raw-order",
+      "repeat": 3,
+      "business": 360,
+      "wall_s": 1179.8106505479664,
+      "SLO_compliant": 28,
+      "absolute_goodput": 0.023732621829609116,
+      "achieved_throughput": 0.3051337092378315,
+      "actual_GPU_verification_calls": 0,
+      "complete_controller_work_ms": 0,
+      "business_logical_new_prefill_tokens": 3552952,
+      "compiled_business": 0,
+      "compiled_native_hit_classes": {},
+      "compiled_hit_records": [],
+      "length_events": 0
+    },
+    {
+      "cell": "qwen_qwen3_common_r3_risk-tail_on",
+      "load": "common",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "business": 360,
+      "wall_s": 2019.2740428750403,
+      "SLO_compliant": 247,
+      "absolute_goodput": 0.12232118808813174,
+      "achieved_throughput": 0.17828189356974666,
+      "actual_GPU_verification_calls": 7,
+      "complete_controller_work_ms": 28171.10318178311,
+      "business_logical_new_prefill_tokens": 3396360,
+      "compiled_business": 22,
+      "compiled_native_hit_classes": {
+        "zero": 9,
+        "full": 13
+      },
+      "compiled_hit_records": [
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        }
+      ],
+      "length_events": 0
+    },
+    {
+      "cell": "qwen_qwen3_high_r3_risk-tail_on",
+      "load": "high",
+      "policy": "risk-tail",
+      "repeat": 3,
+      "business": 360,
+      "wall_s": 1191.1248676888645,
+      "SLO_compliant": 34,
+      "absolute_goodput": 0.028544446449153636,
+      "achieved_throughput": 0.3022353153439797,
+      "actual_GPU_verification_calls": 7,
+      "complete_controller_work_ms": 28289.714940357953,
+      "business_logical_new_prefill_tokens": 3396360,
+      "compiled_business": 22,
+      "compiled_native_hit_classes": {
+        "full": 13,
+        "zero": 9
+      },
+      "compiled_hit_records": [
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "warm",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 12208,
+          "hit_class": "full"
+        },
+        {
+          "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+          "row_type": "future",
+          "committed_tokens": 12160,
+          "actual_native_prefix_hit_tokens": 0,
+          "hit_class": "zero"
+        }
+      ],
+      "length_events": 0
+    }
+  ],
+  "preliminary_single_repeat": true,
+  "new_GPU_requests": 0,
+  "input_data_unchanged": true,
+  "elapsed_wall_s": 1.4438135041855276,
+  "CPU_priority": 19,
+  "boundary": "Counts on complete paired cells only; not3-repeat confidence or causal attribution. Business logical new-prefill excludes verification and does not measure total GPU work."
+}

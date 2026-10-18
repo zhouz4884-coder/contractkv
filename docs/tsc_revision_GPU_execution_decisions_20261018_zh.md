@@ -192,3 +192,13 @@ Raw .4/.7/1.05Cq三个点分别107/120、89/120、8/120双SLO达标。高点基�
 common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达标）；high wall1161.978→1179.758s、Goodput .006884815→.022886042（8→27）。小baseline不能只报3.3×。各点全路由2个掉分均L0，上升4/6保留，三Raw重复尚未完成，不先归因为噪声。
 
 投影只读已完成4cell并核原Raw SHA，nice19，两个执行各约1.49/1.59s、GPU0请求，保存源码与原输出。后续正式主分析仍逐业务独立重算评分/费用，不能以该初览替代最终统计。当前没有已获准子集行为失败或发布不变量失效证据；弱收益来自可见的稀疏资格/成本/驻留，选择完成原三重复，不换来源、不调Scope/16词界限、不放宽margin、不追加有利负载或新GPU探针。若之后出现可复现机制缺陷再按最小修复/新冻结处理。
+
+## 19:01 UTC：Qwen阶段12/12与跨模型接续
+
+只读qwen phase watcher unified63561实际确认PID318282运行及progress，最终12完整/exit0；cross worker414783被原318277自动启动，6组compiled配对均0ID/finish变化。该watcher自身退出0，不再向关闭session写入。没有重启动任一模型实验。
+
+低优先级复用既有投影入口仅读取已完成r2/r3，未增加GPU；本地qwen_stage_interim_summary_v1聚合所有3rep/两load。每load54/972 compiled future、66全业务，均只doc90一个scope；native39full/27zero，资格拒绝分解每rep1PASS/8scope/6负margin/3syntax一致。common pooled wall .999986×、Goodput .126074002→.126569282（761→764达标）；high wall .990905×、Goodput .013177818→.023277243（46→82）。三次high wall均小于1，全部保留，不能只取首次3.3×的小baseline比例。
+
+全route common13up/5down、high14up/6down均L0；同位置三个Raw控制分别出现3/5与4/6个下降变体，不能据此对另外4个或全部事件作唯一因果结论。Raw两两比较分别16/22个ID/finish变化，比较共享三个控制非新请求，不当独立样本。
+
+本组没有声明有效的compiled子集行为反例。当前合理决定是继续原M/L与Gate有界计划，而不是因Qwen低覆盖停止/换源/改scope/改Ladder。旧DEV L3选择在完整长输入上可能较激进，以及prefix/Raw工作集竞争的解释都作为未验证假说记入阶段报告，不用heldout结果为这些假说调参或追加GPU。完整30与所有源/进程敏感性、独立评分/归档仍待完成，Qwen阶段不能替代全目标。
