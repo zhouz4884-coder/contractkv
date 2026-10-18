@@ -58,11 +58,11 @@ Qwen有HotpotQA516和RepoBench168个编译未来；M/L编译未来来自HotpotQA
 
 `readiness TTFT = queue-before-controller + controller-to-submit + backend TTFT`。
 
-其中48条在前一wave成功注册后等待，6条在失败GPU注册后等待；不只是失败验证才会产生同步尾部。全部保留，不把注册工作按等待tenant数重复计算成多份GPU费用。此处closed-loop readiness包含前wave注册传播；新固定到达要从预定arrival计算，不能直接搬同一因果分摊公式。
+逐请求表中，42条有前一wave成功注册，6条有失败GPU认证，5条只有未发RPC的scope拒绝决定，另1条没有前序注册。后两类不能从“54−6”推成成功注册等待；五个scope检查仅约4–9ms，也不能用来解释其全部慢时延。同步注册解释了重要的一部分尾部，Raw后端本身的慢请求仍须保留。不把注册工作按等待tenant数重复计算成多份GPU费用。此处closed-loop readiness包含前wave注册传播；新固定到达要从预定arrival计算，不能直接搬同一因果分摊公式。
 
 新固定到达的日志没有精确注册起止时间，因此分析脚本使用“前wave业务结束→当前wave处理开始”的真实区间与注册duration给出队列重叠上下界，不能虚构唯一因果时间线。
 
-来源：`results/tsc_final_existing_evidence_CPU_20261018/analysis_v1/faithful_p99_requests_v1.csv`及`faithful_p99_summary_v1.json`。
+来源：`results/tsc_final_existing_evidence_CPU_20261018/analysis_v1/faithful_p99_requests_v1.csv`、`faithful_p99_summary_v1.json`及`faithful_p99_outcomes_recheck_v1.json`。初次草稿的48 PASS推断已更正，原请求与时钟未改。
 
 ### 资格覆盖与当前驻留不是同一指标
 

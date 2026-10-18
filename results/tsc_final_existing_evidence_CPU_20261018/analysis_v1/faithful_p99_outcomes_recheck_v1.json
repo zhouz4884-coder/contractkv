@@ -1,0 +1,74 @@
+{
+  "rows": 54,
+  "source_csv_sha256": "bb0dd1df16cf8efdcae176278ab8b0028c445a2411265f0a7ea1a7d83d44b359",
+  "counts": {
+    "previous_PASS": 42,
+    "previous_rejected_without_RPC": 5,
+    "previous_failed_GPU_RPC": 6,
+    "no_previous_registration": 1
+  },
+  "non_RPC_or_absent_details": [
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "1",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "session_id": "r4f-heldout-5670fab0be2cd8a7-tenant01",
+      "turn_id": "2",
+      "previous_registration_failure": "observation_scope_has_no_declared_exact_reuse",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "8.746190462261438"
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "2",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "session_id": "r4f-heldout-5670fab0be2cd8a7-tenant00",
+      "turn_id": "2",
+      "previous_registration_failure": "observation_scope_has_no_declared_exact_reuse",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "8.460625540465117"
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": "3",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:19",
+      "session_id": "r4f-heldout-5670fab0be2cd8a7-tenant00",
+      "turn_id": "2",
+      "previous_registration_failure": "observation_scope_has_no_declared_exact_reuse",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "6.978978868573904"
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": "1",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "session_id": "r4f-heldout-8306ed450c777c06-tenant01",
+      "turn_id": "2",
+      "previous_registration_failure": "observation_scope_has_no_declared_exact_reuse",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "4.523014184087515"
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": "2",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "session_id": "r4f-heldout-8306ed450c777c06-tenant09",
+      "turn_id": "8",
+      "previous_registration_failure": "",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "0.0"
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": "3",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:69",
+      "session_id": "r4f-heldout-8306ed450c777c06-tenant00",
+      "turn_id": "2",
+      "previous_registration_failure": "observation_scope_has_no_declared_exact_reuse",
+      "previous_registration_GPU_calls": "0",
+      "observed_previous_wave_registration_wait_ms": "4.096243996173143"
+    }
+  ],
+  "correction": "Earlier handoff/text inferred48 PASS by subtracting6 failed RPC from54; the other6 do not all represent PASS. Original request data/timing unchanged.",
+  "new_GPU_requests": 0
+}

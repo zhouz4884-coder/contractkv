@@ -164,3 +164,9 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 14:44:38 UTC，实际derived计划SHA9d1a3efe及3个trace在Git669898c公开并核远程后，启动Raw profiles supervisor301481/worker301486。14:46 /proc实际命令、RUNNING状态和两个EngineCore PID302375/302442均已核验，模型正在准备，不重复派发。原4baseline不再运行。新server端口9604–9606与原baseline不冲突，source_snapshot/runtime不复制。正式Contract仍未开始。
 
 独立分析现明确标记qwen/cross/gate执行regime及peer条件，避免把隔离Gate与并行主矩阵混比；五项CPU数学检查v3通过。归档入口亦纳入原小源postimage目录中的带SHA后缀文件，防止只按.py后缀筛选遗漏预执行版本。两个本地失败推导视图的4个派生JSON/trace文件分别保留，不能只留“失败”标签。以上均未改变Raw/GPU客户端或冻结门槛。
+
+## 后续CPU证据交付与一次文字归因更正
+
+R3.1新增实际顺序提取：直接核三份TableI原始gzip的completion SHA，读全部3,750实际messages/character_spans，交付五家族初轮/未来轮和2–18条真实历史消息的位置。旧R4另500 CPU渲染、新桥梁另60 CPU渲染，已导入源均匹配各自freeze，区别于实际GPU数量。受控TOOL_OBS包装不包含增长history，不混成同一协议；旧代码50/100 Repo渲染CODE_PREFIX为空，当前30/30完整包含。Azure固定版本两源码及MIT许可/SHA重新核对，只支持条件性布局例子，不支持生产频率或旧TableI数字。
+
+36项审稿矩阵及按协议分开的性能/尾报告已形成，服务新30单元仍标进行中。逐请求复核纠正了一处我从前摘要沿用的归因推断：54尾请求并非48前序PASS+6失败RPC，而是42前序PASS、6失败RPC、5未发RPC的scope拒绝、1无前序注册。5个scope检查约4–9ms，不能解释全部尾部。原CSV/计时不改，回执faithful_p99_outcomes_recheck_v1保留。该检查的AssertionError曾被PowerShell后续命令掩盖为整体exit0，草稿进入5bebe0c历史；后续立即更正，不改写历史。以后关键检查与发布步骤按真实返回码顺序执行，不以最后一条Git成功替代检查成功。
