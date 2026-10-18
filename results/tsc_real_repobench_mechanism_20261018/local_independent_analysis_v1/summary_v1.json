@@ -1,0 +1,122 @@
+{
+  "status": "complete",
+  "sources": 3,
+  "model_cells": 3,
+  "model_candidate_assessments": 18,
+  "business_generations": 72,
+  "models": [
+    {
+      "model": "Qwen3-8B",
+      "strata": [
+        {
+          "layout": "L0",
+          "candidates": 3,
+          "admitted": 2,
+          "observed_unchecked_changes": 0,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 0,
+          "observed_score_down": 0,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 0,
+          "RPC_attempts": 2,
+          "rejected_published_tokens": 0
+        },
+        {
+          "layout": "L3",
+          "candidates": 3,
+          "admitted": 2,
+          "observed_unchecked_changes": 0,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 0,
+          "observed_score_down": 0,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 0,
+          "RPC_attempts": 2,
+          "rejected_published_tokens": 0
+        }
+      ],
+      "diagnostic_client_wall_s": 50.69970455020666
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "strata": [
+        {
+          "layout": "L0",
+          "candidates": 3,
+          "admitted": 0,
+          "observed_unchecked_changes": 0,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 0,
+          "observed_score_down": 0,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 3,
+          "RPC_attempts": 0,
+          "rejected_published_tokens": 0
+        },
+        {
+          "layout": "L3",
+          "candidates": 3,
+          "admitted": 0,
+          "observed_unchecked_changes": 3,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 1,
+          "observed_score_down": 0,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 3,
+          "RPC_attempts": 0,
+          "rejected_published_tokens": 0
+        }
+      ],
+      "diagnostic_client_wall_s": 137.2470787698403
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "strata": [
+        {
+          "layout": "L0",
+          "candidates": 3,
+          "admitted": 0,
+          "observed_unchecked_changes": 0,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 0,
+          "observed_score_down": 0,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 3,
+          "RPC_attempts": 0,
+          "rejected_published_tokens": 0
+        },
+        {
+          "layout": "L3",
+          "candidates": 3,
+          "admitted": 0,
+          "observed_unchecked_changes": 2,
+          "raw_repeat_changes": 0,
+          "observed_score_up": 0,
+          "observed_score_down": 1,
+          "changed_admitted": 0,
+          "admitted_post_changes": 0,
+          "guard_rejected": 3,
+          "RPC_attempts": 0,
+          "rejected_published_tokens": 0
+        }
+      ],
+      "diagnostic_client_wall_s": 150.1891173091717
+    }
+  ],
+  "actual_RPC_attempts": 4,
+  "all_shape_hashes_and_original_scores_checked": true,
+  "no_production_inherited_family_eligibility_change": true,
+  "raw_repeat_and_identity_controls_not_discarded": true,
+  "scorer": "Frozen SequenceMatcher-based RepoBench similarity, not program execution correctness",
+  "limitations": [
+    "Private diagnostic with one fresh process per model, not a three-repeat production-coverage result.",
+    "Identity L0 qualification is a control, not compiled production L0 or an acceleration result.",
+    "The existing one_python_statement syntax guard may reject legitimate fragmentary next-line completions.",
+    "Observed changes, task-score harm, early guard rejection and actual GPU rejection are separate."
+  ]
+}
