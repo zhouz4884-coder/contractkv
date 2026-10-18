@@ -1,0 +1,15 @@
+{
+  "status": "existing_native_tail_join_complete",
+  "new_GPU_requests": 0,
+  "actual_business_metric_joins": 10800,
+  "paired_future_native_joins": 4860,
+  "p99_tail_requests": 54,
+  "analysis_source_sha256": "d610869c849ab7ea4fd69579c4448c8007b9f632c5ce38efda468ac0de9b1496",
+  "boundaries": [
+    "Initial native scheduler wait is an observed server-side interval, not an isolated GPU prefill timer.",
+    "Initial running/waiting/pool observations are request-sampled, not continuous whole-run maxima.",
+    "Known hash reassignment is bounded physical recycling evidence, not a complete native eviction counter.",
+    "Missing hashes, evictions and decode/recompute steps are never imputed as zero.",
+    "Use native Prometheus preemption counters and pool metrics in the new serving study; do not add the heavy residency diagnostic hook to performance timing."
+  ]
+}

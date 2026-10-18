@@ -37,3 +37,31 @@
 位移只匹配同一segment内字符区间与token ID均完全相同的内部token；排除heading、chat控制与跨边界重分词token，另报匹配分母。完整prefix上限则使用全部实际渲染IDs。没有将R4单候选客户端改成在线四级下降。
 
 本地CPU分析前两次分别遇到Transformers 5.4默认返回BatchEncoding、以及部分chat模板trim首尾空白的接口差异。失败记录保留在两个CPU error JSON中，没有输出实验结果或GPU调用。显式请求ID列表、记录模板trim后，180个实际服务Prompt IDs全部匹配。没有修改被测服务环境、输入或tokenizer文件来迁就本地分析。
+
+## 后端首次调度、块池与实际命中已接线到尾部
+
+`native_tail_v1/` 将18个原始cell的10,800次实际业务与native初次调度记录逐条匹配，并对4,860个配对future补齐后端等待、running/waiting、allocator free/used/total、实际块表和命中。所有原始文件再次核对已有归档SHA；GPU请求增量仍为0。
+
+前述54条尾请求的后端首次调度等待，按模型平均为Qwen 2,088.85 ms、Mistral 2,595.59 ms、Llama 2,137.60 ms。这是实际请求到首次调度的观察区间，不能叫作纯GPU prefill时间，也不能与controller时间相加后再重复计入已包含它的backend TTFT。采样中实际running最多2、waiting最多1；这是请求初次调度时的快照，不是全程连续峰值。
+
+同一future分母下，compiled实际命中也独立复算如下：
+
+| 模型 | Compiled future | 完整认证前缀命中 | 部分命中 | 零命中 |
+| --- | ---: | ---: | ---: | ---: |
+| Qwen | 684 | 672 | 12 | 0 |
+| Mistral | 342 | 300 | 0 | 42 |
+| Llama | 270 | 135 | 0 | 135 |
+
+因此资格有效与物理前缀驻留不能合并统计。这里的零命中仍然是获准编译布局的真实执行，已经包含在此前全成本和自由生成统计中，不能删掉或改记为成功缓存命中。它不等于新增认证失败，也不单独证明缓存管理错误。
+
+块表中相同physical block ID在不同观测时刻出现不同已知hash，保存为“可观察的块复用/回收区间”证据，原始前后请求ID和时间均保留。其中9项尾部关联的旧观测来自premeasurement smoke；不能把这些统称为服务负载引起的逐次eviction。其余区间也不提供确切eviction发生时刻或完整次数。原probe的eviction字段明确为unavailable；没有把缺失填为0。allocator-used数量不等于全部驻留cached blocks或GPU显存用量。
+
+下一项性能实验直接复用已有native initial metrics与Prometheus counters，保存队列、池容量及preemption计数。不给性能主测量安装同步写大量block事件的residency诊断hook；该hook原文已限定其timing不用于性能结论。若新数据不能逐案证明eviction因果，只报告可观察的命中损失、工作量和区间证据，不补造GPU因果耗时。
+
+## 双门槛网格与历史0.40625反例已独立复核
+
+`margin_two_floor_v2/` 使用相同事先声明的七点网格，分别改变raw floor与candidate/EOS floor，得到三模型共147行后验敏感性统计。冻结基线(.0625,.125)在51份完整真实响应中对应Qwen 24/27、Mistral 12/15、Llama 9/9 margin PASS，与实际issuance分母对应。将candidate/EOS改到1.0时，在这些已执行响应里分别保留24/24、0/12、3/9个原获准资格；这只是已测响应子集，不能外推全部请求覆盖或成本。
+
+还从R3原始六个policy/raw文件重新核对已知doc99三重复的完整IDs、见证、GPU响应及归档SHA：candidate最小margin确为0.40625，三个未来Raw Prompt各仅改变一个token、长度均2803；编译未来保持原见证IDs，未来Raw改用另一条输出，F1相差−0.04978。维持raw .0625并把candidate/EOS提高至.25，三个旧见证仍都会通过该margin谓词。因此margin不能替代对变化输入的scope约束。
+
+历史0.40625与后来控制实验约0.34375分开保留，不混为同次测量；三重复仍是一个来源/查询，不是三个独立来源。没有根据这个已知反例选择新阈值、重新生成输出或改写当前运行中的准入规则。

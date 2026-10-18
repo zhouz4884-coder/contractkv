@@ -1,0 +1,50 @@
+[
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "requests": 1620,
+    "tail_requests": 18,
+    "compiled_futures": 270,
+    "compiled_actual_native_hit_classes": {
+      "zero": 135,
+      "full": 135
+    },
+    "tail_mean_initial_native_wait_ms": 2137.5977198282876,
+    "tail_max_initial_native_wait_ms": 3400.193452835083,
+    "tail_max_running_at_initial_observation": 2,
+    "tail_max_waiting_at_initial_observation": 1,
+    "tail_mean_allocator_used_fraction": 0.25933581369712,
+    "tail_known_hash_reassignments_in_initial_tables": 861
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "requests": 1620,
+    "tail_requests": 18,
+    "compiled_futures": 342,
+    "compiled_actual_native_hit_classes": {
+      "full": 300,
+      "zero": 42
+    },
+    "tail_mean_initial_native_wait_ms": 2595.5868032243516,
+    "tail_max_initial_native_wait_ms": 4061.100959777832,
+    "tail_max_running_at_initial_observation": 2,
+    "tail_max_waiting_at_initial_observation": 0,
+    "tail_mean_allocator_used_fraction": 0.20093896713615023,
+    "tail_known_hash_reassignments_in_initial_tables": 871
+  },
+  {
+    "model": "Qwen3-8B",
+    "requests": 1620,
+    "tail_requests": 18,
+    "compiled_futures": 684,
+    "compiled_actual_native_hit_classes": {
+      "full": 672,
+      "partial": 12
+    },
+    "tail_mean_initial_native_wait_ms": 2088.854326142205,
+    "tail_max_initial_native_wait_ms": 3478.862762451172,
+    "tail_max_running_at_initial_observation": 2,
+    "tail_max_waiting_at_initial_observation": 1,
+    "tail_mean_allocator_used_fraction": 0.3118556701030928,
+    "tail_known_hash_reassignments_in_initial_tables": 774
+  }
+]

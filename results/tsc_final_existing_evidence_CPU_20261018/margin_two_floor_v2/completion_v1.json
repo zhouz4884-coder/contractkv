@@ -1,0 +1,29 @@
+{
+  "status": "offline_two_floor_and_historical_ID_audit_complete",
+  "new_GPU_requests": 0,
+  "measured_responses": 51,
+  "grid": [
+    0.0,
+    0.03125,
+    0.0625,
+    0.125,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "two_floor_rows": 147,
+  "historical_counterexample_repeats": 3,
+  "historical_distinct_sources": 1,
+  "current_floors_still_admit_all_known_witnesses": true,
+  "candidate_point25_still_admits_all_known_witnesses": true,
+  "known_future_raw_differences_are_outside_same_observation_witness": true,
+  "source_sha256": "1c664c7d08d9896eeef076fa64bee0b507feee19275c0f6fc03d3689c31cecc6",
+  "thresholds_selected": false,
+  "boundaries": [
+    "No unexecuted candidate or missing margin is imputed; this is measured-response coverage, not all-request coverage.",
+    "The historical .40625 case is separated from the later diagnostic .34375, not relabeled as one measurement.",
+    "The three historical repeats share one source and query; they are not three independent sources.",
+    "Margin evidence on one witness cannot establish future behavior under a changed raw prompt. Scope constraints remain necessary.",
+    "No new GPU certification, future quality guarantee, queueing latency or full-wall performance is inferred from this grid."
+  ]
+}
