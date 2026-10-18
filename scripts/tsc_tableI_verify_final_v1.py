@@ -57,6 +57,10 @@ def main():
                 for segment in sample['segments']:
                     if segment['type'] not in {'SYS_PROMPT','USER_QUERY'}:
                         assert segment['text'] in messages[-1]['content']
+                        assert segment['text'] in r['prompt_text']
+                    elif segment['type']=='SYS_PROMPT':
+                        assert segment['text'] in messages[0]['content']
+                        assert segment['text'] in r['prompt_text']
                 stable_text=[r['prompt_text'][s['start']:s['end']] for s in r['character_spans'] if s['category']=='stable']
                 stable_hash=canonical(stable_text)
                 assert stable_hashes.setdefault(sid,stable_hash)==stable_hash
