@@ -28,16 +28,16 @@ def lcp(a,b):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);a=p.parse_args()
     repo=Path(__file__).resolve().parents[1]
-    freeze=json.loads((a.root/'freeze.json').read_text());receipt=json.loads((a.root/'pre_forward_receipt_v1.json').read_text())
+    freeze=json.loads((a.root/'freeze.json').read_text(encoding='utf-8'));receipt=json.loads((a.root/'pre_forward_receipt_v1.json').read_text(encoding='utf-8'))
     for r in freeze['files']:assert sha(repo/r['path'])==r['sha256'],r['path']
     assert receipt['freeze_sha256']==sha(a.root/'freeze.json') and receipt['remote_commit_verified']
-    protocol=json.loads((repo/freeze['protocol_path']).read_text())
-    sources=[json.loads(l) for l in (a.root/'inputs_v1/selected_packed_sources_v1.jsonl').open() if l.strip()]
+    protocol=json.loads((repo/freeze['protocol_path']).read_text(encoding='utf-8'))
+    sources=[json.loads(l) for l in (a.root/'inputs_v1/selected_packed_sources_v1.jsonl').open(encoding='utf-8') if l.strip()]
     sources={r['source_group']:r['sample'] for r in sources if r['sample'] is not None}
     stable_hashes={};counts=Counter();details=[];publication_first=[];turn_groups=defaultdict(list)
     for repeat in range(1,4):
         base=a.root/'cells'/f'raw_native_r{repeat}'
-        completion=json.loads((base/'completion_v1.json').read_text())
+        completion=json.loads((base/'completion_v1.json').read_text(encoding='utf-8'))
         assert completion['execution_complete'] and sha(base/'raw.jsonl.gz')==completion['raw_sha256']
         histories=defaultdict(list);prior_sequences=defaultdict(list)
         with gzip.open(base/'raw.jsonl.gz','rt',encoding='utf-8') as f:

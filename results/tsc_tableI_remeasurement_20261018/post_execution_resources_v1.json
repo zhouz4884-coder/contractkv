@@ -1,0 +1,21 @@
+{
+  "observed_epoch": 1792296401.7364342,
+  "checks": [
+    {
+      "command": "hostname",
+      "stdout": "user\n",
+      "stderr": ""
+    },
+    {
+      "command": "nvidia-smi --query-gpu=index,name,uuid,memory.used,utilization.gpu --format=csv,noheader",
+      "stdout": "0, NVIDIA GeForce RTX 3090, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 24 MiB, 0 %\n1, NVIDIA GeForce RTX 3090, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 24 MiB, 0 %\n",
+      "stderr": ""
+    },
+    {
+      "command": "nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader",
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "GPU_compute_processes_after_study": 0
+}

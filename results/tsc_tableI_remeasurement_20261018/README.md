@@ -24,8 +24,9 @@ are copied under `source_snapshot/` with byte hashes.
 - `cells/raw_native_r*/`: measured IDs/text/cache counts, native controls,
   completion hashes, progress and logs. The primary population is turns 1-9;
   turn 0 is cold and reported separately.
-- `analysis_v1/summary_v1.json`: frozen primary aggregates and source-cluster
-  bootstrap intervals. The five-family mean and global token-pooled ratio are
+- `analysis_v1/summary_v1.json`: frozen primary aggregates and registered-ID-cluster
+  bootstrap intervals, retained alongside the context-cluster addendum below.
+  The five-family mean and global token-pooled ratio are
   different statistics. Repeated requests/tenants are not independent sources.
 - `analysis_v1/independent_integrity_v1.json`: additional integrity checks of
   actual history, stable text and an offline unbounded-prefix diagnostic. This
