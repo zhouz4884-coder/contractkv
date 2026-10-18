@@ -130,3 +130,13 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 另有有界Gate OFF控制接线，只覆盖成本模块decide的经济拒绝分支，保留原粗/细成本计算与原始决定作审计，reference scope、语法、margin、EOS、PSTP均继续走原调用链。无效数值特征仍拒绝、继承家族L0仍不能越权。CPU实际特征检查通过；正式Gate OFF数据尚未运行，不从此推断排队改善。
 
 21:12香港时间的ETA根据已完成保真18cell实际服务wall估计：每600业务的Raw单元约33–45分钟，另有模型加载/编译。核心当前6/9，预计30–60分钟内交付三批阶段结果；整个五批含新服务验证、必要补充及归档估计10–16小时，前提两卡持续独占且无新故障。这是计划区间，不是已完成结果或确定承诺。
+
+## 14:20–14:26 UTC：阶段进展与后续服务编排
+
+原三批，以及256-token和真实Repo补测均已完成归档和独立复算，不重复运行。详细现状单列在`tsc_revision_stage_progress_20261018_zh.md`。TableIII完整wall Mistral负收益、旧compiled次级掉分、Manifest可信误标和原生Raw跨域hit、真实Repo M/L语法早拒与Llama384截断全部保留，不为了正面叙述改分母。
+
+唯一GPU工作是Raw-only baseline supervisor285458/worker285459。14:25后前两个Qwen cell各120业务完成，state实际已记2个完成；随后同worker开始M/L。没有重复准备564文件快照、模型全SHA、runtime或已完成实验。
+
+新写Raw推导与正式矩阵编排，先按冻结公式推导common=.9min(Cq,Cm,Cl)、Qhigh=1.05Cq及SLO，不能查看Contract结果后改点。正式24和Gate6代码目前只做CPU控制：轨迹/原loader绑定、配对同卡同到达、r2交换GPU/次序、双ready与全wave失败保留。Windows和Linux相同五项CPU检查通过，fake transport不作GPU效果。新代码单独部署5个小文件，原客户端/564快照/runtime不改。正式实际轨迹与freeze仍等待Raw标定结束；编排通过不等于正式服务已执行。
+
+服务数据的主要Goodput在全部warm+future中同时满足readiness TTFT和平均TPOT，分母为含计划idle、失败认证与最终drain的实际完整wall。原双请求wave barrier保持并显式报告，不冒称任意高并发开放队列。原生initial new-prefill只证明逻辑未缓存输入工作，不能当GPU毫秒或包含全部preemption重算的总量。主矩阵并行endpoint与隔离Gate协议分开，不混借Raw基线。
