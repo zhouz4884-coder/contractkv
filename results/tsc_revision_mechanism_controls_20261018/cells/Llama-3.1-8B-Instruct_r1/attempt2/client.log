@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/tsc_revision_mechanism_live_v3.py", line 215, in <module>
+    p.add_argument('--timeout',type=float,default=300);run(p.parse_args())
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/tsc_revision_mechanism_live_v3.py", line 118, in run
+    candidate,decision=qualify(case,raw,ns)
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/tsc_revision_mechanism_live_v3.py", line 106, in qualify
+    response=registrar.register(args,ns,candidate['query_scope'],raw,
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/tsc_revision_r2_admission.py", line 48, in register
+    payload,evidence=verification_request(args,plan,business,rid,args.policy_hash+':'+namespace,True,'r2-margin-benefit-single-shot-v1')
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/tsc_revision_r2_candidate_plan.py", line 30, in verification_request
+    answer,margins,stop=split_terminal_stop_token(business['output_token_ids'],business['reference_margins'],business['finish_reason'])
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_revision_mechanism_controls_20261018/source_snapshot/scripts/contractkv_verifier.py", line 194, in split_terminal_stop_token
+    raise VerificationIncomplete(f"raw finish_reason={finish_reason}")
+scripts.contractkv_verifier.VerificationIncomplete: raw finish_reason=length

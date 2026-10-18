@@ -1,0 +1,27 @@
+# 原准入规则的异常处理修复：缺失EOS必须拒绝并回退
+
+## 真实失败
+
+Llama r1的code_context_v1_order_risk raw见证在64-token原预算结束，finish_reason=length，64个实际输出IDs及LP margins完整。原SingleShotRegistrar已有完整answer/EOS的要求；split_terminal_stop_token正确抛VerificationIncomplete，但调用者只catch ValueError。该异常继承RuntimeError，未被捕获，导致客户端在第16个候选中途退出。
+
+已有63条业务、15个完整行为案例和13次实际认证RPC记录全部保留。该案例尚未发出认证RPC；原始模型失败/分数0没有删除或改成成功。模型server无新崩溃，端口修复正常。Qwen r2完整完成，三个完整cells共285条业务保持原样。
+
+## 最小修复
+
+新模块tsc_revision_incomplete_reference_fix_v5只捕获已有的VerificationIncomplete，并返回INCOMPLETE、无RPC、0 commit、L0 Raw fallback。预算仍64，raw/candidate/EOS floors仍0.0625/0.125，scope、输出和评分不改；缺失EOS不被补造。其他RuntimeError（包括发布不变量失败）仍然抛出。
+
+client_wrapper_v5在独立客户端进程中给原SingleShotRegistrar安装该窄修复，再运行原collector。原freeze_v3的55文件、backend/runtime、模型与tokenizer均未编辑。新的执行adapter只有HTTP端口和客户端wrapper命令两个AST表达式变化，其他run_cell AST相同。原6文件预检回执2262851f直接复用，无模型/runtimes/窗口重做。
+
+本地及Linux CPU回归使用实际失败见证，确认原方法抛异常、修复后0次poster调用、明确拒绝、Raw内容不变。同时复放15个已完整记录的正常/拒绝reference与真实响应stub，全部非计时决策字段、请求payload和record事件一致。CPU回归不是新GPU效果数据；初次回归断言曾包含嵌套verification_ms运行时间，比较器改为仅排除三个计时字段后通过，没有修改输入或准入结果。
+
+## 仅重测失败的实验单元
+
+实验单位是fresh-server的完整95业务cell，目标禁止静默接上半个cell。因此仅对未完成的Llama r1用新fresh server完整重测；前三个完整cells不重跑，其余五个未启动cell首次执行。原失败63条记录作独立失败附件。正式分母仍9cells/855业务，含该失败尝试的实际业务总数将为918（若无后续失败）；不能只报855掩盖失败费用。
+
+各模型GPU lane、原wave顺序、case顺序、2秒提交间隔均保持。缺失的Llama r1对应原wave1单独运行；后续wave2 Mistral r2+Llama r2、wave3 Qwen r3+Mistral r3、wave4 Llama r3。端口9302/9304至9308独立，attempt3结果不覆盖旧attempt2。
+
+修复manifest SHA：0b8a75cda86550a85dbb46fe74c684b34313727a8b13d3d5288602bca6ff870d。
+
+CPU执行接线回执SHA：8732bf66c4a2f01665add9aa0ed00b0117606e69122d8966daef00c87b21e770。
+
+先公开source/manifest/回归/回执并核对远程Git，再按formal_continuation_v5 launch plan执行。旧worker243421已退出；旧v3/v4不再启动。该修复也应在后续新冻结服务桥梁中保留，正常reference的算法不变，截断reference得到原来应有的fail-closed可用性行为。

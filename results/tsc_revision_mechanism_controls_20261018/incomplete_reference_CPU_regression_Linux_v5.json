@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "new_GPU_requests": 0,
+  "captured_reference_sha256": "49430a17b92cc2d2f3f19c1b35cb02e9ab27f0c11b7e9d4bf1263f8b22cfc07e",
+  "original_incomplete_exception": "raw finish_reason=length",
+  "repaired_status": "INCOMPLETE",
+  "raw_budget_unchanged": 64,
+  "no_incomplete_RPC": true,
+  "no_incomplete_commit": true,
+  "original_raw_output_not_rewritten": true,
+  "complete_reference_cases_compared": 15,
+  "normal_cases": [
+    {
+      "case_id": "instruction_order_v0_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": true
+    },
+    {
+      "case_id": "instruction_order_v0_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "instruction_order_v1_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "instruction_order_v1_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "rag_evidence_position_v0_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "rag_evidence_position_v0_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 0,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "rag_evidence_position_v1_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "rag_evidence_position_v1_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "tool_state_v0_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "tool_state_v0_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "tool_state_v1_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "tool_state_v1_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "code_context_v0_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "code_context_v0_order_risk",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 0,
+      "recorded_certificate_issued": false
+    },
+    {
+      "case_id": "code_context_v1_safe",
+      "same_decision": true,
+      "same_payload": true,
+      "same_recorded_events": true,
+      "stub_RPC_calls": 1,
+      "recorded_certificate_issued": false
+    }
+  ],
+  "all_complete_reference_public_decisions_payloads_events_identical": true,
+  "patch_sha256": "24fe7c1e4621162017436f91da37f51928555dcf5d092161c0602b1053edaf03",
+  "original_admission_sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+  "classification": "CPU control-flow regression using a real captured reference and recorded-response stubs, not a new GPU efficacy result"
+}

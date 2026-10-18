@@ -1,0 +1,27 @@
+{
+  "repair_sha256": "0b8a75cda86550a85dbb46fe74c684b34313727a8b13d3d5288602bca6ff870d",
+  "source_sha256": "bd23e70c8b85fb75a3f8534f0d85faa3a85d2f1683e11eb24441e1021f434806",
+  "proof": {
+    "only_changed_expressions": [
+      "unique HTTP port",
+      "explicit incomplete-reference client wrapper"
+    ],
+    "all_other_function_AST_identical": true,
+    "original_function_AST_sha256": "d4ee83188e105f592b341170c112d853f31f149e54a4ac924528e3e7310a299e",
+    "adapted_function_AST_sha256": "fc280c27b62fbe11180a138a8d4673a018b1ba380db6facd28d80790f8053813"
+  },
+  "unique_ports": [
+    9302,
+    9304,
+    9305,
+    9306,
+    9307,
+    9308
+  ],
+  "all_ports_bindable": true,
+  "completed_cells_preserved": 3,
+  "failed_partial_records_preserved": 63,
+  "remaining_new_cells": 6,
+  "new_GPU_requests": 0,
+  "no_model_runtime_copy_or_tokenizer_preflight_repeated": true
+}
