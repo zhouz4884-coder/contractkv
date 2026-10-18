@@ -1,0 +1,46 @@
+{
+  "schema_version": "contractkv.phase26.recoverability-protocol.v0",
+  "frozen_at": "2026-07-14",
+  "partition": "phase25_development_only",
+  "models": [
+    "deepseek-v2-lite-chat",
+    "deepseek-coder-v2-lite-instruct"
+  ],
+  "layout_levels": ["L1", "L2", "L3"],
+  "runtime": {
+    "tensor_parallel_size": 2,
+    "dtype": "bfloat16",
+    "max_model_len": 16384,
+    "max_num_seqs": 2,
+    "gpu_memory_utilization": 0.70,
+    "enable_prefix_caching": true,
+    "stable_word_limit": 1150
+  },
+  "budget_profile": {
+    "profile_max_tokens": 1024,
+    "quantile": 0.99,
+    "safety_delta_tokens": 32,
+    "alignment_tokens": 32,
+    "minimum_tokens": 128,
+    "maximum_tokens": 1024,
+    "raw_and_candidate_identical_budget": true
+  },
+  "quality_epsilon": 0.03,
+  "typed_contract_version": "phase26.typed-behavior.v1",
+  "benefit_gate": {
+    "expected_future_reuses": 9,
+    "tool_slack_ms": 6000,
+    "minimum_net_gain_ms": 0,
+    "use_development_family_pass_probability": true
+  },
+  "continuation_gate": {
+    "minimum_non_length_strict_fail_task_safe_fraction": 0.50,
+    "minimum_workflow_families_with_recoverable_coverage": 3,
+    "workflow_recoverable_coverage_threshold": 0.50,
+    "minimum_global_theoretical_new_prefill_reduction": 0.30,
+    "minimum_global_theoretical_net_ttft_reduction": 0.25,
+    "minimum_repobench_complete_safe_sessions": 3
+  },
+  "claim_boundary": "Development-only recoverability audit. Ground truth is used only for offline diagnosis; online typed contracts never receive references."
+  ,"runtime_amendment": "Before any complete model audit, gpu_memory_utilization was reduced from 0.90 to 0.70 after a reproducible vLLM prompt-logprob FP32 workspace OOM at 2042 tokens; samples, gates, budgets, and metrics were unchanged."
+}

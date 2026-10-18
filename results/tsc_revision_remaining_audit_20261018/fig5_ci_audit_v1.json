@@ -1,0 +1,76 @@
+{
+  "Qwen_existing_headline_CI_recomputed": true,
+  "seed": 27020,
+  "iterations": 10000,
+  "rows": [
+    {
+      "slo_ms": 500,
+      "raw_rps": 0.17266776354327149,
+      "contract_rps": 0.8306512322979502,
+      "delta_rps": 0.6579834687546787,
+      "delta95_rps": [
+        0.5389432948019326,
+        0.7652251922881795
+      ],
+      "ratio": 4.8106908623379745,
+      "ratio95": [
+        2.8475086848611393,
+        12.606992696525015
+      ],
+      "all_compared_values_reproduced": true
+    },
+    {
+      "slo_ms": 1000,
+      "raw_rps": 0.592776746591558,
+      "contract_rps": 0.8306512322979502,
+      "delta_rps": 0.23787448570639225,
+      "delta95_rps": [
+        0.1977833096306769,
+        0.27452317950105026
+      ],
+      "ratio": 1.4012884902691625,
+      "ratio95": [
+        1.3125190225813825,
+        1.4936330367087367
+      ],
+      "all_compared_values_reproduced": true
+    },
+    {
+      "slo_ms": 1500,
+      "raw_rps": 0.7703637733671186,
+      "contract_rps": 0.8306512322979502,
+      "delta_rps": 0.06028745893083165,
+      "delta95_rps": [
+        0.047488049547244254,
+        0.07308488018538922
+      ],
+      "ratio": 1.078258429348678,
+      "ratio95": [
+        1.060636610501057,
+        1.0964726195883896
+      ],
+      "all_compared_values_reproduced": true
+    },
+    {
+      "slo_ms": 3000,
+      "raw_rps": 0.8301333700134013,
+      "contract_rps": 0.8306512322979502,
+      "delta_rps": 0.0005178622845489755,
+      "delta95_rps": [
+        0.0005012407488590442,
+        0.0005289801505312663
+      ],
+      "ratio": 1.000623830222053,
+      "ratio95": [
+        1.0006038025875237,
+        1.000637227662357
+      ],
+      "all_compared_values_reproduced": true
+    }
+  ],
+  "protocol": "Qwen,25 tenants/template,80% calibrated load,three fresh processes; elapsed wall held at each observed repeat/policy value.",
+  "resampling": "Paired process index; templates and tenant sessions independently drawn in raw/compiled policies by the historical generator; all turns kept in session.",
+  "inference_limit": "Conditional request-compliance variability at this measured point, not an estimated capacity curve or a confidence interval over unobserved arrival rates; templates/session resampling is not synchronized across policies.",
+  "source_rows": 6750,
+  "new_GPU_requests": 0
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "contractkv.tsc.llama-sota.v1",
+  "model": "Llama-3.1-8B-Instruct",
+  "model_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct",
+  "sessions": "results/cross_model/llama_broad_generalization_r3/heldout_sealed_sessions_v0.jsonl",
+  "split_commitment": "results/cross_model/llama_broad_generalization_r3/split_commitment_v0.json",
+  "qualification_manifest": "results/cross_model/llama_broad_generalization_r3/llama_broad_qualification_v0.json",
+  "session_count": 50,
+  "turns_per_session": 10,
+  "future_requests_per_repeat": 450,
+  "fresh_process_repeats": 5,
+  "concurrency": 2,
+  "dtype": "float16",
+  "max_model_len": 8192,
+  "max_num_seqs": 2,
+  "generation_max_tokens": 96,
+  "stable_word_limit": 1500,
+  "stable_pieces": 16,
+  "slo_ms": [500, 1000, 1500, 3000],
+  "baselines": {
+    "vllm_apc": "raw order with native vLLM automatic prefix caching",
+    "sglang_radixattention": "raw order with native SGLang RadixAttention",
+    "manual_oracle": "development-frozen safe family layout without online verification cost",
+    "lmcache_cacheblend": "LMCache non-prefix reuse/CacheBlend backend when a compatible runtime completes",
+    "cacheslide": "official CacheSlide source when its pinned runtime completes",
+    "contractkv": "development-frozen layout plus online same-backend verification and fail-closed fallback"
+  },
+  "statistics": {
+    "ttft": "request send to first streamed content token",
+    "p99": "nearest-rank p99 computed per fresh process; repeat distribution is reported without pooling",
+    "goodput": "quality-valid completed future requests meeting TTFT SLO divided by measured batch wall time",
+    "drop_rate": "offered future requests without a successful terminal response divided by offered requests",
+    "quality_violation": "paired task-score drop greater than 0.03 relative to the same-repeat raw baseline"
+  },
+  "freeze_rules": [
+    "No held-out outcome may change the split, family level, layout ladder, output budget, SLO, or acceptance threshold.",
+    "The manual oracle consumes the development-frozen family map and is not a held-out hindsight oracle.",
+    "External runtime failures are retained as compatibility evidence and are never replaced by modeled performance."
+  ]
+}

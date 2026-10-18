@@ -1,0 +1,45 @@
+{
+  "schema_version": "tsc.service-template-quality.v0",
+  "status": "frozen_before_measurement",
+  "model": "Qwen3-8B",
+  "service_templates": 5,
+  "tenants_per_template": 10,
+  "turns_per_tenant": 10,
+  "fresh_process_repeats": 3,
+  "policies": ["D0-native-apc", "D2-template-contractkv"],
+  "generation_budgets": {
+    "RULER": 128,
+    "HotpotQA": 128,
+    "NarrativeQA": 256,
+    "Qasper": 256,
+    "RepoBench": 384
+  },
+  "metric": {
+    "RULER": "RULER string-match-part",
+    "HotpotQA": "LongBench QA F1",
+    "NarrativeQA": "LongBench QA F1",
+    "Qasper": "LongBench QA F1",
+    "RepoBench": "RepoBench edit similarity"
+  },
+  "template_qualification": {
+    "RULER": true,
+    "HotpotQA": true,
+    "NarrativeQA": true,
+    "Qasper": false,
+    "RepoBench": true
+  },
+  "template_qualification_source": {
+    "Qasper": "Pre-existing Phase 13C/14C structured-document quality-risk evidence; fail closed at service-template scope."
+  },
+  "quality_epsilon": 0.03,
+  "bootstrap_clusters": ["fresh_process", "service_template", "tenant_session"],
+  "bootstrap_iterations": 10000,
+  "gates": {
+    "completion_rate": 1.0,
+    "policy_quality_violations": 0,
+    "scope_invalid_admissions": 0,
+    "unauthorized_reuse": 0,
+    "paired_quality_ci_low_min": -0.03
+  },
+  "claim_boundary": "Five real task-bearing deployed templates; only four prospectively qualified templates receive shared certificates and Qasper fails closed to raw order."
+}

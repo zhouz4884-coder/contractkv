@@ -1,0 +1,93 @@
+diff --git a/Paper/revision_story_v4_20261017/scripts/qa.py b/Paper/revision_story_v4_20261017/scripts/qa.py
+index 4e8e595..5284d6a 100644
+--- a/Paper/revision_story_v4_20261017/scripts/qa.py
++++ b/Paper/revision_story_v4_20261017/scripts/qa.py
+@@ -93,7 +93,8 @@ assert new['source_level_p99_recomputed_and_cross_checked'] and not new['bootstr
+ for row in new['source_files']:assert sha(root/'evidence'/row['file'])==row['sha256']
+ broad=(root/'sections/table_deployment_width.tex').read_text()
+ assert 'Zero-slack' not in broad and '17.50' not in broad and '-2.84' not in broad
+-assert len(re.findall(r'\d+\.\d+\\%',broad))==8
++assert len(re.findall(r'\d+\.\d+\\%',broad))==12
++assert 'RPC only' in broad and 'upper bound' in broad
+ closure_cost=json.loads((root/'evidence/closure_tableIII_cost_v1.json').read_text())
+ assert closure_cost['all_four_original_reported_means_reproduced']
+ assert not closure_cost['all_four_full_verification_costs_closed']
+diff --git a/Paper/revision_story_v4_20261017/sections/04_design.tex b/Paper/revision_story_v4_20261017/sections/04_design.tex
+index e26c0e2..5b866f5 100644
+--- a/Paper/revision_story_v4_20261017/sections/04_design.tex
++++ b/Paper/revision_story_v4_20261017/sections/04_design.tex
+@@ -13,6 +13,14 @@ ContractKV compiles a legal prefix, qualifies its behavior, and transactionally
+ \subsection{An End-to-End Request Example}
+ A changing observation precedes a stable document. CALC moves eligible document content forward; the first raw business reply supplies a query witness. A successful check commits eligible stable blocks for later authorized requests. A new query needs its own decision but may share the prefix identity. Rejection retains the raw reply and promotes no candidate state.
+ 
++\subsection{Registration and the Trusted Service Boundary}
++\label{sec:registration}
++The operator registers segment identities and bytes, dependencies, template version, authorization domain, and the eligible publication boundary. Stability and visibility are distinct declarations: content can remain unchanged while still being tenant-private. Tenants cannot grant themselves shared-state registration authority.
++
++Three checks serve different purposes. The CPU registration helper checks issuer/role, authentication tag, content hash, identity uniqueness, version/domain presence, and whether publication contradicts declared privacy or mutability. It is an audit helper, not an integrated public registration endpoint. The evaluated deployment client checks the HMAC binding before selecting compiled execution; failure selects raw. In-engine PSTP independently controls candidate-prefix publication. Thus declaration consistency, request binding, and transactional visibility have separate enforcement points.
++
++The application, controller, runtime, and cache manager are trusted. The application's authenticated user-to-domain mapping must mediate engine access: the evaluated domain binding has a wildcard tenant field and does not authenticate arbitrary tenant labels. A valid hash/tag establishes byte identity and binding authenticity, not confidentiality. A trusted operator's consistent but incorrect private-to-shared declaration remains outside these checks (Section~\ref{sec:trust}).
++
+ \subsection{Contract-Aware Layout Compiler}
+ \label{sec:calc}
+ CALC operates on the registered dependency graph. Stable segments may be split into contiguous, character-preserving units to construct a bounded layout ladder. A stable-priority topological traversal moves only eligible units, respects dependency edges, and breaks ties by original order. For the 16-unit ladder, L1, L2, and L3 expose 4, 12, and 16 eligible units, respectively; L0 retains raw order. Full retokenization determines the actual stable-prefix boundary of each rendered candidate.
+diff --git a/Paper/revision_story_v4_20261017/sections/06_evaluation.tex b/Paper/revision_story_v4_20261017/sections/06_evaluation.tex
+index 59d9ce4..f9ac28c 100644
+--- a/Paper/revision_story_v4_20261017/sections/06_evaluation.tex
++++ b/Paper/revision_story_v4_20261017/sections/06_evaluation.tex
+@@ -22,7 +22,7 @@ The mechanism predicts two gains: sharing a qualification reduces its cost per u
+ 
+ \input{sections/table_deployment_width}
+ 
+-Table~\ref{tab:deployment-width} tests five-family breadth in four deployment configurations, including 14B tensor parallelism. Its recorded residual-RPC convention gives 29.41--44.69\% mean-TTFT reduction, not complete service wall. A matched-request supplement reaccounts zero slack and identifies missing intermediate Llama timers. Independent registration-cost measurements retain their own inputs/denominators. Execution-clock SLO statistics are also reported separately.
++Table~\ref{tab:deployment-width} tests five-family breadth in four deployment configurations, including 14B tensor parallelism. It places zero-slack recorded-RPC costs alongside the residual-slack results on the same requests. Missing controller costs, including 33 Llama RPC durations, prevent interpreting either column as complete service wall. The primary study instead measures that wall directly. Independent registration-cost measurements retain their own inputs/denominators.
+ 
+ We expect a net gain when enough admitted requests reuse a stable prefix to repay first-use qualification. Figure~\ref{fig:performance} tests this on the same source set, with no tool slack and successful and failed attempts included. Throughput improves by 1.619$\times$ on Qwen, 1.109$\times$ on Mistral, and 1.070$\times$ on Llama. The process ranges are 1.615--1.623$\times$, 1.107--1.110$\times$, and 1.068--1.072$\times$. These are complete service gains rather than prefill-only estimates.
+ 
+diff --git a/Paper/revision_story_v4_20261017/sections/08_discussion.tex b/Paper/revision_story_v4_20261017/sections/08_discussion.tex
+index 32ea9cc..bfb1207 100644
+--- a/Paper/revision_story_v4_20261017/sections/08_discussion.tex
++++ b/Paper/revision_story_v4_20261017/sections/08_discussion.tex
+@@ -10,13 +10,11 @@ Token-path certification is relative behavioral evidence under bound execution c
+ 
+ \subsection{Trust Model and Manifest Registration}
+ \label{sec:trust}
+-The operator is trusted to define template ownership, segment types, dependencies, sharing domains and versions. The controller, model/runtime and cache manager lie within the trusted service boundary; tenant-supplied labels are not registration authority. The CPU registration helper checks issuer/role, segment identities, authentication tags, content hashes, version/domain fields, and consistency of publication with declared stability and visibility. These checks validate a declaration's authority and consistency, not its semantic truth.
+-
+-Engine access must be mediated by that trusted application. The evaluated client's domain-level binding uses a wildcard tenant field; end-user authentication and membership checks are application responsibilities, not an implemented public certificate gateway.
++Section~\ref{sec:registration} defines the actors and checks at registration, request selection, and publication. Those checks establish a declaration's authority and consistency, not its semantic truth.
+ 
+ Consider tenant A's private \texttt{TOOL\_OBS}. If the trusted operator wrongly declares its bytes \textsc{Stable}, marks them domain-shared, and authorizes tenant B in that domain, a correct hash and HMAC do not establish that sharing is appropriate. The mistake can authorize private content as a shared prefix. The hash proves byte identity; the HMAC authenticates the operator's binding. Neither classifies confidentiality. The operator must keep tenant-specific observations outside the shared declaration.
+ 
+-The nine-case CPU registration-helper audit rejects seven malformed or unauthorized declarations, accepts the legitimate case, and also accepts that trusted semantic mislabel (supplement). The helper is separate from the live endpoint. Authenticated deployment admission and in-engine PSTP tests establish their respective identity and publication boundaries; they do not demonstrate detection of operator disclosure mistakes.
++The nine-case CPU registration-helper audit rejects seven malformed or unauthorized declarations, accepts the legitimate case, and also accepts that trusted semantic mislabel. Nineteen checks of the actual client binding functions reject 17 binding errors; a changed tenant label remains admissible under the domain wildcard. These CPU checks and the in-engine PSTP tests establish their respective boundaries; they do not demonstrate detection of operator disclosure mistakes or a public authentication gateway.
+ 
+ Even correctly authorized sharing can reveal cache-hit timing within its domain~\cite{iknow2025,auditing2025}. ContractKV does not implement a timing-channel defense. P4 is cache-state authorization, not a comprehensive application confidentiality boundary.
+ 
+diff --git a/Paper/revision_story_v4_20261017/sections/table_deployment_width.tex b/Paper/revision_story_v4_20261017/sections/table_deployment_width.tex
+index caef996..9714d76 100644
+--- a/Paper/revision_story_v4_20261017/sections/table_deployment_width.tex
++++ b/Paper/revision_story_v4_20261017/sections/table_deployment_width.tex
+@@ -1,15 +1,15 @@
+ \begin{table}[t]
+ \centering\small
+-\caption{Deployment-qualified breadth over five families, three repetitions/configuration. TTFT uses recorded residual-RPC accounting after the stated slack, not complete service wall; the supplemental cost audit identifies missing attempt timers. Prefill uses the same cohort.}
++\caption{Deployment-qualified breadth over five families, three repetitions/configuration. Matched zero-slack accounting charges recorded verifier RPCs with the original denominator; neither TTFT column is complete controller wall. Llama's missing durations make its zero-slack saving an upper bound. Supplementary Table~S-XXI gives all-future normalization and timing coverage.}
+ \label{tab:deployment-width}
+-\begin{tabular}{@{}lrrr@{}}
++\begin{tabular}{@{}lrrrr@{}}
+ \toprule
+-Configuration & \shortstack{Recorded TTFT\\reduction} & Prefill & Slack (s)\\
++Configuration & \shortstack{TTFT\\recorded} & \shortstack{Zero slack\\RPC only} & Prefill & \shortstack{Slack\\(s)}\\
+ \midrule
+-Qwen3-8B & 37.81\% & 59.13\% & 2\\
+-Qwen3-14B TP=2 & 44.69\% & 60.57\% & 2\\
+-Mistral-7B & 31.72\% & 39.46\% & 2\\
+-Llama-3.1-8B & 29.41\% & 30.97\% & 6\\
++Qwen3-8B & 37.81\% & 16.81\% & 59.13\% & 2\\
++Qwen3-14B TP=2 & 44.69\% & 34.39\% & 60.57\% & 2\\
++Mistral-7B & 31.72\% & 2.83\% & 39.46\% & 2\\
++Llama-3.1-8B & 29.41\% & $\leq$20.37\% & 30.97\% & 6\\
+ \bottomrule
+ \end{tabular}
+ \end{table}
