@@ -1,0 +1,24 @@
+{
+  "schema_version": "contractkv.original-sample-fullcost-execution-state.v1",
+  "status": "WAITING_FOR_EXCLUSIVE_GPUS",
+  "user_decision": "Wait for RevBatch to finish; do not terminate or contend with its GPU processes.",
+  "automation_id": "contractkv-table-iii",
+  "automation_kind": "current-thread heartbeat",
+  "frozen_protocol_evidence_commit": "4c78f550ed46ee130b218ff9aea975a97d910a10",
+  "formal_GPU_cells_completed": 0,
+  "formal_GPU_worker_started": false,
+  "formal_worker_pid": null,
+  "CPU_cohort_and_instrumentation_checks": "PASS",
+  "runtime_and_model_launch_preflight_complete": false,
+  "remaining_before_launch": [
+    "Refresh host/GPU/process inventory; both registered GPUs must be exclusively available.",
+    "Validate full model/tokenizer/shard integrity and freeze runtime copies.",
+    "Validate archived tokenizer input shapes and runtime compatibility.",
+    "Complete isolated fresh-server orchestration and record all cell arguments."
+  ],
+  "planned_fresh_server_cells": 24,
+  "planned_future_pairs": 4725,
+  "new_GPU_requests_so_far": 0,
+  "historical_missing_timings_recovered": false,
+  "new_results_must_not_replace_historical_records": true
+}
