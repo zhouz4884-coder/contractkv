@@ -1,0 +1,106 @@
+{
+  "schema_version": "contractkv.raw-calibration.v1",
+  "generation_protocol": "configs/tsc_revision_r4_input_fidelity_preserved_generation_v1.json",
+  "selected_catalog": "results/tsc_revision_r4/development_fit_v3/calibration_v1.json",
+  "baseline_jobs": [
+    {
+      "id": "raw_burst_q_gpu0",
+      "model": "Qwen3-8B",
+      "lane": 0,
+      "wave": 0,
+      "port": 9600,
+      "arrival": "calibration/arrivals/raw_burst_v1.json",
+      "client_timeout_s": 3600
+    },
+    {
+      "id": "raw_burst_q_gpu1",
+      "model": "Qwen3-8B",
+      "lane": 1,
+      "wave": 0,
+      "port": 9601,
+      "arrival": "calibration/arrivals/raw_burst_v1.json",
+      "client_timeout_s": 3600
+    },
+    {
+      "id": "raw_burst_m_gpu0",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "lane": 0,
+      "wave": 1,
+      "port": 9602,
+      "arrival": "calibration/arrivals/raw_burst_v1.json",
+      "client_timeout_s": 3600
+    },
+    {
+      "id": "raw_burst_l_gpu1",
+      "model": "Llama-3.1-8B-Instruct",
+      "lane": 1,
+      "wave": 1,
+      "port": 9603,
+      "arrival": "calibration/arrivals/raw_burst_v1.json",
+      "client_timeout_s": 3600
+    }
+  ],
+  "maximum_Raw_cells": 7,
+  "Raw_requests_per_cell": 120,
+  "maximum_Raw_business_requests": 840,
+  "source_templates": 6,
+  "tenants_per_template": 2,
+  "turns": 10,
+  "client_concurrency": 2,
+  "max_num_seqs": 2,
+  "common_window": 16384,
+  "model_parameters_unchanged": true,
+  "Raw_only_no_Contract_results": true,
+  "capacity_rule": "Cq=median(two concurrent Qwen burst N/full-wall values); Cm/Cl=their concurrent burst values",
+  "profile_rule": {
+    "Qwen_multipliers": [
+      0.4,
+      0.7,
+      1.05
+    ],
+    "waves": [
+      2,
+      2,
+      3
+    ],
+    "GPU_lanes": [
+      0,
+      1,
+      0
+    ],
+    "ports": [
+      9604,
+      9605,
+      9606
+    ]
+  },
+  "formal_load_rule": {
+    "common_multiplier": 0.9,
+    "common_capacity": "min(Cq,Cm,Cl)",
+    "Qwen_high_multiplier": 1.05,
+    "Qwen_high_capacity": "Cq"
+  },
+  "SLO_rule": {
+    "TTFT": "max across model P95(backend TTFT + controller-to-submit), times1.25 rounded up100ms, min100ms",
+    "TPOT": "max across model P95 TPOT, times1.25 rounded up5ms, min20ms",
+    "primary": "TTFT and TPOT both meet SLO",
+    "secondary": "TTFT-only goodput; full E2E distribution without extra selected SLO"
+  },
+  "formal_request_budget": {
+    "tenants_per_template": 6,
+    "requests_per_cell": 360,
+    "maximum_cells": 24
+  },
+  "gate_request_budget": {
+    "ON_OFF_fresh_pairs": 3,
+    "maximum_cells": 6,
+    "requests_per_cell": 360,
+    "peer_regime": "isolated same-GPU sequential ON/OFF pairs; not substituted by main colocated ON"
+  },
+  "arrival_rule": "Fixed-seed exponential inter-wave spacings normalized to last offset=(W-1)*2/lambda, horizon=N/lambda; freeze all actual traces before formal Contract outputs",
+  "no_model_loading_during_either_peer_measurement": true,
+  "final_backend_request_drain_inside_clock": true,
+  "no_heavy_residency_hook": true,
+  "measurements_not_pure_GPU_time": true,
+  "no_extra_load_or_SLO_selection_from_Contract_results": true
+}

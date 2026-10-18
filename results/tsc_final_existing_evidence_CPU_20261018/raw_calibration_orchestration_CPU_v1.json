@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "new_GPU_requests": 0,
+  "fake_workers": 2,
+  "both_ready_before_any_client": true,
+  "both_clients_finished_before_any_server_stopped": true,
+  "trace": [
+    [
+      "start",
+      "CPU_FAKE_A"
+    ],
+    [
+      "start",
+      "CPU_FAKE_B"
+    ],
+    [
+      "ready",
+      "CPU_FAKE_A"
+    ],
+    [
+      "ready",
+      "CPU_FAKE_B"
+    ],
+    [
+      "client",
+      "CPU_FAKE_A"
+    ],
+    [
+      "client",
+      "CPU_FAKE_B"
+    ],
+    [
+      "stop",
+      900000
+    ],
+    [
+      "stop",
+      900001
+    ]
+  ],
+  "service_performance_claim": false
+}
