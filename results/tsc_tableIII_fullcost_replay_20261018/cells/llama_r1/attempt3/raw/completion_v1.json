@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "time_utc": "2026-10-18T09:04:23.983582+00:00",
+  "checks": {
+    "future_requests": 450,
+    "controller_count": 50,
+    "controller_total_ms": 67196.89270528033,
+    "raw_reference_calls": 0,
+    "verification_attempts": 0,
+    "exception_calls": 0,
+    "client_wall_s": 553.3970554517582,
+    "completed_business_rows": 450,
+    "final_drain_s": 0.24242654629051685,
+    "service_wall_with_drain_s": 553.6394819980487
+  },
+  "files": [
+    {
+      "path": "requests.jsonl",
+      "sha256": "cdebab0ff0588890f64e1989f4796d80be8051003ac336b276de3949af522312",
+      "bytes": 515639
+    },
+    {
+      "path": "audit/complete_client_wall_v1.json",
+      "sha256": "b0ffde1336cb32e1f51f8d11bfaf16454fd268387f5c79209a27cba1e1b85bc7",
+      "bytes": 408
+    },
+    {
+      "path": "audit/complete_controller_events_v1.jsonl",
+      "sha256": "50ff1235d60f24fdb588eefb3cd5bf48c5d597e865c955750778ee1df0772524",
+      "bytes": 11487
+    },
+    {
+      "path": "launch_v1.json",
+      "sha256": "5f4a0c47f62df42b57063211d28893d5937eb27dac6ea85a98560c6347083b16",
+      "bytes": 3651
+    }
+  ],
+  "new_measurement_not_historical_timer_recovery": true
+}

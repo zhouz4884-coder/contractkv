@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "time_utc": "2026-10-18T09:04:18.948153+00:00",
+  "checks": {
+    "future_requests": 450,
+    "controller_count": 50,
+    "controller_total_ms": 134679.15458697826,
+    "raw_reference_calls": 30,
+    "verification_attempts": 36,
+    "exception_calls": 0,
+    "client_wall_s": 548.3184323441237,
+    "completed_business_rows": 450,
+    "final_drain_s": 0.23958175303414464,
+    "service_wall_with_drain_s": 548.5580140971579
+  },
+  "files": [
+    {
+      "path": "requests.jsonl",
+      "sha256": "dce166db6d726d2fe8b4232f090f112c5914e92cfb0dd2e9a559e6847ce02290",
+      "bytes": 523759
+    },
+    {
+      "path": "audit/complete_client_wall_v1.json",
+      "sha256": "247ed50c33103b18cae888d710b17e57c9c96e19882867683403bcf0ac6feee7",
+      "bytes": 408
+    },
+    {
+      "path": "audit/complete_controller_events_v1.jsonl",
+      "sha256": "6903e7268b65bd7ce726fc7ff3eb8a5220d101dd2a1c384ac53efaf7446ceacb",
+      "bytes": 23726
+    },
+    {
+      "path": "launch_v1.json",
+      "sha256": "5392e6a10030a4510d9364f1d5e7e1d278e5b770504e11934f41b12220c8d2f9",
+      "bytes": 3933
+    }
+  ],
+  "new_measurement_not_historical_timer_recovery": true
+}

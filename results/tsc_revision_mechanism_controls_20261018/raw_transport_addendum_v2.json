@@ -1,0 +1,12 @@
+{
+  "schema_version": "contractkv.manifest-raw-transport-correction.v2",
+  "before_any_diagnostic_GPU_request": true,
+  "prior_freeze_sha256": "6fa806899ff76baf20a5441e932ede26311b609e54c5ef5ee110d601a8a2b4e8",
+  "changed_files": [
+    "scripts/tsc_revision_mechanism_live_v2.py",
+    "scripts/tsc_revision_mechanism_worker_v2.py"
+  ],
+  "reason": "Preserve actual original trusted-client raw fallback salt=None; do not add experimental isolation that masks native APC hits.",
+  "changed_case_or_margin_or_score": false,
+  "raw_native_APC_claim": "The default raw APC namespace is observed separately from salt-scoped certified publication; cross-domain raw hits are retained, not called a successful global isolation control."
+}
