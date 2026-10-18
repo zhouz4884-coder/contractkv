@@ -40,3 +40,22 @@ Llama 三重复在 09:27:56 UTC 全部完成，共 1,350 future pairs、150 个�
 ## 下一步
 
 第一批 worker 按冻结队列继续四配置、三重复。并行仅做本地分析代码和小型证据整理，不在正式 GPU 时段运行其他模型任务或复制大型 runtime。结束后，第二、三批先做 preflight、取回元数据并发布回执，然后接续。最终统一汇总全部实测与失败。
+
+## 10:52 UTC 后的无重复接续
+
+用户最新五批目标保存在 `docs/tsc_revision_final_strengthening_objective_20261018.md`。它扩展最终验收边界，前三批完成并归档后还须按冻结条件完成任务保真 Open-arrival 与 CPU 优先的机制/尾部分析；不在前三批后提前结束整个目标。没有重建已冻结的案例或重新启动已有 worker。
+
+- 10:52 实际 state 与 `/proc/141325/cmdline`：原 Table III 完成18/24 cells、4,050/4,725未来配对，当前 `qwen14_r1`。Llama、Qwen8B、Mistral各三重复已完成。14B TP2依序占用两张指定卡。
+- Mistral完整wall三重复为0.997262933 / 0.998929610 / 0.985267121，平均0.993819888。每次50个完整controller、42次verification函数尝试、8次generate_raw异常；首个重复逐案核查为 `VerificationIncomplete: raw finish_reason=length`，不是服务器崩溃或认证RPC失败。预算128不改，不因负收益重跑。三个重复的实际耗时与异常计数保存在 `stage_mistral_three_repeats_v1.json`。其余重复的详细原因仍须在最终逐案复算时核对。
+- Qwen8B三重复阶段账本另存 `stage_qwen_three_repeats_v1.json`，包括第三次较弱的1.004127499，不作替换。所有新stage文件只从已完成配对和实际日志提取，不触发模型请求。
+- 后两批四个缺失项目依赖已按原字节补齐并在Linux导入通过，执行补充清单已公开于a348229；不再重复补包或改写worker。后续使用 `tsc_revision_mechanism_checked_entry_v1.py`，详见独立addendum。
+
+### 完整成本分析定义的最后核对
+
+对照 `tsc_revision_tableIII_matched_cost_audit.py` 及已复现的历史统计发现，分析准备版v2的residual诊断错误地使用了编译子集均值。原Table III的业务均值始终使用全部future；只有残余验证费用的分母在Qwen8B/Mistral取certified futures，在14B/Llama取all futures。新建 `tsc_tableIII_fullcost_analysis_v3.py` 明确按原定义报告A；B为全controller零隐藏费用摊销，C为直接完整wall。v1/v2源文件保留，尚未生成任何最终分析结果；这次仅修正分析代码，实验、样本和计时不变，没有重新运行GPU。v3另外保留实际服务端生成tokens总量/分桶和业务prefill、尾部，不能由这些总量伪造逐请求输出长度。
+
+### 等待GPU期间的既有证据复用
+
+新CPU分析 `tsc_revision_final_existing_evidence_CPU_v1.py` 对既有保真主验证4,860个future做时间恒等式与真实日志核对，提取逐进程p99以上54个请求；全部为L0路由，其前一wave注册等待可由实际日志定位。该等待由同wave租户共同经历，不能按租户数倍增为GPU费用。51个实际认证响应的完整margin只作固定阈值网格的后验谓词分析，不重新评估未执行候选或推断未来安全。
+
+PSTP复用Phase16R、Phase17并发故障与Phase18生命周期的原始CSV/JSON，保留harness decision与自动接线、源级故障与普遍并发证明之间的边界。已有故障证据足以支撑第五批对应检查，暂不重复GPU压力测试。新Open-arrival结果和真正Gate ON/OFF的差额仍待后续独立协议处理；这些CPU结果不冒充GPU补测完成。

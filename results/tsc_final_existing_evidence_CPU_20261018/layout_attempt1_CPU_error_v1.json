@@ -1,0 +1,8 @@
+{
+  "status": "CPU_analysis_interface_failure_no_outputs",
+  "new_GPU_requests": 0,
+  "source_sha256": "532accc8a7c3a2bbc25c97b1a22029890f4fa33c22c4aa6829255591f089282a",
+  "error": "Transformers5.4.0 apply_chat_template now returns BatchEncoding by default; offset-ID comparison expected a list",
+  "repair": "Pass return_dict=False explicitly for tokenized templates; actual served Prompt ID anchor checks remain mandatory",
+  "protocols_and_completed_experiments_changed": false
+}

@@ -1,0 +1,352 @@
+{
+  "status": "one_model_three_repeats_complete_other_models_running",
+  "observed_utc": "2026-10-18T10:52:56.567005+00:00",
+  "model_key": "mistral",
+  "replicates": [
+    {
+      "repeat": 1,
+      "direct_wall_multiplier": 0.9972629326164633,
+      "cells": {
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 655.7978816931136,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.24045837903395295,
+          "service_wall_with_drain_s": 656.0383400721475
+        },
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 169235.4836948216,
+          "raw_reference_calls": 50,
+          "verification_attempts": 42,
+          "exception_calls": 8,
+          "client_wall_s": 657.6000768649392,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.23881257511675358,
+          "service_wall_with_drain_s": 657.8388894400559
+        }
+      },
+      "verification_nonpass": 17,
+      "verification_total_ms": 85610.17415765673,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3259.0690362267196,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3206.033102236688,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3257.0912740193307,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3239.0840658918023,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3841.19073394686,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4048.5739381983876,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3854.1346080601215,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4239.596976898611,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 50778.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 45504.0,
+            "scheduler_initial_prefill_tokens": 747261.0,
+            "new_prefill_tokens": 1171530.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 923346.0,
+            "exact_prompt_lcp_tokens": 512820.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 507824.0,
+            "scheduler_initial_prefill_tokens": 422944.0,
+            "new_prefill_tokens": 709210.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "c164ce3ffbf8fd9fa4aa9fb5947f498ba3b54cb5b8faa7fbdae6b34c74a52130"
+    },
+    {
+      "repeat": 2,
+      "direct_wall_multiplier": 0.9989296095596943,
+      "cells": {
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 171408.50209677592,
+          "raw_reference_calls": 50,
+          "verification_attempts": 42,
+          "exception_calls": 8,
+          "client_wall_s": 660.7625289857388,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.24662834499031305,
+          "service_wall_with_drain_s": 661.0091573307291
+        },
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 660.062017752789,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.2396016949787736,
+          "service_wall_with_drain_s": 660.3016194477677
+        }
+      },
+      "verification_nonpass": 17,
+      "verification_total_ms": 87297.41162713617,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3291.229743976146,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3204.3404169380665,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3259.907722938806,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3269.7403710335493,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3847.7280801162124,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4043.3892449364066,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3890.481621026993,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4231.033014599234,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 50778.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 45504.0,
+            "scheduler_initial_prefill_tokens": 749472.0,
+            "new_prefill_tokens": 1171530.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 923346.0,
+            "exact_prompt_lcp_tokens": 512820.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 507824.0,
+            "scheduler_initial_prefill_tokens": 421831.0,
+            "new_prefill_tokens": 709210.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "84b3fefb26f65c1ca46892a9e4a467c7f4524169cbc42585826ccf41333ad6a6"
+    },
+    {
+      "repeat": 3,
+      "direct_wall_multiplier": 0.9852671209737053,
+      "cells": {
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 656.2651288430206,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.24422990763559937,
+          "service_wall_with_drain_s": 656.5093587506562
+        },
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 172899.2839800194,
+          "raw_reference_calls": 50,
+          "verification_attempts": 42,
+          "exception_calls": 8,
+          "client_wall_s": 666.0832551447675,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.24300783034414053,
+          "service_wall_with_drain_s": 666.3262629751116
+        }
+      },
+      "verification_nonpass": 17,
+      "verification_total_ms": 88362.74454463273,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3292.968182824552,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3245.507087558508,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3299.4340560398996,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3262.741295155138,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3856.927955057472,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4067.7328533492982,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3890.619084239006,
+          "outcome": "exception"
+        },
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 4278.36646605283,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 50778.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 45504.0,
+            "scheduler_initial_prefill_tokens": 741460.0,
+            "new_prefill_tokens": 1171530.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 923346.0,
+            "exact_prompt_lcp_tokens": 512820.0,
+            "prompt_tokens": 1217034.0,
+            "prefix_hit_tokens": 507824.0,
+            "scheduler_initial_prefill_tokens": 424964.0,
+            "new_prefill_tokens": 709210.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "ffbe964b869d3fb827b8a6aafab7df3410bc1e9a69ae8dfd3040e91ef5ee50da"
+    }
+  ],
+  "future_pairs": 1350,
+  "full_wall_multiplier_mean": 0.993819887716621,
+  "claim": "New frozen-original-cohort replay, not strict faithful main validation; no slack hidden in direct full wall. Actual verification call timings include transport/preparation and are not pure GPU kernel durations."
+}

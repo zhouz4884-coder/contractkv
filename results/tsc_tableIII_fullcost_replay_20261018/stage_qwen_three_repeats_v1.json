@@ -1,0 +1,247 @@
+{
+  "status": "one_model_three_repeats_complete_other_models_running",
+  "observed_utc": "2026-10-18T10:52:56.472915+00:00",
+  "model_key": "qwen",
+  "replicates": [
+    {
+      "repeat": 1,
+      "direct_wall_multiplier": 1.0288257942431294,
+      "cells": {
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 631.7826923839748,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.23886171681806445,
+          "service_wall_with_drain_s": 632.0215541007929
+        },
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 240174.68451475725,
+          "raw_reference_calls": 50,
+          "verification_attempts": 49,
+          "exception_calls": 1,
+          "client_wall_s": 614.0750480019487,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.23843212006613612,
+          "service_wall_with_drain_s": 614.3134801220149
+        }
+      },
+      "verification_nonpass": 17,
+      "verification_total_ms": 163632.7907294035,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3676.011649891734,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 42732.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 37440.0,
+            "scheduler_initial_prefill_tokens": 614593.0,
+            "new_prefill_tokens": 1551114.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 1516833.0,
+            "exact_prompt_lcp_tokens": 875475.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 871120.0,
+            "scheduler_initial_prefill_tokens": 290813.0,
+            "new_prefill_tokens": 717434.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "9ff25990fd11444ce1721c60947f1a02d1399d0b8304ceb67b5ecfada335c62a"
+    },
+    {
+      "repeat": 2,
+      "direct_wall_multiplier": 1.0277192728228393,
+      "cells": {
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 246576.68181695044,
+          "raw_reference_calls": 50,
+          "verification_attempts": 49,
+          "exception_calls": 1,
+          "client_wall_s": 621.1447325143963,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.24241618206724524,
+          "service_wall_with_drain_s": 621.3871486964636
+        },
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 638.3719787281007,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.23956987168639898,
+          "service_wall_with_drain_s": 638.611548599787
+        }
+      },
+      "verification_nonpass": 17,
+      "verification_total_ms": 170307.02078854665,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3657.4515532702208,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 42732.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 37440.0,
+            "scheduler_initial_prefill_tokens": 611100.0,
+            "new_prefill_tokens": 1551114.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 1516833.0,
+            "exact_prompt_lcp_tokens": 875475.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 871120.0,
+            "scheduler_initial_prefill_tokens": 293416.0,
+            "new_prefill_tokens": 717434.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "24621be4e6011b54df9253856a681bbe8f004247a18804d4ef5a65594061c6fc"
+    },
+    {
+      "repeat": 3,
+      "direct_wall_multiplier": 1.0041274993036655,
+      "cells": {
+        "raw": {
+          "future_requests": 450,
+          "controller_count": 0,
+          "controller_total_ms": 0,
+          "raw_reference_calls": 0,
+          "verification_attempts": 0,
+          "exception_calls": 0,
+          "client_wall_s": 630.4448647350073,
+          "completed_business_rows": 500,
+          "final_drain_s": 0.23891819221898913,
+          "service_wall_with_drain_s": 630.6837829272263
+        },
+        "contract": {
+          "future_requests": 450,
+          "controller_count": 50,
+          "controller_total_ms": 256844.7335571982,
+          "raw_reference_calls": 50,
+          "verification_attempts": 49,
+          "exception_calls": 1,
+          "client_wall_s": 627.8466604216956,
+          "completed_business_rows": 450,
+          "final_drain_s": 0.2446759520098567,
+          "service_wall_with_drain_s": 628.0913363737054
+        }
+      },
+      "verification_nonpass": 16,
+      "verification_total_ms": 178855.43355206028,
+      "exception_details": [
+        {
+          "event": "generate_raw",
+          "elapsed_ms": 3676.7849810421467,
+          "outcome": "exception"
+        }
+      ],
+      "prefill_future_only": {
+        "raw": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "exact_prompt_lcp_tokens": 42732.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 37440.0,
+            "scheduler_initial_prefill_tokens": 618148.0,
+            "new_prefill_tokens": 1551114.0
+          },
+          "future": 450
+        },
+        "contract": {
+          "fields": [
+            "certified_stable_prefix_tokens",
+            "exact_prompt_lcp_tokens",
+            "prompt_tokens",
+            "prefix_hit_tokens",
+            "scheduler_initial_prefill_tokens",
+            "new_prefill_tokens"
+          ],
+          "sums": {
+            "certified_stable_prefix_tokens": 1516833.0,
+            "exact_prompt_lcp_tokens": 906228.0,
+            "prompt_tokens": 1588554.0,
+            "prefix_hit_tokens": 901920.0,
+            "scheduler_initial_prefill_tokens": 287536.0,
+            "new_prefill_tokens": 686634.0
+          },
+          "future": 450
+        }
+      },
+      "pair_completion_sha256": "af20026a256d349fbbc956437f9145ca39eadbee0fc2d985ad47eacd3c14faaf"
+    }
+  ],
+  "future_pairs": 1350,
+  "full_wall_multiplier_mean": 1.020224188789878,
+  "claim": "New frozen-original-cohort replay, not strict faithful main validation; no slack hidden in direct full wall. Actual verification call timings include transport/preparation and are not pure GPU kernel durations."
+}

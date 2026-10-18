@@ -1,0 +1,188 @@
+[
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 1,
+    "future_requests": 540,
+    "raw_p99_ms": 7801.389799201861,
+    "contract_p99_ms": 7886.477249171586,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 2,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 3,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6237.90477666383,
+    "mean_tail_controller_to_submit_ms": 4038.765517917151,
+    "mean_tail_previous_registration_wait_ms": 3898.062511968116,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 2,
+    "future_requests": 540,
+    "raw_p99_ms": 7860.150383855216,
+    "contract_p99_ms": 7932.492446815597,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 2,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 3,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6270.284216385335,
+    "mean_tail_controller_to_submit_ms": 4055.20972275796,
+    "mean_tail_previous_registration_wait_ms": 3897.7597756311297,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 3,
+    "future_requests": 540,
+    "raw_p99_ms": 7799.613937968388,
+    "contract_p99_ms": 7849.913097755054,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 2,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 3,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6219.6025336937355,
+    "mean_tail_controller_to_submit_ms": 4026.0012586756297,
+    "mean_tail_previous_registration_wait_ms": 3884.398012266805,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 1,
+    "future_requests": 540,
+    "raw_p99_ms": 9423.100416129455,
+    "contract_p99_ms": 9519.009454138577,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 1,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 7456.9676813359065,
+    "mean_tail_controller_to_submit_ms": 4740.594323724508,
+    "mean_tail_previous_registration_wait_ms": 4584.925560591121,
+    "tail_waiting_after_failed_GPU_registration": 2,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 2,
+    "future_requests": 540,
+    "raw_p99_ms": 9363.915294273756,
+    "contract_p99_ms": 9383.17193638999,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 1,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 7432.619968196377,
+    "mean_tail_controller_to_submit_ms": 4694.847617220755,
+    "mean_tail_previous_registration_wait_ms": 4572.412417891125,
+    "tail_waiting_after_failed_GPU_registration": 2,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 3,
+    "future_requests": 540,
+    "raw_p99_ms": 9418.753267298453,
+    "contract_p99_ms": 9503.178958734497,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 1,
+      "LongBench:hotpotqa:hotpotqa:doc:19": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 1
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 7453.852064053838,
+    "mean_tail_controller_to_submit_ms": 4727.5858875364065,
+    "mean_tail_previous_registration_wait_ms": 4576.8055049702525,
+    "tail_waiting_after_failed_GPU_registration": 2,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 1,
+    "future_requests": 540,
+    "raw_p99_ms": 8493.136677420698,
+    "contract_p99_ms": 8868.737264061356,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 2
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6518.640805423881,
+    "mean_tail_controller_to_submit_ms": 4678.072536674638,
+    "mean_tail_previous_registration_wait_ms": 4504.610298046221,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 2,
+    "future_requests": 540,
+    "raw_p99_ms": 8570.674818451516,
+    "contract_p99_ms": 8955.893367417164,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 2
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6579.244955986117,
+    "mean_tail_controller_to_submit_ms": 4714.403269734855,
+    "mean_tail_previous_registration_wait_ms": 4541.123803084095,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 3,
+    "future_requests": 540,
+    "raw_p99_ms": 8491.914337435737,
+    "contract_p99_ms": 8889.618967808792,
+    "p99_tail_requests": 6,
+    "p99_tail_sources": {
+      "LongBench:hotpotqa:hotpotqa:doc:69": 4,
+      "LongBench:hotpotqa:hotpotqa:doc:109": 2
+    },
+    "p99_tail_routes": {
+      "L0": 6
+    },
+    "mean_tail_backend_ms": 6502.595910492043,
+    "mean_tail_controller_to_submit_ms": 4715.370539498205,
+    "mean_tail_previous_registration_wait_ms": 4540.9312408883125,
+    "tail_waiting_after_failed_GPU_registration": 0,
+    "tail_output_limit_events": 0
+  }
+]
