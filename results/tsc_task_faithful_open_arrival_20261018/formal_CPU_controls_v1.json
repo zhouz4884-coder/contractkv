@@ -1,0 +1,26 @@
+{
+  "schema_version": "contractkv.final-serving-CPU.v1",
+  "checks": [
+    "six normalized arrival traces validate original loader and repeat determinism",
+    "24 formal plus6 isolated Gate jobs, unique cells/ports, exact Raw/Contract arrival and GPU pairing",
+    "repeat2 reverses policy order and swaps main GPU lanes; Gate repeat2 OFF first",
+    "fake two-server wave: both ready before client, both complete before own-server stop; no GPU inference"
+  ],
+  "all_passed": true,
+  "new_GPU_requests": 0,
+  "synthetic_transport_not_serving_efficacy": true,
+  "sources": [
+    {
+      "path": "scripts\\tsc_revision_final_raw_derive_v1.py",
+      "sha256": "9d031e0b917df0a4bcba4664929c7dd15acf5074abf0c21bbe95af09747dc5ea"
+    },
+    {
+      "path": "scripts\\tsc_revision_final_serving_prepare_v1.py",
+      "sha256": "7b8a9bad3d546982a21e0b868bdf9315331148e00808d12ced4dc93ea7f712a8"
+    },
+    {
+      "path": "scripts\\tsc_revision_final_serving_worker_v1.py",
+      "sha256": "66e8de4da8963c4caefa3a4acf5956bb86f48f90f00383098eca90faf193ba9e"
+    }
+  ]
+}
