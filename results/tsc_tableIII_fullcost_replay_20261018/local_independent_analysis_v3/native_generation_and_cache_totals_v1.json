@@ -1,0 +1,2648 @@
+[
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 1,
+    "policy": "raw",
+    "source_sha256": "5b538821338d5dae91b2c5f4c0efb7a28bbaf65a395f808102167702ff035c5d",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 46176.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16642.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 199.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 261.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 364.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16642.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 1,
+    "policy": "contract",
+    "source_sha256": "5a1062c176d49b438dc0e274076386748345f60073442b860568ce97335e7f0a",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 376832.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16813.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 201.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 261.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 361.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16813.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 2,
+    "policy": "raw",
+    "source_sha256": "527c1b4ad43632c7b72e13f0a38bcee4209a6a4a535c19f17d38ea0de4351c0e",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 46176.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16730.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 199.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 260.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 363.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16730.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 2,
+    "policy": "contract",
+    "source_sha256": "12e28df260b630d0a4ef3d119e13a060493b805505cf85fa7f192284f3c18721",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 376832.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16732.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 201.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 262.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 362.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16732.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 3,
+    "policy": "raw",
+    "source_sha256": "e65b3c78aff7e782a11699ba9072a2c552706c7a45899b45d315477fd4c0d09a",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 46176.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16751.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 198.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 259.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 363.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16751.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Llama-3.1-8B-Instruct",
+    "repeat": 3,
+    "policy": "contract",
+    "source_sha256": "232de74362a1a0a4849b701914f437a3cc01fd522d8f4ce06abe6cdc2694f568",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 376832.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 1235770.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16645.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"llama31-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"llama31-8b\"}",
+        "value": 180.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"llama31-8b\"}",
+        "value": 201.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"llama31-8b\"}",
+        "value": 263.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"llama31-8b\"}",
+        "value": 363.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10000.0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"llama31-8b\"}",
+        "value": 16645.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 1,
+    "policy": "raw",
+    "source_sha256": "2a1f07472db6894ee20814b67144ac877c75c39299858a57fe3307629682cd9c",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 38160.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13813.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 223.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 461.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13813.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 1,
+    "policy": "contract",
+    "source_sha256": "7e7f72f105e720a0a15565bc4b40b3b43ca7f0ece53864f54c6c03e9bdec2f13",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 871840.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13782.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 224.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 462.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13782.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 2,
+    "policy": "raw",
+    "source_sha256": "0b81ba8d6c1e0e71e5f9d44bafe901fa4ccb5b9d77189469602de2115947cde5",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 38160.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13813.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 223.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 461.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13813.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 2,
+    "policy": "contract",
+    "source_sha256": "3293f58c002a307b5b00da4f8520e7e81ade33054e0ca195c8da569053b90f8c",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 871840.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13819.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 224.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 461.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13819.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 3,
+    "policy": "raw",
+    "source_sha256": "38230ad4240a09d1e8bcac1b2273f19a6e09d2f5cb256c61b21b18b679113fb3",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 38160.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13773.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 224.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 462.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13773.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-8B",
+    "repeat": 3,
+    "policy": "contract",
+    "source_sha256": "8dfdc47aaf5cd6962d4f0692c1c1fd9b48bc460efb82b5531dc0f97a4ab13513",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 902640.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 1765060.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13854.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-8b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-8b\"}",
+        "value": 20.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-8b\"}",
+        "value": 223.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-8b\"}",
+        "value": 460.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-8b\"}",
+        "value": 13854.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 1,
+    "policy": "raw",
+    "source_sha256": "1d80dccdbf2b71deed6d331b16c3e2a9f4bd4eca8cb1d51ce36f59e34f692369",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 46224.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23546.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 40.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 245.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23546.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 1,
+    "policy": "contract",
+    "source_sha256": "9fecb01e2301908e63be096957e98ba8496314ddc0c26f27dc7632e08f4b531c",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 508544.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23567.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 41.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 246.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23567.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 2,
+    "policy": "raw",
+    "source_sha256": "8ba47cad1b2dfcdde5cb0f410b81a2a5edb4a2b484f33aad17e70db5db242c0c",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 46224.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23558.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 40.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 245.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23558.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 2,
+    "policy": "contract",
+    "source_sha256": "7c4f873386fa6e2f934dded3ee33b66bd66faba3c86c370d1fcaba69d5082e8b",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 508544.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23573.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 41.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 246.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23573.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 3,
+    "policy": "raw",
+    "source_sha256": "13e5d57f4f17d0cc01566e13f433ec55b07c1c07cd929658bdd02df3c159a5a8",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 46224.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23553.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 40.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 245.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23553.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Mistral-7B-Instruct-v0.3",
+    "repeat": 3,
+    "policy": "contract",
+    "source_sha256": "9aeba1ea2d4924ede5e949efa4097a1b4add4e3889acdb692b551793c31a93a1",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 508544.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 1352260.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23590.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"mistral7b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"mistral7b\"}",
+        "value": 41.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"mistral7b\"}",
+        "value": 160.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"mistral7b\"}",
+        "value": 246.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"mistral7b\"}",
+        "value": 340.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"mistral7b\"}",
+        "value": 390.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 500.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"mistral7b\"}",
+        "value": 23590.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 1,
+    "policy": "raw",
+    "source_sha256": "67501ddd568ac5783ec41e223eef6b06cf43500289298ee603cdb8761b11938a",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 19040.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 1,
+    "policy": "contract",
+    "source_sha256": "2f230786f8d3895806101ce30f2b56445c706699bc06ef2630ca966a9b64bf2b",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 483600.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 2,
+    "policy": "raw",
+    "source_sha256": "0b1e0afa27e78819d679aaa5a0363a7ba0574ff2821712a776731e456bbc7da2",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 19040.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 2,
+    "policy": "contract",
+    "source_sha256": "48f71479af43a4521fa0d8d8c984aae8c08032d1ac791e5bb0e6f9d9300952aa",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 483600.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 3,
+    "policy": "raw",
+    "source_sha256": "d0daeab18bf8742872480b9ef0b40462696c6e137bfcf09379d257efbb222224",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 19040.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  },
+  {
+    "model": "Qwen3-14B",
+    "repeat": 3,
+    "policy": "contract",
+    "source_sha256": "9e5cac8843e1d12db2216c25edfba652ab9e2192fdc23027193850a3de0ba488",
+    "records": [
+      {
+        "metric": "prefix_cache_queries_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "prefix_cache_hits_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 483600.0
+      },
+      {
+        "metric": "num_preemptions_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "prompt_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 873000.0
+      },
+      {
+        "metric": "generation_tokens_total",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5.0\",model_name=\"qwen3-14b\"}",
+        "value": 0.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"10.0\",model_name=\"qwen3-14b\"}",
+        "value": 10.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"20.0\",model_name=\"qwen3-14b\"}",
+        "value": 140.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"50.0\",model_name=\"qwen3-14b\"}",
+        "value": 240.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"100.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"200.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"500.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"1000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"2000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"5000.0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_bucket",
+        "labels": "{engine=\"0\",le=\"+Inf\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_count",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 250.0
+      },
+      {
+        "metric": "request_generation_tokens_sum",
+        "labels": "{engine=\"0\",model_name=\"qwen3-14b\"}",
+        "value": 6258.0
+      }
+    ],
+    "boundary": "Actual fresh-server lifetime totals/histogram: includes reference and qualification activity, not per-business-request lengths or output IDs."
+  }
+]

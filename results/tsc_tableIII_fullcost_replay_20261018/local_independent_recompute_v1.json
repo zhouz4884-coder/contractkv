@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "new_GPU_requests": 0,
+  "archive_members_verified": 801,
+  "checks": [
+    {
+      "table": "per_repeat_cost_v1.csv",
+      "rows": 12,
+      "all_fields_match": true,
+      "harmless_float_serialization_differences": 0
+    },
+    {
+      "table": "controller_coverage_v1.csv",
+      "rows": 525,
+      "all_fields_match": true,
+      "harmless_float_serialization_differences": 0
+    },
+    {
+      "table": "quality_pairs_v1.csv",
+      "rows": 4725,
+      "all_fields_match": true,
+      "harmless_float_serialization_differences": 0
+    }
+  ],
+  "source_script": "scripts/tsc_tableIII_fullcost_analysis_v3.py",
+  "source_sha256": "8767f3fe94728b71fc2f235cb745f77bafdfe9560479227bd5083f17d5e47e48"
+}

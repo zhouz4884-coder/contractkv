@@ -70,3 +70,11 @@ CPU新增两项完成记录，不启动模型：
 2. `margin_two_floor_v2`在同一已声明网格中分别改变raw和candidate/EOS两阈值。六个R3原始文件与归档SHA匹配，三个doc99重复均确认candidate margin 0.40625及一个Raw输入token变化；0.25 candidate floor仍不能排除这三个旧见证。该结果关闭“仅靠margin即可支持变化输入”的误解释，不用于选择新阈值。
 
 第一批输出可观察性继续严格区分：原驱动保留完整输出文本，可报告真实字符/UTF8字节长度；未保留的逐请求模型token长度、未来finish reason及IDs不以重分词补造。新增`tsc_tableIII_output_observability_v1.py`仅在24单元完成后做这项审核，同时从server access log独立数实际认证HTTP调用。Llama首个完成cell已确认36个函数尝试对应36次实际HTTP请求，不能把530条initial metrics当作GPU forward计数；legacy复用request ID、初次观测与实际RPC是不同分母。完整耗时仍按每次函数调用和controller的真实计时保留。
+
+## 12:05–12:24 UTC：第一批关闭，后两批接续
+
+原TableIII24单元在12:05全部完成。完整wall均值：Llama1.011551、Qwen8B1.020224、Mistral0.993820、Qwen14B TP2 1.109442；不抵扣slack。A/B/C和全部质量变化分别入报告。453次真实HTTP认证、155次非通过尝试、30次异常与60个无包装RPC的L0 warmup均有计时。801成员双端校验通过；本地12/525/4725行全字段复算一致。
+
+负结果保留：旧模式Qwen RepoBench389/r3/turn1的次级分数0.72到0.38在compiled路由；另两下降在Raw回退。原sanity proxy未标出前者；Llama的三个proxy下降在QA F1两路均0的同一来源。评分分列、协议分列。三重复文本检查不能唯一归因，不将其一律称模型噪声，也不据它调整新正式参数。
+
+后两批一次CPU预检完成，实际回执2262851f在0f1ef20公开后，12:22启动原v3 worker，supervisor236905/worker236906。见GPU_LAUNCH_STATUS_20261018.md。共用9cells而非18；第一wave状态文字未及时更新，但实际execute PID及两卡EngineCore已核实，不重复启动。没有重做全权重SHA、原9/19 CPU或冻结病例。
