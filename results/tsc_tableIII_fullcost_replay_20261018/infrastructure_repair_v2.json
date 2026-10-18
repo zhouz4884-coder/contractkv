@@ -1,0 +1,25 @@
+{
+  "schema_version": "contractkv.original-sample-infrastructure-repair.v2",
+  "stage": "CPU preflight; no model inference or formal GPU cell started",
+  "attempt1_failure": "Runtime copy differs from retained source",
+  "diagnosis": {
+    "retained_source_inventory_count": 951,
+    "dereferenced_copy_inventory_count": 959,
+    "changed_common_file_bytes": 0,
+    "source_only_files": 0,
+    "extra_copy_files": 8,
+    "cause": "Path.rglob did not descend into the source vllm_flash_attn directory symlink, while shutil.copytree(symlinks=False) copied its contents."
+  },
+  "repair": "Worker v2 inventories dereferenced directory contents with cycle detection, matching copytree traversal. It does not weaken byte equality checks or modify shared runtime files.",
+  "model_registry_reuse": {
+    "source": "launch_attempt1_preflight/model_registry_v1.json",
+    "sha256": "f498ce77473d08efd6672b8cc729f9d0b0d2d738ecd69911cdfae4def91e72eb",
+    "all_four_model_full_hashes_completed": true,
+    "reuse_requires_exact_registry_digest_and_unchanged_asset_size_and_mtime": true,
+    "reason": "All weights were hashed before the copy-inventory failure and before any model outputs; no need to repeat the same disk scan when asset metadata remains unchanged."
+  },
+  "new_attempt_directory": "launch_attempt2_preflight",
+  "prior_failure_and_partial_runtime_copies_preserved": true,
+  "archived_client_renderer_candidate_threshold_scope_or_scorer_changed": false,
+  "formal_GPU_cells_started": 0
+}

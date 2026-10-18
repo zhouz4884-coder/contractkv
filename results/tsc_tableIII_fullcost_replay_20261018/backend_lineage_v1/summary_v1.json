@@ -1,0 +1,23 @@
+{
+  "archived_patch_API_postimage_prefix": "be2f371",
+  "retained_Qwen_API_matches_archived_patch": true,
+  "API_files": [
+    {
+      "source": "vllm-contractkv-phase19c_api_server.py",
+      "bytes": 81640,
+      "sha256": "69350fba63ee1d7ba60602506415c24b65d5525cec87916f390416afc1c9dcf8",
+      "git_blob_sha1": "385a025c5758f6f137402a27dc0f02d7a86b068d"
+    },
+    {
+      "source": "vllm-contractkv_api_server.py",
+      "bytes": 81301,
+      "sha256": "6cf74e41ce189b373fd2dec81b5741720c0fe502111ad1c47afbe71e196ffbf9",
+      "git_blob_sha1": "be2f37129a20dd351ee326d6c79217cf749a0bac"
+    }
+  ],
+  "phase19c_difference": "Optional cache_salt (default None) forwarding and terminal-stop-margin result, from the archived install_vllm_v1_compact_stop_margin.py.",
+  "retained_verifier_prompt_logprobs": 2,
+  "default_terminal_margin_gate": "-inf unless explicitly set; this legacy replay does not set a new terminal floor.",
+  "full_historical_backend_byte_identity_claimed": false,
+  "GPU_outputs_used_for_this_audit": 0
+}

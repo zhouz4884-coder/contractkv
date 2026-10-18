@@ -1,0 +1,41 @@
+{
+  "schema_version": "contractkv.original-sample-launch-addendum.v2",
+  "before_GPU_measurement": true,
+  "purpose": "Fix only dereferenced runtime inventory; reuse attested model hashes after fresh metadata check.",
+  "original_protocol_sha256": "66c3e68d460102cbcb34d8bf59059155bb0e08aa6e10b45895524a7ef14a1982",
+  "original_freeze_sha256": "5491f9e6dc1a38da1ab264c62fa9993f259e5521ed9512d227f4f1cf3854242e",
+  "no_candidate_threshold_source_or_scoring_change": true,
+  "formal_GPU_cells_started": 0,
+  "files": [
+    {
+      "path": "scripts/tsc_tableIII_fullcost_worker_v2.py",
+      "bytes": 29738,
+      "sha256": "8798edb384a1e5cbeca6876b00f251d3aa93eef3b338b3864af8d2430dac9292"
+    },
+    {
+      "path": "scripts/tsc_tableIII_orchestration_CPU_check_v2.py",
+      "bytes": 7732,
+      "sha256": "088e4f8d56645e77d5a4c37f2d645fc1737f9d582da7c838e2679941e60da919"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/orchestration_CPU_check_v2.json",
+      "bytes": 716,
+      "sha256": "1107992084a28498a41082437a2b0267c950b274d918f2b3cd68fe039375dfb6"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/infrastructure_repair_v2.json",
+      "bytes": 1495,
+      "sha256": "d94910b21ade225a0ff44bcb4fd74bf10c22e4699cc71ae0520edad48e64e26d"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt1_preflight/model_registry_v1.json",
+      "bytes": 12103,
+      "sha256": "f498ce77473d08efd6672b8cc729f9d0b0d2d738ecd69911cdfae4def91e72eb"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/launch_attempt1_preflight/runtime_copy_diagnosis_v1.json",
+      "bytes": 1694,
+      "sha256": "3cfb3d7854638be4046f0a78a33dae00e37c77d453bf02f0a293579192f4560a"
+    }
+  ]
+}

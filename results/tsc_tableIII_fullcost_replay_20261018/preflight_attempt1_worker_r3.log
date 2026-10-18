@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v1.py", line 388, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v1.py", line 328, in main
+    for kind in ['qwen','phase19c']:isolated_runtime(root,kind,preflight)
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v1.py", line 108, in isolated_runtime
+    copied=runtime_inventory(dest/'vllm');assert copied==before,'Runtime copy differs from retained source'
+AssertionError: Runtime copy differs from retained source

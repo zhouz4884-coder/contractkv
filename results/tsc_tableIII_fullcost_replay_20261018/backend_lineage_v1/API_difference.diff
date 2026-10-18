@@ -1,0 +1,28 @@
+--- qwen_retained
++++ phase19c_retained
+@@ -372,6 +372,7 @@
+     layout_hash: str
+     dependency_graph_hash: str
+     timeout_s: float = 300.0
++    cache_salt: str | None = None  # CONTRACTKV_PHASE26R_OBSERVATION_SALT_V1
+ 
+ 
+ class PrometheusResponse(Response):
+@@ -495,6 +496,7 @@
+         prompt_token_ids=payload.prompt_token_ids,
+         verify_spec=spec,
+         timeout_s=payload.timeout_s,
++        cache_salt=payload.cache_salt,
+     )
+     return JSONResponse(content={
+         "request_id": payload.request_id,
+@@ -514,6 +516,9 @@
+                                  else None),
+         "degradation_q95": (result.degradation_q95
+                             if math.isfinite(result.degradation_q95) else None),
++        "terminal_stop_margin": (result.terminal_stop_margin
++                                 if math.isfinite(result.terminal_stop_margin)
++                                 else None),  # CONTRACTKV_PHASE26R_STOP_MARGIN_V1
+     })
+ 
+ 
