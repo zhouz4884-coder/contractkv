@@ -143,7 +143,7 @@ def audit_cell(study,job,slo,phase,scorer,samples):
                 assert not attempt.get('result_unavailable')
                 if not attempt.get('certificate_issued'):assert int(attempt.get('committed_tokens',0))==0
             if not r['certificate_issued']:assert int(r.get('committed_tokens',0))==0
-            registrations.append(dict(cell=job['id'],model=job['model'],phase=phase,load=job.get('load'),
+            registrations.append(dict(cell=job['id'],model=job['model'],phase=phase,execution_regime=job.get('phase',phase),load=job.get('load'),
                 policy=summary['policy'],economic_gate=job.get('economic_gate','ON'),repeat=job.get('repeat',1),
                 source_namespace=k[0],query_scope=k[1],family=r['family'],issued=r['certificate_issued'],
                 failure_reason=r['failure_reason'],category='issued' if r['certificate_issued'] else category(r['failure_reason']),
@@ -178,7 +178,7 @@ def audit_cell(study,job,slo,phase,scorer,samples):
             if previous_end is not None:
                 gap,lower,upper=registration_queue_bounds(d,previous_end,r['planned_ready_time'],r['wave_processing_begin_time'])
             compliant=r['ready_ttft_ms']<=slo['TTFT_ms'] and r['tpot_ms']<=slo['TPOT_ms']
-            requests.append(dict(cell=job['id'],phase=phase,model=job['model'],load=job.get('load'),policy=summary['policy'],
+            requests.append(dict(cell=job['id'],phase=phase,execution_regime=job.get('phase',phase),model=job['model'],load=job.get('load'),policy=summary['policy'],
                 economic_gate=job.get('economic_gate','ON'),repeat=job.get('repeat',1),GPU_lane=job['lane'],
                 request_id=r['request_id'],row_type=r['row_type'],source_group=r['source_group'],family=r['family'],
                 session_id=r['session_id'],turn=r['turn_id'],wave_index=r['wave_index'],query_scope=r['query_scope'],
@@ -208,7 +208,8 @@ def audit_cell(study,job,slo,phase,scorer,samples):
     rates=dict(achieved_requests_per_s=expected/wall,primary_goodput_requests_per_s=sum(x['primary_SLO_compliant'] for x in requests)/wall,
         TTFT_only_goodput_requests_per_s=sum(x['TTFT_only_compliant'] for x in requests)/wall)
     verification_work=sum(observed[rid]['prompt_tokens']-observed[rid]['prefix_hit_tokens'] for rid in requested)
-    facts=dict(cell=job['id'],phase=phase,model=job['model'],load=job.get('load'),policy=summary['policy'],
+    facts=dict(cell=job['id'],phase=phase,execution_regime=job.get('phase',phase),peer_regime=job.get('peer_regime','Raw calibration'),
+        model=job['model'],load=job.get('load'),policy=summary['policy'],
         economic_gate=job.get('economic_gate','ON'),repeat=job.get('repeat',1),GPU_lane=job['lane'],business_requests=expected,
         future_requests=sum(x['row_type']=='future' for x in requests),wall_s=wall,**rates,
         offered_rate_requests_per_s=job.get('offered_rate_requests_per_s'),

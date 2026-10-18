@@ -38,7 +38,7 @@ def main(root):
         if not path.is_file() or path.is_symlink():continue
         rel=path.relative_to(study)
         if any(part in {'cache','tmp','CPU_tmp','.source_import_tmp','__pycache__','evidence_package_v1'} for part in rel.parts):continue
-        if path.suffix.lower() not in {'.json','.jsonl','.py','.csv','.log','.md','.txt','.sh'}:continue
+        if path.suffix.lower() not in {'.json','.jsonl','.py','.csv','.log','.md','.txt','.sh'} and rel.parts[0]!='preformal_infrastructure_versions_v1':continue
         selected.append(path)
     selected += sorted((root/'scripts').glob('tsc_revision_final_*.py'))
     selected += [root/'docs/tsc_revision_final_strengthening_objective_20261018.md',

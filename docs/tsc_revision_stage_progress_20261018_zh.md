@@ -19,11 +19,11 @@
 - `tsc_revision_budget256_results_20261018_zh.md`
 - `tsc_revision_real_repobench_mechanism_results_20261018_zh.md`
 
-已公开原始证据 SHA 与独立复算回执位于各结果目录。最新已核远程成果提交为 `4274272109aeec61d5264e9a7ba14970ae65dd53`；后续提交另记，不覆盖这个快照。
+已公开原始证据 SHA 与独立复算回执位于各结果目录。上述四项完成结果的发布快照为 `4274272109aeec61d5264e9a7ba14970ae65dd53`；后续Raw实际参数另在`669898c4bd4140154cf009fb95a793e05ab424f9`公开并核远程，不覆盖完成结果快照。
 
 ## 当前 GPU 执行
 
-14:40 UTC 后核验：Raw-only baseline 4/4 单元、480 次业务全部完成；原 supervisor285458/worker285459退出0。实际derived plan已经生成并独立复算，3个Raw profiles待核验公开SHA后接续。详见`tsc_revision_final_Raw_calibration_20261018_zh.md`。没有重复启动baseline。
+14:40 UTC 后核验：Raw-only baseline 4/4 单元、480 次业务全部完成；原 supervisor285458/worker285459退出0。实际derived plan已经生成并独立复算、核验公开SHA后，14:44 UTC启动3个Raw profiles，supervisor301481/worker301486。14:46实际进程与两卡EngineCore已核验，处于模型准备阶段，尚未产生正式Contract结果。详见`tsc_revision_final_Raw_calibration_20261018_zh.md`。没有重复启动baseline。
 
 该标定最多 7 cells / 840 次 Raw 业务：4 个 baseline，之后 3 个 Qwen 负载 profiles。只用冻结公式推导负载与 SLO，不用 Contract 收益选择工作点。Raw/Contract 均保留 16K、QA128/Repo384、原 margin/scope/输出契约/PSTP。
 

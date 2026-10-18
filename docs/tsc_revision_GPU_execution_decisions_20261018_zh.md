@@ -160,3 +160,7 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 按原公式实际导出Cq=.313519676、Cm=.198783460、Cl=.212263461 req/s，共同到达率.178905114、Qhigh .329195660。Raw推导TTFT SLO11700ms、平均TPOT435ms。SLO较宽是本硬件长输入Raw的P95结果，不为了追goodput改成更有利阈值，不将它与旧500ms点合并。高TPOT与短输出first-to-last窗口/peer prefill重叠的线索保留；没有逐token/kernel轨迹，不唯一归因，不临时换调度算法。
 
 独立下载4份Raw原文共30,174,361 bytes，各SHA匹配。从原文重算容量/P95/SLO/正式负载精确一致。首次Windows派生文件因CRLF、其后因Python3.13/3.10浮点sum/libm的约1e-13秒offset差异未逐字节相同，两个失败CPU视图保留。最终以明确1ns容差核全部arrival offset，实际最大3.410605131648481e-13秒；成员/seed/顺序/端点相同，其他推导字段精确相同。实际执行仍只读取原Linux arrival SHA，绝不将本地重生成trace换进去。独立回执不能写成全部字节一致。
+
+14:44:38 UTC，实际derived计划SHA9d1a3efe及3个trace在Git669898c公开并核远程后，启动Raw profiles supervisor301481/worker301486。14:46 /proc实际命令、RUNNING状态和两个EngineCore PID302375/302442均已核验，模型正在准备，不重复派发。原4baseline不再运行。新server端口9604–9606与原baseline不冲突，source_snapshot/runtime不复制。正式Contract仍未开始。
+
+独立分析现明确标记qwen/cross/gate执行regime及peer条件，避免把隔离Gate与并行主矩阵混比；五项CPU数学检查v3通过。归档入口亦纳入原小源postimage目录中的带SHA后缀文件，防止只按.py后缀筛选遗漏预执行版本。两个本地失败推导视图的4个派生JSON/trace文件分别保留，不能只留“失败”标签。以上均未改变Raw/GPU客户端或冻结门槛。

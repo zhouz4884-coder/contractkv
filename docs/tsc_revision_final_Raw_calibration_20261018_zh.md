@@ -1,6 +1,6 @@
 # 保真固定到达服务：Raw-only baseline 标定
 
-2026-10-18 14:40 UTC 后。4/4 个 baseline fresh-server 单元、480 次真实 Raw 业务已完成，原 supervisor285458/worker285459 正常退出0。这里尚无本轮正式 ContractKV 效果；后续3个Raw profiles仍需执行。
+2026-10-18 14:40 UTC 后。4/4 个 baseline fresh-server 单元、480 次真实 Raw 业务已完成，原 supervisor285458/worker285459 正常退出0。这里尚无本轮正式 ContractKV 效果。实际参数在669898c公开核SHA后，14:44 UTC启动后续3个Raw profiles，supervisor301481/worker301486，尚未完成。
 
 ## 冻结规则推导的实际工作点
 

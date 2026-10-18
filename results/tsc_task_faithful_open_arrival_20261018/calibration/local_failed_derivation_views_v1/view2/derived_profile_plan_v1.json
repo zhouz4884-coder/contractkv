@@ -1,0 +1,173 @@
+{
+  "schema_version": "contractkv.raw-derived-profile-plan.v1",
+  "source_freeze_sha256": "f9a2b64a28952f9fa5f9929699ab60416dbbdd030f4348731d6444753af64b92",
+  "derivation_entry_sha256": "9d031e0b917df0a4bcba4664929c7dd15acf5074abf0c21bbe95af09747dc5ea",
+  "baseline_sources": [
+    {
+      "cell": "raw_burst_q_gpu0",
+      "model": "Qwen3-8B",
+      "wall_s": 381.5114007187076,
+      "Raw_capacity_requests_per_s": 0.3145384378394429,
+      "files": [
+        {
+          "path": "calibration/cells/raw_burst_q_gpu0/summary.json",
+          "sha256": "e013bac61b225da47b53f7f7f612b9493e96a22f38474d217f1af12709988e95"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu0/raw.jsonl",
+          "sha256": "879a4aa84ff45d79338ba1ad204579bccc92d782e5ec20c2f7c262b0a16b06ce"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu0/client_audit_v2.json",
+          "sha256": "d8b5e712690c9ba7583d7cb86684fe512b488eda5447baf605fa027086f0cc9a"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu0/completion_v1.json",
+          "sha256": "2c3c443b9e9f956f8d723411ee74c2f20ac57efb17c865bbace9e903f5ea9b31"
+        }
+      ]
+    },
+    {
+      "cell": "raw_burst_q_gpu1",
+      "model": "Qwen3-8B",
+      "wall_s": 383.9988765697926,
+      "Raw_capacity_requests_per_s": 0.31250091425251797,
+      "files": [
+        {
+          "path": "calibration/cells/raw_burst_q_gpu1/summary.json",
+          "sha256": "079fcaea4dfe8b45ca50da40bd3bf5f221293c0f301eba1b7898d1e83aade7e2"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu1/raw.jsonl",
+          "sha256": "70fea58a73edff0a95dd4a2fda91ffd7039e21b79a1394bd831704bc0ca4d19a"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu1/client_audit_v2.json",
+          "sha256": "8bd7af2588612bf35b7c79ef8a50762a2c255b62a23a155434a819bc13333720"
+        },
+        {
+          "path": "calibration/cells/raw_burst_q_gpu1/completion_v1.json",
+          "sha256": "93bf06260c32521667535b610e4e5caf177cd9c0e2ad524e86522d44974449ed"
+        }
+      ]
+    },
+    {
+      "cell": "raw_burst_m_gpu0",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "wall_s": 603.6719539123587,
+      "Raw_capacity_requests_per_s": 0.19878346049089707,
+      "files": [
+        {
+          "path": "calibration/cells/raw_burst_m_gpu0/summary.json",
+          "sha256": "23e95df85216a42d8256b42050a3e1a29dc8be1dde3bc303a9a1fb5d3f17ec13"
+        },
+        {
+          "path": "calibration/cells/raw_burst_m_gpu0/raw.jsonl",
+          "sha256": "12ba9fe04dfe7a21f591f31e0ac5f1411898c87648af8e53c2aa8888e06347b0"
+        },
+        {
+          "path": "calibration/cells/raw_burst_m_gpu0/client_audit_v2.json",
+          "sha256": "271fef36df7bb75cb29a0b5da737d4b7da91f607eb1f1769bb72abe5a09380b7"
+        },
+        {
+          "path": "calibration/cells/raw_burst_m_gpu0/completion_v1.json",
+          "sha256": "9a8cec8506862747bf5e7ace327480ace1d3bf5c119a0d518c5363c4814c6683"
+        }
+      ]
+    },
+    {
+      "cell": "raw_burst_l_gpu1",
+      "model": "Llama-3.1-8B-Instruct",
+      "wall_s": 565.335170798935,
+      "Raw_capacity_requests_per_s": 0.21226346103748558,
+      "files": [
+        {
+          "path": "calibration/cells/raw_burst_l_gpu1/summary.json",
+          "sha256": "bd810b1cf6bb1eaea5fc4c0e899282e466618e3fe0a95afb0e20b9059ec1494c"
+        },
+        {
+          "path": "calibration/cells/raw_burst_l_gpu1/raw.jsonl",
+          "sha256": "6516a1f880301011122c118750232ac2e5be8ac439e6f0dd0c34b3410558898e"
+        },
+        {
+          "path": "calibration/cells/raw_burst_l_gpu1/client_audit_v2.json",
+          "sha256": "c8e5c7b4073cc29b92c8f5dd6a50f8b622656d2ca9bae164e08f4d315b3741bb"
+        },
+        {
+          "path": "calibration/cells/raw_burst_l_gpu1/completion_v1.json",
+          "sha256": "fc55a943e2a5932d55048617478121bf6c4ae5c8258450aea33e838ea2ef72c4"
+        }
+      ]
+    }
+  ],
+  "capacity_requests_per_s": {
+    "Qwen3-8B": 0.3135196760459804,
+    "Mistral-7B-Instruct-v0.3": 0.19878346049089707,
+    "Llama-3.1-8B-Instruct": 0.21226346103748558
+  },
+  "per_model_intrinsic_P95": {
+    "Qwen3-8B": {
+      "requests": 240,
+      "intrinsic_TTFT_ms": 6968.5430420562625,
+      "TPOT_ms": 347.30849907267833
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "requests": 120,
+      "intrinsic_TTFT_ms": 9288.4548852453,
+      "TPOT_ms": 159.12423071847743
+    },
+    "Llama-3.1-8B-Instruct": {
+      "requests": 120,
+      "intrinsic_TTFT_ms": 6499.414722900838,
+      "TPOT_ms": 216.4251434073473
+    }
+  },
+  "SLO": {
+    "TTFT_ms": 11700,
+    "TPOT_ms": 435,
+    "basis": "Linear-interpolation empirical P95 per model; max across models, preregistered 1.25 multiplier and upward rounding",
+    "upstream_burst_queue_excluded_from_SLO_calibration": true
+  },
+  "formal_common_rate": 0.17890511444180737,
+  "Qwen_high_rate": 0.3291956598482794,
+  "profile_jobs": [
+    {
+      "id": "raw_profile_q_0",
+      "model": "Qwen3-8B",
+      "lane": 0,
+      "wave": 2,
+      "port": 9604,
+      "arrival": "calibration/arrivals/raw_profile_q_0_v1.json",
+      "arrival_sha256": "6ce74cf439c4220ec6a3a2da18b8cec812976096e1522f9efa611ce2804d2280",
+      "offered_rate_requests_per_s": 0.12540787041839216,
+      "client_timeout_s": 3600
+    },
+    {
+      "id": "raw_profile_q_1",
+      "model": "Qwen3-8B",
+      "lane": 1,
+      "wave": 2,
+      "port": 9605,
+      "arrival": "calibration/arrivals/raw_profile_q_1_v1.json",
+      "arrival_sha256": "c711f24f8d143f38327983a88bda8dec6950e0d5b2f4ee320d7b5e63e1c9c314",
+      "offered_rate_requests_per_s": 0.21946377323218627,
+      "client_timeout_s": 3600
+    },
+    {
+      "id": "raw_profile_q_2",
+      "model": "Qwen3-8B",
+      "lane": 0,
+      "wave": 3,
+      "port": 9606,
+      "arrival": "calibration/arrivals/raw_profile_q_2_v1.json",
+      "arrival_sha256": "f3e0c6d8205f7decf10e40eda7968de429060467844cd02d8d7cbb3f9d0f5184",
+      "offered_rate_requests_per_s": 0.3291956598482794,
+      "client_timeout_s": 3600
+    }
+  ],
+  "no_Contract_outputs_used": true,
+  "no_model_or_source_selection_from_results": true,
+  "primary_goodput": "all warm+future with readiness TTFT and average streaming TPOT within frozen SLO, divided by complete service wall",
+  "secondary_goodput": "readiness TTFT-only",
+  "TPOT_is_average_not_token_interval_distribution": true
+}
