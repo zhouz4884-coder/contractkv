@@ -1,0 +1,67 @@
+{
+  "status": "one_model_three_repeats_complete_other_models_running",
+  "model": "Llama-3.1-8B-Instruct",
+  "replicates": [
+    {
+      "repeat": 1,
+      "full_wall_multiplier": 1.0092633190479483,
+      "raw_wall_s": 553.6394819980487,
+      "contract_wall_s": 548.5580140971579,
+      "controllers": 50,
+      "complete_controller_ms": 134679.15458697826,
+      "actual_verification_calls": 36,
+      "verification_pass": 25,
+      "verification_nonpass": 11,
+      "all_verification_call_ms": 66905.78288817778,
+      "business_new_prefill_tokens": {
+        "raw": 1067553,
+        "contract": 736897
+      },
+      "business_prefill_reduction_pct": 30.973263154147844,
+      "future_pairs": 450
+    },
+    {
+      "repeat": 2,
+      "full_wall_multiplier": 1.0157633615343398,
+      "raw_wall_s": 558.7734979321249,
+      "contract_wall_s": 550.1020405855961,
+      "controllers": 50,
+      "complete_controller_ms": 135373.7265872769,
+      "actual_verification_calls": 36,
+      "verification_pass": 25,
+      "verification_nonpass": 11,
+      "all_verification_call_ms": 67401.18946461007,
+      "business_new_prefill_tokens": {
+        "raw": 1067553,
+        "contract": 736897
+      },
+      "business_prefill_reduction_pct": 30.973263154147844,
+      "future_pairs": 450
+    },
+    {
+      "repeat": 3,
+      "full_wall_multiplier": 1.0096272446328918,
+      "raw_wall_s": 557.7478866460733,
+      "contract_wall_s": 552.429512585979,
+      "controllers": 50,
+      "complete_controller_ms": 135964.63812608272,
+      "actual_verification_calls": 36,
+      "verification_pass": 25,
+      "verification_nonpass": 11,
+      "all_verification_call_ms": 67889.45210026577,
+      "business_new_prefill_tokens": {
+        "raw": 1067553,
+        "contract": 736897
+      },
+      "business_prefill_reduction_pct": 30.973263154147844,
+      "future_pairs": 450
+    }
+  ],
+  "future_pairs": 1350,
+  "full_wall_multiplier_mean": 1.0115513084050598,
+  "business_prefill_reduction_mean_pct": 30.973263154147844,
+  "verification_calls_total": 108,
+  "verification_nonpass_total": 33,
+  "all_actual_call_durations_recorded": true,
+  "claim": "New original Table III cohort replay; not the faithful independent main protocol and not recovered historical timestamps. Quality analysis pending whole frozen matrix completion."
+}

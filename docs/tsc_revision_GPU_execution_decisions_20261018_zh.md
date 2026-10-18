@@ -19,6 +19,14 @@
 
 随后在任何诊断 GPU 请求之前，源码接线审计发现 v1 给 Manifest raw fallback 附加了原客户端没有的私有 salt。这个差异可能遮蔽原生 APC 命中，因此不采用它提供隔离证据。v2 保留原客户端 Manifest raw 的 `cache_salt=None`，单独记录默认原生 APC 与认证 namespace 的命中。原 v1 文件不变、无 GPU 执行；只在行为必要性诊断中继续使用私有控制 namespace。当前入口改为 `scripts/tsc_revision_mechanism_worker_v2.py`、`preflight_v2`，冻结 SHA 为 `9366e45e7a1d103fa2c8972a4f100d6276de5e58c5a446befa13efe2725c1418`。案例、规模、评分、margin 和原有发布规则均未改变；若跨域 raw fallback 命中无 salt 的原生 APC，必须如实报告，不能叫作整台引擎的域隔离成功。
 
+最终接线检查还要求 Manifest 的后续 compiled 路由执行已经声明的精确 observation ScopeValid，不能仅凭 HMAC/稳定前缀匹配就覆盖新私有值。scope key 改为仅绑定实际输入和输出预算；CPU 实际函数检查确认评分答案、风险标签不影响 scope，而输入变化会使 scope 不同。当前最终执行入口是 **worker_v3 / preflight_v3 / freeze_v3.json**，SHA `7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff`。v1/v2 均为 GPU 首次运行前保留的准备版本。病例、margin、评分与数量不变；分析 v3 区分接口响应不确定、明确拒绝和真实后端提交，并记录原生 APC 命中是否覆盖合成私有标记。后台完成/空闲检查后才冻结诊断 cell 的 trace hashes。这些是新诊断接线的预执行修正，不影响原 Table III worker 或历史 GPU 数据。
+
+## 已向用户汇报的阶段
+
+Llama 三重复在 09:27:56 UTC 全部完成，共 1,350 future pairs、150 个完整 controller。完整 wall 倍率为 1.009263 / 1.015763 / 1.009627，平均 1.011551；业务新 prefill 从每次 1,067,553 降至 736,897 tokens，降低 30.9733%。108 次实际验证调用中有 33 次未通过，全部计时保留。GPU 已进入 Qwen3-8B。该阶段已向用户汇报，后续仅在 Qwen 三重复或新的批次里程碑再报，不重复这一阶段。
+
+用户随后询问“旧协议/新协议”和 slack。已明确：本次叫**原 Table III 同样本完整成本复测**，固定原策略参数，但完整 wall 不减任何 2s/6s slack；不能称为将策略参数全部设置 0 后重选布局的结果。另一个已经完成的**保真输入十租户主验证**是不同实验设置，真正不抵扣任何 slack，三模型全 wall 1.619036 / 1.109074 / 1.070280，已从三重复原始 summary 重新计算。两组不能混作同条件升级曲线；当前 1.2% 仅是原 Table III 条件下较小的收益，不替代保真主验证。
+
 ## 计账与解释规则
 
 原 Table III 并列报告两项：实际完整 client/service wall，以及完整 controller 按全部 future requests 摊销的零 slack TTFT 费用。后者是组件计账，不冒充实测 readiness 分布。原策略使用的 slack 值保留，费用分析不减去任何 slack。
