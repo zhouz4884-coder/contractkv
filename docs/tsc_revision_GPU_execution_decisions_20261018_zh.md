@@ -227,3 +227,12 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 真实只读check返回75，确认Gate517543/master318277仍活跃；后处理以nice19等待，不运行重分析。部署后三文件逐字节匹配、实际/proc命令和WAITING_FOR_FROZEN_GPU状态已取回。要求三GPU阶段完成/exit0、所有实际worker与master退出后才开始CPU；新旧输出目录存在即拒绝覆盖，任一分析失败保留证据并停止，不自动重试。完成状态仍为待CPU证据同步、package、本地独立复算和最终报告，不能自动关闭研究目标。恢复时先查525181及postprocessing_v1/execution_state_v1.json，不另派发重复分析。
 
 部署失败也保留：第一次Paramiko仅用x模式创建了0-byte源码，写入时报File not open for writing；未启动任何后处理或新GPU。空文件与回执移入postprocessing_infrastructure_v1，再用wx排他写入并逐字节核验。第一次Git push网络退出128，常规HTTP1.1重试成功后才核SHA/派发。原始GPU测量、冻结文件及已完成cell均未覆盖或重跑。
+
+
+## 香港2026-10-19：固定到达时钟上限的事后CPU核对
+
+第一Gate ON单元已完成360业务/324future，18 compiled future、7次RPC、wall2008.493s；原worker自动进入r1 OFF，无隔离Raw基线，不计算该单元的独立加速。只取回completion/summary/audit三小回执，未在GPU测量期跑完整分析；postprocess525181真实命令仍匹配，保持WAITING。
+
+独立检查完成的主24 metadata及实际冻结arrival，发现完整wall解释必须考虑最后到达下界W≥A。12配对事后CPU派生出ΣRawWall/ΣLastArrival：Qcommon1.005490、Qhigh1.069952、Mcommon1.082285、Lcommon1.102157的宽松数学上限。Qcommon计划到达跨度已占Raw wall99.454%，所以固定load下wall约1不能单独反证请求工作减少，也不是GPU空闲99.454%；需要与原定Goodput/延迟/物理工作共同判断。这不是观测优化或容量CI，不据此改负载、追加有利点或更改主统计。Qhigh实测wall变慢等负结果仍保留。
+
+脚本tsc_revision_final_arrival_wall_bound_v1.py及arrival_wall_bound_v1.json保留全部metadata/trace SHA。第一次CPU推导误以为completion包含summary.json哈希而StopIteration，尚未产出结果、0GPU；失败源与回执另保存在post_hoc_clock_analysis_failures_v1。核对真实schema后用summary.raw_file_sha256对齐completion的raw承诺，metadata自身SHA完整记录；原始完整时钟仍由冻结主分析复核。没有更改或重跑任一GPU单元。最终package前需要同步本事后脚本、结果及失败目录到远程，避免归档遗漏。

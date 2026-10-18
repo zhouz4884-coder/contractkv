@@ -1,0 +1,10 @@
+{
+  "status": "CPU_ONLY_FAILED_BEFORE_OUTPUT",
+  "error_type": "StopIteration",
+  "cause": "Completion files commit raw/metrics/telemetry, not summary.json; first derivation assumed an absent summary member",
+  "source_sha256": "71ddc1b4b170136ba4abbb8af51823d6f7cfe195b4376f991d537cc4d6b07b68",
+  "GPU_requests": 0,
+  "bound_output_created": false,
+  "repair": "Bind summary.raw_file_sha256 to the existing completed raw member and retain each metadata input SHA; full raw clock integrity remains a separate frozen audit",
+  "original_completion_and_all_GPU_outputs_preserved": true
+}

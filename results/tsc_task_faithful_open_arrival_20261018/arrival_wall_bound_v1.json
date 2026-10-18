@@ -1,0 +1,458 @@
+{
+  "schema_version": "contractkv.post-hoc-arrival-wall-bound.v1",
+  "post_hoc_explanatory_analysis": true,
+  "new_GPU_requests": 0,
+  "no_protocol_SLO_or_analysis_rule_changed": true,
+  "boundary": "For these completed fixed arrivals, all-request service wall is at least the last scheduled arrival. This bounds a wall ratio against the observed Raw clock, even with hypothetical zero service time. It is not an observed optimization, a Goodput bound, a capacity claim, a confidence interval, or a population generalization. Full original-log clock/quality/native integrity remains a separate audit.",
+  "rows": [
+    {
+      "phase": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 1,
+      "Raw_cell": "cross_llama_common_r1_raw-order_on",
+      "Contract_cell": "cross_llama_common_r1_risk-tail_on",
+      "actual_Raw_wall_s": 2170.312397339847,
+      "actual_Contract_wall_s": 2168.7340620318428,
+      "observed_wall_ratio": 1.0007277680263507,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0845809715658064,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9220150696137542,
+      "Contract_time_after_last_arrival_s": 167.67332591495006
+    },
+    {
+      "phase": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 2,
+      "Raw_cell": "cross_llama_common_r2_raw-order_on",
+      "Contract_cell": "cross_llama_common_r2_risk-tail_on",
+      "actual_Raw_wall_s": 2171.4849879429676,
+      "actual_Contract_wall_s": 2176.2770129218698,
+      "observed_wall_ratio": 0.9977980629531769,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0851669560798975,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9215171862700665,
+      "Contract_time_after_last_arrival_s": 175.21627680497704
+    },
+    {
+      "phase": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeat": 3,
+      "Raw_cell": "cross_llama_common_r3_raw-order_on",
+      "Contract_cell": "cross_llama_common_r3_risk-tail_on",
+      "actual_Raw_wall_s": 2274.6492832032964,
+      "actual_Contract_wall_s": 2274.2922619222663,
+      "observed_wall_ratio": 1.000156981267099,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.136721760688438,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.8797227558961881,
+      "Contract_time_after_last_arrival_s": 273.2315258053736
+    },
+    {
+      "phase": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 1,
+      "Raw_cell": "cross_mistral_common_r1_raw-order_on",
+      "Contract_cell": "cross_mistral_common_r1_risk-tail_on",
+      "actual_Raw_wall_s": 2103.6680374792777,
+      "actual_Contract_wall_s": 2101.5401487057097,
+      "observed_wall_ratio": 1.0010125377689685,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0512764552871579,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9512245755821178,
+      "Contract_time_after_last_arrival_s": 100.47941258881701
+    },
+    {
+      "phase": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 2,
+      "Raw_cell": "cross_mistral_common_r2_raw-order_on",
+      "Contract_cell": "cross_mistral_common_r2_risk-tail_on",
+      "actual_Raw_wall_s": 2183.675691145938,
+      "actual_Contract_wall_s": 2188.2397814318538,
+      "observed_wall_ratio": 0.9979142640926995,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0912590766152426,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9163726757734737,
+      "Contract_time_after_last_arrival_s": 187.17904531496106
+    },
+    {
+      "phase": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeat": 3,
+      "Raw_cell": "cross_mistral_common_r3_raw-order_on",
+      "Contract_cell": "cross_mistral_common_r3_risk-tail_on",
+      "actual_Raw_wall_s": 2209.8115144898184,
+      "actual_Contract_wall_s": 2211.456327066757,
+      "observed_wall_ratio": 0.9992562310379784,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.1043200611581694,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9055345774948954,
+      "Contract_time_after_last_arrival_s": 210.39559094986407
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 1,
+      "Raw_cell": "qwen_qwen3_common_r1_raw-order_on",
+      "Contract_cell": "qwen_qwen3_common_r1_risk-tail_on",
+      "actual_Raw_wall_s": 2008.4814135488123,
+      "actual_Contract_wall_s": 2008.5053234132938,
+      "observed_wall_ratio": 0.9999880956927508,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0037083719139477,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9963053292991106,
+      "Contract_time_after_last_arrival_s": 7.444587296401096
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 2,
+      "Raw_cell": "qwen_qwen3_common_r2_raw-order_on",
+      "Contract_cell": "qwen_qwen3_common_r2_risk-tail_on",
+      "actual_Raw_wall_s": 2008.3910930491984,
+      "actual_Contract_wall_s": 2008.4404079969972,
+      "observed_wall_ratio": 0.9999754461483634,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0036632356029984,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9963501347134653,
+      "Contract_time_after_last_arrival_s": 7.3796718801045245
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeat": 3,
+      "Raw_cell": "qwen_qwen3_common_r3_raw-order_on",
+      "Contract_cell": "qwen_qwen3_common_r3_risk-tail_on",
+      "actual_Raw_wall_s": 2019.2649206249043,
+      "actual_Contract_wall_s": 2019.2740428750403,
+      "observed_wall_ratio": 0.9999954824110338,
+      "last_frozen_arrival_s": 2001.0607361168927,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0090972673539822,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9909847468145101,
+      "Contract_time_after_last_arrival_s": 18.21330675814761
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 1,
+      "Raw_cell": "qwen_qwen3_high_r1_raw-order_on",
+      "Contract_cell": "qwen_qwen3_high_r1_risk-tail_on",
+      "actual_Raw_wall_s": 1161.9775144900195,
+      "actual_Contract_wall_s": 1179.7584049659781,
+      "observed_wall_ratio": 0.9849283629587946,
+      "last_frozen_arrival_s": 1087.4991491837893,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.06848590673577,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9359037809445753,
+      "Contract_time_after_last_arrival_s": 92.2592557821888
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 2,
+      "Raw_cell": "qwen_qwen3_high_r2_raw-order_on",
+      "Contract_cell": "qwen_qwen3_high_r2_risk-tail_on",
+      "actual_Raw_wall_s": 1148.9261782546528,
+      "actual_Contract_wall_s": 1151.8707532351837,
+      "observed_wall_ratio": 0.9974436585248296,
+      "last_frozen_arrival_s": 1087.4991491837893,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0564846686243081,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9465352689898858,
+      "Contract_time_after_last_arrival_s": 64.37160405139434
+    },
+    {
+      "phase": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeat": 3,
+      "Raw_cell": "qwen_qwen3_high_r3_raw-order_on",
+      "Contract_cell": "qwen_qwen3_high_r3_risk-tail_on",
+      "actual_Raw_wall_s": 1179.8106505479664,
+      "actual_Contract_wall_s": 1191.1248676888645,
+      "observed_wall_ratio": 0.9905012333737511,
+      "last_frozen_arrival_s": 1087.4991491837893,
+      "maximum_possible_wall_ratio_against_this_Raw_clock": 1.0848842055954346,
+      "Raw_wall_fraction_at_or_before_last_arrival": 0.9217573588428765,
+      "Contract_time_after_last_arrival_s": 103.62571850507516
+    }
+  ],
+  "aggregates": [
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "repeats": 3,
+      "pooled_observed_wall_ratio": 0.9995684336788203,
+      "pooled_maximum_possible_wall_ratio": 1.1021565627780474,
+      "pooled_Raw_wall_fraction_at_or_before_last_arrival": 0.9073121131533654,
+      "Raw_wall_s": 6616.446668486111,
+      "Contract_wall_s": 6619.303336875979,
+      "unavoidable_frozen_arrival_span_s": 6003.182208350678
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "repeats": 3,
+      "pooled_observed_wall_ratio": 0.9993722710684811,
+      "pooled_maximum_possible_wall_ratio": 1.0822851976868566,
+      "pooled_Raw_wall_fraction_at_or_before_last_arrival": 0.9239708739778361,
+      "Raw_wall_s": 6497.155243115034,
+      "Contract_wall_s": 6501.23625720432,
+      "unavoidable_frozen_arrival_span_s": 6003.182208350678
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common",
+      "repeats": 3,
+      "pooled_observed_wall_ratio": 0.9999863578422431,
+      "pooled_maximum_possible_wall_ratio": 1.0054896249569762,
+      "pooled_Raw_wall_fraction_at_or_before_last_arrival": 0.9945403464931714,
+      "Raw_wall_s": 6036.137427222915,
+      "Contract_wall_s": 6036.219774285331,
+      "unavoidable_frozen_arrival_span_s": 6003.182208350678
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high",
+      "repeats": 3,
+      "pooled_observed_wall_ratio": 0.9909049333669294,
+      "pooled_maximum_possible_wall_ratio": 1.0699515936518376,
+      "pooled_Raw_wall_fraction_at_or_before_last_arrival": 0.9346217211443307,
+      "Raw_wall_s": 3490.7143432926387,
+      "Contract_wall_s": 3522.7540258900262,
+      "unavoidable_frozen_arrival_span_s": 3262.497447551368
+    }
+  ],
+  "inputs": [
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r1_v1.json",
+      "sha256": "42c15ad43020777380a0e6603076a8b6d8c7539b2e0c8c7ad905f685ae4a1348"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r2_v1.json",
+      "sha256": "3c85b0a9205e2c6835bf59fb4562bf888adf7344276040a274c340f7d0837dc6"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r3_v1.json",
+      "sha256": "9890241462add6abfad674c44b9489f8b490c7d9232eea88bb850fb4599f6e64"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r1_v1.json",
+      "sha256": "f79af07efa9be2f2ae16e95de88369d77d60103e965a99e73a4ba9edc5ee1837"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r2_v1.json",
+      "sha256": "f1f49b6fc97498e6238e703b18bd1ebcf54f2e84b14e3c56dc6c663f945f523b"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r3_v1.json",
+      "sha256": "2d138844ecd636a34046adadab0ad85e114487ce7024d29e57564f84f1893350"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r1_raw-order_on/completion_v1.json",
+      "sha256": "53f883a5e57b704ff63c49b0c0c4a06e2791e12cb6bba14f00513ac7e32801bf"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r1_raw-order_on/summary.json",
+      "sha256": "13ac25535ecbc4c6e774782acccb7934406bf6eefdf84c6ef367b3fc8020733c"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r1_risk-tail_on/completion_v1.json",
+      "sha256": "c1e514d06ae6c7c263a84ceb2b83d265645b8e69eac485c3392122cae3a45721"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r1_risk-tail_on/summary.json",
+      "sha256": "7df78427cf6086a1b36a115ebbd0629c070ce845ba9b5ba9bd5d5cbd225036cd"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r2_raw-order_on/completion_v1.json",
+      "sha256": "9fb23fe460936354b9049c92cb77f0d7f883a0194ecd38fdafde51a0bf62a33b"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r2_raw-order_on/summary.json",
+      "sha256": "ec4c31387e26876bff361dcdf44e14884eefc2bab269c93e5526bcdb902f175d"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r2_risk-tail_on/completion_v1.json",
+      "sha256": "d2e92260da05195a8a93180f79412da4cf218b98be9e2f742102e26242d19448"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r2_risk-tail_on/summary.json",
+      "sha256": "ca1cb8ff721b01c576c9c38c38a7e79c646edc151335920e806b94888ae53f1b"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r3_raw-order_on/completion_v1.json",
+      "sha256": "df5874fda3e23d74d24aec913602f0d532d8dbf758e685997163ab7110365cde"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r3_raw-order_on/summary.json",
+      "sha256": "e77867a961adbe5d035c10f7770c3264af6c910487acc4cd6b6bff9246d6c874"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r3_risk-tail_on/completion_v1.json",
+      "sha256": "54e529ae72802be01ae11a1b4a761a27a00320d904d498c11479c390631216e2"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_llama_common_r3_risk-tail_on/summary.json",
+      "sha256": "325cf9297c3c17b1d16d7a027a79477e0f08127716e62b8e5c7c89d7084c6adb"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r1_raw-order_on/completion_v1.json",
+      "sha256": "5f868cd69f485c1c9cda373e1df942cb6b1b29102c2aafc89a487a0f622c9501"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r1_raw-order_on/summary.json",
+      "sha256": "bfc5cc3910a4bfdfa3c0cd3637f47bf0d5b7e2e09b8970fee1a2e8d2214a29db"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r1_risk-tail_on/completion_v1.json",
+      "sha256": "75e7be8958738aeb1d35e9683d9cf07e33aed74a283d2098c8030e8caab5d251"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r1_risk-tail_on/summary.json",
+      "sha256": "8c3a52268103be82ee26b27dc233ef3a4e38b467091960fe26296eb0a07029c2"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r2_raw-order_on/completion_v1.json",
+      "sha256": "cfdf94d69957f50c9527d4960a5b59c065ff503a9b3ac28862b52e49981cc813"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r2_raw-order_on/summary.json",
+      "sha256": "7c288aeaaf8d683a976003d0be78886ca39bb35c174760c73af79822babdc48d"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r2_risk-tail_on/completion_v1.json",
+      "sha256": "b3c4589e554a7eb178a6937d714b662509d8700a1454594c93089dace03b1194"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r2_risk-tail_on/summary.json",
+      "sha256": "75b95f5464707862d76cbb4d8c8f57c5d2278f188e3fc457775a01e8e445cf7f"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r3_raw-order_on/completion_v1.json",
+      "sha256": "b8c4197b3e89b0bb0adaf1c5626de9a1de1eb3e45a7227c6040aed15a82d6229"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r3_raw-order_on/summary.json",
+      "sha256": "77dddc0d70615ba3511eec23508e50365255cfed6d0659b07f80a893e039bb75"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r3_risk-tail_on/completion_v1.json",
+      "sha256": "fe4496c4b8dcdc03c6c80af25272a8150a2005e3197ebb7a74707bc23fa71060"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/cross_mistral_common_r3_risk-tail_on/summary.json",
+      "sha256": "c14f353d5815df7c4cf4c48c05f5049fc02fe13d85b5b2069a90baab4ed163fd"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r1_raw-order_on/completion_v1.json",
+      "sha256": "f218c5161b992b8860b6470c5c3194470786affe8f49bf13b6ae03570fc24924"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r1_raw-order_on/summary.json",
+      "sha256": "4fa4423cb94fb8a61f87994976f47b6cc8da4489f8aad246d21705e03eaa1a4d"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r1_risk-tail_on/completion_v1.json",
+      "sha256": "f99f5f3d456945d31482b3634ac26765199fb04e86a64c82e3373a4f7fbcf69f"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r1_risk-tail_on/summary.json",
+      "sha256": "6ec797226d51839ab3b3e3adfa0023033e5ad804ada500785f9b00c701478eab"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r2_raw-order_on/completion_v1.json",
+      "sha256": "5e4fee5395cbf612b046d98dcf58d5908b8e906d5d2b4249bd9670d2f6e0821a"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r2_raw-order_on/summary.json",
+      "sha256": "c00b724039db6c51a90988617711184b9dc5d4ee16617d28f58055f5e826537c"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r2_risk-tail_on/completion_v1.json",
+      "sha256": "2887789946876fe6abbedb3adba72faf7264ef8e8c1d6e9645e1ac3ed61899f7"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r2_risk-tail_on/summary.json",
+      "sha256": "b67d62686d689f4c17193c466c3abc75b066a4906cfe1d9d8111419313166ecf"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r3_raw-order_on/completion_v1.json",
+      "sha256": "7617c01a2e4c90047ccc79391169994555605670c59de116be56d7d9c601b869"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r3_raw-order_on/summary.json",
+      "sha256": "7e3a4c0e7f51fca689f950115ab08f61116a89a363ec02e6b54589a39c0c1c7a"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r3_risk-tail_on/completion_v1.json",
+      "sha256": "b27411f25630a4b9de905b5efecfd15426bfde61638e5f085d14f41fbac54719"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_common_r3_risk-tail_on/summary.json",
+      "sha256": "b1ee9a0cafdba213b960572d223017f2ac260f4b9552e7df5744250eb3dc0875"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r1_raw-order_on/completion_v1.json",
+      "sha256": "c672218ff089b583dbdd6399fbab87244ea4ebf2a6565017d97ce8dfc727aad9"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r1_raw-order_on/summary.json",
+      "sha256": "c0e60716b31950fd39dead7befeaded7027396cb19b855d83fad23775563bd14"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r1_risk-tail_on/completion_v1.json",
+      "sha256": "c82849a458839a0c40197d726b2e248d299cd8b08a66718c4167c64ffa81c9a6"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r1_risk-tail_on/summary.json",
+      "sha256": "cd61898d3d41079e18d8f4c3b48e03dd7549939eda4540a05580cd268022a0d3"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r2_raw-order_on/completion_v1.json",
+      "sha256": "44afdb57ae770d74cbb833fa140b0248782d192aa8c24cbc3b0dd6131e36e419"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r2_raw-order_on/summary.json",
+      "sha256": "4a3f65342d7bb6371a1c26a003e487d66afb52a32696b24338047308a7726412"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r2_risk-tail_on/completion_v1.json",
+      "sha256": "ede868aa280a3373731e4678e946225ef3e43a71b5dd2297fe650ab144348126"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r2_risk-tail_on/summary.json",
+      "sha256": "ddd15594eb747afb600e93d2e07bc5aa8210447ff3fff919eb4183f2346ce36e"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r3_raw-order_on/completion_v1.json",
+      "sha256": "78f9795ae5b552544ca28f6d52745f46517dd03293ea20895a6a8ddc72217d14"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r3_raw-order_on/summary.json",
+      "sha256": "516dbfdb5532a356ec31c9003da1510866d62051998e64d1a800a29fea259021"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r3_risk-tail_on/completion_v1.json",
+      "sha256": "806103f8a3a4128fbff40282bb4e4d403b742722a8cf1d9b7f845025628861ff"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/cells/qwen_qwen3_high_r3_risk-tail_on/summary.json",
+      "sha256": "564cbb85fd8576d93245b0d7a41b2ca7801180d3bb284f7c4e2c580cbabb0764"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_protocol_v1.json",
+      "sha256": "eae1c52f02dbaed409e0b80d05316984a7b5a4adc6072afd8a44cff952ac6421"
+    }
+  ],
+  "entry_sha256": "284f3626076d0077d615b29a3c39728e9334491e5ef7fa47dd13bdbde0be1b6c"
+}

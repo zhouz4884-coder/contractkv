@@ -128,6 +128,21 @@ Qwen三重复阶段12/12现已完成，各load54/972 compiled future、0ID/finis
 
 23:05 UTC更新：主跨模型24/24全部完成，Mistral54/972、Llama48/972 compiled future，六组编译ID/finish检查通过。metadata pooled wall各.999372/.999568；完整Goodput、评分/双向差异、native费用与CI依主分析复核，不能据近1计时比宣布总体正收益。隔离Gate6仍在运行。
 
+### 固定到达时钟对wall倍率的上限
+
+主24完成后的事后CPU解释分析见`results/tsc_task_faithful_open_arrival_20261018/arrival_wall_bound_v1.json`，入口为`tsc_revision_final_arrival_wall_bound_v1.py`。没有增加GPU或修改任何负载/SLO/统计规则。它使用已保存completion/summary与原冻结到达轨迹，记录所有输入SHA，并将summary的原raw哈希与completion中的raw承诺对齐；原始日志的全量时钟核验仍由最终主分析独立完成。
+
+对每个完成全部请求的cell，若最后计划到达为`A`，完整服务wall为`W`，必有`W ≥ A`。同一轨迹下，任何保持该到达协议的优化相对本次Raw时钟`R`的wall倍率都不超过`R/A`。三配对合并时，对应上限为`ΣR/ΣA`。这个上限甚至忽略了最后一个请求的正服务时间，因此是宽松上界；不是观测到的优化、Goodput上界或容量估计。
+
+| 模型/负载 | 已观测合并wall倍率 | 该Raw时钟下wall倍率数学上界 | 最后到达跨度/Raw完整wall |
+|---|---:|---:|---:|
+| Qwen common | 0.999986× | 1.005490× | 99.454% |
+| Qwen high | 0.990905× | 1.069952× | 93.462% |
+| Mistral common | 0.999372× | 1.082285× | 92.397% |
+| Llama common | 0.999568× | 1.102157× | 90.731% |
+
+Qwen common的wall几乎由固定到达跨度限定，即使假设所有请求处理时间为零，也不能在这组已测时钟上得到1.1×或1.6×的wall倍率。99.454%是时钟跨度比例，不表示GPU有99.454%时间空闲；计算可与这段跨度重叠。完整wall仍应如实报告，但固定offered load下应同时看SLO达标数/绝对Goodput、请求级readiness/TPOT/E2E与实际物理工作，不能用“wall约1”单独推断没有减少请求工作，也不能以这个上界抹去Qwen high的实际wall变慢或其他模型没有利用完的余量。本分析不触发更换负载、SLO或额外容量实验。
+
 ## 8. 尚需用本轮数据回答的两个问题
 
 1. 在相同固定到达、相同SLO和完整成本下，新来源的合法复用是否转化为更多实际达标请求？Closed-loop倍率和native token节省不能替它回答。
