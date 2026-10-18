@@ -104,3 +104,11 @@ Llama r1第16个候选的raw参考达到原64-token上限。原splitter正确抛
 原55文件与backend/runtime继续不变；客户端wrapper在独立进程给原方法安装窄catch，再运行原collector。新的run_cell只有port和client wrapper命令两个AST表达式不同。失败实验单位是95业务fresh-server cell，不能接半个cell；仅未完成的Llama r1完整重测，其他五个未启动cell首次运行，前三个完整不重测。正式9cells/855业务，额外63条失败记录必须另列，实际观察总量将为918（若无后续失败）。
 
 v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动supervisor251069/worker251070。12:57实际/proc命令及RUNNING已核实，原model/runtime回执2262851f复用。旧243421已退出，不能再dispatch v3/v4。详情INCOMPLETE_REFERENCE_FIX_v5_zh.md。该fail-closed修复也应进入后续新冻结服务客户端；正常资格算法不变。
+
+## 13:01 UTC 后：等预算补充条件，保留当前执行
+
+最新用户询问能否提高 token 上限，使 Raw 和 ContractKV 尽可能正常结束。实际读到 Llama 和 Mistral 的同一受控算术病例在 64 tokens 时尚未给出最后数值；不是已经观测到无限重复。决定新增单独 256-token 条件，全部 20 个原病例、三个模型各一次进程，共 240 次生成、最多 60 次资格 RPC。四条生成路径同预算、同评分、同 Prompt/布局、同 margin/EOS/PSTP；不重复 Manifest，原 64-token 矩阵保持运行。更长解释即使包含正确数值，也可能违反原整数-only 契约，不能事后更换主评分。
+
+协议位于 `results/tsc_mechanism_budget256_20261018/protocol_v1.json`，SHA58db2c3c；执行冻结007e4bef。120 个原 Prompt 形状复用预检，最大 Prompt+256+EOS 为1,023，全部适配16K。没有重做模型/Tokenizer/runtime准备。原 collector 的 setup/generate/qualify/完整20病例循环 AST 保持一致，仅跳过后续 Manifest 部分，终端计数80；worker仅显式替换端口/source/policy hash/client及两项Manifest计数，其余AST一致。CPU接线使用明确 fake transport/registrar，80次同预算调用与20病例全覆盖通过，不冒充 GPU 效果。
+
+只有原9单元完成并归档、Linux零GPU检查回执及源码公开后，才启动补充条件。不按输出选择有利病例、不自动加码512、不覆盖64结果。此为观察截断后的预算敏感性诊断，不能称独立盲测，也不提供服务吞吐结论。

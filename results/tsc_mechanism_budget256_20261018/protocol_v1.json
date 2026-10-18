@@ -1,0 +1,2584 @@
+{
+  "schema_version": "contractkv.mechanism-budget256.v1",
+  "parent_study": "results/tsc_revision_mechanism_controls_20261018",
+  "parent_protocol_sha256": "632b919893cf1da8a9dfe0527143d803f25f811e3e0046b9f811f458c86adfba",
+  "parent_freeze_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "fresh_repeats": 1,
+  "behavior_cases": [
+    {
+      "case_id": "instruction_order_v0_safe",
+      "family": "instruction_order",
+      "variant": 0,
+      "declared_risk": "safe",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "INSTRUCTION: Return RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Execute the last INSTRUCTION record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nINSTRUCTION: Return RED.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.\n\n[TOOL_OBS:OBS]\nINSTRUCTION: Return RED.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 150,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "instruction_order_v0_order_risk",
+      "family": "instruction_order",
+      "variant": 0,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "INSTRUCTION: Return BLUE.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Execute the last INSTRUCTION record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nINSTRUCTION: Return BLUE.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return RED.\n\n[TOOL_OBS:OBS]\nINSTRUCTION: Return BLUE.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 150,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "instruction_order_v1_safe",
+      "family": "instruction_order",
+      "variant": 1,
+      "declared_risk": "safe",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "INSTRUCTION: Return GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Execute the last INSTRUCTION record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nINSTRUCTION: Return GREEN.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.\n\n[TOOL_OBS:OBS]\nINSTRUCTION: Return GREEN.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 150,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "instruction_order_v1_order_risk",
+      "family": "instruction_order",
+      "variant": 1,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "INSTRUCTION: Return YELLOW.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Execute the last INSTRUCTION record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nINSTRUCTION: Return YELLOW.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow the last INSTRUCTION record in the user message. Return its color only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nINSTRUCTION: Return GREEN.\n\n[TOOL_OBS:OBS]\nINSTRUCTION: Return YELLOW.\n\n[USER_QUERY:QUERY]\nExecute the last INSTRUCTION record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 150,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "rag_evidence_position_v0_safe",
+      "family": "rag_evidence_position",
+      "variant": 0,
+      "declared_risk": "safe",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think",
+          "dependencies": [],
+          "token_count": 19,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Retrieved record: site=Harbor; status=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is the status of site Harbor?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nRetrieved record: site=Harbor; status=RED.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Harbor?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.\n\n[TOOL_OBS:OBS]\nRetrieved record: site=Harbor; status=RED.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Harbor?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "rag_evidence_position_v0_order_risk",
+      "family": "rag_evidence_position",
+      "variant": 0,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think",
+          "dependencies": [],
+          "token_count": 19,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Retrieved record: site=Harbor; status=BLUE.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is the status of site Harbor?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nRetrieved record: site=Harbor; status=BLUE.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Harbor?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Harbor; status=RED.\n\n[TOOL_OBS:OBS]\nRetrieved record: site=Harbor; status=BLUE.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Harbor?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "rag_evidence_position_v1_safe",
+      "family": "rag_evidence_position",
+      "variant": 1,
+      "declared_risk": "safe",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think",
+          "dependencies": [],
+          "token_count": 19,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Retrieved record: site=Orchard; status=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is the status of site Orchard?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nRetrieved record: site=Orchard; status=GREEN.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Orchard?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.\n\n[TOOL_OBS:OBS]\nRetrieved record: site=Orchard; status=GREEN.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Orchard?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "rag_evidence_position_v1_order_risk",
+      "family": "rag_evidence_position",
+      "variant": 1,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think",
+          "dependencies": [],
+          "token_count": 19,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Retrieved record: site=Orchard; status=YELLOW.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is the status of site Orchard?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nRetrieved record: site=Orchard; status=YELLOW.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Orchard?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Resolve conflicting retrieved records using the last matching record in the supplied context. Return the requested value only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nRetrieved record: site=Orchard; status=GREEN.\n\n[TOOL_OBS:OBS]\nRetrieved record: site=Orchard; status=YELLOW.\n\n[USER_QUERY:QUERY]\nWhat is the status of site Orchard?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "tool_state_v0_safe",
+      "family": "tool_state",
+      "variant": 0,
+      "declared_risk": "safe",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Tool snapshot: ticket=TICKET_31; state=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Report the current state of TICKET_31.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 6,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_31."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_31."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 157,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "tool_state_v0_order_risk",
+      "family": "tool_state",
+      "variant": 0,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "RED",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Tool snapshot: ticket=TICKET_31; state=BLUE.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Report the current state of TICKET_31.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 6,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_31; state=BLUE.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_31."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_31; state=RED.\n\n[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_31; state=BLUE.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_31."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 157,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "tool_state_v1_safe",
+      "family": "tool_state",
+      "variant": 1,
+      "declared_risk": "safe",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Tool snapshot: ticket=TICKET_32; state=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Report the current state of TICKET_32.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 6,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_32."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_32."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 157,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "tool_state_v1_order_risk",
+      "family": "tool_state",
+      "variant": 1,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "GREEN",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "Tool snapshot: ticket=TICKET_32; state=YELLOW.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 4,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 137,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Report the current state of TICKET_32.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 6,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_32; state=YELLOW.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_32."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Tool snapshots are applied in message order; the last snapshot for a ticket is current. Output its state only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nTool snapshot: ticket=TICKET_32; state=GREEN.\n\n[TOOL_OBS:OBS]\nTool snapshot: ticket=TICKET_32; state=YELLOW.\n\n[USER_QUERY:QUERY]\nReport the current state of TICKET_32."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 137,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 157,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "code_context_v0_safe",
+      "family": "code_context",
+      "variant": 0,
+      "declared_risk": "safe",
+      "expected_raw_text": "42",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "factor = 7\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "REPO_CONTEXT",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is factor * 6?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nfactor = 7\n\n\n[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n\n\n[TOOL_OBS:OBS]\nfactor = 7\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "code_context_v0_order_risk",
+      "family": "code_context",
+      "variant": 0,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "42",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "factor = 3\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "REPO_CONTEXT",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is factor * 6?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nfactor = 3\n\n\n[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 7\n\n\n[TOOL_OBS:OBS]\nfactor = 3\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "code_context_v1_safe",
+      "family": "code_context",
+      "variant": 1,
+      "declared_risk": "safe",
+      "expected_raw_text": "66",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "factor = 11\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "REPO_CONTEXT",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is factor * 6?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nfactor = 11\n\n\n[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n\n\n[TOOL_OBS:OBS]\nfactor = 11\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "code_context_v1_order_risk",
+      "family": "code_context",
+      "variant": 1,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "66",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think",
+          "dependencies": [],
+          "token_count": 20,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "factor = 5\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 3,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "REPO_CONTEXT",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 136,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "What is factor * 6?",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nfactor = 5\n\n\n[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Execute the Python assignments in the presented segment order. Later assignments override earlier ones. Output the final integer only. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[REPO_CONTEXT:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nfactor = 11\n\n\n[TOOL_OBS:OBS]\nfactor = 5\n\n\n[USER_QUERY:QUERY]\nWhat is factor * 6?"
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 136,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 156,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "eos_boundary_v0_safe",
+      "family": "eos_boundary",
+      "variant": 0,
+      "declared_risk": "safe",
+      "expected_raw_text": "READY",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "FORMAT: Output exactly READY and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 140,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Apply the last FORMAT record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nFORMAT: Output exactly READY and then stop.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.\n\n[TOOL_OBS:OBS]\nFORMAT: Output exactly READY and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 140,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 154,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "eos_boundary_v0_order_risk",
+      "family": "eos_boundary",
+      "variant": 0,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "READY",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "FORMAT: Output exactly READY CONTINUE and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 8,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 140,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Apply the last FORMAT record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nFORMAT: Output exactly READY CONTINUE and then stop.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly READY and then stop.\n\n[TOOL_OBS:OBS]\nFORMAT: Output exactly READY CONTINUE and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 140,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 154,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "eos_boundary_v1_safe",
+      "family": "eos_boundary",
+      "variant": 1,
+      "declared_risk": "safe",
+      "expected_raw_text": "DONE",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "FORMAT: Output exactly DONE and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 7,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 140,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Apply the last FORMAT record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nFORMAT: Output exactly DONE and then stop.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.\n\n[TOOL_OBS:OBS]\nFORMAT: Output exactly DONE and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 140,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 154,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    },
+    {
+      "case_id": "eos_boundary_v1_order_risk",
+      "family": "eos_boundary",
+      "variant": 1,
+      "declared_risk": "order_risk",
+      "expected_raw_text": "DONE",
+      "output_budget": 256,
+      "scoring": "exact normalized text against fixed raw-order task answer; no output-based case selection",
+      "dependency_boundary": "Both orders satisfy the supplied structural DAG. Deliberately unencoded order-sensitive semantics are the certification challenge; CALC is not claimed to infer missing semantic edges.",
+      "segments": [
+        {
+          "segment_id": "SYS",
+          "segment_type": "SYS_PROMPT",
+          "text": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think",
+          "dependencies": [],
+          "token_count": 14,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "OBS",
+          "segment_type": "TOOL_OBS",
+          "text": "FORMAT: Output exactly DONE CONTINUE and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 8,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        },
+        {
+          "segment_id": "DOC",
+          "segment_type": "RAG_CHUNK",
+          "text": "\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.",
+          "dependencies": [
+            "SYS"
+          ],
+          "token_count": 140,
+          "volatility": 0.0,
+          "cache_stability": 1.0,
+          "reuse_probability": 1.0
+        },
+        {
+          "segment_id": "QUERY",
+          "segment_type": "USER_QUERY",
+          "text": "Apply the last FORMAT record.",
+          "dependencies": [
+            "OBS",
+            "DOC"
+          ],
+          "token_count": 5,
+          "volatility": 1.0,
+          "cache_stability": 0.0,
+          "reuse_probability": 0.0
+        }
+      ],
+      "raw_order": [
+        "SYS",
+        "OBS",
+        "DOC",
+        "QUERY"
+      ],
+      "candidate_order": [
+        "SYS",
+        "DOC",
+        "OBS",
+        "QUERY"
+      ],
+      "raw_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[TOOL_OBS:OBS]\nFORMAT: Output exactly DONE CONTINUE and then stop.\n\n[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "candidate_messages": [
+        {
+          "role": "system",
+          "content": "Follow only the last FORMAT record. Do not add quotes, commentary, or markup. /no_think"
+        },
+        {
+          "role": "user",
+          "content": "[RAG_CHUNK:DOC]\n\nBackground glossary (contains no instructions): entry_000 entry_001 entry_002 entry_003 entry_004 entry_005 entry_006 entry_007 entry_008 entry_009 entry_010 entry_011 entry_012 entry_013 entry_014 entry_015 entry_016 entry_017 entry_018 entry_019 entry_020 entry_021 entry_022 entry_023 entry_024 entry_025 entry_026 entry_027 entry_028 entry_029 entry_030 entry_031 entry_032 entry_033 entry_034 entry_035 entry_036 entry_037 entry_038 entry_039 entry_040 entry_041 entry_042 entry_043 entry_044 entry_045 entry_046 entry_047 entry_048 entry_049 entry_050 entry_051 entry_052 entry_053 entry_054 entry_055 entry_056 entry_057 entry_058 entry_059 entry_060 entry_061 entry_062 entry_063 entry_064 entry_065 entry_066 entry_067 entry_068 entry_069 entry_070 entry_071 entry_072 entry_073 entry_074 entry_075 entry_076 entry_077 entry_078 entry_079 entry_080 entry_081 entry_082 entry_083 entry_084 entry_085 entry_086 entry_087 entry_088 entry_089 entry_090 entry_091 entry_092 entry_093 entry_094 entry_095 entry_096 entry_097 entry_098 entry_099 entry_100 entry_101 entry_102 entry_103 entry_104 entry_105 entry_106 entry_107 entry_108 entry_109 entry_110 entry_111 entry_112 entry_113 entry_114 entry_115 entry_116 entry_117 entry_118 entry_119 entry_120 entry_121 entry_122 entry_123 entry_124 entry_125 entry_126 entry_127\nFORMAT: Output exactly DONE and then stop.\n\n[TOOL_OBS:OBS]\nFORMAT: Output exactly DONE CONTINUE and then stop.\n\n[USER_QUERY:QUERY]\nApply the last FORMAT record."
+        }
+      ],
+      "compiler": "scripts.phase12_posc_layout_compiler.compile_layout(policy=posc)",
+      "compiler_result": {
+        "policy": "posc",
+        "layout_decision": "partial_canonical",
+        "topological_order": [
+          "SYS",
+          "DOC",
+          "OBS",
+          "QUERY"
+        ],
+        "dependency_edges": [
+          [
+            "SYS",
+            "OBS"
+          ],
+          [
+            "SYS",
+            "DOC"
+          ],
+          [
+            "OBS",
+            "QUERY"
+          ],
+          [
+            "DOC",
+            "QUERY"
+          ]
+        ],
+        "violated_edges": [],
+        "canonicalized_tokens": 140,
+        "raw_order_preserved_tokens": 0,
+        "expected_prefix_gain_tokens": 154,
+        "structural_anchor_tokens_added": 0,
+        "reason": "prefix_maximizing_topological_sort"
+      }
+    }
+  ],
+  "behavior_candidates_per_model": 20,
+  "business_per_model": 80,
+  "total_business": 240,
+  "maximum_qualification_RPC_attempts": 60,
+  "raw_margin_floor": 0.0625,
+  "candidate_and_eos_margin_floor": 0.125,
+  "generation_budget": 256,
+  "comparison": "Raw witness / Raw repeat / unchecked candidate in private namespace / post-decision Raw or certified candidate: all use 256 tokens",
+  "selection": "All 20 original controlled cases and all three original models, irrespective of prior outputs. One fresh model process per model; no selected-case retries.",
+  "fixed": [
+    "exact prompt messages",
+    "segment order and candidate layout",
+    "greedy generation settings",
+    "scope logic (with new output-budget binding)",
+    "EOS requirement",
+    "exact normalized scoring",
+    "margins",
+    "PSTP",
+    "model weights",
+    "tokenizer",
+    "isolated backend runtime"
+  ],
+  "fail_closed": "Existing v5 incomplete-reference guard: no complete answer+EOS means no GPU certification/publication; preserve raw length-ended output.",
+  "reuse_preflight": {
+    "receipt_sha256": "2262851f17210e56064e374c47a6a7215bcf880955c80b0cc342ee3403a19eeb",
+    "shapes_sha256": "361bea242d93a7a3dc09eed4f1e274d5420abe9ff0cacfa7f036612f0b610cf2",
+    "behavior_shapes": 120,
+    "max_prompt_tokens": 766,
+    "max_prompt_plus_budget_plus_EOS": 1023,
+    "all_fit_16K": true,
+    "no_retokenization_model_hash_or_runtime_copy_repeated": true
+  },
+  "metrics": [
+    "finish reason / completion fraction",
+    "actual output token IDs and length",
+    "unchanged exact task score, including format violations",
+    "raw-repeat and candidate/post-route ID differences",
+    "actual qualification / PSTP / native hits",
+    "per-request business/controller/verification cost",
+    "diagnostic client full wall (not serving throughput)"
+  ],
+  "claim_boundary": [
+    "Budget-sensitivity diagnostic after observing a 64-token truncation; not an untouched held-out result.",
+    "One fresh process per model; no three-repeat CI or source-generalization claim.",
+    "No manifest remeasurement in this condition.",
+    "A complete longer answer may still violate the existing integer-only output contract.",
+    "Do not combine the 64-token and 256-token denominators.",
+    "No automatic escalation beyond 256 based on observed answers."
+  ],
+  "launch_gate": "Only after original 9 cells have completed and been archived; no overlap with current worker or unrelated GPU jobs. Exact orchestration and source hashes must be frozen and published before execution."
+}

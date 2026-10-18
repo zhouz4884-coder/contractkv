@@ -1,0 +1,54 @@
+{
+  "schema_version": "contractkv.mechanism-budget256-freeze.v1",
+  "parent_study": "results/tsc_revision_mechanism_controls_20261018",
+  "protocol_sha256": "58db2c3c688df83abdc0534765ed497c6908b6e7e3b7f72b18286a2229d069c1",
+  "parent_freeze_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+  "parent_preflight_receipt_sha256": "2262851f17210e56064e374c47a6a7215bcf880955c80b0cc342ee3403a19eeb",
+  "parent_collector_sha256": "b88225642d4f57d4386a28c7e11f00877ff3280028ad2e8f3d363db1d41248b1",
+  "parent_repair_manifest_sha256": "0b8a75cda86550a85dbb46fe74c684b34313727a8b13d3d5288602bca6ff870d",
+  "source_files": [
+    {
+      "path": "scripts/tsc_revision_budget256_client_v1.py",
+      "sha256": "f24809273f6da1e7cde838d661859dfba04162e5799e1785469cc6b896a970c6"
+    },
+    {
+      "path": "scripts/tsc_revision_budget256_worker_v1.py",
+      "sha256": "db4fd133cde25b613600e958be4f1166b6f43c1b90dbe2bb311ec891f0c943a1"
+    },
+    {
+      "path": "scripts/tsc_revision_incomplete_reference_fix_v5.py",
+      "sha256": "24fe7c1e4621162017436f91da37f51928555dcf5d092161c0602b1053edaf03"
+    },
+    {
+      "path": "scripts/tsc_revision_mechanism_worker_v3.py",
+      "sha256": "f53e5cf4c003da5eee88bf846fd7cb7e82637d984d54031e1839fc8b71d3c3a0"
+    },
+    {
+      "path": "scripts/tsc_tableIII_fullcost_worker_v3.py",
+      "sha256": "468710157930ecd2338012be90b89f4d5e7ff59f22d03b659fb432cd5646fa78"
+    },
+    {
+      "path": "results/tsc_mechanism_budget256_20261018/protocol_v1.json",
+      "sha256": "58db2c3c688df83abdc0534765ed497c6908b6e7e3b7f72b18286a2229d069c1"
+    }
+  ],
+  "client_AST_proof": {
+    "unchanged_setup_and_complete_behavior_loop_AST": true,
+    "removed_section": "Manifest only (already measured in parent study)",
+    "prefix_AST_sha256": "61462902b983a45953c59a0418d20f9905b736718070b73cd60b205dd1d69ae2"
+  },
+  "worker_AST_proof": {
+    "changed_assignments": [
+      "port",
+      "source",
+      "policy_hash",
+      "client"
+    ],
+    "changed_manifest_count_assertions": 2,
+    "remaining_function_AST_identical": true,
+    "adapted_function_AST_sha256": "d1cad73294a0a6ad26ff35250967af22d939c038d094f9abeeb635073b4953a3"
+  },
+  "entry_point": "scripts/tsc_revision_budget256_worker_v1.py",
+  "only_scientific_variable": "Output budget 64 -> 256; the original 20 behavior cases all included, Manifest not repeated",
+  "new_GPU_requests_at_freeze": 0
+}
