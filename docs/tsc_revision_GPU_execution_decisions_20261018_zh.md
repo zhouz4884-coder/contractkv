@@ -78,3 +78,17 @@ CPU新增两项完成记录，不启动模型：
 负结果保留：旧模式Qwen RepoBench389/r3/turn1的次级分数0.72到0.38在compiled路由；另两下降在Raw回退。原sanity proxy未标出前者；Llama的三个proxy下降在QA F1两路均0的同一来源。评分分列、协议分列。三重复文本检查不能唯一归因，不将其一律称模型噪声，也不据它调整新正式参数。
 
 后两批一次CPU预检完成，实际回执2262851f在0f1ef20公开后，12:22启动原v3 worker，supervisor236905/worker236906。见GPU_LAUNCH_STATUS_20261018.md。共用9cells而非18；第一wave状态文字未及时更新，但实际execute PID及两卡EngineCore已核实，不重复启动。没有重做全权重SHA、原9/19 CPU或冻结病例。
+
+## 12:30–12:38 UTC：诊断固定端口复用修复
+
+第一wave两个cell完整完成，190次业务生成。第二wave在模型/客户端启动前因固定8990/8991端口bind失败退出；Llama r1和Qwen r2的旧attempt1仅为空目录。没有GPU输出被丢弃。该wave复用端口问题在启动前审查中漏检，现已单列基础设施修复。
+
+新continuation_v4复用两个完成cell的18个文件，只执行剩余7个，端口9202至9208。原run_cell仅一个端口赋值AST表达式变化，其他AST相同，原55文件、collector/backend、病例、模型、margin/scope/评分与原runtime预检均不变。原model/runtime回执2262851f直接复用，没有重做全SHA、runtime副本或tokenizer/窗口预检。
+
+repair SHA8d3bd864与CPU端口/AST回执0ee814b5在Git d4914ec公开后，12:37实际启动supervisor243420/worker243421；12:38其真实命令、RUNNING状态与两卡EngineCore已核对。旧236905/236906已退出，禁止重新执行旧全9cells。以PORT_CONTINUATION_v4_zh.md及实际新PID为恢复依据。
+
+## 后续实现的只读接线提醒
+
+保真adapter_v2的RENDER_BINDINGS覆盖原live、R1R、R4闭环及candidate_plan，但不覆盖r4_live_fixed模块本地导入的_ordered_text。新增保真固定到达wrapper在正式冻结前必须显式把该本地引用绑定到同一保真renderer，并用预检实际Prompt IDs验证Raw和compiled均一致。否则Raw保真而compiled未来又插回历史chunk heading。此处目前仅做源码审计，没有修改既有协议、产生新数据或调节scope。
+
+新增服务桥梁的到达/SLO标定必须来自新保真Raw-only数据；旧R4固定到达5/54继续原样保留，不重复、不当作新服务桥梁。不同协议的结果不能合并。公开实验报告/全目标完成边界仍按五批目标，当前只完成第一批，第二/三批实际运行中。
