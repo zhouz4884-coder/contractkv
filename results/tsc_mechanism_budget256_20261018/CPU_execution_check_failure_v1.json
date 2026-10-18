@@ -1,0 +1,33 @@
+{
+  "status": "CPU_CHECK_FAILED_BEFORE_ANY_GPU_REQUEST",
+  "reason": "Cross-Python AST diagnostic hash differs; local 3.13 vs remote 3.10 requires portable AST serialization",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:31:56) [GCC 14.3.0]",
+  "actual_worker_AST_proof": {
+    "changed_assignments": [
+      "port",
+      "source",
+      "policy_hash",
+      "client"
+    ],
+    "changed_manifest_count_assertions": 2,
+    "remaining_function_AST_identical": true,
+    "adapted_function_AST_sha256": "530ddb7e16d7b9bb7cd5e939e8895fa260d2787cd4682ee7efae7d8cc0342c77"
+  },
+  "actual_client_AST_proof": {
+    "unchanged_setup_and_complete_behavior_loop_AST": true,
+    "removed_section": "Manifest only (already measured in parent study)",
+    "prefix_AST_sha256": "04e961c53f986a0481d584c085198392d531669d01f745baf58373f5f20e87e8"
+  },
+  "expected": {
+    "changed_assignments": [
+      "port",
+      "source",
+      "policy_hash",
+      "client"
+    ],
+    "changed_manifest_count_assertions": 2,
+    "remaining_function_AST_identical": true,
+    "adapted_function_AST_sha256": "d1cad73294a0a6ad26ff35250967af22d939c038d094f9abeeb635073b4953a3"
+  },
+  "new_GPU_requests": 0
+}
