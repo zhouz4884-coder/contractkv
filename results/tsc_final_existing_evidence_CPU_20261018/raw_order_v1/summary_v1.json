@@ -1,0 +1,236 @@
+{
+  "schema_version": "contractkv.five-family-actual-order-CPU.v1",
+  "requests": 3750,
+  "future_requests": 3375,
+  "families": [
+    {
+      "family": "RULER",
+      "cohort": "warm",
+      "requests": 75,
+      "actual_order_patterns": {
+        "SYS_PROMPT > SYNTHETIC_CONTEXT > USER_QUERY": 75
+      },
+      "first_declared_mutable_type_counts": {
+        "USER_QUERY": 75
+      },
+      "requests_with_later_stable_body": 0,
+      "history_message_counts": {
+        "0": 75
+      }
+    },
+    {
+      "family": "RULER",
+      "cohort": "future",
+      "requests": 675,
+      "actual_order_patterns": {
+        "SYS_PROMPT > CHAT_HISTORY > SYNTHETIC_CONTEXT > USER_QUERY": 675
+      },
+      "first_declared_mutable_type_counts": {
+        "CHAT_HISTORY": 675
+      },
+      "requests_with_later_stable_body": 675,
+      "history_message_counts": {
+        "2": 75,
+        "4": 75,
+        "6": 75,
+        "8": 75,
+        "10": 75,
+        "12": 75,
+        "14": 75,
+        "16": 75,
+        "18": 75
+      }
+    },
+    {
+      "family": "HotpotQA",
+      "cohort": "warm",
+      "requests": 75,
+      "actual_order_patterns": {
+        "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 75
+      },
+      "first_declared_mutable_type_counts": {
+        "USER_QUERY": 75
+      },
+      "requests_with_later_stable_body": 0,
+      "history_message_counts": {
+        "0": 75
+      }
+    },
+    {
+      "family": "HotpotQA",
+      "cohort": "future",
+      "requests": 675,
+      "actual_order_patterns": {
+        "SYS_PROMPT > CHAT_HISTORY > RAG_CHUNK > USER_QUERY": 675
+      },
+      "first_declared_mutable_type_counts": {
+        "CHAT_HISTORY": 675
+      },
+      "requests_with_later_stable_body": 675,
+      "history_message_counts": {
+        "2": 75,
+        "4": 75,
+        "6": 75,
+        "8": 75,
+        "10": 75,
+        "12": 75,
+        "14": 75,
+        "16": 75,
+        "18": 75
+      }
+    },
+    {
+      "family": "NarrativeQA",
+      "cohort": "warm",
+      "requests": 75,
+      "actual_order_patterns": {
+        "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 75
+      },
+      "first_declared_mutable_type_counts": {
+        "USER_QUERY": 75
+      },
+      "requests_with_later_stable_body": 0,
+      "history_message_counts": {
+        "0": 75
+      }
+    },
+    {
+      "family": "NarrativeQA",
+      "cohort": "future",
+      "requests": 675,
+      "actual_order_patterns": {
+        "SYS_PROMPT > CHAT_HISTORY > RAG_CHUNK > USER_QUERY": 675
+      },
+      "first_declared_mutable_type_counts": {
+        "CHAT_HISTORY": 675
+      },
+      "requests_with_later_stable_body": 675,
+      "history_message_counts": {
+        "2": 75,
+        "4": 75,
+        "6": 75,
+        "8": 75,
+        "10": 75,
+        "12": 75,
+        "14": 75,
+        "16": 75,
+        "18": 75
+      }
+    },
+    {
+      "family": "Qasper",
+      "cohort": "warm",
+      "requests": 75,
+      "actual_order_patterns": {
+        "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 75
+      },
+      "first_declared_mutable_type_counts": {
+        "USER_QUERY": 75
+      },
+      "requests_with_later_stable_body": 0,
+      "history_message_counts": {
+        "0": 75
+      }
+    },
+    {
+      "family": "Qasper",
+      "cohort": "future",
+      "requests": 675,
+      "actual_order_patterns": {
+        "SYS_PROMPT > CHAT_HISTORY > RAG_CHUNK > USER_QUERY": 675
+      },
+      "first_declared_mutable_type_counts": {
+        "CHAT_HISTORY": 675
+      },
+      "requests_with_later_stable_body": 675,
+      "history_message_counts": {
+        "2": 75,
+        "4": 75,
+        "6": 75,
+        "8": 75,
+        "10": 75,
+        "12": 75,
+        "14": 75,
+        "16": 75,
+        "18": 75
+      }
+    },
+    {
+      "family": "RepoBench",
+      "cohort": "warm",
+      "requests": 75,
+      "actual_order_patterns": {
+        "SYS_PROMPT > USER_QUERY > REPO_CONTEXT > CODE_PREFIX": 75
+      },
+      "first_declared_mutable_type_counts": {
+        "USER_QUERY": 75
+      },
+      "requests_with_later_stable_body": 75,
+      "history_message_counts": {
+        "0": 75
+      }
+    },
+    {
+      "family": "RepoBench",
+      "cohort": "future",
+      "requests": 675,
+      "actual_order_patterns": {
+        "SYS_PROMPT > CHAT_HISTORY > USER_QUERY > REPO_CONTEXT > CODE_PREFIX": 675
+      },
+      "first_declared_mutable_type_counts": {
+        "CHAT_HISTORY": 675
+      },
+      "requests_with_later_stable_body": 675,
+      "history_message_counts": {
+        "2": 75,
+        "4": 75,
+        "6": 75,
+        "8": 75,
+        "10": 75,
+        "12": 75,
+        "14": 75,
+        "16": 75,
+        "18": 75
+      }
+    }
+  ],
+  "stored_source_segment_order_patterns": {
+    "RULER": {
+      "SYS_PROMPT > SYNTHETIC_CONTEXT > USER_QUERY": 25
+    },
+    "HotpotQA": {
+      "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 25
+    },
+    "NarrativeQA": {
+      "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 25
+    },
+    "Qasper": {
+      "SYS_PROMPT > RAG_CHUNK > USER_QUERY": 25
+    },
+    "RepoBench": {
+      "REPO_CONTEXT > CODE_PREFIX > USER_QUERY": 25
+    }
+  },
+  "actual_Raw_files": [
+    {
+      "path": "results/tsc_tableI_remeasurement_20261018/cells/raw_native_r1/raw.jsonl.gz",
+      "sha256": "8094638e6c495bfe75f16ec363c097248d3c4bcaaf26281a9280124eccfa1ba8",
+      "bytes": 42435219
+    },
+    {
+      "path": "results/tsc_tableI_remeasurement_20261018/cells/raw_native_r2/raw.jsonl.gz",
+      "sha256": "fd14c97b856c26cc62519f2d13682b3f2e47aef6a497df620d7676d94b4c6c15",
+      "bytes": 42434640
+    },
+    {
+      "path": "results/tsc_tableI_remeasurement_20261018/cells/raw_native_r3/raw.jsonl.gz",
+      "sha256": "19d1d959f284ed7b69a8e71c3c97bbd40a3b7fc32d9e86162e30c1686f57be46",
+      "bytes": 42435436
+    }
+  ],
+  "source_freeze_sha256": "a9a1788b6745a194a29c6c1a1edfea679fbe9351c6b8e06483bc59741c5d4bf3",
+  "entry_sha256": "d866b0c8bbaf827e243040093ee5ceb77d3ec411980dfd753f2553b5460c4729",
+  "new_GPU_requests": 0,
+  "actual_saved_character_spans_not_retokenized_inference": true,
+  "boundary": "Independent Oct18 five-family structural survey, not recovered July TableI order or a production frequency survey. Declared mutable location is not a claim that every history byte changes at every turn."
+}

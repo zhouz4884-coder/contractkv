@@ -31,6 +31,8 @@ def main(root):
         assert read(study/'formal'/f'{phase}_exit_v1.json')['returncode']==0
     assert read(study/'calibration_analysis_v1/summary_v1.json')['complete_cells']==7
     formal=read(study/'formal_analysis_v1/summary_v1.json');assert formal['complete_cells']==30
+    integrity=read(study/'post_execution_integrity_v1.json')
+    assert integrity['all_checked_frozen_sources_and_runtime_match'] and integrity['execution_cells']==37
     assert formal['measured_business_requests']==10800
     assert all(read(p/'completion_v1.json')['status']=='complete' for p in (study/'formal/cells').iterdir())
     selected=[]
@@ -41,6 +43,10 @@ def main(root):
         if path.suffix.lower() not in {'.json','.jsonl','.py','.csv','.log','.md','.txt','.sh'} and rel.parts[0]!='preformal_infrastructure_versions_v1':continue
         selected.append(path)
     selected += sorted((root/'scripts').glob('tsc_revision_final_*.py'))
+    cpu=root/'results/tsc_final_existing_evidence_CPU_20261018'
+    for path in cpu.rglob('*'):
+        if path.is_file() and not path.is_symlink() and (path.suffix.lower() in {'.json','.jsonl','.csv','.md','.py','.jinja2'} or path.name=='LICENSE'):
+            selected.append(path)
     selected += [root/'docs/tsc_revision_final_strengthening_objective_20261018.md',
         root/'docs/tsc_revision_final_serving_calibration_design_20261018_zh.md',root/'docs/tsc_revision_GPU_execution_decisions_20261018_zh.md']
     selected=sorted(set(selected))

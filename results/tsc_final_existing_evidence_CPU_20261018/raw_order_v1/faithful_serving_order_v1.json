@@ -1,0 +1,1077 @@
+{
+  "schema_version": "contractkv.serving-order-CPU.v1",
+  "condition": "faithful_bridge",
+  "sources": 6,
+  "rendered_requests": 60,
+  "input_sha256": "bc7bbc5ac6d827f4cb6f132a8c7891955f3331b25107188357c0b3cc68a9c2a8",
+  "protocol_sha256": "2574140a4970abb3cc3de47d397614d57f99914cd20a9d4472b8a3258729dc05",
+  "imported_frozen_sources": [
+    {
+      "path": "scripts/contractkv_pstp.py",
+      "sha256": "df655b668e78f72767e40bef0910e09200514058269d3146035dcd51f092f41d"
+    },
+    {
+      "path": "scripts/phase12_posc_layout_compiler.py",
+      "sha256": "123f2352965f3d6c2addabe6019e5a44aa49ce9e5afece01117bb556ac032478"
+    },
+    {
+      "path": "scripts/phase12_prefix_cache_ab.py",
+      "sha256": "3aa96b47cac2a1e32feef892675906d12c1e846f664de17cf772bc8f487c2597"
+    },
+    {
+      "path": "scripts/phase12_task_quality_sanity.py",
+      "sha256": "9391b5f8b186ae32cfdbfe62b632b4bed4f68965db3137805fdf9c2d2ee26eaa"
+    },
+    {
+      "path": "scripts/phase12e_cache_aware_posc.py",
+      "sha256": "a8e36563b6e725a865a28d91d356368830e3b5759e88076c39a5859bdac33e6d"
+    },
+    {
+      "path": "scripts/phase12e_multiturn_trajectory_builder.py",
+      "sha256": "a2127874b16b2a29a88a1f3786a390a7fd0fadf543eeecef0fbb5e8c751c5187"
+    },
+    {
+      "path": "scripts/phase12f_real_vllm_caposc_replay.py",
+      "sha256": "857713f21b2f53d81aaf7a759b7fc40de4810528fbecad21bea50ee4b1a683fc"
+    },
+    {
+      "path": "scripts/phase13b_fresh_policy_quality_replay.py",
+      "sha256": "a9f1f694f20559e7dd50ff780141b438ca5fef541099b53d9213ad904f8d7a63"
+    },
+    {
+      "path": "scripts/contractkv_transaction.py",
+      "sha256": "aa70a13fad31a691fe963eff50226979c549a7ee9d4c7d8fab229ca753b12776"
+    },
+    {
+      "path": "scripts/contractkv_verifier.py",
+      "sha256": "1577682ac36cf5756a84335a768e83701809cb050b30aa057fd0844a2489c572"
+    },
+    {
+      "path": "scripts/phase16r_verifier_live.py",
+      "sha256": "62983637d6582bdd4ab4097a3fc348ccc813672fc4b434ad4e307e6515853105"
+    },
+    {
+      "path": "scripts/phase17_live_common.py",
+      "sha256": "298f92081ca467730af1669f8f62328e1c5310f3de60b98d11bef182b66e01ae"
+    },
+    {
+      "path": "scripts/phase20a_official_quality.py",
+      "sha256": "38695ddbe7b281c4b887959e24ec546c791568fea8c50f909da030a0baae2f51"
+    },
+    {
+      "path": "scripts/phase22_llama_layout_ladder.py",
+      "sha256": "15fc372c5155ecf2ac74938c94e531df7ebdb850db02ff5684f0a2d3f22536a6"
+    },
+    {
+      "path": "scripts/tsc_revision_live.py",
+      "sha256": "3339cfec899aa64c850b96a4292f592e0b22fe8853de002663916be4872c1dc9"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_adapter.py",
+      "sha256": "d136957b1d385f137d409b43738e0c6579771f8e4a82bb613c4f5b31cf7b7ae2"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_fidelity_adapter_v2.py",
+      "sha256": "d1a5ca1fe67d07a6e24ba72e18dc9650d9bb62d9234b9b728f0c552d1afb271c"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_query_scope.py",
+      "sha256": "17575b36804663bafcc6d1324be32ba5b86b6cd9051a354298eac7800abc9c2b"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_business_stream.py",
+      "sha256": "7a59915ea6ba6dc4550d4204d14fccb46a109c6d9148555f3519c5ccc12124a2"
+    },
+    {
+      "path": "scripts/tsc_revision_r1r_live.py",
+      "sha256": "25521ad831b98f40b2a5c5235c217681b888301fdb94beedc3b043cbd23bb057"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_business_stream.py",
+      "sha256": "148d3310e32edb1480d3212db39611ec11ec286037be3e4b8f6bc9234dde0c4e"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_candidate_plan.py",
+      "sha256": "ea491d6a63a5a9b5ad2709eb762dfedba4739b0048e9e13cbb9765b256f3895b"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_admission.py",
+      "sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252"
+    },
+    {
+      "path": "scripts/tsc_revision_r3_output_contract.py",
+      "sha256": "8529cd314d79aa7c854101c75660a2c725f6fc5eb6a944399043ce1730dd8785"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_policy.py",
+      "sha256": "c809f5f4f2c7e17c34d7fcf284d2559c44830fdacae39426df3498f67f86aa29"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_policy_v2.py",
+      "sha256": "03820f79fb6ec125b321e05c9809c916eee20589cb993bf2684c45702c5f6c8d"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_cost_policy.py",
+      "sha256": "c5d53b76d508e3ea5adb0770b635ae0dda0d5e58ac8a9c01075b6295945f3431"
+    },
+    {
+      "path": "scripts/tsc_revision_r2_benefit_policy.py",
+      "sha256": "4add592dd07b31b73397219b93eadce45526998f9585852d765080484e2c8d2f"
+    },
+    {
+      "path": "scripts/tsc_revision_r4_live.py",
+      "sha256": "93cb38e6025bcc0e34604641e3e97379fe1eb075a24a047c682998803fa50474"
+    }
+  ],
+  "family_order_patterns": {
+    "HotpotQA": {
+      "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY": 30
+    },
+    "RepoBench": {
+      "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY": 30
+    }
+  },
+  "empty_node_counts": {
+    "SYS_PROMPT": 30
+  },
+  "protected_field_text_checks": {
+    "USER_QUERY": 60,
+    "CODE_PREFIX": 30
+  },
+  "requests": [
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "6f2467e0cdd231fded63c9bd78f6c15d5ccdb8b44358d8fbdaf045b11e7b0437",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "4054efcd34ab9185cc95bef6b7adce58b1b42e914feda99e8f62a1e37e317466",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "f5c70b4d092edca2da5cbe3c1cfe6533d0432064c0afdb53229d5a348978059f",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "a2890b18b5c51633ec12a2439df43bebb7af730b9a495687ff96b6a353250ce8",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "2d37073adbabe6c5e80f56ef5035d6bd0a06a84f623cb6f0827bb73b229dfae7",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "c3e201d2d033942f5d19b13a93c3d16fc7e0600061e80a10b912b3658a6a533b",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "249cd72b5e2ae467b6ed48038b9080c388305b445087451b852aac772489d4b9",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "86366c52a7351f7982132dd3777c926e4c5af7f687c6c2d6cb5d83b056124b01",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "b302eb884827423cba3b8ce8f1c8f2037bf5345701a2a7d9f3665be120359974",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "81b3fbd7c46ee922fcb66466cf2879714f845dbde5980ce84fe84afd261f01fb",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "2800e71877012166bf166c11998d37097acac7ed1802a5875f164cb3cde9b34f",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "4ffa74288011cee9167bcaf4abeface039278055f92e289b2f4d7377721eecab",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "33fa2c5594cc8bd483885960f195e3cecd118baa30cd63856e05f46eaac95944",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "cba7a26f54e76923334b08ff7e89933ac4ccd5599c852373d272390ebf3ec7ec",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "730020f0d6cd7ad2719dcbf0cffd3d172280d04a2b6b495143029c75612e1207",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "1b758b03c4b572b820cfccd0326a62f53f2a97bb2a0ebb9812872baad318088a",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "d5d37acffcc5f7aad2341a371f2a5c5efeafb4944a727fd6f5ecb97967d51037",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "4be4a6fb0978e0b5124435dbc0ccaf315f936f31051bc6eace7b0834ff297fbe",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "57021842728ddd842d66bfdf257ff92d2cce757c2ab9a3e533afbb10d24c5abb",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:131",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "f31386554244aeaa95d40a0a100bcf9abd34ba62ca6b6ccbbfa694b17f7741d2",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "9eb49602c6119ffb784ecf6244eb92be550318ba532300544bf80d40992924b4",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "f8f6a2d16c7085e525636c0671731ba6a95f35fbe87ca45cd5d8dd1f85743741",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "bafd4e29ff8d53a5c3a3a1f3bd209e172fae1514080864f27aac1478bafb7cf1",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "c2544d00bd51de51a1a91261b136d040830daeaaccc5a197dcaaf90d4bfb63f8",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "0ae97b9cb390009361274a21623a6dd8585a71977831247a9bf0bb0195380ff6",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "156e88efa0416e7f6b01ad733ce6161e196be642c720b555209359ca79900c98",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "7ccfbed3b2de32a7ae75555a17d5185a699bf3d53bd9a5d401975af854d220ff",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "72e791a80014846f153b6c91b80fee2bb3fdd69ca62d67ca26acff26ccdc9148",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "b5a928e67eaac70371eef6b814d9409a25658e8213d7c09344ff9b3aa48d9bf6",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "HotpotQA",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > RAG_CHUNK > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "529bcb24e8fe055e7b28007311665edd49b8c68853db2933a08d0616df225e7f",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "ef0b1fadcabc2d49d11c4805121ec68f2eac0495161a6016992637de92b68227",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "d40c09e0321859e2bdb6ffc5d26a243c14f5e3d559fa052ffe3a460740173e47",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "b357d58c6d284a48b8b08cf7bd3ee23660d24e9ba660690d51f545e1774b3a6b",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "1f6f6480f99c0ff5a7f47573608832bb06924a2a222d02fc1af5e91d4456328e",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "8c0f7dd3be67ac9bf1fa626e1b19c018444b8b085bba21813c4e509898216834",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "e04a7e5bf1d9f283d4a16dc49e3634ab2b9047fcabdb85111f9ff5ede71f4820",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "9742ad878296b7e6d1da92ada8d6dab7cd47a460acf01f23684f6424b881213b",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "31e039c8e0ecd3d43ac06a7eeaa97cfbb6247fe39f20090e4ae61838ab575e45",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "2e7622a3bd82f69be4021bd88fc372097e656cbf198ff2138f5e503d10e26c07",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:xhuangcv/humannorm",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "afb832c7aa4be12097272a84ee68a018c4aa35c536c46de6e8667c0812e2ea6f",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "772d5d591ad7d58e4149821e699168c8d1a03ff6d879591a417506668b47da3a",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "935d06a92dbe1734f092155d17fd2a56d32ce6ebc5a82e2200a0609f0b95a520",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "a564320c99144b49d72345d15b679a7e452724ef18ffa735e16e49d4fb99e521",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "164f46a50296030d9ec3426e5285e87a007a39696d3bfa3305ea6fb5d618975a",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "36c1a91d76e179df6685762ae9ff95ed5e2ca60b34041c0d4187657672cc67f6",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "e98d8759a4d3b2ba73fae637b58f827230f90c73f59d20a8a7476bf4f2de507c",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "b4552fa84f3fc27a29572eaf461eb1f4840ebacb36ec94d1dd093fae4faeeddb",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "b7f5e4d6b6ae01587f80a18b65372ec4fb7b7ea7ce69fd9e1475cf8d10c088c7",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "8eae6b1fa93031487dde6c6e77f3dfbf8b2c3f1b9d4e09e27f29f98020198338",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:IAAR-Shanghai/UHGEval",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "e1f5e0ebad01ae5c28cdc2a931a8a47f57cdacdde26cea906a9e87fdd3c27bab",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 0,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "354e3545c1c84365fd2e441d0613a810ba6464605e593dec112d9751286b1297",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 1,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "f985628ee10840064700b916e608f4bf2da5349e976c528ec3325ac5fa989925",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 2,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "6ddf2d25385201c947c3397347c912bd9d37db5be11eba400e6fc5ebe9cdd1dc",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 3,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "c371d835d34adbfd7115fe808d7c17f8af765d5eeae12160d67a0257cb2c6e91",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 4,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "8c426c2e88ef56a9f94aadb254b39f619e987d30f55ac6d97cde3a2a602a1f02",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 5,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "a1e8a05c2f84e378c74ae7f54803515c46e83b2cd895b5d55240a508c6ac7f8a",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 6,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "ec1296aa0c7223e0c134a199ee68aa72de8c233ac90553c8c4576937b309294a",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 7,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "6a5ee61808d976824bc9deae4cb0ec5a58a9fd016e74388296dc204fc13964d1",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 8,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "61199e9c4efa387b199257f9f4fa17e635554b980d985bcdbf7b8d4facb6dfbc",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    },
+    {
+      "family": "RepoBench",
+      "source_group": "RepoBench:python_v1.1:Inflectra/spira-jira-migration-advanced",
+      "turn": 9,
+      "user_body_segment_order": "SYS_PROMPT > TOOL_OBS > REPO_CONTEXT > CODE_PREFIX > USER_QUERY",
+      "outer_chat_roles": [
+        "system",
+        "user"
+      ],
+      "messages_sha256": "f4d62cd6464174fbcb5b7bfba6efa8ceee024e0e4f5cab01656269a7a7359428",
+      "TOOL_OBS_before_context": true,
+      "protected_fields_checked": [
+        "CODE_PREFIX",
+        "USER_QUERY"
+      ]
+    }
+  ],
+  "new_GPU_requests": 0,
+  "controlled_TOOL_OBS_not_production_trace": true,
+  "no_growing_CHAT_HISTORY_in_this_serving_adapter": true,
+  "boundary": "CPU execution of the archived renderer, no token-count inference or new behavior/hit claim; independent TableI actual history requests are a different protocol."
+}
