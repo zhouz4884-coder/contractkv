@@ -11,14 +11,18 @@
   "CPU_cohort_and_instrumentation_checks": "PASS",
   "runtime_and_model_launch_preflight_complete": false,
   "remaining_before_launch": [
-    "Refresh host/GPU/process inventory; both registered GPUs must be exclusively available.",
-    "Validate full model/tokenizer/shard integrity and freeze runtime copies.",
-    "Validate archived tokenizer input shapes and runtime compatibility.",
-    "Complete isolated fresh-server orchestration and record all cell arguments."
+    "Refresh host/GPU/PID inventory; do not contend with other tasks.",
+    "Run isolated model/runtime/tokenizer CPU preflight after GPUs become available.",
+    "Retrieve and preregister the complete preflight receipt.",
+    "Execute with the exact preregistered receipt SHA, using the already prepared isolated orchestration."
   ],
   "planned_fresh_server_cells": 24,
   "planned_future_pairs": 4725,
   "new_GPU_requests_so_far": 0,
   "historical_missing_timings_recovered": false,
-  "new_results_must_not_replace_historical_records": true
+  "new_results_must_not_replace_historical_records": true,
+  "launch_orchestration_CPU_checked": true,
+  "launch_instructions_document": "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_20261018.md",
+  "launch_addendum_sha256": "b20c672a6bb6995c6867be008b2d7c43c5750d29545207db0281be0be3d4ac77",
+  "last_preparation_utc": "2026-10-18T07:49:28.450693+00:00"
 }

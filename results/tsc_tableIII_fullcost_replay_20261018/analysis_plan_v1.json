@@ -1,0 +1,28 @@
+{
+  "schema_version": "contractkv.original-sample-fullcost-analysis.v1",
+  "frozen_before_GPU_measurement": true,
+  "primary_unit": "A fully completed fresh raw/contract server pair for each registered model and repeat.",
+  "selection": "Use the chronologically first valid complete paired attempt. Preserve incomplete/failed attempts separately; never select by score, coverage or speed.",
+  "population": "All 4725 future request pairs across four configurations and three repetitions; all initialization, reference and verification paths retained.",
+  "primary_per_repeat_metrics": [
+    "Future requests divided by directly observed full client wall plus final backend drain, separately for raw and ContractKV.",
+    "Matched full-wall throughput multiplier: raw service wall / ContractKV service wall.",
+    "Future business mean TTFT and task-score distribution on the exact same session/turn keys.",
+    "All initialization-controller elapsed time, with qualification-started and L0-only initialization separated.",
+    "All raw-reference calls and every compact verification attempt, including exceptions; do not substitute the legacy final successful call timer.",
+    "Amortized qualification-charged future mean: ContractKV future business TTFT plus the complete qualification-started controller sum divided by all future requests. Compare to the stated raw future business reference; do not label this an observed per-request readiness or full service wall."
+  ],
+  "cost_partition": "Within each sequential controller body, group raw-reference/verification call events until the matching complete_controller event. Calls are nonoverlapping. Sum all completed controller bodies for initialization; count qualification-started bodies when a raw-reference or compact verification event occurred. Report NOT_REQUIRED/L0 warm-up separately.",
+  "completeness_checks": [
+    "The registered future session/turn sets agree exactly in both routes, with no missing or duplicate requests.",
+    "Every emitted canary row has exactly one positive controller duration, including rejection and exception paths.",
+    "Every observed descent attempt has its own elapsed-time event; retain calls even when the old canary result overwrites verification_ms with zero.",
+    "Cross-check verifier call events against server access records and retained returned endpoint durations; exceptions before RPC must not be counted as known completed RPC durations.",
+    "Full service wall charges logging and final drain; server startup and immutable preflight remain outside the declared clock.",
+    "Every pair/cell has immutable input, launch, timer and response digests; invalid partial pairs are not resumed or used as complete data."
+  ],
+  "quality_reporting": "Report all-route task-score increases, decreases and changes within +/-0.03, using the existing scorer. Report output-text changes separately if full output IDs are unavailable. Do not infer behavioral equivalence solely from equal task scores.",
+  "aggregation": "Retain all three repeat points and min/max. Report arithmetic mean of per-repeat effects and pooled-wall multiplier as separately named estimands. No new narrow CI from treating related turns as independent.",
+  "historical_comparison": "Display alongside the legacy residual-RPC accounting without overwriting it. Fresh timer measurements never become recovered July timestamps. Do not combine this original-cohort protocol with the faithful non-RULER main cohort as one causal curve.",
+  "stopping_rule": "Complete exactly the frozen matrix unless an actual infrastructure/protocol failure prevents execution. Do not add sources or tune parameters to improve an observed outcome."
+}

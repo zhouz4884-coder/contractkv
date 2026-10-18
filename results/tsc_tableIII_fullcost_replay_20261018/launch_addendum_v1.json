@@ -1,0 +1,54 @@
+{
+  "schema_version": "contractkv.original-sample-launch-addendum.v1",
+  "before_GPU_measurement": true,
+  "original_protocol_sha256": "66c3e68d460102cbcb34d8bf59059155bb0e08aa6e10b45895524a7ef14a1982",
+  "original_timing_freeze_sha256": "5491f9e6dc1a38da1ab264c62fa9993f259e5521ed9512d227f4f1cf3854242e",
+  "changes": "Add isolated fresh-server orchestration, original timeout arguments, model/runtime preflight receipt gate, final backend drain accounting, and fixed analysis plan. Archived inputs and timing driver remain unchanged.",
+  "new_GPU_measurements": 0,
+  "no_new_candidate_margin_scoring_or_source_selection": true,
+  "backend_historical_byte_identity_established": false,
+  "preflight_gate": "CPU preflight stops with a hashed receipt. Retrieve and archive it before execute; execute requires its exact SHA and revalidates files/model metadata/runtime inventory.",
+  "failure_policy": "Preserve failed/partial pairs; after documented infrastructure repair use a separate attempt. Reuse only entire valid pairs, in chronological order, never by performance.",
+  "files": [
+    {
+      "path": "scripts/tsc_tableIII_fullcost_worker_v1.py",
+      "bytes": 27724,
+      "sha256": "ee70ee527b7be88d4b2df1cad206ff66dfe73176a467fd900b7b72ad6ee91971"
+    },
+    {
+      "path": "scripts/tsc_tableIII_orchestration_CPU_check_v1.py",
+      "bytes": 4920,
+      "sha256": "cd2fef892d862ce298530ad9ef31728e756949e4108836b950041582ce08c814"
+    },
+    {
+      "path": "scripts/tsc_tableIII_build_launch_bundle_v1.py",
+      "bytes": 3885,
+      "sha256": "5fbb1b884dcd381e42fba59d79abbdde2c896e17f47bba9ae387e91726372b6d"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/orchestration_CPU_check_v1.json",
+      "bytes": 451,
+      "sha256": "7939918484718601371563ab2006065252522b15136d098b4e3bc79fb25f987c"
+    },
+    {
+      "path": "scripts/tsc_tableIII_deploy_launch_bundle_v1.py",
+      "bytes": 3327,
+      "sha256": "f29ffd39a8c12d9d94e83c7e7e21b289e80f7ae1c705ec9567946a6c694c9bd0"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_20261018.md",
+      "bytes": 4198,
+      "sha256": "d6d72c45e123775d80157d8488f47d475e2f1ba7c39a1e6e45829397b3ef7714"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/analysis_plan_v1.json",
+      "bytes": 3708,
+      "sha256": "e0347b40f6686842d80a4b854374d45d5fd5b72cef32f8b59c4ea8bd1b090c0a"
+    },
+    {
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/prior_model_registry_v1.json",
+      "bytes": 8281,
+      "sha256": "1cafa8d210ca76079bff2bf7d4bafb243fad1c3dd210af7c6dfc4cd9c8fa3b4e"
+    }
+  ]
+}

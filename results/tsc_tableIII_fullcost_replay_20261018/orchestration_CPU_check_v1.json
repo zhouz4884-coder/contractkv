@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "tests_run": 5,
+  "checks": [
+    "Frozen model/policy/timeout arguments across 24 cells",
+    "Reject foreign GPU PID",
+    "Never signal a different process group",
+    "Clean owned orphan children after API parent exit",
+    "Busy resource gate prevents both model preflight and server launch"
+  ],
+  "GPU_model_calls": 0,
+  "evidence_type": "CPU infrastructure tests, not LLM correctness or latency results"
+}
