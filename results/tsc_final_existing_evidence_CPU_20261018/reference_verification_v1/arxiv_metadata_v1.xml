@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/JS8TbqDhWdHZJ4k/eFiddqJLM7A</id>
+  <title>arXiv Query: search_query=&amp;id_list=2405.05465,2306.03091,2405.19888&amp;start=0&amp;max_results=3</title>
+  <updated>2026-10-18T12:01:55Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=3&amp;id_list=2405.05465,2306.03091,2405.19888" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>3</opensearch:itemsPerPage>
+  <opensearch:totalResults>3</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2405.19888v1</id>
+    <title>Parrot: Efficient Serving of LLM-based Applications with Semantic Variable</title>
+    <updated>2024-05-30T09:46:36Z</updated>
+    <link href="https://arxiv.org/abs/2405.19888v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2405.19888v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>The rise of large language models (LLMs) has enabled LLM-based applications (a.k.a. AI agents or co-pilots), a new software paradigm that combines the strength of LLM and conventional software. Diverse LLM applications from different tenants could design complex workflows using multiple LLM requests to accomplish one task. However, they have to use the over-simplified request-level API provided by today's public LLM services, losing essential application-level information. Public LLM services have to blindly optimize individual LLM requests, leading to sub-optimal end-to-end performance of LLM applications.
+  This paper introduces Parrot, an LLM service system that focuses on the end-to-end experience of LLM-based applications. Parrot proposes Semantic Variable, a unified abstraction to expose application-level knowledge to public LLM services. A Semantic Variable annotates an input/output variable in the prompt of a request, and creates the data pipeline when connecting multiple LLM requests, providing a natural way to program LLM applications. Exposing Semantic Variables to the public LLM service allows it to perform conventional data flow analysis to uncover the correlation across multiple LLM requests. This correlation opens a brand-new optimization space for the end-to-end performance of LLM-based applications. Extensive evaluations demonstrate that Parrot can achieve up to an order-of-magnitude improvement for popular and practical use cases of LLM applications.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-05-30T09:46:36Z</published>
+    <arxiv:comment>To appear on USENIX OSDI 2024</arxiv:comment>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Chaofan Lin</name>
+    </author>
+    <author>
+      <name>Zhenhua Han</name>
+    </author>
+    <author>
+      <name>Chengruidong Zhang</name>
+    </author>
+    <author>
+      <name>Yuqing Yang</name>
+    </author>
+    <author>
+      <name>Fan Yang</name>
+    </author>
+    <author>
+      <name>Chen Chen</name>
+    </author>
+    <author>
+      <name>Lili Qiu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2306.03091v2</id>
+    <title>RepoBench: Benchmarking Repository-Level Code Auto-Completion Systems</title>
+    <updated>2023-10-04T01:13:49Z</updated>
+    <link href="https://arxiv.org/abs/2306.03091v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2306.03091v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large Language Models (LLMs) have greatly advanced code auto-completion systems, with a potential for substantial productivity enhancements for developers. However, current benchmarks mainly focus on single-file tasks, leaving an assessment gap for more complex, real-world, multi-file programming scenarios. To fill this gap, we introduce RepoBench, a new benchmark specifically designed for evaluating repository-level code auto-completion systems. RepoBench supports both Python and Java and consists of three interconnected evaluation tasks: RepoBench-R (Retrieval), RepoBench-C (Code Completion), and RepoBench-P (Pipeline). Each task respectively measures the system's ability to retrieve the most relevant code snippets from other files as cross-file context, predict the next line of code with cross-file and in-file context, and handle complex tasks that require a combination of both retrieval and next-line prediction. RepoBench aims to facilitate a more complete comparison of performance and encouraging continuous improvement in auto-completion systems. RepoBench is publicly available at https://github.com/Leolty/repobench.</summary>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-06-05T17:59:41Z</published>
+    <arxiv:primary_category term="cs.CL"/>
+    <author>
+      <name>Tianyang Liu</name>
+    </author>
+    <author>
+      <name>Canwen Xu</name>
+    </author>
+    <author>
+      <name>Julian McAuley</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2405.05465v2</id>
+    <title>Vidur: A Large-Scale Simulation Framework For LLM Inference</title>
+    <updated>2024-05-21T05:17:29Z</updated>
+    <link href="https://arxiv.org/abs/2405.05465v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2405.05465v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Optimizing the deployment of Large language models (LLMs) is expensive today since it requires experimentally running an application workload against an LLM implementation while exploring large configuration space formed by system knobs such as parallelization strategies, batching techniques, and scheduling policies. To address this challenge, we present Vidur - a large-scale, high-fidelity, easily-extensible simulation framework for LLM inference performance. Vidur models the performance of LLM operators using a combination of experimental profiling and predictive modeling, and evaluates the end-to-end inference performance for different workloads by estimating several metrics of interest such as latency and throughput. We validate the fidelity of Vidur on several LLMs and show that it estimates inference latency with less than 9% error across the range. Further, we present Vidur-Search, a configuration search tool that helps optimize LLM deployment. Vidur-Search uses Vidur to automatically identify the most cost-effective deployment configuration that meets application performance constraints. For example, Vidur-Search finds the best deployment configuration for LLaMA2-70B in one hour on a CPU machine, in contrast to a deployment-based exploration which would require 42K GPU hours - costing ~218K dollars. Source code for Vidur is available at https://github.com/microsoft/vidur.</summary>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2024-05-08T23:42:13Z</published>
+    <arxiv:primary_category term="cs.LG"/>
+    <author>
+      <name>Amey Agrawal</name>
+    </author>
+    <author>
+      <name>Nitin Kedia</name>
+    </author>
+    <author>
+      <name>Jayashree Mohan</name>
+    </author>
+    <author>
+      <name>Ashish Panwar</name>
+    </author>
+    <author>
+      <name>Nipun Kwatra</name>
+    </author>
+    <author>
+      <name>Bhargav Gulavani</name>
+    </author>
+    <author>
+      <name>Ramachandran Ramjee</name>
+    </author>
+    <author>
+      <name>Alexey Tumanov</name>
+    </author>
+  </entry>
+</feed>

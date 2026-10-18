@@ -1,0 +1,72 @@
+{
+  "schema_version": "contractkv.real-repobench-mechanism-evidence-gap.v1",
+  "new_GPU_requests": 0,
+  "frozen_mechanism_total_cases": 20,
+  "frozen_code_cases": 4,
+  "frozen_code_cases_with_actual_CODE_PREFIX": 0,
+  "frozen_code_task": "Synthetic Python factor assignment and integer answer; not next-line completion",
+  "faithful_existing_sources": [
+    {
+      "source": "RepoBench:python_v1.1:OSU-NLP-Group/SeeAct",
+      "CODE_PREFIX_characters": 7371,
+      "CODE_PREFIX_lines": 123,
+      "dataset": "RepoBench",
+      "task": "python_v1.1"
+    },
+    {
+      "source": "RepoBench:python_v1.1:Gene-Weaver/VoucherVision",
+      "CODE_PREFIX_characters": 2166,
+      "CODE_PREFIX_lines": 53,
+      "dataset": "RepoBench",
+      "task": "python_v1.1"
+    },
+    {
+      "source": "RepoBench:python_v1.1:sinoyou/nelf-pro",
+      "CODE_PREFIX_characters": 6336,
+      "CODE_PREFIX_lines": 147,
+      "dataset": "RepoBench",
+      "task": "python_v1.1"
+    }
+  ],
+  "faithful_existing_policies": [
+    "raw-order",
+    "risk-tail"
+  ],
+  "faithful_existing_RepoBench_levels": {
+    "Qwen3-8B": "L3",
+    "Mistral-7B-Instruct-v0.3": "L0",
+    "Llama-3.1-8B-Instruct": "L0"
+  },
+  "faithful_existing_unchecked_same_candidate_arm": false,
+  "evidence_available": "True task-preserving Raw/qualified serving data and output IDs in faithful primary; original colored guards and synthetic assignment controls remain separate.",
+  "unresolved_requirement": "Real RepoBench code context plus next-line prefix, same-candidate unchecked generation, conclusive qualification/rejection and actual post-route publication audit",
+  "bounded_necessary_supplement": {
+    "maximum_fresh_model_cells": 3,
+    "models": [
+      "Qwen3-8B",
+      "Mistral-7B-Instruct-v0.3",
+      "Llama-3.1-8B-Instruct"
+    ],
+    "new_source_disjoint_RepoBench_sources": 3,
+    "predeclared_layouts": [
+      "L0 identity control",
+      "L3 dependency-legal potential reorder"
+    ],
+    "business_per_candidate": 4,
+    "maximum_business_generations": 72,
+    "maximum_qualification_RPCs": 18,
+    "preserved_raw_floor": 0.0625,
+    "preserved_candidate_EOS_floor": 0.125,
+    "production_one_python_statement_guard_preserved": true,
+    "exact_observation_bound": true,
+    "no_production_family_L0_override": true,
+    "source_selection_and_final_protocol": "Only after the existing three batches are completed/archived; freeze independent inputs before outputs. Existing9cells unchanged."
+  },
+  "decision": "Existing code_context cannot close this explicit real-task requirement. Add only this bounded diagnostic supplement; no extra workload family or throughput study.",
+  "input_SHA256": {
+    "results/tsc_revision_mechanism_controls_20261018/protocol_v1.json": "632b919893cf1da8a9dfe0527143d803f25f811e3e0046b9f811f458c86adfba",
+    "results/tsc_revision_r4/input_fidelity_validation_v1/freeze.json": "20c10422e075df1e855665668d94d4df408ee664571738a035c1ef60564faf5f",
+    "results/tsc_revision_r4/input_fidelity_validation_inputs_v1/faithful_selected_sessions_v1.jsonl": "876eed3937fb428f2d8fbf04e66efa93403da40f6a948aea05aec97f6159d4fa",
+    "results/tsc_revision_r4/development_fit_v3/calibration_v1.json": "2c04c19f164b67c715a3674473022024d4cb219ecfb360c5a0712618281504bb"
+  }
+}
