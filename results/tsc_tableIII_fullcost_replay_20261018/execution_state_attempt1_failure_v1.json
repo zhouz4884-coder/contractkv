@@ -1,0 +1,33 @@
+{
+  "schema_version": "contractkv.original-sample-fullcost-execution-state.v1",
+  "status": "INFRASTRUCTURE_OR_PROTOCOL_FAILURE",
+  "user_decision": "Wait for RevBatch to finish; do not terminate or contend with its GPU processes.",
+  "automation_id": "contractkv-table-iii",
+  "automation_kind": "current-thread heartbeat",
+  "frozen_protocol_evidence_commit": "4c78f550ed46ee130b218ff9aea975a97d910a10",
+  "formal_GPU_cells_completed": 0,
+  "formal_GPU_worker_started": false,
+  "formal_worker_pid": null,
+  "CPU_cohort_and_instrumentation_checks": "PASS",
+  "runtime_and_model_launch_preflight_complete": false,
+  "remaining_before_launch": [
+    "Refresh host/GPU/PID inventory; do not contend with other tasks.",
+    "Run isolated model/runtime/tokenizer CPU preflight after GPUs become available.",
+    "Retrieve and preregister the complete preflight receipt.",
+    "Execute with the exact preregistered receipt SHA, using the already prepared isolated orchestration."
+  ],
+  "planned_fresh_server_cells": 24,
+  "planned_future_pairs": 4725,
+  "new_GPU_requests_so_far": 0,
+  "historical_missing_timings_recovered": false,
+  "new_results_must_not_replace_historical_records": true,
+  "launch_orchestration_CPU_checked": true,
+  "launch_instructions_document": "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_20261018.md",
+  "launch_addendum_sha256": "b20c672a6bb6995c6867be008b2d7c43c5750d29545207db0281be0be3d4ac77",
+  "last_preparation_utc": "2026-10-18T07:49:28.450693+00:00",
+  "worker_start_utc": "2026-10-18T08:03:29.953374+00:00",
+  "worker_attempt": 1,
+  "error_type": "AssertionError",
+  "error_message": "Runtime copy differs from retained source",
+  "time_utc": "2026-10-18T08:09:27.833508+00:00"
+}
