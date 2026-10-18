@@ -1,0 +1,117 @@
+{
+  "utc": "2026-10-18T10:14:19.202521+00:00",
+  "tableIII": {
+    "state": {
+      "schema_version": "contractkv.original-sample-fullcost-execution-state.v1",
+      "status": "RUNNING",
+      "user_decision": "Proceed directly when GPUs are exclusively available; never kill or contend with other tasks.",
+      "automation_id": "contractkv-table-iii",
+      "automation_kind": "current-thread heartbeat",
+      "frozen_protocol_evidence_commit": "4c78f550ed46ee130b218ff9aea975a97d910a10",
+      "formal_GPU_cells_completed": 12,
+      "formal_GPU_worker_started": true,
+      "formal_worker_pid": 141325,
+      "CPU_cohort_and_instrumentation_checks": "PASS",
+      "runtime_and_model_launch_preflight_complete": true,
+      "remaining_before_launch": [
+        "Refresh host/GPU/PID inventory; do not contend with other tasks.",
+        "Run isolated model/runtime/tokenizer CPU preflight after GPUs become available.",
+        "Retrieve and preregister the complete preflight receipt.",
+        "Execute with the exact preregistered receipt SHA, using the already prepared isolated orchestration."
+      ],
+      "planned_fresh_server_cells": 24,
+      "planned_future_pairs": 4725,
+      "new_GPU_requests_so_far": null,
+      "historical_missing_timings_recovered": false,
+      "new_results_must_not_replace_historical_records": true,
+      "launch_orchestration_CPU_checked": true,
+      "launch_instructions_document": "results/tsc_tableIII_fullcost_replay_20261018/LAUNCH_STATUS_20261018.md",
+      "launch_addendum_sha256": "b20c672a6bb6995c6867be008b2d7c43c5750d29545207db0281be0be3d4ac77",
+      "last_preparation_utc": "2026-10-18T07:49:28.450693+00:00",
+      "worker_start_utc": "2026-10-18T08:51:13.408874+00:00",
+      "worker_attempt": 3,
+      "time_utc": "2026-10-18T08:35:20.404016+00:00",
+      "overall_goal": "Three bounded GPU batches: original Table III full cost; multi-type cross-model behavioral necessity; synthetic manifest live boundary.",
+      "repair_ready": "v2 follows runtime directory symlinks and reuses the completed full-model registry only with exact digest and unchanged asset metadata.",
+      "preflight_receipt_sha256": "e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea",
+      "current_pair": "mistral_r1",
+      "error_type": "RuntimeError",
+      "error_message": "Fresh server exited during startup; inspect retained server.log",
+      "completed_pairs": [
+        "cells/llama_r1/attempt3",
+        "cells/llama_r2/attempt3",
+        "cells/llama_r3/attempt3",
+        "cells/qwen_r1/attempt3",
+        "cells/qwen_r2/attempt3",
+        "cells/qwen_r3/attempt3"
+      ]
+    },
+    "actual_worker_command": "/home/user/miniconda3/envs/contractkv-cu128/bin/python -B /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v3.py --root /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv --mode execute --attempt 3 --repair-record /media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/infrastructure_repair_v3.json --preflight-receipt-sha256 e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea ",
+    "lock_file_exists": true,
+    "protocol_v1.json_sha256": "66c3e68d460102cbcb34d8bf59059155bb0e08aa6e10b45895524a7ef14a1982",
+    "freeze_v1.json_sha256": "5491f9e6dc1a38da1ab264c62fa9993f259e5521ed9512d227f4f1cf3854242e"
+  },
+  "mechanism_manifest": {
+    "state": {
+      "status": "FROZEN_WAITING_FOR_TABLEIII",
+      "worker_pid": null,
+      "GPU_requests": 0,
+      "planned_cells": 9,
+      "business_requests": 855,
+      "maximum_GPU_verification_calls": 198,
+      "needs_preflight_and_published_receipt": true,
+      "current_worker": "scripts/tsc_revision_mechanism_worker_v3.py",
+      "current_freeze": "freeze_v3.json",
+      "preflight_dir": "preflight_v3"
+    },
+    "freeze_v3_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+    "GPU_response_files": [],
+    "preflight_receipts": []
+  },
+  "completed_pairs": [
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0288257942431294,
+      "time_utc": "2026-10-18T09:43:26.003300+00:00"
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 1,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0092633190479483,
+      "time_utc": "2026-10-18T09:04:49.185683+00:00"
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0277192728228393,
+      "time_utc": "2026-10-18T09:57:08.747783+00:00"
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0041274993036655,
+      "time_utc": "2026-10-18T10:09:57.497437+00:00"
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 2,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0157633615343398,
+      "time_utc": "2026-10-18T09:16:36.968533+00:00"
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 3,
+      "future_pairs": 450,
+      "direct_wall_multiplier": 1.0096272446328918,
+      "time_utc": "2026-10-18T09:27:56.709380+00:00"
+    }
+  ],
+  "gpus": "0, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, 21780 MiB, 100 %\n1, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, 21670 MiB, 92 %\n",
+  "compute_processes": "181409, GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a, VLLM::EngineCore, 21748 MiB\n181476, GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28, VLLM::EngineCore, 21638 MiB\n"
+}

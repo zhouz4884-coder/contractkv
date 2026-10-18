@@ -1,0 +1,24 @@
+{
+  "backend_sources_checked": [
+    "vllm/entrypoints/openai/api_server.py",
+    "vllm/v1/core/kv_cache_manager.py",
+    "vllm/v1/core/sched/scheduler.py",
+    "vllm/v1/engine/__init__.py",
+    "vllm/v1/engine/async_llm.py",
+    "vllm/v1/worker/gpu_model_runner.py"
+  ],
+  "project_imports": [
+    "scripts.contractkv_pstp",
+    "scripts.contractkv_quiescence",
+    "scripts.contractkv_shadow_parking",
+    "scripts.tsc_revision_r2_execution_trace",
+    "scripts.tsc_revision_r2_margin_policy"
+  ],
+  "missing_from_snapshot": [
+    "scripts.contractkv_quiescence",
+    "scripts.contractkv_shadow_parking",
+    "scripts.tsc_revision_r2_execution_trace",
+    "scripts.tsc_revision_r2_margin_policy"
+  ],
+  "GPU_forwards": 0
+}
