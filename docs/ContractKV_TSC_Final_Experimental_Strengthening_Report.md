@@ -111,6 +111,8 @@
 
 **这里等待实际数据，不填“通过”“加速”或“尾优化成功”。** 最终所有process/source/tenant/request层结果、Native logical work/驻留/队列及不利输出都需归档、独立复算和核Git远程SHA。
 
+首轮预览已交付：`tsc_revision_final_serving_first_repeat_20261019_zh.md`。Qwen两load各18/324编译未来无ID变化，但scope仅1/18通过，22编译业务13full/9zero native hits；共同点wall近1，高点wall略慢但达标8→27。它不是最终三重复效果，不用小Raw基线放大倍率作主结论，也不据此更换条件。
+
 ## 8. 工程修复与失败记录
 
 1. 原端口复用、跨Python AST空字段、缺EOS的异常类型未捕获等均单列修复，保存原源、失败、公开freeze和实际派发。只重测未完成受影响实验单位；已完成cell保持不动。

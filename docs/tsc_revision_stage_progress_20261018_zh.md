@@ -27,7 +27,9 @@
 
 该标定最多 7 cells / 840 次 Raw 业务：4 个 baseline，之后 3 个 Qwen 负载 profiles。只用冻结公式推导负载与 SLO，不用 Contract 收益选择工作点。Raw/Contract 均保留 16K、QA128/Repo384、原 margin/scope/输出契约/PSTP。
 
-正式24 cells与Gate ON/OFF6 cells由同一supervisor有界接续，当前开始Qwen12阶段，0正式完成。服务编排CPU检查已通过：六条轨迹符合原loader；Raw/Contract到达、GPU、重复成对一致；第二重复交换GPU/次序；两个server均ready才测量；同wave任一客户端失败则整个wave留作无效失败，不选择保留较好的一半。CPU检查使用fake transport，GPU请求数为零，不是效果结果。当前正式GPU执行另按实际completion记账。
+正式24 cells与Gate ON/OFF6 cells由同一supervisor有界接续。16:35 UTC后，Qwen首次重复两个负载的4单元完整完成，第二重复按换GPU/反序的原计划接续。首轮各18/324 compiled future无ID/finish变化，但覆盖仅5.56%；共同Goodput .129948925→.128951612，较高负载 .006884815→.022886042req/s（8→27/360，基线小）。wall倍率.999988/.984928，负结果保留。新数据不是三重复结论。详细分解见`tsc_revision_final_serving_first_repeat_20261019_zh.md`。
+
+服务编排CPU检查已通过：六条轨迹符合原loader；Raw/Contract到达、GPU、重复成对一致；第二重复交换GPU/次序；两个server均ready才测量；同wave任一客户端失败则整个wave留作无效失败，不选择保留较好的一半。CPU检查使用fake transport，GPU请求数为零，不是效果结果。当前正式GPU执行另按实际completion记账。
 
 ## 还需要完成
 

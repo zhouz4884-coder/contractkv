@@ -182,3 +182,13 @@ Raw .4/.7/1.05Cq三个点分别107/120、89/120、8/120双SLO达标。高点基�
 本次也明确内容保真不等于原生completion包装复现：服务Repo仍用声明的instruction-following chat，CODE_PREFIX后有任务指令；实际顺序公开，不在已冻结Raw之后临时换位置或未经对照将所有M/L语法拒绝归因于它。四份指定MD现均已建立，正式30结果仍待回填，不能据文档数量宣布目标完成。
 
 15:23:25 UTC，390ea831主freeze与统计addendum5fe5ae0b在f2c1fab预公开，并逐一核58依赖的Git blob字节/本地SHA/远程ref一致后，实际派发formal supervisor318277/qwen worker318282。15:24 /proc与两个EngineCore319110/319177已核，首wave共同/高负载Raw正在准备。主矩阵24与Gate6将按既定序列自动接续，任何未解释compiled配对变化会阻止跨阶段扩展；不重复Raw7或重新生成formal freeze。新的源/依赖/CPU回执均复用已冻结对象，没有模型/runtime副本或完整权重SHA重做。
+
+## 16:35 UTC后：首次Qwen配对与继续冻结的决定
+
+四个首次重复cell全部完成；只读watcher确认实际qwen PID匹配launch后结束自身（unified exec79309退出0），不影响318277/318282主流程。原模型管理器按r2反序/换GPU接续。没有重新启动任何实验。
+
+两点各18/324编译future、22全部编译业务，精确ID/finish对Raw及实际见证均0变化。scope决定各1PASS、8无声明exact-observation复用、6候选token-margin拒绝、3语法拒绝；六个candidate minima全负（−11.313至−.406），不靠略降.125放行。经济门禁不是最终拒绝原因。业务logical new-prefill降低4.407%，另有7实际RPC及约28.4s完整controller工作；13编译full hit/9zero，资格不保证全驻留。无完整本轮驱逐时间线，不将9个都断言为已证明驱逐，也不据此改缓存算法。
+
+common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达标）；high wall1161.978→1179.758s、Goodput .006884815→.022886042（8→27）。小baseline不能只报3.3×。各点全路由2个掉分均L0，上升4/6保留，三Raw重复尚未完成，不先归因为噪声。
+
+投影只读已完成4cell并核原Raw SHA，nice19，两个执行各约1.49/1.59s、GPU0请求，保存源码与原输出。后续正式主分析仍逐业务独立重算评分/费用，不能以该初览替代最终统计。当前没有已获准子集行为失败或发布不变量失效证据；弱收益来自可见的稀疏资格/成本/驻留，选择完成原三重复，不换来源、不调Scope/16词界限、不放宽margin、不追加有利负载或新GPU探针。若之后出现可复现机制缺陷再按最小修复/新冻结处理。

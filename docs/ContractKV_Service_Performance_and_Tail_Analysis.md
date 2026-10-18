@@ -122,6 +122,8 @@ Raw wall5850.767s、p998793.88ms。适配对原版的全局p99降低点估计34.
 
 参数/进程入口见`docs/tsc_revision_final_Raw_calibration_20261018_zh.md`、`docs/tsc_revision_final_serving_calibration_design_20261018_zh.md`和`results/tsc_task_faithful_open_arrival_20261018/`。本节在30正式单元分析、独立复算与归档后更新实际结果，不预写正收益。
 
+首轮Qwen两个负载已完成配对，原始只读投影见`first_repeat_projection_v1.json`和`first_repeat_small_metrics_v1.json`。scope决定1PASS/8作用域/6负candidate margin/3语法，各点仅18/324 compiled future；获准后ID保持。高点绝对Goodput增加但Raw仅8/360达标，完整wall略慢；共同点近无净收益。该结果补充资格稀疏与不完整驻留的实际限制，不替换上文旧独立闭环的1.619×，也不在两者间作同条件因果比较。
+
 ## 8. 尚需用本轮数据回答的两个问题
 
 1. 在相同固定到达、相同SLO和完整成本下，新来源的合法复用是否转化为更多实际达标请求？Closed-loop倍率和native token节省不能替它回答。
