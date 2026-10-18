@@ -112,3 +112,21 @@ v5 repair 0b8a75cd、CPU接线回执8732bf66在e966c20公开后，12:56启动sup
 协议位于 `results/tsc_mechanism_budget256_20261018/protocol_v1.json`，SHA58db2c3c；执行冻结007e4bef。120 个原 Prompt 形状复用预检，最大 Prompt+256+EOS 为1,023，全部适配16K。没有重做模型/Tokenizer/runtime准备。原 collector 的 setup/generate/qualify/完整20病例循环 AST 保持一致，仅跳过后续 Manifest 部分，终端计数80；worker仅显式替换端口/source/policy hash/client及两项Manifest计数，其余AST一致。CPU接线使用明确 fake transport/registrar，80次同预算调用与20病例全覆盖通过，不冒充 GPU 效果。
 
 只有原9单元完成并归档、Linux零GPU检查回执及源码公开后，才启动补充条件。不按输出选择有利病例、不自动加码512、不覆盖64结果。此为观察截断后的预算敏感性诊断，不能称独立盲测，也不提供服务吞吐结论。
+
+### 预算执行入口的零 GPU 兼容修正
+
+256补充v1在Linux检查AST SHA时停止，新增GPU请求0。Windows Python3.13的空type_params字段使dump与Linux3.10不同；结构相同断言仍通过。保留v1源和失败回执，v2改用仅忽略空type_params的规范JSON，原字节SHA不变。Linux v2实际回执afb4e668已与源码公开，当前入口budget256_worker_v2，freeze0d4c2ec5；v1不能启动。分析代码在cb36f84先行公开，64描述性基线取每模型第一原冻结重复，256全病例各一次，不混合分母。
+
+## 后续新源与服务桥梁的预执行边界
+
+新的已知来源排除索引没有打开候选池，只读历史来源身份。原567来源，加保真主验证6、成本适配独立6，以及TableI独立125，实际并集为704；开发四来源已在567内。不能沿用过时的579来源数而遗漏TableI。索引和每个输入SHA保存在final_known_source_exclusions_v1.json。
+
+源选择协议已写入新目录，但尚未选新源或产生GPU结果：先从704排除集按固定hash选真实Repo诊断3源，再将它们加入排除集，选桥梁HotpotQA/RepoBench各3。独立seed2026101803/04；只以关键字段存在和共同16K容量筛选，不读答案位置或模型结果。代码有父9cells完成且归档的硬门槛，禁止提前打开新候选池。原保真packer、renderer、生成预算128/384与catalog均按SHA继承，tokenizer只重核已有资产身份，不复制或重新下载模型。
+
+服务桥梁正式工作量预定为6个模板、每模板6个注册租户、每租户10轮，即360业务/单元，最多24个正式单元=8,640业务。此前目标没有冻结租户/请求数。此选择是在新来源输出前为控制完成时间作出的，保留原10轮query目录与原declared_reuses(turn,tenants,2)函数，不能改写成旧10租户同协议对照。36个注册身份与GPU实际最多2请求分别报告。正式到达/负载/SLO仍须来自Raw-only标定并在任何正式Contract输出前再冻结。
+
+固定到达新wrapper显式绑定原fixed模块本地_ordered_text，其他执行循环不变。CPU用已有SeeAct真实CODE_PREFIX检查：旧本地引用仍插入分片标题，完整7,371字符前缀不能连续出现；显式保真绑定后连续保留，且与candidate planner的renderer是同一函数。测试后引用恢复，不修改历史fixed运行或已有结果。该CPU修正尚不是GPU性能结果。
+
+另有有界Gate OFF控制接线，只覆盖成本模块decide的经济拒绝分支，保留原粗/细成本计算与原始决定作审计，reference scope、语法、margin、EOS、PSTP均继续走原调用链。无效数值特征仍拒绝、继承家族L0仍不能越权。CPU实际特征检查通过；正式Gate OFF数据尚未运行，不从此推断排队改善。
+
+21:12香港时间的ETA根据已完成保真18cell实际服务wall估计：每600业务的Raw单元约33–45分钟，另有模型加载/编译。核心当前6/9，预计30–60分钟内交付三批阶段结果；整个五批含新服务验证、必要补充及归档估计10–16小时，前提两卡持续独占且无新故障。这是计划区间，不是已完成结果或确定承诺。
