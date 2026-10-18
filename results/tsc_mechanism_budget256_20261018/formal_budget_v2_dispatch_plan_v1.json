@@ -1,0 +1,23 @@
+{
+  "schema_version": "contractkv.budget-dispatch-preregistration.v2",
+  "supervisor_source_sha256": "8fa58666c2dba793000c5e91485e0e3d4ec8887e9f3e9aeb8602286b9c1999d5",
+  "command": [
+    "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+    "-B",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_budget256_worker_v2.py",
+    "--root",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "--mode",
+    "execute",
+    "--freeze-sha256",
+    "0d4c2ec5c4aa88fc4426e7f0d16838a77eab7680aed258d144ece406a643c378",
+    "--check-receipt-sha256",
+    "afb4e6683af120941c199f668ceb4b1436d322fbd4c077c3dc09cea8014fdd9c"
+  ],
+  "formal_model_conditions": 3,
+  "business_generations": 240,
+  "maximum_qualification_RPC_attempts": 60,
+  "before_first_GPU_forward": true,
+  "no_automatic_partial_cell_resume": true,
+  "no_automatic_budget_escalation": true
+}
