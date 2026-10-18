@@ -1,0 +1,18 @@
+{
+  "schema_version": "contractkv.original-sample-infrastructure-repair.v3",
+  "failure_stage": "Fresh Llama raw/contract server startup, before API readiness and before any business request",
+  "failure": "ZMQ AF_UNIX socket path exceeded the 107-byte sockaddr_un limit because TMPDIR used the full nested experiment path.",
+  "repair": "Worker v3 uses a short study-specific /tmp symlink as TMPDIR; the resolved directory and all actual temporary files remain on the registered 8TB volume. Refuse foreign aliases and validate path length.",
+  "CPU_validation": "Ten Linux infrastructure checks pass, including a real ZMQ IPC bind through the short alias and a check of actual file placement on the experiment volume.",
+  "failed_pair_preserved": "cells/llama_r1/attempt2",
+  "partial_pair_resume_allowed": false,
+  "new_pair_attempt": 3,
+  "preflight_inheritance": {
+    "parent": "launch_attempt2_preflight/preflight_receipt_v1.json",
+    "parent_sha256": "e19c393236c1eb75d29c9c9f1440d5c595b88751350e4274033f6eee5a5a8acf",
+    "rule": "Reuse already attested model/runtime/input metadata only after fresh model stat and full runtime-byte checks. Register a new worker-hash receipt and preserve the parent."
+  },
+  "model_input_candidate_margin_scope_scorer_changed": false,
+  "successful_formal_GPU_cells_before_repair": 0,
+  "business_model_requests_before_repair": 0
+}

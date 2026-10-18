@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+    "-B",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v3.py",
+    "--root",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+    "--mode",
+    "execute",
+    "--attempt",
+    "3",
+    "--repair-record",
+    "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/infrastructure_repair_v3.json",
+    "--preflight-receipt-sha256",
+    "e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea"
+  ],
+  "supervisor_sha256": "e465273c466d9cc3f35a0c1d69194d54e8ca91190bde3d7eccc5f8ebcc71d626",
+  "preflight_receipt_sha256": "e487945435f26f854569c0be4fbed49893d8010c15f24d09bceb6d03ddca8cea",
+  "created_before_model_business_requests": true,
+  "requires_verified_Git_commit_before_launch": true,
+  "failed_startup_attempt2_preserved": true
+}

@@ -1,0 +1,60 @@
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 10-18 16:35:05 [__init__.py:216] Automatically detected platform cuda.
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:07 [api_server.py:1991] vLLM API server version 0.10.2
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:07 [utils.py:328] non-default args: {'port': 8963, 'model': '/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct', 'dtype': 'float16', 'max_model_len': 16384, 'served_model_name': ['llama31-8b'], 'gpu_memory_utilization': 0.88, 'enable_prefix_caching': True, 'max_num_seqs': 2}
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:07 [arg_utils.py:486] HF_HUB_OFFLINE is True, replace model_id [/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct] to model_path [/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/models/Llama-3.1-8B-Instruct]
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:17 [__init__.py:742] Resolved architecture: LlamaForCausalLM
+[1;36m(APIServer pid=136122)[0;0m WARNING 10-18 16:35:17 [__init__.py:2767] Casting torch.bfloat16 to torch.float16.
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:17 [__init__.py:1815] Using max model len 16384
+[1;36m(APIServer pid=136122)[0;0m INFO 10-18 16:35:17 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=2048.
+[1;36m(APIServer pid=136122)[0;0m Traceback (most recent call last):
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[1;36m(APIServer pid=136122)[0;0m     return _run_code(code, main_globals, None,
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/runpy.py", line 86, in _run_code
+[1;36m(APIServer pid=136122)[0;0m     exec(code, run_globals)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/entrypoints/openai/api_server.py", line 2106, in <module>
+[1;36m(APIServer pid=136122)[0;0m     uvloop.run(run_server(args))
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/uvloop/__init__.py", line 69, in run
+[1;36m(APIServer pid=136122)[0;0m     return loop.run_until_complete(wrapper())
+[1;36m(APIServer pid=136122)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/uvloop/__init__.py", line 48, in wrapper
+[1;36m(APIServer pid=136122)[0;0m     return await main
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/entrypoints/openai/api_server.py", line 2036, in run_server
+[1;36m(APIServer pid=136122)[0;0m     await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/entrypoints/openai/api_server.py", line 2056, in run_server_worker
+[1;36m(APIServer pid=136122)[0;0m     async with build_async_engine_client(
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/contextlib.py", line 199, in __aenter__
+[1;36m(APIServer pid=136122)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/entrypoints/openai/api_server.py", line 181, in build_async_engine_client
+[1;36m(APIServer pid=136122)[0;0m     async with build_async_engine_client_from_engine_args(
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/contextlib.py", line 199, in __aenter__
+[1;36m(APIServer pid=136122)[0;0m     return await anext(self.gen)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/entrypoints/openai/api_server.py", line 223, in build_async_engine_client_from_engine_args
+[1;36m(APIServer pid=136122)[0;0m     async_llm = AsyncLLM.from_vllm_config(
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/utils/__init__.py", line 1589, in inner
+[1;36m(APIServer pid=136122)[0;0m     return fn(*args, **kwargs)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/async_llm.py", line 223, in from_vllm_config
+[1;36m(APIServer pid=136122)[0;0m     return cls(
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/async_llm.py", line 138, in __init__
+[1;36m(APIServer pid=136122)[0;0m     self.engine_core = EngineCoreClient.make_async_mp_client(
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/core_client.py", line 102, in make_async_mp_client
+[1;36m(APIServer pid=136122)[0;0m     return AsyncMPClient(*client_args)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/core_client.py", line 769, in __init__
+[1;36m(APIServer pid=136122)[0;0m     super().__init__(
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/core_client.py", line 448, in __init__
+[1;36m(APIServer pid=136122)[0;0m     with launch_core_engines(vllm_config, executor_class,
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/contextlib.py", line 135, in __enter__
+[1;36m(APIServer pid=136122)[0;0m     return next(self.gen)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/v1/engine/utils.py", line 705, in launch_core_engines
+[1;36m(APIServer pid=136122)[0;0m     with zmq_socket_ctx(local_handshake_address, zmq.ROUTER,
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/contextlib.py", line 135, in __enter__
+[1;36m(APIServer pid=136122)[0;0m     return next(self.gen)
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/utils/__init__.py", line 2940, in zmq_socket_ctx
+[1;36m(APIServer pid=136122)[0;0m     yield make_zmq_socket(ctx,
+[1;36m(APIServer pid=136122)[0;0m   File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/launch_attempt2_preflight/runtimes/phase19c/vllm/utils/__init__.py", line 2921, in make_zmq_socket
+[1;36m(APIServer pid=136122)[0;0m     socket.bind(path)
+[1;36m(APIServer pid=136122)[0;0m   File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/zmq/sugar/socket.py", line 320, in bind
+[1;36m(APIServer pid=136122)[0;0m     super().bind(addr)
+[1;36m(APIServer pid=136122)[0;0m   File "zmq/backend/cython/_zmq.py", line 1002, in zmq.backend.cython._zmq.Socket.bind
+[1;36m(APIServer pid=136122)[0;0m zmq.error.ZMQError: ipc path "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/cells/llama_r1/attempt2/contract/tmp/54215409-97be-41c3-b604-f97c24e28029" is longer than 107 characters (sizeof(sockaddr_un.sun_path)). zmq.IPC_PATH_MAX_LEN constant can be used to check addr length (if it is defined). (addr='ipc:///media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_tableIII_fullcost_replay_20261018/cells/llama_r1/attempt2/contract/tmp/54215409-97be-41c3-b604-f97c24e28029')

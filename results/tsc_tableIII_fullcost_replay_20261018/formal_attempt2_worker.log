@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v2.py", line 420, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v2.py", line 405, in main
+    checks[order[0]]=left.result();checks[order[1]]=right.result()
+  File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/concurrent/futures/_base.py", line 458, in result
+    return self.__get_result()
+  File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_tableIII_fullcost_worker_v2.py", line 270, in run_cell
+    if server.poll() is not None:raise RuntimeError('Fresh server exited during startup; inspect retained server.log')
+RuntimeError: Fresh server exited during startup; inspect retained server.log

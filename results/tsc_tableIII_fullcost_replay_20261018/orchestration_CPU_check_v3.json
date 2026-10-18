@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "tests_run": 10,
+  "checks": [
+    "Frozen model/policy/timeout arguments across 24 cells",
+    "Reject foreign GPU PID",
+    "Never signal a different process group",
+    "Clean owned orphan children after API parent exit",
+    "Busy resource gate prevents both model preflight and server launch",
+    "Source directory symlinks and their dereferenced copies have identical complete inventories",
+    "Reject runtime symlink cycles",
+    "Reject model-registry reuse after asset metadata changes",
+    "Require the exact attested model-registry digest",
+    "Short IPC alias resolves to this study volume and stays below the AF_UNIX path limit"
+  ],
+  "GPU_model_calls": 0,
+  "evidence_type": "CPU infrastructure tests, not LLM correctness or latency results",
+  "skipped_tests": 0
+}
