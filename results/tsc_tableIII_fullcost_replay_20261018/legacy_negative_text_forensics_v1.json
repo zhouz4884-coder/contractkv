@@ -1,0 +1,163 @@
+{
+  "status": "legacy_negative_text_forensics_complete",
+  "new_GPU_requests": 0,
+  "cases": [
+    {
+      "session_id": "repobench-389",
+      "turn_id": 1,
+      "repeat": 1,
+      "certificate_issued": false,
+      "future_scope_valid": false,
+      "raw_warm_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_witness_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side) \ncy_real = cy + (cy_prev - half_side) \nreturn [cx_real - 0.5 * w, cy_real - 0.5 * h, w, h]",
+      "contract_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_warm_equals_witness": true,
+      "compiled_future_equals_witness": true,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 1.0,
+      "contract_stored_proxy_score": 1.0,
+      "raw_future_request_id": "chatcmpl-2b218dbcd9b84a4394e8c8209abfb093",
+      "contract_future_request_id": "chatcmpl-502d05c5f801492b8be6cf12b748f341"
+    },
+    {
+      "session_id": "repobench-136",
+      "turn_id": 9,
+      "repeat": 1,
+      "certificate_issued": false,
+      "future_scope_valid": false,
+      "raw_warm_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_witness_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype, device=device)",
+      "contract_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype, device=device)",
+      "raw_warm_equals_witness": true,
+      "compiled_future_equals_witness": false,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 0.222222,
+      "contract_stored_proxy_score": 0.222222,
+      "raw_future_request_id": "chatcmpl-c051a69582f3403eada4ee0933ae94f1",
+      "contract_future_request_id": "chatcmpl-e81bd4afbbf8483ea51667bdfaee763a"
+    },
+    {
+      "session_id": "repobench-389",
+      "turn_id": 1,
+      "repeat": 2,
+      "certificate_issued": false,
+      "future_scope_valid": false,
+      "raw_warm_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_witness_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side) \ncy_real = cy + (cy_prev - half_side) \nreturn [cx_real - 0.5 * w, cy_real - 0.5 * h, w, h]",
+      "contract_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side) \ncy_real = cy + (cy_prev - half_side) \nreturn [cx_real - 0.5 * w, cy_real - 0.5 * h, w, h]",
+      "raw_warm_equals_witness": true,
+      "compiled_future_equals_witness": false,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 1.0,
+      "contract_stored_proxy_score": 1.0,
+      "raw_future_request_id": "chatcmpl-99c6162dff8b47069be17d51d8f20f03",
+      "contract_future_request_id": "chatcmpl-bed9a250183c40d7a42eee32e8f8e809"
+    },
+    {
+      "session_id": "repobench-136",
+      "turn_id": 9,
+      "repeat": 2,
+      "certificate_issued": false,
+      "future_scope_valid": false,
+      "raw_warm_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_witness_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype, device=device)",
+      "contract_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_warm_equals_witness": true,
+      "compiled_future_equals_witness": true,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 0.222222,
+      "contract_stored_proxy_score": 0.0,
+      "raw_future_request_id": "chatcmpl-391704b6d32c4c31a24cf390957abd17",
+      "contract_future_request_id": "chatcmpl-ce82bb483ad24a45a479e8e69e16ceca"
+    },
+    {
+      "session_id": "repobench-389",
+      "turn_id": 1,
+      "repeat": 3,
+      "certificate_issued": true,
+      "future_scope_valid": true,
+      "raw_warm_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "raw_witness_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side) \ncy_real = cy + (cy_prev - half_side) \nreturn [cx_real - 0.5 * w, cy_real - 0.5 * h, w, h]",
+      "raw_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side)",
+      "contract_future_text": "<think>\n\n</think>\n\ncx_real = cx + (cx_prev - half_side) \ncy_real = cy + (cy_prev - half_side) \nreturn [cx_real - 0.5 * w, cy_real - 0.5 * h, w, h]",
+      "raw_warm_equals_witness": false,
+      "compiled_future_equals_witness": true,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 1.0,
+      "contract_stored_proxy_score": 1.0,
+      "raw_future_request_id": "chatcmpl-440dbda9e7594da0966d7b0f71122849",
+      "contract_future_request_id": "chatcmpl-1fc2a06d30864f94aa0786e19cbe594f"
+    },
+    {
+      "session_id": "repobench-136",
+      "turn_id": 9,
+      "repeat": 3,
+      "certificate_issued": false,
+      "future_scope_valid": false,
+      "raw_warm_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_witness_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype, device=device)",
+      "contract_future_text": "<think>\n\n</think>\n\nreturn self._new(impl, self._shape, self._dtype)",
+      "raw_warm_equals_witness": true,
+      "compiled_future_equals_witness": true,
+      "raw_future_equals_witness": false,
+      "raw_stored_proxy_score": 0.222222,
+      "contract_stored_proxy_score": 0.0,
+      "raw_future_request_id": "chatcmpl-0994916ee81041c09ccef56d3be0b522",
+      "contract_future_request_id": "chatcmpl-a927d80322d14d3bbc024ed8b1c1a744"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "cells/qwen_r1/attempt3/raw/requests.jsonl",
+      "sha256": "d99b7ac0d3faa7cde02ed2aeaa2007b9828b793596d99cc6a22d151f2f138fb1"
+    },
+    {
+      "path": "cells/qwen_r1/attempt3/contract/requests.jsonl",
+      "sha256": "3a68ee576048ea6e49d5df95537428121df3b7ecf12160cb72ae4882d3cbde43"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/raw/requests.jsonl",
+      "sha256": "f9f3efb994e5669b75e5690b5d93065ed9ad91c86900a4229cf5485dadef6cef"
+    },
+    {
+      "path": "cells/qwen_r2/attempt3/contract/requests.jsonl",
+      "sha256": "64762711f1b9f8825e1c0159b8d39202a454b4a223a13bc7463a6af0a2f071f8"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/raw/requests.jsonl",
+      "sha256": "f13e8a5e7619d3b292e021772cdf424d317ad9b03a2bd5fe7b45145dd4ebf86f"
+    },
+    {
+      "path": "cells/qwen_r3/attempt3/contract/requests.jsonl",
+      "sha256": "720137f661b5163acde6a81efff00ce094e55bf0054444c0e3f9a003953f444f"
+    }
+  ],
+  "summary": [
+    {
+      "session_id": "repobench-389",
+      "raw_future_distinct_texts_across_repeats": 2,
+      "contract_future_distinct_texts_across_repeats": 2,
+      "witness_distinct_texts_across_repeats": 2,
+      "all_contract_future_match_their_witness": false,
+      "all_witness_match_raw_warm": false
+    },
+    {
+      "session_id": "repobench-136",
+      "raw_future_distinct_texts_across_repeats": 1,
+      "contract_future_distinct_texts_across_repeats": 2,
+      "witness_distinct_texts_across_repeats": 1,
+      "all_contract_future_match_their_witness": false,
+      "all_witness_match_raw_warm": true
+    }
+  ],
+  "limitations": [
+    "This is selected-negative CPU diagnosis; all4725pairs remain in the primary result.",
+    "Only exact retained text comparisons. The old client did not retain actual complete Prompt/Output IDs or per-request batch traces.",
+    "Differences do not establish a unique cache, layout, scope or numerical cause. Current strict protocol effectiveness must be assessed in its own frozen data."
+  ]
+}

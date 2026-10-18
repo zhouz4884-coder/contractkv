@@ -1,0 +1,51 @@
+{
+  "public_commit": "a34822973aa2b85368d92e3b80765f7b6a750123",
+  "archive_sha256": "3c07f02372a1b5a76e9c41543aba4180c644c293e0440ff920ae9e2de72d9d4e",
+  "changed_measurement_rules": false,
+  "changes_to_existing_freeze_files": false,
+  "backend_import_check": {
+    "utc": "2026-10-18T10:45:59.921707+00:00",
+    "pid": 198422,
+    "mode": "check",
+    "original_freeze_sha256": "7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff",
+    "dependency_freeze_sha256": "389011e4c1fd5fdc57270ad2445fc5c23e275c4dd9cdba822d3ade3e542bf991",
+    "backend_sources": [
+      {
+        "path": "vllm/entrypoints/openai/api_server.py",
+        "sha256": "c4d70f5d299a059faaf8ca0d3a8d72f0e92065dc376d3a810ca7028c404c2db2"
+      },
+      {
+        "path": "vllm/v1/core/kv_cache_manager.py",
+        "sha256": "3d1efcede97a387efa5f459513c29faa6ac70556303c8838bf560490ab17c840"
+      },
+      {
+        "path": "vllm/v1/core/sched/scheduler.py",
+        "sha256": "c6b81d22a578239381ef419e88bb06b03f20666ef5350c223f916f247f0cd071"
+      },
+      {
+        "path": "vllm/v1/engine/__init__.py",
+        "sha256": "593187fdc0f8faf4f00f9c8c34f92c1e971a31ad7edfc0f7bd2e0461ed5fde77"
+      },
+      {
+        "path": "vllm/v1/engine/async_llm.py",
+        "sha256": "bc50153706d6d1dfa1e052fcb6b027ab7ccf7616f5c0d2692a5dd63e90a211fb"
+      },
+      {
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "sha256": "47527c7b52b58ab77d6a038f6b6cda5ec726539fd5c9b4c2891210569a176653"
+      }
+    ],
+    "imported_project_modules": [
+      "scripts.contractkv_pstp",
+      "scripts.contractkv_quiescence",
+      "scripts.contractkv_shadow_parking",
+      "scripts.tsc_revision_r2_execution_trace",
+      "scripts.tsc_revision_r2_margin_policy"
+    ],
+    "all_project_imports_frozen_and_loaded_from_snapshot": true,
+    "this_check_model_forwards": 0,
+    "worker": "scripts/tsc_revision_mechanism_worker_v3.py",
+    "no_worker_reimplementation": true
+  },
+  "diagnostic_GPU_requests": 0
+}
