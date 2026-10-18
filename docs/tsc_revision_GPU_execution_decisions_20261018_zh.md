@@ -59,3 +59,14 @@ Llama 三重复在 09:27:56 UTC 全部完成，共 1,350 future pairs、150 个�
 新CPU分析 `tsc_revision_final_existing_evidence_CPU_v1.py` 对既有保真主验证4,860个future做时间恒等式与真实日志核对，提取逐进程p99以上54个请求；全部为L0路由，其前一wave注册等待可由实际日志定位。该等待由同wave租户共同经历，不能按租户数倍增为GPU费用。51个实际认证响应的完整margin只作固定阈值网格的后验谓词分析，不重新评估未执行候选或推断未来安全。
 
 PSTP复用Phase16R、Phase17并发故障与Phase18生命周期的原始CSV/JSON，保留harness decision与自动接线、源级故障与普遍并发证明之间的边界。已有故障证据足以支撑第五批对应检查，暂不重复GPU压力测试。新Open-arrival结果和真正Gate ON/OFF的差额仍待后续独立协议处理；这些CPU结果不冒充GPU补测完成。
+
+## 11:27–11:39 UTC：继续原worker及补齐CPU可观察性
+
+上一目标轮分类为progress：实际接续五个未执行单元、保存十九个完成单元，并生成真实日志CPU分析与公开源文件。当前轮重新读取完整五批目标，核对Git main与远程SHA，并在`/proc/208398/cmdline`确认接续worker仍运行，不重复启动。11:39时为21个完成单元；14B r2 Raw已持续写入真实请求记录，GPU两卡100%利用，无新worker错误。
+
+CPU新增两项完成记录，不启动模型：
+
+1. `native_tail_v1`核对18cell/10,800次实际业务，补齐4,860个future的真实scheduler等待、running/waiting、pool free/used/total与块表。初次快照不是全程峰值，known-hash重分配不是完整eviction计数。性能矩阵使用已有native初始metrics和Prometheus，不安装原文件已注明“timing unsuitable”的重型residency hook。
+2. `margin_two_floor_v2`在同一已声明网格中分别改变raw和candidate/EOS两阈值。六个R3原始文件与归档SHA匹配，三个doc99重复均确认candidate margin 0.40625及一个Raw输入token变化；0.25 candidate floor仍不能排除这三个旧见证。该结果关闭“仅靠margin即可支持变化输入”的误解释，不用于选择新阈值。
+
+第一批输出可观察性继续严格区分：原驱动保留完整输出文本，可报告真实字符/UTF8字节长度；未保留的逐请求模型token长度、未来finish reason及IDs不以重分词补造。新增`tsc_tableIII_output_observability_v1.py`仅在24单元完成后做这项审核，同时从server access log独立数实际认证HTTP调用。Llama首个完成cell已确认36个函数尝试对应36次实际HTTP请求，不能把530条initial metrics当作GPU forward计数；legacy复用request ID、初次观测与实际RPC是不同分母。完整耗时仍按每次函数调用和controller的真实计时保留。
