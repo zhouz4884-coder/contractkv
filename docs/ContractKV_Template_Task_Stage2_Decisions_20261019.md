@@ -49,3 +49,11 @@ GitHub smart-HTTPS反复reset/connect失败。已公开的科学冻结b525de3保
 19:47核对前四个正式单元，每个384业务全部成功，最终后端排空均计入服务时钟；第二波的两份summary与completion SHA一致，未发现failure回执。两路metrics端口在波间停止响应，复查同一worker真实进程及completion确认属于原编排关闭旧server并进入第三波，未重启或复制worker。
 
 仅取回已完成的summary/completion/drain/launch，原始逐请求数据与质量/物理命中独立复算仍待矩阵结束；不把不同重复或不完整三臂的结果写成最终性能结论。全部27单元、来源、到达、阈值及SLO保持冻结，未新增GPU请求。
+
+## D11：六单元形成首两组三臂摘要，等待完整复算后选主张
+
+20:16核对第三波两个单元的summary SHA、384/384成功与最终排空回执；累计6/27、2304业务全部成功。Qwen common80的第1/2重复三臂已齐，同重复arrivals SHA一致；只封存摘要级描述，不替代原始逐请求独立复算。
+
+两重复中Session均为24对象/24真实认证RPC，Template均为3对象/3 RPC；累计Controller work约75.8–75.9s与50.9–51.0s，实际注册屏障约38.1–38.3s与26.4s。对象/RPC减少8倍，不把它写成完整认证GPU费用或服务延迟减少8倍，两臂均能复用合法canary/认证前缀。
+
+Raw/Session/Template的SLO达标数，第1重复为105/240/245，第2重复为42/236/245（每臂384）；已封存`formal_first_two_triplets_summary_v1.json`，明确为待完整独立复算的中间摘要。暂不声称质量保持、统计显著性或普遍Goodput收益，不据此调整余下来源、SLO、负载或运行范围。第四波由同一worker进入原定high100单元，原计划继续。
