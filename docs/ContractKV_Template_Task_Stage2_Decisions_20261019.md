@@ -28,3 +28,18 @@ v2 Qwen attempt1在API模块导入阶段退出：冻结包未收运行时动态�
 52生成、24配对的原包1745c4b6de146302ddf1d9c895d06b4233b2916a6dafa028d02434dd14ca146e（399成员）已本地安全恢复，summary和3 CSV独立复算完全一致。两个HotpotQA来源的12个实际compiled配对全部IDs/finish一致，Raw/候选分数分别0.75与0.50，12次全长度前缀命中；稳定提交14208/12192 tokens。完整Controller为11886.35/8311.05ms，64复用的TTFT粗投影均有成本空间；仅为开发门槛，不当正式加速。
 
 两个Repo的compiled canary都未通过既有Python输出契约，因此无认证RPC/共享提交、不解禁；私有反事实6次ID改变均来自OpenServer，分数0.06→0.08未越0.03门槛。Qwen仅HotpotQA L3通过，Repo L0。依照预注册执行Mistral/Llama同源独立开发，后续Raw-only标定和正式服务仍须单独冻结；六独立正式来源尚无模型输出。
+
+
+## D7：前瞻资格与正式范围收敛
+
+三模型156生成全部完成；每个模型原包都经本地独立复算。Mistral两个QA来源通过质量/物理/成本门槛；OpenServer虽部署attestation PASS，Raw配对出现6次>0.03掉分，Repo族被前瞻门槛拒绝。Llama的QA doc151同样attestation PASS但0.40→0.00、6次掉分，两个家族均不合格，不运行其正式单元。所有失败保留，compiled自路径认证不能当Raw等价。正式仅Qwen18+Mistral9，共10368业务；两个模型Repo都Raw fallback，六个正式来源全部保留。
+
+## D8：Raw-only锁定到达、SLO与计时
+
+Qwen/Mistral各80请求全部成功，实际输入/Native/计划epoch和总wall均经远程及本地独立核对。Qwen Raw率0.3159078191 req/s；两负载0.2527262553/0.3159078191；TTFT/E2E SLO10500/13000ms。Mistral Raw率0.2418217143，负载0.1934573715；SLO11000/18000ms。阈值来自事前1.5×Raw请求本征p95、500ms向上取整公式，不用backlog全零到达的排队p95放大门槛。
+
+访问采用已声明的两段32请求/template、所有六模板64请求的标记Poisson；这是受控模板局部性，不是生产trace或任意大工作集证据。新正式三臂的每个模型/重复固定同一物理GPU，Latin-square臂序，不改变registered identities与GPU并发2的区别；所有注册等待从相同全局epoch进入用户时延。仅按实际服务结果解释SLO，不以完整wall比值宣传容量提升。
+
+## D9：网络故障只延迟归档，不改科学条件
+
+GitHub smart-HTTPS反复reset/connect失败。已公开的科学冻结b525de3保持不变，真实校验回执在本地/服务器先封存，记录延迟上传后继续Raw-only。随后复用现有GCM授权，走GitHub官方Git Database API，逐blob/tree/commit验证字节与SHA，fast-forward更新同一main；未改写历史、未导出凭据。实际回执1632c9d及完整正式冻结93f54f5均已恢复公开并核对精确SHA，正式生成前完成。
