@@ -1,6 +1,6 @@
 # 第二阶段完成审计清单
 
-截至2026-10-19 21:07（香港时间）：**目标尚未完成**。本清单将完整目标保留为逐项交付要求，不以开发通过、正式启动或进程存活代替最终实证。
+截至2026-10-19 21:34（香港时间）：**目标尚未完成**。本清单将完整目标保留为逐项交付要求，不以开发通过、正式启动或进程存活代替最终实证。
 
 | 要求 | 可证明完成的证据 | 当前判断 |
 |---|---|---|
@@ -13,7 +13,7 @@
 | Raw/Session/Template同栈同内容同缓存授权组 | 服务客户端/authority源码、GPU AST证明、冻结job、P1实际引擎salt/命中审计 | 设计与P1完成；正式各请求的输入/回执/物理命中待P3核验 |
 | Session/Template仅改变认证对象及次数 | 同canonical compiled canary、同L3、同共享cache组、允许两路读取已认证prefix | 已冻结；实际对象数/RPC/失败费用待P3汇总 |
 | 注册、失败及生命周期检查纳入费用 | 全局epoch在注册前，原计划到达不后移，direct wall与Controller记录 | 客户端与计时CPU检查通过；正式逐行时间恒等式待P3 |
-| 同GPU/同到达/三重复正式对照 | Qwen18、Mistral9，6模板×8tenant×8业务；同模型/重复三臂同物理GPU | 已完成10/27单元、3840业务全部成功，第六波启动；worker770907已核查真实`/proc`命令，未重启 |
+| 同GPU/同到达/三重复正式对照 | Qwen18、Mistral9，6模板×8tenant×8业务；同模型/重复三臂同物理GPU | 已完成12/27单元、4608业务全部成功，第七波启动（Qwen第三重复与Mistral正式）；worker770907已核查真实`/proc`命令，未重启 |
 | 真实用户时延与SLO | 计划到达TTFT/E2E，绝对Goodput/达标率；完整wall仅辅助 | 指标已冻结；无最终结果 |
 | 真实物理工作与资格额外工作 | 引擎initial prefix hit、prompt-hit新prefill、canary/verification额外prefill | 待P3完整核算；不换算为GPU kernel时间 |
 | 来源及重复不确定性 | 三独立进程配对bootstrap、6来源条件敏感性、leave-one-source | 计算程序已准备；不得把tenant重复当独立安全样本 |
