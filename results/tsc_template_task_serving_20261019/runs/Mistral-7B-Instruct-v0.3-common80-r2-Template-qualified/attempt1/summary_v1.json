@@ -1,0 +1,101 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "phase": "formal",
+    "policy": "Template-qualified",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r2.json",
+    "repeat": 2,
+    "load": "common80",
+    "arrival_rate_rps": 0.19345737145485406,
+    "SLO": {
+      "TTFT_ms": 11000,
+      "E2E_ms": 18000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified.json",
+    "lane": 0,
+    "attempt": 1,
+    "wave": 13,
+    "port": 10125
+  },
+  "execution_complete": true,
+  "offered": 384,
+  "successful": 384,
+  "compiled_business": 192,
+  "service_begin_time": 4182228.295576744,
+  "service_end_time": 4184087.957616751,
+  "wall_s": 1859.6620400073007,
+  "last_arrival_offset_s": 1820.1658132316215,
+  "registration_barrier_from_epoch_ms": 26254.29275818169,
+  "registration_controller_work_ms": 50688.771760091186,
+  "certificate_objects": 3,
+  "certificate_PASS": 3,
+  "actual_verification_RPCs": 3,
+  "failed_verification_RPC_ms": 0,
+  "business_new_prefill_tokens": 3094992,
+  "reference_extra_new_prefill_tokens": 37930,
+  "verification_extra_new_prefill_tokens": 37976,
+  "verification_native": [
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified-single-template-task-d316afe8bf3a7a45:template-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 16000
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified-single-template-task-0b92c11b17738792:template-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 16090
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified-single-template-task-299cee89bbfc31ba:template-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 5886
+    }
+  ],
+  "backend_TTFT_ms": {
+    "mean": 2971.757477556821,
+    "p95": 6512.443089066073,
+    "p99": 7667.308776057342
+  },
+  "backend_e2e_ms": {
+    "mean": 5958.023001881277,
+    "p95": 11560.162007901818,
+    "p99": 17648.729619272053
+  },
+  "ready_TTFT_ms": {
+    "mean": 27699.25720378645,
+    "p95": 91458.16466088868,
+    "p99": 106787.33164899983
+  },
+  "ready_e2e_ms": {
+    "mean": 30685.522728110907,
+    "p95": 95014.17378026516,
+    "p99": 107380.53505421622
+  },
+  "business_native_unavailable": 0,
+  "achieved_throughput": 0.206489131755624,
+  "all_successful_actual_prompt_IDs_checked": 384,
+  "arrivals_sha256": "48221f532b9674e12e87b11af7db05990c5c358d06274137e4e83937122e87cc",
+  "generation_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "boundary": "Fixed global epoch includes preparation, registration and failed work. Arrivals never reset after registration; client concurrency2. Deployment attestation does not certify arbitrary Raw equivalence. Native new-prefill is actual prompt minus initial engine hit, not GPU time.",
+  "SLO_compliant": 156,
+  "SLO_fraction": 0.40625,
+  "absolute_SLO_goodput": 0.08388620977572224,
+  "joint_SLO_compliant": 156,
+  "joint_absolute_goodput": 0.08388620977572224,
+  "raw_file_sha256": "db056275cd1cab3e85930dc13642c72f6e2a5d5db3cb4d7ea2f4327a3cc2c402",
+  "post_measurement_audit_s": 0.17135706404224038
+}
