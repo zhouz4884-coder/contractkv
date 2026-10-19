@@ -21,3 +21,10 @@
 v2 Qwen attempt1在API模块导入阶段退出：冻结包未收运行时动态导入的`tsc_revision_r2_margin_policy`，且诊断trace路径入口亦未纳入闭包。模型权重未加载、业务/模型输出为0，完整server日志、launch、failure、worker exit与旧freeze保留。此项属于新编排缺陷，不是实验方法或质量负结果。
 
 依据不可变runtime源码补齐五个动态脚本模块及trace entry，增加隔离快照下的API CLI help、scheduler/model runner和trace导入预检。随后v3的CPU预检又拦截了三条Windows分隔符manifest路径；未启动新的模型server。v4将所有seed强制规范为相对POSIX路径并增加断言，旧v2/v3全部保留。未执行过的分析脚本旧远程版本亦改名保留。实际输入、阈值、生成预算、资格规则与统计协议v2不变；修复后Qwen使用fresh-server attempt2，不重跑任何有效完成的科学单元。
+
+
+## D6：Qwen开发通过HotpotQA，Repo保留Raw；进入条件性后续
+
+52生成、24配对的原包1745c4b6de146302ddf1d9c895d06b4233b2916a6dafa028d02434dd14ca146e（399成员）已本地安全恢复，summary和3 CSV独立复算完全一致。两个HotpotQA来源的12个实际compiled配对全部IDs/finish一致，Raw/候选分数分别0.75与0.50，12次全长度前缀命中；稳定提交14208/12192 tokens。完整Controller为11886.35/8311.05ms，64复用的TTFT粗投影均有成本空间；仅为开发门槛，不当正式加速。
+
+两个Repo的compiled canary都未通过既有Python输出契约，因此无认证RPC/共享提交、不解禁；私有反事实6次ID改变均来自OpenServer，分数0.06→0.08未越0.03门槛。Qwen仅HotpotQA L3通过，Repo L0。依照预注册执行Mistral/Llama同源独立开发，后续Raw-only标定和正式服务仍须单独冻结；六独立正式来源尚无模型输出。

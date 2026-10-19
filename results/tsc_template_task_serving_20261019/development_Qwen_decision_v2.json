@@ -1,0 +1,46 @@
+{
+  "status": "GO_FOR_QWEN_RAW_ONLY_CALIBRATION_AND_CONDITIONAL_OPTIONAL_DEVELOPMENT",
+  "model": "Qwen3-8B",
+  "eligible_families": [
+    "HotpotQA"
+  ],
+  "invariants_pass": true,
+  "qualified_levels": {
+    "HotpotQA": "L3",
+    "RepoBench": "L0"
+  },
+  "raw_equivalence_not_attested": true,
+  "summary_sha256": "9c67a5f5c345598060abd8e870ff454e177815c52503a67454592945eeffc824",
+  "local_independent_recompute": {
+    "status": "PASS",
+    "independently_recomputed_business": 52,
+    "actual_cells": 1,
+    "summary_all_values_exact": true,
+    "CSV_bytes_equal": [
+      {
+        "file": "native_v2.csv",
+        "sha256": "68d9006397a06a2d7257eb6fb6f17f7584bc3f753df3d165cfae89d809d02da6",
+        "bytes": 10476
+      },
+      {
+        "file": "pairs_v2.csv",
+        "sha256": "b9793b4c9d0a08c135a7a9b25de6bafb39f5506dc8c84dca204c4f5363101e29",
+        "bytes": 2797
+      },
+      {
+        "file": "registrations_v2.csv",
+        "sha256": "0189bf18bf4427898b1df5ec17d06287b20bbea51cf7f99f76b1e1f77bc4785c",
+        "bytes": 601
+      }
+    ],
+    "original_archive_members_unchanged": 399,
+    "no_prompt_or_output_IDs_reconstructed": true,
+    "new_GPU_requests": 0,
+    "source_sha256": "e546af80930324056c5470f417b2ea01bee98fb311c1b79f40c1dac2fcb1bf4f",
+    "analysis_source_sha256": "3164f7f775638d69cfdaa17c66c149103e210436f8b320ee6cd7338b2103b8aa",
+    "archive_sha256": "1745c4b6de146302ddf1d9c895d06b4233b2916a6dafa028d02434dd14ca146e",
+    "formal_freeze_sha256": "d0b1c9e748b420a8008aed172db24aa83e324ea4d07dce7c190041e0651427c1"
+  },
+  "projected_cost_is_development_screen_not_service_result": true,
+  "formal_sources_still_unconsumed": true
+}
