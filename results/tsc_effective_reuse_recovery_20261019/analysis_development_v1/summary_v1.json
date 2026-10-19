@@ -1,0 +1,249 @@
+{
+  "status": "DEVELOPMENT_ACCOUNTING_COMPLETE",
+  "actual_cells": 3,
+  "actual_business": 600,
+  "full_runner_business": 540,
+  "candidate_probe_business": 60,
+  "candidate_probes": 36,
+  "full_runner_compiled_Raw_pairs": 32,
+  "behavior_or_PASS_retention_violations": [],
+  "arms": [
+    {
+      "model": "Qwen3-8B",
+      "arm": "raw_authorized",
+      "actual_business": 60,
+      "compiled_future": 0,
+      "qualification_decisions": 0,
+      "actual_RPCs": 0,
+      "accepted": 0,
+      "reasons": {},
+      "complete_service_wall_s": 207.66292396280915,
+      "recorded_candidate_planning_ms": 0,
+      "direct_registration_intervals_ms": 0,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 0,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "V5_authorized",
+      "actual_business": 60,
+      "compiled_future": 6,
+      "qualification_decisions": 9,
+      "actual_RPCs": 3,
+      "accepted": 1,
+      "reasons": {
+        "PASS": 1,
+        "observation_scope_has_no_declared_exact_reuse": 3,
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 2,
+        "raw_output_contract:python_syntax_SyntaxError": 3
+      },
+      "complete_service_wall_s": 212.43295764923096,
+      "recorded_candidate_planning_ms": 918.8982374034822,
+      "direct_registration_intervals_ms": 12179.458347614855,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 6,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "deferred_authorized",
+      "actual_business": 60,
+      "compiled_future": 6,
+      "qualification_decisions": 9,
+      "actual_RPCs": 3,
+      "accepted": 1,
+      "reasons": {
+        "PASS": 1,
+        "observation_scope_has_no_declared_exact_reuse": 3,
+        "pointwise_margin_guard:candidate_token_margin_below_floor": 2,
+        "raw_output_contract:python_syntax_SyntaxError": 3
+      },
+      "complete_service_wall_s": 210.97374268388376,
+      "recorded_candidate_planning_ms": 316.38949690386653,
+      "direct_registration_intervals_ms": 12479.570152703673,
+      "skipped_candidate_preparations": 6,
+      "actual_signature_checks": 6,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "raw_authorized",
+      "actual_business": 60,
+      "compiled_future": 0,
+      "qualification_decisions": 0,
+      "actual_RPCs": 0,
+      "accepted": 0,
+      "reasons": {},
+      "complete_service_wall_s": 307.6960809798911,
+      "recorded_candidate_planning_ms": 0,
+      "direct_registration_intervals_ms": 0,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 0,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "V5_authorized",
+      "actual_business": 60,
+      "compiled_future": 6,
+      "qualification_decisions": 6,
+      "actual_RPCs": 1,
+      "accepted": 1,
+      "reasons": {
+        "observation_scope_has_no_declared_exact_reuse": 5,
+        "PASS": 1
+      },
+      "complete_service_wall_s": 305.33472702186555,
+      "recorded_candidate_planning_ms": 465.80909937620163,
+      "direct_registration_intervals_ms": 3053.2977799884975,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 6,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "deferred_authorized",
+      "actual_business": 60,
+      "compiled_future": 6,
+      "qualification_decisions": 6,
+      "actual_RPCs": 1,
+      "accepted": 1,
+      "reasons": {
+        "observation_scope_has_no_declared_exact_reuse": 5,
+        "PASS": 1
+      },
+      "complete_service_wall_s": 302.4853060650639,
+      "recorded_candidate_planning_ms": 71.28291996195912,
+      "direct_registration_intervals_ms": 3102.959386538714,
+      "skipped_candidate_preparations": 5,
+      "actual_signature_checks": 6,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "arm": "raw_authorized",
+      "actual_business": 60,
+      "compiled_future": 0,
+      "qualification_decisions": 0,
+      "actual_RPCs": 0,
+      "accepted": 0,
+      "reasons": {},
+      "complete_service_wall_s": 236.77998697990552,
+      "recorded_candidate_planning_ms": 0,
+      "direct_registration_intervals_ms": 0,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 0,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "arm": "V5_authorized",
+      "actual_business": 60,
+      "compiled_future": 4,
+      "qualification_decisions": 6,
+      "actual_RPCs": 1,
+      "accepted": 1,
+      "reasons": {
+        "observation_scope_has_no_declared_exact_reuse": 1,
+        "pre_reference_expected_net_rejected": 2,
+        "pointwise_raw_answer_or_eos_margin_below_floor": 1,
+        "PASS": 1,
+        "post_reference_expected_net_rejected": 1
+      },
+      "complete_service_wall_s": 237.27793050231412,
+      "recorded_candidate_planning_ms": 487.6968231983483,
+      "direct_registration_intervals_ms": 2608.047648333013,
+      "skipped_candidate_preparations": 0,
+      "actual_signature_checks": 4,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "arm": "deferred_authorized",
+      "actual_business": 60,
+      "compiled_future": 4,
+      "qualification_decisions": 6,
+      "actual_RPCs": 1,
+      "accepted": 1,
+      "reasons": {
+        "observation_scope_has_no_declared_exact_reuse": 3,
+        "pointwise_raw_answer_or_eos_margin_below_floor": 1,
+        "PASS": 1,
+        "post_reference_expected_net_rejected": 1
+      },
+      "complete_service_wall_s": 236.11443060124293,
+      "recorded_candidate_planning_ms": 231.85426462441683,
+      "direct_registration_intervals_ms": 2838.2038502022624,
+      "skipped_candidate_preparations": 3,
+      "actual_signature_checks": 4,
+      "failed_signature_checks": 0,
+      "all_guard_and_registration_times_in_direct_wall": true,
+      "shared_engine_development_not_causal_fresh_service_speedup": true
+    }
+  ],
+  "development_choices": [
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "HotpotQA",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": false
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "family": "RepoBench",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "HotpotQA",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": false
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "family": "RepoBench",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "family": "HotpotQA",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": false
+    },
+    {
+      "model": "Qwen3-8B",
+      "family": "RepoBench",
+      "eligible_levels": [],
+      "chosen": null,
+      "production_economic_profile_not_established_by_feasibility": false
+    }
+  ],
+  "new_GPU_requests": 0,
+  "no_formal_validation_outputs_used": true,
+  "source_sha256": "2c201de3a46015f1fff77f2b77270ca0832575468c17e2a57f94d58e683581b0",
+  "boundary": "Known-source shared-engine full-runner smoke and four-source development feasibility. No direct phase ratio is a causal speedup or open-arrival capacity. No metadata scope or margin threshold is changed."
+}
