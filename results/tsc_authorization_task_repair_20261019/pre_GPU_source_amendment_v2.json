@@ -1,0 +1,9 @@
+{
+  "reason": "Legacy and authorized qualification phases otherwise derive duplicate request/transaction IDs from equal namespace+scope in the same engine.",
+  "prior_freeze_sha256": "865befde5f0482a3d7c330cd779a3adf81b03edaef82a5f1d9d5de5e409bdc31",
+  "prior_version_never_executed_on_GPU": true,
+  "repair": "Use separate legacy/authorized registrar namespaces and corresponding historical compiled salt; shared authorized cache identity remains identical across Raw/compiled. No scope/margin/PSTP/gold/selection changes.",
+  "old_versions_and_source_snapshot_preserved": true,
+  "scientific_protocol_count_or_source_changes": false,
+  "new_GPU_requests": 0
+}

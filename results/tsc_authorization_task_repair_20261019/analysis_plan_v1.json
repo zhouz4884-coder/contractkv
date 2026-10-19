@@ -1,0 +1,24 @@
+{
+  "schema_version": "contractkv.authorization-repair-analysis-plan.v1",
+  "freeze_sha256": "b67da7d3b05c08c96d0bf36c997f99570f01af6b2350bbac6c9f942f22f3c9f3",
+  "planned_before_any_new_model_output": true,
+  "primary_units": "9 engine processes,7 task/control contexts each; real6 source contexts repeated across3 models/3 processes, not63 independent sources.",
+  "native_match": "Join actual response request_id to exactly one lookup_before/lookup_return; verify reported wire salt, complete actual prompt IDs and computed block-key arrays. Reject any guessed IDs.",
+  "primary_comparisons": [
+    "legacy cross-domain/stale fallback actual hits after same-input warmup",
+    "authorized same-domain/epoch repeats and second principal reuse",
+    "authorized first cross-domain and first new-epoch Raw lookup:0 native hits and disjoint first block chains for identical Prompt IDs",
+    "stale identity rejected before dispatch:7/cell, no backend request",
+    "every rejected qualification:zero committed tokens and no corresponding verification_cache_blocks_return publication"
+  ],
+  "residency": "Synthetic working set deliberately fits the pool. Trace frees/evictions and actual cached entries; do not attribute real-task misses uniquely to identity if pressure also evicts.",
+  "scores": "Unchanged standard_score/SequenceMatcher. Store all IDs/finish, mean scores and delta>+.03/<-.03, Raw-repeat and legacy/fixed same-input controls. Relative behavior is not absolute correctness.",
+  "performance": "Report absolute business TTFT,TPOT,E2E,phase/cell wall,all verification/failure costs. Matched3-business warm-witness/repeat/post-decision subworkflow clock can be derived from phase start and actual post event; descriptive only. Full legacy5/fixed8+negative probe phases have different work counts and cannot be called a fair method speedup.",
+  "full_clock_boundary": "Cell workload clock excludes source packing/tokenization,server startup,model load and controller key initialization. It includes all per-context authority/binding work,business,qualification,domain/epoch fallbacks and failures. Plans are pretokenized frozen query catalogue, not arbitrary unique queries.",
+  "SLO": "Reuse TTFT11700ms/meanTPOT435ms predetermined in selection_plan. Count actual business meeting both over actual workflow wall; descriptive serial micro-workflow goodput, not open-arrival capacity or a new calibratedSLO claim.",
+  "zero_event": "Use observed counts only;no general safety/confidentiality/timing-isolation claim.",
+  "failure": "Keep all partial failures and exit status;no output-conditioned source/threshold/budget changes. Protocolv1 never executed;v2 only fixes duplicate RPC/transaction IDs across phases.",
+  "trusted_semantic_mislabel_still_accepted": "Synthetic marker is intentionally operator-declared shareable; isolation across current authorized groups does not detect such mislabels.",
+  "repo_no_relaxation": "Old12/18 outputs had no supported legal-fragment false rejection;one_python_statement and inheritedM/LRepoL0 unchanged.",
+  "broader_GPU_matrix": "No new open-arrival/cost-gate tuning. After9cells report this boundedrepair even if negative."
+}

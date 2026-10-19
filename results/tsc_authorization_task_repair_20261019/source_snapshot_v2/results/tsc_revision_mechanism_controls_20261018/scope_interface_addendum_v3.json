@@ -1,0 +1,16 @@
+{
+  "schema_version": "contractkv.pre-forward-interface-scope-closure.v3",
+  "before_any_diagnostic_GPU_request": true,
+  "prior_freeze_v2_sha256": "9366e45e7a1d103fa2c8972a4f100d6276de5e58c5a446befa13efe2725c1418",
+  "case_margin_budget_score_or_PSTP_changed": false,
+  "fixes": [
+    "Scope identifier uses actual raw messages, candidate prompt IDs and output budget; offline scoring/risk metadata excluded.",
+    "All post-decision Manifest compiled routing also enforces the already declared exact observation ScopeValid predicate, separately from HMAC metadata binding.",
+    "Analysis distinguishes indeterminate RPC from confirmed rejection and preserves real native APC marker hits."
+  ],
+  "cases": 20,
+  "cells": 9,
+  "business_requests": 855,
+  "maximum_GPU_verification_calls": 198,
+  "earlier_v1_v2_no_GPU_outputs": true
+}

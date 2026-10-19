@@ -29,3 +29,12 @@ CPU读取旧真实Repo原包所有18个Raw条件：12个旧契约早拒，均无
 - 当前安全说明：https://docs.vllm.ai/en/latest/usage/security/ （2026-10-19读取；cache_salt不是完整隔离边界，需要可信网关/适当独立实例）。
 
 当前阶段：CPU身份与原准入共10测试通过；新增源码复用INCOMPLETE后将重新验收。远程两3090空闲的只读观察不能替代启动前复核。下一步CPU独立来源packing/实际tokenizer，冻结完整协议和源码，再启动9单元；不能把当前CPU检查称为GPU修复成功。
+
+
+## D4：GPU前发现RPC身份重复风险，保留v1并冻结v2
+
+CPU完整路由夹具11检查通过后，静态审查发现同一引擎内legacy/authorized两次注册如果使用相同namespace和scope，会生成相同request_id/txn_id。尚无任何GPU输出。保留protocol/freeze/source_snapshot v1和所有源码，v2给两阶段独立注册namespace并让legacy compiled盐相应一致；统一授权盐不变，作用域/阈值/输入/9cell规模不变。新增CPU断言15个模拟验证RID全部唯一，11项通过。此为预执行基础设施修复，不是按结果调认证。
+
+v2正式freeze为b67da7d3b05c08c96d0bf36c997f99570f01af6b2350bbac6c9f942f22f3c9f3。六源Hotpot doc169/106/191，Repo AContesini/Convert_PDF_to_DOCX_or_vice-versa、MorrisNein/pecapiku、lalalamdbf/PLSE_IDRR；对713既有组/728原文记录的完整context精确比对无重复，非语义去重。三模型16K、关键输入保持检查完成。分析计划在新模型输出前另行登记，明确不同工作量阶段不作公平速度倍率，所有冷/热命中与费用分别报告。
+
+当前科学问题仍为：统一授权身份能否真正贯穿Raw/compiled和Native哈希，并保留域内合法复用及零拒绝发布。没有新的Repo误拒证据，不继续开发宽松语法规则。
