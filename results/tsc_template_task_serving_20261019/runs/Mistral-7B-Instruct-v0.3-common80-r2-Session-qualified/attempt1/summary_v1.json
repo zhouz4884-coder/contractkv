@@ -1,0 +1,227 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "phase": "formal",
+    "policy": "Session-qualified",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r2.json",
+    "repeat": 2,
+    "load": "common80",
+    "arrival_rate_rps": 0.19345737145485406,
+    "SLO": {
+      "TTFT_ms": 11000,
+      "E2E_ms": 18000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified.json",
+    "lane": 0,
+    "attempt": 1,
+    "wave": 12,
+    "port": 10124
+  },
+  "execution_complete": true,
+  "offered": 384,
+  "successful": 384,
+  "compiled_business": 192,
+  "service_begin_time": 4180263.945484968,
+  "service_end_time": 4182123.890976509,
+  "wall_s": 1859.945491541177,
+  "last_arrival_offset_s": 1820.1658132316215,
+  "registration_barrier_from_epoch_ms": 33696.09331199899,
+  "registration_controller_work_ms": 67154.65211542323,
+  "certificate_objects": 24,
+  "certificate_PASS": 24,
+  "actual_verification_RPCs": 24,
+  "failed_verification_RPC_ms": 0,
+  "business_new_prefill_tokens": 3094992,
+  "reference_extra_new_prefill_tokens": 38112,
+  "verification_extra_new_prefill_tokens": 40272,
+  "verification_native": [
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant00-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 16090
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant01-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant02-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant03-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant04-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant05-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant06-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant07-deployment",
+      "prompt_tokens": 16090,
+      "prefix_hit_tokens": 15952,
+      "new_prefill_tokens": 138
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant00-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 16000
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant01-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant02-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant03-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant04-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant05-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant06-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant07-deployment",
+      "prompt_tokens": 16000,
+      "prefix_hit_tokens": 15904,
+      "new_prefill_tokens": 96
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant01-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 5886
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant00-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant02-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant03-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant04-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant05-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant06-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant07-deployment",
+      "prompt_tokens": 5886,
+      "prefix_hit_tokens": 5792,
+      "new_prefill_tokens": 94
+    }
+  ],
+  "backend_TTFT_ms": {
+    "mean": 2972.349108707325,
+    "p95": 6522.582566714846,
+    "p99": 8637.63302252163
+  },
+  "backend_e2e_ms": {
+    "mean": 5961.619321037385,
+    "p95": 11578.56742630247,
+    "p99": 17649.931068290025
+  },
+  "ready_TTFT_ms": {
+    "mean": 28320.441380936245,
+    "p95": 91400.68595302287,
+    "p99": 106677.30468351394
+  },
+  "ready_e2e_ms": {
+    "mean": 31309.711593266304,
+    "p95": 95002.10381217756,
+    "p99": 107289.06546858145
+  },
+  "business_native_unavailable": 0,
+  "achieved_throughput": 0.20645766327367593,
+  "all_successful_actual_prompt_IDs_checked": 384,
+  "arrivals_sha256": "48221f532b9674e12e87b11af7db05990c5c358d06274137e4e83937122e87cc",
+  "generation_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "boundary": "Fixed global epoch includes preparation, registration and failed work. Arrivals never reset after registration; client concurrency2. Deployment attestation does not certify arbitrary Raw equivalence. Native new-prefill is actual prompt minus initial engine hit, not GPU time.",
+  "SLO_compliant": 154,
+  "SLO_fraction": 0.4010416666666667,
+  "absolute_SLO_goodput": 0.08279812537538045,
+  "joint_SLO_compliant": 154,
+  "joint_absolute_goodput": 0.08279812537538045,
+  "raw_file_sha256": "461fdebc4d1702b9b4295b76a0c4da30da1f351713f442aa1950ec36038637c1",
+  "post_measurement_audit_s": 0.2033981028944254
+}
