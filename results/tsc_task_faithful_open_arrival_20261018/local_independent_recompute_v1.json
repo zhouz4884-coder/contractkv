@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "original_archive_sha256": "ce8a001e246f04012d56276232ad2b4acb706149dfde60d0155473e649320cfc",
+  "independently_recomputed_cells": 37,
+  "independently_rescored_business_requests": 11640,
+  "original_frozen_analysis_source_unchanged": true,
+  "analysis_source_sha256": "ac65994e9770494b91583474b23119f5f4373b2f0e1d4e2ffa42f4bae8336864",
+  "phase_comparisons": {
+    "formal": {
+      "summary": {
+        "exact_leaves": 6891,
+        "close_float_leaves": 0,
+        "max_absolute_float_delta": 0.0,
+        "relative_tolerance": 1e-12,
+        "absolute_tolerance": 1e-08,
+        "all_values_exact": true
+      },
+      "CSV_bytes_equal": [
+        {
+          "file": "gate_ON_OFF_quality_pairs_v1.csv",
+          "bytes": 187773,
+          "sha256": "8405728b070fcb1e74f7d18ecd7e12385403f6733a77686d23174b4a5c6496d9"
+        },
+        {
+          "file": "P99_requests_v1.csv",
+          "bytes": 84003,
+          "sha256": "9306ef761a471c3a3bfba8aab2d1f905e569dc07b83fff9873636c9459416deb"
+        },
+        {
+          "file": "paired_performance_v1.csv",
+          "bytes": 4634,
+          "sha256": "80be859bdeb6074ec7dd08e4c6fd3cc5f0eb13400b24c88412bd0d087ae41258"
+        },
+        {
+          "file": "paired_quality_v1.csv",
+          "bytes": 907658,
+          "sha256": "5ddcb4a04f00c0221855dea13bed11c8fff1ba56526e369e9a7ac52755a2194e"
+        },
+        {
+          "file": "qualifications_v1.csv",
+          "bytes": 107491,
+          "sha256": "7e9d1e9f66b118699e9f6748ef0221e8f4bcba3fd57f458b3f9f52bcc2c99f7d"
+        },
+        {
+          "file": "Raw_repeat_controls_v1.csv",
+          "bytes": 581845,
+          "sha256": "20ef8f29f3de698a6fe1091ba13f502fd04c4686d0d2899b4984ab014a02d5f2"
+        },
+        {
+          "file": "requests_v1.csv",
+          "bytes": 7313793,
+          "sha256": "c19a18a4c194a849aa76d853652cdc9c43b3ab4cb95929c7c661e607f9e9525f"
+        },
+        {
+          "file": "source_summary_v1.csv",
+          "bytes": 34155,
+          "sha256": "a2addaabbb92dc1f4a847ff3c64b791be85780f76e639c89da6148e5053f88f4"
+        },
+        {
+          "file": "tenant_summary_v1.csv",
+          "bytes": 223347,
+          "sha256": "854800610db0d7f7758df07a89018c32492636f1b44ebebbc32c01d4e4c41409"
+        }
+      ],
+      "summary_bytes_equal": false,
+      "summary_LF_normalized_bytes_equal": true
+    },
+    "calibration": {
+      "summary": {
+        "exact_leaves": 934,
+        "close_float_leaves": 0,
+        "max_absolute_float_delta": 0.0,
+        "relative_tolerance": 1e-12,
+        "absolute_tolerance": 1e-08,
+        "all_values_exact": true
+      },
+      "CSV_bytes_equal": [
+        {
+          "file": "P99_requests_v1.csv",
+          "bytes": 10273,
+          "sha256": "e94616ea24afaca9b758967bdefe528edea4470a6679a5fe3821788dccd54452"
+        },
+        {
+          "file": "requests_v1.csv",
+          "bytes": 530953,
+          "sha256": "5460eef28b5166e4e1bb75c937a47674b590a26cf96fbfe33abdf488eeae9604"
+        },
+        {
+          "file": "source_summary_v1.csv",
+          "bytes": 6980,
+          "sha256": "8476d17a2ad60bb906193bae5586d34395b087afc97753e5fdf05ddf55cdb86d"
+        },
+        {
+          "file": "tenant_summary_v1.csv",
+          "bytes": 15375,
+          "sha256": "b7b5e26eaa330736d20437f5b5500e0a1ff014680f3f052663cb8fa3f6287dbc"
+        }
+      ],
+      "summary_bytes_equal": false,
+      "summary_LF_normalized_bytes_equal": true
+    }
+  },
+  "source_sensitivity_comparison": {
+    "exact_leaves": 135,
+    "close_float_leaves": 0,
+    "max_absolute_float_delta": 0.0,
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-08,
+    "all_values_exact": true
+  },
+  "statistics_inputs_proven_equal_to_fresh_raw_recomputation": true,
+  "original_archive_members_unchanged_after_recomputation": 1246,
+  "no_output_or_prompt_IDs_reconstructed": true,
+  "new_GPU_requests": 0,
+  "source_sha256": "3f280746d097aa9ddbfb389cbb120238d86d7b1014bd00cd9a3f61c3283d487e"
+}

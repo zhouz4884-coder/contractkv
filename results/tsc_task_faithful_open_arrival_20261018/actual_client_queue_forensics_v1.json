@@ -1,0 +1,596 @@
+{
+  "schema_version": "contractkv.actual-client-queue-forensics.v1",
+  "post_hoc_descriptive_reconstruction": true,
+  "new_GPU_requests": 0,
+  "source_records": 10800,
+  "cells": [
+    {
+      "cell": "qwen_qwen3_common_r1_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 4411.793929736854,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 930
+    },
+    {
+      "cell": "qwen_qwen3_high_r1_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 44,
+      "peak_arrived_not_backend_submitted": 44,
+      "mean_queue_before_controller_ms": 52714.35277139406,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 930
+    },
+    {
+      "cell": "qwen_qwen3_common_r1_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 4681.47557834422,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 929
+    },
+    {
+      "cell": "qwen_qwen3_high_r1_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 44,
+      "peak_arrived_not_backend_submitted": 44,
+      "mean_queue_before_controller_ms": 54952.70977241712,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 929
+    },
+    {
+      "cell": "qwen_qwen3_common_r2_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5541.889199645569,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 929
+    },
+    {
+      "cell": "qwen_qwen3_high_r2_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 40,
+      "peak_arrived_not_backend_submitted": 40,
+      "mean_queue_before_controller_ms": 44069.74190335152,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 929
+    },
+    {
+      "cell": "qwen_qwen3_common_r2_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5704.3297057221125,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 930
+    },
+    {
+      "cell": "qwen_qwen3_high_r2_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 46,
+      "peak_arrived_not_backend_submitted": 46,
+      "mean_queue_before_controller_ms": 64362.43205386886,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 930
+    },
+    {
+      "cell": "qwen_qwen3_common_r3_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 4466.073523950763,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 935
+    },
+    {
+      "cell": "qwen_qwen3_high_r3_raw-order_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 40,
+      "peak_arrived_not_backend_submitted": 40,
+      "mean_queue_before_controller_ms": 47389.34549079536,
+      "sampled_VRAM_max_MiB": 20758.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 935
+    },
+    {
+      "cell": "qwen_qwen3_common_r3_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5600.976169127453,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 934
+    },
+    {
+      "cell": "qwen_qwen3_high_r3_risk-tail_on",
+      "regime": "qwen",
+      "model": "Qwen3-8B",
+      "load": "high",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 38,
+      "peak_arrived_not_backend_submitted": 38,
+      "mean_queue_before_controller_ms": 45683.5710914909,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 934
+    },
+    {
+      "cell": "cross_mistral_common_r1_raw-order_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 26,
+      "peak_arrived_not_backend_submitted": 26,
+      "mean_queue_before_controller_ms": 43614.86503139345,
+      "sampled_VRAM_max_MiB": 21698.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1004
+    },
+    {
+      "cell": "cross_llama_common_r1_raw-order_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 20,
+      "peak_arrived_not_backend_submitted": 20,
+      "mean_queue_before_controller_ms": 29291.67185336248,
+      "sampled_VRAM_max_MiB": 20992.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1004
+    },
+    {
+      "cell": "cross_mistral_common_r1_risk-tail_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 26,
+      "peak_arrived_not_backend_submitted": 26,
+      "mean_queue_before_controller_ms": 43107.38353132684,
+      "sampled_VRAM_max_MiB": 21700.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1003
+    },
+    {
+      "cell": "cross_llama_common_r1_risk-tail_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 20,
+      "peak_arrived_not_backend_submitted": 20,
+      "mean_queue_before_controller_ms": 28974.473045634415,
+      "sampled_VRAM_max_MiB": 20994.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1003
+    },
+    {
+      "cell": "cross_mistral_common_r2_risk-tail_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 48,
+      "peak_arrived_not_backend_submitted": 48,
+      "mean_queue_before_controller_ms": 72184.06432029894,
+      "sampled_VRAM_max_MiB": 21700.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1011
+    },
+    {
+      "cell": "cross_llama_common_r2_risk-tail_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 24,
+      "peak_arrived_not_backend_submitted": 24,
+      "mean_queue_before_controller_ms": 39475.27017043127,
+      "sampled_VRAM_max_MiB": 20994.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1011
+    },
+    {
+      "cell": "cross_mistral_common_r2_raw-order_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 48,
+      "peak_arrived_not_backend_submitted": 48,
+      "mean_queue_before_controller_ms": 71067.4071849867,
+      "sampled_VRAM_max_MiB": 21698.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1009
+    },
+    {
+      "cell": "cross_llama_common_r2_raw-order_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 24,
+      "peak_arrived_not_backend_submitted": 24,
+      "mean_queue_before_controller_ms": 38343.9857795343,
+      "sampled_VRAM_max_MiB": 20992.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1009
+    },
+    {
+      "cell": "cross_mistral_common_r3_raw-order_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 30,
+      "peak_arrived_not_backend_submitted": 30,
+      "mean_queue_before_controller_ms": 55506.361569120134,
+      "sampled_VRAM_max_MiB": 21698.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1050
+    },
+    {
+      "cell": "cross_llama_common_r3_raw-order_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "raw-order",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 32,
+      "peak_arrived_not_backend_submitted": 32,
+      "mean_queue_before_controller_ms": 36897.999886237085,
+      "sampled_VRAM_max_MiB": 20992.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1050
+    },
+    {
+      "cell": "cross_mistral_common_r3_risk-tail_on",
+      "regime": "cross",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 30,
+      "peak_arrived_not_backend_submitted": 30,
+      "mean_queue_before_controller_ms": 55754.82896607007,
+      "sampled_VRAM_max_MiB": 21700.0,
+      "sampled_VRAM_min_MiB": 21398.0,
+      "resource_samples": 1050
+    },
+    {
+      "cell": "cross_llama_common_r3_risk-tail_on",
+      "regime": "cross",
+      "model": "Llama-3.1-8B-Instruct",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 32,
+      "peak_arrived_not_backend_submitted": 32,
+      "mean_queue_before_controller_ms": 36902.72515173484,
+      "sampled_VRAM_max_MiB": 20994.0,
+      "sampled_VRAM_min_MiB": 20768.0,
+      "resource_samples": 1050
+    },
+    {
+      "cell": "gate_qwen3_common_r1_risk-tail_on",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 4627.924155482712,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 929
+    },
+    {
+      "cell": "gate_qwen3_common_r1_risk-tail_off",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "OFF",
+      "repeat": 1,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 4693.9053703125355,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 931
+    },
+    {
+      "cell": "gate_qwen3_common_r2_risk-tail_off",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "OFF",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5428.395231689016,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 931
+    },
+    {
+      "cell": "gate_qwen3_common_r2_risk-tail_on",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 2,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5471.681237836472,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 931
+    },
+    {
+      "cell": "gate_qwen3_common_r3_risk-tail_on",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "ON",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5659.5812347588235,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 935
+    },
+    {
+      "cell": "gate_qwen3_common_r3_risk-tail_off",
+      "regime": "gate",
+      "model": "Qwen3-8B",
+      "load": "common",
+      "policy": "risk-tail",
+      "economic_gate": "OFF",
+      "repeat": 3,
+      "business_requests": 360,
+      "peak_arrived_not_controller_started": 10,
+      "peak_arrived_not_backend_submitted": 10,
+      "mean_queue_before_controller_ms": 5654.896734874799,
+      "sampled_VRAM_max_MiB": 20764.0,
+      "sampled_VRAM_min_MiB": 20566.0,
+      "resource_samples": 936
+    }
+  ],
+  "boundary": "Counts use frozen scheduled arrivals and each actual processing/submission offset from verified request clocks; no alternative scheduler or queue was simulated. Simultaneous arrivals precede departures, so the instantaneous ready batch of2 is included even without backlog. Client pending counts differ from native GPU waiting/active counters. VRAM is a2-second sampled total-use maximum, not a continuous peak or allocator/cached-resident breakdown. These observations do not uniquely attribute accumulated waiting to certification.",
+  "inputs": [
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r1_v1.json",
+      "sha256": "42c15ad43020777380a0e6603076a8b6d8c7539b2e0c8c7ad905f685ae4a1348"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r2_v1.json",
+      "sha256": "3c85b0a9205e2c6835bf59fb4562bf888adf7344276040a274c340f7d0837dc6"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/common_r3_v1.json",
+      "sha256": "9890241462add6abfad674c44b9489f8b490c7d9232eea88bb850fb4599f6e64"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r1_v1.json",
+      "sha256": "f79af07efa9be2f2ae16e95de88369d77d60103e965a99e73a4ba9edc5ee1837"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r2_v1.json",
+      "sha256": "f1f49b6fc97498e6238e703b18bd1ebcf54f2e84b14e3c56dc6c663f945f523b"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/arrivals/high_r3_v1.json",
+      "sha256": "2d138844ecd636a34046adadab0ad85e114487ce7024d29e57564f84f1893350"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_0_GPU_resources_v1.jsonl",
+      "sha256": "62c1fe82aef27860e89cdfd82cd42ea047f7ae39f4d8b12b8ac1747d2b29abf8"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_10_GPU_resources_v1.jsonl",
+      "sha256": "eb89cd2e4b9aded14da361493b47cb42f069c69368aea5ad1b179deaea60fc47"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_11_GPU_resources_v1.jsonl",
+      "sha256": "52bc899303321ebf2f69497ba55859017893667da3e663bb65ff7b34f4be03c4"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_12_GPU_resources_v1.jsonl",
+      "sha256": "2d4e5173dc394dc9be0ff74214954f3523fb9c1b265ec64b867d4dcf7bac2210"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_13_GPU_resources_v1.jsonl",
+      "sha256": "4e887687507498007b89d03d7fe4a06a00a14a3394dd9eb8b608d8d702692ba9"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_14_GPU_resources_v1.jsonl",
+      "sha256": "755f36e80436c47b1ace97173c5c89a38d74cccff217c23f16f9fb23f2029b45"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_15_GPU_resources_v1.jsonl",
+      "sha256": "84df633144e26e620726057cc6008fe97046f9c8f2b5bf1f641039ee85845651"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_16_GPU_resources_v1.jsonl",
+      "sha256": "7819454a5bf8c3a96513e22441c512cb96e3864cdcc3cf7e95871363b8250ef7"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_17_GPU_resources_v1.jsonl",
+      "sha256": "364ee5e12422349ac58316a2a62be7464e5e7ec43380a78090c8473cf34bed28"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_1_GPU_resources_v1.jsonl",
+      "sha256": "2a15e5165ed8a2781c6404d0b4ede35d74f741ca21474fc18c3d4b60308d8920"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_2_GPU_resources_v1.jsonl",
+      "sha256": "3800b11ce6a103d408cd3559f72a3c0a027d9131d4a2c68de2921b2db92e579a"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_3_GPU_resources_v1.jsonl",
+      "sha256": "3e63b95aeca6ae5c0e71b82357705a4aac39bf8beeb6865f13d3e943a08034a7"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_4_GPU_resources_v1.jsonl",
+      "sha256": "30ac4e30be765b297c8dbea73a88c12df388c36f58744c8a5cadc32be58cba95"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_5_GPU_resources_v1.jsonl",
+      "sha256": "2eb50f1c4a97f9b23635a95d6e4df9a7ab8adc4619208f09ad5cb4e997563821"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_6_GPU_resources_v1.jsonl",
+      "sha256": "cc0c22a2078d96246fd60a36acdeb3ccffd6d5bd071f02303dd2ef66481cb684"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_7_GPU_resources_v1.jsonl",
+      "sha256": "cebc40cffebd94ec57e9c496cb6d92b84973c81e023e23b50972d3ee71119361"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_8_GPU_resources_v1.jsonl",
+      "sha256": "eba4517ffda8a1ec72e93f3f624a754a918649d852f5344449386c897a09c65a"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal/waves/wave_9_GPU_resources_v1.jsonl",
+      "sha256": "bf126474b1d77662fec6a2ead57b19fe8470773cc39435538848b9db6403594d"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_analysis_v1/requests_v1.csv",
+      "sha256": "c19a18a4c194a849aa76d853652cdc9c43b3ab4cb95929c7c661e607f9e9525f"
+    },
+    {
+      "path": "results/tsc_task_faithful_open_arrival_20261018/formal_protocol_v1.json",
+      "sha256": "eae1c52f02dbaed409e0b80d05316984a7b5a4adc6072afd8a44cff952ac6421"
+    }
+  ],
+  "source_sha256": "9efac820f2b80c8e7fccc9ad6b89b573e49fe42b10013c587440268158e522b1"
+}

@@ -1,6 +1,6 @@
 # ContractKV：机制贡献、必要性与实证对应矩阵
 
-2026-10-18。本文件记录四项原有贡献的技术对象与独立证据；Raw7/7与主服务24/24 GPU已完成，Gate6运行中，完整统计/独立复算/归档尚待完成。本文不是 Response Letter，也不修改论文中的性能主张。
+2026-10-19。四项原有贡献的技术对象、必要性与费用证据已完成实测和本地独立复算；新Raw7、主服务24、Gate6共37单元全部结束。不新增机制、不追加GPU，本文件不代替正式正文或Response Letter。
 
 共同研究命题：**将重复内容转化为共享 KV 服务状态，需要同时约束布局、行为资格与状态可见性。** 物理字节重复、见证资格和发布后的驻留分别由不同证据验证，不能互相替代。
 
@@ -35,11 +35,11 @@
 |---|---|---|
 | 原部署模板、工具slack条件 | 已获准模板的共享服务价值与可隐藏认证成本 | 原TTFT/SLO、Session/Template125→5调用、授权tenant扩展结果保留，各自按原负载和分母报告 |
 | 原TableIII同样本完整计时重测 | 原在线资格和失败费用全部计入后实际还省多少 | 24/24完成；直接wall Llama1.011551×、Qwen8B1.020224×、Mistral0.993820×、Qwen14TP2 1.109442×。策略2s/6s没改，完整wall不抵扣slack；A/B/C不同口径分开 |
-| 严格保真闭环 | 新来源、自由生成、实际prefix复用与完整服务成本 | 既有主18完成，0/1,296 compiled future ID差异；不同来源的独立Qwen成本变体负结果完整保留。不把闭环倍率叫开放到达SLO容量 |
-| 本轮保真固定到达桥梁 | 同一协议中任务质量、真实复用、排队、SLO Goodput和完整wall能否同时成立 | Raw-only标定7/7已验收；24/24正式单元完成。210/3888 compiled future配对0 ID/finish变化；完整wall约0.991–1.000×，未显示整体加速。完整评分、Goodput与尾部仍待统一分析/独立复算 |
-| 独立隔离Gate ON/OFF | 原经济门禁到底筛掉多少认证，如何影响覆盖、wall和尾延迟 | 6正式单元运行中；CPU接线只证明经济分支可独立开关，真实效果待全部完成验收；没有隔离Raw基线 |
+| 严格保真闭环 | 新来源、自由生成、实际prefix复用与完整服务成本 | 既有主18完成，Qwen/M/L完整wall1.619040/1.109072/1.070281×，0/1,296 compiled future ID差异；Raw正分684/258/90，全路由4次下降保留。成本变体负结果保留；闭环倍率不是开放到达容量 |
+| 本轮保真固定到达桥梁 | 同一协议中任务质量、真实复用、排队、SLO Goodput和完整wall能否同时成立 | 24主单元、4,320业务配对/3,888future已独立复算。210compiled future 0 ID/finish变化；完整wall0.991–1.000×；四组Goodput绝对差来源敏感性区间均跨零。Q获准doc90参考Raw有正分，M/L仅doc187且参考Raw零F1；不能支持普遍有用QA服务收益 |
+| 独立隔离Gate ON/OFF | 原经济门禁到底筛掉多少认证，如何影响覆盖、wall和尾延迟 | 6/6结束并独立复算。ON/OFF各21RPC/18失败/54compiled future，54匹配决定相同；无观察筛除，Goodput差区间跨零，p99无稳定改善。没有隔离Raw基线，不借主服务Raw计算速度 |
 
-最终两行完成后，本文件补入实际来源级费用和Goodput入口；不依靠不同协议的高值拼成统一速度或安全保证。
+最后两行已经完成；明细见性能/尾报告、formal_analysis_v1与formal_goodput_source_sensitivity_v1。新服务限制了跨来源性能主张，并未提供需要新增第五项算法的证据。Qwen新Gate无筛除不外推所有模型：Llama主服务有3次经济拒绝，但没有OFF因果对照。原有模板摊销和闭环收益按各自协议保留，不拼成统一速度或安全保证。
 
 ## 可复核入口
 
@@ -50,3 +50,5 @@
 - CPU布局/驻留/tail/margin及PSTP索引：`results/tsc_final_existing_evidence_CPU_20261018/`。
 - 完整信任矩阵：`docs/ContractKV_Trust_Model_and_Enforcement_Boundary_Matrix.md`。
 - 服务新协议：`docs/tsc_revision_final_serving_calibration_design_20261018_zh.md`、`results/tsc_task_faithful_open_arrival_20261018/`。
+
+最终新服务原包SHA ce8a001e246f04012d56276232ad2b4acb706149dfde60d0155473e649320cfc；本地37单元/11,640业务复算通过，原1,246成员不变。归档/重算命令见该Study的evidence_package_v1/README_zh.md，远程发布见final_publication_receipt_v1.json。

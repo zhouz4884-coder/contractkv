@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "SSH_returncode": 0,
+  "launch": {
+    "PID": 608217,
+    "command": [
+      "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+      "-B",
+      "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_final_serving_package_v1.py",
+      "--root",
+      "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv"
+    ],
+    "started_epoch_s": 1792378444.564509,
+    "dispatcher_sha256": "f95a90f6571879068d0f88f5eca183e6b4b610823f9c29d274484e9998be4dde",
+    "package_source_sha256": "51ebe0f9c0e0aabfc89b336b1071e0ee7e123d40e9cb54faff38c87a62ca28a2",
+    "log_path": "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_task_faithful_open_arrival_20261018/CPU_tmp/package_control_v1/package.log",
+    "new_GPU_requests": 0,
+    "keep_live_control_logs_outside_immutable_raw_inventory": true
+  },
+  "ended_epoch_s": 1792378510.4280035,
+  "GPU_requests": 0,
+  "receipt": {
+    "archive": "faithful_serving_raw_evidence_v1.tar.gz",
+    "sha256": "ce8a001e246f04012d56276232ad2b4acb706149dfde60d0155473e649320cfc",
+    "bytes": 234884895,
+    "regular_members": 1246,
+    "member_inventory_sha256": "464d3e31166a1228cede4a823aa0ce15693b147a13ee6da9686cf6d6d3b13944",
+    "parts": [
+      {
+        "path": "faithful_serving_raw_evidence_v1.tar.gz.part000",
+        "bytes": 67108864,
+        "sha256": "497fd227dbbd25fe53c6a4098e73b76a40290d05f2a44bfa9ed2a540ff029080"
+      },
+      {
+        "path": "faithful_serving_raw_evidence_v1.tar.gz.part001",
+        "bytes": 67108864,
+        "sha256": "58464e76c3c027e3efaefaa0f71b819fa9580052e03bf5f299e90717b5930c69"
+      },
+      {
+        "path": "faithful_serving_raw_evidence_v1.tar.gz.part002",
+        "bytes": 67108864,
+        "sha256": "293f94d5f27a3e21b88705fb199163a2baf43426e10f6365612eea37943cfea0"
+      },
+      {
+        "path": "faithful_serving_raw_evidence_v1.tar.gz.part003",
+        "bytes": 33558303,
+        "sha256": "3cef282d4b321d2bd2564c51af4f274259fdc6f688857ce33c4376fa47fcc31e"
+      }
+    ],
+    "round_trip_member_bytes_verified": true,
+    "all_old_results_preserved": true,
+    "frozen_root_dependencies": 58,
+    "all_frozen_root_dependencies_included": true,
+    "entry_sha256": "51ebe0f9c0e0aabfc89b336b1071e0ee7e123d40e9cb54faff38c87a62ca28a2"
+  }
+}

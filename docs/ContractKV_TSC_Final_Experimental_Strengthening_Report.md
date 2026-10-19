@@ -1,6 +1,6 @@
 # ContractKV TSC大修：最终补强实验总报告
 
-**执行状态：进行中。** 原三批、256-token、真实Repo与Raw7/7已完成。23:05 UTC主服务24/24 GPU完成并通过编译ID/finish检查；隔离Gate6正在运行，统一统计、独立复算与最终归档尚未完成。这不是整个五批目标完成声明，也不是正式Response Letter。
+**实验与独立复算状态：完成，2026-10-19。** 五批冻结实验及两项有界补充已经验收，原始成功/失败记录全部保留；最终Git发布以配套publication receipt为准。这是实验收口报告，不是正式论文或Response Letter。用户已选择停止追加门禁实验；既定六单元在回复前已自然结束，此后不再启动GPU。
 
 ## 1. 总目标与当前判断
 
@@ -14,7 +14,9 @@
 - Manifest注册→绑定→真实发布→后续命中的链条已实际运行，同时证实可信语义误标及Raw原生APC不受同等隔离的风险边界。
 - TableI独立结构测量、原RULER/Goodput统计重算和五家族真实raw顺序已经可追溯，不能再依靠未恢复的旧数值链。
 
-主服务24个单元已完成，正在核对的关键桥梁是：**在新六来源、相同固定到达和SLO、完整服务费用下，质量、合法覆盖、物理复用和Goodput能否同时得到支持。** 已完成的编译配对检查未观察到ID/finish变化，但新来源资格稀疏，完整wall没有显示加速；最终判断仍需完整评分、来源簇统计、原始归档和独立复算。
+已有保真闭环三模型完整wall收益为Qwen **1.619×**、Mistral **1.109×**、Llama **1.070×**，1,296个获准未来配对没有ID变化；这组证据仍成立。新固定到达桥梁则只获得4.94%–5.56%未来编译覆盖，四组Goodput增量来源敏感性区间均跨零；M/L获准QA参考Raw的F1为0。它没有证明普遍的跨来源服务收益，不能覆盖或替代前者。两组分别回答各自协议下的问题，不能选择高值拼成统一结论。
+
+**收口判断：** 四项机制的结构复用、行为准入、候选零拒绝发布与授权摊销已有直接证据；本轮所需费用、质量和信任边界已能逐条审计。新来源服务外部有效性较弱是实测限制，不以进一步放宽scope、换源或开发新算法作为收口条件。下一阶段优先将现有证据准确整合到正文，再写Response Letter。
 
 ## 2. 五批工作与实际执行差额
 
@@ -31,15 +33,15 @@
 
 第四批沿用相同任务家族（HotpotQA/RepoBench）而另选六个来源，将每模板10个租户的旧保真闭环条件换成每模板6个租户及固定到达轨迹。它没有改变冻结的scope、margin、EOS或PSTP。合法覆盖率与实际缓存命中属于测量结果，不是预先保证的“复用条件”；来源、到达和重复密度同时变化，不能把性能差异唯一归因于其中一个因素。
 
-主动强化的科学价值与返修必要性分别判断。第四批已经产生的结果全部保留；额外Gate若因用户调整范围提前终止，应如实报告部分完成，不将两次重复写成三次。最终正文不应让这些额外控制取代已经完成的主证据，也不因可选矩阵未完成而无限延长研究。
+主动强化的科学价值与返修必要性分别判断。第四批和Gate均已完整自然结束，用户的停止追加选择到达时已无运行中的剩余单元；不伪造提前终止，也不继续补跑。正文应以各协议能支持的结论组织证据，额外控制不能取代已经完成的主证据。
 
 | 批次 | 原科学问题 | 实际规模与状态 | 当前结论 |
 |---|---|---|---|
 | 1.原TableIII完整成本 | 原部署数字计入全部资格开销后还有多少收益？ | 24/24 fresh-server cells；12配对；4,725 future pairs；完成归档/独立复算 | 四配置直接wall并非都快；A残余slack、B完整controller摊销、C实际完整wall必须分开 |
 | 2.跨模型机制必要性 | 合法重排是否仍会改变行为，认证能否阻止不支持的发布？ | 三模型×三fresh重复，180候选、720正式行为生成；与Manifest共用9cells；完成 | 102实际变化、其中30掉分全部拒绝；78获准后0变化；拒绝新增发布0 |
 | 3.Manifest/绑定/发布 | 检查实际在哪执行，误标和跨域Raw会怎样？ | 135正式GPU业务、18认证RPC、27注册拒绝控制及72后续请求；完成 | 同域18完整命中；可信误标9/9发布marker；跨域/旧epochRaw各18仍命中marker。非公网IAM/保密分类器 |
-| 4.保真固定到达桥梁 | 同协议质量保持能否转化为真实SLO服务收益？ | 7/7 Raw标定已验收；24/24正式cells已完成，每cell360业务；完整分析待验收 | 210个compiled future配对无ID/finish变化；各组完整wall约0.991–1.000×，不能宣布服务加速。Goodput等完整统计待统一复核 |
-| 5.消融与尾归因 | 布局/作用域/驻留/门禁如何共同决定收益和尾部？ | 既有CPU布局/位移/native/tail/margin/PSTP完成；真实隔离Gate ON/OFF6cells运行中 | 资格≠驻留；同步认证有真实尾成本；门禁真实筛除与Goodput效果待六单元完成后判断 |
+| 4.保真固定到达桥梁 | 同协议质量保持能否转化为真实SLO服务收益？ | 7/7 Raw标定、24/24主单元、8,640业务；完整分析/原始归档/本地独立复算完成 | 210/3,888 compiled future无ID/finish变化；完整wall约0.991–1.000×；Goodput来源敏感性区间均跨零 |
+| 5.消融与尾归因 | 布局/作用域/驻留/门禁如何共同决定收益和尾部？ | CPU布局/位移/native/tail/margin/PSTP完成；Gate6/6、2,160业务、尾/队列逐请求归因及复算完成 | Qwen ON/OFF各21RPC、18失败、54compiled future；54匹配决定完全相同，未观察筛除或性能收益 |
 
 两项有界补充已经完成：256-token三cells/240业务；真实Repo三cells/72业务。它们不是替换原64条件或放宽主服务预算。正式核心外另保留63次失败尝试业务及其13次RPC，不把它们悄悄删掉或加进完整cell主分母。
 
@@ -134,51 +136,70 @@
 - **原RULER：** 30共同session、固定三模型宏均值86.67%；原CI[86.44,86.90]%复现，额外同步来源簇敏感性[86.3204,86.9911]%明确标事后，不作任意架构预测。
 - **原服务工作点：** 92.9007与92.62来自不同cell/时钟；原4.81069×仅25tenant、80%load、500ms点，倍率CI[2.84751,12.60699]及绝对增量CI完整保留。80登记身份下530→149 allocator-used blocks注明2386 pool/实际并发2，不说减少72%预留VRAM。
 - **认证经济性：** 原Session/Template125→5调用、未隐藏费用25.05→3.24ms/request分别证明模板摊销；同栈D1/D2 1.472/1.428req/s显示治理保留约97%性能，不用近零D0作强倍率标题。
+- **既有保真闭环主验证：** 三模型各三fresh-process、六来源。Qwen/Mistral/Llama完整wall倍率分别1.619040/1.109072/1.070281；compiled future分别684/342/270，合计0/1,296 ID变化。参考Raw正分分别684/258/90，正分不等于完全正确；全路由另4次显著下降保留。它是闭环收益，不能称为开放到达SLO容量。
 - **驻留与tail：** 已有主18的1296 compiled future中，Qwen672 full/12 partial，Mistral300 full/42 zero，Llama135 full/135 zero。资格不保证当前驻留。54尾请求全部L0，前序42PASS/6失败RPC/5无RPC拒绝/1无注册，不能全部归因一次失败验证。
 - **成本适配负结果：** 独立Qwen六源九cells，原版1.80266×、适配1.06982×，覆盖774→258/1620；全局p99点13.39→8.80s但直接区间跨零。已决定不替换默认，不在该held-out上扩成本桶或调阈值。
 
 这些证据回答不同问题，不能把来源、窗口、协议或资格不同的倍率连成因果升级曲线。详见其完成报告和`ContractKV_Service_Performance_and_Tail_Analysis.md`。
 
-## 7. 第四、五批：保真服务桥梁与Gate
+## 7. 第四批：固定到达服务桥梁的完整结果
 
-新源按704已知来源排除集及事前hash选择：另3真实Repo机制源加入排除后，桥梁Hotpot doc90/131/187及Repo humannorm/UHGEval/spira-jira-migration-advanced。九份原文彼此不同，对已知704组718条原文记录没有精确重复；不等于语义去重。选择/packing不看答案位置、模型分数或资格结果。
+来源按704已知来源排除集及事前hash顺序选择，另三个真实Repo机制项目也排除。新六源为HotpotQA doc90/doc131/doc187，RepoBench humannorm/UHGEval/spira-jira-migration-advanced；精确原文不重复不等于语义独立。16K输入、问题/CODE_PREFIX、空白、评分、scope、margin/EOS与PSTP冻结不变。
 
-4个Raw baseline实测单endpoint容量Cq=.313519676、Cm=.198783460、Cl=.212263461req/s；预注册公式确定common=.178905114、Qhigh=.329195660。SLO为TTFT11700ms、平均TPOT435ms；这是长输入3090 Raw基准，不与旧500ms点混用。3个Raw profiles全部完成，达标数107/120、89/120、8/120。保留高点较小Raw基线，正式优先报告绝对Goodput与数量，补充固定clock条件下的来源/进程敏感性，不改负载、SLO或主统计。
+先运行7个Raw-only单元/840业务，再按预定公式冻结common与Qhigh到达轨迹、readiness TTFT 11.7s及平均TPOT435ms。每cell六来源×六tenant×十轮=360业务，324future；外部两请求wave屏障保留，native最多2活跃请求。主24cells为8,640业务、4,320全业务配对、3,888future配对；r2设备和次序平衡。在线准备、首次Raw业务、失败认证、等待、空闲和最后drain均计时，启动server/目录展开在两侧clock之前。不是无限并发Poisson或数据中心容量测试。
 
-随后一次冻结实际轨迹、源/模型/源码、统计与30单元。Qwen两load Raw/CT三重复12cells先，M/L共同load额外12；实际compiled配对若有未解释ID/finish变化则停止扩展先归因。隔离Gate ON/OFF三对6cells，另一GPUidle，只关经济判断，所有安全准入保留。
+| 组，三进程合并 | 双SLO达标 Raw→Contract /1080 | Goodput Raw→Contract req/s | 完整wall倍率 | compiled future |
+|---|---:|---:|---:|---:|
+| Qwen common | 761→764 | 0.126074→0.126569 | 0.999986× | 54/972 |
+| Qwen high | 46→82 | 0.013178→0.023277 | 0.990905× | 54/972 |
+| Mistral common | 332→338 | 0.051099→0.051990 | 0.999372× | 54/972 |
+| Llama common | 491→494 | 0.074209→0.074630 | 0.999568× | 48/972 |
 
-每cell360业务、324future；主Goodput为全部warm+future同时满足readiness TTFT与平均TPOT/完整wall。到达、调度、设备和peer条件配对；最终backend drain计时；不把原双请求wave barrier冒称无限并发Poisson。原main启动/catalog展开在clock前，在线准备、见证、失败、队列、日志/评分、idle全部在内。无需为更好结果更改margin、EOS、scope、语法或PSTP。
+来源/过程构成敏感性95%区间（固定实际clock，Goodput绝对增量req/s）：Qcommon[−.012404,+.012423]、Qhigh[−.000593,+.026079]、M[−.001098,+.004392]、L[−.000335,+.002163]，均跨零。不是重新模拟队列或容量的因果CI。Qhigh点倍率1.7664来自46个Raw达标的小分母；10,000来源抽样有241次Raw分母0，因此比值区间留空，不删除这些抽样或加伪计数。
 
-**GPU执行完成不等于全部实证验收完成。** 最终所有process/source/tenant/request层结果、Native logical work/驻留/队列及不利输出都需归档、独立复算和核Git远程SHA。
+210个compiled future相对各自Raw和实际见证均0 ID/finish变化。Qwen两负载均只获准Hotpot doc90，54/54参考Raw正分、F1均2/3；M/L只获准doc187，分别0/54和0/48参考Raw正分。后者不能当成有用QA跨模型成功。三模型获准source/scope很少，重复tenant/进程不是独立来源。
 
-首轮预览已交付：`tsc_revision_final_serving_first_repeat_20261019_zh.md`。Qwen两load各18/324编译未来无ID变化，但scope仅1/18通过，22编译业务13full/9zero native hits；共同点wall近1，高点wall略慢但达标8→27。它不是最终三重复效果，不用小Raw基线放大倍率作主结论，也不据此更换条件。
+全路由future保留Qcommon13升5降、Qhigh14升6降；均在L0。M13、L22个ID变化（L另3个finish变化）但无超过±.03的升降分。Raw重复也出现变化，部分Q下降变体复现3/5和4/6；不能将全部策略L0变化归为背景噪声。完整评分、来源、tenant与请求表均交付。
 
-Qwen12cell阶段完成三重复并通过6组跨阶段检查。各load54/972 compiled future无ID变化，common pooled wall .999986×、high .990905×；绝对Goodput分别.126074002→.126569282、.013177818→.023277243req/s。原始每次点值、Raw重复与11个L0下降均保留；仍仅一个获准来源/scope，不以重复/负载数冒充新来源。阶段报告`tsc_revision_final_serving_qwen_completed_20261019_zh.md`不代替最终三模型/Gate分析。
+资格分解：Q每负载54决定=3PASS/24精确observation限制/18 candidate或EOS margin拒绝/9输出契约拒绝，21RPC其中18失败；M27决定=3PASS/24scope限制，3RPC；L27决定=3PASS/18scope限制/3Raw margin/3post-reference经济拒绝，3RPC。M/L Repo继承L0。拒绝表示当前证据不足，不证明每个被拒候选必然有害。
 
-Mistral/Llama另12cell同样已完成，六组编译配对检查通过；compiled future分别54/972、48/972，完整wall合并倍率分别.999372×、.999568×。四组共同210/3888 future进入compiled；这些位置来自重复租户、轮次和进程，不能当作210个独立来源。对应当前小回执为`main24_completion_metadata_v1.json`；完整Goodput、双向质量、native与尾部仍由冻结主分析复核。隔离Gate六单元已经运行，不替换主服务Raw基线。
+固定到达clock约束了wall解释：Qcommon最后到达跨度占Raw wall99.454%，即使请求处理瞬时完成，倍率宽松上界也仅1.005490×。这不是GPU空闲率，不能掩盖覆盖不足、Qhigh略慢或其他点的余量。Mean/P99、TPOT、E2E、实际prefill、资源和完整界限见性能报告。
 
-固定到达时钟也限制wall倍率的解释。事后CPU分析确认，完成全部请求的wall不可能早于最后计划到达；三重复合并的Qwen common即使假设请求处理为零，相对当前Raw时钟的wall倍率也不超过1.005490×，其到达跨度占Raw完整wall的99.454%。该比例不是GPU空闲率。故必须将完整wall与实际Goodput/请求延迟/物理工作并列，不能单凭wall约1判断所有请求工作均未减少。其他点仍有更大余量，尤其Qwen high实际略慢不能被此解释抹去。完整逐点界限、输入SHA与局限见性能/尾延迟报告和`arrival_wall_bound_v1.json`；这是事后解释，不改变原冻结统计或追加负载。
+## 8. 第五批：经济门禁和尾部归因
 
-## 8. 工程修复与失败记录
+隔离Gate ON/OFF六cells完整结束，各三fresh-process、1,080业务/972future，无隔离Raw基线。只关经济收益分支，行为认证和PSTP保持。54个匹配资格决定在issued/reason/category/RPC/level/commit字段完全相同；1,080业务输入IDs和路由档位相同。
 
-1. 原端口复用、跨Python AST空字段、缺EOS的异常类型未捕获等均单列修复，保存原源、失败、公开freeze和实际派发。只重测未完成受影响实验单位；已完成cell保持不动。
-2. Raw见证不完整窄修复只返回INCOMPLETE/L0/0RPC/0commit；正常15条记录回归决策/payload一致。没有放松EOS或margin。
-3. Windows派生校验的CRLF及Python3.13/3.10 float-sum/libm差异保留两个CPU失败视图；容量/P95/SLO/load精确一致，arrival offset最大差3.4106e-13秒。实际只读取原Linux冻结SHA，不把本地重生成trace替换进去，也不谎称全字节相同。
-4. 一次草稿把“54尾−6失败RPC”误写为48成功注册。已按逐请求表纠正42/6/5/1并保留回执/提交历史；原计时与GPU结果不改。关键检查/发布现按真实返回码顺序执行。
+- ON/OFF均21实际RPC、18失败、54compiled future、764双SLO达标。
+- Goodput 0.126560667/0.126561792 req/s，ON相对OFF wall倍率0.999991；增量区间[−.000664106,+.000664566]跨零。
+- 完整controller累计84.471/84.217s；三个cell p99均值32.535/32.507s，未观察筛除或稳定性能收益。
+- ON/OFF全路由仍有15个ID/finish变化、7升8降，不删，也不将其当成经济分支改变准入的证明。Gate的108个compiled future只对自身实际见证保持，不能混为新增108个独立Raw配对。
 
-全部决策、依据、成本边界和未经证实假设见`tsc_revision_GPU_execution_decisions_20261018_zh.md`。没有因此另起新算法或扩大研究矩阵。
+该结果只适用于此Qwen来源/复用密度；Llama主日志确有3次经济拒绝，但没有Llama OFF控制，不能量化其门禁因果收益。不以这个中性结果增成本桶、改scope或再选来源。
 
-## 9. 可复核原始交付与当前未完成项
+新增主24cell的96个P99尾均L0，38个length、88个Repo；只有1个直接前wave注册，等待重叠约1.721ms。即时失败认证不足以解释全部长尾；不能排除更早工作累积传播。客户端pending峰值Raw/Contract分别Qcommon10/10、Qhigh40–46/38–44、M26–48/26–48、L20–32/20–32，与native waiting最大1是不同阶段。新遥测总VRAM采样最大Q20764/M21700/L20994MiB，实际pool1940/3550/2419–2420，不套用旧2386池。全时序、口径和不确定性见D报告及actual_client_queue_forensics_v1.json。
+
+## 9. 工程修复、失败保留与独立复算
+
+1. 端口复用、Python AST兼容、缺EOS异常类型均单列版本、失败和公开freeze；只补未完成受影响单位，完成cell不重测。Raw不完整窄修复返回INCOMPLETE/L0/0RPC/0commit，15条正常记录决策/payload保持。
+2. Windows预检CRLF和跨Python浮点差异的两个失败视图保留；没有以本地重生成trace替换Linux冻结SHA。最终实际原始包的独立主统计未使用浮点容差，所有值精确一致。
+3. 54旧尾的早期草稿48成功注册已纠正为42PASS/6失败RPC/5无RPC拒绝/1无注册，原计时未改。事后arrival解释最初schema假设失败也单存；修复只读取真实raw承诺，未改实验。
+4. 未执行的打包选择器曾漏5个目录外Root依赖；原文件一直存在且SHA匹配，保存旧源后补为58/58实际入包。控制日志另放CPU_tmp避免打包自身变化；传输失败与重试记录保留，不复制模型/runtime。
+5. 本地从原始包重新评分/核IDs、时钟、RPC、native，37cells/11,640业务全部验收。正式summary6,891叶、标定934叶、来源敏感性135叶精确；13份CSV字节相同。两summary JSON仅换行不同，LF归一后相同，不声称全部文件原字节相同。复算后1,246原成员SHA再次不变。
+
+源码、决策理由与未经证实假设见tsc_revision_GPU_execution_decisions_20261018_zh.md。基础设施修复不作为新增算法或性能贡献。
+
+## 10. 可复核原始交付与实验完成边界
 
 | 完成数据 | 原始压缩archive SHA256 | 独立核验 |
 |---|---|---|
-| 原TableIII | `9d324d82cbb0262240cc27cab0505f694e9e37b468a2cad3b34a89774162b7cf` | 801 regular成员双端；本地12成本/525controller/4725质量配对复算一致 |
-| 机制/Manifest | `39b2ad426f101602bed6706d1d5866665355cde3c8f3b84915c90eca1a7a3c1f` | 254成员；四CSV/summary及233 effect叶值复算一致 |
-| 256补充 | `892650450856f621ffa5f0dbbd583e0a1e4ab162cdc82f52851b1fa3a491198e` | 63成员；summary与配套CSV独立一致 |
-| 真实Repo | `ad1916813dfdebb510d641dcb77edce4e6fbafda5daff3b8716c0df7e466cfdf` | 63成员；summary与CSV独立一致 |
+| 原TableIII | 9d324d82cbb0262240cc27cab0505f694e9e37b468a2cad3b34a89774162b7cf | 801成员；12成本/525controller/4,725质量配对复算 |
+| 机制/Manifest | 39b2ad426f101602bed6706d1d5866665355cde3c8f3b84915c90eca1a7a3c1f | 254成员；summary/四CSV/233 effects叶复算 |
+| 256补充 | 892650450856f621ffa5f0dbbd583e0a1e4ab162cdc82f52851b1fa3a491198e | 63成员；summary/CSV复算 |
+| 真实Repo | ad1916813dfdebb510d641dcb77edce4e6fbafda5daff3b8716c0df7e466cfdf | 63成员；summary/CSV复算 |
+| 新Raw标定/主服务/Gate | ce8a001e246f04012d56276232ad2b4acb706149dfde60d0155473e649320cfc | 234,884,895bytes，4分片，1,246成员、58原Root依赖；37cells全部独立复算 |
 
-原始日志、实际IDs、源码postimage、完整环境/模型注册SHA、native链、失败及分析入口保留在各结果根。37个新Raw/服务/Gate单元的最终包要在7+30全部完成、模型stat/runtime/source后验检查、分析和独立复算后才能关闭；目前未宣称已交付该包。
+新包分片、inventory和receipt位于results/tsc_task_faithful_open_arrival_20261018/evidence_package_v1；README给出离线拼接/安全恢复/重算入口。本地local_archive_verification_v1.json与local_independent_recompute_v1.json分别证明字节与科学计算，不以哈希替代评分。后验integrity核37cells、11,640业务、22waves、58Root/564快照，模型引用原完整SHA回执并核size/mtime，没有重复搬运权重。
 
-配套三文档：`ContractKV_Contribution_Necessity_Evidence_Matrix.md`、`ContractKV_Reviewer_Experimental_Closure_Matrix.md`、`ContractKV_Service_Performance_and_Tail_Analysis.md`。36条审稿要求覆盖检查已通过；实验完成与正文/引用/排版完成分开，页行映射与正式Response Letter后置。
+配套B贡献矩阵、C审稿36项矩阵、D性能/尾报告及Trust矩阵完整记录各自证据。最终远程Git交付以final_publication_receipt_v1.json中实际核验的commit/blob为准；原始历史操作状态不回写成新的测量状态。
 
-当前未完成的是Gate六单元、服务完整统计及其最终分析/归档，不是再增加一个证书体系、采样算法、时序防御或生产trace研究线。若新数据出现有效scope内部可复现质量反例，必须先归因和最小修复；否则按本轮有界结果收口，不为追回旧最高数字无限扩展。
+**实验可以收口，论文尚未定稿。** 没有计划中的GPU单元或独立复算待做。剩余的是正文证据组织、表图嵌入、信任边界表述、引文/版式及最后的Response Letter页行定位。时间通道防御、生产exact-query频率、随机采样和数据中心硬件是未测限制，不能伪装已解决，也不在本轮另开研究线。所有已发现的不利数据继续可查，不为旧最高数字追加实验。

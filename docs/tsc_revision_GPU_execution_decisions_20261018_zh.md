@@ -275,3 +275,18 @@ postprocessing525181的实际命令再次核对，状态仍WAITING_FOR_FROZEN_GP
 一次性postprocessing525181已完成全部三步：formal analysis约49.71s、预注册source sensitivity约0.99s、post integrity约11.61s，均退出0。远程主分析完整30cells/10800业务，90次RPC，318个compiled future对其实际见证0 ID/finish变化；其中主服务210与Gate108的比较基准不同，不合并冒称318个独立Raw配对。7+30共37单元/11640业务的后验源码、运行时、模型stat及22测量wave检查通过。新的原始包与本地独立科学复算仍未完成，不能仅据远程分析和哈希宣布全目标交付。
 
 当前同步只涉及小CPU证据、新未绑定的交付脚本/事后解释及最新决策文档。原58个冻结Root输入逐项保护，不覆盖任何不同字节的冻结文件；旧未绑定入口/可变文档若更新，先保存原字节postimage。完整原包将含补齐的58依赖，新源码/历史均保留，不复制模型或重建runtime。
+
+
+## 2026-10-19：用户选择收口、原始交付与独立复算完成
+
+用户对唯一异步问题明确选择“停止剩余门禁实验，收口已有证据”。该回复到达时原六个Gate单元已在02:43 UTC自然完成，Gate/master退出0，最后记录GPU compute为空。真实操作是此后不再派发任何GPU，不伪造提前终止，不删掉已完成两单元，也不重新运行。后续仅CPU文档与Git交付。
+
+新原包ce8a001e...已实际生成并取回：4分片/234884895bytes/1246成员，58原Root依赖齐全。原包解出后由未改冻结分析ac65994e...独立重算37cells/11640实际业务；正式6891叶、标定934叶、来源敏感性135叶精确，13CSV字节一致。两JSON仅CRLF/LF不同，未调用浮点宽容；重算后1246原成员全部SHA不变。新本地重算及队列入口在tar之后产生，另随Git发布，不为嵌入它们重打包原包或更改freeze。
+
+从已验证时序另做CPU客户端pending/资源分析：Qcommon峰10/10，Qhigh Raw40–46/CT38–44，M与L分别26–48与20–32；native等待最大1不能当无上游排队。显存2秒采样最大Q20764/M21700/L20994MiB不是allocator或连续峰值。该分析没有模拟替代调度、更改参数或生成GPU请求。
+
+来源核对以实际请求为准：新Q获准Hotpot doc90，而M/L获准doc187（不是doc90）。后两者参考Raw F1为0，不能把相对保持当有用答案。Gate的54匹配决定及1080输入/路由逐项同，实际无筛除；保留15个ON/OFF ID/finish差异和7升8降。四组新Goodput差区间均跨0，不因弱结果继续加源、负载或放宽margin/scope。
+
+四最终MD按科学问题重构，不再将running/pending草稿当结论。四个旧原包及其复算不重复。最终按真实commit/blob与远程SHA交付，随后暂停本轮实验自动化；正文与Response Letter按既定顺序后置，不宣称整篇论文已可提交。
+
+交付元数据审计首次因旧archive receipt使用all_hashes_match而非status字段报KeyError，未写PASS、未改证据或重跑科学分析。旧审计源码与失败原因已保存delivery_audit_infrastructure_versions_v1；新审计按原receipt schema核实际SHA/成员并对科学复算另核PASS，不改旧receipt。此为CPU交付兼容问题，新增GPU为0。

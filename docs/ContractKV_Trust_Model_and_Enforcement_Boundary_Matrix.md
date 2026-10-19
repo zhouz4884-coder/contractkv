@@ -39,3 +39,7 @@ Manifest与行为机制共用9个fresh-model进程。Manifest实际135次业务�
 只使用合成ALPHA/BETA私有标记。正确声明与可信误标两条件全部保留。获准prefix实际detokenize、native提交与后续block-hash链、跨域/旧epoch/不同observation真实路由均已核对。同域匹配18/18 compiled；不同值、跨域、旧epoch各18/18 Raw。跨域和旧epoch合计36次Raw回退命中覆盖marker；不把compiled拒绝写成整引擎Raw状态隔离，也不将缓存字节可见性当作已经执行的外泄/时序攻击。
 
 源码位置以新诊断`source_snapshot`为准，字节承诺为 `freeze_v3.json`（SHA `7170c9101903326c582bc32e93ca2e4d7998b42b8fc5a8bb62c7d158ed8dd4ff`）及已有后端依赖补充清单。静态索引为 `results/tsc_final_existing_evidence_CPU_20261018/trust_source_boundary_index_v1.json`，其中不含运行密钥。原始归档SHA39b2ad426f101602bed6706d1d5866665355cde3c8f3b84915c90eca1a7a3c1f，254成员双端核对；本地重算summary及四CSV完全一致。详见tsc_revision_mechanism_manifest_results_20261018_zh.md。本文是受信任内部路径的实际边界报告，不是公网多租户安全保证。
+
+## 本轮收口核验（2026-10-19）
+
+上表对应的135次Manifest实际业务与全部失败记录已原包恢复并独立复算；第四/五批服务完成不会扩大这里的安全边界。新服务的运行时、IDs、RPC、PSTP与native账本另在37单元原包和本地复算回执中，不能把其零编译分歧当作隐私或时序防御。可信operator误标9/9发布、跨域/旧epoch Raw原生命中均作为正式不利证据保留。后续必须据此写正文安全小节，不能只藏入补充材料；不需要再开GPU隐私研究线。
