@@ -1,0 +1,2689 @@
+{
+  "status": "PASS_ACTUAL_SHARING_PARTITIONS_EQUAL_OPAQUE_SALT_BYTES_ROTATE",
+  "new_GPU_requests": 0,
+  "changes_to_measurements_or_policy": false,
+  "archive_sha256": "2090b69910e47ce904ac97516c126ca0dc912fa374501d85801008678f758a54",
+  "cells": [
+    {
+      "cell": "Qwen3-8B-common80-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 1,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 2,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 1,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 2,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 1,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 2,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 1,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 3,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 3,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "repeat": 3,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 3,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Session-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Template-qualified",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 3,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "repeat": 2,
+      "policy": "Raw-authorized",
+      "business_groups": 6,
+      "requests_per_group": 64,
+      "tenants_per_group": 8,
+      "reference_groups": 0,
+      "canary_groups_disjoint_from_business": true,
+      "same_source_iff_same_wire_salt": true,
+      "partition_signature": [
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:107",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:22",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "LongBench:hotpotqa:hotpotqa:doc:64",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:alibaba/animate-anything",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:bearyi26/DCPT",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ],
+        [
+          "RepoBench:python_v1.1:xxlong0/Wonder3D",
+          64,
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        ]
+      ]
+    }
+  ],
+  "actual_cells": 27,
+  "actual_business": 10368,
+  "all_policy_triplets_have_identical_sharing_relation": true,
+  "all_reference_canaries_use_separate_groups": true,
+  "literal_salt_bytes_identical_across_fresh_servers": false,
+  "code_cause": "Frozen ServingAuthority creates CacheAuthority(secrets.token_bytes(32), ...); CacheAuthority._salt uses this key in HMAC. Each fresh cell has a fresh engine and authority.",
+  "boundary": "Opaque salt strings differ across fresh engines. Equivalence here concerns the measured six source groups, 64 business calls and eight authorized tenants per group, not cross-engine reuse or a persistent common secret.",
+  "source_sha256": "4078246b800e6533f161d14b750d26cbbd20d0b466d2266124cbc0d99bdcb4cc"
+}

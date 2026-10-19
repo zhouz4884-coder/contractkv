@@ -1,28 +1,31 @@
 # 第二阶段完成审计清单
 
-截至2026-10-20 02:23（香港时间）：**目标尚未完成**。本清单将完整目标保留为逐项交付要求，不以开发通过、正式启动或进程存活代替最终实证。
+截至2026-10-20 03:18（香港时间）：**全部实验、独立复算和MD报告完成，最终Git原包交付核对中。** 科学假设并未全部成立；“完成实验”不表示取得零退化保证。
 
-| 要求 | 可证明完成的证据 | 当前判断 |
+| 原定要求 | 当前可复核证据 | 判断 |
 |---|---|---|
-| 保留原部署见证语义，额外审计Raw配对 | `P0_source_audit_v2.json`、compiled canary日志、配对质量CSV | P0/P1完成；正式配对待全部单元 |
-| 真实任务、明确授权重复场景 | `protocol_v2.json`、`serving_measurement_contract_v1.json`、原始/保真输入与裁剪ledger | 已冻结；明确为固定问题的受控模板服务，非生产trace |
-| 新开发与独立正式来源 | 4开发/6正式来源、729历史排除清单、`source_context_overlap_audit_v2.json` | CPU审计通过；无完全相同上下文，不声明语义独立 |
-| 三模型开发与资格门槛 | 每模型52生成、原包SHA、本地独立复算、`development_catalog_v1.json` | 完成156生成；Qwen/Mistral仅QA合格，Repo保持Raw，Llama不运行正式 |
-| 保留所有不利结果 | Mistral Repo/Llama QA的开发掉分，原包及失败日志 | 已保留；不把部署自路径认证描述为Raw等价 |
-| Raw-only标定，不用正式Contract结果定负载 | 两个fresh-server各80请求，远程及本地`calibration_*audit_v1.json` | 完成160请求；公式、实际速率与SLO全部冻结 |
-| Raw/Session/Template同栈同内容同缓存授权组 | 服务客户端/authority源码、GPU AST证明、冻结job、P1实际引擎salt/命中审计 | 设计与P1完成；正式各请求的输入/回执/物理命中待P3核验 |
-| Session/Template仅改变认证对象及次数 | 同canonical compiled canary、同L3、同共享cache组、允许两路读取已认证prefix | 已冻结；实际对象数/RPC/失败费用待P3汇总 |
-| 注册、失败及生命周期检查纳入费用 | 全局epoch在注册前，原计划到达不后移，direct wall与Controller记录 | 客户端与计时CPU检查通过；正式逐行时间恒等式待P3 |
-| 同GPU/同到达/三重复正式对照 | Qwen18、Mistral9，6模板×8tenant×8业务；同模型/重复三臂同物理GPU | 已完成26/27单元、9984业务全部成功（Qwen18/18、Mistral8/9）；最后Raw单元执行中；worker770907已核查真实`/proc`命令，未重启 |
-| 真实用户时延与SLO | 计划到达TTFT/E2E，绝对Goodput/达标率；完整wall仅辅助 | 指标已冻结；无最终结果 |
-| 真实物理工作与资格额外工作 | 引擎initial prefix hit、prompt-hit新prefill、canary/verification额外prefill | 待P3完整核算；不换算为GPU kernel时间 |
-| 来源及重复不确定性 | 三独立进程配对bootstrap、6来源条件敏感性、leave-one-source | 计算程序已准备；不得把tenant重复当独立安全样本 |
-| 全部正式单元原包与独立分析 | `formal_exit_v1.json`成功、27 completion、10368业务、源/数据SHA | 尚未完成；当前属于经核实的运行等待 |
-| 独立本地复算 | 新目录恢复、173冻结文件、summary与4 CSV逐字节相同、原成员不变 | 待正式原包完成 |
-| MD总报告及科学结论选择 | 方法、结果、费用、质量、负结果、适用边界、可支持/不支持的主张 | 待P3完成后撰写；不能先承诺服务加速成立 |
-| Git归档与远程SHA | 数据分片、源代码、文档commit；逐对象/tree/commit核对远程main | 正式协议/回执与开发已归档；最终数据待交付 |
-| 不改正文/Response Letter、不扩分支 | 本轮提交范围及最终工作区审计 | 保持；完成预定矩阵后收口 |
+| 核对原部署见证语义，额外测量Raw配对 | `P0_source_audit_v2.json`；原始reference/business记录；`paired_quality_v1.csv` | 完成。见证来自compiled路径，不能称任意未来Raw等价证明 |
+| 保真真实任务与明确重复服务场景 | `protocol_v2.json`、`serving_measurement_contract_v1.json`、原始/渲染输入、裁剪ledger | 完成。保护完整问题/CODE_PREFIX/空白；超窗可选上下文按gold无关规则裁剪，非生产trace |
+| 新开发/正式来源与排重 | 4开发/6正式来源；729历史排除；`source_context_overlap_audit_v2.json` | 完成。无完全相同上下文，不声称语义独立 |
+| 三模型P1可行性及前瞻门槛 | 各52生成、三份本地独立复算PASS、`development_catalog_v1.json` | 完成156生成。Qwen/Mistral仅QA族合格，Repo全Raw；Llama未合格，不运行正式矩阵 |
+| 保留所有开发不利结果 | 原包、三模型pairs/registrations/native CSV | 完成。Mistral Repo及Llama QA各6次开发掉分保留 |
+| Raw-only标定并冻结负载/SLO | 两模型各80成功请求；`calibration_local_independent_audit_v1.json` | 完成160请求，未用正式Contract结果选参数 |
+| 三臂同栈、同内容、同授权共享关系 | 冻结job/输入；`formal_cache_partition_audit_v1.json` | 完成。每单元6组×64请求×8tenant，三臂分组相同；salt字节因fresh密钥轮换，不称跨服务器字节相同 |
+| Session/Template仅改变资格单位 | 同canonical L3 canary/模型/评分/共享权限；实际registration/RPC日志 | 完成。每单元24→3对象/RPC，双方均允许合法canary缓存与certified-prefix读取 |
+| 首注册、失败、生命周期与排队费用入账 | 从注册前epoch计时；实际时钟恒等式；所有cell drain | 完成。零slack，从原计划到达计TTFT；模型启动在client epoch外，日志另存 |
+| 完整正式矩阵与三重复 | `formal_exit_v1.json`=0；27 completion；`formal_execution_audit_v1.json` | 完成Qwen18、Mistral9，共10,368业务，全部正常返回，无自动重跑 |
+| 同GPU与无混跑测量 | 27实际launch、稳定设备UUID映射、12,524份资源快照 | 完成。同模型/重复使用同一CUDA设备序号；快照未发现其他GPU进程 |
+| 真实物理命中与额外验证工作 | 原始Native事件、注册/验证请求；cells与registrations CSV | 完成。3,456编译请求：完整命中3,363、部分1、零命中92；额外prefill全计入 |
+| Raw质量、Token IDs和终止配对 | 6,912配对、完整文本/IDs、`formal_quality_diagnostics_v1.json` | 测量完成。1,178个编译ID/终止变化、36次编译掉分；严格Raw保持/零退化假设未成立 |
+| 正负变化对称报告与来源聚类 | 全路由811上升、46下降；来源表、6个独特下降请求条件 | 完成。36编译下降均为Mistral doc107；10个其他下降为L0，全部保留 |
+| 终止预算核对 | 全量finish_reason与实际输出长度 | 完成。10,368均为stop，无输出预算上限事件；不外推无限输出 |
+| 不确定性与来源敏感性 | 冻结三进程5000 bootstrap、六来源条件敏感性/去一来源 | 完成。来源敏感性固定已观察wall；非反事实工作负载CI，重复tenant非独立安全样本 |
+| 完整原包与安全恢复 | 原包SHA `2090b699…58a54`、1,140成员、11分片 | 完成。失败/不利数据保留，无模型或runtime二进制拷贝 |
+| 独立本地重算 | `formal_local_independent_recompute_v1.json` PASS | 完成。27单元/10,368业务，summary与4 CSV逐字节相同，全部原始成员未变 |
+| 本地恢复故障保留 | `formal_local_restore_failure_v1.json`；原失败目录 | 完成。271字符路径失败后，仅换到最长242字符的`.artifacts/f2`；同一原包/程序通过，无GPU重跑 |
+| CPU补充诊断与证据强度 | 三份post-hoc诊断脚本/JSON | 完成。标为事后只读诊断，不冒充事前冻结检验，不改评分、阈值、来源或纳入条件 |
+| MD总报告与主张选择 | `docs/ContractKV_Task_Bearing_Template_Service_Validation_Report_20261019.md` | 完成。服务/摊销正向，Raw保持失败与来源效用明确；未以均分掩盖局部下降 |
+| Git原包/代码/文档与远程SHA | 最终归档提交及只读验证回执 | 交付核对中；远程核验前不标记整个goal完成 |
+| GPU释放及无新增研究线 | worker退出0，GPU compute列表空；CPU后处理结束 | 完成。未改正文/Response，未追加GPU矩阵；原有不相关工作区改动保留 |
 
-正式worker和CPU后处理是两个独立进程。CPU后处理PID774981只等待现有正式worker退出，再分析/归档，不发新GPU请求。任何观察超时均不视为worker死亡；只有真实终态/缺失句柄经复查才处理故障。
-
-最终只有上述所有必要交付完成且证据足以证明时，才能把goal标为complete。若正式结果中性或负面，依然交付完整结果；不换来源、SLO、负载或减少已冻结单元来改变结论。
+与全任务目标分开判断的科学结果：本轮支持固定问题授权模板服务的资格摊销与服务收益，不支持“该部署见证对任意未来Raw行为等价”或“编译子集零掉分”。这些失败属于必须报告的实验结果，不以文字改写成成功。

@@ -1,0 +1,483 @@
+{
+  "status": "PASS_ACTUAL_FROZEN_EXECUTION_AND_GPU_RELEASE_AUDIT",
+  "new_GPU_requests": 0,
+  "archive_sha256": "2090b69910e47ce904ac97516c126ca0dc912fa374501d85801008678f758a54",
+  "actual_cells": 27,
+  "actual_business": 10368,
+  "successful_business": 10368,
+  "GPU_matrix_elapsed_seconds": 29439.057846546173,
+  "expected_GPU_index_UUID_mapping": {
+    "0": "GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a",
+    "1": "GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28"
+  },
+  "resource_snapshots_checked": 12524,
+  "same_CUDA_device_ordinal_within_each_model_repeat": true,
+  "configuration_identical_across_policy_arms": true,
+  "full_backend_drain_in_every_cell_clock": true,
+  "owned_GPU_compute_released": true,
+  "boundary": "Same-device evidence combines frozen CUDA_VISIBLE_DEVICES launches with the stable actual index/UUID resource records on the same host. No cross-engine KV reuse or public-IAM claim.",
+  "cells": [
+    {
+      "cell": "Qwen3-8B-common80-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 770916,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 771027,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 784991,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 785070,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 799616,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 799694,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "high100",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 814342,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "high100",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 814411,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "high100",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 827833,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "high100",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 827903,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "load": "high100",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 840376,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "load": "high100",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 840448,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 854253,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 854321,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 872356,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 872435,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-common80-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 890309,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 890388,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "high100",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 908251,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 908320,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "high100",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 925296,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 925369,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Qwen3-8B-high100-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "load": "high100",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 943268,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 3,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "1",
+      "server_process_group": 943339,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Session-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 960254,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Template-qualified",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 974903,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3-common80-r2-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "server_process_group": 989727,
+      "success": 384,
+      "full_backend_drain_in_service_clock": true
+    }
+  ],
+  "waves": [
+    {
+      "wave": 0,
+      "jobs": [
+        "Qwen3-8B-common80-r1-Raw-authorized",
+        "Qwen3-8B-common80-r2-Session-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 740,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 1,
+      "jobs": [
+        "Qwen3-8B-common80-r1-Session-qualified",
+        "Qwen3-8B-common80-r2-Template-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 740,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 2,
+      "jobs": [
+        "Qwen3-8B-common80-r1-Template-qualified",
+        "Qwen3-8B-common80-r2-Raw-authorized"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 738,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 3,
+      "jobs": [
+        "Qwen3-8B-high100-r1-Raw-authorized",
+        "Qwen3-8B-high100-r2-Session-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 666,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 4,
+      "jobs": [
+        "Qwen3-8B-high100-r1-Session-qualified",
+        "Qwen3-8B-high100-r2-Template-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 593,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 5,
+      "jobs": [
+        "Qwen3-8B-high100-r1-Template-qualified",
+        "Qwen3-8B-high100-r2-Raw-authorized"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 696,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 6,
+      "jobs": [
+        "Qwen3-8B-common80-r3-Template-qualified",
+        "Mistral-7B-Instruct-v0.3-common80-r1-Raw-authorized"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 965,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 7,
+      "jobs": [
+        "Qwen3-8B-common80-r3-Raw-authorized",
+        "Mistral-7B-Instruct-v0.3-common80-r1-Session-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 967,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 8,
+      "jobs": [
+        "Qwen3-8B-common80-r3-Session-qualified",
+        "Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 966,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 9,
+      "jobs": [
+        "Qwen3-8B-high100-r3-Template-qualified",
+        "Mistral-7B-Instruct-v0.3-common80-r3-Template-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 909,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 10,
+      "jobs": [
+        "Qwen3-8B-high100-r3-Raw-authorized",
+        "Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 979,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 11,
+      "jobs": [
+        "Qwen3-8B-high100-r3-Session-qualified",
+        "Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 909,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 12,
+      "jobs": [
+        "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 861,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 13,
+      "jobs": [
+        "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 862,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    },
+    {
+      "wave": 14,
+      "jobs": [
+        "Mistral-7B-Instruct-v0.3-common80-r2-Raw-authorized"
+      ],
+      "all_servers_ready_before_clients": true,
+      "actual_resource_snapshots": 933,
+      "no_foreign_GPU_processes_in_snapshots": true,
+      "actual_index_UUID_mapping_stable": true
+    }
+  ],
+  "source_sha256": "a2144f150ef2570a6ed95d5459ecba5b0b9588929dba274f0f5122bb693e84b6"
+}

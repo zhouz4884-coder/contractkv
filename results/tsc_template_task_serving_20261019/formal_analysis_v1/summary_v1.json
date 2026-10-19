@@ -1,0 +1,384 @@
+{
+  "status": "FORMAL_INDEPENDENT_ACCOUNTING_COMPLETE",
+  "actual_cells": 27,
+  "business": 10368,
+  "paired_future_business": 6912,
+  "aggregates": [
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "repeats": 3,
+      "total_SLO": 220,
+      "total_requests": 1152,
+      "absolute_goodput": 0.03532790164369668,
+      "mean_ready_TTFT_ms": 55185.300013538734,
+      "p99_ready_TTFT_repeat_range": [
+        91298.24488380925,
+        193185.65275935456
+      ],
+      "RPCs": 0,
+      "registration_objects": 0,
+      "controller_ms_per_business": 0.0,
+      "compiled": 0,
+      "business_new_prefill": 16316464,
+      "canary_plus_verification_new_prefill": 0
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "policy": "Session-qualified",
+      "repeats": 3,
+      "total_SLO": 507,
+      "total_requests": 1152,
+      "absolute_goodput": 0.0856344995313158,
+      "mean_ready_TTFT_ms": 26356.659572499968,
+      "p99_ready_TTFT_repeat_range": [
+        85588.62569456457,
+        118196.26100737603
+      ],
+      "RPCs": 72,
+      "registration_objects": 72,
+      "controller_ms_per_business": 175.50996280422422,
+      "compiled": 576,
+      "business_new_prefill": 9299888,
+      "canary_plus_verification_new_prefill": 235152
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "policy": "Template-qualified",
+      "repeats": 3,
+      "total_SLO": 514,
+      "total_requests": 1152,
+      "absolute_goodput": 0.08682357613627888,
+      "mean_ready_TTFT_ms": 25825.71350644907,
+      "p99_ready_TTFT_repeat_range": [
+        87220.06106283053,
+        120272.88385952824
+      ],
+      "RPCs": 9,
+      "registration_objects": 9,
+      "controller_ms_per_business": 131.8763155181336,
+      "compiled": 576,
+      "business_new_prefill": 9295360,
+      "canary_plus_verification_new_prefill": 227718
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "policy": "Raw-authorized",
+      "repeats": 3,
+      "total_SLO": 252,
+      "total_requests": 1152,
+      "absolute_goodput": 0.05247870455317025,
+      "mean_ready_TTFT_ms": 41233.093694100615,
+      "p99_ready_TTFT_repeat_range": [
+        51744.099388588234,
+        167299.00772145952
+      ],
+      "RPCs": 0,
+      "registration_objects": 0,
+      "controller_ms_per_business": 0.0,
+      "compiled": 0,
+      "business_new_prefill": 13256384,
+      "canary_plus_verification_new_prefill": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "policy": "Session-qualified",
+      "repeats": 3,
+      "total_SLO": 686,
+      "total_requests": 1152,
+      "absolute_goodput": 0.1511548061621035,
+      "mean_ready_TTFT_ms": 11795.229873700817,
+      "p99_ready_TTFT_repeat_range": [
+        39752.01234607958,
+        59601.82142472362
+      ],
+      "RPCs": 72,
+      "registration_objects": 72,
+      "controller_ms_per_business": 197.9545550635117,
+      "compiled": 576,
+      "business_new_prefill": 6866352,
+      "canary_plus_verification_new_prefill": 215136
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "policy": "Template-qualified",
+      "repeats": 3,
+      "total_SLO": 700,
+      "total_requests": 1152,
+      "absolute_goodput": 0.15427218270225232,
+      "mean_ready_TTFT_ms": 10954.066563853607,
+      "p99_ready_TTFT_repeat_range": [
+        38066.680620354615,
+        48307.10071501322
+      ],
+      "RPCs": 9,
+      "registration_objects": 9,
+      "controller_ms_per_business": 132.97079923722777,
+      "compiled": 576,
+      "business_new_prefill": 6851968,
+      "canary_plus_verification_new_prefill": 207660
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "policy": "Raw-authorized",
+      "repeats": 3,
+      "total_SLO": 64,
+      "total_requests": 1152,
+      "absolute_goodput": 0.014528200158020943,
+      "mean_ready_TTFT_ms": 118416.5219889854,
+      "p99_ready_TTFT_repeat_range": [
+        192186.8320695544,
+        382180.1934407
+      ],
+      "RPCs": 0,
+      "registration_objects": 0,
+      "controller_ms_per_business": 0.0,
+      "compiled": 0,
+      "business_new_prefill": 13256384,
+      "canary_plus_verification_new_prefill": 0
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "policy": "Session-qualified",
+      "repeats": 3,
+      "total_SLO": 441,
+      "total_requests": 1152,
+      "absolute_goodput": 0.12040886168628455,
+      "mean_ready_TTFT_ms": 28376.72920876705,
+      "p99_ready_TTFT_repeat_range": [
+        76214.47600357703,
+        106871.46226914138
+      ],
+      "RPCs": 72,
+      "registration_objects": 72,
+      "controller_ms_per_business": 197.96266065289578,
+      "compiled": 576,
+      "business_new_prefill": 6866352,
+      "canary_plus_verification_new_prefill": 215136
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "policy": "Template-qualified",
+      "repeats": 3,
+      "total_SLO": 454,
+      "total_requests": 1152,
+      "absolute_goodput": 0.12399311964659597,
+      "mean_ready_TTFT_ms": 26495.030894920797,
+      "p99_ready_TTFT_repeat_range": [
+        70400.64685282763,
+        106251.07457693669
+      ],
+      "RPCs": 9,
+      "registration_objects": 9,
+      "controller_ms_per_business": 132.944173825106,
+      "compiled": 576,
+      "business_new_prefill": 6851968,
+      "canary_plus_verification_new_prefill": 207660
+    }
+  ],
+  "comparisons": [
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "candidate": "Session-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.05030659788761912,
+      "paired_three_process_bootstrap_CI95": [
+        0.04549321223528207,
+        0.05799044366930461
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.012601760598773458,
+        0.09153246939431568
+      ],
+      "leave_one_source_delta_range": [
+        0.028614380870876373,
+        0.05187079676260447
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "candidate": "Template-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.051495674492582195,
+      "paired_three_process_bootstrap_CI95": [
+        0.04733520819339719,
+        0.0590785280696464
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.014632182651637862,
+        0.09291993784263067
+      ],
+      "leave_one_source_delta_range": [
+        0.029801409979881906,
+        0.05221522042619634
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "candidate": "Template-qualified",
+      "reference": "Session-qualified",
+      "absolute_goodput_delta": 0.0011890766049630769,
+      "paired_three_process_bootstrap_CI95": [
+        7.545416974383268e-06,
+        0.0025396961227052567
+      ],
+      "conditional_source_sensitivity_CI95": [
+        -0.0003291199438066744,
+        0.003043979332561675
+      ],
+      "leave_one_source_delta_range": [
+        0.0003444236635918724,
+        0.0013558415725129988
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "candidate": "Session-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.09867610160893325,
+      "paired_three_process_bootstrap_CI95": [
+        0.07523257294540658,
+        0.13788711193188838
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.04213956234233334,
+        0.16168576815644206
+      ],
+      "leave_one_source_delta_range": [
+        0.06277506301470692,
+        0.09607625483401429
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "candidate": "Template-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.10179347814908207,
+      "paired_three_process_bootstrap_CI95": [
+        0.0752328200081897,
+        0.14428206331869478
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.04480615309733826,
+        0.1652066306105527
+      ],
+      "leave_one_source_delta_range": [
+        0.06544332954799134,
+        0.09897044957793218
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "candidate": "Template-qualified",
+      "reference": "Session-qualified",
+      "absolute_goodput_delta": 0.0031173765401488196,
+      "paired_three_process_bootstrap_CI95": [
+        2.4706278312081054e-07,
+        0.006394951386806402
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.002005513865298118,
+        0.004228770229828316
+      ],
+      "leave_one_source_delta_range": [
+        0.0022288388009237825,
+        0.0028941947439178883
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "candidate": "Session-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.1058806615282636,
+      "paired_three_process_bootstrap_CI95": [
+        0.08896574436643746,
+        0.12908233720637272
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.03354825763976543,
+        0.17637313506722524
+      ],
+      "leave_one_source_delta_range": [
+        0.07065586064237028,
+        0.11019055987727756
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "candidate": "Template-qualified",
+      "reference": "Raw-authorized",
+      "absolute_goodput_delta": 0.10946491948857502,
+      "paired_three_process_bootstrap_CI95": [
+        0.0947695808538058,
+        0.13064164440659298
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.03150598034090925,
+        0.17943139836150768
+      ],
+      "leave_one_source_delta_range": [
+        0.07395673747741932,
+        0.11350132208525884
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "candidate": "Template-qualified",
+      "reference": "Session-qualified",
+      "absolute_goodput_delta": 0.003584257960311421,
+      "paired_three_process_bootstrap_CI95": [
+        0.0015593072002202668,
+        0.005803836487368333
+      ],
+      "conditional_source_sensitivity_CI95": [
+        0.0005663790965351467,
+        0.00714912832874795
+      ],
+      "leave_one_source_delta_range": [
+        0.001664346907347805,
+        0.0035828019751508594
+      ],
+      "source_sensitivity_holds_observed_wall_fixed_not_counterfactual_workload": true
+    }
+  ],
+  "compiled_pairs": 3456,
+  "compiled_ID_or_finish_changes": 1178,
+  "compiled_score_down": 36,
+  "all_route_score_down": 46,
+  "all_route_score_up": 811,
+  "unique_source_clusters": 6,
+  "qualified_task_families": [
+    "HotpotQA"
+  ],
+  "all_Repo_Raw_fallback": true,
+  "planned_time_clock_and_actual_prompt_native_RPC_checks_pass": true,
+  "new_GPU_requests": 0,
+  "source_sha256": "240ae6047f02f708f187de3cf7e1ba5a1dd5ce633e138cbf5a779b485d2396d2",
+  "boundary": "Controlled marked-Poisson locality and registered repeated questions, zero slack. Deployment self-path attestation, independently measured Raw pairing. Six source clusters and three processes; repeated tenant requests are not independent safety trials. No universal quality or capacity claim."
+}
