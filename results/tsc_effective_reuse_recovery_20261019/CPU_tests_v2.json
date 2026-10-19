@@ -1,0 +1,16 @@
+{
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_contractkv_v5_authorized_execution_v2.py",
+    "tests/test_contractkv_authorized_cache_identity.py",
+    "tests/test_tsc_revision_r2_admission.py"
+  ],
+  "returncode": 0,
+  "result": "......................                                                   [100%]\n22 passed in 0.49s\n",
+  "regression_covers_renderer_global_capture_inside_installed_adapter": true,
+  "new_GPU_requests": 0
+}

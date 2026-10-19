@@ -1,5 +1,13 @@
 # 有效复用恢复：可恢复执行状态
 
+## v2执行优先说明
+
+v1接线适配器的renderer全局引用捕获顺序错误，Q/M首次compiled请求被原输入身份检查拦截；154业务保留，0完整科学单元。v1 worker684523与launcher684522已自然失败退出，L未启动，新4/6来源均无模型输出。
+
+修复版使用`scripts/tsc_effective_development_worker_v2.py`、`source_snapshot_v2`、`freeze_development_v2.json`（SHA `bccb4c18708ac535cb30bd0f0909dbc86e15152e2e12e04b29f7cc3d009401c5`），1182项测量/历史依赖。`development_execution_state_v2.json`、worker_exit/launch_v2才是后续状态；仅处理attempt2。不得恢复v1worker、覆盖attempt1或重启已运行的v2。
+
+v2只修初始化顺序并加运行前renderer捕获断言；lazy执行方法、输入、分数、scope、margin/EOS和PSTP不变。22 CPU检查通过。实际v2预检回执待生成并公开，之后才启动。下方v1 SHA和说明保留为历史。
+
 本轮新授权：统一授权入口的全V5回归、资格漏斗/完整费用审计、最小执行改进与独立验证门槛。旧V5、原Table III和上一轮828业务授权修复均结束且不重启；旧自动化保持暂停。
 
 - 远程8TB根：`/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv`。

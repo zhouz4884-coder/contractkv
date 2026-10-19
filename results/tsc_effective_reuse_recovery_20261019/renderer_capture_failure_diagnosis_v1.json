@@ -1,0 +1,243 @@
+{
+  "status": "INFRASTRUCTURE_FAILURE_ATTRIBUTED",
+  "root_cause": "Adapter copied fixed-module globals before installed_adapter rebound the faithful renderer. Raw preparation and candidate planning used faithful code; compiled business rendering captured historical function.",
+  "invalid_business_rows": [
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:187",
+      "turn": 3,
+      "level": "L2",
+      "success": true,
+      "actual_prompt_sha256": "eb9087495024eaa9928e2099eecd5c34e100cac66ee4d4c18a2fb00b85676e70",
+      "expected_faithful_prompt_sha256": "668265e7efec2cdf213ef2ac68a28e414ee921c807c12bd46e931acd8918a567",
+      "different_from_frozen_faithful": true,
+      "failure_detected_by_existing_prefix_check": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:90",
+      "turn": 3,
+      "level": "L3",
+      "success": true,
+      "actual_prompt_sha256": "95d35acd04ff82aa6809ad46d62accb5b346851ff8ceba6aa1481ab019392eb3",
+      "expected_faithful_prompt_sha256": "fdebe2423a09b3a50a72d699507de7ff677ab792de51412132ce2197e5086c1b",
+      "different_from_frozen_faithful": true,
+      "failure_detected_by_existing_prefix_check": true
+    }
+  ],
+  "all_attempt1_business_retained": 154,
+  "new_source_candidate_probes_run": 0,
+  "no_behavioral_threshold_or_source_change": true,
+  "all_attempt1_artifact_inventory": [
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/server.log",
+      "bytes": 32826,
+      "sha256": "e398a2e2846f1618eec04fd95015c83db4e84e5627e0447176b60146c8bae3d6"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/verify_trace.jsonl",
+      "bytes": 1266,
+      "sha256": "21223640fe0d3d98706495cb369e5af459a2770c17dcb1836e9739a0651aa72f"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/launch_v1.json",
+      "bytes": 3854,
+      "sha256": "6fda3591c9154edd6ef3a317c58f60e11841f6e622605927bca30f9bf9dba0cb"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/failure_v1.json",
+      "bytes": 143,
+      "sha256": "c7e7a041974af673a7b230f38b26c3e5946b87ff03b4e4191be1d18dc01489c8"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/backend_trace.jsonl",
+      "bytes": 42468850,
+      "sha256": "8b074ecb2eccac73c3dcadef55cf91574cfae283637be89d28521ad441877080"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/server_process_v1.json",
+      "bytes": 47,
+      "sha256": "f53abf9f47aea32b6125fd56f2718db6c2c9d27895963e520880dacd3eb3aad3"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/responses.jsonl",
+      "bytes": 2258,
+      "sha256": "9bae81cf5380dadd5970ce5743ebc707876e56366d85ac10ba8587a3cd8ddd79"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/metrics.jsonl",
+      "bytes": 952307,
+      "sha256": "dd14f53a045f425a46dc17c0b46eb0f807d9ff6a0ffb1faff264d31fd50c1e1c"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/client.log",
+      "bytes": 603,
+      "sha256": "45d36dc9c9e12093ff003c7b8b51cf0a3738761a634459af03659b3ce3d4821f"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/measured_backend_drain_v1.json",
+      "bytes": 439,
+      "sha256": "49e73f196472302b6b3807682c31a47382ee3817acea881116e5870c8ff2ef58"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/launch_v1.json",
+      "bytes": 3325,
+      "sha256": "71514bdcbda84818bd8dca054fd12576663db27e235403c01a717593f3ce63a4"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/raw.jsonl",
+      "bytes": 5120336,
+      "sha256": "24bd660fc8b2924f92f1d1b2bff11cb65c9fe535942f898c0026cfc76ceeac48"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/authorization_trace.jsonl",
+      "bytes": 42895,
+      "sha256": "a2b2782af26256e59ef3a3b467edb05d1f9687a77337bb5a29502823e6f543aa"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/client_audit_v1.json",
+      "bytes": 887,
+      "sha256": "4a6143d682de7f33d9aecb3773fb641f09531c652bd28217f3d4605a9bda774c"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/client.log",
+      "bytes": 4656,
+      "sha256": "3f8da286e358fa111e937c437e9418af741b7b4769df6498b5b2d1e20287e19e"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/raw_authorized/summary.json",
+      "bytes": 1901,
+      "sha256": "c57f7a481fb0575caf7bb6c85827c8c5b45bb1bc7953b08b968a218460c0de83"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/V5_authorized/launch_v1.json",
+      "bytes": 3320,
+      "sha256": "2d94eef00ff7efc1add09a1ea91e046d5bcc2af72bd4338e11e6dbe751eb7bc2"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/V5_authorized/raw.jsonl",
+      "bytes": 3604210,
+      "sha256": "0702ac6de1028711cf8ccaa85dfc88a42dbd8570b195485d5d6b0303018b0e55"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/V5_authorized/authorization_trace.jsonl",
+      "bytes": 24901,
+      "sha256": "30aca28e09087deffb6fb1f2074b014cef5eb16d2af06633d4fbce364bc5c069"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/V5_authorized/client_audit_v1.json",
+      "bytes": 853,
+      "sha256": "12a416bc66b25eab71826d8054b0f9d14b5738ccd21052a50bc5753f07cdfd42"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/V5_authorized/client.log",
+      "bytes": 1994,
+      "sha256": "13a28a33bee33e017752cba9cc098eaaea52483a2301ab12c5b5b498f3df513d"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/server.log",
+      "bytes": 27092,
+      "sha256": "e8fdb559a9f7291515a71a4bec5e0f549eb9e1ee9c23998c6d62ad8eaeeaebfd"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/verify_trace.jsonl",
+      "bytes": 1927,
+      "sha256": "52f90fdfbb235bf4a1243aa9d9b174cbbfb4070cec8572bb4b9537db4fb60b8c"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/launch_v1.json",
+      "bytes": 3706,
+      "sha256": "8337c8d1150a3cca0af4b9cfa215dcf8bf3daf520de582126ba00e9166b1535a"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/failure_v1.json",
+      "bytes": 143,
+      "sha256": "c7e7a041974af673a7b230f38b26c3e5946b87ff03b4e4191be1d18dc01489c8"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/backend_trace.jsonl",
+      "bytes": 28224007,
+      "sha256": "5de6867782f9d616b59cd21da2c566e473ac75ab4c56ac22bdfc2c571f8c8488"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/server_process_v1.json",
+      "bytes": 47,
+      "sha256": "ba3fff3a3ae629c6ec3bf2fe80e61affa41153082ae9ae2df217b67626228c24"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/responses.jsonl",
+      "bytes": 2210,
+      "sha256": "5675b02c0c72672d479c520a6d65b3b74cc081ad4f070a41e0402e586122f6df"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/metrics.jsonl",
+      "bytes": 634014,
+      "sha256": "5c061ae622226f28cad06726faccba8103bf7b92a55349cb1307365145e7d3b3"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/client.log",
+      "bytes": 603,
+      "sha256": "45d36dc9c9e12093ff003c7b8b51cf0a3738761a634459af03659b3ce3d4821f"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/measured_backend_drain_v1.json",
+      "bytes": 439,
+      "sha256": "52b9ef4b732213df33917f52f4361b993d6b284b55bede0dff16508f94cfe57d"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/launch_v1.json",
+      "bytes": 3195,
+      "sha256": "aebcc90d1865b9fa60d13801f330b620088e72daf0df42ad680f188425899f9f"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/raw.jsonl",
+      "bytes": 3662981,
+      "sha256": "4eaaaacd8741e07dc2575ae70f49b031bf5ac1f5e1eb68c492d4d9ae1779894b"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/authorization_trace.jsonl",
+      "bytes": 40981,
+      "sha256": "1c46e25f656bc23be968557616c5c7ab19ae7c1eb1cf879804f83747ca2932a1"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/client_audit_v1.json",
+      "bytes": 887,
+      "sha256": "48c50444d9705ff9d669a76b3d44dcad89cd3ce414112eaa96c90de3483f978c"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/client.log",
+      "bytes": 4161,
+      "sha256": "33e1c462debf4722381d7cab880b26cd12d81e9f8dc5bf3b916876525d7efd21"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/raw_authorized/summary.json",
+      "bytes": 1886,
+      "sha256": "2b324989e03eabd76f9dde582919ee8e76c3d5f0d6cb0536d17129ff5ba74dca"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/V5_authorized/launch_v1.json",
+      "bytes": 3190,
+      "sha256": "b413d23ef0a70a00d062c0bdc801022f9a39522921725498dd21b8dd30513a5d"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/V5_authorized/raw.jsonl",
+      "bytes": 1320961,
+      "sha256": "ac8614757a0e19f699328e8d6458c4e05d66c28ad28b5d1614c31da62d598e0f"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/V5_authorized/authorization_trace.jsonl",
+      "bytes": 8381,
+      "sha256": "b282835d2ade949347cd61fd70328afe9e77e04cec80aaefe5a6ef2d8eb7d34d"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/V5_authorized/client_audit_v1.json",
+      "bytes": 853,
+      "sha256": "12a416bc66b25eab71826d8054b0f9d14b5738ccd21052a50bc5753f07cdfd42"
+    },
+    {
+      "path": "results/tsc_effective_reuse_recovery_20261019/cells/Qwen3-8B_r1/attempt1/V5_authorized/client.log",
+      "bytes": 1018,
+      "sha256": "ea5656826b1dec66c6e216c917658d6e208442ea1c95de46286b4dd9353a31eb"
+    }
+  ]
+}
