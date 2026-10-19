@@ -1,0 +1,33 @@
+{
+  "schema_version": "contractkv.effective-reuse-development.v1",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "fresh_engine_cells": 3,
+  "full_runner_smoke_known_sources": 3,
+  "full_runner_business_per_cell": 180,
+  "candidate_development_sources": 4,
+  "candidate_levels": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "candidate_probes_per_cell": 12,
+  "probe_business_per_cell": 20,
+  "no_formal_validation_outputs_read": true,
+  "original_behavior_scope_margin_EOS_and_PSTP": true,
+  "diagnostic_candidate_economics_not_production_admission": true,
+  "phase_order": [
+    "known full-runner Raw-authorized",
+    "known V5-authorized",
+    "known deferred-authorized",
+    "new development candidate probes"
+  ],
+  "cache_shared_within_cell": true,
+  "no_causal_speedup_claim_from_shared_engine": true,
+  "formal_gate": "Do not run an unconditional large service matrix. Require no compiled behavioral changes and evidence of legal coverage improvement or a material critical-path cost reduction. Freeze any subsequent selection/arrival/SLO/arms before formal output.",
+  "candidate_choice_rule": "At least 2/2 development sources for a model/family must satisfy all original scope/output/raw-candidate-EOS margins and exact observed free-generation behavior. Prefer most stable full blocks, then lower measured complete verification cost; never online multi-level descent. A formerly L0 family also needs a separate defensible cost calibration before serving; feasibility alone is not deployment qualification.",
+  "no_tests_used_to_adjust_thresholds": true
+}

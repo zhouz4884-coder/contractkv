@@ -1,0 +1,29 @@
+{
+  "status": "COMPLETE_CPU_ONLY",
+  "sets": [
+    {
+      "set": "development",
+      "sources": [
+        "LongBench:hotpotqa:hotpotqa:doc:185",
+        "LongBench:hotpotqa:hotpotqa:doc:8",
+        "RepoBench:python_v1.1:alexzhou907/DreamPropeller",
+        "RepoBench:python_v1.1:google-research/semivl"
+      ]
+    },
+    {
+      "set": "validation",
+      "sources": [
+        "LongBench:hotpotqa:hotpotqa:doc:6",
+        "LongBench:hotpotqa:hotpotqa:doc:165",
+        "LongBench:hotpotqa:hotpotqa:doc:188",
+        "RepoBench:python_v1.1:newcastleuniversity/DISPEL",
+        "RepoBench:python_v1.1:Graph-and-Geometric-Learning/D4Explainer",
+        "RepoBench:python_v1.1:jiawei-ren/dreamgaussian4d"
+      ]
+    }
+  ],
+  "new_GPU_requests": 0,
+  "final_excluded_unique_sources": 729,
+  "source_identity_disjoint": true,
+  "semantic_disjointness_not_claimed": true
+}

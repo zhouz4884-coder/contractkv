@@ -1,0 +1,204 @@
+{
+  "schema_version": "tsc-r3.output-contract-margin-catalog.v1",
+  "raw_token_margin_floor": 0.0625,
+  "candidate_token_margin_floor": 0.125,
+  "benefit_safety_factor": 1.0,
+  "expected_query_repetitions_per_registered_tenant_hint": 3,
+  "online_verification_attempt_limit": 1,
+  "models": {
+    "Qwen3-8B": {
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 491.2670582998544,
+        "complete_qualification_p95_ms": 522.5874988827854,
+        "prefill_ms_per_token": 0.4105315712024963,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7605.93761092664,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 837.93809954077,
+        "complete_qualification_p95_ms": 885.792592074722,
+        "prefill_ms_per_token": 0.4582951478248965,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 7681.106145337729,
+        "development_accepted_scope_scenarios": 10,
+        "development_attempted_scope_scenarios": 18
+      },
+      "NarrativeQA": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 917.7290580235422,
+        "complete_qualification_p95_ms": 953.4781987778842,
+        "prefill_ms_per_token": 0.4567875215188547,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 11274.485051097688,
+        "development_accepted_scope_scenarios": 14,
+        "development_attempted_scope_scenarios": 18
+      },
+      "Qasper": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 793.7175402184948,
+        "complete_qualification_p95_ms": 832.9360788920894,
+        "prefill_ms_per_token": 0.46076144580019257,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 6653.361420990732,
+        "development_accepted_scope_scenarios": 6,
+        "development_attempted_scope_scenarios": 10
+      },
+      "RepoBench": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 1589.2581201624125,
+        "complete_qualification_p95_ms": 1654.364376096055,
+        "prefill_ms_per_token": 0.40791583008692195,
+        "raw_native_prefix_full_blocks_p95": 6,
+        "development_predicted_net_ms": 21351.69800151206,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      }
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "Qasper": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RepoBench": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 484.7437682328746,
+        "complete_qualification_p95_ms": 510.0306370295584,
+        "prefill_ms_per_token": 0.37981930764425864,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 7557.2098378015235,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 911.399713344872,
+        "complete_qualification_p95_ms": 948.3915098942816,
+        "prefill_ms_per_token": 0.42568636305951957,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 4908.239948226549,
+        "development_accepted_scope_scenarios": 8,
+        "development_attempted_scope_scenarios": 16
+      },
+      "NarrativeQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 984.197012335062,
+        "complete_qualification_p95_ms": 1017.0520779676735,
+        "prefill_ms_per_token": 0.4529804169794541,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 3431.3720464165995,
+        "development_accepted_scope_scenarios": 6,
+        "development_attempted_scope_scenarios": 8
+      }
+    },
+    "Llama-3.1-8B-Instruct": {
+      "Qasper": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RepoBench": {
+        "level": "L0",
+        "reason": "inherited_family_L0"
+      },
+      "RULER": {
+        "level": "L3",
+        "verification_rpc_p95_ms": 435.176930623129,
+        "complete_qualification_p95_ms": 463.59642990864813,
+        "prefill_ms_per_token": 0.4263633510284768,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7312.99131206304,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 12
+      },
+      "HotpotQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 755.730889365077,
+        "complete_qualification_p95_ms": 788.6354327201843,
+        "prefill_ms_per_token": 0.46113457919933076,
+        "raw_native_prefix_full_blocks_p95": 8,
+        "development_predicted_net_ms": 3602.5094266953756,
+        "development_accepted_scope_scenarios": 6,
+        "development_attempted_scope_scenarios": 10
+      },
+      "NarrativeQA": {
+        "level": "L2",
+        "verification_rpc_p95_ms": 863.4092112071812,
+        "complete_qualification_p95_ms": 902.4718647822738,
+        "prefill_ms_per_token": 0.4530969484362165,
+        "raw_native_prefix_full_blocks_p95": 7,
+        "development_predicted_net_ms": 7253.784014981085,
+        "development_accepted_scope_scenarios": 12,
+        "development_attempted_scope_scenarios": 14
+      }
+    }
+  },
+  "selection_objective_detail": "Equal model/family weights; each level has three queries per source. Average declared tenant scenarios. Failed eligible verification costs the conservative p95 estimate, rejected early costs actual planning. This predictor excludes unmeasured raw-logprob overhead and is not a measured serving speedup.",
+  "new_heldout_sessions_sha256": "4617b7b05bf2ff10521bdef28c385a414cc05ae718bc747bfeea5eaa8fd65725",
+  "development_only": true,
+  "selection_plan_sha256": "8dd4a78e1919dbe86f70226d8a25af6b2a58d3b81ed3186e4ce81f73197e7864",
+  "profile_selection_input_sha256": "34422bf2a2a9352fe4397702b8d17f46dd2b11a6d867421769429c7d22e6e360",
+  "before_independent_heldout_amendment": {
+    "reason": "The profile-only optimum permits the already observed bad Mistral batch reference at equality. Require raw early rejection of this known negative control before independent test use.",
+    "constraint": "raw_floor > maximum observed full raw-reference minimum among the three correlated repeats of one known bad batch source",
+    "known_batch_raw_sha256": "0383c2fc4c882b8cd65ca47b4e01cf493219dd81a84486df593f38058d5757c6",
+    "raw_floor_must_exceed": 0.03125,
+    "known_cases": [
+      {
+        "repeat": 1,
+        "reference_prompt_ids_sha256": "2aa5b5e348b6b56c8dd459972842b71a9b832f74f806e565143799a9d7a47d50",
+        "reference_output_ids_sha256": "6450e8a94e44af3bc828a400c4b3c32a09ae18f64486414cf0f4244313c8093c",
+        "raw_full_min_including_eos": 0.03125,
+        "raw_future_score": 0.14285714285714285,
+        "compiled_future_score": 0.06666666666666668,
+        "candidate_token_margins_not_recorded_in_this_old_batch_study": true
+      },
+      {
+        "repeat": 2,
+        "reference_prompt_ids_sha256": "2aa5b5e348b6b56c8dd459972842b71a9b832f74f806e565143799a9d7a47d50",
+        "reference_output_ids_sha256": "6450e8a94e44af3bc828a400c4b3c32a09ae18f64486414cf0f4244313c8093c",
+        "raw_full_min_including_eos": 0.03125,
+        "raw_future_score": 0.14285714285714285,
+        "compiled_future_score": 0.06666666666666668,
+        "candidate_token_margins_not_recorded_in_this_old_batch_study": true
+      },
+      {
+        "repeat": 3,
+        "reference_prompt_ids_sha256": "2aa5b5e348b6b56c8dd459972842b71a9b832f74f806e565143799a9d7a47d50",
+        "reference_output_ids_sha256": "6450e8a94e44af3bc828a400c4b3c32a09ae18f64486414cf0f4244313c8093c",
+        "raw_full_min_including_eos": 0.03125,
+        "raw_future_score": 0.14285714285714285,
+        "compiled_future_score": 0.06666666666666668,
+        "candidate_token_margins_not_recorded_in_this_old_batch_study": true
+      }
+    ],
+    "does_not_prove_all_candidate_gate_outcomes_in_historical_batch": true,
+    "original_v1_pilot_and_profile_preserved": true,
+    "new_heldout_outcomes_not_used": true
+  },
+  "amendment": {
+    "reason": "Observed R2 cold failures: Qwen invalid Python statement concatenation with large margins; Llama paraphrase at candidate minimum .09375.",
+    "Python_rule": "Only attest RepoBench outputs that parse as one complete Python statement after model-think/fence extraction for validation only; reject incomplete/multi-statement outputs. Never rewrite served answers or use gold labels.",
+    "candidate_floor": "Raise .0625 to .125, within original development grid; raw floor .0625 and level/cost catalog unchanged.",
+    "previous_R2_50_is_now_observed_development": true,
+    "fresh_validation_excludes_all_previous412_sources": true,
+    "fresh_R3_scores_or_generations_used": false
+  },
+  "prior_R2_development_selection": {
+    "raw_floor": 0.0625,
+    "candidate_floor": 0.0625,
+    "safety_factor": 1.0,
+    "eligible_final": true,
+    "unsafe_cells_without_safe_level": 0,
+    "predicted_net_ms_equal_model_family": 5908.846321069936,
+    "accepted_scope_scenarios": 110,
+    "attempted_scope_scenarios": 142,
+    "cost_tiebreak": 9479.336697026156
+  }
+}

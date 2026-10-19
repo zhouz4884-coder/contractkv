@@ -1,0 +1,19 @@
+{
+  "known_sources": [
+    "LongBench:hotpotqa:hotpotqa:doc:90",
+    "LongBench:hotpotqa:hotpotqa:doc:187",
+    "RepoBench:python_v1.1:xhuangcv/humannorm"
+  ],
+  "reason": "Known QA PASS and inherited Repo L0 exercise actual full-runner route wiring; not new-source performance evidence.",
+  "three_models": true,
+  "arms": [
+    "Raw-authorized",
+    "V5-authorized",
+    "deferred-authorized"
+  ],
+  "business_per_arm": 60,
+  "three_arms_shared_unflushed_engine": true,
+  "new_development_sources_separate": true,
+  "cpu_shapes": 320,
+  "source_rows_sha256": "542bca8572f4c35a43c0fb5b381ff02cf2b914cdbfc38dc587934e4f8972030c"
+}
