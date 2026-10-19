@@ -1,0 +1,10 @@
+{
+  "status": "CPU_ARCHIVE_MIRROR_FILTER_FAILURE_RETAINED",
+  "new_GPU_requests": 0,
+  "affected_models": [
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "cause": "Per-model filter excluded nested source snapshot paths of the old zero-output Qwen failure. Measured data and root frozen files were intact; an executable dependency mirror was missing.",
+  "fix": "Version5 package limits model filtering to top-level cells. Same data/analyzer; new independent restore. Old archives and failed executions retained."
+}

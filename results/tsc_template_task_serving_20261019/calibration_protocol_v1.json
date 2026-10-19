@@ -1,0 +1,51 @@
+{
+  "schema": "task-template-Raw-only-calibration.v1",
+  "jobs": [
+    {
+      "id": "Qwen3-8B-Raw-calibration",
+      "model": "Qwen3-8B",
+      "phase": "calibration",
+      "policy": "Raw-authorized",
+      "input_set": "development",
+      "eligible_families": [],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "calibration_arrivals_v1.json",
+      "repeat": 1,
+      "load": "backlog80",
+      "snapshot": "calibration_freeze_v1/source_snapshot",
+      "job_file": "calibration_jobs_v1/Qwen3-8B-Raw-calibration.json",
+      "lane": 0,
+      "port": 10010,
+      "attempt": 1
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-Raw-calibration",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "calibration",
+      "policy": "Raw-authorized",
+      "input_set": "development",
+      "eligible_families": [],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "calibration_arrivals_v1.json",
+      "repeat": 1,
+      "load": "backlog80",
+      "snapshot": "calibration_freeze_v1/source_snapshot",
+      "job_file": "calibration_jobs_v1/Mistral-7B-Instruct-v0.3-Raw-calibration.json",
+      "lane": 1,
+      "port": 10011,
+      "attempt": 1
+    }
+  ],
+  "planned_before_Raw_calibration_output": true,
+  "model_selection": "Independent development qualified family, Qwen primary.",
+  "primary_SLO": "ceil(1.5*Raw-only intrinsic request TTFT p95/500)*500ms minimum1500ms",
+  "secondary_E2E_same_formula": true,
+  "Qwen_load_multipliers": [
+    0.8,
+    1.0
+  ],
+  "other_model_load_multiplier": 0.8,
+  "batch_rate": "80/full measured Raw-only client epoch wall",
+  "no_Contract_output_in_calibration": true,
+  "serving_measurement_contract": "serving_measurement_contract_v1.json"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "task-template-service-measurement-contract.v1",
+  "declared_before_Raw_only_calibration_and_formal": true,
+  "policies": [
+    "Raw-authorized",
+    "Session-qualified",
+    "Template-qualified"
+  ],
+  "planning_label_aliases": {
+    "Session-authorized": "Session-qualified",
+    "Template-authorized": "Template-qualified"
+  },
+  "workloads": "Fixed question/document authorization objects; independent stateless task calls grouped by session identity, not answer-fed conversational history. Registered tenant identities are not concurrent GPU requests.",
+  "calibration": {
+    "frames": 80,
+    "task_source_balance": "20 frames per one of four development sources",
+    "source_order": "seeded source order, within-source20 unique tenant/turn points",
+    "backend_TTFT_used_for_SLO": "send-to-first-content in Raw backlog, not its all-arrive-zero queue latency",
+    "backend_e2e_used_for_SLO": "send-to-completion latency",
+    "rate": "80 / direct measured Raw backlog epoch wall, including common setup/final drain",
+    "Qwen_load_multipliers": [
+      0.8,
+      1.0
+    ],
+    "optional_model_load_multiplier": 0.8
+  },
+  "formal_marks": {
+    "frames": 384,
+    "all_sources_included": true,
+    "requests_each_template": 64,
+    "locality": "two32-request blocks per template: turns1-4 then5-8 across8tenants. Source order reshuffled by frozen repeat seed; all marks retained.",
+    "reason": "Controlled authorized-template locality is an explicit operating condition. This is not a production popularity trace or a claim about uniformly interleaved arbitrarily large working sets.",
+    "no_performance_outcome_mark_selection": true
+  },
+  "arrivals": "Marked Poisson. Same precomputed unit exponential gaps and source/tenant/turn marks for paired arms; two Qwen rates scale the same gaps. Repeat seeds frozen before formal outcomes.",
+  "SLO": {
+    "primary": "successful and planned-arrival-to-first-content TTFT <= frozen TTFT SLO",
+    "secondary": "primary plus planned-arrival-to-completion <= frozen E2E SLO",
+    "formula": "max(1500, ceil(1.5*Raw-only backend p95/500)*500)ms, separately for TTFT/E2E",
+    "no_score_or_SLO_respecification_after_formal_results": true
+  },
+  "complete_clock": "Entry epoch before source prep/registration. Global planned arrivals are not shifted by registration barrier. Client admission concurrency2, same native GPU max_num_seqs2. Includes failures, controller, canary, verification, binding and drain; startup/import outside client epoch reported separately.",
+  "cache": "Same authorized template cache group in all businesses and both granularity arms; controller-private canary group identical policy for Session/Template. Existing certified-prefix reads allowed for BOTH verifiers.",
+  "metrics": "Actual Native initial prefix hit and prompt-hit new-prefill; never convert token counts/RPC time into GPU kernel time. Full serving metric plus source/repeat granularity; original F8 kept independent."
+}

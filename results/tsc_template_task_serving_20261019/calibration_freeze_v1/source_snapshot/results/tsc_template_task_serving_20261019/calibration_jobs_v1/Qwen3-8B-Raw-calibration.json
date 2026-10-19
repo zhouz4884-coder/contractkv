@@ -1,0 +1,17 @@
+{
+  "id": "Qwen3-8B-Raw-calibration",
+  "model": "Qwen3-8B",
+  "phase": "calibration",
+  "policy": "Raw-authorized",
+  "input_set": "development",
+  "eligible_families": [],
+  "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+  "arrivals": "calibration_arrivals_v1.json",
+  "repeat": 1,
+  "load": "backlog80",
+  "snapshot": "calibration_freeze_v1/source_snapshot",
+  "job_file": "calibration_jobs_v1/Qwen3-8B-Raw-calibration.json",
+  "lane": 0,
+  "port": 10010,
+  "attempt": 1
+}
