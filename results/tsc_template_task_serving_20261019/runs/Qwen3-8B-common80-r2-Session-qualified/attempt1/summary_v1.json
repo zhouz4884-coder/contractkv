@@ -1,0 +1,227 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "Qwen3-8B-common80-r2-Session-qualified",
+    "model": "Qwen3-8B",
+    "phase": "formal",
+    "policy": "Session-qualified",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r2.json",
+    "repeat": 2,
+    "load": "common80",
+    "arrival_rate_rps": 0.2527262552702176,
+    "SLO": {
+      "TTFT_ms": 10500,
+      "E2E_ms": 13000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Qwen3-8B-common80-r2-Session-qualified.json",
+    "lane": 1,
+    "attempt": 1,
+    "wave": 0,
+    "port": 10101
+  },
+  "execution_complete": true,
+  "offered": 384,
+  "successful": 384,
+  "compiled_business": 192,
+  "service_begin_time": 4156972.873337363,
+  "service_end_time": 4158405.530040277,
+  "wall_s": 1432.6567029142752,
+  "last_arrival_offset_s": 1393.5384843455745,
+  "registration_barrier_from_epoch_ms": 38317.25324690342,
+  "registration_controller_work_ms": 75761.37524470687,
+  "certificate_objects": 24,
+  "certificate_PASS": 24,
+  "actual_verification_RPCs": 24,
+  "failed_verification_RPC_ms": 0,
+  "business_new_prefill_tokens": 2280928,
+  "reference_extra_new_prefill_tokens": 34744,
+  "verification_extra_new_prefill_tokens": 36968,
+  "verification_native": [
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant00-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 14510
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant01-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant02-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant03-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant04-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant05-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant06-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-0b92c11b17738792:session-tenant07-deployment",
+      "prompt_tokens": 14510,
+      "prefix_hit_tokens": 14368,
+      "new_prefill_tokens": 142
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant01-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 14702
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant00-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant02-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant03-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant04-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant05-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant06-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-d316afe8bf3a7a45:session-tenant07-deployment",
+      "prompt_tokens": 14702,
+      "prefix_hit_tokens": 14608,
+      "new_prefill_tokens": 94
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant00-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 0,
+      "new_prefill_tokens": 5439
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant01-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant02-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant03-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant04-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant05-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant06-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    },
+    {
+      "request_id": "Qwen3-8B-common80-r2-Session-qualified-single-template-task-299cee89bbfc31ba:session-tenant07-deployment",
+      "prompt_tokens": 5439,
+      "prefix_hit_tokens": 5344,
+      "new_prefill_tokens": 95
+    }
+  ],
+  "backend_TTFT_ms": {
+    "mean": 2157.874563748919,
+    "p95": 5050.044519151561,
+    "p99": 6102.94060360175
+  },
+  "backend_e2e_ms": {
+    "mean": 4212.821662406593,
+    "p95": 8771.871349681169,
+    "p99": 9182.158510494046
+  },
+  "ready_TTFT_ms": {
+    "mean": 11273.746218514134,
+    "p95": 39549.95919133069,
+    "p99": 59601.82142472362
+  },
+  "ready_e2e_ms": {
+    "mean": 13328.693317171806,
+    "p95": 43889.74752686908,
+    "p99": 64218.72096220964
+  },
+  "business_native_unavailable": 0,
+  "achieved_throughput": 0.2680335067143975,
+  "all_successful_actual_prompt_IDs_checked": 384,
+  "arrivals_sha256": "db4acac1f912d7df4a9296a36fc4e08881f284233cc4f73559aa2a6e4898c63d",
+  "generation_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "boundary": "Fixed global epoch includes preparation, registration and failed work. Arrivals never reset after registration; client concurrency2. Deployment attestation does not certify arbitrary Raw equivalence. Native new-prefill is actual prompt minus initial engine hit, not GPU time.",
+  "SLO_compliant": 236,
+  "SLO_fraction": 0.6145833333333334,
+  "absolute_SLO_goodput": 0.1647289260015568,
+  "joint_SLO_compliant": 229,
+  "joint_absolute_goodput": 0.15984289853540895,
+  "raw_file_sha256": "b288c33412ff727bb9eecaf8436c29fb083e2a7ce920242285ee13a81bae980d",
+  "post_measurement_audit_s": 0.1871718126349151
+}
