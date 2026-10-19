@@ -1,0 +1,82 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "phase": "formal",
+    "policy": "Raw-authorized",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r3.json",
+    "repeat": 3,
+    "load": "common80",
+    "arrival_rate_rps": 0.19345737145485406,
+    "SLO": {
+      "TTFT_ms": 11000,
+      "E2E_ms": 18000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized.json",
+    "lane": 1,
+    "attempt": 1,
+    "wave": 10,
+    "port": 10121
+  },
+  "execution_complete": true,
+  "offered": 384,
+  "successful": 384,
+  "compiled_business": 0,
+  "service_begin_time": 4175892.884833499,
+  "service_end_time": 4178013.158086964,
+  "wall_s": 2120.2732534650713,
+  "last_arrival_offset_s": 1968.4451208592764,
+  "registration_barrier_from_epoch_ms": 30.028631910681725,
+  "registration_controller_work_ms": 0,
+  "certificate_objects": 0,
+  "certificate_PASS": 0,
+  "actual_verification_RPCs": 0,
+  "failed_verification_RPC_ms": 0,
+  "business_new_prefill_tokens": 5438848,
+  "reference_extra_new_prefill_tokens": 0,
+  "verification_extra_new_prefill_tokens": 0,
+  "verification_native": [],
+  "backend_TTFT_ms": {
+    "mean": 5028.160126237101,
+    "p95": 7307.904101512391,
+    "p99": 7931.2040151283145
+  },
+  "backend_e2e_ms": {
+    "mean": 9318.970684608454,
+    "p95": 12210.51376138348,
+    "p99": 17730.946012036875
+  },
+  "ready_TTFT_ms": {
+    "mean": 58586.64524288057,
+    "p95": 152280.6622051168,
+    "p99": 160202.17188069597
+  },
+  "ready_e2e_ms": {
+    "mean": 62877.45580125193,
+    "p95": 156389.26414663438,
+    "p99": 164312.8458429454
+  },
+  "business_native_unavailable": 0,
+  "achieved_throughput": 0.18110873179786866,
+  "all_successful_actual_prompt_IDs_checked": 384,
+  "arrivals_sha256": "d6158fc37ca202925cde1f15cb46bf696566a5a61fc420f003a667feec09c8c6",
+  "generation_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "boundary": "Fixed global epoch includes preparation, registration and failed work. Arrivals never reset after registration; client concurrency2. Deployment attestation does not certify arbitrary Raw equivalence. Native new-prefill is actual prompt minus initial engine hit, not GPU time.",
+  "SLO_compliant": 78,
+  "SLO_fraction": 0.203125,
+  "absolute_SLO_goodput": 0.036787711146442074,
+  "joint_SLO_compliant": 77,
+  "joint_absolute_goodput": 0.03631607382405179,
+  "raw_file_sha256": "8107d30054a34e0ede30058a9bf2fca27fc2bcdef5c91d13d6792bc9558a64e4",
+  "post_measurement_audit_s": 0.11011931300163269
+}
