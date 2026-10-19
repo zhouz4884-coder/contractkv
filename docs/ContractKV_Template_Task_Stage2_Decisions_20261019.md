@@ -43,3 +43,9 @@ Qwen/Mistral各80请求全部成功，实际输入/Native/计划epoch和总wall�
 ## D9：网络故障只延迟归档，不改科学条件
 
 GitHub smart-HTTPS反复reset/connect失败。已公开的科学冻结b525de3保持不变，真实校验回执在本地/服务器先封存，记录延迟上传后继续Raw-only。随后复用现有GCM授权，走GitHub官方Git Database API，逐blob/tree/commit验证字节与SHA，fast-forward更新同一main；未改写历史、未导出凭据。实际回执1632c9d及完整正式冻结93f54f5均已恢复公开并核对精确SHA，正式生成前完成。
+
+## D10：按原编排完成前两波，不提前挑选性能结论
+
+19:47核对前四个正式单元，每个384业务全部成功，最终后端排空均计入服务时钟；第二波的两份summary与completion SHA一致，未发现failure回执。两路metrics端口在波间停止响应，复查同一worker真实进程及completion确认属于原编排关闭旧server并进入第三波，未重启或复制worker。
+
+仅取回已完成的summary/completion/drain/launch，原始逐请求数据与质量/物理命中独立复算仍待矩阵结束；不把不同重复或不完整三臂的结果写成最终性能结论。全部27单元、来源、到达、阈值及SLO保持冻结，未新增GPU请求。
