@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "D:\VLA_QWEN\contract kv\.artifacts\template_task_Llama_development_restore_v4\scripts\tsc_template_task_development_analysis_v2.py", line 133, in <module>
+    a=p.parse_args();main(a.root.resolve(),a.model,a.output.resolve())
+                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VLA_QWEN\contract kv\.artifacts\template_task_Llama_development_restore_v4\scripts\tsc_template_task_development_analysis_v2.py", line 24, in main
+    assert sha(root/r['path'])==sha(study/'development_freeze_v4/source_snapshot'/r['path'])==r['sha256'],r['path']
+                                ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\VLA_QWEN\contract kv\.artifacts\template_task_Llama_development_restore_v4\scripts\tsc_template_task_development_analysis_v2.py", line 17, in sha
+    def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+                                     ~~~~~~~~~~~~^^
+  File "E:\Anaconda\Lib\pathlib\_abc.py", line 625, in read_bytes
+    with self.open(mode='rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "E:\Anaconda\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\VLA_QWEN\\contract kv\\.artifacts\\template_task_Llama_development_restore_v4\\results\\tsc_template_task_serving_20261019\\development_freeze_v4\\source_snapshot\\results\\tsc_template_task_serving_20261019\\cells\\Qwen3-8B_r1\\attempt1\\failure_v1.json'
