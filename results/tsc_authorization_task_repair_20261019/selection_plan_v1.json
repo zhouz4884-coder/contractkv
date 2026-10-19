@@ -1,0 +1,43 @@
+{
+  "schema_version": "contractkv.authorization-task-repair-selection.v1",
+  "selection_seed": 2026101901,
+  "excluded_source_count": 713,
+  "fresh_independent_sources": {
+    "HotpotQA": 3,
+    "RepoBench": 3
+  },
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "fresh_process_repeats": 3,
+  "maximum_formal_cells": 9,
+  "source_selection": "First critical-capacity-eligible canonical sources in SHA256(seed:source) order; exclude prior 704 and latest9 sources. No gold location, output, qualification or performance selection.",
+  "renderer": "Unchanged structure-preserving-window-v2 /16K; complete question/CODE_PREFIX and original whitespace.",
+  "output_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384,
+    "synthetic": 64
+  },
+  "inherited_model_family_eligibility_and_output_contract_unchanged": true,
+  "primary": "Same unflushed engine: same domain/epoch hit, cross-domain first request zero cross-group hit, new epoch first request zero old-group hit, expired request identity blocked before dispatch, rejected candidate zero added compiled publication.",
+  "old_certificate_current_authorization": "Stale compiled binding may fall back Raw, but Raw uses current trusted domain/epoch identity, never the expired certificate salt.",
+  "authorization_context": "Existing trusted internal orchestrator; key generated at runtime, no public IAM or full confidentiality claim. Synthetic test salts may be logged as test evidence, controller key never logged.",
+  "real_task_validation": "Six fresh sources on all three models. Log all Raw/compiled/fallback outputs, quality, physical hashes/hits, full workflow wall, TTFT and optional SLO-compliant throughput. Serial micro-workflow, no new open-arrival/capacity claim.",
+  "SLO_for_descriptive_counts": {
+    "readiness_TTFT_ms": 11700,
+    "average_TPOT_ms": 435,
+    "source": "Reused V5 prior Raw-only benchmark thresholds before new model outputs; not recalibrated to favor the repair."
+  },
+  "unchanged_raw_margin_floor": 0.0625,
+  "unchanged_candidate_and_EOS_floor": 0.125,
+  "gates": [
+    "CPU identity tests and unchanged admission regression",
+    "Read-only native salt/block-key source audit",
+    "Input/tokenizer/model-stat and read-only runtime receipt",
+    "Publish exact protocol/source/input freeze before first GPU request"
+  ],
+  "stop": "Run only the frozen9 cells; no score-based retries, new thresholds, wider scope, new scheduling or full open-arrival matrix. Infrastructure failures saved/versioned; completed cells not rerun.",
+  "reason_for_renewed_GPU_authorization": "User explicitly requested this bounded authorization/task-mechanism repair after prior V5 experimental scope was closed. Prior automation remains paused; no old worker is restarted."
+}

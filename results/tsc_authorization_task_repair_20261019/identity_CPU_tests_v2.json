@@ -1,0 +1,26 @@
+{
+  "returncode": 0,
+  "result": "..........                                                               [100%]\n10 passed in 0.10s",
+  "new_GPU_requests": 0,
+  "registrar_AST_proof": {
+    "changed_expression": "args.policy_hash+':'+namespace -> authority.require(cache_identity)",
+    "all_other_registration_AST_identical": true,
+    "parent_source_sha256": "0f4d46a44adae1948e889b6b3e2db707b90cd69309962b7d7f335ce325d11252",
+    "scope_margin_EOS_output_budget_and_PSTP_unchanged": true,
+    "existing_narrow_INCOMPLETE_fix_v5_reused": true
+  },
+  "files": [
+    {
+      "path": "scripts/contractkv_cache_identity.py",
+      "sha256": "9393db7af8955405b5fa1e2348c82dd896f4ef75d5af43460e64fa5e4d741276"
+    },
+    {
+      "path": "scripts/contractkv_authorized_requests.py",
+      "sha256": "c06a1173e05ec1b6cec8ae57bedb946e4ef1fb315216e08a84876b23dfc45026"
+    },
+    {
+      "path": "tests/test_contractkv_authorized_cache_identity.py",
+      "sha256": "c1a66e2e650a6bac4f8ad88f2fe0ffc318034b1816283203cd1848ef3698acc4"
+    }
+  ]
+}
