@@ -236,3 +236,10 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 独立检查完成的主24 metadata及实际冻结arrival，发现完整wall解释必须考虑最后到达下界W≥A。12配对事后CPU派生出ΣRawWall/ΣLastArrival：Qcommon1.005490、Qhigh1.069952、Mcommon1.082285、Lcommon1.102157的宽松数学上限。Qcommon计划到达跨度已占Raw wall99.454%，所以固定load下wall约1不能单独反证请求工作减少，也不是GPU空闲99.454%；需要与原定Goodput/延迟/物理工作共同判断。这不是观测优化或容量CI，不据此改负载、追加有利点或更改主统计。Qhigh实测wall变慢等负结果仍保留。
 
 脚本tsc_revision_final_arrival_wall_bound_v1.py及arrival_wall_bound_v1.json保留全部metadata/trace SHA。第一次CPU推导误以为completion包含summary.json哈希而StopIteration，尚未产出结果、0GPU；失败源与回执另保存在post_hoc_clock_analysis_failures_v1。核对真实schema后用summary.raw_file_sha256对齐completion的raw承诺，metadata自身SHA完整记录；原始完整时钟仍由冻结主分析复核。没有更改或重跑任一GPU单元。最终package前需要同步本事后脚本、结果及失败目录到远程，避免归档遗漏。
+
+
+## 00:20 UTC：首个Gate ON/OFF完整配对，继续既定两重复
+
+只读watcher75961确认Gate2/6完成、实际517543仍匹配launch，原318277已按计划进入r2 OFF先跑。首次配对720业务完整，ON/OFF均7实际RPC和18/324 compiled future，完整controller累计28.147/27.999s，wall2008.493/2008.522s。只取回完成metadata并核到达SHA、原raw承诺和计数，没有新增GPU或完整远程重分析。总数相同不足以证明所有请求准入决定相同或筛除率0；不把单次约0.029s wall差当优化结果，等待逐请求和完整三重复。
+
+postprocessing525181的实际命令再次核对，状态仍WAITING_FOR_FROZEN_GPU且无CPU分析stage提前执行。剩四Gate按原冻结继续，不改成本公式、scope、margin、EOS、候选或到达负载，不因首次计数相同增加有利点。
