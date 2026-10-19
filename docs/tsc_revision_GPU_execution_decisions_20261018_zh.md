@@ -243,3 +243,12 @@ common wall2008.481→2008.505s、Goodput .129948925→.128951612（261→259达
 只读watcher75961确认Gate2/6完成、实际517543仍匹配launch，原318277已按计划进入r2 OFF先跑。首次配对720业务完整，ON/OFF均7实际RPC和18/324 compiled future，完整controller累计28.147/27.999s，wall2008.493/2008.522s。只取回完成metadata并核到达SHA、原raw承诺和计数，没有新增GPU或完整远程重分析。总数相同不足以证明所有请求准入决定相同或筛除率0；不把单次约0.029s wall差当优化结果，等待逐请求和完整三重复。
 
 postprocessing525181的实际命令再次核对，状态仍WAITING_FOR_FROZEN_GPU且无CPU分析stage提前执行。剩四Gate按原冻结继续，不改成本公式、scope、margin、EOS、候选或到达负载，不因首次计数相同增加有利点。
+
+
+## 01:20 UTC：Gate3/6与归档Root依赖完整性补查
+
+终止了仅用于观察的functions等待cell789以便完成本地归档审计，未终止unified watcher75961或任何GPU/CPU实验进程。直接SSH重新核对实际517543及525181命令：Gate RUNNING且3/6完成（r2 OFF已结束），CPU仍WAITING_FOR_FROZEN_GPU。后续只继续同一状态，不重复派发。
+
+静态选择审计找到现有打包入口遗漏5个已经冻结但位于Study外的Root文件：两配置、开发cost calibration、mechanism_worker_v3及tableIII_worker_v3，合计约144KB；五者真实存在并与原freeze SHA一致，测量/校准数据未丢失。打包入口本身未绑定390ea831且尚未生成归档，因此在保留旧源后补齐原58个Root依赖的选择、SHA和inventory/receipt断言，并将校准/正式分析source-freeze SHA与原文件/预公开回执相连。包不包含模型权重或runtime cache；原始模型/runtime大文件仍用先前独立归档和身份回执引用。
+
+本地CPU检查58/58原依赖SHA通过，新的package入口SHA51ebe0f9c0e0aabfc89b336b1071e0ee7e123d40e9cb54faff38c87a62ca28a2；这只证明选择逻辑与输入身份，不是实际归档或性能结果。保留packaging_infrastructure_versions_v1全部旧源与回执。等GPU和自动CPU分析结束后，再按实际SHA保存远程旧入口postimage并部署新包入口，逐字节同步新增CPU证据后生成原包。没有改任何冻结测量/评分/统计入口，也不需要GPU重跑。

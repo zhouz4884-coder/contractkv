@@ -21,6 +21,20 @@ def write(path,value):
     with path.open('x',encoding='utf-8') as handle:json.dump(value,handle,indent=2);handle.write('\n')
 
 
+def frozen_dependencies(root,study):
+    """Include original small root inputs as well as the study/source snapshot."""
+    dependencies={}
+    for name in ('raw_calibration_freeze_v1.json','formal_freeze_v1.json'):
+        for row in read(study/name)['files']:
+            path=root/row['path']
+            assert path.resolve().is_relative_to(root) and not path.is_symlink()
+            assert path.is_file() and path.suffix.lower() in {'.json','.jsonl','.py','.csv','.md','.txt','.sh'}
+            assert sha(path)==row['sha256'],row['path']
+            if path in dependencies:assert dependencies[path]==row['sha256']
+            dependencies[path]=row['sha256']
+    return dependencies
+
+
 def main(root):
     study=root/STUDY;out=study/'evidence_package_v1';assert not out.exists()
     for phase in ('baseline','profiles'):
@@ -29,8 +43,12 @@ def main(root):
     for phase in ('qwen','cross','gate'):
         assert read(study/'formal'/f'{phase}_execution_state_v1.json')['status']=='COMPLETE_PENDING_ANALYSIS'
         assert read(study/'formal'/f'{phase}_exit_v1.json')['returncode']==0
-    assert read(study/'calibration_analysis_v1/summary_v1.json')['complete_cells']==7
+    calibration=read(study/'calibration_analysis_v1/summary_v1.json')
+    assert calibration['complete_cells']==7
+    assert calibration['source_freeze_sha256']==sha(study/'raw_calibration_freeze_v1.json')
     formal=read(study/'formal_analysis_v1/summary_v1.json');assert formal['complete_cells']==30
+    assert formal['source_freeze_sha256']==sha(study/'formal_freeze_v1.json')
+    assert read(study/'formal_pre_forward_publication_v1.json')['freeze_sha256']==formal['source_freeze_sha256']
     sensitivity=read(study/'formal_goodput_source_sensitivity_v1.json')
     assert sensitivity['seed']==202610182002 and sensitivity['draws']==10000 and len(sensitivity['results'])==5
     integrity=read(study/'post_execution_integrity_v1.json')
@@ -52,9 +70,14 @@ def main(root):
             selected.append(path)
     selected += [root/'docs/tsc_revision_final_strengthening_objective_20261018.md',
         root/'docs/tsc_revision_final_serving_calibration_design_20261018_zh.md',root/'docs/tsc_revision_GPU_execution_decisions_20261018_zh.md']
+    dependencies=frozen_dependencies(root,study)
+    selected += list(dependencies)
     selected=sorted(set(selected))
     records=[dict(path=p.relative_to(root).as_posix(),bytes=p.stat().st_size,sha256=sha(p)) for p in selected]
+    by_path={row['path']:row for row in records}
+    assert all(by_path[p.relative_to(root).as_posix()]['sha256']==digest for p,digest in dependencies.items())
     out.mkdir();inventory=out/'raw_member_inventory_v1.json';write(inventory,dict(members=records,files=len(records),
+        all_frozen_root_dependencies_included=True,frozen_root_dependencies=len(dependencies),
         model_weights_and_runtime_caches_excluded=True,parent_model_runtime_proof='Original core preflight_v3 receipt and separately archived core raw evidence'))
     archive=out/'faithful_serving_raw_evidence_v1.tar.gz'
     with tarfile.open(archive,'w:gz',compresslevel=6) as tar:
@@ -81,7 +104,9 @@ def main(root):
             parts.append(dict(path=path.name,bytes=len(data),sha256=sha(path)));number+=1
     write(out/'package_receipt_v1.json',dict(archive=archive.name,sha256=sha(archive),bytes=archive.stat().st_size,
         regular_members=len(records),member_inventory_sha256=sha(inventory),parts=parts,
-        round_trip_member_bytes_verified=True,all_old_results_preserved=True))
+        round_trip_member_bytes_verified=True,all_old_results_preserved=True,
+        frozen_root_dependencies=len(dependencies),all_frozen_root_dependencies_included=True,
+        entry_sha256=sha(Path(__file__))))
     print(json.dumps(read(out/'package_receipt_v1.json')))
 
 
