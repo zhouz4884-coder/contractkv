@@ -1,0 +1,52 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "phase": "formal",
+    "policy": "Session-qualified",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r3.json",
+    "repeat": 3,
+    "load": "common80",
+    "arrival_rate_rps": 0.19345737145485406,
+    "SLO": {
+      "TTFT_ms": 11000,
+      "E2E_ms": 18000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified.json",
+    "lane": 1,
+    "attempt": 1,
+    "wave": 11,
+    "port": 10123
+  },
+  "summary_sha256": "6b08d2d967651270914fa599c88450586e83f701816d3466f3b63ba3e0953802",
+  "held_peer_server_until_both_measured_clients_complete": true,
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "f94619adf9a2e9d007d3dfb724bb2ec90be961af240c083dbb9fdfa16223ab4f",
+      "bytes": 983998
+    },
+    {
+      "path": "responses.jsonl",
+      "sha256": "9793f0bd9a9a3d437021f43d4423c824be4b6c59e58efa4a50795b41b3f8e660",
+      "bytes": 42918121
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "1a0a8e1691a3411c88a822baa7fde01adecb99819b7b298bacd0c76a6e62b7b4",
+      "bytes": 18524820
+    },
+    {
+      "path": "client.log",
+      "sha256": "c46b25c5bb27b6e85d9664187c23c3cf55f2251c5e49715e8573dd7c626e5370",
+      "bytes": 7833
+    }
+  ]
+}

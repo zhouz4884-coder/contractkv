@@ -85,3 +85,11 @@ Raw/Session/Template的SLO达标数，第1重复为105/240/245，第2重复为42
 Mistral本组Session/Template各192请求进入compiled路由，实际认证RPC为24/3，累计Controller work为67.39/50.67秒。两者SLO达标数相同，符合事前允许的“主要优势在资格费用摊销”情形；不将微小wall差异包装为Template超越Session的稳定Goodput优势。Qwen的费用与RPC模式继续一致，全部18摘要封存于`formal_eighteen_cells_summary_v1.json`。
 
 继续完成Qwen高负载第三重复与Mistral其余两重复，不以现有正向摘要代替Raw任务质量与输出行为核查，也不因结果修改原计划。
+
+## D16：主模型测量结束后继续完整矩阵，提前修正最终MD交付的路径限制
+
+10月20日01:17，第十二波完成并核对回执，累计24/27、9216业务均正常返回；Qwen18个正式单元全部完成，Mistral仍有原定第二重复三单元。完整24份摘要及各自SHA保存在`formal_twentyfour_cells_summary_v1.json`，明确标注尚未完成原始数据独立复算，不作为质量结论。
+
+不因主模型已完成或已有正向服务摘要跳过剩余Mistral单元，也不扩展新来源或新负载。末轮统计、输出/终止与Task分数仍须等27单元完整后核验。
+
+本机Git API交付helper的保护清单原仅允许`docs/ContractKV_Template_Task_Stage2_`前缀，与事前指定总报告文件名不同。仅补充允许确切文件`docs/ContractKV_Task_Bearing_Template_Service_Validation_Report_20261019.md`，没有开放其他文档路径；该调整只影响本地最终交付范围，不改GPU运行器、冻结分析或实验条件。
