@@ -1,0 +1,15 @@
+{
+  "schema_version": "contractkv.effective-reuse-selection.v1",
+  "excluded_sources_before": 719,
+  "development": {"seed": 2026101902, "HotpotQA": 2, "RepoBench": 2},
+  "validation": {"seed": 2026101903, "HotpotQA": 3, "RepoBench": 3},
+  "source_rule": "ascending SHA256(seed:canonical source), critical-capacity-eligible only; exclude all previous sources and development from validation",
+  "input": "unchanged structure-preserving-window-v2,16K,question/CODE_PREFIX/whitespace retained, gold-independent optional-context cropping",
+  "levels_for_CPU_capacity_and_development_probe": ["L0", "L1", "L2", "L3"],
+  "production_eligibility_not_changed_by_CPU_probes": true,
+  "tenants_for_bounded_full_runner_regression": 2,
+  "turns_per_tenant": 10,
+  "generation_budgets": {"HotpotQA": 128, "RepoBench": 384},
+  "behavior_scope_and_margin_EOS_PSTP_unchanged": true,
+  "no_gold_output_or_performance_source_selection": true
+}
