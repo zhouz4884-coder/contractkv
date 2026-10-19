@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "actual_runtime_import_probe": {
+    "checks": [
+      {
+        "returncode": 0,
+        "log": "runtime_import_probe_0_v4.log",
+        "sha256": "5e129ef9666d5e562629eed3450d8cc28b2bca9e5fa7928a53c95993327553cd"
+      },
+      {
+        "returncode": 0,
+        "log": "runtime_import_probe_1_v4.log",
+        "sha256": "41ab3e4fa8a0088cc7616f112f7a3c344451297f21fb58836fda736f333c246c"
+      }
+    ],
+    "no_model_load_or_generation": true,
+    "dynamic_runtime_script_imports_and_trace_entry_exercised": true
+  },
+  "freeze_sha256": "d0b1c9e748b420a8008aed172db24aa83e324ea4d07dce7c190041e0651427c1",
+  "worker_adapter_proof": {
+    "parent_sha256": "f53e5cf4c003da5eee88bf846fd7cb7e82637d984d54031e1839fc8b71d3c3a0",
+    "changed_assignments": [
+      "source",
+      "policy_hash",
+      "port",
+      "client"
+    ],
+    "changed_completion_assertions": 4,
+    "other_AST_unchanged": true
+  },
+  "reused_immutable_runtime_receipt_sha256": "2262851f17210e56064e374c47a6a7215bcf880955c80b0cc342ee3403a19eeb",
+  "model_asset_stats_verified": true,
+  "all_tokenizer_shapes_verified": true,
+  "resource": {
+    "time_utc": "2026-10-19T09:29:07.116908+00:00",
+    "host": "user",
+    "devices": [
+      [
+        "0",
+        "GPU-ef01d441-985f-50b3-6e64-5d4c3e2def3a",
+        "NVIDIA GeForce RTX 3090",
+        "24 MiB",
+        "0 %"
+      ],
+      [
+        "1",
+        "GPU-a696ce9a-7137-cf6f-b4d3-deb992a72f28",
+        "NVIDIA GeForce RTX 3090",
+        "24 MiB",
+        "0 %"
+      ]
+    ],
+    "processes": []
+  },
+  "new_GPU_requests": 0
+}
