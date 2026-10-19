@@ -2,6 +2,24 @@
 
 用户在上一轮授权修复结束后明确要求继续完整服务回归、低覆盖归因及最小执行优化。本轮是新的授权，不重启历史worker/自动化，不覆盖V5或授权修复原包，不修改正文/Response Letter。
 
+## 新建议后的目标细化（2026-10-19，优先于下方初始计划）
+
+继续同一任务与已有4开发/6验证来源，不另开平行GPU矩阵。当前执行仍是已冻结的v2开发（worker693965；v1初始化错误及154次失败现场保留），不修改运行中的源、输入、预算或阈值。后续分支分别冻结，不能回写为当前开发协议的一部分。
+
+**A：降低无效资格成本，保留已有PASS。** A1为当前Deferred Candidate Preparation，目标是减少确定性scope/output拒绝前的CPU/HTTP候选准备；不称为GPU早停或GPU时间下降。A2只先做CPU诊断：真实失败的最早token、witness长度、未缓存prompt量、已有prefix读取量及可观察的费用。argmin位置不等于最早失败位置，RPC时长不等于纯GPU时长，缺失字段不补造。只有可省计算有实际空间，才考虑单独冻结分段执行微基准，与完整验证Oracle逐案核对PASS/FAIL/EOS/PSTP零发布后再测净GPU费用。
+
+**B：增加合法可复用scope及业务覆盖。** 继续在两个新开发来源/家族上检验原L1/L2/L3：保持Scope、Output Contract、Raw/candidate/EOS margin与实际自由生成条件，Raw重复稳定。旧L0家族不直接解禁；可行性与经济成本标定分开，缺成本输入不硬套其他家族。认证成功率、获准scope数、未来编译覆盖率、真实完整prefix命中分别报告，不把少做失败RPC当作增加覆盖。
+
+**C：代码输入标签的条件性诊断。** 当前结构化Segment标题是模型可见协议，不直接称为调试错误。先审计开发输出是否回显标签、与拒绝的关系及原始代码前缀；如有明确证据，再单独冻结当前/clean renderer开发配对，保持相同任务内容、原代码字节/空白/问题、评分和预算，仅改变声明的可见标题。两路独立tokenize、构造prefix与认证，不能复用旧renderer证书。不得与新目录同时改变后直接归因；此前AContesini只作历史假设，不当新held-out。
+
+**D：机制验收后的独立服务验证。** 先接收并独立复算当前三个开发单元，再决定哪些分支进入正式验证。最低对照为Raw-authorized/V5-authorized/Deferred-authorized；B通过行为与经济门槛时再单列Requalified-authorized。若将Requalified置于Deferred基础上，明确只换新目录，以Requalified−Deferred归因目录、Deferred−V5归因执行顺序，不将两者混成一个无法拆解的修复。Clean Renderer与Early-Abort均须另有开发证据和独立消融，不默认增加全部臂。
+
+正式臂同来源、GPU/授权边界、输入预算、到达与调度、SLO和全费用时钟；更有排队压力的负载只能用事前声明的Raw-only标定规则冻结，不能看正式Contract结果选负载/SLO。wall受固定到达跨度限制，主要联合看从预定到达计时的Goodput/请求时延、合法覆盖、真实物理复用和完整成本；不承诺必须达到60%–80%认证成功率、30%–50%覆盖或80%GPU费用下降。
+
+**明确不采用：** Raw门槛从0.0625统一抬到0.125、按位移启发式直接认定“必败”、免费随机访问后段teacher-forced位置、仅把完整Forward后的检查顺序前移就宣称GPU提速、立即开发Scheduler级Early-Abort。Raw低margin并不蕴含candidate低margin；不能为提高RPC成功率丢弃原本合法的PASS。
+
+**结论边界：** 九单元授权回归用于有限实际引擎隔离/合法共享证据，不用其覆盖率替代服务性能，也不升级为普遍安全或录用保证。原Table III近零/负收益、尾延迟及Raw任务效用限制继续保留。没有机制收益的分支明确NO-GO，不无限增加新实验。
+
 ## 目标与执行门槛
 
 1. CPU逐决策核对V5全部主服务资格，以及原Table III完整Controller/Raw参考/认证HTTP费用。区分语义/证据拒绝、继承L0、计划准备和实际GPU等待。

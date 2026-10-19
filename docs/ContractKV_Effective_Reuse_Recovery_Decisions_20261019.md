@@ -35,3 +35,19 @@ v1已知来源接线在Qwen第一个compiled业务（doc90/turn3）及Mistral第
 v1两个fresh-server均未形成完整配对，共154业务全部保留；新4来源候选诊断尚未开始，独立6来源未产生模型输出。两个worker自然失败退出，未终止其他任务。冻结v2只把执行函数编译移到adapter安装后，并在执行前断言捕获的renderer身份；新增能实际走过wrapper初始化的CPU回归，22项通过。原v1源码/冻结/失败日志不覆盖。
 
 Q/M受影响的整套配对使用新的fresh-server attempt2重跑，L此前未启动，在修复版首次执行。没有已完成的有效科学单元被重跑，没有换源、改预算、改margin/scope或按结果选择。v2仍需完整发布实际预检回执后才能GPU执行。
+
+## D7：旧费用残差主要不是可删除的CPU开销
+
+按归档分析器的串行canary分组规则，将525 Controller关联到模型/任务/来源：453真实认证HTTP中298 PASS耗791.013s、155非PASS耗538.447s；435正常Raw参考耗593.273s、30参考异常耗108.607s。另60无RPC L0 warmup耗123.751s；其他残差只有6.204s，总Controller2161.294s。不能把无RPC warmup当未解释CPU开销，也不能将这些跨独立cell的累计值当一次服务wall。
+
+严格V5已经复用真实业务Raw见证，所以去除旧重复Raw不属于本轮新收益。失败认证中的真实prefill是主要代价之一，不能仅靠前移布尔检查消除；开发重点仍是已有较轻候选能否合法通过。若没有覆盖机会，预计延后候选准备只带来有限费用改进，应据实收口，不扩大CPU预测或门禁模型。
+
+## D8：采纳新建议的目标分离，并以实际记录否定直接抬Raw门槛
+
+用户新建议已全文阅读，目标细化为A1无效准备成本、A2失败GPU成本诊断、B合法覆盖、C条件性renderer对照、D机制验收后独立服务；详细门槛见计划顶部及goal_refinement_v1.json。现有v2运行和4/6来源不变，不另起平行矩阵，不把认证成功率等同覆盖，也不承诺60%–80% PASS或80%GPU降本。
+
+CPU读取旧F8 Qwen common+high六cell共42 RPC（6 PASS/36 FAIL）及上一轮九cell授权回归75 RPC（42 PASS/33 FAIL）：提议Raw全部margin<0.125的调用两组均0，抬Raw门槛在这两组中不筛掉任何失败RPC。逻辑上Raw低margin也不蕴含candidate低margin，故不采用此修改。
+
+授权回归33失败的完整R2 rank/margin/EOS trace可恢复精确最早失败位置，6次首词失败；全部cached_prefix_read_tokens=0。后续witness位置相对未缓存输入token-slot代理占比约0.076%–0.362%。这个比例不是FLOPs或GPU时间上界，RPC也不是纯kernel时长；它只说明当前记录不支持80% GPU节省的说法。F8性能日志没有完整逐位置trace，不能把全局argmin当最早失败位置，故保留缺失。数据集/人工控制/真实任务分母不合并为生产分布。
+
+因此Early-Abort不抢占当前已冻结GPU任务，也不立即修改Scheduler。待本轮新开发trace完整后再独立诊断；只有存在可观未完成工作和可实现的分段执行点，才考虑完整验证Oracle一致性及真实GPU微基准。Clean Renderer同样需要代码输出回显/格式干扰证据和独立双renderer开发对照，不静默修改当前输入或借用旧证书。
