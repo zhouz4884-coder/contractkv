@@ -1,0 +1,585 @@
+{
+  "status": "COMPLETE_DATA_VALIDATED",
+  "formal_cells": 9,
+  "business_requests": 828,
+  "new_GPU_requests": 0,
+  "primary_namespace_check_counts": {
+    "authorized_A1_group_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "authorized_A1_own_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "authorized_A2_own_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "authorized_B_own_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "authorized_cross_domain_separation": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "authorized_new_epoch_separation": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "legacy_cross_domain_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    },
+    "legacy_stale_binding_reuse": {
+      "total": 63,
+      "available": 63,
+      "supported": 63,
+      "synthetic_supported": 9
+    }
+  },
+  "authorization_or_reuse_observation_violations": [],
+  "authorized_compiled_vs_own_witness_pairs": 42,
+  "authorized_compiled_output_or_finish_changes": [],
+  "actual_verification_RPCs": 75,
+  "accepted_qualifications": 42,
+  "rejected_or_abstained_qualifications": 93,
+  "rejected_qualification_added_published_tokens": 0,
+  "stale_request_identities_denied": 63,
+  "all_business_scores_independently_recomputed": true,
+  "no_claim_of_absolute_correctness_or_full_tenant_confidentiality": true,
+  "serial_clock_definition": "Readiness for each request after the first is the previous real business completion. First request unavailable; no scheduled arrivals reconstructed. API TTFT is reported separately. No open-arrival/capacity or fair unequal-phase speedup claim.",
+  "cells": [
+    {
+      "cell": "Qwen3-8B_r1",
+      "model": "qwen3-8b",
+      "repeat": 1,
+      "full_workflow_wall_s": 192.94532017689198,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.4716362123557666,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 859.1047297788622,
+        "P95": 4090.360231488012,
+        "P99": 4321.921051647514
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1289.4862147641707,
+        "P95": 4720.9851844236255,
+        "P99": 5776.063257502392
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1654.1145639038523,
+        "P95": 4726.659409236163,
+        "P99": 6285.129702412523
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 25.292863432556928,
+        "P95": 24.791767691481816,
+        "P99": 39.707701182924765
+      },
+      "actual_pool_blocks": [
+        1940
+      ],
+      "native_eviction_events": 16839,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r1",
+      "model": "mistral-7b",
+      "repeat": 1,
+      "full_workflow_wall_s": 241.93114263098687,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.37614008271271065,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 987.0790104665186,
+        "P95": 4581.415794044733,
+        "P99": 4708.046498494223
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1057.0323014386245,
+        "P95": 4592.065786011517,
+        "P99": 4717.344731837511
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 2552.63330275699,
+        "P95": 6265.602046973072,
+        "P99": 7656.487908554263
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.079930496625362,
+        "P95": 23.338866137469616,
+        "P99": 23.579832796795436
+      },
+      "actual_pool_blocks": [
+        3550
+      ],
+      "native_eviction_events": 15450,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r1",
+      "model": "llama-3.1-8b",
+      "repeat": 1,
+      "full_workflow_wall_s": 189.87577247107401,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.4792607230280687,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 816.9968621299157,
+        "P95": 3764.1717680031434,
+        "P99": 3999.4393061986193
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 984.7578233681046,
+        "P95": 3997.329669073224,
+        "P99": 6302.008743444458
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1889.657357758235,
+        "P95": 5259.019990474917,
+        "P99": 5573.527763206512
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.420139993889734,
+        "P95": 23.666283706321366,
+        "P99": 23.879910132123364
+      },
+      "actual_pool_blocks": [
+        2420
+      ],
+      "native_eviction_events": 14730,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Qwen3-8B_r2",
+      "model": "qwen3-8b",
+      "repeat": 2,
+      "full_workflow_wall_s": 191.3933042450808,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.4754607291981004,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 850.0552866456059,
+        "P95": 4089.3567891791463,
+        "P99": 4321.413016235456
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1286.0366608179943,
+        "P95": 4731.677752453834,
+        "P99": 5756.0210367664695
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1639.6791664984726,
+        "P95": 4759.937304025516,
+        "P99": 6265.117376088165
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 23.618134244282864,
+        "P95": 24.761517163998523,
+        "P99": 25.54090467352799
+      },
+      "actual_pool_blocks": [
+        1940
+      ],
+      "native_eviction_events": 16839,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r2",
+      "model": "mistral-7b",
+      "repeat": 2,
+      "full_workflow_wall_s": 241.94525318406522,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.37611814574749985,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 986.2233346388878,
+        "P95": 4554.829461337067,
+        "P99": 4676.3041506381705
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1055.7445529336621,
+        "P95": 4565.379532519728,
+        "P99": 4687.282532127574
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 2553.3590456825154,
+        "P95": 6242.719892691821,
+        "P99": 7654.360938584432
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.11033426741665,
+        "P95": 23.384783616458932,
+        "P99": 23.518322635370378
+      },
+      "actual_pool_blocks": [
+        3550
+      ],
+      "native_eviction_events": 15450,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r2",
+      "model": "llama-3.1-8b",
+      "repeat": 2,
+      "full_workflow_wall_s": 191.20334846759215,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.4759330876228037,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 823.0920670270596,
+        "P95": 3780.5768337333575,
+        "P99": 4036.7566342791542
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 990.1062638734232,
+        "P95": 4016.3623578846455,
+        "P99": 6297.741509554908
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1904.492398177314,
+        "P95": 5283.484691125341,
+        "P99": 5593.324636365287
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.6657850901726,
+        "P95": 23.73063593607632,
+        "P99": 24.192229190116958
+      },
+      "actual_pool_blocks": [
+        2420
+      ],
+      "native_eviction_events": 14730,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Qwen3-8B_r3",
+      "model": "qwen3-8b",
+      "repeat": 3,
+      "full_workflow_wall_s": 193.44318566657603,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.47042236037639545,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 851.9262038677444,
+        "P95": 4092.650059214793,
+        "P99": 4328.6298646871
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1288.7582649006047,
+        "P95": 4722.588948905468,
+        "P99": 5768.747547036037
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1660.9952043357264,
+        "P95": 4753.76588285435,
+        "P99": 6287.444570874795
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 23.459976547306837,
+        "P95": 24.692397101554196,
+        "P99": 24.83115943739965
+      },
+      "actual_pool_blocks": [
+        1940
+      ],
+      "native_eviction_events": 16848,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Mistral-7B-Instruct-v0.3_r3",
+      "model": "mistral-7b",
+      "repeat": 3,
+      "full_workflow_wall_s": 241.31266903690994,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.37710411294684704,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 986.96110080219,
+        "P95": 4576.588473259471,
+        "P99": 4696.087606656365
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 1055.7282807888812,
+        "P95": 4586.372566409409,
+        "P99": 4704.33679651469
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 2546.420989740316,
+        "P95": 6229.552235105075,
+        "P99": 7671.60828652326
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.10442726395913,
+        "P95": 23.154624794565496,
+        "P99": 24.46852969424803
+      },
+      "actual_pool_blocks": [
+        3550
+      ],
+      "native_eviction_events": 15450,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    },
+    {
+      "cell": "Llama-3.1-8B-Instruct_r3",
+      "model": "llama-3.1-8b",
+      "repeat": 3,
+      "full_workflow_wall_s": 189.1583697530441,
+      "business": 92,
+      "SLO_available_serial_business": 91,
+      "SLO_unavailable_first_or_failed_business": 1,
+      "serial_SLO_compliant": 91,
+      "serial_SLO_compliant_per_full_workflow_wall": 0.48107836898153195,
+      "API_TTFT": {
+        "n": 92,
+        "mean": 816.7764231127322,
+        "P95": 3782.7700424706563,
+        "P99": 3998.1044820090756
+      },
+      "serial_ready_TTFT": {
+        "n": 91,
+        "mean": 982.9332986232507,
+        "P95": 3996.563888620585,
+        "P99": 6271.700402349234
+      },
+      "response_E2E": {
+        "n": 92,
+        "mean": 1882.7962573648067,
+        "P95": 5271.452155453153,
+        "P99": 5544.926721560769
+      },
+      "TPOT": {
+        "n": 92,
+        "mean": 22.318905824518687,
+        "P95": 23.370711566405554,
+        "P99": 23.795704470119546
+      },
+      "actual_pool_blocks": [
+        2419
+      ],
+      "native_eviction_events": 14731,
+      "stale_request_identity_denied": 7,
+      "new_GPU_requests_from_analysis": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r1/attempt1/verify_trace.jsonl",
+      "sha256": "f6a4ca3371d192562e75bb43b7c0ecf0010ef7b269128004ddf167ab842afaa0"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r1/attempt1/backend_trace.jsonl",
+      "sha256": "e7b1e07becc5e3cbba181f4c269a1f6c2399efe4239527433a09a7d15aa30230"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r1/attempt1/responses.jsonl",
+      "sha256": "36f4d7952c00a3603cb7ee7c5b622d3b65e3c04bd165429a38b9ab6fc1176ee7"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r1/attempt1/metrics.jsonl",
+      "sha256": "b89db6e9a070eec440780bcff8ccf6b32d290e4262e703cafba788bc84573d6c"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/verify_trace.jsonl",
+      "sha256": "740aa976f033500343e2f539f3d398a9186a830fc1e08535424e909d267bc5ba"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/backend_trace.jsonl",
+      "sha256": "771d988fe2ce94f93d595979abd0b7f19bd4656a822a4852474b086cd09d2aef"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/responses.jsonl",
+      "sha256": "8529b6257aaec5910a03ca51c88cdca3c346e38f1763ebea496347cce12c7022"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r1/attempt1/metrics.jsonl",
+      "sha256": "884becfc376e684c6e4364e41304784c08f5cbdc863d29c5e11664addd704edb"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r1/attempt1/verify_trace.jsonl",
+      "sha256": "41b2568599a50b22a61b73c3b9b07e49a5a9c328842d807fb5418e4ff81f126d"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r1/attempt1/backend_trace.jsonl",
+      "sha256": "b2f2931473156c575d905d9c52275a631bd99c8ed72989da9b2c791d31e06086"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r1/attempt1/responses.jsonl",
+      "sha256": "383c32d5bab558c32d5f37fe0af5d626aebfe79c2526e6fbb5b8044aa19c850e"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r1/attempt1/metrics.jsonl",
+      "sha256": "afea9f4b42fae2178e334c7de63d2f035916c44299f9aa8da256e07cf768d00e"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r2/attempt1/verify_trace.jsonl",
+      "sha256": "524d2bc0b6ad75dcfa40aeda5f655ab77275fea196931efd2160e29a9c3b4fe7"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r2/attempt1/backend_trace.jsonl",
+      "sha256": "ee4bb360d40228d7636c18ce0003f16db47612e1418a9e0997ea527e4408c265"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r2/attempt1/responses.jsonl",
+      "sha256": "6d8a2e32fe8b738d5d0b53068792958c7cb3500e87b4b26e95891ab94df26cb5"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r2/attempt1/metrics.jsonl",
+      "sha256": "0a6e0e31820f1d387196b2cf3c968e980da9814e11d0e8cc3e012aacb60833b1"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r2/attempt1/verify_trace.jsonl",
+      "sha256": "5702b065065ada694075ec8c1b5f09c48c656d8c03e084829eccc47e276edf49"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r2/attempt1/backend_trace.jsonl",
+      "sha256": "f1078ebdfecbd9c499b58fdbc933608c47cb5dcc83fc3e8173e97c4a19706b1d"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r2/attempt1/responses.jsonl",
+      "sha256": "6764a520734e997d20281dcb8907cb36a9a933d5b01f79a9cd041f4be3fc02b8"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r2/attempt1/metrics.jsonl",
+      "sha256": "6c60d41c091a60d78bc6fa6b99be309216fa512aad7c4515cdcf938309e771e3"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r2/attempt1/verify_trace.jsonl",
+      "sha256": "608bfdaeb7b3e52d7fb0dbd4d048fbde301f52b96f50a81521ee5239dfcd353e"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r2/attempt1/backend_trace.jsonl",
+      "sha256": "37f70c23f63b5335b1538f190a17bce9bf74460c3b3510cbc20010042a6c17a0"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r2/attempt1/responses.jsonl",
+      "sha256": "4c294e62574b3d1e371e21029ec75a8a0267cdc8c778f36fee1d1b3dd76750d1"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r2/attempt1/metrics.jsonl",
+      "sha256": "9081cdd33397a8b91bf615db4ae89f28be29768eef31d16ad6427b6d2cdc6ae3"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r3/attempt1/verify_trace.jsonl",
+      "sha256": "ea4ed61a7cb96bc6f9dd8b46eb95f3c0aaa00e7a4dcea6bf6909167521f590a0"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r3/attempt1/backend_trace.jsonl",
+      "sha256": "ebcf39973efbb7c757c511dfbba3f2bfdd7e17b5f26c2c638e83f244ac76187c"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r3/attempt1/responses.jsonl",
+      "sha256": "f88ca8f044020a4517bc90b7c21a538d3c2b555f05b5b9246a3f15ccdf0af3e3"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Qwen3-8B_r3/attempt1/metrics.jsonl",
+      "sha256": "dfc45aa4cc211c86e09ed163a5c4b80bcb05ee83d2d1124f062cd798ec0d6d8e"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r3/attempt1/verify_trace.jsonl",
+      "sha256": "55549b4785eed81bd9abb883a47c7ef4bff3ff8ca76255b1669d1f751903b953"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r3/attempt1/backend_trace.jsonl",
+      "sha256": "5956f289326863aa591b1b53ece6ea490c662f6bf85454aad5a2d3380c7f5111"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r3/attempt1/responses.jsonl",
+      "sha256": "c489d19eedae50089338b9d8984bb32c56adf341e2330698001d5e1a3b8b3bd3"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Mistral-7B-Instruct-v0.3_r3/attempt1/metrics.jsonl",
+      "sha256": "25024690400b184041a9004a895c56321dc2bec676b21bab34dc331fefa5075b"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r3/attempt1/verify_trace.jsonl",
+      "sha256": "2b04e6990916e9c0893c0f9f2d07f1272e7214a44817f7f0f2d91e4353714397"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r3/attempt1/backend_trace.jsonl",
+      "sha256": "cb5616a0c6ab78e2feb67702e3f290664513df89d85eac37e53e2e31abd9e8f6"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r3/attempt1/responses.jsonl",
+      "sha256": "eda849ca4a4f119bafe66cc0a2a0c555924bc05305e41ffa7d76447467b6a628"
+    },
+    {
+      "path": "results/tsc_authorization_task_repair_20261019/cells/Llama-3.1-8B-Instruct_r3/attempt1/metrics.jsonl",
+      "sha256": "f380fafe4424327ddc9be825efbfcf29f167c9dce9273e84a04af2541a5fdaa2"
+    }
+  ],
+  "analysis_source_sha256": "62d44d19cc40f0adaf6532317507fce55ea922dc63e06bf933f6f9052019c739"
+}

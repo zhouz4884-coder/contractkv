@@ -1,5 +1,13 @@
 # 授权/任务资格修复：可恢复执行入口
 
+## 最终状态（优先于下方历史执行说明）
+
+2026-10-19：9/9单元与828业务完成，worker/CPU后处理均exit0，没有自动重跑。全部三个模型各三重复（包括人工marker），新跨域/新epoch首次Raw各63/63零命中，域内复用保留；42个修复路径编译配对0 ID/finish变化（真实24、人工18）。135资格/75实际RPC/93未获准新增候选发布0；63旧身份发送前拒绝。原包334成员/81依赖已在本机恢复独立复算，summary全值与五CSV字节一致。GPU已结束，不恢复旧自动化、不追加矩阵。
+
+最终报告：`docs/ContractKV_Authorization_Task_Repair_Report_20261019.md`；实施边界：`docs/ContractKV_Authorization_Enforcement_Repair_Matrix_20261019.md`。Mistral真实编译为0、两个Raw来源ID变化和不支持语法放宽的诊断全部保留；本轮无公平新速度倍率。最终commit/远程SHA由独立publication receipt给出。
+
+下方PID及首轮进度为历史记录，不代表当前仍运行；不得向这些旧PID发送信号或重复启动。
+
 本轮是用户在V5实验收口后新授权的有界任务。原目标已结束；新目标为授权缓存身份最小修复、Repo契约审计与独立CPU/GPU验证。旧contractkv-table-iii自动化保持暂停，不恢复，不重启旧worker。
 
 ## 当前执行身份

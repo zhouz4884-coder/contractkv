@@ -1,5 +1,7 @@
 # ContractKV Trust Model / Enforcement Boundary Matrix
 
+**2026-10-19后续修复索引：** 下表保留V5历史测量及其无盐Raw缺口，不能当作新入口的当前状态。用户随后授权的统一缓存身份修复已完成三模型×三重复、828业务及原包独立复算；新入口跨域/新epoch各63/63首次Raw为0命中，同域复用保留。实施位置和仍需信任的边界见[新执行矩阵](ContractKV_Authorization_Enforcement_Repair_Matrix_20261019.md)，结果及全部限制见[修复报告](ContractKV_Authorization_Task_Repair_Report_20261019.md)。旧入口留作对照，未声称所有部署自动迁移或完整机密性。
+
 状态：9个fresh-model单元、855次正式业务及本地独立复算已完成；额外63次失败尝试业务保留。Manifest有135次业务、18次实际认证RPC、72次后续控制请求。已有9个注册CPU案例和19项绑定检查继续单列，不当作135个GPU业务的一部分。
 
 ## 受信任的执行边界
