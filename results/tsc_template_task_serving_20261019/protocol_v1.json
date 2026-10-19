@@ -1,0 +1,102 @@
+{
+  "schema": "contractkv.task-bearing-template-serving.v1",
+  "purpose": "one bounded same-stack task-bearing authorized certificate-granularity experiment; not F8 repair",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "task": "HotpotQA",
+  "source_counts": {
+    "development": 2,
+    "independent_validation": 3
+  },
+  "source_seeds": {
+    "development": 2026101904,
+    "validation": 2026101905
+  },
+  "excluded_previous_sources": 729,
+  "selection": "Ascending SHA256(seed:canonical source), capacity only. Exclude all prior sources and six reserved but unused previous validation sources. No outcome/gold-position source replacement.",
+  "input": "Existing structure-preserving-window-v2, common16K, full question and original whitespace, gold-independent optional-context head-tail packing.",
+  "serving_scenario": "Authorized workspace repeatedly serves a fixed registered FAQ question with stable retrieved documents to registered tenants. Same original service-quality neutral per-request tenant/turn tool metadata. Controlled task-bearing service, not production trace; exact repeated-question frequency is declared, not measured.",
+  "production_claim_boundary": "Finite prospective-qualified deployment protocol. Compiled self-path attestation is NOT Raw equivalence or arbitrary future input certification; actual Raw/compiled task outputs are audited independently.",
+  "layout": "Frozen L3 only, original legal CALC ladder; no level scan, no clean renderer, no scope/margin tuning",
+  "attestation": {
+    "reference": "same canonical representative compiled prompt tenant00 turn0 for both Session and Template",
+    "reference_namespace": "controller-private per template, separate from all business/shared state; cacheable across registrations for BOTH scopes",
+    "shared_publication": "Only verifier PASS may publish block-aligned stable prefix",
+    "raw_floor": 0.0625,
+    "candidate_EOS_floor": 0.125,
+    "raw_equivalence_not_claimed": true
+  },
+  "arms": [
+    "Raw-authorized",
+    "Session-authorized",
+    "Template-authorized"
+  ],
+  "cache_identity": "Identical authorized template namespace across Raw/Session/Template businesses; certificate granularity never changes cache salt group. Reference canary remains controller-private.",
+  "qualification": "Per model, both blind development sources must pass fixed L3 deployment attestation; all12 paired Raw/candidate request points complete and no task-score drop >.03; each source candidate mean >=Raw mean; at least one source has Raw score>0. All signed scope/authorization/PSTP/Prompt-ID checks pass. No replacement or relaxed gate. If zero models qualify stop.",
+  "development": {
+    "fresh_servers": 3,
+    "tenants": 2,
+    "turns": [
+      0,
+      1,
+      2
+    ],
+    "Raw_candidate_pairs_per_model": 12,
+    "compiled_attestation_canaries_per_model": 2,
+    "business_and_diagnostic_generations_per_model": 26,
+    "no_causal_performance_claim": true
+  },
+  "formal": {
+    "models": "Only development-qualified models, all others retained NO-GO",
+    "tenants_per_template": 10,
+    "future_turns": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "business_requests_per_arm_cell": 180,
+    "repeats": 3,
+    "fresh_server_each_arm": true,
+    "maximum_cells": 27,
+    "maximum_business_requests": 4860,
+    "registration_concurrency": 2,
+    "business_client_concurrency": 2,
+    "slack_ms": 0,
+    "epoch": "cold service start includes source preparation, attestation reference generation, HTTP verification, bindings and failures; arrivals tied to the same global start before registration",
+    "rotation": "Latin-square Raw/Session/Template order by repeat; paired repeat sources/arrivals/seed fixed",
+    "metrics": [
+      "planned-arrival Mean/P95/P99 TTFT and end-to-end latency",
+      "absolute SLO Goodput and compliant fraction",
+      "full direct wall and achieved throughput auxiliary",
+      "business actual native hits/new-prefill",
+      "separate reference/verification extra-prefill",
+      "full registration/controller and failed costs",
+      "all-route output IDs/finish and task score up/down/neutral"
+    ],
+    "statistics": "Per-source and repeat rows, source-cluster bootstrap plus leave-one-source sensitivity; no pooled-requests independence or significance promised"
+  },
+  "raw_only_calibration": {
+    "sources": "development only",
+    "fresh_server": true,
+    "requests": 80,
+    "closed_backlog_client_concurrency": 2,
+    "load_rule": "lambda = 0.9 * (completed / measured batch wall after common setup), single frozen Poisson load; no Contract output used",
+    "SLO_rule": "ceil(1.5 * Raw request TTFT p95 / 500ms)*500ms; max minimum 1500ms; E2E analogous; freeze before formal outcome",
+    "no_capacity_guarantee": true
+  },
+  "generation": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014,
+    "output_budget": 128,
+    "max_model_len": 16384
+  },
+  "stop": "No viable development model -> archive NO-GO. Formal negative outcomes remain final; no adaptive source/level/load/SLO changes. No new GPU branch beyond declared cells.",
+  "manuscript_or_Response_Letter_edits": false
+}
