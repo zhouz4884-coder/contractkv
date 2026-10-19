@@ -1,0 +1,130 @@
+{
+  "schema": "contractkv.task-bearing-template-serving.v2",
+  "purpose": "one bounded same-stack task-bearing authorized certificate-granularity experiment; not F8 repair",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "task": [
+    "HotpotQA",
+    "RepoBench"
+  ],
+  "source_counts": {
+    "development": {
+      "HotpotQA": 2,
+      "RepoBench": 2
+    },
+    "validation": {
+      "HotpotQA": 3,
+      "RepoBench": 3
+    }
+  },
+  "source_seeds": {
+    "HotpotQA_development": 2026101904,
+    "HotpotQA_validation": 2026101905,
+    "RepoBench_development": 2026101906,
+    "RepoBench_validation": 2026101907
+  },
+  "excluded_previous_sources": 729,
+  "selection": "Ascending SHA256(seed:canonical source), capacity only. Exclude all prior sources and six reserved but unused previous validation sources. No outcome/gold-position source replacement.",
+  "input": "Existing structure-preserving-window-v2, common16K, full question and original whitespace, gold-independent optional-context head-tail packing.",
+  "serving_scenario": "Authorized workspace repeatedly serves a fixed registered FAQ question with stable retrieved documents to registered tenants. Same original service-quality neutral per-request tenant/turn tool metadata. Controlled task-bearing service, not production trace; exact repeated-question frequency is declared, not measured.",
+  "production_claim_boundary": "Finite prospective-qualified deployment protocol. Compiled self-path attestation is NOT Raw equivalence or arbitrary future input certification; actual Raw/compiled task outputs are audited independently.",
+  "layout": "Frozen L3 only, original legal CALC ladder; no level scan, no clean renderer, no scope/margin tuning",
+  "attestation": {
+    "reference": "same canonical representative compiled prompt tenant00 turn0 for both Session and Template",
+    "reference_namespace": "controller-private per template, separate from all business/shared state; cacheable across registrations for BOTH scopes",
+    "shared_publication": "Only verifier PASS may publish block-aligned stable prefix",
+    "raw_floor": 0.0625,
+    "candidate_EOS_floor": 0.125,
+    "raw_equivalence_not_claimed": true,
+    "existing_Repo_Python_guard": "unchanged python_statement_contract on compiled canary; not replacing Raw/compiled score audit"
+  },
+  "arms": [
+    "Raw-authorized",
+    "Session-authorized",
+    "Template-authorized"
+  ],
+  "cache_identity": "Identical authorized template namespace across Raw/Session/Template businesses; certificate granularity never changes cache salt group. Reference canary remains controller-private.",
+  "qualification": "Per model AND family, both blind development sources must pass fixed L3 compiled-path deployment attestation, existing Python statement guard for Repo canaries, all12 Raw/candidate pairs complete with no score drop >.03, source mean candidate>=Raw and one positive Raw source. Failed family remains Raw fallback; no source replacement/threshold relaxation. Qwen first. If Qwen has no qualified family, stop before optional models/formal.",
+  "development": {
+    "Qwen_first": true,
+    "optional_models_after_Qwen_qualification": [
+      "Mistral-7B-Instruct-v0.3",
+      "Llama-3.1-8B-Instruct"
+    ],
+    "max_fresh_servers": 3,
+    "sources_per_model": 4,
+    "tenants": 2,
+    "turns": [
+      0,
+      1,
+      2
+    ],
+    "Raw_candidate_pairs_per_model": 24,
+    "compiled_canaries_per_model": 4,
+    "generations_per_model": 52,
+    "no_causal_performance_claim": true
+  },
+  "formal": {
+    "models": "Qwen primary when any family passes; optional other models only when independently development-qualified",
+    "tenants_per_template": 8,
+    "future_turns": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "business_requests_per_arm_cell": 384,
+    "repeats": 3,
+    "fresh_server_each_arm": true,
+    "maximum_cells": 36,
+    "maximum_business_requests": 13824,
+    "registration_concurrency": 2,
+    "business_client_concurrency": 2,
+    "slack_ms": 0,
+    "epoch": "cold service start includes source preparation, attestation reference generation, HTTP verification, bindings and failures; arrivals tied to the same global start before registration",
+    "rotation": "Paired sources/arrivals/seed by repeat; global Latin-square arm order by repeat, same layout and authorization/cache identities.",
+    "metrics": [
+      "planned-arrival Mean/P95/P99 TTFT and end-to-end latency",
+      "absolute SLO Goodput and compliant fraction",
+      "full direct wall and achieved throughput auxiliary",
+      "business actual native hits/new-prefill",
+      "separate reference/verification extra-prefill",
+      "full registration/controller and failed costs",
+      "all-route output IDs/finish and task score up/down/neutral"
+    ],
+    "statistics": "Per-source and repeat rows, source-cluster bootstrap plus leave-one-source sensitivity; no pooled-requests independence or significance promised",
+    "Qwen_load_points": 2,
+    "optional_model_load_points": 1,
+    "Qwen_cells": 18,
+    "optional_model_cells_each": 9
+  },
+  "raw_only_calibration": {
+    "sources": "development only",
+    "fresh_server": true,
+    "requests": 80,
+    "closed_backlog_client_concurrency": 2,
+    "load_rule": "Two Qwen rates:0.8 and1.0 times completed/measured Raw backlog wall. Optional models use0.8 own Raw rate. Raw-only development-source fresh-server, no Contract outcome selection.",
+    "SLO_rule": "ceil(1.5 * Raw request TTFT p95 / 500ms)*500ms; max minimum 1500ms; E2E analogous; freeze before formal outcome",
+    "no_capacity_guarantee": true
+  },
+  "generation": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014,
+    "output_budget": {
+      "HotpotQA": 128,
+      "RepoBench": 384
+    },
+    "max_model_len": 16384
+  },
+  "stop": "No viable development model -> archive NO-GO. Formal negative outcomes remain final; no adaptive source/level/load/SLO changes. No new GPU branch beyond declared cells.",
+  "manuscript_or_Response_Letter_edits": false,
+  "supersedes": "v1 before any GPU; retain its CPU-only Hotpot selections and audit"
+}

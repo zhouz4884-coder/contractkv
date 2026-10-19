@@ -2,6 +2,19 @@
 
 用户明确要求完成新建议的第二阶段。本轮不编辑主文/Response Letter，不重跑 F8，不重新扫描 margin、L1/L2、Clean Renderer 或 Early-Abort。
 
+
+## 用户补充后的v2范围（优先于下方v1初始设计）
+
+尚未产生GPU输出时，用户明确补充Qwen优先、HotpotQA+RepoBench、六正式模板、8租户8轮、两负载与三重复。保留v1和已完成的5个Hotpot来源CPU预检；Hotpot来源不重新选择，以原始内容在v2重新作窗口检查，再盲选2开发/3正式Repo来源。旧6个未消耗验证来源仍排除，未用于试参。
+
+当前正式上限：Qwen3臂×2负载×3重复=18 fresh-server单元；Mistral/Llama仅在各自开发验收通过后各3臂×1共同负载×3重复=9单元。每单元6模板×8tenant×8未来业务=384请求，最多36单元/13824业务。家族未通过即Raw fallback，全家族仍保留正式来源和分母。先Qwen P1；如果无家族合格则直接停止，不因失败改源、档位、门槛。
+
+Qwen开发为2QA+2Repo，每来源2tenant×3turn的Raw/候选配对和一个私有compiled canary，共52生成；保留原L3不试档。Repo额外沿用现有python_statement_contract，不取消旧格式保护，canary未通过时不做GPU认证。QA预算128、Repo384；8租户turn0..8的全部真实tokenizer形状在运行前冻结。
+
+原部署compiled-path attestation与Raw配对质量审计分开；canary在controller-private缓存命名空间生成，避免认证前候选进入业务共享缓存。Session与Template使用完全相同canonical代表性canary，并允许两者在同一个controller-private组中缓存复用；业务三臂的cache group完全相同，仅证书索引/签名作用域按session或template区分。
+
+Raw-only开发fresh-server闭环80请求只用于标定：Qwen固定0.8与1.0×实测backlog速率两档，其他合格模型固定0.8×各自速率；SLO按事前p95公式冻结，正式source/arrival/clock规则不能按Contract结果改变。客户端从同一个全局epoch接收预定到达，注册等待纳入TTFT/全wall，不增加wave屏障。主要指标为计划到达TTFT/Goodput与完整费用，不要求Template Goodput显著高于Session；只证实费用摊销时就如实给出该结论。
+
 ## 科学问题与边界
 
 在一个事前合格、授权重复访问的任务模板中，将认证对象从 Session 改为 Service Template，是否能在相同物理缓存共享条件下，保留实际任务质量，并降低完整资格费用、改善到达时刻计算的服务指标？
