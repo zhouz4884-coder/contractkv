@@ -42,7 +42,8 @@ def main(root,output):
     lines+=table(['模型','Raw-only速率 req/s','正式负载 req/s','TTFT/E2E SLO ms'],[
         [model,fmt(p['Raw_rate'],6),', '.join(fmt(p['Raw_rate']*m,6) for m in ([.8,1.] if model=='Qwen3-8B' else [.8])),f"{p['SLO']['TTFT_ms']}/{p['SLO']['E2E_ms']}"] for model,p in protocol['Raw_only_profiles'].items()])
     lines+=['速率与SLO仅由开发源Raw-only两个fresh-server、各80成功请求确定；阈值为1.5×本征请求p95、500ms向上取整、最低1500ms。没有用正式Contract结果选SLO或负载。','',
-        '到达为相同标记Poisson轨迹：每模板两段32请求，共8tenant identity×8独立任务调用；不是8个并发GPU请求。客户端与GPU并发均为2。同一模型/重复的三臂在同一物理GPU执行，三重复Latin-square臂序。所有server ready后才开始测量，整波结束前不加载新模型。','',
+        '到达为相同标记Poisson轨迹：每模板两段32请求，共8tenant identity×8次业务调用，同一模板的固定问题重复；不是8个并发GPU请求。客户端与GPU并发均为2。同一模型/重复的三臂在同一物理GPU执行，三重复Latin-square臂序。所有server ready后才开始测量，整波结束前不加载新模型。','',
+        '生成预算固定为HotpotQA 128、RepoBench 384 tokens；原包保留每次实际终止原因，达到预算上限的输出也完整保留。ID/终止比较使用实际输出IDs与finish_reason，不将有限预算的结果外推为任意长输出保证。','',
         '全局服务epoch在准备与注册前开始，注册完成后不重置到达时钟。TTFT/E2E从原计划到达计算；完整wall包含准备、canary、注册、失败、绑定、业务与最终排空。模型/interpreter启动在client epoch外，单独保留日志。完整wall倍率不是固定到达条件下的最大容量加速。','',
         '## 4. P2：完整正式服务结果','']
     lines+=table(['模型/负载','策略','SLO达标/1152','绝对Goodput req/s','Mean到达TTFT ms','p99范围 ms','编译业务/1152'],[
@@ -67,6 +68,12 @@ def main(root,output):
             rr=[r for r in pairs if (r['model'],r['policy'])==(model,policy) and (subset=='all' or r['compiled']=='True')]
             quality.append([model,policy,subset,len(rr),sum(r['IDs_and_finish_equal']=='False' for r in rr),sum(r['score_up']=='True' for r in rr),sum(r['score_down']=='True' for r in rr),sum(r['Raw_positive_score']=='True' for r in rr)])
     lines+=table(['模型','策略','子集','配对数','ID/终止变化','>0.03上升','>0.03下降','Raw正任务分数'],quality)
+    family_quality=[]
+    for model,policy,family in sorted({(r['model'],r['policy'],r['family']) for r in pairs}):
+        rr=[r for r in pairs if (r['model'],r['policy'],r['family'])==(model,policy,family)]
+        family_quality.append([model,policy,family,len(rr),fmt(sum(float(r['Raw_score']) for r in rr)/len(rr)),fmt(sum(float(r['score']) for r in rr)/len(rr))])
+    lines+=['各家族的绝对任务分数如下，仅作描述性汇总。HotpotQA与RepoBench评分不同，分别报告；输出一致性不等于回答正确。','']
+    lines+=table(['模型','策略','任务家族','配对数','Raw平均任务分数','策略平均任务分数'],family_quality)
     if data['compiled_score_down']:
         lines+=['**本轮未建立编译子集零任务退化。** 所有已获准请求中的下降均保留在配对CSV，应按来源及重复定位；不能用速度或仅部署自路径认证成功掩盖。','']
     elif data['compiled_ID_or_finish_changes']:
