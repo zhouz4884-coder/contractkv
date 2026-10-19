@@ -1,0 +1,52 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "Qwen3-8B-common80-r3-Template-qualified",
+    "model": "Qwen3-8B",
+    "phase": "formal",
+    "policy": "Template-qualified",
+    "input_set": "validation",
+    "eligible_families": [
+      "HotpotQA"
+    ],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r3.json",
+    "repeat": 3,
+    "load": "common80",
+    "arrival_rate_rps": 0.2527262552702176,
+    "SLO": {
+      "TTFT_ms": 10500,
+      "E2E_ms": 13000
+    },
+    "snapshot": "formal_freeze_v1/source_snapshot",
+    "job_file": "formal_jobs_v1/Qwen3-8B-common80-r3-Template-qualified.json",
+    "lane": 0,
+    "attempt": 1,
+    "wave": 6,
+    "port": 10112
+  },
+  "summary_sha256": "77f0705f549cdc9630b69bc34b670e8d21180d15e6ac4040fa6d195c629cee5e",
+  "held_peer_server_until_both_measured_clients_complete": true,
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "9c5f9dd6c0a1bbf38552ada13cdb32ff71e567159b00afaf63c5f34a78b7be02",
+      "bytes": 750787
+    },
+    {
+      "path": "responses.jsonl",
+      "sha256": "71a31c81246fdf2cff8ff0ac5e2f9e11ec1c2f1173443462428d7860ea2b4331",
+      "bytes": 26299441
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "c4567240f69f8a736e2ccbae988115cf828d8d4700c2b139c7a09c55c902a6c7",
+      "bytes": 14386774
+    },
+    {
+      "path": "client.log",
+      "sha256": "0beeeeaf0efdbd41ae2977db0bcb62e128fff301135287746c8013317994dd9c",
+      "bytes": 3124
+    }
+  ]
+}
