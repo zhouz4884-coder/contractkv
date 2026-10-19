@@ -60,3 +60,12 @@ v2三个fresh-server正常完成600业务；远程CPU核算中32条已编译Raw�
 Qwen semivl实际Raw输出回显CODE_PREFIX标题及路径；官方RepoBench构造器将路径写为Python注释（固定提交53c1c55ad9e6d97d2b60dd2c9548ed1cd463b6a5/data/utils.py）。这只支持格式干扰假设，不能直接认定因果。追加一次有界开发对照：同两个已知开发Repo、三模型各一个fresh-server、current/clean两renderer共60业务/36候选；Mistral反向顺序，其余current先。不是正式新来源或公平速度对照，不消耗held-out输出。
 
 仅抑制框架CODE_PREFIX标题并将最前filename元数据注释化；原代码、原问题、预算384、Scope/输出契约、0.0625/0.125/EOS/PSTP与评分不变；重新tokenize/认证/独立授权namespace。5项CPU检查通过；新增真实prepare测试起初误用不存在的raw_order夹具字段，改用原layout_for_level返回的L0 order后通过，未触发GPU。若没有同档位2/2严格可用证据则停止renderer分支，不继续调提示词或放宽门槛。
+
+
+## D10：格式对照完成，按门槛停止覆盖恢复与正式矩阵
+
+60次生成/36候选、三模型fresh-server全部正常退出。Current 0/18 PASS、3真实RPC；Clean 0/18 PASS、6真实RPC，均candidate margin失败。Raw标题回显1→0、语法通过1→2、scope可共享2→3；任务分数六点两升一降三无实质变化。Qwen semivl 0.05→0.25但新增三档认证均失败，说明格式改善未转化为合法复用，不能取消行为门槛。
+
+12/12 Raw重复稳定；Current六个Raw与先前开发实际Prompt IDs及输出IDs/finish全部相同。36拒绝候选的私有反事实生成有26个改变，零新增共享发布。两仓库不是六个独立来源，不报正式速度因果/泛化效果。原包931ed7b382c19d4dc85464de1832e3e8ebe2c8a453be24c4db70d66de5dcda03的2376成员安全恢复，60生成、summary和3 CSV独立复算完全一致。
+
+决定：不部署clean renderer作为资格/性能修复，不解禁新目录，不开发分段验证或新收益预测器，不启动独立服务大矩阵。六个held-out来源保留且无模型输出。保留全V5授权接线和单独测量的有限Deferred执行变体；当前受限开发不足以支持新的Goodput优势。两卡实际compute PID为空、各24MiB背景占用，全部本轮worker正常退出。正文/回复信不改；本轮目标以真实NO-GO和完整证据收口。
