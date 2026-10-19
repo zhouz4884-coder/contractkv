@@ -6,7 +6,7 @@ v1接线适配器的renderer全局引用捕获顺序错误，Q/M首次compiled�
 
 修复版使用`scripts/tsc_effective_development_worker_v2.py`、`source_snapshot_v2`、`freeze_development_v2.json`（SHA `bccb4c18708ac535cb30bd0f0909dbc86e15152e2e12e04b29f7cc3d009401c5`），1182项测量/历史依赖。`development_execution_state_v2.json`、worker_exit/launch_v2才是后续状态；仅处理attempt2。不得恢复v1worker、覆盖attempt1或重启已运行的v2。
 
-v2只修初始化顺序并加运行前renderer捕获断言；lazy执行方法、输入、分数、scope、margin/EOS和PSTP不变。22 CPU检查通过。实际v2预检回执待生成并公开，之后才启动。下方v1 SHA和说明保留为历史。
+v2只修初始化顺序并加运行前renderer捕获断言；lazy执行方法、输入、分数、scope、margin/EOS和PSTP不变。22 CPU检查通过。实际v2预检回执SHA为`4fc243353d46c7c907d2567df9202a3f14f94f111e3bb10ac433345b18608f53`，核1182文件、原模型stat/runtime及空闲GPU；回执公开后才启动。下方v1 SHA和说明保留为历史。
 
 本轮新授权：统一授权入口的全V5回归、资格漏斗/完整费用审计、最小执行改进与独立验证门槛。旧V5、原Table III和上一轮828业务授权修复均结束且不重启；旧自动化保持暂停。
 
