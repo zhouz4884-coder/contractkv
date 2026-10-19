@@ -1,12 +1,60 @@
 {
-  "status": "WAITING_FOR_FROZEN_GPU",
-  "PID": 525181,
+  "status": "CPU_ANALYSES_COMPLETE_PENDING_SYNC_PACKAGE_AND_INDEPENDENT_RECOMPUTE",
+  "PID": null,
   "started_epoch_s": 1792365784.573232,
   "entry_sha256": "5bfe823db7d77981c4c3e510bf086c4974c6dbd348277952e6db7a723694cd8e",
   "plan_sha256": "822d6c53631af7948cd73e01ae3fa35a749ed4fd35725288e86b2b43854cfffc",
   "publication_sha256": "f222a80d27c88c3cadafc87c3e504d5671b3b8ff22493e4b283c06bc9bed68b9",
   "GPU_requests": 0,
-  "stages": [],
+  "stages": [
+    {
+      "name": "formal_analysis",
+      "command": [
+        "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+        "-B",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_final_serving_analysis_v1.py",
+        "--root",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+        "--phase",
+        "formal",
+        "--output",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_task_faithful_open_arrival_20261018/formal_analysis_v1"
+      ],
+      "started_epoch_s": 1792377778.4279103,
+      "returncode": 0,
+      "ended_epoch_s": 1792377828.1370306
+    },
+    {
+      "name": "source_sensitivity",
+      "command": [
+        "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+        "-B",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_final_goodput_cluster_sensitivity_v1.py",
+        "--root",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+        "--output",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_task_faithful_open_arrival_20261018/formal_goodput_source_sensitivity_v1.json"
+      ],
+      "started_epoch_s": 1792377828.1379466,
+      "returncode": 0,
+      "ended_epoch_s": 1792377829.1315098
+    },
+    {
+      "name": "post_integrity",
+      "command": [
+        "/home/user/miniconda3/envs/contractkv-cu128/bin/python",
+        "-B",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/scripts/tsc_revision_final_integrity_v1.py",
+        "--root",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv",
+        "--output",
+        "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_task_faithful_open_arrival_20261018/post_execution_integrity_v1.json"
+      ],
+      "started_epoch_s": 1792377829.132171,
+      "returncode": 0,
+      "ended_epoch_s": 1792377840.7431126
+    }
+  ],
   "observed_GPU_status": {
     "ready": false,
     "live_workers": [
@@ -22,5 +70,7 @@
     "owned_master_live": true,
     "recorded_master_PID": 318277
   },
-  "last_observation_epoch_s": 1792365784.573552
+  "last_observation_epoch_s": 1792377733.324142,
+  "GPU_completed_epoch_s": 1792377778.4270885,
+  "ended_epoch_s": 1792377840.7439916
 }
