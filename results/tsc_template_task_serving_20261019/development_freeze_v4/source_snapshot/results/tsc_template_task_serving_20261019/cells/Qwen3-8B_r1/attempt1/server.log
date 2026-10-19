@@ -1,0 +1,23 @@
+/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/site-packages/transformers/utils/hub.py:111: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+INFO 10-19 17:19:33 [__init__.py:216] Automatically detected platform cuda.
+Traceback (most recent call last):
+  File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/user/miniconda3/envs/contractkv-cu128/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/entrypoints/openai/api_server.py", line 44, in <module>
+    from vllm.engine.async_llm_engine import AsyncLLMEngine  # type: ignore
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/engine/async_llm_engine.py", line 19, in <module>
+    from vllm.engine.llm_engine import LLMEngine
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/engine/llm_engine.py", line 1848, in <module>
+    from vllm.v1.engine.llm_engine import LLMEngine as V1LLMEngine
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/v1/engine/llm_engine.py", line 27, in <module>
+    from vllm.v1.engine.core_client import EngineCoreClient
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/v1/engine/core_client.py", line 33, in <module>
+    from vllm.v1.engine.core import EngineCore, EngineCoreProc
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/v1/engine/core.py", line 38, in <module>
+    from vllm.v1.core.sched.scheduler import Scheduler as V1Scheduler
+  File "/media/user/5bc0dc8d-c938-4b2a-af1b-94174fc511a9/VLAtest/contractkv/results/tsc_template_task_serving_20261019/preflight_v3/runtime/vllm/v1/core/sched/scheduler.py", line 9, in <module>
+    from scripts.tsc_revision_r2_margin_policy import minimum_margin_gate
+ModuleNotFoundError: No module named 'scripts.tsc_revision_r2_margin_policy'

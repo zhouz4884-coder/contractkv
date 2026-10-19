@@ -1,0 +1,212 @@
+{
+  "files": [
+    {
+      "file": "scripts/tsc_service_template_quality_live.py",
+      "sha256": "120601587c495e736180dadd39cf65c39815ff2d0ad84661e191a69ad41a0b2d",
+      "functions": [
+        {
+          "name": "load_jsonl",
+          "line": 33
+        },
+        {
+          "name": "truth",
+          "line": 37
+        },
+        {
+          "name": "number",
+          "line": 41
+        },
+        {
+          "name": "family_budget",
+          "line": 48
+        },
+        {
+          "name": "turn_case",
+          "line": 52
+        },
+        {
+          "name": "compile_turns",
+          "line": 65
+        },
+        {
+          "name": "stable_prefix_order",
+          "line": 89
+        },
+        {
+          "name": "scope_record",
+          "line": 99
+        },
+        {
+          "name": "verify_template",
+          "line": 118
+        },
+        {
+          "name": "metric_events",
+          "line": 152
+        },
+        {
+          "name": "main",
+          "line": 162
+        }
+      ]
+    },
+    {
+      "file": "scripts/tsc_real_task_open_loop.py",
+      "sha256": "1165bd8103301c65129dae49940604a771c08b3070da7e9b9ba2b296db36d019",
+      "functions": [
+        {
+          "name": "issue_binding",
+          "line": 37
+        },
+        {
+          "name": "check_binding",
+          "line": 55
+        },
+        {
+          "name": "arrivals",
+          "line": 75
+        },
+        {
+          "name": "replay",
+          "line": 85
+        },
+        {
+          "name": "main",
+          "line": 147
+        }
+      ]
+    },
+    {
+      "file": "scripts/tsc_open_loop_service.py",
+      "sha256": "25332bf50061498bd6241289dfec831b05c1c1607c9c6ad2d6e15bffae53b586",
+      "functions": [
+        {
+          "name": "load_jsonl",
+          "line": 36
+        },
+        {
+          "name": "truth",
+          "line": 40
+        },
+        {
+          "name": "number",
+          "line": 44
+        },
+        {
+          "name": "slope",
+          "line": 51
+        },
+        {
+          "name": "make_case",
+          "line": 59
+        },
+        {
+          "name": "service_messages",
+          "line": 81
+        },
+        {
+          "name": "template_scope_record",
+          "line": 87
+        },
+        {
+          "name": "scope_digest",
+          "line": 114
+        },
+        {
+          "name": "compact_verify_service",
+          "line": 118
+        },
+        {
+          "name": "compile_session",
+          "line": 152
+        },
+        {
+          "name": "eligible_families",
+          "line": 184
+        },
+        {
+          "name": "registration_scope",
+          "line": 190
+        },
+        {
+          "name": "request_cache_salt",
+          "line": 196
+        },
+        {
+          "name": "registration_one",
+          "line": 208
+        },
+        {
+          "name": "register",
+          "line": 279
+        },
+        {
+          "name": "request_at",
+          "line": 302
+        },
+        {
+          "name": "replay",
+          "line": 328
+        },
+        {
+          "name": "load_metric_events",
+          "line": 399
+        },
+        {
+          "name": "join_metrics",
+          "line": 407
+        },
+        {
+          "name": "summarize",
+          "line": 434
+        },
+        {
+          "name": "write_jsonl",
+          "line": 520
+        },
+        {
+          "name": "main",
+          "line": 525
+        }
+      ]
+    },
+    {
+      "file": "scripts/tsc_template_task_protocol_v2.py",
+      "sha256": "d45221a5a02de9d893e178198e5de1385897de3fd6c5ca74fe55b920beeeb71f",
+      "functions": [
+        {
+          "name": "make_case",
+          "line": 31
+        },
+        {
+          "name": "prepared",
+          "line": 40
+        },
+        {
+          "name": "candidate_plan",
+          "line": 45
+        },
+        {
+          "name": "budget",
+          "line": 60
+        },
+        {
+          "name": "question",
+          "line": 62
+        },
+        {
+          "name": "deployment_request",
+          "line": 67
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Legacy template attestation compiled-path canary; never universal Raw-equivalence proof",
+    "Legacy task open-loop default1500 words, Raw salt None, SLO checks send-relative ttft_ms",
+    "New protocol full task fields/whitespace and16K window via frozen gold-independent optional-context packing",
+    "All new business arms same authorized template cache group; canary controller-private",
+    "New full clock starts before registration; arrival TTFT computed first_time - planned absolute arrival; freezes actual loads/SLO after Raw-only calibration"
+  ],
+  "new_GPU_requests": 0
+}

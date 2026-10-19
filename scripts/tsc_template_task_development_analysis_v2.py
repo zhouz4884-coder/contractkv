@@ -19,10 +19,10 @@ def write(p,r):
     with p.open('x',encoding='utf-8',newline='\n') as f:json.dump(r,f,ensure_ascii=False,indent=2,allow_nan=False);f.write('\n')
 
 def main(root,model,output):
-    study=root/STUDY;freeze=read(study/'development_freeze_v3/freeze.json')
+    study=root/STUDY;freeze=read(study/'development_freeze_v4/freeze.json')
     for r in freeze['files']:
-        assert sha(root/r['path'])==sha(study/'development_freeze_v3/source_snapshot'/r['path'])==r['sha256'],r['path']
-    state=read(study/'development_execution_state_v3.json');matches=[p for p in state['completed_cells'] if p.startswith(f'cells/{model}_r1/')]
+        assert sha(root/r['path'])==sha(study/'development_freeze_v4/source_snapshot'/r['path'])==r['sha256'],r['path']
+    state=read(study/'development_execution_state_v4.json');matches=[p for p in state['completed_cells'] if p.startswith(f'cells/{model}_r1/')]
     assert len(matches)==1;relative=matches[0]
     cell=study/relative
     for r in read(cell/'nested_completion_inventory_v1.json')['files']:assert sha(cell/r['path'])==r['sha256'],r['path']
