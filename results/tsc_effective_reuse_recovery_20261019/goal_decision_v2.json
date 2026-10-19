@@ -1,0 +1,61 @@
+{
+  "schema": "effective-reuse-goal-decision-v2",
+  "based_on_independent_recompute": true,
+  "current_development_business": 600,
+  "A1": {
+    "status": "MECHANISM_OBSERVED_LIMITED_COST",
+    "skipped_preparations": 14,
+    "existing_PASS_lost": 0,
+    "compiled_future_per_arm_by_model": {
+      "Qwen3-8B": 6,
+      "Mistral-7B": 6,
+      "Llama-3.1-8B": 4
+    },
+    "candidate_preparation_before_ms": 1872.404159978032,
+    "candidate_preparation_after_ms": 619.5266814902425,
+    "no_GPU_reduction_or_causal_serving_claim": true
+  },
+  "A2": {
+    "status": "NO_GO_FOR_EXECUTOR_CHANGE",
+    "actual_RPCs": 22,
+    "PASS": 14,
+    "FAIL": 8,
+    "first_token_failures": 1,
+    "Raw_0125_would_skip": 0,
+    "pure_GPU_time_unmeasured": true,
+    "reason": "No evidenced large uncompleted GPU tail; full forward precedes current report. Keep original Raw floor."
+  },
+  "B": {
+    "status": "NO_REQUALIFIED_CATALOG",
+    "candidate_decisions": 36,
+    "PASS": 8,
+    "eligible_model_family_levels_2_of_2": 0,
+    "economic_profile_gap_for_Mistral_Llama_Repo": true
+  },
+  "C": {
+    "status": "BOUNDED_CONTROL_RUNNING",
+    "frozen_cells": 3,
+    "business": 60,
+    "candidate_decisions": 36,
+    "models": 3,
+    "development_repositories": 2,
+    "formal_validation_sources_used": false,
+    "freeze_sha256": "b9084ee9348aa2d9b2f6176266454c5fe0a8a67a0059092501e3882da86f8a4d",
+    "preflight_sha256": "cb37ee924a6c7b034f0a50556693fc322ac5bed60eb01c50cb97a5150939a674",
+    "source_and_receipt_published_commit": "307b3cecc035fba26d421135ccd5e33a08da8ed8",
+    "not_automatic_production_change": true
+  },
+  "D": {
+    "status": "HELD_UNTIL_MECHANISM_ACCEPTANCE",
+    "heldout_model_outputs": 0,
+    "minimum_independent_evidence_if_any": "same source/arrival/SLO/full cost; frozen selection independent of heldout output",
+    "not_default_four_arm_matrix": true
+  },
+  "record_paths": [
+    "docs/ContractKV_Effective_Reuse_Recovery_Plan_20261019.md",
+    "docs/ContractKV_Effective_Reuse_Recovery_Decisions_20261019.md",
+    "docs/ContractKV_Effective_Reuse_Recovery_Development_Report_20261019.md"
+  ],
+  "no_manuscript_or_Response_Letter_changes": true,
+  "no_scheduler_scope_margin_or_PSTP_relaxation": true
+}
