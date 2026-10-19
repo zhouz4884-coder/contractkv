@@ -33,3 +33,25 @@ def test_all_non_code_prompt_structure_is_byte_identical():
                 dict(segment_id='o', segment_type='TOOL_OBS', text='private metadata'),
                 dict(segment_id='q', segment_type='USER_QUERY', text='question')]
     assert clean(['s', 'o', 'q'], segments) == current(['s', 'o', 'q'], segments)
+
+
+def test_actual_prepare_captures_each_renderer_and_restores_all_bindings():
+    import json
+    from importlib import import_module
+    from pathlib import Path
+    from types import SimpleNamespace
+    from scripts.tsc_effective_renderer_client_v1 import renderer_context, prepare
+    from scripts.tsc_revision_r4_fidelity_adapter_v2 import RENDER_BINDINGS, historical_ordered_text
+    root = Path(__file__).resolve().parents[1]
+    samples = [json.loads(s) for s in (root/'results/tsc_effective_reuse_recovery_20261019/clean_renderer_development_v1/repo_development_inputs_v1.jsonl').read_text(encoding='utf-8').splitlines()]
+    args = SimpleNamespace(protocol=json.loads((root/'configs/tsc_revision_r4_input_fidelity_preserved_generation_v1.json').read_text()),
+                           experiment='free-generation', output_budget=0, model_identity='Qwen3-8B', policy_hash='CPU')
+    for kind in ('current', 'clean', 'current'):
+        with renderer_context(kind) as render:
+            for sample in samples:
+                case, messages, _, budget, _ = prepare(args, deepcopy(sample), 0)
+                assert budget == 384
+                from scripts.phase22_llama_layout_ladder import layout_for_level
+                order = layout_for_level(case, 'L0', args.protocol['layout']['ladder'])['topological_order']
+                assert messages[1]['content'] == render(order, case['segments'])
+        assert all(import_module(name)._ordered_text is historical_ordered_text for name in RENDER_BINDINGS)

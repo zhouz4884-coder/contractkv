@@ -51,3 +51,12 @@ CPU读取旧F8 Qwen common+high六cell共42 RPC（6 PASS/36 FAIL）及上一轮�
 授权回归33失败的完整R2 rank/margin/EOS trace可恢复精确最早失败位置，6次首词失败；全部cached_prefix_read_tokens=0。后续witness位置相对未缓存输入token-slot代理占比约0.076%–0.362%。这个比例不是FLOPs或GPU时间上界，RPC也不是纯kernel时长；它只说明当前记录不支持80% GPU节省的说法。F8性能日志没有完整逐位置trace，不能把全局argmin当最早失败位置，故保留缺失。数据集/人工控制/真实任务分母不合并为生产分布。
 
 因此Early-Abort不抢占当前已冻结GPU任务，也不立即修改Scheduler。待本轮新开发trace完整后再独立诊断；只有存在可观未完成工作和可实现的分段执行点，才考虑完整验证Oracle一致性及真实GPU微基准。Clean Renderer同样需要代码输出回显/格式干扰证据和独立双renderer开发对照，不静默修改当前输入或借用旧证书。
+
+
+## D9：三模型开发完成，只有代码元数据对照获准进入下一步
+
+v2三个fresh-server正常完成600业务；远程CPU核算中32条已编译Raw配对无ID/finish变化、原PASS无丢失，最终结论仍需取回原包独立复算。Deferred跳过14次准备，但不等于少做GPU认证。36个新候选中8个PASS/可用，均来自同一QA doc8的部分档位；另一QA来源受原scope限制，Repo候选无PASS，没有任何模型/家族满足事前2/2门槛，故新目录暂不部署。
+
+Qwen semivl实际Raw输出回显CODE_PREFIX标题及路径；官方RepoBench构造器将路径写为Python注释（固定提交53c1c55ad9e6d97d2b60dd2c9548ed1cd463b6a5/data/utils.py）。这只支持格式干扰假设，不能直接认定因果。追加一次有界开发对照：同两个已知开发Repo、三模型各一个fresh-server、current/clean两renderer共60业务/36候选；Mistral反向顺序，其余current先。不是正式新来源或公平速度对照，不消耗held-out输出。
+
+仅抑制框架CODE_PREFIX标题并将最前filename元数据注释化；原代码、原问题、预算384、Scope/输出契约、0.0625/0.125/EOS/PSTP与评分不变；重新tokenize/认证/独立授权namespace。5项CPU检查通过；新增真实prepare测试起初误用不存在的raw_order夹具字段，改用原layout_for_level返回的L0 order后通过，未触发GPU。若没有同档位2/2严格可用证据则停止renderer分支，不继续调提示词或放宽门槛。

@@ -1,0 +1,40 @@
+{
+  "schema": "bounded-code-metadata-control-v1",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "fresh_servers": 3,
+  "repeats": 1,
+  "development_sources": [
+    "RepoBench:python_v1.1:alexzhou907/DreamPropeller",
+    "RepoBench:python_v1.1:google-research/semivl"
+  ],
+  "business_requests": 60,
+  "candidate_decisions": 36,
+  "renderers": [
+    "current",
+    "clean"
+  ],
+  "change": "Suppress framework CODE_PREFIX heading and comment leading filename metadata as # Path; preserve actual code bytes, other headings, question, segment layout and source selection.",
+  "raw_repeat": true,
+  "levels": [
+    "L1",
+    "L2",
+    "L3"
+  ],
+  "output_budget": 384,
+  "maximum_window": 16384,
+  "raw_floor": 0.0625,
+  "candidate_and_EOS_floor": 0.125,
+  "scope_and_output_contract_unchanged": true,
+  "scoring_unchanged": true,
+  "pairing": "Within each model fresh engine, separate authorized renderer namespaces; Mistral clean-first, others current-first. Descriptive feasibility, not causal serving speedup.",
+  "acceptance": "Do not requalify unless the same level passes existing scope/output/Raw/candidate/EOS checks and actual free generation, with stable Raw repeat on both development sources. Economic qualification remains separate. Stop this branch if no 2/2 usable level or code structure changes.",
+  "no_formal_validation_outputs": true,
+  "no_success_rate_or_speedup_target": true,
+  "evidence": "Qwen semivl actual output echoes framework CODE_PREFIX header and filename, but causation unproven.",
+  "primary_source": "https://github.com/Leolty/repobench/blob/53c1c55ad9e6d97d2b60dd2c9548ed1cd463b6a5/data/utils.py",
+  "boundary": "Declared chat-task metadata adaptation, not full official RepoBench reproduction. No output trimming, additional stop words, margin weakening or automatic scheduler change."
+}
