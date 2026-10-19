@@ -1,0 +1,69 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "Mistral-7B-Instruct-v0.3-Raw-calibration",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "phase": "calibration",
+    "policy": "Raw-authorized",
+    "input_set": "development",
+    "eligible_families": [],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "calibration_arrivals_v1.json",
+    "repeat": 1,
+    "load": "backlog80",
+    "snapshot": "calibration_freeze_v1/source_snapshot",
+    "job_file": "calibration_jobs_v1/Mistral-7B-Instruct-v0.3-Raw-calibration.json",
+    "lane": 1,
+    "port": 10011,
+    "attempt": 1
+  },
+  "execution_complete": true,
+  "offered": 80,
+  "successful": 80,
+  "compiled_business": 0,
+  "service_begin_time": 4155539.784043411,
+  "service_end_time": 4155870.606278401,
+  "wall_s": 330.82223499007523,
+  "last_arrival_offset_s": 0.0,
+  "registration_barrier_from_epoch_ms": 27.537208050489426,
+  "registration_controller_work_ms": 0,
+  "certificate_objects": 0,
+  "certificate_PASS": 0,
+  "actual_verification_RPCs": 0,
+  "failed_verification_RPC_ms": 0,
+  "business_new_prefill_tokens": 849916,
+  "reference_extra_new_prefill_tokens": 0,
+  "verification_extra_new_prefill_tokens": 0,
+  "verification_native": [],
+  "backend_TTFT_ms": {
+    "mean": 3796.9415510364342,
+    "p95": 7078.939680871554,
+    "p99": 7562.928195358253
+  },
+  "backend_e2e_ms": {
+    "mean": 8248.577213374665,
+    "p95": 11959.869028488174,
+    "p99": 12063.55237471405
+  },
+  "ready_TTFT_ms": {
+    "mean": 133093.69953799178,
+    "p95": 298537.46971397195,
+    "p99": 320910.7406268362
+  },
+  "ready_e2e_ms": {
+    "mean": 137545.33520033,
+    "p95": 307367.9606072604,
+    "p99": 330522.80803771224
+  },
+  "business_native_unavailable": 0,
+  "achieved_throughput": 0.24182171431856755,
+  "all_successful_actual_prompt_IDs_checked": 80,
+  "arrivals_sha256": "54991f0748db2f654afa70f4340d0d635f57dce92415a186c3894cb8038dc6de",
+  "generation_budgets": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "boundary": "Fixed global epoch includes preparation, registration and failed work. Arrivals never reset after registration; client concurrency2. Deployment attestation does not certify arbitrary Raw equivalence. Native new-prefill is actual prompt minus initial engine hit, not GPU time.",
+  "raw_file_sha256": "feee0e950f56d88fcefd370cd4f58320bdfc01a697b5f0286564c60675b7dffa",
+  "post_measurement_audit_s": 0.027494230307638645
+}

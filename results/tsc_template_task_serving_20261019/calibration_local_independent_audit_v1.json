@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "model": "Qwen3-8B",
+      "cell": "runs/Qwen3-8B-Raw-calibration/attempt1",
+      "successful": 80,
+      "Raw_rate": 0.31590781908777193,
+      "wall_s": 253.23842958686873,
+      "backend_TTFT_ms": {
+        "mean": 3348.5314242891036,
+        "p95": 6819.833386247046,
+        "p99": 6997.094588670876
+      },
+      "backend_e2e_ms": {
+        "mean": 6308.22716334369,
+        "p95": 8502.540630451404,
+        "p99": 8624.059377256777
+      },
+      "all_actual_prompt_IDs_and_native_observations_checked": 80,
+      "raw_sha256": "4c802f12aa0e98d04591c87a09f0cde60007da7e1acf7c526e2a22467cf30393",
+      "summary_sha256": "db773fb3527ac71a9e22b377e50838c4a62269969afba99a120cee3c5f5d963c"
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "cell": "runs/Mistral-7B-Instruct-v0.3-Raw-calibration/attempt1",
+      "successful": 80,
+      "Raw_rate": 0.24182171431856755,
+      "wall_s": 330.82223499007523,
+      "backend_TTFT_ms": {
+        "mean": 3796.9415510364342,
+        "p95": 7078.939680871554,
+        "p99": 7562.928195358253
+      },
+      "backend_e2e_ms": {
+        "mean": 8248.577213374665,
+        "p95": 11959.869028488174,
+        "p99": 12063.55237471405
+      },
+      "all_actual_prompt_IDs_and_native_observations_checked": 80,
+      "raw_sha256": "feee0e950f56d88fcefd370cd4f58320bdfc01a697b5f0286564c60675b7dffa",
+      "summary_sha256": "4ed20eeb54382c47c94353759e560865bfa126fdda08321c57075ca9c170a118"
+    }
+  ],
+  "new_GPU_requests": 0,
+  "actual_business": 160,
+  "source_sha256": "a4ed18ca077e60c78d6e13e55495b4aab38391e4152aa9f35c40e01489883383",
+  "no_Contract_outcomes_used": true
+}

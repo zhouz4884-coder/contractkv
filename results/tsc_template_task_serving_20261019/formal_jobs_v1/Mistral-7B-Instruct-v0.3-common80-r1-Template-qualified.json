@@ -1,0 +1,25 @@
+{
+  "id": "Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified",
+  "model": "Mistral-7B-Instruct-v0.3",
+  "phase": "formal",
+  "policy": "Template-qualified",
+  "input_set": "validation",
+  "eligible_families": [
+    "HotpotQA"
+  ],
+  "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+  "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r1.json",
+  "repeat": 1,
+  "load": "common80",
+  "arrival_rate_rps": 0.19345737145485406,
+  "SLO": {
+    "TTFT_ms": 11000,
+    "E2E_ms": 18000
+  },
+  "snapshot": "formal_freeze_v1/source_snapshot",
+  "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified.json",
+  "lane": 1,
+  "attempt": 1,
+  "wave": 8,
+  "port": 10117
+}

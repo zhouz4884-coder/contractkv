@@ -1,0 +1,25 @@
+{
+  "id": "Qwen3-8B-high100-r1-Raw-authorized",
+  "model": "Qwen3-8B",
+  "phase": "formal",
+  "policy": "Raw-authorized",
+  "input_set": "validation",
+  "eligible_families": [
+    "HotpotQA"
+  ],
+  "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+  "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r1.json",
+  "repeat": 1,
+  "load": "high100",
+  "arrival_rate_rps": 0.31590781908777193,
+  "SLO": {
+    "TTFT_ms": 10500,
+    "E2E_ms": 13000
+  },
+  "snapshot": "formal_freeze_v1/source_snapshot",
+  "job_file": "formal_jobs_v1/Qwen3-8B-high100-r1-Raw-authorized.json",
+  "lane": 0,
+  "attempt": 1,
+  "wave": 3,
+  "port": 10106
+}

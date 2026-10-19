@@ -1,0 +1,12 @@
+{
+  "status": "CPU_PREFLIGHT_PATH_REJECTED_NO_MODEL_OUTPUTS",
+  "cause": "Three late freeze seeds used Windows separators in manifest strings; snapshot layout was POSIX on Linux. No second model server launched.",
+  "affected_manifest_paths": [
+    "results\\tsc_template_task_serving_20261019\\development_execution_state_v2.json",
+    "results\\tsc_template_task_serving_20261019\\development_exit_qwen_v2.json",
+    "results\\tsc_template_task_serving_20261019\\development_launch_qwen_v2.json"
+  ],
+  "fix": "Normalize every seed to portable relative POSIX, assert portability, preserve prior freeze and failed preflight; run API/scheduler/trace import before GPU receipt.",
+  "new_model_generations": 0,
+  "source_parameters_unchanged": true
+}

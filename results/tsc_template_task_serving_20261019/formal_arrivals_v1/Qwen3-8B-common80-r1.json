@@ -1,0 +1,3082 @@
+{
+  "schema": "frozen-task-template-marked-Poisson.v1",
+  "model": "Qwen3-8B",
+  "repeat": 1,
+  "load": "common80",
+  "arrival_rate": 0.2527262552702176,
+  "marked_locality": "two32-request blocks per template",
+  "requests": [
+    {
+      "sequence": 0,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 0.06339019874588868,
+      "ready_offset_s": 1.2508255372126302
+    },
+    {
+      "sequence": 1,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 0.05582113148178366,
+      "ready_offset_s": 1.4717014071221461
+    },
+    {
+      "sequence": 2,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 0.664003731481942,
+      "ready_offset_s": 4.099064879001956
+    },
+    {
+      "sequence": 3,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 0.9955268256741063,
+      "ready_offset_s": 8.03821565939744
+    },
+    {
+      "sequence": 4,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 0.14450145366996148,
+      "ready_offset_s": 8.609986303153702
+    },
+    {
+      "sequence": 5,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 0.6227375387624501,
+      "ready_offset_s": 11.074065621294244
+    },
+    {
+      "sequence": 6,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 3.2190641527044117,
+      "ready_offset_s": 23.81142110207939
+    },
+    {
+      "sequence": 7,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 0.7054716737034096,
+      "ready_offset_s": 26.60286702030863
+    },
+    {
+      "sequence": 8,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 0.8032902271886087,
+      "ready_offset_s": 29.78136632711679
+    },
+    {
+      "sequence": 9,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 1.5089032680704333,
+      "ready_offset_s": 35.75187092093945
+    },
+    {
+      "sequence": 10,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 1.9308412430149486,
+      "ready_offset_s": 43.391920985981066
+    },
+    {
+      "sequence": 11,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 3.0391696111960065,
+      "ready_offset_s": 55.41746066703436
+    },
+    {
+      "sequence": 12,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 0.2914185381213599,
+      "ready_offset_s": 56.57056024432114
+    },
+    {
+      "sequence": 13,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 0.31412500103945623,
+      "ready_offset_s": 57.81350589990248
+    },
+    {
+      "sequence": 14,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 2.4947991655985438,
+      "ready_offset_s": 67.68505313163382
+    },
+    {
+      "sequence": 15,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 2.90019104807994,
+      "ready_offset_s": 79.16067542097224
+    },
+    {
+      "sequence": 16,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 0.5457159956891547,
+      "ready_offset_s": 81.31999201079655
+    },
+    {
+      "sequence": 17,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 0.12177623581732296,
+      "ready_offset_s": 81.80184236578685
+    },
+    {
+      "sequence": 18,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 0.1170718135804309,
+      "ready_offset_s": 82.26507802547428
+    },
+    {
+      "sequence": 19,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 2.7929493896443667,
+      "ready_offset_s": 93.31636110905464
+    },
+    {
+      "sequence": 20,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 1.4162973015163223,
+      "ready_offset_s": 98.92043774130642
+    },
+    {
+      "sequence": 21,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 0.8856562697153203,
+      "ready_offset_s": 102.42484716156379
+    },
+    {
+      "sequence": 22,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 0.13475871897501893,
+      "ready_offset_s": 102.95806726103835
+    },
+    {
+      "sequence": 23,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 0.510993175207664,
+      "ready_offset_s": 104.9799908425883
+    },
+    {
+      "sequence": 24,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.5766837002786563,
+      "ready_offset_s": 107.26184200863378
+    },
+    {
+      "sequence": 25,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 0.5401722962742984,
+      "ready_offset_s": 109.39922300886559
+    },
+    {
+      "sequence": 26,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 0.534110388575259,
+      "ready_offset_s": 111.51261794681608
+    },
+    {
+      "sequence": 27,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 0.011130230958589955,
+      "ready_offset_s": 111.55665860633002
+    },
+    {
+      "sequence": 28,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 1.0955337174897761,
+      "ready_offset_s": 115.891521702839
+    },
+    {
+      "sequence": 29,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 0.40331145922974837,
+      "ready_offset_s": 117.48736483674104
+    },
+    {
+      "sequence": 30,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 0.23390444702140525,
+      "ready_offset_s": 118.4128897560705
+    },
+    {
+      "sequence": 31,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 0.48360184712148513,
+      "ready_offset_s": 120.32642994841977
+    },
+    {
+      "sequence": 32,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 0.12940437594217732,
+      "ready_offset_s": 120.83846371318955
+    },
+    {
+      "sequence": 33,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 0.5112095768313438,
+      "ready_offset_s": 122.8612435636042
+    },
+    {
+      "sequence": 34,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 1.9854818078761431,
+      "ready_offset_s": 130.7174981729769
+    },
+    {
+      "sequence": 35,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 0.11452860641951539,
+      "ready_offset_s": 131.17067074223394
+    },
+    {
+      "sequence": 36,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 0.6288096029364832,
+      "ready_offset_s": 133.65877631030858
+    },
+    {
+      "sequence": 37,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 0.6653256602377766,
+      "ready_offset_s": 136.29137045659704
+    },
+    {
+      "sequence": 38,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 1.0354668401470133,
+      "ready_offset_s": 140.38855790172371
+    },
+    {
+      "sequence": 39,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 0.2129355973014587,
+      "ready_offset_s": 141.231112218345
+    },
+    {
+      "sequence": 40,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 0.17346430066991592,
+      "ready_offset_s": 141.91748451664242
+    },
+    {
+      "sequence": 41,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 0.04820528396402906,
+      "ready_offset_s": 142.10822561678054
+    },
+    {
+      "sequence": 42,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 0.7527661933198544,
+      "ready_offset_s": 145.0868088768181
+    },
+    {
+      "sequence": 43,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 0.6441945266838583,
+      "ready_offset_s": 147.63579028753492
+    },
+    {
+      "sequence": 44,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 1.5459930678858036,
+      "ready_offset_s": 153.75305367290346
+    },
+    {
+      "sequence": 45,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 1.4049413044873933,
+      "ready_offset_s": 159.3121963230615
+    },
+    {
+      "sequence": 46,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 0.3305172547390099,
+      "ready_offset_s": 160.62000367527196
+    },
+    {
+      "sequence": 47,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 2.6105492808059325,
+      "ready_offset_s": 170.94955680387233
+    },
+    {
+      "sequence": 48,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 0.2253216877075119,
+      "ready_offset_s": 171.84112102804283
+    },
+    {
+      "sequence": 49,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 1.5652673534403834,
+      "ready_offset_s": 178.0346498791184
+    },
+    {
+      "sequence": 50,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 3.024513389030135,
+      "ready_offset_s": 190.00219708071918
+    },
+    {
+      "sequence": 51,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 0.39287426372026957,
+      "ready_offset_s": 191.55674179274448
+    },
+    {
+      "sequence": 52,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 1.433114614598465,
+      "ready_offset_s": 197.22736201803988
+    },
+    {
+      "sequence": 53,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 1.2234751265511739,
+      "ready_offset_s": 202.0684701381401
+    },
+    {
+      "sequence": 54,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 1.0184190159429,
+      "ready_offset_s": 206.0982018921836
+    },
+    {
+      "sequence": 55,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 0.6741590246546707,
+      "ready_offset_s": 208.76574834054867
+    },
+    {
+      "sequence": 56,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.14692804607855056,
+      "ready_offset_s": 209.34712064759864
+    },
+    {
+      "sequence": 57,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 0.10582423541126228,
+      "ready_offset_s": 209.76585132240768
+    },
+    {
+      "sequence": 58,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 0.3251122034014261,
+      "ready_offset_s": 211.05227169473432
+    },
+    {
+      "sequence": 59,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 1.2049341725713607,
+      "ready_offset_s": 215.82001603250814
+    },
+    {
+      "sequence": 60,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 0.2633555756382328,
+      "ready_offset_s": 216.8620746637202
+    },
+    {
+      "sequence": 61,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 0.06200288715915461,
+      "ready_offset_s": 217.1074108164395
+    },
+    {
+      "sequence": 62,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 2.750967547760914,
+      "ready_offset_s": 227.99257802955535
+    },
+    {
+      "sequence": 63,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 0.05158195881150102,
+      "ready_offset_s": 228.1966801271247
+    },
+    {
+      "sequence": 64,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 0.3363622120180796,
+      "ready_offset_s": 229.52761510124694
+    },
+    {
+      "sequence": 65,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 0.8821870335814566,
+      "ready_offset_s": 233.01829727290422
+    },
+    {
+      "sequence": 66,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 0.020552445549921146,
+      "ready_offset_s": 233.0996202265797
+    },
+    {
+      "sequence": 67,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 9.907206264855029,
+      "ready_offset_s": 272.3009539157215
+    },
+    {
+      "sequence": 68,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 0.1819600752924444,
+      "ready_offset_s": 273.0209427237616
+    },
+    {
+      "sequence": 69,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 0.03796706179746857,
+      "ready_offset_s": 273.1711727097869
+    },
+    {
+      "sequence": 70,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 0.5269174867436726,
+      "ready_offset_s": 275.2561064107998
+    },
+    {
+      "sequence": 71,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 0.6583773049410284,
+      "ready_offset_s": 277.86120695422017
+    },
+    {
+      "sequence": 72,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 0.07710805607007208,
+      "ready_offset_s": 278.1663120015277
+    },
+    {
+      "sequence": 73,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 1.353076404950995,
+      "ready_offset_s": 283.52023299997825
+    },
+    {
+      "sequence": 74,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 0.20933367476539472,
+      "ready_offset_s": 284.3485350477476
+    },
+    {
+      "sequence": 75,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 0.1143058959924295,
+      "ready_offset_s": 284.80082638514824
+    },
+    {
+      "sequence": 76,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 0.33471137269971635,
+      "ready_offset_s": 286.12522923495044
+    },
+    {
+      "sequence": 77,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 0.7037208533968642,
+      "ready_offset_s": 288.90974741904034
+    },
+    {
+      "sequence": 78,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 0.565875299289289,
+      "ready_offset_s": 291.14883135863437
+    },
+    {
+      "sequence": 79,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 0.15905104466155093,
+      "ready_offset_s": 291.7781725582319
+    },
+    {
+      "sequence": 80,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 0.03469450662384128,
+      "ready_offset_s": 291.91545353280554
+    },
+    {
+      "sequence": 81,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 0.32561871657355845,
+      "ready_offset_s": 293.20387810201146
+    },
+    {
+      "sequence": 82,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 0.7797493472249477,
+      "ready_offset_s": 296.28922966705255
+    },
+    {
+      "sequence": 83,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 0.07978331227189316,
+      "ready_offset_s": 296.604920303099
+    },
+    {
+      "sequence": 84,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 0.01158434683137127,
+      "ready_offset_s": 296.6507578312141
+    },
+    {
+      "sequence": 85,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 2.108141174997407,
+      "ready_offset_s": 304.99235721408536
+    },
+    {
+      "sequence": 86,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 1.9255217180013107,
+      "ready_offset_s": 312.61135871411756
+    },
+    {
+      "sequence": 87,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 1.7272116475115311,
+      "ready_offset_s": 319.44567692005455
+    },
+    {
+      "sequence": 88,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.7676044454080092,
+      "ready_offset_s": 322.4829729247268
+    },
+    {
+      "sequence": 89,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 2.436680869901516,
+      "ready_offset_s": 332.1245547512616
+    },
+    {
+      "sequence": 90,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 0.24921462684480442,
+      "ready_offset_s": 333.1106597627031
+    },
+    {
+      "sequence": 91,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 2.2136887694850653,
+      "ready_offset_s": 341.86989519361697
+    },
+    {
+      "sequence": 92,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 1.6377437415197142,
+      "ready_offset_s": 348.3502022743697
+    },
+    {
+      "sequence": 93,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 1.683081019375066,
+      "ready_offset_s": 355.00990218396356
+    },
+    {
+      "sequence": 94,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 0.5535538462653029,
+      "ready_offset_s": 357.2002319764635
+    },
+    {
+      "sequence": 95,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 0.16732326936406855,
+      "ready_offset_s": 357.86230513219937
+    },
+    {
+      "sequence": 96,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 0.5465276231033803,
+      "ready_offset_s": 360.0248332103329
+    },
+    {
+      "sequence": 97,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 1.5266221115893335,
+      "ready_offset_s": 366.06544861832464
+    },
+    {
+      "sequence": 98,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 0.12211694693417229,
+      "ready_offset_s": 366.54864711625515
+    },
+    {
+      "sequence": 99,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 2.6865736772504722,
+      "ready_offset_s": 377.1790174130728
+    },
+    {
+      "sequence": 100,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 2.371269074929868,
+      "ready_offset_s": 386.56177454843447
+    },
+    {
+      "sequence": 101,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 1.420418311493304,
+      "ready_offset_s": 392.1821574009188
+    },
+    {
+      "sequence": 102,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 0.3302737839457354,
+      "ready_offset_s": 393.4890013756084
+    },
+    {
+      "sequence": 103,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 0.01000613276984085,
+      "ready_offset_s": 393.5285941466845
+    },
+    {
+      "sequence": 104,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 1.0322882414461267,
+      "ready_offset_s": 397.6132043520721
+    },
+    {
+      "sequence": 105,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 0.5016947854658734,
+      "ready_offset_s": 399.59833559587366
+    },
+    {
+      "sequence": 106,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 0.9845321731807916,
+      "ready_offset_s": 403.4939821804682
+    },
+    {
+      "sequence": 107,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 1.4599193585278392,
+      "ready_offset_s": 409.27066476917224
+    },
+    {
+      "sequence": 108,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 0.3761840456293951,
+      "ready_offset_s": 410.7591687840289
+    },
+    {
+      "sequence": 109,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 3.889540336702416,
+      "ready_offset_s": 426.14949826342416
+    },
+    {
+      "sequence": 110,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 0.5964679896606236,
+      "ready_offset_s": 428.50963290405684
+    },
+    {
+      "sequence": 111,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 0.1863602666211072,
+      "ready_offset_s": 429.24703261119
+    },
+    {
+      "sequence": 112,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 2.4150075005523903,
+      "ready_offset_s": 438.8028561561962
+    },
+    {
+      "sequence": 113,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 0.31947781939671793,
+      "ready_offset_s": 440.06698211356905
+    },
+    {
+      "sequence": 114,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 2.563747465880543,
+      "ready_offset_s": 450.21134745914566
+    },
+    {
+      "sequence": 115,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 1.4550091110244703,
+      "ready_offset_s": 455.968600932746
+    },
+    {
+      "sequence": 116,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 2.5168345278712385,
+      "ready_offset_s": 465.9273387978729
+    },
+    {
+      "sequence": 117,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 0.4185016283688834,
+      "ready_offset_s": 467.5832871595554
+    },
+    {
+      "sequence": 118,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 1.7940167851608801,
+      "ready_offset_s": 474.68194330528394
+    },
+    {
+      "sequence": 119,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 0.17970356182852523,
+      "ready_offset_s": 475.3930034269812
+    },
+    {
+      "sequence": 120,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.10383658490875856,
+      "ready_offset_s": 475.8038692659805
+    },
+    {
+      "sequence": 121,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 0.63558865437318,
+      "ready_offset_s": 478.3187985268664
+    },
+    {
+      "sequence": 122,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 0.38342786349003266,
+      "ready_offset_s": 479.83596524577365
+    },
+    {
+      "sequence": 123,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 1.2628766379117626,
+      "ready_offset_s": 484.8329792543161
+    },
+    {
+      "sequence": 124,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 0.1253573276930031,
+      "ready_offset_s": 485.3289994543502
+    },
+    {
+      "sequence": 125,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 2.76357457507493,
+      "ready_offset_s": 496.26405078932163
+    },
+    {
+      "sequence": 126,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 1.046512507612118,
+      "ready_offset_s": 500.40494428886393
+    },
+    {
+      "sequence": 127,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 0.8124099992885042,
+      "ready_offset_s": 503.6195291701216
+    },
+    {
+      "sequence": 128,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 1.3518437608155929,
+      "ready_offset_s": 508.9685727800552
+    },
+    {
+      "sequence": 129,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 0.6361386245125902,
+      "ready_offset_s": 511.4856781905414
+    },
+    {
+      "sequence": 130,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 0.44290550130116035,
+      "ready_offset_s": 513.2381890281179
+    },
+    {
+      "sequence": 131,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 1.6340681001824433,
+      "ready_offset_s": 519.703952145746
+    },
+    {
+      "sequence": 132,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 0.7066721162342899,
+      "ready_offset_s": 522.5001480355586
+    },
+    {
+      "sequence": 133,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 0.012097415998025086,
+      "ready_offset_s": 522.548015701643
+    },
+    {
+      "sequence": 134,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 1.6882406205273137,
+      "ready_offset_s": 529.2281313814414
+    },
+    {
+      "sequence": 135,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 0.2873220791252555,
+      "ready_offset_s": 530.3650218830556
+    },
+    {
+      "sequence": 136,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 0.17224754000160133,
+      "ready_offset_s": 531.0465796413401
+    },
+    {
+      "sequence": 137,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 1.0187466772734977,
+      "ready_offset_s": 535.0776079022711
+    },
+    {
+      "sequence": 138,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 0.31002546523616165,
+      "ready_offset_s": 536.3043323077139
+    },
+    {
+      "sequence": 139,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 0.5047255980226464,
+      "ready_offset_s": 538.3014560235819
+    },
+    {
+      "sequence": 140,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 1.6257499612329214,
+      "ready_offset_s": 544.7343055092622
+    },
+    {
+      "sequence": 141,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 0.0308280986408599,
+      "ready_offset_s": 544.8562876856209
+    },
+    {
+      "sequence": 142,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 0.3103447909087971,
+      "ready_offset_s": 546.0842756149992
+    },
+    {
+      "sequence": 143,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 0.2958697847878637,
+      "ready_offset_s": 547.2549881097161
+    },
+    {
+      "sequence": 144,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 1.8326088086526746,
+      "ready_offset_s": 554.506347121439
+    },
+    {
+      "sequence": 145,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 0.15293130923575776,
+      "ready_offset_s": 555.1114734430879
+    },
+    {
+      "sequence": 146,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 0.2911696935902125,
+      "ready_offset_s": 556.2635883797766
+    },
+    {
+      "sequence": 147,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 0.6834414769801433,
+      "ready_offset_s": 558.9678641039169
+    },
+    {
+      "sequence": 148,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 3.6023546678121208,
+      "ready_offset_s": 573.2218428365992
+    },
+    {
+      "sequence": 149,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 0.05180544039957573,
+      "ready_offset_s": 573.4268292173937
+    },
+    {
+      "sequence": 150,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 0.3727562434804054,
+      "ready_offset_s": 574.9017699317324
+    },
+    {
+      "sequence": 151,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 1.2582093769435923,
+      "ready_offset_s": 579.8803162865553
+    },
+    {
+      "sequence": 152,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.616248278540296,
+      "ready_offset_s": 582.3187185723858
+    },
+    {
+      "sequence": 153,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 0.7817425343074542,
+      "ready_offset_s": 585.4119568806558
+    },
+    {
+      "sequence": 154,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 2.15924380234875,
+      "ready_offset_s": 593.9557617181866
+    },
+    {
+      "sequence": 155,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 0.8506587021785847,
+      "ready_offset_s": 597.3216909971571
+    },
+    {
+      "sequence": 156,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 0.4510476245286038,
+      "ready_offset_s": 599.1064189987901
+    },
+    {
+      "sequence": 157,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 0.02251555448871916,
+      "ready_offset_s": 599.1955096809776
+    },
+    {
+      "sequence": 158,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 0.5003773378852404,
+      "ready_offset_s": 601.1754279817106
+    },
+    {
+      "sequence": 159,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 4.532248829358051,
+      "ready_offset_s": 619.1088588573912
+    },
+    {
+      "sequence": 160,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 1,
+      "unit_exponential_gap": 0.23230120222085057,
+      "ready_offset_s": 620.0280399767904
+    },
+    {
+      "sequence": 161,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 1,
+      "unit_exponential_gap": 0.1894118999668996,
+      "ready_offset_s": 620.7775145407386
+    },
+    {
+      "sequence": 162,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 1,
+      "unit_exponential_gap": 0.005468407730886394,
+      "ready_offset_s": 620.7991522123966
+    },
+    {
+      "sequence": 163,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 1,
+      "unit_exponential_gap": 1.8924341300969763,
+      "ready_offset_s": 628.2872310749333
+    },
+    {
+      "sequence": 164,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 1,
+      "unit_exponential_gap": 0.11599878075047688,
+      "ready_offset_s": 628.7462209041714
+    },
+    {
+      "sequence": 165,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 1,
+      "unit_exponential_gap": 0.31760463420263924,
+      "ready_offset_s": 630.0029349478431
+    },
+    {
+      "sequence": 166,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 1,
+      "unit_exponential_gap": 3.0244890945195833,
+      "ready_offset_s": 641.9703860196985
+    },
+    {
+      "sequence": 167,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 1,
+      "unit_exponential_gap": 1.6097941812686787,
+      "ready_offset_s": 648.340100870051
+    },
+    {
+      "sequence": 168,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 2,
+      "unit_exponential_gap": 0.7422166467203546,
+      "ready_offset_s": 651.2769411517493
+    },
+    {
+      "sequence": 169,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 2,
+      "unit_exponential_gap": 2.1911591378098474,
+      "ready_offset_s": 659.9470301991537
+    },
+    {
+      "sequence": 170,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 2,
+      "unit_exponential_gap": 0.4467597524659273,
+      "ready_offset_s": 661.7147917322333
+    },
+    {
+      "sequence": 171,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 2,
+      "unit_exponential_gap": 2.174423455174759,
+      "ready_offset_s": 670.3186601860663
+    },
+    {
+      "sequence": 172,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 2,
+      "unit_exponential_gap": 0.9033987195092399,
+      "ready_offset_s": 673.893273826993
+    },
+    {
+      "sequence": 173,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 2,
+      "unit_exponential_gap": 0.38866113493563487,
+      "ready_offset_s": 675.4311478184391
+    },
+    {
+      "sequence": 174,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 2,
+      "unit_exponential_gap": 1.3914903265171334,
+      "ready_offset_s": 680.9370669601972
+    },
+    {
+      "sequence": 175,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 2,
+      "unit_exponential_gap": 0.8248003559907011,
+      "ready_offset_s": 684.2006786300999
+    },
+    {
+      "sequence": 176,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 3,
+      "unit_exponential_gap": 0.41393486558297865,
+      "ready_offset_s": 685.8385569943418
+    },
+    {
+      "sequence": 177,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 3,
+      "unit_exponential_gap": 0.4445451880941708,
+      "ready_offset_s": 687.5975558273632
+    },
+    {
+      "sequence": 178,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 3,
+      "unit_exponential_gap": 1.3033477637248485,
+      "ready_offset_s": 692.7547080287887
+    },
+    {
+      "sequence": 179,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 3,
+      "unit_exponential_gap": 1.4625420855179403,
+      "ready_offset_s": 698.541768355996
+    },
+    {
+      "sequence": 180,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 3,
+      "unit_exponential_gap": 0.6637582987553501,
+      "ready_offset_s": 701.1681606872781
+    },
+    {
+      "sequence": 181,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 3,
+      "unit_exponential_gap": 2.3107476517065217,
+      "ready_offset_s": 710.3114436011798
+    },
+    {
+      "sequence": 182,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 3,
+      "unit_exponential_gap": 0.029077333160054206,
+      "ready_offset_s": 710.4264982603364
+    },
+    {
+      "sequence": 183,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 3,
+      "unit_exponential_gap": 1.819307389908783,
+      "ready_offset_s": 717.6252255471534
+    },
+    {
+      "sequence": 184,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 4,
+      "unit_exponential_gap": 0.8553304582415393,
+      "ready_offset_s": 721.0096402662613
+    },
+    {
+      "sequence": 185,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 4,
+      "unit_exponential_gap": 1.7375390713416499,
+      "ready_offset_s": 727.8848225439548
+    },
+    {
+      "sequence": 186,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 4,
+      "unit_exponential_gap": 0.38777239865697366,
+      "ready_offset_s": 729.4191799388458
+    },
+    {
+      "sequence": 187,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 4,
+      "unit_exponential_gap": 1.8247792511793124,
+      "ready_offset_s": 736.6395585624607
+    },
+    {
+      "sequence": 188,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 4,
+      "unit_exponential_gap": 2.725018594510648,
+      "ready_offset_s": 747.4220496479121
+    },
+    {
+      "sequence": 189,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 4,
+      "unit_exponential_gap": 0.6756139606733773,
+      "ready_offset_s": 750.0953530605354
+    },
+    {
+      "sequence": 190,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 4,
+      "unit_exponential_gap": 0.19918116975184222,
+      "ready_offset_s": 750.8834831641484
+    },
+    {
+      "sequence": 191,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 4,
+      "unit_exponential_gap": 1.77035150914767,
+      "ready_offset_s": 757.8884993515437
+    },
+    {
+      "sequence": 192,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 4.457824319614039,
+      "ready_offset_s": 775.5274435714376
+    },
+    {
+      "sequence": 193,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 0.2733653950924277,
+      "ready_offset_s": 776.6091095613845
+    },
+    {
+      "sequence": 194,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 0.5629066426042115,
+      "ready_offset_s": 778.8364469704018
+    },
+    {
+      "sequence": 195,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 1.4936493234129284,
+      "ready_offset_s": 784.7465939862545
+    },
+    {
+      "sequence": 196,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 1.5449691523047562,
+      "ready_offset_s": 790.8598058907828
+    },
+    {
+      "sequence": 197,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 0.2798082386967804,
+      "ready_offset_s": 791.9669652494241
+    },
+    {
+      "sequence": 198,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 0.013930351692122799,
+      "ready_offset_s": 792.022085567957
+    },
+    {
+      "sequence": 199,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 3.2958162671661477,
+      "ready_offset_s": 805.0631376883322
+    },
+    {
+      "sequence": 200,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 0.7258170725720033,
+      "ready_offset_s": 807.9350873074802
+    },
+    {
+      "sequence": 201,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 0.025583466501687305,
+      "ready_offset_s": 808.0363172587345
+    },
+    {
+      "sequence": 202,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 2.171292854918776,
+      "ready_offset_s": 816.6277983954973
+    },
+    {
+      "sequence": 203,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 2.3309271850997177,
+      "ready_offset_s": 825.8509287054346
+    },
+    {
+      "sequence": 204,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 2.934734120312731,
+      "ready_offset_s": 837.4632327661064
+    },
+    {
+      "sequence": 205,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 0.20269791263424758,
+      "ready_offset_s": 838.2652780954195
+    },
+    {
+      "sequence": 206,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 2.549348088194558,
+      "ready_offset_s": 848.3526672567425
+    },
+    {
+      "sequence": 207,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 0.16821016675057573,
+      "ready_offset_s": 849.0182497328123
+    },
+    {
+      "sequence": 208,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 0.543574920862203,
+      "ready_offset_s": 851.1690944097178
+    },
+    {
+      "sequence": 209,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 1.3075331084121335,
+      "ready_offset_s": 856.3428073942041
+    },
+    {
+      "sequence": 210,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 0.48100933506868476,
+      "ready_offset_s": 858.2460894040388
+    },
+    {
+      "sequence": 211,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 1.4364206496590746,
+      "ready_offset_s": 863.9297911156922
+    },
+    {
+      "sequence": 212,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 1.6912569915776603,
+      "ready_offset_s": 870.6218421246756
+    },
+    {
+      "sequence": 213,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 0.4572802959513567,
+      "ready_offset_s": 872.431231875109
+    },
+    {
+      "sequence": 214,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 0.2075730154621573,
+      "ready_offset_s": 873.2525672573004
+    },
+    {
+      "sequence": 215,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 4.811003200570116,
+      "ready_offset_s": 892.2889874955781
+    },
+    {
+      "sequence": 216,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 0.8964826846949062,
+      "ready_offset_s": 895.8362354209524
+    },
+    {
+      "sequence": 217,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 4.864164181042406,
+      "ready_offset_s": 915.083005709388
+    },
+    {
+      "sequence": 218,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 0.37344487384534203,
+      "ready_offset_s": 916.5606712311045
+    },
+    {
+      "sequence": 219,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 0.06148637468258375,
+      "ready_offset_s": 916.8039636211921
+    },
+    {
+      "sequence": 220,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 1.481383280687977,
+      "ready_offset_s": 922.6655757402182
+    },
+    {
+      "sequence": 221,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 4.0179508870415415,
+      "ready_offset_s": 938.5640065650864
+    },
+    {
+      "sequence": 222,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 1.5492676771114322,
+      "ready_offset_s": 944.6942270894832
+    },
+    {
+      "sequence": 223,
+      "source_group": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 0.08128034674349503,
+      "ready_offset_s": 945.0158412670706
+    },
+    {
+      "sequence": 224,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 0.02583626762332468,
+      "ready_offset_s": 945.1180715145599
+    },
+    {
+      "sequence": 225,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 0.9451249601904295,
+      "ready_offset_s": 948.8577896502158
+    },
+    {
+      "sequence": 226,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 0.2785078307337535,
+      "ready_offset_s": 949.9598034890073
+    },
+    {
+      "sequence": 227,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 0.7491385063491015,
+      "ready_offset_s": 952.9240325341776
+    },
+    {
+      "sequence": 228,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 0.30750190229246394,
+      "ready_offset_s": 954.1407715784201
+    },
+    {
+      "sequence": 229,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 0.3311834692793011,
+      "ready_offset_s": 955.4512150419423
+    },
+    {
+      "sequence": 230,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 0.4771453227258239,
+      "ready_offset_s": 957.3392077327518
+    },
+    {
+      "sequence": 231,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 0.9392287189395013,
+      "ready_offset_s": 961.0555953234881
+    },
+    {
+      "sequence": 232,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 0.12829332923871736,
+      "ready_offset_s": 961.5632328425957
+    },
+    {
+      "sequence": 233,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 0.17205000878175467,
+      "ready_offset_s": 962.2440089993815
+    },
+    {
+      "sequence": 234,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 0.26788944432879813,
+      "ready_offset_s": 963.3040074710178
+    },
+    {
+      "sequence": 235,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 0.11503678309361853,
+      "ready_offset_s": 963.7591908193828
+    },
+    {
+      "sequence": 236,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 1.6907277283689184,
+      "ready_offset_s": 970.449147612994
+    },
+    {
+      "sequence": 237,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 0.6546027690738196,
+      "ready_offset_s": 973.0393128824232
+    },
+    {
+      "sequence": 238,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 1.2510817302727606,
+      "ready_offset_s": 977.9896562052216
+    },
+    {
+      "sequence": 239,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 0.21066488177932327,
+      "ready_offset_s": 978.8232256400795
+    },
+    {
+      "sequence": 240,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 0.06034134779235409,
+      "ready_offset_s": 979.0619873299871
+    },
+    {
+      "sequence": 241,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 0.958634110903727,
+      "ready_offset_s": 982.8551591548882
+    },
+    {
+      "sequence": 242,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 2.8274398733366084,
+      "ready_offset_s": 994.0429159248109
+    },
+    {
+      "sequence": 243,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 0.13912621924251717,
+      "ready_offset_s": 994.593417569738
+    },
+    {
+      "sequence": 244,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 1.2523234200517355,
+      "ready_offset_s": 999.5486740733123
+    },
+    {
+      "sequence": 245,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 0.29379348116375553,
+      "ready_offset_s": 1000.7111709450743
+    },
+    {
+      "sequence": 246,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 0.8334695433763554,
+      "ready_offset_s": 1004.0090852930916
+    },
+    {
+      "sequence": 247,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 2.002215664642469,
+      "ready_offset_s": 1011.9315532713462
+    },
+    {
+      "sequence": 248,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 0.0028957939254206323,
+      "ready_offset_s": 1011.9430114948786
+    },
+    {
+      "sequence": 249,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 0.41938788177546016,
+      "ready_offset_s": 1013.6024666287627
+    },
+    {
+      "sequence": 250,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 0.6323657150716296,
+      "ready_offset_s": 1016.1046432007834
+    },
+    {
+      "sequence": 251,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 0.7191562460161809,
+      "ready_offset_s": 1018.9502369252947
+    },
+    {
+      "sequence": 252,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 0.04679853817408765,
+      "ready_offset_s": 1019.1354117427036
+    },
+    {
+      "sequence": 253,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 0.37624122992327547,
+      "ready_offset_s": 1020.6241420272598
+    },
+    {
+      "sequence": 254,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 0.08579237510855905,
+      "ready_offset_s": 1020.9636096263695
+    },
+    {
+      "sequence": 255,
+      "source_group": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 0.29996782312916165,
+      "ready_offset_s": 1022.1505374459916
+    },
+    {
+      "sequence": 256,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 0.6076526159139323,
+      "ready_offset_s": 1024.5549279801853
+    },
+    {
+      "sequence": 257,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 0.4398866085854981,
+      "ready_offset_s": 1026.295493510724
+    },
+    {
+      "sequence": 258,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 0.48837135075779564,
+      "ready_offset_s": 1028.2279059157415
+    },
+    {
+      "sequence": 259,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 1.234552277247974,
+      "ready_offset_s": 1033.1128446646974
+    },
+    {
+      "sequence": 260,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 1.3218669866577324,
+      "ready_offset_s": 1038.3432746619462
+    },
+    {
+      "sequence": 261,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 2.2109689414397233,
+      "ready_offset_s": 1047.0917481400015
+    },
+    {
+      "sequence": 262,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 1.587099658601628,
+      "ready_offset_s": 1053.3716641578474
+    },
+    {
+      "sequence": 263,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 0.26833513534436987,
+      "ready_offset_s": 1054.4334261621848
+    },
+    {
+      "sequence": 264,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 0.46729042232458323,
+      "ready_offset_s": 1056.2824244857857
+    },
+    {
+      "sequence": 265,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 1.066529869210025,
+      "ready_offset_s": 1060.5025236918207
+    },
+    {
+      "sequence": 266,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 1.3355873133479297,
+      "ready_offset_s": 1065.7872429700765
+    },
+    {
+      "sequence": 267,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 0.8124339462395481,
+      "ready_offset_s": 1069.0019226058384
+    },
+    {
+      "sequence": 268,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 0.2893017048017181,
+      "ready_offset_s": 1070.1466461902257
+    },
+    {
+      "sequence": 269,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 0.7479427669362826,
+      "ready_offset_s": 1073.1061438733477
+    },
+    {
+      "sequence": 270,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 0.6953146474803529,
+      "ready_offset_s": 1075.8573999576706
+    },
+    {
+      "sequence": 271,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 0.048477661698437965,
+      "ready_offset_s": 1076.049218815773
+    },
+    {
+      "sequence": 272,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 0.9580345755827537,
+      "ready_offset_s": 1079.840018369062
+    },
+    {
+      "sequence": 273,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 0.9760699756334353,
+      "ready_offset_s": 1083.7021813033791
+    },
+    {
+      "sequence": 274,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 0.8532459771833506,
+      "ready_offset_s": 1087.0783480426483
+    },
+    {
+      "sequence": 275,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 0.7019834086453541,
+      "ready_offset_s": 1089.8559914176699
+    },
+    {
+      "sequence": 276,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 1.0759892687843187,
+      "ready_offset_s": 1094.1135200532833
+    },
+    {
+      "sequence": 277,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 0.09037309732021896,
+      "ready_offset_s": 1094.4711128851939
+    },
+    {
+      "sequence": 278,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 0.16231318354124796,
+      "ready_offset_s": 1095.1133618805256
+    },
+    {
+      "sequence": 279,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 0.08105061274707409,
+      "ready_offset_s": 1095.4340670350432
+    },
+    {
+      "sequence": 280,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 1.1916124370773342,
+      "ready_offset_s": 1100.1490992575689
+    },
+    {
+      "sequence": 281,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 1.3116822161624972,
+      "ready_offset_s": 1105.3392296409754
+    },
+    {
+      "sequence": 282,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 0.31744396338174885,
+      "ready_offset_s": 1106.5953079342353
+    },
+    {
+      "sequence": 283,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 3.0090218663914623,
+      "ready_offset_s": 1118.5015574973215
+    },
+    {
+      "sequence": 284,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 0.6791026866728869,
+      "ready_offset_s": 1121.1886652770288
+    },
+    {
+      "sequence": 285,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 1.6498213528811434,
+      "ready_offset_s": 1127.7167616598804
+    },
+    {
+      "sequence": 286,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 0.5204071910591865,
+      "ready_offset_s": 1129.7759350944045
+    },
+    {
+      "sequence": 287,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 0.34704822623476916,
+      "ready_offset_s": 1131.1491530288201
+    },
+    {
+      "sequence": 288,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 0.31064377977305346,
+      "ready_offset_s": 1132.3783240124242
+    },
+    {
+      "sequence": 289,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 2.79054988411876,
+      "ready_offset_s": 1143.4201126114563
+    },
+    {
+      "sequence": 290,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 1.5309357526162255,
+      "ready_offset_s": 1149.4777964519394
+    },
+    {
+      "sequence": 291,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 0.4473951343224237,
+      "ready_offset_s": 1151.2480720960116
+    },
+    {
+      "sequence": 292,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 1.732291114580517,
+      "ready_offset_s": 1158.1024889935686
+    },
+    {
+      "sequence": 293,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 1.290069265426809,
+      "ready_offset_s": 1163.2071001628651
+    },
+    {
+      "sequence": 294,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 0.22073276847359533,
+      "ready_offset_s": 1164.0805067198435
+    },
+    {
+      "sequence": 295,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 1.1612529042758557,
+      "ready_offset_s": 1168.6754108109685
+    },
+    {
+      "sequence": 296,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 2.1930540189175147,
+      "ready_offset_s": 1177.3529976195598
+    },
+    {
+      "sequence": 297,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 0.7995882047191567,
+      "ready_offset_s": 1180.5168485770482
+    },
+    {
+      "sequence": 298,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 1.1594860429495757,
+      "ready_offset_s": 1185.1047614621177
+    },
+    {
+      "sequence": 299,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 0.4010616482062145,
+      "ready_offset_s": 1186.6917024302313
+    },
+    {
+      "sequence": 300,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 0.21972082494981465,
+      "ready_offset_s": 1187.5611048780097
+    },
+    {
+      "sequence": 301,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 0.2111800811027462,
+      "ready_offset_s": 1188.3967128795487
+    },
+    {
+      "sequence": 302,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 0.4519955817725348,
+      "ready_offset_s": 1190.1851918062405
+    },
+    {
+      "sequence": 303,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 1.0845096969125836,
+      "ready_offset_s": 1194.4764345018323
+    },
+    {
+      "sequence": 304,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 2.1574383126993535,
+      "ready_offset_s": 1203.0130952868092
+    },
+    {
+      "sequence": 305,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 0.2969589030323681,
+      "ready_offset_s": 1204.1881172595554
+    },
+    {
+      "sequence": 306,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 0.7511338142692401,
+      "ready_offset_s": 1207.160241439792
+    },
+    {
+      "sequence": 307,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 0.09851637974628186,
+      "ready_offset_s": 1207.5500560225346
+    },
+    {
+      "sequence": 308,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 0.7279446936310047,
+      "ready_offset_s": 1210.4304243200536
+    },
+    {
+      "sequence": 309,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 1.3882552528115317,
+      "ready_offset_s": 1215.9235427589242
+    },
+    {
+      "sequence": 310,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 2.425026735800807,
+      "ready_offset_s": 1225.5190109195548
+    },
+    {
+      "sequence": 311,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 0.688323723742339,
+      "ready_offset_s": 1228.2426049640533
+    },
+    {
+      "sequence": 312,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 1.3942950588523773,
+      "ready_offset_s": 1233.7596220122487
+    },
+    {
+      "sequence": 313,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 1.7535038154248686,
+      "ready_offset_s": 1240.6979743949482
+    },
+    {
+      "sequence": 314,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 3.822768262499012,
+      "ready_offset_s": 1255.8240967616634
+    },
+    {
+      "sequence": 315,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 2.952607456645407,
+      "ready_offset_s": 1267.507122941466
+    },
+    {
+      "sequence": 316,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 2.377555440697241,
+      "ready_offset_s": 1276.9147542861203
+    },
+    {
+      "sequence": 317,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 0.023520575526845756,
+      "ready_offset_s": 1277.007821686267
+    },
+    {
+      "sequence": 318,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 3.2146280177155506,
+      "ready_offset_s": 1289.7276240442707
+    },
+    {
+      "sequence": 319,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 6.148717870460224,
+      "ready_offset_s": 1314.0571811925217
+    },
+    {
+      "sequence": 320,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 0.06704326280637929,
+      "ready_offset_s": 1314.322461357951
+    },
+    {
+      "sequence": 321,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 1.055850861746339,
+      "ready_offset_s": 1318.5003053283663
+    },
+    {
+      "sequence": 322,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 0.2993320370281253,
+      "ready_offset_s": 1319.6847174374607
+    },
+    {
+      "sequence": 323,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 1.1738115552905466,
+      "ready_offset_s": 1324.329314232659
+    },
+    {
+      "sequence": 324,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 1.191742131136934,
+      "ready_offset_s": 1329.0448596351844
+    },
+    {
+      "sequence": 325,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 0.32467568515947964,
+      "ready_offset_s": 1330.3295527701036
+    },
+    {
+      "sequence": 326,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 0.569591509198606,
+      "ready_offset_s": 1332.5833411965953
+    },
+    {
+      "sequence": 327,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 0.12024450545116357,
+      "ready_offset_s": 1333.0591307235782
+    },
+    {
+      "sequence": 328,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 1.8248916970956446,
+      "ready_offset_s": 1340.2799542788691
+    },
+    {
+      "sequence": 329,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 0.006274983574535563,
+      "ready_offset_s": 1340.3047834505269
+    },
+    {
+      "sequence": 330,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 2.629475063789585,
+      "ready_offset_s": 1350.7092230722753
+    },
+    {
+      "sequence": 331,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 3.0944550624874494,
+      "ready_offset_s": 1362.9535190168294
+    },
+    {
+      "sequence": 332,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 3.2164691003905883,
+      "ready_offset_s": 1375.680606263667
+    },
+    {
+      "sequence": 333,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 1.0841302630786296,
+      "ready_offset_s": 1379.9703475963174
+    },
+    {
+      "sequence": 334,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 0.35877365299388675,
+      "ready_offset_s": 1381.3899612910254
+    },
+    {
+      "sequence": 335,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 0.28725915859397305,
+      "ready_offset_s": 1382.5266028255064
+    },
+    {
+      "sequence": 336,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 0.594785847676096,
+      "ready_offset_s": 1384.88008148185
+    },
+    {
+      "sequence": 337,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 1.2373833932945117,
+      "ready_offset_s": 1389.7762225336435
+    },
+    {
+      "sequence": 338,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 0.28894126937388526,
+      "ready_offset_s": 1390.9195199289416
+    },
+    {
+      "sequence": 339,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 0.007158442957388902,
+      "ready_offset_s": 1390.9478448172667
+    },
+    {
+      "sequence": 340,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 0.400348983332679,
+      "ready_offset_s": 1392.5319658770459
+    },
+    {
+      "sequence": 341,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 1.8745727665470397,
+      "ready_offset_s": 1399.9493699949628
+    },
+    {
+      "sequence": 342,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 1.508943734165028,
+      "ready_offset_s": 1405.9200347070705
+    },
+    {
+      "sequence": 343,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 0.5249694986229458,
+      "ready_offset_s": 1407.9972605103874
+    },
+    {
+      "sequence": 344,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 2.10309258135789,
+      "ready_offset_s": 1416.318883363182
+    },
+    {
+      "sequence": 345,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 1.751010081942871,
+      "ready_offset_s": 1423.2473684154006
+    },
+    {
+      "sequence": 346,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 0.045475970242491344,
+      "ready_offset_s": 1423.427310029278
+    },
+    {
+      "sequence": 347,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 0.060386109634841804,
+      "ready_offset_s": 1423.6662488351028
+    },
+    {
+      "sequence": 348,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 0.6172774634453074,
+      "ready_offset_s": 1426.1087234517006
+    },
+    {
+      "sequence": 349,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 0.32431687258222763,
+      "ready_offset_s": 1427.3919968189075
+    },
+    {
+      "sequence": 350,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 0.012817986372380609,
+      "ready_offset_s": 1427.4427156742108
+    },
+    {
+      "sequence": 351,
+      "source_group": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 1.0657452639244704,
+      "ready_offset_s": 1431.6597103144588
+    },
+    {
+      "sequence": 352,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 5,
+      "unit_exponential_gap": 0.7854362939216497,
+      "ready_offset_s": 1434.7675642771658
+    },
+    {
+      "sequence": 353,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 5,
+      "unit_exponential_gap": 3.336454636949014,
+      "ready_offset_s": 1447.9694163498032
+    },
+    {
+      "sequence": 354,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 5,
+      "unit_exponential_gap": 1.5845274352234577,
+      "ready_offset_s": 1454.239154464386
+    },
+    {
+      "sequence": 355,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 5,
+      "unit_exponential_gap": 0.2759137461417585,
+      "ready_offset_s": 1455.3309038983605
+    },
+    {
+      "sequence": 356,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 5,
+      "unit_exponential_gap": 2.219092342497851,
+      "ready_offset_s": 1464.111520459648
+    },
+    {
+      "sequence": 357,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 5,
+      "unit_exponential_gap": 0.6424221971388316,
+      "ready_offset_s": 1466.6534890273854
+    },
+    {
+      "sequence": 358,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 5,
+      "unit_exponential_gap": 0.8170500570935597,
+      "ready_offset_s": 1469.886433923514
+    },
+    {
+      "sequence": 359,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 5,
+      "unit_exponential_gap": 0.5044513546500559,
+      "ready_offset_s": 1471.8824724993663
+    },
+    {
+      "sequence": 360,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 6,
+      "unit_exponential_gap": 0.022087749495851086,
+      "ready_offset_s": 1471.96987042117
+    },
+    {
+      "sequence": 361,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 6,
+      "unit_exponential_gap": 1.0707659349550132,
+      "ready_offset_s": 1476.2067311059063
+    },
+    {
+      "sequence": 362,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 6,
+      "unit_exponential_gap": 0.16195331760114898,
+      "ready_offset_s": 1476.8475561655266
+    },
+    {
+      "sequence": 363,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 6,
+      "unit_exponential_gap": 0.7295403624175235,
+      "ready_offset_s": 1479.7342382858212
+    },
+    {
+      "sequence": 364,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 6,
+      "unit_exponential_gap": 0.6798563742282404,
+      "ready_offset_s": 1482.4243282944803
+    },
+    {
+      "sequence": 365,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 6,
+      "unit_exponential_gap": 0.9563512958522998,
+      "ready_offset_s": 1486.2084673615898
+    },
+    {
+      "sequence": 366,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 6,
+      "unit_exponential_gap": 1.243951298991514,
+      "ready_offset_s": 1491.1305966340767
+    },
+    {
+      "sequence": 367,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 6,
+      "unit_exponential_gap": 2.240838738556321,
+      "ready_offset_s": 1499.9972604326615
+    },
+    {
+      "sequence": 368,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 7,
+      "unit_exponential_gap": 0.12085229066541323,
+      "ready_offset_s": 1500.4754548748504
+    },
+    {
+      "sequence": 369,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 7,
+      "unit_exponential_gap": 0.4314133291219761,
+      "ready_offset_s": 1502.1824929056268
+    },
+    {
+      "sequence": 370,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 7,
+      "unit_exponential_gap": 0.08310257484264134,
+      "ready_offset_s": 1502.5113173673108
+    },
+    {
+      "sequence": 371,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 7,
+      "unit_exponential_gap": 0.9204570183564549,
+      "ready_offset_s": 1506.1534281459171
+    },
+    {
+      "sequence": 372,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 7,
+      "unit_exponential_gap": 0.08093434043081037,
+      "ready_offset_s": 1506.4736732282663
+    },
+    {
+      "sequence": 373,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 7,
+      "unit_exponential_gap": 0.6288770654671854,
+      "ready_offset_s": 1508.9620457354868
+    },
+    {
+      "sequence": 374,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 7,
+      "unit_exponential_gap": 0.571475516951183,
+      "ready_offset_s": 1511.2232888989251
+    },
+    {
+      "sequence": 375,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 7,
+      "unit_exponential_gap": 2.4742906197039063,
+      "ready_offset_s": 1521.0136868813522
+    },
+    {
+      "sequence": 376,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 0,
+      "turn": 8,
+      "unit_exponential_gap": 5.454712916445235,
+      "ready_offset_s": 1542.5971702064742
+    },
+    {
+      "sequence": 377,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 1,
+      "turn": 8,
+      "unit_exponential_gap": 4.605017640174788,
+      "ready_offset_s": 1560.8185363848756
+    },
+    {
+      "sequence": 378,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 2,
+      "turn": 8,
+      "unit_exponential_gap": 2.363924631152155,
+      "ready_offset_s": 1570.1722326544802
+    },
+    {
+      "sequence": 379,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 3,
+      "turn": 8,
+      "unit_exponential_gap": 0.1518513753508576,
+      "ready_offset_s": 1570.7730858392374
+    },
+    {
+      "sequence": 380,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 4,
+      "turn": 8,
+      "unit_exponential_gap": 3.226775875872508,
+      "ready_offset_s": 1583.5409554554053
+    },
+    {
+      "sequence": 381,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 5,
+      "turn": 8,
+      "unit_exponential_gap": 0.7404981847759812,
+      "ready_offset_s": 1586.4709960401647
+    },
+    {
+      "sequence": 382,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 6,
+      "turn": 8,
+      "unit_exponential_gap": 0.12807444638859425,
+      "ready_offset_s": 1586.9777674725656
+    },
+    {
+      "sequence": 383,
+      "source_group": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "tenant": 7,
+      "turn": 8,
+      "unit_exponential_gap": 0.008298841806592388,
+      "ready_offset_s": 1587.0106047486045
+    }
+  ]
+}

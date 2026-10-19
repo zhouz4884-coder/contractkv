@@ -1,0 +1,717 @@
+{
+  "schema": "task-template-formal-service.v1",
+  "jobs": [
+    {
+      "id": "Qwen3-8B-common80-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r1-Raw-authorized.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 0,
+      "port": 10100
+    },
+    {
+      "id": "Qwen3-8B-common80-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r2-Session-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 0,
+      "port": 10101
+    },
+    {
+      "id": "Qwen3-8B-common80-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r1-Session-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 1,
+      "port": 10102
+    },
+    {
+      "id": "Qwen3-8B-common80-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r2-Template-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 1,
+      "port": 10103
+    },
+    {
+      "id": "Qwen3-8B-common80-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r1-Template-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 2,
+      "port": 10104
+    },
+    {
+      "id": "Qwen3-8B-common80-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r2-Raw-authorized.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 2,
+      "port": 10105
+    },
+    {
+      "id": "Qwen3-8B-high100-r1-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r1.json",
+      "repeat": 1,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r1-Raw-authorized.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 3,
+      "port": 10106
+    },
+    {
+      "id": "Qwen3-8B-high100-r2-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r2.json",
+      "repeat": 2,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r2-Session-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 3,
+      "port": 10107
+    },
+    {
+      "id": "Qwen3-8B-high100-r1-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r1.json",
+      "repeat": 1,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r1-Session-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 4,
+      "port": 10108
+    },
+    {
+      "id": "Qwen3-8B-high100-r2-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r2.json",
+      "repeat": 2,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r2-Template-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 4,
+      "port": 10109
+    },
+    {
+      "id": "Qwen3-8B-high100-r1-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r1.json",
+      "repeat": 1,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r1-Template-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 5,
+      "port": 10110
+    },
+    {
+      "id": "Qwen3-8B-high100-r2-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r2.json",
+      "repeat": 2,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r2-Raw-authorized.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 5,
+      "port": 10111
+    },
+    {
+      "id": "Qwen3-8B-common80-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r3-Template-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 6,
+      "port": 10112
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r1-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r1-Raw-authorized.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 6,
+      "port": 10113
+    },
+    {
+      "id": "Qwen3-8B-common80-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r3-Raw-authorized.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 7,
+      "port": 10114
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r1-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r1-Session-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 7,
+      "port": 10115
+    },
+    {
+      "id": "Qwen3-8B-common80-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.2527262552702176,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-common80-r3-Session-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 8,
+      "port": 10116
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r1.json",
+      "repeat": 1,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r1-Template-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 8,
+      "port": 10117
+    },
+    {
+      "id": "Qwen3-8B-high100-r3-Template-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r3.json",
+      "repeat": 3,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r3-Template-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 9,
+      "port": 10118
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r3-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r3-Template-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 9,
+      "port": 10119
+    },
+    {
+      "id": "Qwen3-8B-high100-r3-Raw-authorized",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r3.json",
+      "repeat": 3,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r3-Raw-authorized.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 10,
+      "port": 10120
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r3-Raw-authorized.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 10,
+      "port": 10121
+    },
+    {
+      "id": "Qwen3-8B-high100-r3-Session-qualified",
+      "model": "Qwen3-8B",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Qwen3-8B-high100-r3.json",
+      "repeat": 3,
+      "load": "high100",
+      "arrival_rate_rps": 0.31590781908777193,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Qwen3-8B-high100-r3-Session-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 11,
+      "port": 10122
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r3.json",
+      "repeat": 3,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r3-Session-qualified.json",
+      "lane": 1,
+      "attempt": 1,
+      "wave": 11,
+      "port": 10123
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Session-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r2-Session-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 12,
+      "port": 10124
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Template-qualified",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r2-Template-qualified.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 13,
+      "port": 10125
+    },
+    {
+      "id": "Mistral-7B-Instruct-v0.3-common80-r2-Raw-authorized",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "phase": "formal",
+      "policy": "Raw-authorized",
+      "input_set": "validation",
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+      "arrivals": "formal_arrivals_v1/Mistral-7B-Instruct-v0.3-common80-r2.json",
+      "repeat": 2,
+      "load": "common80",
+      "arrival_rate_rps": 0.19345737145485406,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "snapshot": "formal_freeze_v1/source_snapshot",
+      "job_file": "formal_jobs_v1/Mistral-7B-Instruct-v0.3-common80-r2-Raw-authorized.json",
+      "lane": 0,
+      "attempt": 1,
+      "wave": 14,
+      "port": 10126
+    }
+  ],
+  "Raw_only_profiles": {
+    "Qwen3-8B": {
+      "Raw_rate": 0.31590781908777193,
+      "Raw_epoch_wall_s": 253.23842958686873,
+      "Raw_intrinsic_TTFT_p95_ms": 6819.833386247046,
+      "Raw_intrinsic_E2E_p95_ms": 8502.540630451404,
+      "SLO": {
+        "TTFT_ms": 10500,
+        "E2E_ms": 13000
+      },
+      "source_summary_sha256": "db773fb3527ac71a9e22b377e50838c4a62269969afba99a120cee3c5f5d963c",
+      "calibration_cell": "runs/Qwen3-8B-Raw-calibration/attempt1"
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "Raw_rate": 0.24182171431856755,
+      "Raw_epoch_wall_s": 330.82223499007523,
+      "Raw_intrinsic_TTFT_p95_ms": 7078.939680871554,
+      "Raw_intrinsic_E2E_p95_ms": 11959.869028488174,
+      "SLO": {
+        "TTFT_ms": 11000,
+        "E2E_ms": 18000
+      },
+      "source_summary_sha256": "4ed20eeb54382c47c94353759e560865bfa126fdda08321c57075ca9c170a118",
+      "calibration_cell": "runs/Mistral-7B-Instruct-v0.3-Raw-calibration/attempt1"
+    }
+  },
+  "same_GPU_within_model_repeat": true,
+  "common_load_is_model_normalized_not_cross_model_absolute_rate": true,
+  "all_source_templates_included": 6,
+  "requests_per_cell": 384,
+  "Qwen_two_loads_three_repeats": true,
+  "optional_models_one_load_three_repeats": true,
+  "paired_arrivals_equal_across_policies": true,
+  "independent_formal_model_outputs_before_freeze": 0,
+  "measurement_contract_sha256": "b49b5acf30d71200751a09e2a8a392342a733e5d9b9c0aa63b76e691e887b316",
+  "no_outcome_based_sources_loads_SLO_or_job_selection": true,
+  "source_sha256": "41d97febe2cd4bbe35d3fecc88e3c26330eb944eb245d79a067d9fcfb92e8803"
+}

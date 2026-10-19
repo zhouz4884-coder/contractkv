@@ -1,0 +1,44 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "Qwen3-8B-Raw-calibration",
+    "model": "Qwen3-8B",
+    "phase": "calibration",
+    "policy": "Raw-authorized",
+    "input_set": "development",
+    "eligible_families": [],
+    "qualification_hash": "469371c8a09c1194221d26499ec2a0f7297ee76df3e051fb80b6ae62c891120d",
+    "arrivals": "calibration_arrivals_v1.json",
+    "repeat": 1,
+    "load": "backlog80",
+    "snapshot": "calibration_freeze_v1/source_snapshot",
+    "job_file": "calibration_jobs_v1/Qwen3-8B-Raw-calibration.json",
+    "lane": 0,
+    "port": 10010,
+    "attempt": 1
+  },
+  "summary_sha256": "db773fb3527ac71a9e22b377e50838c4a62269969afba99a120cee3c5f5d963c",
+  "held_peer_server_until_both_measured_clients_complete": true,
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "48169c03b57e54338bab8597dbc622c7e01bd3d9b78c678c6233099bbed459d6",
+      "bytes": 132941
+    },
+    {
+      "path": "responses.jsonl",
+      "sha256": "4c802f12aa0e98d04591c87a09f0cde60007da7e1acf7c526e2a22467cf30393",
+      "bytes": 4251107
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "c1eb7750db69f0e7cd9e7a926fa2eff625e23e19035e5baefefa421d6b68a749",
+      "bytes": 759261
+    },
+    {
+      "path": "client.log",
+      "sha256": "f59f7181d9184cb3111b1382803cb105a14cd60d5c910c2410a45c675806a942",
+      "bytes": 2201
+    }
+  ]
+}

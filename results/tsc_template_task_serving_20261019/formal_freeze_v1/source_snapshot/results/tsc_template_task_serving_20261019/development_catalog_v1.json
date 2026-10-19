@@ -1,0 +1,46 @@
+{
+  "schema": "task-template-independent-development-catalog.v1",
+  "models": {
+    "Qwen3-8B": {
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "levels": {
+        "HotpotQA": "L3",
+        "RepoBench": "L0"
+      },
+      "summary_sha256": "9c67a5f5c345598060abd8e870ff454e177815c52503a67454592945eeffc824",
+      "independent_recompute": "results/tsc_template_task_serving_20261019/local_independent_recompute_Qwen_v4.json",
+      "all_development_score_down": 0,
+      "production_boundary": "Deployment-qualified finite fixed-question metadata schema, not Raw-equivalence certification"
+    },
+    "Mistral-7B-Instruct-v0.3": {
+      "eligible_families": [
+        "HotpotQA"
+      ],
+      "levels": {
+        "HotpotQA": "L3",
+        "RepoBench": "L0"
+      },
+      "summary_sha256": "b43e468d7a0682c810e90595e27a67798bb6044af30f46674c32ff43fea55484",
+      "independent_recompute": "results/tsc_template_task_serving_20261019/local_independent_recompute_Mistral-7B-Instruct-v0.3_v5.json",
+      "all_development_score_down": 6,
+      "production_boundary": "Deployment-qualified finite fixed-question metadata schema, not Raw-equivalence certification"
+    },
+    "Llama-3.1-8B-Instruct": {
+      "eligible_families": [],
+      "levels": {
+        "HotpotQA": "L0",
+        "RepoBench": "L0"
+      },
+      "summary_sha256": "dc9c025a3f6cf379e2166fb4bc9f24ab5ebdd35959518109a5fca409bfe69aa5",
+      "independent_recompute": "results/tsc_template_task_serving_20261019/local_independent_recompute_Llama-3.1-8B-Instruct_v5.json",
+      "all_development_score_down": 6,
+      "production_boundary": "Deployment-qualified finite fixed-question metadata schema, not Raw-equivalence certification"
+    }
+  },
+  "formal_sources_unconsumed": true,
+  "all_sources_and_negative_results_retained": true,
+  "decision": "Qwen primary formal and Mistral conditional formal, HotpotQA only. All Repo families remain Raw; Llama no formal cells.",
+  "no_threshold_or_source_reselection": true
+}
