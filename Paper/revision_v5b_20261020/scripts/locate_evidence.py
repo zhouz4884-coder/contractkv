@@ -20,7 +20,7 @@ def group(text,pos):
         elif text[pos]=='}':depth-=1
         pos+=1
     return text[start:pos-1],pos
-for doc,stem in [('main','contractkv_tsc_story_v4'),('supplement','contractkv_supplement')]:
+for doc,stem in [('main','contractkv_tsc_v5b'),('supplement','contractkv_supplement')]:
     labels=[]
     for line in (root/(stem+'.aux')).read_text(encoding='utf-8').splitlines():
         if not line.startswith(r'\newlabel{'):continue
@@ -58,7 +58,13 @@ topics=[('R2.6 input displacement','supplement','tab:s-displacement'),('R3.1 raw
  ('separate five-family structural controls','supplement','tab:s-five-family-structure'),
  ('same-source structural input comparison','supplement','tab:s-structure-paired'),
  ('original matched-request RPC accounting and missing timers','supplement','tab:s-matched-original-cost'),
- ('actual deployment-client binding boundary','supplement','tab:s-client-binding')]
+ ('actual deployment-client binding boundary','supplement','tab:s-client-binding'),
+ ('all-route native cache authorization','main','tab:physical-authorization'),
+ ('growing-history actual raw orders','supplement','tab:s-growing-orders'),
+ ('growing-history five-family measurements','supplement','tab:s-growing-structure'),
+ ('original fixed-model RULER intervals','supplement','tab:s-ruler-ci'),
+ ('completed independent task arrivals','supplement','tab:s-task-arrivals'),
+ ('bounded fusion/residency exploration','supplement','tab:s-fusion-residency')]
 with (root/'audit/paper_evidence_topics.csv').open('w',encoding='utf-8',newline='') as f:
     w=csv.DictWriter(f,fieldnames=['topic']+list(records[0]));w.writeheader()
     for topic,doc,label in topics:w.writerow({'topic':topic,**look[(doc,label)]})

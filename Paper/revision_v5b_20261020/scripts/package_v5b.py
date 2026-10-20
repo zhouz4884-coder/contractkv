@@ -7,7 +7,8 @@ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a
 target=a.output.resolve();assert not target.exists(),'Use a new archive path.'
 audit_names={'manuscript_QA_v5b.json','independent_reproduction_v5b.json','fig4_contract_v5b.md',
              'original_package_integrity_v1.json','manual_visual_review_v1.json',
-             'V5a_to_V5b_source.diff','evidence_locations_v5b.json'}
+             'V5a_to_V5b_source.diff','evidence_locations_v5b.json',
+             'evidence_locations.csv','paper_evidence_topics.csv'}
 members=[]
 for item in sorted(root.rglob('*')):
     if not item.is_file():continue
