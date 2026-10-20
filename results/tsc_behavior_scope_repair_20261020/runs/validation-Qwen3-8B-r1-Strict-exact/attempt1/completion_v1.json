@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "validation-Qwen3-8B-r1-Strict-exact",
+    "phase": "validation",
+    "model": "Qwen3-8B",
+    "policy": "Strict-exact",
+    "repeat": 1,
+    "lane": 0,
+    "wave": 2,
+    "port": 11334,
+    "input_set": "validation",
+    "accesses": 8,
+    "expected_business": 64,
+    "snapshot": "validation_freeze_v4/source_snapshot",
+    "job_file": "validation_jobs_v4/validation-Qwen3-8B-r1-Strict-exact.json"
+  },
+  "summary_sha256": "8a0c9776e0097be83aa5fa94870e3b6ca8e7b754dd4923c7090e2659b3f857b0",
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "8431e855cf53f746a0b2f3e437821ea4c7c975efa9f4b1cc32a126dfff31b3f4",
+      "bytes": 105663
+    },
+    {
+      "path": "summary_v1.json",
+      "sha256": "8a0c9776e0097be83aa5fa94870e3b6ca8e7b754dd4923c7090e2659b3f857b0",
+      "bytes": 1542
+    },
+    {
+      "path": "measured_backend_drain_v1.json",
+      "sha256": "19cfbf68d974a82416d673a5ad36f20d3f0cf8675820dd18fb96dc010776b64a",
+      "bytes": 440
+    },
+    {
+      "path": "launch_v1.json",
+      "sha256": "b09997aac1bb2f1c115c46860ef4e64d2e8bc4e2e851e4d4f63e3722767d6b92",
+      "bytes": 4126
+    },
+    {
+      "path": "server_process_v1.json",
+      "sha256": "f45344a41eed35f8772a7088d1e776f4d4078a7a96372fb5245a5693dc957a6d",
+      "bytes": 49
+    },
+    {
+      "path": "responses.jsonl",
+      "sha256": "e4159e76fb7db822c54b8b00cb4d6713fe435d3a416bd2a034a685530ddc50a1",
+      "bytes": 4391470
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "b1a196741441523f09d7daf0633b52fc274d549055008bfa38970311c12e7c20",
+      "bytes": 1509100
+    },
+    {
+      "path": "client.log",
+      "sha256": "a62d288c556160406f4f9683e6906ec1cdf206f96621fcc6419dafefd846c406",
+      "bytes": 1384
+    }
+  ]
+}

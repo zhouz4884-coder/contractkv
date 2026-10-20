@@ -1,0 +1,48 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "validation-Mistral-7B-Instruct-v0.3-r1-Raw-authorized",
+    "phase": "validation",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "policy": "Raw-authorized",
+    "repeat": 1,
+    "lane": 1,
+    "wave": 0,
+    "port": 11331,
+    "input_set": "validation",
+    "accesses": 8,
+    "expected_business": 64,
+    "snapshot": "validation_freeze_v4/source_snapshot",
+    "job_file": "validation_jobs_v4/validation-Mistral-7B-Instruct-v0.3-r1-Raw-authorized.json"
+  },
+  "execution_complete": true,
+  "offered": 64,
+  "successful": 64,
+  "service_begin_time": 4223471.175076994,
+  "service_end_time": 4223728.805513396,
+  "wall_s": 257.6304364018142,
+  "compiled_business": 0,
+  "actual_verification_RPCs": 0,
+  "certificate_objects": 0,
+  "certificate_PASS": 0,
+  "full_controller_ms": 0,
+  "ready_TTFT_ms": {
+    "mean": 2776.14915498998,
+    "p95": 4747.012801142409,
+    "p99": 4755.404878882691
+  },
+  "backend_TTFT_ms": {
+    "mean": 2714.8964208899997,
+    "p95": 4669.691875344142,
+    "p99": 4674.4777047634125
+  },
+  "native_new_prefill_by_kind": {
+    "business": 638080,
+    "reference_generation": 0,
+    "verification": 0
+  },
+  "failed_reasons": {},
+  "actual_prompt_IDs_checked": 64,
+  "raw_file_sha256": "df80212c9f2c23ae30342ac4e924032452d9ce9d023a3e9b466d19dea40451c4",
+  "boundary": "Closed backlog; repeated exact scope, no arbitrary metadata equivalence or open-arrival Goodput claim"
+}
