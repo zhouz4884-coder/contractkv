@@ -1,0 +1,269 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T08:46:13.959787+00:00",
+  "mode": "triage-only; experiment evidence audit, not submission readiness",
+  "actual_reviewer_source_sha256": "e5b12656164650d7d9d13fd9377ded67b346b7963d5893735d84354173fea03d",
+  "HotpotQA_actual_future_pairs": 2430,
+  "HotpotQA_original_CI_replay": [
+    {
+      "slack_ms": 0,
+      "model_count": 3,
+      "identical_sessions": 30,
+      "net_mean_ttft_reduction_macro": 0.05242123050386102,
+      "ci95_low": -0.02162240595594358,
+      "ci95_high": 0.12563837112948661,
+      "bootstrap_samples": 10000,
+      "estimand": "mean effect of the three fixed models on this shared scope",
+      "resampling": "same source sessions jointly across models; fresh repeats within model",
+      "not_an_architecture_population_prediction_interval": true
+    },
+    {
+      "slack_ms": 2000,
+      "model_count": 3,
+      "identical_sessions": 30,
+      "net_mean_ttft_reduction_macro": 0.25727195250418666,
+      "ci95_low": 0.18420654311753476,
+      "ci95_high": 0.33147295438908414,
+      "bootstrap_samples": 10000,
+      "estimand": "mean effect of the three fixed models on this shared scope",
+      "resampling": "same source sessions jointly across models; fresh repeats within model",
+      "not_an_architecture_population_prediction_interval": true
+    },
+    {
+      "slack_ms": 6000,
+      "model_count": 3,
+      "identical_sessions": 30,
+      "net_mean_ttft_reduction_macro": 0.4129585993175728,
+      "ci95_low": 0.3537455881549129,
+      "ci95_high": 0.4745454791884363,
+      "bootstrap_samples": 10000,
+      "estimand": "mean effect of the three fixed models on this shared scope",
+      "resampling": "same source sessions jointly across models; fresh repeats within model",
+      "not_an_architecture_population_prediction_interval": true
+    }
+  ],
+  "HotpotQA_RULER_CIs_are_distinct_studies": true,
+  "TableIII_same_cohort_full_cost_verified": true,
+  "inherited_evidence_checks": [
+    {
+      "reviewer_item": "R1.2a",
+      "path": "docs/tsc_major_revision_phase1_summary_zh.md",
+      "sha256": "c7ab61bc0fbc89c06526b7554174c674e6805340834cf93177104dcfe60099bf",
+      "bytes": 9490
+    },
+    {
+      "reviewer_item": "R1.2a",
+      "path": "results/tsc_revision_r1/common_hotpot_shared_cluster_ci_v1.csv",
+      "sha256": "524602079e9f76b36f4484a0f99e6e17607242989ab66b63543f1869d3977906",
+      "bytes": 810
+    },
+    {
+      "reviewer_item": "R1.2b",
+      "path": "docs/ContractKV_Original_RULER_CI_Closure_20261020.md",
+      "sha256": "f413e2daa3624ab5b267de0202e7b4cc97b8032a5ab23ca7a08078e8cbe010e3",
+      "bytes": 7837
+    },
+    {
+      "reviewer_item": "R1.2b",
+      "path": "results/tsc_ruler_ci_recheck_20261020/recheck_receipt_v1.json",
+      "sha256": "196d9466103ac1ce384b7399f000b0696c0abe9ae53e9f2f1e4745731e900373",
+      "bytes": 12231
+    },
+    {
+      "reviewer_item": "R1.3",
+      "path": "docs/tsc_revision_reviewer_experiment_response_zh.md",
+      "sha256": "5bc6c5e878194c1d7427fa4bbfb5b599e60a79ebf8d5fafec501fe248a45a5c7",
+      "bytes": 24384
+    },
+    {
+      "reviewer_item": "R1.4_free_running",
+      "path": "docs/ContractKV_Behavior_Scope_Repair_Report_20261020.md",
+      "sha256": "d7b8f0e0b82ccf20dabe974058378ceb90ad59e320b57ef1861966e39d38f8c3",
+      "bytes": 16772
+    },
+    {
+      "reviewer_item": "R1.4_free_running",
+      "path": "results/tsc_behavior_scope_repair_20261020/all_local_independent_recompute_v1.json",
+      "sha256": "44cdfe195719257619d397951bc84b713db416d854ffa0c4d84157d23908f4b4",
+      "bytes": 663
+    },
+    {
+      "reviewer_item": "R1.4_horizon",
+      "path": "results/tsc_revision_r2/post_long_extent_v4_original_freeze_audit_v1.json",
+      "sha256": "9f10bde7e5f2121f9f286b685817f2e73fc6c624e249c6ebcb6d59ddaf510476",
+      "bytes": 34874
+    },
+    {
+      "reviewer_item": "R1.4_horizon",
+      "path": "docs/tsc_revision_reviewer_experiment_response_zh.md",
+      "sha256": "5bc6c5e878194c1d7427fa4bbfb5b599e60a79ebf8d5fafec501fe248a45a5c7",
+      "bytes": 24384
+    },
+    {
+      "reviewer_item": "R1.5_and_isolation",
+      "path": "docs/ContractKV_Authorization_Task_Repair_Report_20261019.md",
+      "sha256": "fe1b79dcbcd4d533474bc911186389304560f97a9ee93117af2a8e9baede642c",
+      "bytes": 13260
+    },
+    {
+      "reviewer_item": "R1.5_and_isolation",
+      "path": "results/tsc_authorization_task_repair_20261019/local_independent_recompute_v1.json",
+      "sha256": "72a0045099119507e1fb8e2ad6c09498b7034f1324b2df6643aba2124ccb850c",
+      "bytes": 1410
+    },
+    {
+      "reviewer_item": "R1.6_limit_option",
+      "path": "docs/ContractKV_Trust_Model_and_Enforcement_Boundary_Matrix.md",
+      "sha256": "b7d364c80ff56ebd32f364fc1f4b72305d434d35d115fd43a5aabed46e972eb6",
+      "bytes": 9475
+    },
+    {
+      "reviewer_item": "R2.3_reproducibility",
+      "path": "results/tsc_behavior_scope_repair_20261020/validation_preflight_v4.json",
+      "sha256": "9b82634491ba5122a998f08af9f7138941904c793fe5b41bb3946caf73bbec09",
+      "bytes": 1149
+    },
+    {
+      "reviewer_item": "R2.3_reproducibility",
+      "path": "results/tsc_behavior_scope_repair_20261020/validation_conformance_v1.json",
+      "sha256": "2063b8c5c727224408a782899c2a8d59626ee8dc3de4e8ed3cdded187995c5ed",
+      "bytes": 12337
+    },
+    {
+      "reviewer_item": "R2.6_displacement",
+      "path": "docs/ContractKV_Reviewer_Experimental_Closure_Matrix.md",
+      "sha256": "6f51fb24a692b92e3b953a06778a3c3194dcf121ac561dcefdcd9cf08292d174",
+      "bytes": 19026
+    },
+    {
+      "reviewer_item": "R2.6_displacement",
+      "path": "docs/ContractKV_Five_Family_Raw_Order_Evidence_20261018.md",
+      "sha256": "5f2e401953749ffc17d134f87c99096aa7ef7466ced2294dbba805a0afb550a6",
+      "bytes": 8174
+    },
+    {
+      "reviewer_item": "R3.1_input_order",
+      "path": "docs/tsc_TableI_independent_measurement_completed_20261018_zh.md",
+      "sha256": "ca03cbcedfdffd1516aac8235af18e7a06151e2bd7ea9261b1084786afe00c0a",
+      "bytes": 10223
+    },
+    {
+      "reviewer_item": "R3.1_input_order",
+      "path": "docs/ContractKV_Five_Family_Raw_Order_Evidence_20261018.md",
+      "sha256": "5f2e401953749ffc17d134f87c99096aa7ef7466ced2294dbba805a0afb550a6",
+      "bytes": 8174
+    },
+    {
+      "reviewer_item": "R3.2_full_cost",
+      "path": "docs/tsc_TableIII_fullcost_replay_completed_20261018_zh.md",
+      "sha256": "48e0b5355e0c1aeb7934209bdca8af33234b407595c5f6528a4816c437c76feb",
+      "bytes": 6201
+    },
+    {
+      "reviewer_item": "R3.2_full_cost",
+      "path": "results/tsc_tableIII_fullcost_replay_20261018/analysis_v3/summary_v1.json",
+      "sha256": "64ca30f99ce0a3fdfb47f40e614ce90bd20011efc6f8971258ad46de404ccca3",
+      "bytes": 46195
+    },
+    {
+      "reviewer_item": "R3.3_D1_D2",
+      "path": "docs/tsc_revision_mechanism_manifest_results_20261018_zh.md",
+      "sha256": "1d2c83eb9e2000a36432410c4ec891fd9483fbd1e8de28c5b1d53e97d109344a",
+      "bytes": 6770
+    },
+    {
+      "reviewer_item": "R3.3_D1_D2",
+      "path": "results/tsc_revision_mechanism_controls_20261018/local_independent_recompute_v1.json",
+      "sha256": "1f98cd16b20a86911ed705458baa6659155deb944a0e9b94e2e65ac6eca520fb",
+      "bytes": 478
+    },
+    {
+      "reviewer_item": "R3.4_original_Goodput_CI",
+      "path": "results/tsc_revision_remaining_audit_20261018/fig5_ci_audit_v1.json",
+      "sha256": "aef98c8f94db3cdcd290c6de10f80c0d2e4b4624b32e225157b26d9867324b56",
+      "bytes": 2411
+    }
+  ],
+  "freshly_rehashed_HotpotQA_inputs": [
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r1_raw-order_b0/raw.jsonl",
+      "sha256": "0854f3befa94944fc3ad164c5b7bc22f65f876ffd340f2a5bf97874cb8f7959f"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r1_contractkv_b0/raw.jsonl",
+      "sha256": "70e84ff382412278d5202138714ed8b0fd4b6639641277118016079278cac2aa"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r2_raw-order_b0/raw.jsonl",
+      "sha256": "19a2f46511a779461c76623202d7e23b09e88d05e3018ad34c2b385bc0193927"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r2_contractkv_b0/raw.jsonl",
+      "sha256": "3dc91d0960b87a2fdd26c34941166e6fefbf7527e6cf55a1db3ffb3f1603bff1"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r3_raw-order_b0/raw.jsonl",
+      "sha256": "82d8f27ffa414f659f770a881dce1d3adb7a0a5358088ee51a1a4501edda1c7c"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_qwen_r3_contractkv_b0/raw.jsonl",
+      "sha256": "81b487e1229269d9d14c238b39df0afcd54a27cce09347c4d7352953d8a856a7"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r1_raw-order_b0/raw.jsonl",
+      "sha256": "637a0ca6bf6a704b17b708c8258234fba09d4a094c888e734d7babe91e3c8296"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r1_contractkv_b0/raw.jsonl",
+      "sha256": "31fb3a344fb8474bdf23a7878e1bbf6cba1ad010d876cb5eccaa3fa8c39c1aa1"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r2_raw-order_b0/raw.jsonl",
+      "sha256": "a578f725c9cb1c4705dac012906d9719d92e229d8f8333630398ec575f7dbbfd"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r2_contractkv_b0/raw.jsonl",
+      "sha256": "cc4aac30677ba26b4342564ca3c04577bb4a1735d5be1ff13b6976c8dd26d106"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r3_raw-order_b0/raw.jsonl",
+      "sha256": "66e66c99288e954b96d052360780a996d9d6c4c8212df04ce5ec39957ca43a3c"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_mistral_r3_contractkv_b0/raw.jsonl",
+      "sha256": "ed95ac2747accabcd6fb182e441c411a56091822872ceff48bf764b72c1a745b"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r1_raw-order_b0/raw.jsonl",
+      "sha256": "e3126246aae86329fe9c531f8c65f8419acdd64c309c092bda72f562d6df89fb"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r1_contractkv_b0/raw.jsonl",
+      "sha256": "edde66c29002b395580db6b4a7b57efe317b8382197f25dcb8c1eb1f67f17561"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r2_raw-order_b0/raw.jsonl",
+      "sha256": "693c4e4203caac7dd9cec904e71b31889024acb97bfd06d835e2bbf4afcf388d"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r2_contractkv_b0/raw.jsonl",
+      "sha256": "7d1791abf1420bbf752da869429b6c8be1bd3f268354baec52437a90054425d6"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r3_raw-order_b0/raw.jsonl",
+      "sha256": "d90792fe10f3f4f56c3edbf7ff361da177137b95c56a52b37750c38efa0d1ef8"
+    },
+    {
+      "path": "results/tsc_revision_r1/cells/common-hotpot_llama_r3_contractkv_b0/raw.jsonl",
+      "sha256": "6949ce5dd825f5cc8d3e45030a9e73f7503c9389ca8c35abdf1a4decc9a81132"
+    }
+  ],
+  "pending_required_GPU_cells_identified": 0,
+  "new_GPU_requests": 0,
+  "limits": [
+    "Evidence availability does not prove every old scientific claim true.",
+    "Strict-exact repair is a separate protocol; do not silently relabel earlier performance.",
+    "Timing-defense experiment optional because reviewer explicitly permits a limitation.",
+    "Text, citations, artifact version mapping, layout and final response are not complete."
+  ]
+}
