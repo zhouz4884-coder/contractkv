@@ -1,0 +1,99 @@
+{
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3"
+  ],
+  "input_set": "development",
+  "jobs": [
+    {
+      "id": "development-Qwen3-8B-r1-Raw-authorized",
+      "phase": "development",
+      "model": "Qwen3-8B",
+      "policy": "Raw-authorized",
+      "repeat": 1,
+      "lane": 0,
+      "wave": 0,
+      "port": 11300,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Qwen3-8B-r1-Raw-authorized.json"
+    },
+    {
+      "id": "development-Mistral-7B-Instruct-v0.3-r1-Raw-authorized",
+      "phase": "development",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "Raw-authorized",
+      "repeat": 1,
+      "lane": 1,
+      "wave": 0,
+      "port": 11301,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Mistral-7B-Instruct-v0.3-r1-Raw-authorized.json"
+    },
+    {
+      "id": "development-Qwen3-8B-r1-Deployment",
+      "phase": "development",
+      "model": "Qwen3-8B",
+      "policy": "Deployment",
+      "repeat": 1,
+      "lane": 0,
+      "wave": 1,
+      "port": 11302,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Qwen3-8B-r1-Deployment.json"
+    },
+    {
+      "id": "development-Mistral-7B-Instruct-v0.3-r1-Deployment",
+      "phase": "development",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "Deployment",
+      "repeat": 1,
+      "lane": 1,
+      "wave": 1,
+      "port": 11303,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Mistral-7B-Instruct-v0.3-r1-Deployment.json"
+    },
+    {
+      "id": "development-Qwen3-8B-r1-Strict-exact",
+      "phase": "development",
+      "model": "Qwen3-8B",
+      "policy": "Strict-exact",
+      "repeat": 1,
+      "lane": 0,
+      "wave": 2,
+      "port": 11304,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Qwen3-8B-r1-Strict-exact.json"
+    },
+    {
+      "id": "development-Mistral-7B-Instruct-v0.3-r1-Strict-exact",
+      "phase": "development",
+      "model": "Mistral-7B-Instruct-v0.3",
+      "policy": "Strict-exact",
+      "repeat": 1,
+      "lane": 1,
+      "wave": 2,
+      "port": 11305,
+      "input_set": "development",
+      "accesses": 4,
+      "expected_business": 24,
+      "snapshot": "development_freeze_v1/source_snapshot",
+      "job_file": "development_jobs_v1/development-Mistral-7B-Instruct-v0.3-r1-Strict-exact.json"
+    }
+  ]
+}
