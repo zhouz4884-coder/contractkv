@@ -1,0 +1,303 @@
+{
+  "status": "PASS",
+  "phase": "validation",
+  "counts": {
+    "all_business": 768,
+    "finish_stop": 768,
+    "Deployment_PASS": 10,
+    "rejected_registrations_zero_compiled_publication": 14,
+    "strict_compiled_actual_prefix_and_exact_scope_and_witness_match": 84,
+    "posthoc_actual_GPU_prefix_mutation_rejected_CPU_only": 84,
+    "Strict-exact_PASS": 12,
+    "strict_Raw_reference_kind": 12,
+    "resource_snapshots_checked": 826
+  },
+  "cells": [
+    {
+      "job": "validation-Qwen3-8B-r1-Raw-authorized",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {}
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r1-Raw-authorized",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {}
+    },
+    {
+      "job": "validation-Qwen3-8B-r1-Deployment",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:122": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r1-Deployment",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Qwen3-8B-r1-Strict-exact",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r1-Strict-exact",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Qwen3-8B-r2-Deployment",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:122": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r2-Deployment",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Qwen3-8B-r2-Strict-exact",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:80": 1,
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r2-Strict-exact",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {
+        "LongBench:hotpotqa:hotpotqa:doc:61": 1
+      }
+    },
+    {
+      "job": "validation-Qwen3-8B-r2-Raw-authorized",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "0",
+      "distinct_stable_prefixes_per_registered_source": {}
+    },
+    {
+      "job": "validation-Mistral-7B-Instruct-v0.3-r2-Raw-authorized",
+      "business": 64,
+      "groups": 4,
+      "tenants_per_group": 2,
+      "same_source_shares_one_group": true,
+      "private_reference_disjoint": true,
+      "actual_CUDA_VISIBLE_DEVICES": "1",
+      "distinct_stable_prefixes_per_registered_source": {}
+    }
+  ],
+  "strict_scope_records": [
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "1fe52b74729753604cb1f8093d629963c7b9e05243ece3d1a91d10f95edc01f2",
+      "exact_behavior_Raw_prompt_sha256": "b90c18a60b542af3359f8f126c6494a265f32f8f9127222b25c9ff975a0da9bc",
+      "physical_prefix_hash": "bb9a5bb23fdd5b7c0f4a3fe4f54060e3c75ef56c509eab7eeef8691a3ddd0a84",
+      "committed_tokens": 10096
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "20b9836e90a91c72eb5934e0fdbecc755bd66eec913eedd9859a979701d14840",
+      "exact_behavior_Raw_prompt_sha256": "54f444a6602013d3fd8d3658075383db84ac0a6c19786ccc7f0508819ea0752f",
+      "physical_prefix_hash": "bb9a5bb23fdd5b7c0f4a3fe4f54060e3c75ef56c509eab7eeef8691a3ddd0a84",
+      "committed_tokens": 10096
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "34d7db7881cd451de29da76884fa18744291116fc3605f12dca3457abffc00fb",
+      "exact_behavior_Raw_prompt_sha256": "c31c799071e7f8bb332829f38b12a8f885b9fcb44a83c6ff7e3642d1f616e886",
+      "physical_prefix_hash": "d47bb120836075ec438dfe55e3af39901740493097e9d080d58b7a0d5a264eaf",
+      "committed_tokens": 5456
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "660a86300353ec95d81beacf1d6919f54f78732c87886b43133e5b16786b197c",
+      "exact_behavior_Raw_prompt_sha256": "ecbfc6f0a32ec75f04c54d491e1bb2e3e4ae76e44ca590055d1d2ee1e2e1f2d1",
+      "physical_prefix_hash": "d47bb120836075ec438dfe55e3af39901740493097e9d080d58b7a0d5a264eaf",
+      "committed_tokens": 5456
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "b3146591f363f8baf93615d23c3d636d357ba98cdc12b10d6117e0947c27b146",
+      "exact_behavior_Raw_prompt_sha256": "434f6dd65cd63058bb69fe2be7cb0592ff832804b60707c6a4ee6ce35227aaeb",
+      "physical_prefix_hash": "0726dcb65e45b6d1112d2693fb266121d976d171f5ea6137179216e6d0a7ba68",
+      "committed_tokens": 5952
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "e0e695d4ef168ca13ece461142526a54b6d642075b50fe25d820a0dcf532cef1",
+      "exact_behavior_Raw_prompt_sha256": "431c5b05edd2c6f9bae14da72491eebce73fc5e8ed5d5e6ee9c1e1aeb3525f8d",
+      "physical_prefix_hash": "0726dcb65e45b6d1112d2693fb266121d976d171f5ea6137179216e6d0a7ba68",
+      "committed_tokens": 5952
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "1fe52b74729753604cb1f8093d629963c7b9e05243ece3d1a91d10f95edc01f2",
+      "exact_behavior_Raw_prompt_sha256": "b90c18a60b542af3359f8f126c6494a265f32f8f9127222b25c9ff975a0da9bc",
+      "physical_prefix_hash": "bb9a5bb23fdd5b7c0f4a3fe4f54060e3c75ef56c509eab7eeef8691a3ddd0a84",
+      "committed_tokens": 10096
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "20b9836e90a91c72eb5934e0fdbecc755bd66eec913eedd9859a979701d14840",
+      "exact_behavior_Raw_prompt_sha256": "54f444a6602013d3fd8d3658075383db84ac0a6c19786ccc7f0508819ea0752f",
+      "physical_prefix_hash": "bb9a5bb23fdd5b7c0f4a3fe4f54060e3c75ef56c509eab7eeef8691a3ddd0a84",
+      "committed_tokens": 10096
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "34d7db7881cd451de29da76884fa18744291116fc3605f12dca3457abffc00fb",
+      "exact_behavior_Raw_prompt_sha256": "c31c799071e7f8bb332829f38b12a8f885b9fcb44a83c6ff7e3642d1f616e886",
+      "physical_prefix_hash": "d47bb120836075ec438dfe55e3af39901740493097e9d080d58b7a0d5a264eaf",
+      "committed_tokens": 5456
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "660a86300353ec95d81beacf1d6919f54f78732c87886b43133e5b16786b197c",
+      "exact_behavior_Raw_prompt_sha256": "ecbfc6f0a32ec75f04c54d491e1bb2e3e4ae76e44ca590055d1d2ee1e2e1f2d1",
+      "physical_prefix_hash": "d47bb120836075ec438dfe55e3af39901740493097e9d080d58b7a0d5a264eaf",
+      "committed_tokens": 5456
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "b3146591f363f8baf93615d23c3d636d357ba98cdc12b10d6117e0947c27b146",
+      "exact_behavior_Raw_prompt_sha256": "434f6dd65cd63058bb69fe2be7cb0592ff832804b60707c6a4ee6ce35227aaeb",
+      "physical_prefix_hash": "0726dcb65e45b6d1112d2693fb266121d976d171f5ea6137179216e6d0a7ba68",
+      "committed_tokens": 5952
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "actual_Raw_reference_prompt_ids_sha256": "e0e695d4ef168ca13ece461142526a54b6d642075b50fe25d820a0dcf532cef1",
+      "exact_behavior_Raw_prompt_sha256": "431c5b05edd2c6f9bae14da72491eebce73fc5e8ed5d5e6ee9c1e1aeb3525f8d",
+      "physical_prefix_hash": "0726dcb65e45b6d1112d2693fb266121d976d171f5ea6137179216e6d0a7ba68",
+      "committed_tokens": 5952
+    }
+  ],
+  "Raw_exact_prompt_groups_with_output_variation": 1,
+  "raw_variation_is_not_causal_exoneration": true,
+  "hash_encoding": {
+    "legacy_transport_and_physical_prefix": "SHA256(json.dumps(sort_keys=True, ensure_ascii=False), UTF8)",
+    "exact_behavior_identity": "SHA256(json.dumps(sort_keys=True, ensure_ascii=False, separators=(comma,colon)), UTF8)"
+  },
+  "boundary": "Post-hoc CPU checks on actual GPU evidence. Prefix mutation controls are not extra GPU attacks. Finite witnesses are not universal generation guarantees.",
+  "source_sha256": "dd88cc96d0eda9ee22c70d529b8841260d1ef414058c052372379072b2ddc5a7"
+}

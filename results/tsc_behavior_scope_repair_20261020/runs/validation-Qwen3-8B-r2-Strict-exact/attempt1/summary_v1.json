@@ -1,0 +1,51 @@
+{
+  "status": "COMPLETE",
+  "job": {
+    "id": "validation-Qwen3-8B-r2-Strict-exact",
+    "phase": "validation",
+    "model": "Qwen3-8B",
+    "policy": "Strict-exact",
+    "repeat": 2,
+    "lane": 0,
+    "wave": 4,
+    "port": 11338,
+    "input_set": "validation",
+    "accesses": 8,
+    "expected_business": 64,
+    "snapshot": "validation_freeze_v4/source_snapshot",
+    "job_file": "validation_jobs_v4/validation-Qwen3-8B-r2-Strict-exact.json"
+  },
+  "execution_complete": true,
+  "offered": 64,
+  "successful": 64,
+  "service_begin_time": 4225003.991887663,
+  "service_end_time": 4225209.14556394,
+  "wall_s": 205.15367627702653,
+  "compiled_business": 28,
+  "actual_verification_RPCs": 4,
+  "certificate_objects": 6,
+  "certificate_PASS": 4,
+  "full_controller_ms": 18211.853554472327,
+  "ready_TTFT_ms": {
+    "mean": 2371.255836696946,
+    "p95": 4794.616076070813,
+    "p99": 10345.054626213387
+  },
+  "backend_TTFT_ms": {
+    "mean": 1971.9166772556491,
+    "p95": 4238.186955917627,
+    "p99": 4241.251449612901
+  },
+  "native_new_prefill_by_kind": {
+    "business": 445680,
+    "reference_generation": 30176,
+    "verification": 15876
+  },
+  "failed_reasons": {
+    "Raw_candidate_free_generation_differs": 1,
+    "Raw_complete_token_EOS_margin_unavailable_or_below_unchanged_floor": 1
+  },
+  "actual_prompt_IDs_checked": 64,
+  "raw_file_sha256": "982c9898cf7b43aa3a06dfe44dfb83d1ac808810fe0b82b473f6826521385bb4",
+  "boundary": "Closed backlog; repeated exact scope, no arbitrary metadata equivalence or open-arrival Goodput claim"
+}

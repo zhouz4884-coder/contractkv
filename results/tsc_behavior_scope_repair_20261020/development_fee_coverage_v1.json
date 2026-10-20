@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "cells": [
+    {
+      "job": "development-Qwen3-8B-r1-Raw-authorized",
+      "business": 24,
+      "actual_generated_HTTP": 24,
+      "actual_verification_HTTP": 0,
+      "actual_Native_initial_requests": 24,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 249008,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    },
+    {
+      "job": "development-Mistral-7B-Instruct-v0.3-r1-Raw-authorized",
+      "business": 24,
+      "actual_generated_HTTP": 24,
+      "actual_verification_HTTP": 0,
+      "actual_Native_initial_requests": 24,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 293992,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    },
+    {
+      "job": "development-Qwen3-8B-r1-Deployment",
+      "business": 24,
+      "actual_generated_HTTP": 26,
+      "actual_verification_HTTP": 2,
+      "actual_Native_initial_requests": 28,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 120219,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    },
+    {
+      "job": "development-Mistral-7B-Instruct-v0.3-r1-Deployment",
+      "business": 24,
+      "actual_generated_HTTP": 26,
+      "actual_verification_HTTP": 2,
+      "actual_Native_initial_requests": 28,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 74247,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    },
+    {
+      "job": "development-Qwen3-8B-r1-Strict-exact",
+      "business": 24,
+      "actual_generated_HTTP": 28,
+      "actual_verification_HTTP": 4,
+      "actual_Native_initial_requests": 32,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 213814,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    },
+    {
+      "job": "development-Mistral-7B-Instruct-v0.3-r1-Strict-exact",
+      "business": 24,
+      "actual_generated_HTTP": 28,
+      "actual_verification_HTTP": 4,
+      "actual_Native_initial_requests": 32,
+      "unaccounted_GPU_requests": 0,
+      "actual_all_request_new_prefill_tokens": 154118,
+      "all_online_records_inside_direct_wall": true,
+      "startup_model_loading_outside_measured_service_wall": true,
+      "semantic_rejection_HTTP_count": 0
+    }
+  ],
+  "all_HTTP_and_initial_Native_requests_accounted": true,
+  "total_actual_generated_HTTP": 156,
+  "total_actual_verification_HTTP": 12,
+  "source_sha256": "18a4c619c1d24a62f500e3fb09bc017ab0141e9bd33e275a717b8b46037eded6"
+}
