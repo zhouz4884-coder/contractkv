@@ -1,0 +1,620 @@
+{
+  "status": "PASS",
+  "main_HTTP_coverage": {
+    "business": 384,
+    "private_candidate_generation": 10,
+    "verification_HTTP": 32
+  },
+  "main_generated_or_verifier_dispatches": 426,
+  "all_main_dispatches_native_observed": true,
+  "cost_rows": [
+    {
+      "model": "Qwen3-8B",
+      "arm": "Raw",
+      "wall_ms": 105610.33013369888,
+      "business_HTTP_ms": 102919.37560774386,
+      "PASS_controller_ms": 0,
+      "nonPASS_controller_ms": 0,
+      "other_complete_path_ms": 2690.9545259550214,
+      "verification_HTTPs": 0,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Raw",
+      "wall_ms": 130441.51493068784,
+      "business_HTTP_ms": 127750.2011237666,
+      "PASS_controller_ms": 0,
+      "nonPASS_controller_ms": 0,
+      "other_complete_path_ms": 2691.3138069212437,
+      "verification_HTTPs": 0,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "wall_ms": 116068.43110825866,
+      "business_HTTP_ms": 92194.23096626997,
+      "PASS_controller_ms": 12198.295461013913,
+      "nonPASS_controller_ms": 7731.722146272659,
+      "other_complete_path_ms": 3944.182534702122,
+      "verification_HTTPs": 4,
+      "private_candidate_HTTPs": 6,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "wall_ms": 137802.3386206478,
+      "business_HTTP_ms": 125239.93654642254,
+      "PASS_controller_ms": 5820.410086773336,
+      "nonPASS_controller_ms": 3762.660328298807,
+      "other_complete_path_ms": 2979.331659153104,
+      "verification_HTTPs": 2,
+      "private_candidate_HTTPs": 4,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "TF-only",
+      "wall_ms": 109378.12579609454,
+      "business_HTTP_ms": 92588.20580784231,
+      "PASS_controller_ms": 7192.498821765184,
+      "nonPASS_controller_ms": 5834.143032319844,
+      "other_complete_path_ms": 3763.2781341671944,
+      "verification_HTTPs": 5,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "TF-only",
+      "wall_ms": 139073.48287664354,
+      "business_HTTP_ms": 124808.77337511629,
+      "PASS_controller_ms": 2058.214869350195,
+      "nonPASS_controller_ms": 9266.512755304575,
+      "other_complete_path_ms": 2939.98187687248,
+      "verification_HTTPs": 4,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Fused",
+      "wall_ms": 103246.70069199055,
+      "business_HTTP_ms": 92317.51604471356,
+      "PASS_controller_ms": 6733.336838893592,
+      "nonPASS_controller_ms": 310.6925142928958,
+      "other_complete_path_ms": 3885.1552940905094,
+      "verification_HTTPs": 4,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Fused",
+      "wall_ms": 138974.26428738981,
+      "business_HTTP_ms": 124692.15004239231,
+      "PASS_controller_ms": 2973.2657745480537,
+      "nonPASS_controller_ms": 8280.012335628271,
+      "other_complete_path_ms": 3028.8361348211765,
+      "verification_HTTPs": 4,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Fused-residency",
+      "wall_ms": 97967.05885324627,
+      "business_HTTP_ms": 80129.00859396905,
+      "PASS_controller_ms": 6760.351137258112,
+      "nonPASS_controller_ms": 7384.408227168024,
+      "other_complete_path_ms": 3693.2908948510885,
+      "verification_HTTPs": 5,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Fused-residency",
+      "wall_ms": 134416.76852107048,
+      "business_HTTP_ms": 120306.81609269232,
+      "PASS_controller_ms": 2952.620243653655,
+      "nonPASS_controller_ms": 8245.43614499271,
+      "other_complete_path_ms": 2911.8960397318006,
+      "verification_HTTPs": 4,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Raw-residency",
+      "wall_ms": 106326.85909979045,
+      "business_HTTP_ms": 103612.36830614507,
+      "PASS_controller_ms": 0,
+      "nonPASS_controller_ms": 0,
+      "other_complete_path_ms": 2714.490793645382,
+      "verification_HTTPs": 0,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Raw-residency",
+      "wall_ms": 101186.01797241718,
+      "business_HTTP_ms": 98621.87711428851,
+      "PASS_controller_ms": 0,
+      "nonPASS_controller_ms": 0,
+      "other_complete_path_ms": 2564.140858128667,
+      "verification_HTTPs": 0,
+      "private_candidate_HTTPs": 0,
+      "all_main_dispatches_have_native_initial_observation": true
+    }
+  ],
+  "all_12_final_scope_decisions_match_across_arms": true,
+  "scope_decisions": [
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_candidate_free_generation_differs",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "pointwise_margin_guard:candidate_token_margin_below_floor",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "actual_free_generation_ID_or_EOS_mismatch",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_candidate_free_generation_differs",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Qwen3-8B",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_candidate_free_generation_differs",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "pointwise_margin_guard:candidate_token_margin_below_floor",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "actual_free_generation_ID_or_EOS_mismatch",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "actual_free_generation_ID_or_EOS_mismatch",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_candidate_free_generation_differs",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "pointwise_margin_guard:candidate_token_margin_below_floor",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "actual_free_generation_ID_or_EOS_mismatch",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "actual_free_generation_ID_or_EOS_mismatch",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "TF-only": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        },
+        "Fused-residency": {
+          "PASS": false,
+          "reason": "Raw_margin_or_EOS_ineligible",
+          "native_RPCs": 0
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "turn": 1,
+      "arms": {
+        "Strict": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "TF-only": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        },
+        "Fused-residency": {
+          "PASS": true,
+          "reason": "",
+          "native_RPCs": 1
+        }
+      },
+      "identical_final_PASS": true
+    }
+  ],
+  "private_candidate_actual_native": [
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "prefix_hit_tokens": 0,
+      "prompt_tokens": 10165,
+      "native_new_prefill": 10165
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "prefix_hit_tokens": 10112,
+      "prompt_tokens": 10165,
+      "native_new_prefill": 53
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 0,
+      "prefix_hit_tokens": 0,
+      "prompt_tokens": 14398,
+      "native_new_prefill": 14398
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "tenant": 1,
+      "prefix_hit_tokens": 14352,
+      "prompt_tokens": 14398,
+      "native_new_prefill": 46
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "prefix_hit_tokens": 0,
+      "prompt_tokens": 5516,
+      "native_new_prefill": 5516
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "prefix_hit_tokens": 5472,
+      "prompt_tokens": 5516,
+      "native_new_prefill": 44
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 0,
+      "prefix_hit_tokens": 0,
+      "prompt_tokens": 11457,
+      "native_new_prefill": 11457
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "tenant": 1,
+      "prefix_hit_tokens": 11408,
+      "prompt_tokens": 11457,
+      "native_new_prefill": 49
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 0,
+      "prefix_hit_tokens": 0,
+      "prompt_tokens": 6034,
+      "native_new_prefill": 6034
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "tenant": 1,
+      "prefix_hit_tokens": 5984,
+      "prompt_tokens": 6034,
+      "native_new_prefill": 50
+    }
+  ],
+  "observed_Strict_prefix_head_reclamation_causes": [
+    {
+      "kind": "business",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:122",
+      "events": 9
+    },
+    {
+      "kind": "business",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+      "events": 1
+    },
+    {
+      "kind": "business",
+      "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+      "events": 2
+    }
+  ],
+  "auxiliary_attempts": 14,
+  "auxiliary_real_read_probes": 16,
+  "warning": "Controller/pass/failure differences are descriptive. Raw margin variation changes early work even when final PASS sets match; not a pure randomized fusion-cost effect.",
+  "new_GPU_requests": 0
+}

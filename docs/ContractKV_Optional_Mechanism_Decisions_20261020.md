@@ -33,3 +33,19 @@ v1 无 GPU；旧 freeze/preflight 原样保留，不覆盖。正式执行使用 
 两模型沿用已登记完整 SHA 的全部 asset，并在预检检查 size/mtime。原 runtime 清单与源保持一致，复制后只补丁5个源文件；新 identity 将 runtime_revision 绑定到本次真实完整清单，保留 parent_revision。无共享 runtime 修改。
 
 v2 CPU 导入预检 PASS，回执 SHA256 `cee9f1ace6b66917762629c874701f321aacda91947857a8570325317f8f7b9e`。另18项现有精确行为/前缀/授权 pytest 通过，6项新 Decode/队列 unit 检查通过；不把 CPU 检查称作 GPU 性能或事务发布结果。
+
+## D8：Raw margin改变早拒阶段，不能把总费用差全部归于融合
+
+12个scope的最终PASS集合相同，但Qwen doc122的Raw margin在0.03125/0.0625之间变化；Fused无对应GPU尝试，Fused+Residency新增一次实际失败。阈值不变，失败费用照计。共同PASS费用和非PASS费用分别列出，不用总体Controller下降包装纯融合因果效应。
+
+## D9：Mistral的失败路径使融合不占优
+
+Mistral共同PASS费用下降，但doc80私有Candidate可提前拒绝且私有APC温热后续探针；融合后这些失败进入native事务并保持零发布，非PASS费用上升。保留负结果，不添加“只融合已知好来源”的后验规则。
+
+## D10：同缓存策略的Raw对照必须保留
+
+Qwen Fused+Residency1.078×、Raw+Residency0.993×；Mistral分别0.970×、1.289×。恢复命中不是普遍加速，也不是认证独有价值的充分证据。本原型只有开发点值，不切换默认入口、不用它替换正文主图。
+
+## D11：预算结束，进入归档而不是继续追数字
+
+12cells/384主业务完成；8个冷故障首次读取均0命中，随后8个合法重复正常命中，4个实际Native abort均0 cached块。独立本地复算原包659成员与全部科学值一致。未增加新来源、L1/L2试档或第三模型。保留附录候选，未达继续正式验证门槛。

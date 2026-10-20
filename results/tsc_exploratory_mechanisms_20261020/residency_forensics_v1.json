@@ -1,0 +1,2923 @@
+{
+  "status": "COMPLETE",
+  "rows": [
+    {
+      "model": "Qwen3-8B",
+      "arm": "Raw",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Raw",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Strict",
+      "compiled_zero_hits": 6,
+      "zero_hits_with_observed_head_reclamation": 6,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 8,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237770.236200193,
+          "next_business_send": 4237802.190956368,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 135,
+            "reference_generation:LongBench:hotpotqa:hotpotqa:doc:122": 500
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237770.38185703,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237777.745789295,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237778.331908388,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237778.959241941,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237779.627908736,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237780.33670136,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237780.436533099,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237780.831487395,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237781.226579833,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237781.62133786,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "reference_generation",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237782.056590706,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237782.519448944,
+              "matching_prefix_hashes": 3,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237796.426446773,
+          "next_business_send": 4237817.235293009,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:80": 4,
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237803.203255411,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:80"
+              ]
+            },
+            {
+              "monotonic_s": 4237806.800602263,
+              "matching_prefix_hashes": 18,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237807.345915263,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237807.932767426,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237808.560918784,
+              "matching_prefix_hashes": 67,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 16,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237805.658345541,
+          "next_business_send": 4237824.900916583,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237813.086520743,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237813.674276356,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237814.303844545,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237814.974096437,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237815.735844078,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237816.132936521,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237816.528565111,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237816.924204671,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237817.267146262,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4237817.734622546,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237819.125624557,
+          "next_business_send": 4237839.947087543,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237829.518584614,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237830.069095292,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237830.661058077,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237831.294778148,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 24,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237828.383986203,
+          "next_business_send": 4237847.657747989,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237835.781309687,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237836.373346859,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237837.006993808,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237837.68047941,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237838.444351832,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237838.841503814,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237839.238366847,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237839.634794187,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237839.982643746,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4237840.452370578,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237841.85835648,
+          "next_business_send": 4237862.782518709,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237852.334684258,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237852.885064291,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237853.477208174,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237854.110620654,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Strict",
+      "compiled_zero_hits": 3,
+      "zero_hits_with_observed_head_reclamation": 3,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237790.828142461,
+          "next_business_send": 4237819.943303922,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 377
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237806.329323511,
+              "matching_prefix_hashes": 5,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237809.837480428,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237810.724825474,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237811.096861756,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237811.469352689,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237811.841950442,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237812.214155616,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237812.587217471,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237812.959801366,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237813.361987158,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237813.826800392,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237814.325441324,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237822.518085156,
+          "next_business_send": 4237850.878173667,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237841.641501485,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237842.508240274,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237842.878556777,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237843.251895997,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237843.622947512,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237843.995997053,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237844.262770485,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237844.728271191,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237845.227178646,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4237853.457564018,
+          "next_business_send": 4237881.9935202,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4237872.721227202,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237873.588588095,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237873.959650894,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237874.331625294,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237874.702856702,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237875.075071354,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237875.362478802,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237875.830900614,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4237876.33367521,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "TF-only",
+      "compiled_zero_hits": 6,
+      "zero_hits_with_observed_head_reclamation": 6,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 8,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238060.115886982,
+          "next_business_send": 4238088.512137585,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 135,
+            "verification:d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1": 500
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238063.011163481,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.202462332,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.24988783,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.297478139,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.345250858,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.393133588,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.441410199,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.4898944,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.538499451,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.587348554,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.636334486,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.685181218,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.734452712,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.784239487,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.834009141,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.884094597,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.934454433,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238068.98505682,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.035664647,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.086327225,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.137447983,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.188488291,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.23965176,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.291247909,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.344819864,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.396839305,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.449025956,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.501301098,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.5537996,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.606471863,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.659696467,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.712782931,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.765873404,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.819302679,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.87502606,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.929488757,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238069.983516934,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.037758511,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.092331929,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.147097737,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.202258817,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.257097675,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.312366145,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.368104946,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.424019577,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.479535658,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.535701,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.591774862,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.647991614,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.704453257,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.761339061,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.818358376,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.87542295,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.932737715,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238070.990378222,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.048318209,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.106368706,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.164755535,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.223567274,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.282244303,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.341340123,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.400401073,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.459369433,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.518417293,
+              "matching_prefix_hashes": 8,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "verification",
+                "d6fcce79037d4d4b4e76b6c41797acf5484d1114e523a41d612b1c6f45a70ba1"
+              ]
+            },
+            {
+              "monotonic_s": 4238071.749469369,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238072.210870371,
+              "matching_prefix_hashes": 3,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238082.729098623,
+          "next_business_send": 4238103.623929143,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 345
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238092.111108337,
+              "matching_prefix_hashes": 4,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238093.078856267,
+              "matching_prefix_hashes": 18,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238093.623826419,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238094.209722854,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238094.836557382,
+              "matching_prefix_hashes": 67,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 16,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238091.957985218,
+          "next_business_send": 4238111.281830511,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238099.383002925,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238099.97094545,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238100.599574767,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238101.269571148,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238102.030617511,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238102.427450682,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238102.827220411,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238103.225116096,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238103.658543099,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4238104.125473834,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238105.500491529,
+          "next_business_send": 4238126.39634368,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238115.911345136,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238116.461218388,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238117.05109217,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238117.683725251,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 24,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238114.773407598,
+          "next_business_send": 4238134.047086288,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238122.163698438,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238122.755296229,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238123.387175363,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238124.059295378,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238124.820969483,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238125.216946484,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238125.61508212,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238126.010697638,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238126.419597035,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4238126.884538787,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238128.247051706,
+          "next_business_send": 4238149.144793394,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238138.639855185,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238139.190282123,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238139.782273167,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238140.415813898,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "TF-only",
+      "compiled_zero_hits": 3,
+      "zero_hits_with_observed_head_reclamation": 3,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238085.667439556,
+          "next_business_send": 4238114.042074087,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 377
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238102.821455336,
+              "matching_prefix_hashes": 5,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238104.755285307,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238105.625123412,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238106.001600199,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238106.378035296,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238106.755482516,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238107.133173317,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238107.416105167,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238107.878970133,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238108.377669888,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238116.620834359,
+          "next_business_send": 4238145.14090822,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238135.839385747,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238136.712137852,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238137.090033527,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238137.470460449,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238137.848651755,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238138.224491545,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238138.499134862,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238138.968087692,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238139.468819861,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238147.753229891,
+          "next_business_send": 4238176.321455459,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238167.051954633,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238167.922921533,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238168.296202758,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238168.670037866,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238169.04288743,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238169.415733434,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238169.688477935,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238170.157655262,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238170.660396314,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Fused",
+      "compiled_zero_hits": 6,
+      "zero_hits_with_observed_head_reclamation": 6,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 8,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238350.563736449,
+          "next_business_send": 4238373.595336739,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238358.173349901,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238358.760958266,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238359.389902788,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238360.059814116,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238360.82195341,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238361.226113107,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238361.629764414,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238362.03399955,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238362.434610808,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4238362.899840011,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238367.839075972,
+          "next_business_send": 4238388.670369509,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238378.201734175,
+              "matching_prefix_hashes": 18,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238378.746035331,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238379.331570292,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238379.958731241,
+              "matching_prefix_hashes": 67,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 16,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238377.074763751,
+          "next_business_send": 4238396.290375609,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238384.51960146,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238385.10700074,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238385.735912553,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238386.405888893,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238387.167429983,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238387.564032607,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238387.960534458,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238388.357557347,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238388.706782889,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4238389.171062643,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238390.519394914,
+          "next_business_send": 4238411.354932318,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238400.931982526,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238401.480865155,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238402.070211475,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238402.702154155,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:80",
+          "tenant": 0,
+          "sequence": 24,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238399.80256149,
+          "next_business_send": 4238419.048644058,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 496,
+            "business:LongBench:hotpotqa:hotpotqa:doc:61": 135
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238407.193856592,
+              "matching_prefix_hashes": 108,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238407.784992622,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238408.418428561,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238409.088797786,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238409.850674044,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238410.246916324,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238410.64506795,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238411.047570458,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238411.388368859,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            },
+            {
+              "monotonic_s": 4238411.856737679,
+              "matching_prefix_hashes": 7,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:61"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238413.248067697,
+          "next_business_send": 4238434.162191887,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 341
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238423.70313718,
+              "matching_prefix_hashes": 22,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238424.254660048,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238424.847864742,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238425.481723432,
+              "matching_prefix_hashes": 63,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Fused",
+      "compiled_zero_hits": 3,
+      "zero_hits_with_observed_head_reclamation": 3,
+      "misses": [
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 12,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238376.931502205,
+          "next_business_send": 4238405.297001635,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238396.037103881,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238396.902225116,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238397.274325746,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238397.646379821,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238398.018787786,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238398.391089643,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238398.67436167,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238399.141254665,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238399.640394661,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 20,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238407.891150584,
+          "next_business_send": 4238436.331890713,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238427.07519013,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238427.945108592,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238428.319462311,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238428.69449964,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238429.068578587,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238429.44185138,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238429.714363969,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238430.176361601,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238430.675228098,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        },
+        {
+          "source": "LongBench:hotpotqa:hotpotqa:doc:61",
+          "tenant": 0,
+          "sequence": 28,
+          "observed_zero_hit": true,
+          "previous_warm_anchor": 4238438.938105911,
+          "next_business_send": 4238467.399163373,
+          "actual_prefix_head_reclaimed": true,
+          "reclamation_causes": {
+            "business:LongBench:hotpotqa:hotpotqa:doc:122": 372
+          },
+          "actual_events": [
+            {
+              "monotonic_s": 4238458.141324585,
+              "matching_prefix_hashes": 87,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238459.011678566,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238459.384509874,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238459.756898305,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238460.128416927,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238460.500710564,
+              "matching_prefix_hashes": 1,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238460.75322304,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238461.222131139,
+              "matching_prefix_hashes": 128,
+              "prefix_head_reclaimed": false,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            },
+            {
+              "monotonic_s": 4238461.724804979,
+              "matching_prefix_hashes": 24,
+              "prefix_head_reclaimed": true,
+              "cause": [
+                "business",
+                "LongBench:hotpotqa:hotpotqa:doc:122"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Fused-residency",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Fused-residency",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    },
+    {
+      "model": "Qwen3-8B",
+      "arm": "Raw-residency",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "arm": "Raw-residency",
+      "compiled_zero_hits": 0,
+      "zero_hits_with_observed_head_reclamation": 0,
+      "misses": []
+    }
+  ],
+  "note": "Exact observed block hashes; hash copies can repeat. This is a causal sequence trace, not a randomized eviction-policy effect estimate."
+}
