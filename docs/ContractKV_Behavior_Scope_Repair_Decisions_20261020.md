@@ -19,3 +19,7 @@
 ## D4 — 资源与旧任务核查
 
 已通过保存的 Credential Manager/known-host SSH 入口确认同两张 RTX3090 的实际 UUID，无 compute PID；旧 27 单元 worker 已完成。新环境、缓存、日志仍限 8TB 卷，复用冻结隔离 runtime，不修改共享运行时、不抢占其他任务。新 worker 启动前再次检查。
+
+## D5 — 首次公开冻结的换行属性修正，推理前逐字节复核
+
+首次加入新 results 目录时 Git 沿用了文本换行规范，导致远程 Git 中 freeze JSON 的字节与本地/部署副本不同。GPU 尚未启动。为新实验目录及脚本增加 `-text`，重新提交原始字节并核查所有冻结文件与 source snapshot 的 Git blob；保留前一提交，不改科学内容、哈希或选样。后续仅使用字节一致的公开提交和实际预检回执启动。
