@@ -29,3 +29,7 @@
 用户补充正确：Session 24 对象仅为 3 条 canonical prompt 的 8 租户绑定；不能解读为 24 条独立 prompt。不同 tenant/turn 的完整输入不同，而稳定前缀相同，这是物理模板复用的正当依据；它不能推出 Raw/重排完整生成等价。新补充还指出旧 admit 用保存 plan/certificate 自比，没有对实际线上前缀重新哈希。新 v2 在发送前对实际 tokenizer IDs 按证书 stable_prefix_tokens 重算原有 JSON-ID SHA，并检查 block-aligned commit 边界；完整请求的 Raw 行为证据仍独立必需。Native 命中是事后物理观测，不能替代准入中的这项检查，也不能由 partial/zero hit 推出前缀身份不同。
 
 v1 仅完成 CPU 准备/预检，未启动任何 GPU 推理。保留 v1 全部快照和回执，另建 v2 源码、协议、冻结与回执；来源、评分、输出预算、margin、重复负载及预定停止门槛不变。修复不需要重新选择来源或模型结果调参。
+
+## D7 — 推理前校正可区分的 Native APC 对照，不按结果选择 locality
+
+代码审查发现 v1/v2 的 source-outer 请求循环会连续耗尽单来源的两条精确输入；Raw APC 在该顺序下也可能缓存完整 Prompt。精确重复本身不是 ContractKV 独有优势，不能因此预设加速。首条 GPU 输出前，将三臂统一改为 access round → frozen source order → 两个 exact scope 的轮转。保留每个 Prompt、计数、模型和所有门槛；不增来源、不制造不同 raw/compiled 身份或更小 Raw 缓存。v1/v2 均无 GPU 推理，保留 CPU 冻结/回执。v3 单独冻结，双方实际命中和工作集效应必须共同报告；该访问模式不是生产访问率或通用加速证明。
