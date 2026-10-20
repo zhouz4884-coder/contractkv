@@ -1,0 +1,260 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T08:37:30.868730+00:00",
+  "recheck_script_sha256": "9b98bdd7620ab48c73d0c122421888744cc19e2b4d7934c0e0328647deaddf51",
+  "historical_script_sha256": "8a1476a04c7217d0f8b48d41756cad020c23c0afd804e9f44f833c95f7a5a62e",
+  "frozen_sessions_canonical_sha256": "7fe10a55f82056125b6acb478aa24bd4883c12c4f6bfd19b3dedfd1f6e13f616",
+  "raw_input_files_verified": 19,
+  "unique_source_sessions": 30,
+  "fixed_models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3",
+    "Llama-3.1-8B-Instruct"
+  ],
+  "fresh_process_pairs_per_model": 3,
+  "future_turns_per_session": 9,
+  "paired_future_requests": 2430,
+  "live_business_and_canary_records_both_arms": 5400,
+  "all_original_pairs_retained": true,
+  "original_files_unchanged": true,
+  "historical_and_sensitivity_replay_matches_saved_result": true,
+  "bootstrap_draws_per_interval": 10000,
+  "replayed_result": {
+    "original_points_and_intervals_reproduced": true,
+    "models": [
+      {
+        "model": "Qwen3-8B",
+        "point_pct": 86.63940046555379,
+        "historical95_pct": [
+          86.15933847585555,
+          87.09980505922333
+        ]
+      },
+      {
+        "model": "Mistral-7B-Instruct-v0.3",
+        "point_pct": 87.40557969138551,
+        "historical95_pct": [
+          87.06406028333564,
+          87.78980862538461
+        ]
+      },
+      {
+        "model": "Llama-3.1-8B-Instruct",
+        "point_pct": 85.97192961630954,
+        "historical95_pct": [
+          85.6308060230573,
+          86.29308476142539
+        ]
+      }
+    ],
+    "macro_point_pct": 86.6723032577496,
+    "historical_macro95_pct": [
+      86.43686658419585,
+      86.89530498460697
+    ],
+    "historical_estimand": "Fixed three-model macro, process then session resampling independently within model/repeat; no model resampling.",
+    "historical_limit": "The same 30 sessions recur across models/repeats, but original draws did not synchronize those source identities. 90 process-session clusters per model are not 90 unique sources.",
+    "posthoc_synchronized_source_process95_pct": [
+      86.3204074321047,
+      86.99105669273989
+    ],
+    "sensitivity_seed": 20261018,
+    "sensitivity_iterations": 10000,
+    "sensitivity_unit": "30 common session IDs shared across all process/model draws; fixed models; preserve all nine future turns together",
+    "session_records": 30,
+    "session_record_keys": [
+      "dataset",
+      "task",
+      "sample_id",
+      "total_prompt_tokens",
+      "segments",
+      "answer",
+      "metadata",
+      "phase19b_session_id",
+      "submission_extension"
+    ],
+    "new_GPU_requests": 0,
+    "interpretation": "Conditional finite-scope precision, not model-population variation or non-RULER generality. A mean CI need not contain the three component means."
+  },
+  "independent_point_checks": [
+    {
+      "model": "Qwen3-8B",
+      "repeat": 1,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 87.08094062996939
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 2,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 86.43581375825657
+    },
+    {
+      "model": "Qwen3-8B",
+      "repeat": 3,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 86.40144700843544
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 1,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 87.73331615823746
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 2,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 87.25182807006668
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "repeat": 3,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 87.2315948458524
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 1,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 85.99997663873151
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 2,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 85.90413063338829
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "repeat": 3,
+      "paired_future_requests": 270,
+      "raw_warmups": 30,
+      "contract_canaries": 30,
+      "net_mean_ttft_reduction_pct": 86.01168157680881
+    }
+  ],
+  "between_model_point_range_pct": [
+    85.97192961630954,
+    87.40557969138551
+  ],
+  "between_model_point_spread_percentage_points": 1.433650075075974,
+  "unseen_model_generalization_CI": null,
+  "unseen_model_limit": "Three fixed, non-randomly selected models do not identify a model-population prediction interval.",
+  "estimand": "Equal-weight mean across three model means, each an equal-weight mean over three process-pair TTFT reductions. Preserve original recorded unhidden-verifier accounting.",
+  "protocol_limit": "Original qualified RULER / 6000 ms tool-slack protocol, not strict raw-witness zero-slack complete wall.",
+  "input_receipts": [
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat1/contractkv-full.jsonl.gz",
+      "gzip_sha256": "b8dc23d3f53fe588590f8862a5d5500d1ca851be8df2d356512e942412ee61c4",
+      "original_sha256": "3b0e18bb87ca5506c83786e776224ee0ae7aabd3b39c28226fda10638b71c107"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat1/raw-order.jsonl.gz",
+      "gzip_sha256": "73d68c593e0fb52241eacceea02e0e3e32f2d26b657ddb135a0877a31590d3dd",
+      "original_sha256": "8d8f54a46d647463122c596265392b8346df4cb12ba1495c8022de7703b377bd"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat2/contractkv-full.jsonl.gz",
+      "gzip_sha256": "1741a1e838cf90d8c0ab464798492b9de3ea90d7c375d59f9f5c4f7fa6569172",
+      "original_sha256": "bbf128f8a61391d431dc01d0975c794bea54363dfa14129787f2799b77f2da03"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat2/raw-order.jsonl.gz",
+      "gzip_sha256": "706f69472169a485caba97452ae29c51137d6ae7dfb1ad65e4dc227410241da8",
+      "original_sha256": "95817d36ff2fc2b3ab6867c857dd5a0b0c2fc9a38157cfe04f6aa4cc068a1f31"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat3/contractkv-full.jsonl.gz",
+      "gzip_sha256": "ae10f5967eb2c376aa4aab7f545ad7d89dbf674f3bb02207d6860c1e813747c8",
+      "original_sha256": "7a90bcb446ca47c0f6fc69e851711a061f37f8fc50ba6061064c7753bbd03c8d"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/mistral/repeat3/raw-order.jsonl.gz",
+      "gzip_sha256": "9e3fe1f029da4b76139b19950545d0936fd617363821090724f9b52c6ea15f84",
+      "original_sha256": "bdcca1215d07a4b68966e75a89bb7c6acac3f3bdf69044c031239b94df0e6322"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat1/contractkv-full.jsonl.gz",
+      "gzip_sha256": "a53d3dffb3be20b4887b82ea645a7e4f7805106edc37d60009950b738aa3c341",
+      "original_sha256": "08fd610d2ef6007c31ba13afd1a9bfdb6071e27be1f57ccd9e4cd9c625847818"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat1/raw-order.jsonl.gz",
+      "gzip_sha256": "3dffe341e28962c17f26a2d93d3b3a97b6a6f9a973c343a95004be7616a16f78",
+      "original_sha256": "74c73e7d75804b0853e8a1d53de1d0eb5f67d124559bf23b0832ee13e091eea0"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat2/contractkv-full.jsonl.gz",
+      "gzip_sha256": "d1cbe7c0961fbf4d48c3cbc40f7702e572a57642f6a5ec891e31c5372757b12b",
+      "original_sha256": "c98bc2cd16a88d5b503f4cc0108c65667ea0ab030a55f0e3fda8b071f39668ac"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat2/raw-order.jsonl.gz",
+      "gzip_sha256": "c6b3805a71cf5ca3f10307397f0d7e7fb07471ab524be7d96b47e0e638902c3c",
+      "original_sha256": "2b7f7778a0f350efdb69a2a11255f53d1a9317ad0a36bc15d704880088566690"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat3/contractkv-full.jsonl.gz",
+      "gzip_sha256": "9ecb1d2f8e7d25dd09a3e922ef2304565da961422f586a7d4a4eb5d5f6964844",
+      "original_sha256": "12dfaf4c564780f179261053122d4d11dfb59a6f3564cd477d40b5cbcb692aa1"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/common_ruler/qwen/repeat3/raw-order.jsonl.gz",
+      "gzip_sha256": "0b20c3404d2c2e4aa68595e08ef19ba16b58d910e2854fe1348261015cf7e2d4",
+      "original_sha256": "f037200ac5b2544103f6e8d6214d3011fda84f122ec71e14b16bc712d319aec5"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat1/contractkv-full.jsonl.gz",
+      "gzip_sha256": "64d0f32e69d022ce7de05d12a62e001d2ed4a17b0fa8974f06c41d7b9fce0abe",
+      "original_sha256": "cf80786e67a659c26123b2ce3460ed9a859ed5e93a50ff4f7a0045b95543f14a"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat1/raw-order.jsonl.gz",
+      "gzip_sha256": "e71604ddb67a2aa50cdf46e619887a5f261aaf75b74aafab9983edb03a641a6c",
+      "original_sha256": "c51c8c50a8ed095a3561d72ce2537c60450640fe39be4b78a57305390f750e68"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat2/contractkv-full.jsonl.gz",
+      "gzip_sha256": "c2ae504398369dc90445050e80c0a62aea5bdc6e517a4bf87fa152cef63fa583",
+      "original_sha256": "b1c4e223a2986204f45d67b3b5630825493b7fb6e4c3efb37f21697e3add8252"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat2/raw-order.jsonl.gz",
+      "gzip_sha256": "4ab69129d751d4b01fac356827100db674d2936846c2ed9892abfc9042f9eaf8",
+      "original_sha256": "d73d6f81ff5176cf3facf51ea68015f8ead501e19529a1052c3d4688f5cbb0f8"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat3/contractkv-full.jsonl.gz",
+      "gzip_sha256": "bc1b226d991a39c08e00ee1d1504babc2bbc8164f4f28511dff3659e70e9d0f9",
+      "original_sha256": "0fc82a3be03ae46d16d6cf09a004f4b8aa832ea71aa5666c3e7c35a668237343"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended/repeat3/raw-order.jsonl.gz",
+      "gzip_sha256": "969dc816ef81e3f8a20fc3b1c4236466d97e744fd19711de6d1070c6be1eb569",
+      "original_sha256": "d945689c13a3572ae0d1c230842dd80b1c349260af9e3effd2d0c341207fc55e"
+    },
+    {
+      "path": "results/tsc_revision_remaining_audit_20261018/inputs/results/submission_supplement/ruler_extended_sessions_v0.jsonl.gz",
+      "gzip_sha256": "4df2338efc2fab701bf540c2ee2a671d5570e654eedebee9c0ef8efa68f97c48",
+      "original_sha256": "7b927f035027ed49311295bcce2d5d72b60747bcb52792ef9baa027bc9bebc29"
+    }
+  ],
+  "new_GPU_requests": 0
+}
