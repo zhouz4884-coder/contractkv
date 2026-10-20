@@ -64,7 +64,12 @@ topics=[('R2.6 input displacement','supplement','tab:s-displacement'),('R3.1 raw
  ('growing-history five-family measurements','supplement','tab:s-growing-structure'),
  ('original fixed-model RULER intervals','supplement','tab:s-ruler-ci'),
  ('completed independent task arrivals','supplement','tab:s-task-arrivals'),
- ('bounded fusion/residency exploration','supplement','tab:s-fusion-residency')]
+ ('bounded fusion/residency exploration','supplement','tab:s-fusion-residency'),
+ ('supporting development scope counterexamples','supplement','sec:s-development-scope'),
+ ('supporting output horizon audit','supplement','sec:s-output-horizon'),
+ ('second Qwen cohort detail','supplement','sec:s-second-qwen'),
+ ('supporting input and cost controls','supplement','sec:s-input-cost-controls'),
+ ('native-reference quality detail','supplement','sec:s-external-reference')]
 with (root/'audit/paper_evidence_topics.csv').open('w',encoding='utf-8',newline='') as f:
     w=csv.DictWriter(f,fieldnames=['topic']+list(records[0]));w.writeheader()
     for topic,doc,label in topics:w.writerow({'topic':topic,**look[(doc,label)]})

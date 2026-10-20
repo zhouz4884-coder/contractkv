@@ -5,6 +5,7 @@
 \usepackage{microtype}
 \usepackage{dblfloatfix}
 \usepackage{url}
+\usepackage{xr-hyper}
 \usepackage[hidelinks,hypertexnames=false]{hyperref}
 \usepackage{cite}
 \newcommand{\ckv}{\textsc{ContractKV}}
@@ -29,6 +30,7 @@
 \setlength{\floatsep}{8pt plus 2pt minus 2pt}
 \setlength{\intextsep}{8pt plus 2pt minus 2pt}
 \hypersetup{pdftitle={ContractKV: Certified Prompt Compilation for Transactional Prefix Reuse in Multi-Tenant LLM Services},pdfauthor={Bin Zhou and Xi Cao},pdfsubject={Certified prompt compilation, governed publication and service-template reuse}}
+\externaldocument[supp-]{contractkv_supplement}
 \begin{document}
 \title{ContractKV: Certified Prompt Compilation\\for Transactional Prefix Reuse\\in Multi-Tenant LLM Services}
 \author{Bin~Zhou and Xi~Cao,~\IEEEmembership{Member,~IEEE}
@@ -50,6 +52,7 @@ Large language model serving, KV cache, prefix caching, behavioral certification
 \input{sections/07_related}
 \input{sections/08_discussion}
 \input{sections/09_conclusion}
+\IEEEtriggeratref{18}
 \input{references}
 \input{sections/author_biographies} % Replace the quarter-page reservation with author-confirmed biographies.
 % Figures 1--6 are source-controlled vector exports with separate evidence QA.

@@ -88,6 +88,17 @@ source='\n'.join(p.read_text() for p in (root/'sections').glob('[0-9]*.tex'))
 assert len(re.findall(r'\\begin\{figure\*\}',source))==2
 assert len(re.findall(r'\\begin\{figure\}',source))==4
 assert r'48.05\\%' not in source and r'.\n\n\noindent' not in source
+relocation_path=root/'audit/evaluation_focus_relocation_v1.json'
+if relocation_path.exists():
+    moved=json.loads(relocation_path.read_text())
+    support=(root/'sections/supplement_supporting_audits.tex').read_text()
+    assert len(moved['moves'])==5 and not moved['measurements_changed']
+    assert '0.40625' not in source and '3,672' not in source
+    for value in ['0.40625','3,672','108','642','769','578','224','1.803','1.798','1.808','0.22222','0.12067','0.36667','224 decreases','331 increases']:
+        assert value in support,('relocated evidence missing',value)
+    for label in ['sec:s-development-scope','sec:s-output-horizon','sec:s-second-qwen','sec:s-input-cost-controls','sec:s-external-reference']:
+        assert ('\\label{'+label+'}') in support
+        assert ('\\ref{supp-'+label+'}') in source
 review=fitz.open()
 for row in figs:
     with fitz.open(root/'figures'/row['file']) as d:review.insert_pdf(d)

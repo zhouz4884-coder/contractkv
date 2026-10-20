@@ -1,5 +1,7 @@
 # ContractKV V5b 正文整合交付
 
+**同日聚焦修订：** 最新主文12页、Supplement12页。五组支持细节移至Supplement §S-XVI，主文§VI分词计数减少约10.2%；核心主结果、费用、p99与治理证据保留。完整交付记录见[聚焦修订记录](../Paper/revision_v5b_20261020/Focused_revision_record_zh.md)。下文11页Supplement描述的是最初完整整合版，原交付包保留。
+
 2026-10-20。主文12页，Supplement11页，四分之一页作者简介空间已由PDF坐标核验。原V5a包78份被审计文件均未修改；Fig.1/2/3/5/6的15个PDF/SVG/PNG导出字节不变，Fig.4升级为已有三模型180候选实证。此次新增GPU请求为0。
 
 完整叙事、正文证据、Supplement交付及验证记录见[本轮记录](../Paper/revision_v5b_20261020/V5b_revision_record_zh.md)。主稿为[PDF](../Paper/revision_v5b_20261020/contractkv_tsc_v5b.pdf)，补充材料为[PDF](../Paper/revision_v5b_20261020/contractkv_supplement.pdf)。

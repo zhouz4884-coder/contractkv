@@ -7,7 +7,7 @@ env=os.environ.copy()
 if os.name=='nt':
     candidate=Path(os.environ.get('LOCALAPPDATA',''))/'Programs/MiKTeX/miktex/bin/x64'
     if candidate.is_dir():env['PATH']=str(candidate)+os.pathsep+env['PATH']
-for stem in ('contractkv_tsc_v5b','contractkv_supplement'):
+for stem in ('contractkv_supplement','contractkv_tsc_v5b'):
     for repetition in range(3):
         result=subprocess.run([sys.executable,'-B',str(root/'scripts/compile.py'),
             str(root/(stem+'.tex')),'--recipe','pdflatex'],env=env,capture_output=True)

@@ -1,4 +1,6 @@
-# ContractKV V5b 正文与实验证据整合记录
+# ContractKV V5b 首次正文整合记录
+
+本文件保存首次整合版的记录；同日后续聚焦修订及最新页数见 `Focused_revision_record_zh.md`。
 
 2026-10-20。基于用户 V5a 包独立修订，原包未覆盖。此次完成正文、图形局部升级、Supplement 实证交付及版面核验，没有新增模型调用，也没有撰写 Response Letter。
 

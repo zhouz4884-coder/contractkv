@@ -1,0 +1,46 @@
+{
+  "schema": "contractkv.evidence-relocation.v1",
+  "measurements_changed": false,
+  "new_model_calls": 0,
+  "baseline_main_words": 2291,
+  "focused_main_words": 2057,
+  "moves": [
+    {
+      "topic": "scope",
+      "main_conclusion": "Development counterexamples delimit the qualification scope; the eligibility class is frozen before independent evaluation (Supplementary Section~\\ref{sec:s-development-scope}).",
+      "supplement_label": "sec:s-development-scope",
+      "original_paragraph_sha256": "d33b3c2ee9eb4b5c0b04abc1f977200d0ed8b3af4d61c4c3e586ad333aa79de5",
+      "full_paragraph_preserved_verbatim": true
+    },
+    {
+      "topic": "horizon",
+      "main_conclusion": "Separate audits cover naturally terminated outputs beyond 512 tokens; Supplementary Section~\\ref{sec:s-output-horizon} reports actual lengths, verification coverage and task outcomes.",
+      "supplement_label": "sec:s-output-horizon",
+      "original_paragraph_sha256": "f6d397b46ac15be28c55e6f89e9f5f7e3f956bb443b2037078f5d96ee6088fc7",
+      "full_paragraph_preserved_verbatim": true
+    },
+    {
+      "topic": "qwen",
+      "main_conclusion": "A second independent six-source Qwen cohort reaches 1.803$\\times$ complete-wall throughput; its repeat ranges and coverage appear in Supplementary Section~\\ref{sec:s-second-qwen}.",
+      "supplement_label": "sec:s-second-qwen",
+      "original_paragraph_sha256": "71bca44bc6c6ecdd5611ce517db5aab9b243f04acfaf0bc2efc141cce90002cc",
+      "full_paragraph_preserved_verbatim": false,
+      "reference_retargeting": "Main-only figure reference replaced by descriptive primary three-model figure reference; all results and denominators retained."
+    },
+    {
+      "topic": "input-cost",
+      "main_conclusion": "Task-preserving input construction improves raw utility and admissible reuse in a fixed-source control. Supplementary Section~\\ref{sec:s-input-cost-controls} reports input, coverage and cost-profile sensitivities.",
+      "supplement_label": "sec:s-input-cost-controls",
+      "original_paragraph_sha256": "2d81f41ad5c71b18efe426474f874dc171254f89ac8b4cdf894cf49ecc368e8d",
+      "full_paragraph_preserved_verbatim": true
+    },
+    {
+      "topic": "external",
+      "main_conclusion": "External adapters use their own native task-score references. Different inputs and serving stacks support reference-relative quality analysis; Supplementary Table~S-VIII and Section~\\ref{sec:s-external-reference} give the distributions and threshold sensitivity.",
+      "supplement_label": "sec:s-external-reference",
+      "original_paragraph_sha256": "a66d73de6c7e819b0fc67f8003991b714d6dea0d6919b3f1e29e1345cf3c177a",
+      "full_paragraph_preserved_verbatim": true
+    }
+  ],
+  "word_count_basis": "whitespace-separated TeX tokens excluding comment lines"
+}

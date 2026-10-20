@@ -1,4 +1,4 @@
-% Changed: recover service economics, complementary breadth and mechanism-led evaluation.
+% Changed: focus the argument; supporting scope, horizon, input and comparator details moved to the supplement.
 % Protected: all measurement clocks, cohort distinctions and negative outcomes.
 % Meaning-Check: PRESERVED
 % Risk-Flags: none
@@ -27,8 +27,6 @@ We retain prompt/output IDs, task scores, routes, qualifications, timing, and ca
 \label{sec:mainresults}
 We expect a net gain when enough admitted requests reuse a stable prefix to repay first-use qualification. Figure~\ref{fig:performance} tests this on the same source set, with no tool slack and successful and failed attempts included. Throughput improves by 1.619$\times$ on Qwen, 1.109$\times$ on Mistral, and 1.070$\times$ on Llama. The process ranges are 1.615--1.623$\times$, 1.107--1.110$\times$, and 1.068--1.072$\times$. These are complete service gains rather than prefill-only estimates.
 
-
-
 Figure~\ref{fig:performance}(b) measures the work saved: including qualification, total new-prefill counts fall by 45.44\%, 14.64\%, and 10.89\%. These scheduler observations are workload counts, not inferred GPU time. Directly measured mean readiness falls by 43.87\%, 12.09\%, and 3.99\%.
 
 \begin{table}[t]
@@ -48,7 +46,7 @@ Llama & 270 / 1,620 & 7,851.3 $\rightarrow$ 7,905.7\\
 
 The throughput result does not imply lower tails. All p99 point estimates increase (Table~\ref{tab:primary}); Mistral's source-cluster/repetition interval for p99 reduction is wholly negative, [-60.576, -0.137]\%. Mean reduction intervals are [5.640, 79.479]\%, [-0.350, 34.781]\%, and [1.550, 5.724]\%. The cohort therefore supports a full-cost execution benefit with source-dependent latency effects.
 
-A second independent six-source Qwen cohort reaches 1.803$\times$ throughput (process range 1.798--1.808$\times$) with 774/1,620 compiled future pairs. Its results remain separate from Fig.~\ref{fig:performance}.
+A second independent six-source Qwen cohort reaches 1.803$\times$ complete-wall throughput; its repeat ranges and coverage appear in Supplementary Section~\ref{supp-sec:s-second-qwen}.
 
 \noindent\emph{Finding:} admitted prefix reuse repays qualification in the task-preserving zero-slack cohort, with directly observed reductions in prefill work and complete service time.
 
@@ -73,13 +71,12 @@ All-route material increases/decreases are 0/0, 2/1 and 5/3 for Qwen/Mistral/Lla
 
 The separate 50-source bounded-input audit retains 2,442 compiled future pairs: 2,178 RULER, 174 NarrativeQA and 90 RepoBench~\cite{ruler2024,narrativeqa2018,qasper2021}, with zero compiled ID changes and 33 all-route decreases on L0. Each model's RULER coverage is 726/810 (210/270 cold, 516/540 fan-out). Figure~\ref{fig:behavior} separates this fixed-cap, mixed cold/fan-out protocol from the faithful non-RULER matrix.
 
-\paragraph{Why the scope matters.}
-A broad-wrapper development protocol admitted later wrappers and produced 108 material decreases among 3,672 compiled pairs. A Qwen NarrativeQA development case changed its raw answer under an allowed turn-field change while the compiled answer retained the witness, despite a 0.40625 candidate margin. The evaluated eligibility class was frozen before the independent sources were opened. A margin alone cannot justify extending evidence to unseen dynamic inputs.
-
-\paragraph{Actual output horizon.}
-Separate conditions produce and verify naturally terminated outputs of 642 tokens for Qwen, 769 for Mistral, and 578 for Llama, each with six correct future pairs across three processes. They use explicitly declared 128/128/192-item schemas. Llama's 224-item condition omits the final 100 items and remains a task failure. These results establish actual 512+ output conditions, not universal long-output correctness.
+Development counterexamples delimit the qualification scope; the eligibility class is frozen before independent evaluation (Supplementary Section~\ref{supp-sec:s-development-scope}). Separate audits cover naturally terminated outputs beyond 512 tokens; Supplementary Section~\ref{supp-sec:s-output-horizon} reports actual lengths, verification coverage and task outcomes.
 
 A common-scope HotpotQA study uses the same 30 sessions across three models and three repetitions, yielding 2,430 future pairs. Business new-prefill reductions are 48.05\%, 40.69\% and 38.38\% for Qwen, Mistral and Llama. Its zero-slack macro mean TTFT reduction is 5.242\% (source-cluster 95\% interval [$-2.162$, $12.564$]\%); the supplement gives the timing variants and the original RULER statistical analysis.
+
+\paragraph{External task-score references.}\label{sec:baselines}
+External adapters use their own native task-score references. Different inputs and serving stacks support reference-relative quality analysis; Supplementary Table~S-VIII and Section~\ref{supp-sec:s-external-reference} give the distributions and threshold sensitivity.
 
 \noindent\emph{Finding:} qualified reuse preserves observed free-running behavior on admitted requests across synthetic and non-RULER tasks; coverage and reference utility identify the scope of that evidence.
 
@@ -112,7 +109,6 @@ Query-qualified execution has a different amortization unit. The second Qwen coh
 At 25 tenants/template and 80\% calibrated arrival load, deployment 500-ms goodput rises from 0.173 to 0.831 requests/s: +0.658, with a hierarchical-bootstrap 95\% interval [0.539,0.765] (Fig.~\ref{fig:service}). Across 10--80 registered identities, bounded-concurrency density replay sustains 9.408--11.072 tiered-SLO requests/s versus native APC's 0.900--1.152 (Supplementary Table~S-III). At 80 identities, the same cells use 71.9\% fewer blocks, leaving 381 additional free blocks. They jointly measure consolidation and service benefit without isolating headroom as the sole cause. These marker-bearing deployment traces have a separate task-quality audit from the primary cohort.
 
 \noindent\emph{Finding:} publication governance retains the frozen layout's service benefit, and the template object supports measurable cost sharing and physical consolidation across tenants.
-
 
 \subsubsection{Physical authorization on every route}
 \label{sec:authorization-results}
@@ -157,12 +153,6 @@ The frozen benefit gate selects two of four sealed points (Table~\ref{tab:gate})
 
 \paragraph{Sensitivity to input and cost profiles.}\label{sec:costvariant}
 \label{sec:fidelity}
-The full-cost benefit depends on qualified coverage and faithful inputs. Preserving HotpotQA evidence and RepoBench indentation raises raw HotpotQA F1 from 0 to 0.22222 and raw code score from 0.12067 to 0.36667 in a fixed four-source development comparison; admitted coverage increases from 30/360 to 112/360 and complete-wall throughput from 1.039$\times$ to 1.117$\times$. Those are input-construction, not reordering-induced accuracy gains. A separate length-aware cost-profile variant lowers one Qwen p99 point estimate but sacrifices coverage and throughput; the negative tradeoff and its uncertainty remain in the Supplement.
+Task-preserving input construction improves raw utility and admissible reuse in a fixed-source control. Supplementary Section~\ref{supp-sec:s-input-cost-controls} reports input, coverage and cost-profile sensitivities.
 
 \noindent\emph{Finding:} scope determines admissible sharing, and locality, residency and admission cost determine how much of that opportunity becomes service benefit.
-
-\subsection{What Does the External Comparator Establish?}
-\label{sec:baselines}
-The external comparison measures paired task-score changes against each method's native reference. Under the same $>0.03$ reporting threshold, a CacheBlend adapter records 224 decreases and 331 increases in 2,250 pairs against its own separator-matched reference; ContractKV records two decreases and no increases in 2,250 pairs against its own raw APC reference. These reference-relative distributions characterize each adapter; execution stacks and inputs differ. Supplementary Table~S-VIII reports native baselines and threshold sensitivity.
-
-\noindent\emph{Finding:} good average task scores and absence of harmful per-request changes are distinct outcomes; compare them against the actual reference each method uses.

@@ -1,0 +1,23 @@
+\section{Supporting Scope, Horizon and Input Controls}
+\label{sec:s-supporting-audits}
+These supporting analyses retain the conditions, outcomes and denominators of the corresponding experiments. The main evaluation states their implications; this section supplies the detailed evidence.
+
+\subsection{Development Scope Counterexamples}
+\label{sec:s-development-scope}
+A broad-wrapper development protocol admitted later wrappers and produced 108 material decreases among 3,672 compiled pairs. A Qwen NarrativeQA development case changed its raw answer under an allowed turn-field change while the compiled answer retained the witness, despite a 0.40625 candidate margin. The evaluated eligibility class was frozen before the independent sources were opened. A margin alone cannot justify extending evidence to unseen dynamic inputs.
+
+\subsection{Long-Output Task and Termination Audits}
+\label{sec:s-output-horizon}
+Separate conditions produce and verify naturally terminated outputs of 642 tokens for Qwen, 769 for Mistral, and 578 for Llama, each with six correct future pairs across three processes. They use explicitly declared 128/128/192-item schemas. Llama's 224-item condition omits the final 100 items and remains a task failure. These results establish actual 512+ output conditions, not universal long-output correctness.
+
+\subsection{Second Independent Qwen Cohort}
+\label{sec:s-second-qwen}
+A second independent six-source Qwen cohort reaches 1.803$\times$ throughput (process range 1.798--1.808$\times$) with 774/1,620 compiled future pairs. Its results remain separate from the primary three-model performance figure.
+
+\subsection{Input Construction and Cost-Profile Controls}
+\label{sec:s-input-cost-controls}
+The full-cost benefit depends on qualified coverage and faithful inputs. Preserving HotpotQA evidence and RepoBench indentation raises raw HotpotQA F1 from 0 to 0.22222 and raw code score from 0.12067 to 0.36667 in a fixed four-source development comparison; admitted coverage increases from 30/360 to 112/360 and complete-wall throughput from 1.039$\times$ to 1.117$\times$. Those are input-construction, not reordering-induced accuracy gains. A separate length-aware cost-profile variant lowers one Qwen p99 point estimate but sacrifices coverage and throughput; the negative tradeoff and its uncertainty remain in the Supplement.
+
+\subsection{Native-Reference Task-Score Comparisons}
+\label{sec:s-external-reference}
+The external comparison measures paired task-score changes against each method's native reference. Under the same $>0.03$ reporting threshold, a CacheBlend adapter records 224 decreases and 331 increases in 2,250 pairs against its own separator-matched reference; ContractKV records two decreases and no increases in 2,250 pairs against its own raw APC reference. These reference-relative distributions characterize each adapter; execution stacks and inputs differ. Supplementary Table~S-VIII reports native baselines and threshold sensitivity.
