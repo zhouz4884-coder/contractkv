@@ -23,3 +23,9 @@
 ## D5 — 首次公开冻结的换行属性修正，推理前逐字节复核
 
 首次加入新 results 目录时 Git 沿用了文本换行规范，导致远程 Git 中 freeze JSON 的字节与本地/部署副本不同。GPU 尚未启动。为新实验目录及脚本增加 `-text`，重新提交原始字节并核查所有冻结文件与 source snapshot 的 Git blob；保留前一提交，不改科学内容、哈希或选样。后续仅使用字节一致的公开提交和实际预检回执启动。
+
+## D6 — 吸收用户补充，区分物理前缀与行为范围，推理前封存 v2
+
+用户补充正确：Session 24 对象仅为 3 条 canonical prompt 的 8 租户绑定；不能解读为 24 条独立 prompt。不同 tenant/turn 的完整输入不同，而稳定前缀相同，这是物理模板复用的正当依据；它不能推出 Raw/重排完整生成等价。新补充还指出旧 admit 用保存 plan/certificate 自比，没有对实际线上前缀重新哈希。新 v2 在发送前对实际 tokenizer IDs 按证书 stable_prefix_tokens 重算原有 JSON-ID SHA，并检查 block-aligned commit 边界；完整请求的 Raw 行为证据仍独立必需。Native 命中是事后物理观测，不能替代准入中的这项检查，也不能由 partial/zero hit 推出前缀身份不同。
+
+v1 仅完成 CPU 准备/预检，未启动任何 GPU 推理。保留 v1 全部快照和回执，另建 v2 源码、协议、冻结与回执；来源、评分、输出预算、margin、重复负载及预定停止门槛不变。修复不需要重新选择来源或模型结果调参。
