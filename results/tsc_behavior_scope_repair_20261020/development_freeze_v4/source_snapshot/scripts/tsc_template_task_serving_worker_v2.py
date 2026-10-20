@@ -1,0 +1,125 @@
+"""Fresh-server paired waves, identical runtime, no model loading during clients."""
+import argparse
+import ast
+from concurrent.futures import ThreadPoolExecutor
+from copy import deepcopy
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+from threading import Event,Thread
+import time
+if __package__ in (None,''):sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from scripts import tsc_revision_final_raw_worker_v1 as base
+from scripts.tsc_revision_mechanism_worker_v3 import validate_preflight
+
+STUDY=Path('results/tsc_template_task_serving_20261019')
+CORE=Path('results/tsc_revision_mechanism_controls_20261018')
+def read(p):return json.loads(p.read_text(encoding='utf-8'))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def write(p,x):
+    p.parent.mkdir(parents=True,exist_ok=True)
+    with p.open('x',encoding='utf-8') as f:json.dump(x,f,indent=2);f.write('\n')
+def state(p,x):
+    q=p.with_suffix('.tmp');q.write_text(json.dumps(x,indent=2)+'\n');q.replace(p)
+
+def adapted_start():
+    old=next(n for n in ast.parse(Path(base.__file__).read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='start_server');new=deepcopy(old)
+    changes=dict(cell="study/'runs'/job['id']/('attempt'+str(job.get('attempt',1)))",source="study/job['snapshot']",protocol='None',
+        client="[PY,'-B',str(source/'scripts/tsc_template_task_serving_client_v1.py'),'--study',str(study),'--job',str(study/job['job_file']),'--identity',str(root/CORE/'preflight_v3'/('identity_'+model+'.json')),'--output',str(cell/'responses.jsonl'),'--summary',str(cell/'summary_v1.json'),'--metrics-events',str(cell/'metrics.jsonl'),'--base-url',f'http://127.0.0.1:{job[\"port\"]}/v1','--model',served,'--policy-hash',policy_hash]")
+    for key,expression in changes.items():
+        nodes=[n for n in ast.walk(new) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id==key for t in n.targets)];assert len(nodes)==1
+        nodes[0].value=ast.copy_location(ast.parse(expression,mode='eval').body,nodes[0].value)
+    a,b=deepcopy(old),deepcopy(new)
+    for fn in (a,b):
+        for n in ast.walk(fn):
+            if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id in changes for t in n.targets):n.value=ast.Constant(value='DECLARED_TASK_SERVING_DISPATCH')
+    assert ast.dump(a,include_attributes=False)==ast.dump(b,include_attributes=False)
+    space=base.__dict__.copy();exec(compile(ast.fix_missing_locations(ast.Module(body=[new],type_ignores=[])),str(base.__file__)+'[task-bearing-serving]','exec'),space)
+    return space['start_server'],dict(parent_sha256=sha(Path(base.__file__)),changed_assignments=list(changes),all_other_server_AST_identical=True)
+
+def run_client(item):
+    stop=Event();monitor=Thread(target=base.monitor,args=(item['job']['port'],item['cell']/'telemetry_v1.jsonl',stop),daemon=True);monitor.start()
+    try:
+        with (item['cell']/'client.log').open('xb') as f:done=subprocess.run(item['client'],cwd=item['source'],env=item['environment'],stdout=f,stderr=subprocess.STDOUT,timeout=7200)
+        assert done.returncode==0,'Preserve failed scientific cell; no automatic rerun'
+        result=read(item['cell']/'summary_v1.json');assert result['execution_complete']
+        assert result['offered']==(80 if item['job']['phase']=='calibration' else 384)
+        assert read(item['cell']/'measured_backend_drain_v1.json')['backend_request_counters_drained']
+        assert result['raw_file_sha256']==sha(item['cell']/'responses.jsonl')
+        return result
+    finally:stop.set();monitor.join(timeout=10)
+
+def wave(root,study,jobs,policy,owned,start_server):
+    items=[];stop=Event();violation=Event();monitor=None
+    try:
+        for job in jobs:items.append(start_server(root,study,job,policy,owned));time.sleep(2)
+        with ThreadPoolExecutor(max_workers=len(items)) as pool:
+            for future in [pool.submit(base.ready,i) for i in items]:future.result()
+        label=hashlib.sha256('|'.join(j['id'] for j in jobs).encode()).hexdigest()[:16]
+        write(study/'waves'/(label+'_ready_v1.json'),dict(jobs=[j['id'] for j in jobs],all_servers_ready_before_any_measured_client=True,epoch_s=time.time()))
+        monitor=Thread(target=base.resource_monitor,args=(study/'waves'/(label+'_GPU_resources_v1.jsonl'),owned,stop,violation),daemon=True);monitor.start()
+        with ThreadPoolExecutor(max_workers=len(items)) as pool:
+            pending=[pool.submit(run_client,i) for i in items];outcomes=[f.result() for f in pending]
+        stop.set();monitor.join(timeout=10);assert not monitor.is_alive() and not violation.is_set(),'Foreign GPU usage invalidates entire wave'
+        assert not base.foreign_pids(base.resource_snapshot(),owned)
+        for item,result in zip(items,outcomes):
+            write(item['cell']/'completion_v1.json',dict(status='complete',job=item['job'],summary_sha256=sha(item['cell']/'summary_v1.json'),
+                held_peer_server_until_both_measured_clients_complete=True,
+                files=[dict(path=p.name,sha256=sha(p),bytes=p.stat().st_size) for p in item['cell'].iterdir() if p.is_file() and p.suffix in {'.jsonl','.log'} and p.name!='server.log']))
+        return [i['cell'].relative_to(study).as_posix() for i in items]
+    except BaseException as e:
+        for item in items:
+            if not (item['cell']/'failure_v1.json').exists():write(item['cell']/'failure_v1.json',dict(error_type=type(e).__name__,error_message=str(e),whole_wave_invalid=True,all_outputs_preserved=True))
+        raise
+    finally:
+        stop.set()
+        if monitor:monitor.join(timeout=10)
+        for item in items:base.stop_own_group(item['process']);owned.discard(item['process'].pid)
+
+def main(a):
+    root=a.root.resolve();study=root/STUDY;assert sys.platform=='linux' and root.is_relative_to(base.DISK)
+    if base.foreign_pids(base.resource_snapshot()):print('WAIT_FOR_EXCLUSIVE_GPU');return 75
+    freeze_dir=study/(a.phase+'_freeze_v1');freeze=read(freeze_dir/'freeze.json');assert sha(freeze_dir/'freeze.json')==a.freeze_sha256
+    for r in freeze['files']:
+        assert '\\' not in r['path'] and not Path(r['path']).is_absolute()
+        assert sha(root/r['path'])==sha(freeze_dir/'source_snapshot'/r['path'])==r['sha256'],r['path']
+    start,proof=adapted_start();assert proof==freeze['server_adapter_proof'];validate_preflight(root/CORE)
+    protocol=read(study/(a.phase+'_protocol_v1.json'));jobs=protocol['jobs']
+    assert jobs and len({j['id'] for j in jobs})==len(jobs)
+    for j in jobs:
+        assert read(study/j['job_file'])==j and j['phase']==a.phase and j['lane'] in [0,1]
+        assert (study/j['snapshot']).resolve()==(freeze_dir/'source_snapshot').resolve()
+    receipt=study/(a.phase+'_preflight_receipt_v1.json');status=study/(a.phase+'_execution_state_v1.json')
+    if a.mode=='preflight':
+        assert not receipt.exists() and not status.exists()
+        audit=read(study/'runtime_dynamic_import_audit_v3.json')
+        assert all((freeze_dir/'source_snapshot'/p).is_file() for p in audit['runtime_script_imports'])
+        write(receipt,dict(status='PASS',freeze_sha256=a.freeze_sha256,jobs=len(jobs),server_adapter_proof=proof,
+            dynamic_runtime_script_imports_present=True,model_runtime_parent_receipt_sha256=sha(root/CORE/'preflight_v3/receipt_v1.json'),resource=base.resource_snapshot(),new_model_generations=0))
+        print(json.dumps(dict(receipt_sha256=sha(receipt))));return 0
+    assert a.receipt_sha256==sha(receipt)
+    import fcntl
+    with (study/(a.phase+'_worker_v1.lock')).open('a+') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);assert not status.exists(),'Monitor the original worker; never duplicate completed jobs'
+        value=dict(status='RUNNING',worker_pid=os.getpid(),phase=a.phase,completed_cells=[],planned_cells=len(jobs),current_wave=[]);state(status,value)
+        owned=set()
+        try:
+            groups={}
+            for i,job in enumerate(jobs):groups.setdefault(job.get('wave',i//2),[]).append(job)
+            for current in groups.values():
+                assert len(current)<=2 and len({j['lane'] for j in current})==len(current)
+                value['current_wave']=[j['id'] for j in current];state(status,value)
+                completed=wave(root,study,current,a.freeze_sha256,owned,start)
+                value['completed_cells'].extend(completed);state(status,value)
+            value.update(status='COMPLETE_PENDING_INDEPENDENT_ANALYSIS',worker_pid=None,current_wave=[]);state(status,value)
+        except BaseException as e:
+            value.update(status='FAILURE_PRESERVED',worker_pid=None,error_type=type(e).__name__,error_message=str(e));state(status,value);raise
+    return 0
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,required=True);p.add_argument('--phase',choices=['calibration','formal'],required=True)
+    p.add_argument('--mode',choices=['preflight','execute'],required=True);p.add_argument('--freeze-sha256',required=True);p.add_argument('--receipt-sha256')
+    raise SystemExit(main(p.parse_args()))
