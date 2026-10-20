@@ -1,0 +1,61 @@
+{
+  "status": "complete",
+  "job": {
+    "id": "development-Mistral-7B-Instruct-v0.3-r1-Strict-exact",
+    "phase": "development",
+    "model": "Mistral-7B-Instruct-v0.3",
+    "policy": "Strict-exact",
+    "repeat": 1,
+    "lane": 1,
+    "wave": 2,
+    "port": 11305,
+    "input_set": "development",
+    "accesses": 4,
+    "expected_business": 24,
+    "snapshot": "development_freeze_v4/source_snapshot",
+    "job_file": "development_jobs_v4/development-Mistral-7B-Instruct-v0.3-r1-Strict-exact.json"
+  },
+  "summary_sha256": "a66714af04e5dd75a6b5ee6825aed911a367e652e3f7cc3709988e12431040c3",
+  "files": [
+    {
+      "path": "telemetry_v1.jsonl",
+      "sha256": "f390bfa6cd006b751fa44d72eaa3b7ee40d66d57d49d739a52c620b67de5781d",
+      "bytes": 59659
+    },
+    {
+      "path": "summary_v1.json",
+      "sha256": "a66714af04e5dd75a6b5ee6825aed911a367e652e3f7cc3709988e12431040c3",
+      "bytes": 1473
+    },
+    {
+      "path": "measured_backend_drain_v1.json",
+      "sha256": "1d9934cc9b83c29f9ac7ee7ff4f473730d2c0219b6053e1eb7a67e9a1a10f1ba",
+      "bytes": 438
+    },
+    {
+      "path": "launch_v1.json",
+      "sha256": "a1e510e323dd1bafbe745870b9c2d865eff34e1ffce2a62cf8787b2def0f13d6",
+      "bytes": 4338
+    },
+    {
+      "path": "server_process_v1.json",
+      "sha256": "bed4b424094c9174c3e6fed96c8f8493983220938e6eb42ee759cbd7dee7d889",
+      "bytes": 49
+    },
+    {
+      "path": "responses.jsonl",
+      "sha256": "b0b9ded4c71c71ed3507edf2b4f735b09c16a06c01241123bf697c334648b7e1",
+      "bytes": 3406699
+    },
+    {
+      "path": "metrics.jsonl",
+      "sha256": "38b7991e5bc6dd9c1e54232b8c7e40eeff31664794584872a6bfe2b8be418c5a",
+      "bytes": 1674334
+    },
+    {
+      "path": "client.log",
+      "sha256": "44fe2b84bcd994fe01c64091c413ec6dd595a30953c85e9417526f7bd1514d47",
+      "bytes": 1327
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "status": "CPU_PREFLIGHT_FAILURE_PRESERVED",
+  "source": "actual SSH process stderr and nonzero return in this task",
+  "worker": "scripts/tsc_behavior_scope_worker_v2.py",
+  "failure": "FileExistsError at exclusive open of development_CPU_import_probe.log, retained from v1",
+  "new_GPU_inference": 0,
+  "automatic_retry": false,
+  "repair": "Separate v4 infrastructure namespace, retain v1/v2/v3 snapshots and old log; v3 scientific client unchanged"
+}

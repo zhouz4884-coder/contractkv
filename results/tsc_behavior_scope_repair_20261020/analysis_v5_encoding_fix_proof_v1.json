@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "old_source_sha256": "fd90dfef6ab067790913dc4588f4ec3f6346ae3e5311b2e0cdd566cb4a682eaa",
+  "new_source_sha256": "75a805082596f18d1f1f9bea13c3aff3baa8c9b5127d834b9d0baedcbf7912c3",
+  "changed_calls": 1,
+  "all_other_analysis_AST_identical": true,
+  "GPU_client_runtime_policy_scores_thresholds_and_metric_formulas_unchanged": true,
+  "reason": "ExactBehaviorLedger uses compact sorted JSON; legacy transport digest uses spaced JSON. Compare actual ID arrays under their recorded encoding.",
+  "v4_failure": "AssertionError comparing different encodings, before final analysis output; all 6 GPU cells complete and retained"
+}

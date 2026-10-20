@@ -41,3 +41,17 @@ v2 完成文件/模型核查后，`open('xb')` 阻止覆盖 v1 的未版本化 C
 ## D9 — 区分传输占位文件与真实执行状态
 
 早期 CPU-only 监测尝试下载尚不存在的 v2 回执，传输工具在本地留下 0-byte 文件；后来部署清单同步了这些空文件。没有对应实际 launch/worker/GPU 请求，不能解释成 v2 已运行。旧 0-byte 占位及快照原样保留。监测器改为先 stat 远程文件、下载临时文件后原子落盘，并显式标注 legacy empty placeholder，禁止把它读成有效 JSON 回执。v4 使用独立命名且启动前核查无现有 worker/有效状态，未覆盖真实数据。
+
+## D10 — 首次 GPU 启动使用已公开真实回执
+
+实际科学 freeze v4 SHA：`fab31a882f05c13a564cabfd53765087916263098a478713f18f428a7ba5057f`；实际模型全 SHA 与隔离 import receipt SHA：`74e33b7e6a4336da4dae33281cef5d9317021e3a88c4e357841a8c806266b8d6`。285 份 root/snapshot/Git blob 逐字节一致。实际回执提交 `86e146f8d45ebbd698f2ce2fe5786b73e9790924` 与 origin/main 一致后，唯一启动 worker PID 1158844，epoch 1792472155.7256038；两张 GPU 的真实进程为其隔离 EngineCore。只续查同一 worker、锁与状态，不重新启动已完成单元。
+
+严格入口用于本轮真实 GPU 客户端；旧 Deployment 入口保留为显式对照，不能自动视为严格 Raw 等价。新记录复杂度随精确输入数增长，不通过该修复宣称模板一次认证覆盖任意动态后缀。物理前缀对象、授权组和行为准入是三个不同的判断对象。
+
+## D11 — 6 个 GPU 单元成功，离线哈希编码检查作窄修复
+
+worker 1158844 于 epoch 1792472966.8830047 正常结束，6/6、144 业务均正常完成，GPU 已释放。冻结分析 v4 在首个 Raw 行为哈希检查处失败：新 ExactBehaviorLedger 用 compact JSON 的 SHA，旧传输日志 `phase17.digest` 用带空格 JSON；两者对同一 IDs 数组字节不同。客户端与 ledger 内部编码一致，实际 Raw/verification 证据还单独按旧传输哈希核对，属于离线比较器错误。保留 v4 失败，新建 v5 仅将这一处比较改为 ledger 的 exact_digest，并以 AST 证明除新增 import 和该单调用外完全不变；未改 GPU、评分、阈值、统计或成本公式，不重跑有效 GPU 单元。
+
+## D12 — 本地原包复算通过后，按预定门槛进入独立阶段
+
+开发原包 7,524,486 bytes，SHA `246f236dc86f25ce38f3682d2fefec45e88dbf2fc1b995e962c8c2fb51d61dcc`，217 原始成员安全恢复，全部 SHA 保持不变；相同 v5 分析源码在本机独立复算所有 JSON 值完全相同。两模型各 12 严格 compiled 配对，ID/EOS 变化与分数下降均为 0；8 个精确作用域通过原有 Raw/候选/EOS/PSTP，均有负例拒绝控制。8-access 开发成本屏幕均为 true，故两个模型按既定规则进入独立 12 cells，不按候选快慢或 QA 正确答案改来源、顺序、门槛或 SLO。本轮不新增开放到达/SLO 容量矩阵。
