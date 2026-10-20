@@ -1,0 +1,15 @@
+{
+  "id": "dev-Mistral-7B-Instruct-v0.3-Fused-residency",
+  "model": "Mistral-7B-Instruct-v0.3",
+  "arm": "Fused-residency",
+  "policy": "Fused-residency",
+  "lane": 1,
+  "wave": 4,
+  "port": 11609,
+  "input_set": "validation",
+  "accesses": 4,
+  "expected_business": 32,
+  "pool_blocks": 3550,
+  "residency": "CERTIFIED",
+  "job_file": "jobs_v1/dev-Mistral-7B-Instruct-v0.3-Fused-residency.json"
+}

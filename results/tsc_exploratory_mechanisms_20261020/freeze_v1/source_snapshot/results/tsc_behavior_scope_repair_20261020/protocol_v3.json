@@ -1,0 +1,85 @@
+{
+  "schema": "contractkv.behavior-scope-repair.v3",
+  "parent_commit": "236e7d6cb40783680bc32a646850d31f946283b2",
+  "arms": [
+    "Raw-authorized",
+    "Deployment",
+    "Strict-exact"
+  ],
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3"
+  ],
+  "development": {
+    "HotpotQA": 2,
+    "RepoBench": 1,
+    "exact_scopes_per_source": 2,
+    "accesses_per_scope": 4,
+    "cells": 6
+  },
+  "validation": {
+    "HotpotQA": 3,
+    "RepoBench": 1,
+    "exact_scopes_per_source": 2,
+    "accesses_per_scope": 8,
+    "fresh_process_repeats": 2,
+    "max_cells": 12
+  },
+  "seeds": {
+    "development": {
+      "HotpotQA": 2026102001,
+      "RepoBench": 2026102002
+    },
+    "validation": {
+      "HotpotQA": 2026102003,
+      "RepoBench": 2026102004
+    }
+  },
+  "scope_coordinates": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "scope_semantics": "Exact full Raw AND Candidate Prompt IDs plus source, layout, tokenizer/runtime/generation, policy/domain/epoch. Repeated invocation ordinal is not model-visible. Original model-visible tenant/turn metadata remains unchanged. No merging observations or tenants.",
+  "strict_admission": "Actual complete Raw query witness; private free candidate has identical output IDs/stop; original single-shot full answer/EOS verification using Raw witness and unchanged floors; signed exact behavior record AND authorized template binding before L3 business. Missing evidence -> Raw. Only verifier PASS publishes shared candidate state.",
+  "Raw_floor": 0.0625,
+  "Candidate_and_EOS_floor": 0.125,
+  "max_model_len": 16384,
+  "output_budget": {
+    "HotpotQA": 128,
+    "RepoBench": 384
+  },
+  "generation": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014
+  },
+  "layout": "L3 only; no level search",
+  "Repo": "Inherited L0 for both models; preserve all Repo controls; this repair does not unlock the code family",
+  "first_access": "Strict first business request is actual authorized Raw with witness. One private candidate generation and optional verification after that response, before later exact repeats. All costs count in global wall. No offline free reference.",
+  "economics": "Unique inputs (known future reuse=0) skip candidate/verification. Dev is bounded diagnostic investment. Formal enabled per model only if dev has at least one strict QA scope, no compiled ID/EOS violation, actual prefix hit, and measured 8-access cumulative saving exceeds full strict cost for at least one QA scope. No guaranteed profit for every formal scope.",
+  "clock": "Cold measured service epoch before prompt preparation; serial closed-backlog invocations and explicit client-side qualification wait. Direct full wall includes all preparation, reference, failed checks, HTTP, binding and final backend drain. Not an open-arrival or SLO capacity experiment.",
+  "metrics": [
+    "full wall",
+    "full ready TTFT including synchronous qualification wait",
+    "actual prompt/output IDs",
+    "EOS",
+    "task score up/down/neutral at fixed .03",
+    "actual Native prefix-hit and New Prefill",
+    "all qualification and failure costs",
+    "exact-scope coverage and template prefix sharing"
+  ],
+  "stop": "No dev-qualified model -> archive NO-GO and stop GPU. Any unexplained compiled ID/EOS violation -> no formal for that model. Otherwise run exactly declared independent cells, preserve all results and stop without outcome tuning.",
+  "manuscript_and_Response_Letter_edits": false,
+  "actual_prefix_admission": "Hash ACTUAL tokenizer candidate IDs through signed certificate stable_prefix_tokens, enforce 16-token aligned commit<=stable boundary; independent exact Raw behavioral gate. Never compare saved plan to itself.",
+  "unused_v1_GPU_generations": 0,
+  "preselection_unchanged": true,
+  "visit_order": "Access round -> sources in frozen selected order -> exact coordinates (0,1),(1,1). Same source order and repetitions for all arms. No blocked per-source warm phase.",
+  "native_APC_control": "Raw may cache exact full prompts. Cross-source round robin exposes declared working set; actual hits measured for both paths. No presumption of a win or production locality claim.",
+  "unused_v1_v2_GPU_generations": 0
+}

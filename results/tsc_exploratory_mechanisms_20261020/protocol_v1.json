@@ -1,0 +1,57 @@
+{
+  "schema": "contractkv.optional-mechanism-diagnostic.v1",
+  "purpose": "Appendix candidate, not a reviewer-required experiment or fifth core contribution",
+  "reviewer_priority_gate": "results/tsc_reviewer_priority_audit_20261020/reviewer_experiment_recheck_v1.json",
+  "models": [
+    "Qwen3-8B",
+    "Mistral-7B-Instruct-v0.3"
+  ],
+  "arms": [
+    "Raw",
+    "Strict",
+    "TF-only",
+    "Fused",
+    "Fused-residency",
+    "Raw-residency"
+  ],
+  "max_cells": 12,
+  "fresh_process_repeats": 1,
+  "sources": "ALL four previously opened validation sources from the behavior-scope repair, now reused as development. No new independent claims, no selection based on new results.",
+  "exact_scopes": "Three QA sources x two tenant/turn conditions x two models = 12 QA scope conditions, including known rejections. Existing Repo remains L0.",
+  "input_set": "validation",
+  "accesses_per_exact_scope": 4,
+  "total_business": 384,
+  "clock": "serial closed backlog; identical inputs/order per arm; all online qualification, failures, native hooks and client costs included; server loading outside clock",
+  "budgets": {
+    "QA": 128,
+    "Repo": 384,
+    "max_model_len": 16384,
+    "max_num_seqs": 2,
+    "pool_blocks": {
+      "Qwen3-8B": 1940,
+      "Mistral-7B-Instruct-v0.3": 3550
+    }
+  },
+  "floors": {
+    "Raw": 0.0625,
+    "Candidate_and_EOS": 0.125
+  },
+  "generation": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 14014
+  },
+  "fusion": "Actual Candidate decode and EOS logprobs captured before free; unchanged native verifier checks those observed rows; same PSTP delayed visibility and block-aligned commit; no separate private Candidate generation or teacher-forced forward",
+  "TF_only": "Separate exploratory comparator: one Raw-witness teacher-forced verification without private candidate free generation; does NOT claim strict free-running evidence; all subsequent output changes retained",
+  "residency": "Revocable second-chance priority in free queue, group FIFO budget 75% of physical pool, 120s TTL; reclaim under allocation pressure; never increment ref_cnt or fake a live request",
+  "generic_Raw_control": "Same pool/budget/TTL/reclaim code, priority assigned to ordinary completed prompt cache prefixes; generic replacement gain kept separate from certified-state gain",
+  "trace": "Same allocation tracing hook in all arms; detailed full token/margin evidence for fused native requests only. Not a production throughput estimate.",
+  "statistical_limit": "One process per arm/model and already-opened sources: descriptive paired mechanisms only, no CI or unseen-source performance inference.",
+  "stop": "Complete at most 12 scheduled cells then stop. Infrastructure failures preserved and isolated; no threshold/source/SLO/reuse tuning to rescue results. Any fused ID/EOS/unauthorized publication violation -> disable branch and record NO-GO.",
+  "manuscript_and_response_edits": false,
+  "research_questions": [
+    "Does actual certified working set fit the measured pool, and what evicts it?",
+    "Can one actual candidate decode preserve the original PASS/FAIL conditions and reduce total cost?",
+    "Can reversible priority restore actual hits without hiding capacity or merely improving generic Raw?"
+  ]
+}

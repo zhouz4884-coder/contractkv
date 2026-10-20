@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "text_invariants": [
+    {
+      "source": "LongBench:hotpotqa:hotpotqa:doc:107",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    },
+    {
+      "source": "LongBench:hotpotqa:hotpotqa:doc:64",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    },
+    {
+      "source": "LongBench:hotpotqa:hotpotqa:doc:22",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    },
+    {
+      "source": "RepoBench:python_v1.1:alibaba/animate-anything",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    },
+    {
+      "source": "RepoBench:python_v1.1:bearyi26/DCPT",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    },
+    {
+      "source": "RepoBench:python_v1.1:xxlong0/Wonder3D",
+      "distinct_stable_text": 1,
+      "distinct_full_L3_messages": 72
+    }
+  ],
+  "registration_granularity": [
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "policy": "Session-qualified",
+      "objects_across_repeats": 72,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 72
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "common80",
+      "policy": "Template-qualified",
+      "objects_across_repeats": 9,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 9
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "policy": "Session-qualified",
+      "objects_across_repeats": 72,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 72
+    },
+    {
+      "model": "Qwen3-8B",
+      "load": "high100",
+      "policy": "Template-qualified",
+      "objects_across_repeats": 9,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 9
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "policy": "Session-qualified",
+      "objects_across_repeats": 72,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 72
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "load": "common80",
+      "policy": "Template-qualified",
+      "objects_across_repeats": 9,
+      "distinct_canonical_prompt_hashes": 3,
+      "actual_RPCs": 9
+    }
+  ],
+  "actual_token_ID_prefix_audit": {
+    "compiled_requests": 3456,
+    "actual_full_stable_prefix_matches_saved_certificate": 3456
+  },
+  "old_inband_actual_prefix_hash_enforced": false,
+  "new_GPU_requests": 0,
+  "conclusion": "Shared stable prefix is valid; registration objects are not unique prompts. This post-hoc identity result is distinct from in-band enforcement and Raw generation equivalence.",
+  "source_sha256": "1cb890282e21b039ce9553994d3fdcd3889ce91285aca3cc19d0b62c1babec14"
+}

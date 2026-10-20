@@ -1,0 +1,15 @@
+{
+  "id": "dev-Qwen3-8B-Fused-residency",
+  "model": "Qwen3-8B",
+  "arm": "Fused-residency",
+  "policy": "Fused-residency",
+  "lane": 0,
+  "wave": 4,
+  "port": 11608,
+  "input_set": "validation",
+  "accesses": 4,
+  "expected_business": 32,
+  "pool_blocks": 1940,
+  "residency": "CERTIFIED",
+  "job_file": "jobs_v1/dev-Qwen3-8B-Fused-residency.json"
+}
