@@ -1,0 +1,12 @@
+{
+  "reason": "Add explicit native release and real-engine abort/timeout/duplicate controls before ANY GPU inference",
+  "unchanged_main_matrix": true,
+  "main_cells": 12,
+  "main_business": 384,
+  "auxiliary_controls": "After measured Fused service only, same live engine; at most 7 HTTP/cancel attempts + 8 read probes per model",
+  "auxiliary_clock": "Separate time/cost ledger; no auxiliary request precedes or overlaps measured business",
+  "prior_v1_GPU_requests": 0,
+  "default_runtime_unchanged": true,
+  "native_control_evidence": "Actual pre-free cached-block hashes plus physical lookup after rejected/cancelled cold candidates",
+  "version": "v2 execution entry points; v1 freeze and CPU preflight preserved unused"
+}
