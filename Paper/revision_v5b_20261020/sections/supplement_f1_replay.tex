@@ -1,0 +1,23 @@
+\section{Four-Configuration Complete-Cost Replay}
+\label{sec:s-f1-replay}
+The original deployment Table III reports residual-verification mean-TTFT under 2-s (6-s Llama) slack. An independent three-repeat replay of the frozen original configurations instead records all 525 controller decisions and 453 real verifier RPCs over 24 fresh-server cells and 4,725 future pairs. It includes 155 non-PASS attempts, 30 exceptions and 60 warmups without verifier RPCs; missing original timestamps are \emph{not} imputed. The full controller includes reference generation, planning and failed/aborted work. Zero-slack mean-TTFT amortization is a component accounting estimand, whereas raw/ContractKV complete-wall ratios are direct time measurements.
+\begin{table}[t]
+\centering\small
+\caption{Independent frozen-original-configuration replay (three processes each). No residual slack is deducted in the latter two columns. The pre-existing recorded TTFT column appears in the main original-configuration cost table.}
+\label{tab:s-f1-replay}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Model & Full-controller TTFT $\downarrow$ & Direct wall $\times$\\
+\midrule
+Qwen3-8B & 10.82\% & 1.020\\
+Qwen3-14B TP2 & 20.93\% & 1.109\\
+Mistral-7B & 2.00\% & 0.994\\
+Llama-3.1-8B & $-0.20$\% & 1.012\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The earlier historical record lacks 33 Llama intermediate/failure RPC timings and other full-controller fields, a separate lineage issue preserved in Table~\ref{tab:s-matched-original-cost}. Those absent historical timings are not the independently remeasured full-cost values above. Both tables are retained to distinguish archive reconstruction from an actual new same-configuration experiment.
+
+
+The replay also retains benchmark-aligned post hoc quality diagnostics, distinct from its unchanged driver sanity proxy. Across 4,725 future pairs, Qwen8B has one material increase and three decreases; Mistral has six increases and zero decreases; Llama and Qwen14B have neither. One Qwen8B decrease is compiled (RepoBench sample 389, repetition three, score 0.72 to 0.38); the other two are raw-order routes. These archived-client diagnostics retain paired output text but lack complete output IDs, so text agreement is not promoted to token-ID equivalence. They belong to the deployment replay, not the primary cohort's 1,296 identical-ID compiled pairs.

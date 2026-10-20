@@ -1,0 +1,84 @@
+\section{Structural Measurement and Cost Granularity}
+\label{sec:s-closure}
+The main structural table concerns its six-source faithful cohort. Table~\ref{tab:s-five-family-structure} adds separately frozen five-family raw controls; Table~\ref{tab:s-structure-paired} holds four development sources fixed while changing input construction. Stable/all is stable body divided by all input tokens, Hits/all is total native hits divided by all input tokens, and Recovered is native hits on stable body divided by stable body tokens. Different cohorts and token attribution conventions are not treated as a before/after update of one aggregate. The token ledgers preserve actual prompt-ID alignment flags and separate source-macro from pooled token ratios.
+
+\begin{table}[!htb]
+\centering\small
+\caption{Bounded five-family raw controls, separate from the faithful cohort: ten sources and 270 future requests over three repetitions per model/family. Token-weighted percentages.}
+\label{tab:s-five-family-structure}
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Model & Family & Stable/all & Hits/all & Recovered\\
+\midrule
+Qwen & RULER & 75.679 & 6.786 & 1.313\\
+Qwen & HotpotQA & 88.075 & 3.756 & 0.267\\
+Qwen & NarrativeQA & 87.279 & 4.034 & 0.294\\
+Qwen & Qasper & 87.597 & 3.966 & 0.288\\
+Qwen & RepoBench & 91.417 & 1.770 & 0.000\\
+Mistral & RULER & 72.191 & 7.818 & 1.438\\
+Mistral & HotpotQA & 85.362 & 3.838 & 0.321\\
+Mistral & NarrativeQA & 84.190 & 4.221 & 0.358\\
+Mistral & Qasper & 84.738 & 4.112 & 0.347\\
+Mistral & RepoBench & 91.470 & 1.838 & 0.000\\
+Llama & RULER & 73.594 & 7.972 & 1.451\\
+Llama & HotpotQA & 87.432 & 4.217 & 0.278\\
+Llama & NarrativeQA & 87.006 & 4.651 & 0.295\\
+Llama & Qasper & 87.146 & 4.495 & 0.293\\
+Llama & RepoBench & 92.166 & 1.971 & 0.000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!htb]
+\centering\small
+\caption{Same four development sources, Qwen, 360 future requests/input condition, identical 16K window and declared service protocol. Percentages use the same definitions as the five-family table. This comparison changes input construction; it is not a comparison between the original motivation aggregates and a new held-out population.}
+\label{tab:s-structure-paired}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Input & Stable/all & Hits/all & Stable recovered\\
+\midrule
+Word-cap packing & 91.523 & 2.281 & 0.078\\
+Structure-preserving & 98.311 & 1.081 & 0.034\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Matched Deployment Cost Components}
+For a trace with business mean $\bar T$, recorded verification durations $c_j$, slack $s$ and normalization count $N$, residual accounting is $\bar T+\sum_j\max(c_j-s,0)/N$. Setting $s=0$ on the same recorded requests gives $\bar T+\sum_jc_j/N$. Table~\ref{tab:s-matched-original-cost} preserves the original normalization and also gives an all-future denominator; these are component means, not new service-wall measurements. Qwen8B/Mistral originally normalize RPC cost by certified future requests; Qwen14B/Llama use all future requests. There are 1,350 future pairs/configuration, except Qwen14B with 675.
+
+Qwen8B, Mistral and Qwen14B retain 147/147, 126/126 and 72/72 verifier-RPC timers, respectively. Three, 24 and three raw-reference generations instead reach their output limit before a verifier RPC is invoked. Their generation/controller elapsed times were not retained on the exception path. Llama records 75/108 RPC durations: rejected intermediate attempts retain decisions but lose timings. Full rejection also overwrites the cost with zero. Those missing costs are not imputed; the Llama savings are bounded above by the recorded-cost result. Missing preprocessing and raw-reference time prevent reconstructing complete historical controller cost. The independent registration-cost supplement and the primary directly measured service wall remain separate evidence.
+
+\begin{table}[!htb]
+\centering\small
+\caption{Matched-request deployment accounting: mean-TTFT reductions (\%) over three processes. Recorded reproduces residual-slack accounting; zero slack charges recorded RPCs. Llama values bound savings above because 33 durations are missing. These are not complete controller wall or measured p99.}
+\label{tab:s-matched-original-cost}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Configuration & Recorded & Zero/legacy & Zero/all\\
+\midrule
+Qwen3-8B & 37.81 & 16.81 & 28.91\\
+Qwen3-14B TP2 & 44.69 & 34.39 & 34.39\\
+Mistral-7B & 31.72 & 2.83 & 19.74\\
+Llama-3.1-8B & 29.41 & $\leq$20.37 & $\leq$20.37\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Where Binding Checks Execute}
+The source call chain places HMAC binding validation in the trusted deployment client before compiled/raw route selection, rather than in a separately deployed network gateway. Table~\ref{tab:s-client-binding} tests that function boundary. The domain-level certificate uses a wildcard tenant field; the application must authenticate users, enforce membership and mediate access to the engine. The separate manifest-helper cases in Table~\ref{tab:s-manifest} test declaration consistency, not semantic confidentiality. No new GPU requests are used in these CPU audits.
+
+\begin{table}[!htb]
+\centering\small
+\caption{CPU checks of the actual deployment-client issue/check function bodies extracted from their source. Binding errors deny compiled selection and retain raw routing; these checks do not implement a public authentication proxy or measure GPU publication. The tenant-label acceptance is expected under the domain wildcard and requires application-level user authorization.}
+\label{tab:s-client-binding}
+\begin{tabular}{@{}P{1.9in}rr@{}}
+\toprule
+Condition & Cases & \shortstack{Compiled\\admissible}\\
+\midrule
+Matching domain binding & 1 & 1\\
+Changed bound identity/scope/settings & 14 & 0\\
+Missing binding, bad tag, expiry & 3 & 0\\
+Different tenant label; domain wildcard & 1 & 1\\
+\bottomrule
+\end{tabular}
+\end{table}

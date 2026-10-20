@@ -1,0 +1,56 @@
+\documentclass[journal]{IEEEtran}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm,algorithmic}
+\usepackage{graphicx,booktabs,array,multirow}
+\usepackage{microtype}
+\usepackage{dblfloatfix}
+\usepackage{url}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
+\usepackage{cite}
+\newcommand{\ckv}{\textsc{ContractKV}}
+\newcommand{\raw}{\mathrm{raw}}
+\newcommand{\cand}{\mathrm{cand}}
+\newcommand{\Pass}{\textsc{Pass}}
+\newcommand{\Fail}{\textsc{Fail}}
+\newcommand{\LCP}{\operatorname{LCP}}
+\newcommand{\Hash}{\operatorname{H}}
+\newcommand{\ind}{\mathbf{1}}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newtheorem{definition}{Definition}
+\interdisplaylinepenalty=2500
+\setcounter{topnumber}{2}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\dbltopfraction}{0.92}
+\renewcommand{\textfraction}{0.06}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\hypersetup{pdftitle={ContractKV: Certified Prompt Compilation for Transactional Prefix Reuse in Multi-Tenant LLM Services},pdfauthor={Bin Zhou and Xi Cao},pdfsubject={Certified prompt compilation, governed publication and service-template reuse}}
+\begin{document}
+\title{ContractKV: Certified Prompt Compilation\\for Transactional Prefix Reuse\\in Multi-Tenant LLM Services}
+\author{Bin~Zhou and Xi~Cao,~\IEEEmembership{Member,~IEEE}
+\thanks{B. Zhou is with Beijing University of Chemical Technology, Beijing 102218, China (e-mail: 2025200800@buct.edu.cn).}
+\thanks{X. Cao is with Beijing University of Chemical Technology, Beijing 102218, China (e-mail: caoxi@buct.edu.cn).}
+\thanks{Corresponding author: Xi Cao.}}
+\markboth{ContractKV: Certified Prompt Compilation}{Zhou and Cao: Certified Prompt Compilation for Transactional Prefix Reuse}
+\maketitle
+\input{sections/00_abstract}
+\begin{IEEEkeywords}
+Large language model serving, KV cache, prefix caching, behavioral certification, transactional publication, multi-tenant services.
+\end{IEEEkeywords}
+\input{sections/01_introduction}
+\input{sections/02_motivation}
+\input{sections/03_model}
+\input{sections/04_design}
+\input{sections/05_implementation}
+\input{sections/06_evaluation}
+\input{sections/07_related}
+\input{sections/08_discussion}
+\input{sections/09_conclusion}
+\input{references}
+\input{sections/author_biographies} % Replace the quarter-page reservation with author-confirmed biographies.
+% Figures 1--6 are source-controlled vector exports with separate evidence QA.
+\end{document}

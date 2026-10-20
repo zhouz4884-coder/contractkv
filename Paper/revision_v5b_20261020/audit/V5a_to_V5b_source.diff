@@ -1,0 +1,524 @@
+--- V5a/sections/00_abstract.tex
++++ V5b/sections/00_abstract.tex
+@@ -1,3 +1,3 @@
+ \begin{abstract}
+-In a multi-tenant LLM service, reusable documents often follow changing questions or observations, so native prefix caching cannot reuse their KV state. Moving documents forward creates a longer physical prefix but can change model behavior; publishing that state before checking it exposes the change to other requests. We present ContractKV, which turns a dependency-valid compiled prefix into an evidence-bound service object. CALC exposes legal stable prefixes; scoped token-path and termination checks govern behavioral admission; Prefix-Selective Transactional Promotion (PSTP) atomically publishes only eligible complete KV blocks; and Service-Template Certificates bind authorization and lifecycle while amortizing admission work. Across four deployment configurations, recorded residual-slack mean-TTFT reductions range from 29.41\% to 44.69\%. In a separate, task-preserving, zero-slack HotpotQA/RepoBench study, Qwen3-8B, Mistral-7B, and Llama-3.1-8B achieve 1.619$\times$, 1.109$\times$, and 1.070$\times$ complete-service throughput, respectively; all 1,296 admitted compiled future pairs reproduce raw output token IDs under greedy decoding. Independently, template-scoped admission reduces verification calls from 125 to five and unhidden verification exposure from 25.05 to 3.24 ms/request. At a specified 25-tenant, 80\%-load deployment point, 500-ms SLO goodput rises from 0.173 to 0.831 requests/s. These measurements establish complementary behavioral and service-economic properties under their stated, distinct qualification scopes.
++In multi-tenant LLM services, repeated documents often follow changing questions or observations, leaving substantial reusable content beyond the reach of native prefix caching. Reordering that content creates a physical prefix, but its behavior and shared visibility must be governed together. We present ContractKV, which makes a dependency-valid compiled prefix an evidence-bound service object. CALC exposes legal stable prefixes; execution-scoped token-path and termination checks govern behavioral admission; Prefix-Selective Transactional Promotion (PSTP) atomically publishes eligible complete KV blocks; and Service-Template Certificates bind authorized reuse to a versioned lifecycle and amortize qualification. On six source-disjoint HotpotQA/RepoBench templates with task-preserving 16K inputs and zero tool slack, Qwen3-8B, Mistral-7B and Llama-3.1-8B achieve 1.619$\times$, 1.109$\times$ and 1.070$\times$ complete-service throughput. All 1,296 admitted compiled future pairs reproduce raw output token IDs under greedy decoding. In deployment-template controls, sharing qualification reduces verifier calls from 125 to five and unhidden verification exposure from 25.05 to 3.24 ms/request. At a 25-tenant, 80\%-load deployment point, 500-ms SLO goodput rises from 0.173 to 0.831 requests/s. Together, these results demonstrate how scoped admission, atomic publication and template-level cost sharing turn structural repetition into useful shared service state.
+ \end{abstract}
+--- V5a/sections/01_introduction.tex
++++ V5b/sections/01_introduction.tex
+@@ -1,26 +1,26 @@
+ \section{Introduction}
+ \label{sec:introduction}
+-A retrieval service places a user's question and a changing tool observation ahead of a long, mostly immutable document collection. Another authorized tenant asks a different question over the same documents. The stable context is reusable at the application level, but native prefix caching stops matching at the first changed token; it cannot recover the documents' downstream KV. This ordering is not hypothetical: a fixed revision of an Azure RAG demonstration places history and question before retrieved sources~\cite{azuretemplate}. Our measured task-preserving traces likewise have 98.36--98.52\% stable-body tokens, yet recover only 0.030--0.034\% of that stable body through native prefix hits (Section~\ref{sec:background}).
++A retrieval service places a user's question and conversation history ahead of a long, mostly immutable document collection. Another authorized tenant asks a different question over the same documents. The stable context is reusable at the application level, but native prefix caching stops matching at the first changed token; it cannot recover the documents' downstream KV. This ordering is not hypothetical: a fixed revision of an Azure RAG demonstration places history and question before retrieved sources~\cite{azuretemplate}. Our measured task-preserving traces likewise have 98.36--98.52\% stable-body tokens, yet recover only 0.030--0.034\% of that stable body through native prefix hits (Section~\ref{sec:background}).
+ 
+-An obvious remedy is to move stable documents before the changing fields. That does not make the result deployable. \emph{First}, the reorder must preserve data, causal and positional dependencies. \emph{Second}, even a legal reorder can change an autoregressive answer; a development NarrativeQA case changed its raw answer when permitted metadata varied despite a large candidate margin. \emph{Third}, a speculative candidate can become visible in the shared cache before qualification completes, and an otherwise valid reuse may cross a stale template or unauthorized scope. A cache hit, a behaviorally admissible layout and a published shared block are three different facts.
++An obvious remedy is to move stable documents before the changing fields. That does not make the result deployable. \emph{First}, the reorder must preserve data, causal and positional dependencies. \emph{Second}, a dependency-valid reorder can still change an autoregressive answer, so a legal layout needs behavioral evidence before use. \emph{Third}, a speculative candidate can become visible in the shared cache before qualification completes, and an otherwise valid reuse may cross a stale template or unauthorized scope. A cache hit, a behaviorally admissible layout and a published shared block are three different facts.
+ 
+-Prior mechanisms solve important but different parts of this problem. PagedAttention and RadixAttention implement exact-prefix reuse~\cite{vllm2023,sglang2024}; Prompt Cache provides reusable schemas~\cite{promptcache2024}; CacheBlend and EPIC explore cross-position execution~\cite{cacheblend2025,epic2025}. Application-aware scheduling and relational row/field reordering expose further reuse opportunities~\cite{parrot2024,llmqueries2025}. These techniques do not, by themselves, define the joint evidence, authorization and atomic-visibility contract evaluated here (Section~\ref{sec:background}).
++Prior mechanisms solve important but different parts of this problem. PagedAttention and RadixAttention implement exact-prefix reuse~\cite{vllm2023,sglang2024}; Prompt Cache provides reusable schemas~\cite{promptcache2024}; CacheBlend and EPIC explore cross-position execution~\cite{cacheblend2025,epic2025}. Application-aware scheduling and relational row/field reordering expose further reuse opportunities~\cite{parrot2024,llmqueries2025}. ContractKV addresses the complementary service decision: binding transformed state to applicable behavioral evidence, authorized consumers and an atomic publication boundary (Section~\ref{sec:background}).
+ 
+-\noindent\textbf{Our claim.} \emph{A structurally reusable KV prefix becomes a useful multi-tenant service object when legal compilation, execution-scoped behavioral admission, transactional publication and authorized qualification amortization are governed together.} This is one control-plane contribution, not four unrelated accelerators. Figure~\ref{fig:architecture} follows an example request from raw order to an admitted, physically shared prefix.
++\noindent\textbf{Our claim.} \emph{A structurally reusable KV prefix becomes a useful multi-tenant service object when legal compilation, execution-scoped behavioral admission, transactional publication and authorized qualification amortization are governed together.} We realize this service object through four coupled mechanisms: legal compilation, scoped admission, transactional publication and template-level qualification sharing. Figure~\ref{fig:architecture} follows an example request from raw order to an admitted, physically shared prefix.
+ 
+ \begin{figure*}[t]
+ \centering
+ \includegraphics[width=\textwidth]{figures/fig1_architecture.pdf}
+-\caption{ContractKV makes a compiled stable prefix an evidence-bound service object. CALC repairs a structural prefix gap; one of two separately evaluated witness protocols supplies scoped token-path evidence; PSTP commits eligible state only after PASS and a valid binding. Authorized tenants of the same template share the prefix and keep changing suffixes private. The deployment certificate and controlled-client query records are distinct (Table~\ref{tab:qualification-protocols}); their prefix associations refer to the same physical object. The commit cut excludes incomplete blocks and private suffixes.}
++\caption{ContractKV makes a compiled stable prefix an evidence-bound service object. CALC repairs a structural prefix gap; the evaluated witness protocols supply scoped token-path evidence; PSTP commits eligible state only after PASS and a valid binding. Authorized tenants of the same template share the prefix and keep changing suffixes private. Template certificates and client query records associate applicable qualifications with the physical prefix (Table~\ref{tab:qualification-protocols}). The commit cut excludes incomplete blocks and private suffixes.}
+ \label{fig:architecture}
+ \end{figure*}
+ 
+-We test four falsifiable consequences:
++Our contributions connect each mechanism to a measurable service property:
+ \begin{enumerate}
+-\item \textbf{CALC recovers hidden reuse opportunity.} Dependency-valid, retokenized stable-prefix layouts expose physically reusable blocks; measured native hits and prefill account for realized work (Sections~\ref{sec:calc} and~\ref{sec:mainresults}).
+-\item \textbf{Behavioral evidence is necessary.} Legal reordering alone is insufficient; scoped token/EOS attestation rejects observed harmful candidates, while paired free-running requests measure what admission preserves (Sections~\ref{sec:scope} and~\ref{sec:quality}).
+-\item \textbf{PSTP governs shared visibility.} Only certified exact-prefix full blocks are promoted, and rejected or incomplete transactions contribute no newly published candidate state (Sections~\ref{sec:pstp} and~\ref{sec:ablation}).
+-\item \textbf{Service-template identity amortizes evidence.} Repeated authorized use shares a certified physical prefix and its qualification cost, with concrete open-arrival and tenant-density operating points (Sections~\ref{sec:template} and~\ref{sec:deployment}).
++\item \textbf{CALC: dependency-aware prefix compilation.} CALC constructs legal stable-prefix layouts and derives their identities after full-prompt retokenization, exposing reuse opportunities that native contiguous matching cannot reach (Sections~\ref{sec:calc} and~\ref{sec:mainresults}).
++\item \textbf{Scoped behavioral certification.} Token-path and termination evidence binds a candidate to its declared execution scope. Free-running task pairs measure behavior preservation, and controlled candidate challenges establish the value of admission over layout alone (Sections~\ref{sec:scope} and~\ref{sec:quality}).
++\item \textbf{PSTP: transactional shared-state publication.} The engine keeps candidate KV private until PASS and publishes only certified exact-prefix full blocks. Rejection, interruption and binding failure preserve the shared publication boundary (Sections~\ref{sec:pstp} and~\ref{sec:ablation}).
++\item \textbf{Service-Template Certificates.} A versioned, authorization-bound service object lets tenants share a qualified physical prefix and its evidence cost. Fixed-layout controls isolate qualification amortization, while arrival and density studies measure its service value (Sections~\ref{sec:template} and~\ref{sec:deployment}).
+ \end{enumerate}
+ 
+-The evidence uses two explicitly distinct qualification protocols. In a source-disjoint, task-preserving, zero-slack \emph{query-qualified} study, complete-service throughput improves by 1.619$\times$/1.109$\times$/1.070$\times$ on Qwen/Mistral/Llama, and all 1,296 admitted compiled future pairs retain the raw output token IDs under greedy decoding. In separate \emph{deployment-qualified} controls, fixed-layout template registration lowers verifier calls 25-fold and unhidden verification exposure 7.7-fold; at one 80\%-load, 25-tenant point, SLO goodput rises by 0.658 compliant requests/s. These protocols answer complementary questions; we do not transfer the stricter raw-equivalence result to arbitrary future deployment requests. The service lesson is that \emph{admissibility, physical publication and economic reuse must be evaluated jointly, with their actual scopes and costs visible}.
++Task-preserving zero-slack serving achieves 1.619$\times$/1.109$\times$/1.070$\times$ complete-service throughput on Qwen/Mistral/Llama, retaining raw output IDs in all 1,296 admitted future pairs. Deployment-template controls reduce verifier calls 25-fold and unhidden exposure 7.7-fold; an 80\%-load point gains 0.658 SLO-compliant requests/s. Table~\ref{tab:qualification-protocols} defines the witness, scope and cost unit of each protocol. These results show how \emph{admission, publication and qualification sharing turn a reuse opportunity into a service asset}.
+--- V5a/sections/02_motivation.tex
++++ V5b/sections/02_motivation.tex
+@@ -45,12 +45,12 @@
+ \end{tabular}
+ \end{table}
+ 
+-Table~\ref{tab:motivation} shows substantial stable content but little native recovery in these controlled traces. The supplement adds separate five-family raw controls and a matched four-source input comparison using the same three ratios. Tables~S-I/S-II give prepared/serving orders and measured token displacement for their declared input cohort.
++Table~\ref{tab:motivation} shows substantial stable content but little native recovery in these controlled traces. An independent five-family, growing-history trace contains 3,750 actual requests and 3,375 future requests; its equal-family stable-body ratio is 94.144\% and stable-body native recovery is 0.595\%. The supplement reports its actual message orders, separate bounded controls and a matched four-source input comparison. Tables~S-I/S-II give prepared/serving orders and measured token displacement for their declared input cohort.
+ 
+ \begin{table}[t]
+ \centering\footnotesize
+ \setlength{\tabcolsep}{3pt}
+-\caption{Closest mechanisms and the decision each primarily exposes. This is a distinction of published focus, not a claim that other systems have no additional protections.}
++\caption{Closest mechanisms organized by their primary reuse decision.}
+ \label{tab:closest-work}
+ \begin{tabular}{@{}P{.83in}P{2.39in}@{}}
+ \toprule
+--- V5a/sections/04_design.tex
++++ V5b/sections/04_design.tex
+@@ -11,13 +11,13 @@
+ 
+ 
+ \subsection{An End-to-End Request Example}
+-Consider a raw request rendered as \texttt{SYS | OBS(a) | DOC | Q}, where \texttt{DOC} is stable and \texttt{OBS(a)} is a tenant-specific tool field. Native caching of a later \texttt{OBS(b)} request stops before \texttt{DOC}. CALC uses a declared dependency-valid order \texttt{SYS | DOC | OBS(a) | Q}, then retokenizes the complete chat prompt to find the exact stable boundary; a legal order alone is not an admission. In the query-qualified path, the first raw business answer supplies tokens $y_1,\ldots,y_L$ and natural stop $e$. The candidate must pass the frozen token/stop checks under that witness. Only then does PSTP atomically publish complete stable blocks inside the certified, exact-LCP boundary. Later authorized requests may read that physical prefix if their own behavioral scope is admitted; a changed, unqualified query stays raw. A rejected or incomplete check publishes no candidate blocks. Thus the compiler creates an opportunity, the evidence permits consumption, and PSTP governs first shared visibility.
++Consider \texttt{SYS | OBS(a) | DOC | Q}, with stable \texttt{DOC} and tenant-specific \texttt{OBS(a)}. Native matching stops before \texttt{DOC} when the observation changes. CALC constructs the dependency-valid order \texttt{SYS | DOC | OBS(a) | Q} and retokenizes the complete prompt. In query-qualified serving, the first raw answer supplies witness tokens $y_1,\ldots,y_L$ and natural stop $e$. After token/stop checks pass, PSTP atomically publishes eligible stable full blocks. Later authorized, qualified requests reuse that prefix; an unqualified query stays raw. Compilation exposes the opportunity, evidence admits its use, and PSTP controls shared visibility.
+ 
+ \subsection{Contract-Aware Layout Compiler}
+ \label{sec:calc}
+ CALC operates on the registered dependency graph. Stable segments may be split into contiguous, character-preserving units to construct a bounded layout ladder. A stable-priority topological traversal moves only eligible units, respects dependency edges, and breaks ties by original order. For the 16-unit ladder, L1, L2, and L3 expose 4, 12, and 16 eligible units, respectively; L0 retains raw order. Full retokenization determines the actual stable-prefix boundary of each rendered candidate.
+ 
+-A source-disjoint development stage establishes the allowed model--family--layout combinations and freezes the policy before evaluation. The deployment studies use the registered ladder and its allowed descent policy. The final query-qualified implementation chooses one development-fixed candidate per scope and performs at most one GPU qualification attempt. Inherited L0 families retain raw execution.
++Source-disjoint development freezes allowed model--family--layout combinations. Deployment uses the registered ladder and allowed descent; query-qualified execution tries one development-fixed candidate per scope. Inherited L0 families remain raw.
+ 
+ The task-preserving renderer keeps essential fields and source whitespace intact (Section~\ref{sec:implementation}). For an expanded graph $G'=(V',E')$, priority topological construction costs $O(|E'|+|V'|\log|V'|)$ per fixed candidate; model-backed qualification remains the dominant admission work.
+ 
+@@ -43,7 +43,7 @@
+ \end{equation}
+ The raw terminal margin is also checked. Complete witness IDs, finite margins, the stop protocol, and the publication boundary are required for acceptance. The task-score threshold used in evaluation is separate from these model-level conditions.
+ 
+-For identical next-token distributions at verification and execution, agreement through the terminal token yields the same greedy sequence by induction. Finite-precision and execution-shape differences make this an execution condition, not a universal runtime theorem. Scope binding separately specifies which subsequent input instances may consume that evidence; free-running experiments measure their actual behavior. Greedy decoding, the output budget, stop settings, and model/runtime identity are part of the evaluated execution protocol.
++Under identical next-token distributions, token agreement through termination gives the same greedy sequence by induction. Finite precision and execution shape condition that statement; free-running experiments test actual execution. The bound identity includes decoding, budget, stop protocol and model/runtime.
+ 
+ \subsubsection{Qualification scope and request binding}
+ Table~\ref{tab:qualification-protocols} distinguishes the two evaluated paths. Deployment registration attests a representative \emph{compiled} trajectory on a prospectively qualified model--workflow--layout route; this is deployment-route evidence, not a proof that every later raw request would produce the same answer. Query-qualified execution instead uses an actual raw business reply. Its scope key $q$ hashes the exact query, system message, stable segments, model identity, generation settings/budget, renderer and policy.
+@@ -107,17 +107,17 @@
+ \end{equation}
+ $I$ identifies the model/runtime execution, $V$ the template version, $H_s$ its stable content, $L$ its layout, $P$ the verifier policy, $Q$ the qualification manifest, $A$ the authorization domain, $E$ the epoch, and $\Sigma$ the authentication tag. The evaluated deployment client uses HMAC-SHA256 and checks the complete binding before selecting the compiled route.
+ 
+-The controlled query client keeps admission decisions at $(\textit{namespace},q)$ and prefix associations at $(\textit{namespace},H_s)$; these are records, not a second backend-signed certificate. Several query decisions may authorize the same physical prefix. Changed bindings prevent reuse; changed deployment objects require lifecycle re-registration.
++The query client stores decisions at $(\textit{namespace},q)$ and prefix associations at $(\textit{namespace},H_s)$, allowing several qualifications to authorize one physical prefix. These client records are distinct from the deployment certificate. Changed bindings deny reuse; changed deployment objects require re-registration.
+ 
+ For $N$ sessions sharing a deployment template, registration changes from $O(N)$ session attestations to $O(1)$ template attestation plus per-request checks. With $T$ template identities and $U$ query scopes, the controlled client uses $O(T+U)$ state and the $O(U)$ decisions in Table~\ref{tab:qualification-protocols}. Fan-out amortizes these decisions when the authorized query directory is fixed.
+ 
+ \subsection{Benefit Admission}
+ \label{sec:benefit}
+-Qualification consumes service resources before later requests realize savings. ContractKV therefore separates the decision to \emph{invest in evidence} from the decision to \emph{accept the candidate}. A frozen benefit policy estimates remaining authorized uses, marginal prefill savings, information-gathering cost, and GPU verification cost. In the two-stage query-qualified controller, the pre-reference estimate has the form
++Qualification incurs cost before later reuse. A frozen gate therefore separates investment in evidence from candidate acceptance, using remaining authorized uses, marginal prefill savings, information cost and verification cost. Its pre-reference estimate is
+ \begin{equation}
+  \widehat G_{\rm pre}=\widehat p_E\widehat p_{P\mid E}\widehat R\widehat{\Delta t}
+  -\widehat C_{\rm info}-\widehat p_E\widehat C_{\rm GPU}.
+ \end{equation}
+-After an eligible witness is available, the GPU decision uses the conditional pass estimate and the full predicted GPU cost. Observed prefix publication selects the calibrated cold/warm cost state, and the gate discounts native reuse already available to raw execution. Predictions are frozen before held-out evaluation.
++After the witness is available, the gate uses conditional pass probability and full predicted GPU cost. Publication history selects a calibrated cold/warm profile; raw-native reuse is discounted. Profiles are frozen before evaluation.
+ 
+ The evaluated default applies a predicted waiting-budget test in cold sessions and uses expected aggregate benefit in template fan-out. We evaluate a separate length-aware waiting-budget variant in Section~\ref{sec:costvariant}. Benefit admission can reduce qualification attempts; it never substitutes for the token-path or publication checks.
+--- V5a/sections/05_implementation.tex
++++ V5b/sections/05_implementation.tex
+@@ -6,16 +6,16 @@
+ \label{sec:implementation}
+ 
+ \subsection{Integration with the Serving Engine}
+-The prototype targets the vLLM 0.10.2 V1 scheduler and cache manager. It comprises a request-side compiler and qualification controller, an in-engine verification executor, and PSTP hooks at cache-index publication. Model weights and attention kernels remain unchanged. Candidate identities are derived after full prompt rendering and tokenization. Verification and compiled business requests use the policy hash and template namespace in their cache salt.
++The prototype targets the vLLM 0.10.2 V1 scheduler and cache manager. It comprises a request-side compiler and qualification controller, an in-engine verification executor, and PSTP hooks at cache-index publication. Model weights and attention kernels remain unchanged. Candidate identities are derived after full prompt rendering and tokenization. The archived performance clients use policy/template cache identities for verification and compiled requests. A separately evaluated authorization integration extends the identity to every engine route: a trusted authority validates membership and the active epoch, then derives a domain/epoch-bound cache salt for raw, fallback, verifier and compiled requests. Salt propagation through the native block-hash chain makes physical sharing follow the authorized group (Section~\ref{sec:authorization-results}).
+ 
+-Table~\ref{tab:qualification-protocols} gives the request-side boundaries: the evaluated deployment client checks the HMAC template binding and lifecycle before selecting compiled execution, whereas the query client checks its frozen identities, scope decision and prefix association. Binding mismatch selects raw execution. Both invoke the in-engine verifier/PSTP path; neither constitutes a separately deployed network authentication proxy. The manifest-validation helper in Section~\ref{sec:trust} is not an integrated endpoint check.
++The deployment client checks HMAC binding/lifecycle; the query client checks frozen identities and scope (Table~\ref{tab:qualification-protocols}). Both invoke in-engine verification/PSTP. The all-route integration permits authorized raw fallback for an invalid compiled binding, but rejects expired identities before dispatch. It is measured in its own regression cohort; performance tables retain their archived clients.
+ 
+ Compiler and publication overheads measured in the deployment implementation are 0.389 ms mean for CALC, 0.249 ms for the residency lookup, 0.109 ms for the template-scope check, and 0.636 ms for PSTP finalization. The query-qualified studies measure their complete controller path afresh rather than importing these component timings as constants.
+ 
+ \subsection{Task-Preserving Input Construction}
+ The adapter retains each source in full when it fits the common 16K window. Otherwise a fixed head/tail rule crops optional paragraph/code-line substrings, protecting the complete question and code prefix, original order/whitespace and an omission ledger. Selection never inspects answers, outputs, scores, margins or qualification. Adjacent pieces of one source segment remain contiguous in both routes.
+ 
+-Both routes receive the same retained content, checked against every declared model/tenant/turn/layout condition including chat template and output reserve. Independent tokenization is compared with actual API prompt IDs. Common offline packing is reported separately; request rendering, planning and verification remain on the service clock.
++Both routes receive identical retained content, checked against every model/tenant/turn/layout condition, chat template and output reserve. Offline tokenization is compared with API prompt IDs. Common immutable packing is outside the clock; request rendering, planning and verification are included.
+ 
+ The input-construction experiment compares fixed-word-cap, whitespace-normalized packing with structure-preserving rendering under the same window, admission rules and scorer. This isolates how task-critical content affects absolute quality and admissible reuse (Section~\ref{sec:fidelity}).
+ 
+@@ -40,4 +40,4 @@
+ \subsection{Physical Accounting and Reproducibility}
+ At initial scheduler allocation, actual prompt IDs and native hit count $h_r$ give $n_r-h_r$ newly required prefill tokens, with separate verification counters. These measure work; latency is measured directly.
+ 
+-Source groups, policy settings, and selection rules are frozen before each independent cohort is opened. Repetitions use new processes and recorded device/policy assignments. Statistical summaries preserve source-template clusters and process repetition; tenant and query repetitions remain within their source cluster. The artifact supplies request-level data, model/runtime manifests, source snapshots, scripts, and archive checksums. The supplemental record preserves the extended tables and unsuccessful variants.\footnote{\url{https://github.com/zhouz4884-coder/contractkv}. The experimental evidence is pinned to commit \texttt{84dd0366}; full paths and hashes are listed in the supplementary evidence register.}
++Source groups and policies are frozen before opening each independent cohort. Source-cluster statistics keep tenant/query repetitions nested and retain process variation. The artifact supplies request-level data, model/runtime manifests, source snapshots, aggregation code and archive checksums.\footnote{\url{https://github.com/zhouz4884-coder/contractkv}. Performance evidence: \texttt{84dd0366}. Protocol-specific freezes, additional evidence and hashes are in the supplement register.}
+--- V5a/sections/06_evaluation.tex
++++ V5b/sections/06_evaluation.tex
+@@ -4,7 +4,14 @@
+ % Risk-Flags: none
+ \section{Evaluation}
+ \label{sec:evaluation}
+-We test one service-level claim: governing the layout, evidence and publication of a reusable prefix can produce useful, amortized service state. The evidence proceeds from template economics and full-cost execution to behavior, governance, scale and operating conditions. Each regime retains its own source set, qualification unit and clock.
++We test whether governing layout, evidence and publication creates useful shared service state: first complete-cost performance, then behavior, governance and operating conditions.
++
++\begin{figure*}[t]
++\centering
++\includegraphics[width=\textwidth]{figures/fig2_full_cost_benefits.pdf}
++\caption{Strict query-qualified performance on six source-disjoint HotpotQA/RepoBench templates, three processes/model, faithful 16K inputs, and zero slack. (a) Throughput charges all business responses, qualification, failed attempts, and synchronous waiting. (b) Actual business plus qualification new-prefill counts per run; orange caps mark certification work at its true scale, with exact added counts below. (c) Mean readiness TTFT over future requests uses the frozen two-request wave clock. Three-repeat values and tail statistics are reported separately.}
++\label{fig:performance}
++\end{figure*}
+ 
+ \subsection{Workloads, Controls, and Units}
+ \label{sec:protocol}
+@@ -12,26 +19,15 @@
+ 
+ We run Qwen3-8B, Mistral-7B-Instruct-v0.3, and Llama-3.1-8B-Instruct~\cite{qwen32025,mistral2023,llama32024}. Both policies have the same 16K window, retained task content, greedy decoding, fixed seed, request order, and two-request wave clock. HotpotQA has a 128-token generation budget and RepoBench 384. \emph{Raw} retains the original order with native APC; \emph{ContractKV} uses the frozen candidate, eligibility, margin/EOS checks, and publication path. Mistral and Llama inherit the development-frozen RepoBench L0 route.
+ 
+-Every model/policy uses three fresh processes. Each run completes 600 business requests, including 540 future requests. Thus the study contains 10,800 business generations and 4,860 future raw/strategy pairs. Six sources are the independent content units; tenants, rounds, and processes are nested observations. Throughput ranges are process min--max; confidence intervals resample source-template clusters and repetitions. Separate cohorts and comparisons sharing raw controls are not pooled as independent trials.
++Three fresh processes/model/policy yield 10,800 business generations and 4,860 future pairs: 600 business requests/run, including 540 future requests. Six sources are the independent content units; tenant, round and process observations remain nested. Ranges are process min--max; intervals resample source clusters and repetitions.
+ 
+ We retain prompt/output IDs, task scores, routes, qualifications, timing, and cache counters. QA uses the frozen token-F1 scorer; code uses the existing SequenceMatcher-based edit-similarity adapter. These are declared benchmark adaptations. Material score changes use $|\Delta s|>0.03$; exact ID agreement is measured separately. The supplement gives all six sources' utility, compiled coverage and paired tails, plus process values and clock definitions.
+ 
+ \subsection{Does Governed Reuse Repay Qualification?}
+ \label{sec:mainresults}
+-The mechanism predicts two gains: sharing a qualification reduces its cost per use, and a legal resident prefix reduces repeated prefill. We test their economic units separately. With layout and locality held fixed, deployment-template registration reduces verifier calls from 125 to five per trace and unhidden verification exposure from 25.05 to 3.24 ms/request (Fig.~\ref{fig:governance}). The 25-fold call reduction arises from registering an authorized shared object rather than each consuming session.
+-
+-\input{sections/table_deployment_width}
+-
+-Table~\ref{tab:deployment-width} directly answers the full-cost question on the four original configurations. The initial 29.41--44.69\% band used a 2-s/6-s residual-slack convention; the independent 24-cell, 12-pair repeat measures complete-controller zero-slack TTFT and actual service wall. Qwen3-14B TP2 retains a 20.93\% full-cost TTFT reduction and 1.109$\times$ wall throughput. Mistral is close to parity (0.994$\times$ wall), revealing why qualification needs sufficient authorized fan-out. All unsuccessful qualification and exception costs remain in the replay ledger; this table does not mix its clock with the separately scoped task-preserving results below.
+-
+ We expect a net gain when enough admitted requests reuse a stable prefix to repay first-use qualification. Figure~\ref{fig:performance} tests this on the same source set, with no tool slack and successful and failed attempts included. Throughput improves by 1.619$\times$ on Qwen, 1.109$\times$ on Mistral, and 1.070$\times$ on Llama. The process ranges are 1.615--1.623$\times$, 1.107--1.110$\times$, and 1.068--1.072$\times$. These are complete service gains rather than prefill-only estimates.
+ 
+-\begin{figure*}[t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/fig2_full_cost_benefits.pdf}
+-\caption{Strict query-qualified performance on six source-disjoint HotpotQA/RepoBench templates, three processes/model, faithful 16K inputs, and zero slack. (a) Throughput charges all business responses, qualification, failed attempts, and synchronous waiting. (b) Actual business plus qualification new-prefill counts per run; orange caps mark certification work at its true scale, with exact added counts below. (c) Mean readiness TTFT over future requests uses the frozen two-request wave clock. Three-repeat values and tail statistics are reported separately.}
+-\label{fig:performance}
+-\end{figure*}
++
+ 
+ Figure~\ref{fig:performance}(b) measures the work saved: including qualification, total new-prefill counts fall by 45.44\%, 14.64\%, and 10.89\%. These scheduler observations are workload counts, not inferred GPU time. Directly measured mean readiness falls by 43.87\%, 12.09\%, and 3.99\%.
+ 
+@@ -52,9 +48,13 @@
+ 
+ The throughput result does not imply lower tails. All p99 point estimates increase (Table~\ref{tab:primary}); Mistral's source-cluster/repetition interval for p99 reduction is wholly negative, [-60.576, -0.137]\%. Mean reduction intervals are [5.640, 79.479]\%, [-0.350, 34.781]\%, and [1.550, 5.724]\%. The cohort therefore supports a full-cost execution benefit with source-dependent latency effects.
+ 
+-A separate six-source Qwen cohort supplies an independent content check: unchanged ContractKV reaches 1.803$\times$ throughput (process range 1.798--1.808$\times$) and 774/1,620 compiled future pairs. It is a second cohort, not an additional model bar or another repetition of Fig.~\ref{fig:performance}.
++A second independent six-source Qwen cohort reaches 1.803$\times$ throughput (process range 1.798--1.808$\times$) with 774/1,620 compiled future pairs. Its results remain separate from Fig.~\ref{fig:performance}.
+ 
+-\noindent\emph{Finding:} object-level admission can repay its measured cost under both declared regimes; the zero-slack task result does not depend on the deployment slack accounting.
++\noindent\emph{Finding:} admitted prefix reuse repays qualification in the task-preserving zero-slack cohort, with directly observed reductions in prefill work and complete service time.
++
++\paragraph{Breadth across deployment configurations.}
++Table~\ref{tab:deployment-width} complements the task-preserving result with four deployment configurations. The recorded 29.41--44.69\% TTFT band uses 2-s/6-s residual slack. A frozen-input, three-repeat replay charges the complete controller with zero slack and measures service wall directly. Qwen3-14B TP2 retains a 20.93\% full-cost TTFT reduction and 1.109$\times$ wall throughput; Mistral measures 0.994$\times$. Qualification therefore needs sufficient authorized reuse to repay its complete cost. All attempted and aborted work is charged.
++\input{sections/table_deployment_width}
+ 
+ \subsection{Does Qualification Preserve Observed Behavior?}
+ \label{sec:quality}
+@@ -69,7 +69,7 @@
+ 
+ Behavioral preservation and absolute utility remain different outcomes. Qwen's 684 admitted raw references all receive positive score credit; the counts are 258/342 for Mistral and 90/270 for Llama. Llama preserves 180 zero-F1 future references from two HotpotQA sources, and Mistral preserves 84 from one source. Neither exact agreement nor positive partial credit establishes semantic correctness.
+ 
+-Across all business routes, material score increases/decreases are 0/0 for Qwen, 2/1 for Mistral, and 5/3 for Llama. All changes occur on L0; the Mistral decrease is in an initial request and the Llama decreases are future requests. Corresponding output variants appear in scheduled raw-only repeats, demonstrating background variation, but not proving that every L0 event is unrelated to policy-associated execution conditions.
++All-route material increases/decreases are 0/0, 2/1 and 5/3 for Qwen/Mistral/Llama, all on L0. Scheduled raw-only repeats contain corresponding output variants, showing background variation while leaving policy-associated execution effects unresolved.
+ 
+ The separate 50-source bounded-input audit retains 2,442 compiled future pairs: 2,178 RULER, 174 NarrativeQA and 90 RepoBench~\cite{ruler2024,narrativeqa2018,qasper2021}, with zero compiled ID changes and 33 all-route decreases on L0. Each model's RULER coverage is 726/810 (210/270 cold, 516/540 fan-out). Figure~\ref{fig:behavior} separates this fixed-cap, mixed cold/fan-out protocol from the faithful non-RULER matrix.
+ 
+@@ -79,7 +79,9 @@
+ \paragraph{Actual output horizon.}
+ Separate conditions produce and verify naturally terminated outputs of 642 tokens for Qwen, 769 for Mistral, and 578 for Llama, each with six correct future pairs across three processes. They use explicitly declared 128/128/192-item schemas. Llama's 224-item condition omits the final 100 items and remains a task failure. These results establish actual 512+ output conditions, not universal long-output correctness.
+ 
+-A separate 30-session, three-model, common-HotpotQA frozen-scope experiment also extends convergence beyond RULER: new-prefill reductions are 48.05\\%/40.69\\%/38.38\\% for Qwen/Mistral/Llama. Its zero-slack macro mean TTFT improvement is 5.242\\% with a source-cluster 95\\% interval of [$-2.162\\%$, 12.564\\%]; the older RULER macro CI is not reused as evidence of cross-model generality. The main faithful six-source cohort supplies a distinct, task-preserving free-running test.\n\n\noindent\emph{Finding:} admitted free-running behavior is preserved in the measured scopes, while coverage and absolute reference utility remain explicit.
++A common-scope HotpotQA study uses the same 30 sessions across three models and three repetitions, yielding 2,430 future pairs. Business new-prefill reductions are 48.05\%, 40.69\% and 38.38\% for Qwen, Mistral and Llama. Its zero-slack macro mean TTFT reduction is 5.242\% (source-cluster 95\% interval [$-2.162$, $12.564$]\%); the supplement gives the timing variants and the original RULER statistical analysis.
++
++\noindent\emph{Finding:} qualified reuse preserves observed free-running behavior on admitted requests across synthetic and non-RULER tasks; coverage and reference utility identify the scope of that evidence.
+ 
+ \subsection{Does Governance Preserve the Service Benefit?}
+ \label{sec:ablation}
+@@ -88,15 +90,15 @@
+ \begin{figure}[!t]
+ \centering
+ \includegraphics[width=\columnwidth]{figures/fig4_transaction_and_amortization.pdf}
+-\caption{Separate deployment controls. (a) Registration granularity with fixed layout/locality; three processes and 1,125 future requests/trace. (b) Each 8B/14B TP2 probe rejects 10/10 harmful candidates with zero rejected-candidate promotion. (c) Same-engine D0/D1/D2 500-ms SLO goodput; whiskers are five-process min--max, not confidence intervals.}
++\caption{Separate deployment controls. (a) Registration granularity with fixed layout/locality; three processes and 1,125 future requests/trace. (b) Three models and five challenge types: all 102 behavior-changing candidates are rejected; all 78 unchanged candidates are admitted; rejected candidates add zero shared candidate blocks. (c) Same-engine D0/D1/D2 500-ms SLO goodput; whiskers are five-process min--max, not confidence intervals.}
+ \label{fig:governance}
+ \end{figure}
+ 
+-\noindent\textbf{Why D2 is necessary despite the D1 cost.} In a separate three-model, five-challenge matrix of 180 dependency-valid candidates, 102 actually changed free-running output IDs or termination; all 102 were rejected. The remaining 78 unchanged candidates were admitted, and rejected candidates published \emph{zero} new candidate blocks. This is observed behavioral evidence, not a risk label or a claim that 180 verifier RPCs ran: 18 decisions terminated before the GPU verifier. The two original 20-case probes also each reject all ten harmful candidates. Figure~\ref{fig:governance}(b) shows the latter controls; the larger measured rejection funnel is in the supplement's actual-behavior rejection table. The live cancellation, duplicate, timeout and scope controls separately test PSTP publication. The 325,000 operations exercise an \emph{in-memory} state machine, not GPU requests.
++\noindent\textbf{The value of admission.} In the independent three-model, five-challenge study, 102 of 180 dependency-valid candidates change free-running output IDs or termination; all 102 are rejected. The remaining 78 unchanged candidates are admitted, and rejected candidates publish zero new candidate blocks (Fig.~\ref{fig:governance}b). The changed subset includes all 30 material score decreases. Eighteen decisions reject before a verifier RPC. Separate live cancellation, duplicate, timeout and scope controls exercise the PSTP publication boundary; the 325,000-operation stress test exercises an in-memory state machine.
+ 
+ \subsubsection{The unit of amortization}
+ \label{sec:deployment}
+-The fixed-layout amortization in Section~\ref{sec:mainresults} changes the registration unit rather than the physical layout: prefix hits remain 97.82\%/98.19\%. Template identity therefore lets the platform share the evidence cost without surrendering the qualification or publication boundary.
++Holding the qualified layout and locality fixed isolates the registration unit. Session-level registration invokes the verifier 125 times per trace; template-level registration invokes it five times, reducing unhidden verification exposure from 25.05 to 3.24 ms/future request (Fig.~\ref{fig:governance}a). Prefix hits remain 97.82\%/98.19\%. The service object shares evidence cost while retaining the qualification and publication boundary.
+ 
+ Query-qualified execution has a different amortization unit. The second Qwen cohort obtains 774 compiled future pairs from 27 issued scope-repeat decisions and 42 total GPU calls, including failures. Its cost grows with distinct selected scopes, then amortizes across tenants using them. This preserves the template prefix as the physical object without assigning deployment's $O(1)$ behavioral cost to arbitrary dynamic queries.
+ 
+@@ -107,9 +109,34 @@
+ \label{fig:service}
+ \end{figure}
+ 
+-Figure~\ref{fig:service} tests a separately qualified deployment workload at fixed arrival loads and in bounded-concurrency density replay. At 25 tenants per template and 80\% calibrated arrival load, 500-ms goodput rises 0.173 to 0.831 requests/s: +0.658, with a hierarchical-bootstrap 95\% interval of [0.539, 0.765] requests/s (supplement). The density experiment then tests whether the shared object remains useful as authorized fan-out increases. Across 10--80 registered identities, ContractKV sustains 9.408--11.072 tiered-SLO requests/s, compared with 0.900--1.152 for native APC (Supplementary Table~S-III). At 80 identities, used blocks decrease by 71.9\%, leaving 381 more free blocks. Density goodput and block values come from the same cells, but do not isolate headroom as the sole cause of improved throughput. These marker-bearing service traces have a separate task-quality audit and are distinct from the task-bearing primary cohort.
++At 25 tenants/template and 80\% calibrated arrival load, deployment 500-ms goodput rises from 0.173 to 0.831 requests/s: +0.658, with a hierarchical-bootstrap 95\% interval [0.539,0.765] (Fig.~\ref{fig:service}). Across 10--80 registered identities, bounded-concurrency density replay sustains 9.408--11.072 tiered-SLO requests/s versus native APC's 0.900--1.152 (Supplementary Table~S-III). At 80 identities, the same cells use 71.9\% fewer blocks, leaving 381 additional free blocks. They jointly measure consolidation and service benefit without isolating headroom as the sole cause. These marker-bearing deployment traces have a separate task-quality audit from the primary cohort.
+ 
+ \noindent\emph{Finding:} publication governance retains the frozen layout's service benefit, and the template object supports measurable cost sharing and physical consolidation across tenants.
++
++
++\subsubsection{Physical authorization on every route}
++\label{sec:authorization-results}
++Authorization must survive raw fallback. Nine fresh-server cells (three models, three repetitions) each exercise six real-task contexts and one marker context without clearing the cache. The 828 business requests comprise 702 real-task and 126 marker controls.
++
++Legacy cross-domain and old-binding/new-epoch raw fallback each hit the prior prefix in 63/63 controls. Domain/epoch-bound block hashes prevent both first-request hits while retaining authorized same-domain sharing (Table~\ref{tab:physical-authorization}). The authority denies all 63 stale identities before dispatch; 93 rejected/abstained qualifications add zero candidate tokens. Physical sharing therefore follows authorization through every route.
++
++\begin{table}[t]
++\centering\footnotesize
++\setlength{\tabcolsep}{3pt}
++\caption{All-route authorization integration, three models and three processes. Each physical check has 63 controls: seven contexts $\times$ nine cells. Repeats share contexts. The engine is not cleared between checks.}
++\label{tab:physical-authorization}
++\begin{tabular}{@{}P{2.38in}r@{}}
++\toprule
++Sharing condition & Native hit / controls\\
++\midrule
++Same domain/epoch, same principal repeat & 63/63\\
++Same domain/epoch, second authorized principal & 63/63\\
++Different domain, first request & 0/63\\
++New active epoch, first request & 0/63\\
++New domain/epoch, own subsequent repeat & 63/63 each\\
++\bottomrule
++\end{tabular}
++\end{table}
+ 
+ \subsection{What Determines the Operating Region?}
+ \label{sec:residency}
+@@ -136,6 +163,6 @@
+ 
+ \subsection{What Does the External Comparator Establish?}
+ \label{sec:baselines}
+-We keep the matched-native \emph{task-score regression} comparison requested by the reviewers, not a cross-stack speed claim. Under the same $>0.03$ reporting threshold, a CacheBlend adapter records 224 decreases and 331 increases in 2,250 pairs against its own separator-matched reference; ContractKV records two decreases and no increases in 2,250 pairs against its own raw APC reference. Their stacks, inputs and baselines differ, so no causal cross-method risk multiplier follows. The full native-baseline and threshold analysis is in Supplementary Table~S-VIII.
++The external comparison measures paired task-score changes against each method's native reference. Under the same $>0.03$ reporting threshold, a CacheBlend adapter records 224 decreases and 331 increases in 2,250 pairs against its own separator-matched reference; ContractKV records two decreases and no increases in 2,250 pairs against its own raw APC reference. These reference-relative distributions characterize each adapter; execution stacks and inputs differ. Supplementary Table~S-VIII reports native baselines and threshold sensitivity.
+ 
+ \noindent\emph{Finding:} good average task scores and absence of harmful per-request changes are distinct outcomes; compare them against the actual reference each method uses.
+--- V5a/sections/08_discussion.tex
++++ V5b/sections/08_discussion.tex
+@@ -1,26 +1,19 @@
+-% Changed: make the manifest trust boundary concrete; consolidate repeated scope qualifications.
+-% Protected: CPU/live distinction, observed failures, timing-channel and platform limits.
+-% Meaning-Check: PRESERVED
+-% Risk-Flags: none
+ \section{Discussion and Limitations}
+ \label{sec:discussion}
+-
+-\subsection{What the Service Contract Establishes}
+-Token-path certification is relative behavioral evidence under bound execution conditions, not an answer-correctness oracle. Figure~\ref{fig:behavior} therefore separates output agreement from raw utility. The query-qualified class assumes a repeated authorized directory and metadata-only observations; arbitrary evolving histories and new tool evidence are outside it. Unique-query streams offer little amortization, and production query-repeat frequencies were not measured. Table~\ref{tab:qualification-protocols} states the different evidence and cost units of the two implemented paths.
++\subsection{Behavioral Evidence and Reuse Density}
++Token-path certification supplies execution-scoped behavioral evidence. Figure~\ref{fig:behavior} reports output agreement and raw-reference task utility separately. Query-qualified sharing assumes a repeated authorized directory and the declared metadata-only observation class; evolving histories and new tool evidence require additional qualification. With many unique queries, qualification has little opportunity to amortize; production query-repeat frequencies remain unmeasured.
+ 
+ \subsection{Trust Model and Manifest Registration}
+ \label{sec:trust}
+-The operator is trusted to define template ownership, segment types, dependencies, sharing domains and versions. The controller, model/runtime and cache manager lie within the trusted service boundary; tenant-supplied labels are not registration authority. The CPU registration helper checks issuer/role, segment identities, authentication tags, content hashes, version/domain fields, and consistency of publication with declared stability and visibility. These checks validate a declaration's authority and consistency, not its semantic truth.
++The operator defines template ownership, segment types, dependencies, sharing domains and versions. The trusted controller validates authority and lifecycle, and the engine enforces the associated cache identity and PSTP publication boundary. The all-route integration carries this identity through raw fallback (Table~\ref{tab:physical-authorization}); engine access must be mediated by the trusted application.
+ 
+-Engine access must be mediated by that trusted application. The evaluated client's domain-level binding uses a wildcard tenant field; end-user authentication and membership checks are application responsibilities, not an implemented public certificate gateway.
++The registration helper checks issuer/role, segment identity, authentication tags, content hashes, version/domain fields and consistency between declared stability, visibility and publication. Its nine-case CPU audit rejects seven malformed or unauthorized declarations, accepts a valid case, and accepts a trusted semantic mislabel. A separate 19-case client-binding audit rejects 17 malformed, expired or mismatched bindings. These are declaration and client checks; the helper itself is not integrated into the live endpoint. The tested internal authority does not constitute a public tenant-IAM gateway.
+ 
+-Consider tenant A's private \texttt{TOOL\_OBS}. If the trusted operator wrongly declares its bytes \textsc{Stable}, marks them domain-shared, and authorizes tenant B in that domain, a correct hash and HMAC do not establish that sharing is appropriate. The mistake can authorize private content as a shared prefix. The hash proves byte identity; the HMAC authenticates the operator's binding. Neither classifies confidentiality. The operator must keep tenant-specific observations outside the shared declaration.
++The remaining semantic trust is concrete. If an operator labels tenant A's private \texttt{TOOL\_OBS} as stable and domain-shared, a valid hash and HMAC authenticate the erroneous declaration. A live marker control publishes that declared prefix in 9/9 cases. Hashes establish byte identity, and HMACs establish binding authority; confidentiality classification remains the operator's responsibility. Epoch separation denies stale identities without erasing all old blocks or retracting in-flight requests.
+ 
+-The nine-case CPU registration-helper audit rejects seven malformed or unauthorized declarations, accepts the legitimate case, and accepts that trusted semantic mislabel. A separate 19-case trusted-client binding audit rejects 17 malformed, expired or mismatched bindings. The helper is not integrated into the live endpoint: these are distinct checkpoints. In a live synthetic-marker control, a correctly signed but semantically wrong shared declaration results in candidate-marker publication in all 9/9 tested cases, directly demonstrating the remaining trust boundary. Registration checks, HMACs and PSTP protect the declared scope, not the operator's semantic correctness; they are not a public tenant-IAM gateway.
++Authorized sharing can also reveal cache-hit timing within a domain~\cite{iknow2025,auditing2025}. ContractKV does not implement a timing-channel defense. P4 governs cache-state authorization; comprehensive application confidentiality requires additional controls.
+ 
+-Even correctly authorized sharing can reveal cache-hit timing within its domain~\cite{iknow2025,auditing2025}. ContractKV does not implement a timing-channel defense. P4 is cache-state authorization, not a comprehensive application confidentiality boundary.
++\subsection{Service and Platform Conditions}
++Residency and queueing determine whether qualification becomes service benefit. The independent fixed-arrival task cohort in the supplement has 24 completed main cells and low compiled coverage; its four Goodput-change intervals cross zero. Its neutral results define a measured operating limit alongside the positive deployment operating points in Fig.~\ref{fig:service}. The earlier 5/54-cell arrival pilot remains a separate partial record.
+ 
+-\subsection{Workload and Platform Boundaries}
+-The inherited Python-output check excludes some legal next-line fragments. All omitted spans, L0 score changes and unsuccessful variants remain archived; source counts and platform settings are specified in Section~\ref{sec:protocol}.
+-
+-The three known-source cache probes diagnose reclamation, not every earlier miss. The partial query-qualified fixed-arrival study (5/54 cells) supplies no capacity claim. The vLLM 0.25.1 audit is not a port; distributed domains require coordinated lifecycle and publication. Practically, qualify where authorized reuse repays its service-clock cost, including residency.
++The inherited Python guard can exclude legal next-line fragments; RepoBench scores use the declared adapter. Native probes diagnose specific reclamation events, and the vLLM 0.25.1 interface audit is not a port. Distributed services need coordinated lifecycle/publication. Qualification is economical where authorized reuse and resident state repay its service-clock cost.
+--- V5a/sections/09_conclusion.tex
++++ V5b/sections/09_conclusion.tex
+@@ -1,5 +1,7 @@
+ \section{Conclusion}
+ \label{sec:conclusion}
+-ContractKV makes a structurally reusable prompt prefix into a governed multi-tenant KV service object. CALC provides a legal physical prefix; execution-scoped token-path evidence controls admissibility; PSTP controls first shared visibility; and a versioned Service-Template Certificate allows authorized consumers to amortize qualification. None of these decisions can replace the other three.
++ContractKV turns a structurally reusable prompt prefix into a governed multi-tenant KV service object. CALC exposes a legal physical prefix, scoped behavioral evidence determines its admissible use, PSTP controls first shared visibility, and a versioned Service-Template Certificate lets authorized consumers share qualification. The contribution lies in making these decisions one executable service lifecycle.
+ 
+-The evidence links mechanism to service value. Four deployment settings yield 29.41--44.69\% recorded residual-slack TTFT reductions; the independent fully charged Table III replay measures the smaller but more relevant complete-cost bounds. In a separate task-preserving zero-slack protocol, three models achieve 1.070--1.619$\times$ full-service throughput, with identical raw output IDs on all 1,296 admitted future pairs. A fixed-layout template control reduces verifier calls 125 to five and unhidden exposure 25.05 to 3.24 ms/request; a specified open-arrival point gains 0.658 SLO-compliant requests/s. These are different evidence scopes, not one universal guarantee. The service lessons are concrete: \emph{layout creates an opportunity, admission governs which behavior may consume it, and publication plus locality determine whether the qualified prefix becomes economical shared state.}
++The measurements connect that lifecycle to useful service outcomes. Under task-preserving zero-slack query qualification, three models achieve 1.070--1.619$\times$ complete-service throughput, with identical raw output IDs on all 1,296 admitted future pairs. Fixed-layout template sharing reduces verifier calls from 125 to five and unhidden exposure from 25.05 to 3.24 ms/request; an evaluated open-arrival deployment point gains 0.658 SLO-compliant requests/s. The four-configuration complete-cost results in Table~\ref{tab:deployment-width} and the all-route physical authorization controls identify the costs and enforcement boundary behind those gains.
++
++Three lessons follow: compilation creates reuse opportunity; evidence and transactional publication make it an admissible shared resource; and template-level qualification sharing, together with locality and residency, determines its service economics. Treating reusable KV as an evidence-bound service object provides a concrete basis for deploying transformed prompts as shared infrastructure.
+--- V5a/sections/supplement_additional_evidence.tex
++++ V5b/sections/supplement_additional_evidence.tex
+@@ -0,0 +1,123 @@
++\section{All-Route Physical Authorization}
++\label{sec:s-authorization}
++The all-route integration is a distinct correctness regression, not a rerun of the performance figures. A trusted authority validates membership and active epoch, then HMAC-binds engine, policy, template, domain and epoch to a request identity. All raw, L0/fallback, verifier and compiled dispatches recheck identity; native cache salt is incorporated into the first block hash and propagates through its parent-hash chain. An expired request is denied before backend submission. A current identity holding an incompatible compiled binding uses its own authorized raw namespace.
++
++The frozen matrix has three models, three fresh-process repetitions and seven contexts per cell (six real tasks and one synthetic marker). All 828 business requests complete, and actual prompt IDs match the frozen tokenizer results. With each engine/cache retained throughout, legacy cross-domain and old-binding/new-epoch raw requests each hit the earlier namespace in 63/63 controls. Under the repaired identity, both first cross-domain and first new-epoch requests have zero hit tokens in all 63 controls. Same-domain/epoch own repeats, a second authorized principal, and each new domain/epoch's own repeats all retain hits (63/63 each). Actual block hashes and marker coverage are logged. The controls share seven contexts across repeated models/processes.
++
++There are 135 qualification decisions, 75 actual verifier RPCs and 93 rejected/abstained decisions with zero newly published candidate tokens. All 63 stale request identities are blocked before dispatch. The 42 admitted free-running pairs comprise 24 real-task and 18 marker pairs; their output IDs and finish states agree. The 24 real-task compiled requests hit the complete committed prefix. Mistral admits no real-task candidate in this matrix. No performance ratio is formed between its unequal legacy and repaired phases. Operator semantic mislabels and authorized-domain timing inference remain separate trust boundaries.
++
++\section{Five-Family Growing-History Structural Trace}
++\label{sec:s-growing-history}
++An independently frozen raw-only trace contains 125 registered records from 114 original-text clusters, with 3,750 actual business requests and 3,375 future requests. Some source texts appeared in other studies; they are not 125 independent unseen documents. Each family has 25 registered records and three process repetitions. Future history grows by one actual question/answer pair per round, giving 2--18 prior messages. Table~\ref{tab:s-growing-orders} is extracted from saved messages and character spans, rather than inferred from source-file storage order. Each family has 675 future requests, all with stable content after the first declared mutable history block.
++
++\begin{table}[t]
++\centering\footnotesize
++\caption{Actual future message/body order in the growing-history trace. HISTORY denotes preceding user/assistant messages; the other fields occur in the current request.}
++\label{tab:s-growing-orders}
++\begin{tabular}{@{}lP{2.64in}@{}}
++\toprule
++Family & Actual future order\\
++\midrule
++RULER & SYS $\to$ HISTORY $\to$ SYNTHETIC CONTEXT $\to$ QUERY\\
++HotpotQA & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
++NarrativeQA & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
++Qasper & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
++RepoBench & SYS $\to$ HISTORY $\to$ QUERY $\to$ REPO $\to$ CODE PREFIX\\
++\bottomrule
++\end{tabular}
++\end{table}
++
++\begin{table}[t]
++\centering\footnotesize
++\caption{Growing-history trace: actual future requests, Qwen3-8B, 16K, one active request. Each family has 25 registered records and 675 future requests. Percentages are token-weighted within family; the last row weights families equally.}
++\label{tab:s-growing-structure}
++\begin{tabular}{@{}lrrr@{}}
++\toprule
++Family & Stable/all & Stable recovered & All native hits\\
++\midrule
++RULER & 83.389 & 2.165 & 12.321\\
++HotpotQA & 98.017 & .119 & 1.404\\
++NarrativeQA & 98.134 & .114 & 1.366\\
++Qasper & 94.606 & .348 & 3.966\\
++RepoBench & 96.574 & .228 & 2.597\\
++Equal-family mean & 94.144 & .595 & 4.331\\
++\bottomrule
++\end{tabular}
++\end{table}
++
++The equal-family stable-body ratio is 94.144\%, and stable-body native recovery is 0.595\%. Global token-pooled and source-macro estimators are retained separately in the ledger. These structural measurements use actual prompt IDs/native hits and establish repetition beyond the contiguous prefix; they measure neither compiled qualification nor SLO gain. The controlled TOOL\_OBS layouts in Table~\ref{tab:s-raw-orders}, the growing-history trace and the six-source primary serving cohort retain separate identities and denominators.
++
++\section{Fixed-Model RULER Confidence Intervals}
++\label{sec:s-ruler-ci}
++The common RULER cohort contains 30 shared source sessions, three fixed models and three paired fresh-process repetitions, with nine future turns/session: 2,430 future pairs. It uses its archived 8K, qualified L3 and 6-s tool-slack net mean-TTFT protocol. The equal-model point estimate is 86.6723\%. Table~\ref{tab:s-ruler-ci} separates model heterogeneity from precision of their fixed-model mean.
++
++\begin{table}[t]
++\centering\footnotesize
++\caption{Original common RULER TTFT-reduction estimates (\%). The last two rows estimate the same fixed-three-model mean using different recorded resampling schemes.}
++\label{tab:s-ruler-ci}
++\begin{tabular}{@{}lrr@{}}
++\toprule
++Estimand / method & Point & 95\% interval\\
++\midrule
++Qwen3-8B & 86.6394 & [86.1593,87.0998]\\
++Mistral-7B & 87.4056 & [87.0641,87.7898]\\
++Llama-3.1-8B & 85.9719 & [85.6308,86.2931]\\
++Fixed-model mean, original draws & 86.6723 & [86.4369,86.8953]\\
++Fixed-model mean, synchronized sources & 86.6723 & [86.3204,86.9911]\\
++\bottomrule
++\end{tabular}
++\end{table}
++
++Both analyses retain Raw/Contract pairs and all nine turns per sampled session. Original draws resample processes and sessions independently within model/repetition. The recorded post hoc sensitivity uses one shared 30-session draw across models/repetitions, then resamples three paired processes within each fixed model; seed 20261018 and 10,000 draws preserve common-source dependence. The wider synchronized interval is retained. A mean interval need not cover all three model estimates (range 85.9719--87.4056\%). These fixed models supply no prediction interval for unseen architectures. The RULER mean interval, RULER coverage strip and HotpotQA zero-slack interval concern different quantities.
++
++\section{Independent Fixed-Arrival Task Serving}
++\label{sec:s-task-arrivals}
++This six-source cohort uses source-disjoint HotpotQA/RepoBench content, faithful 16K packing, six registered tenants/template, ten rounds and a frozen external two-request wave protocol. Seven raw-only calibration cells precede freezing of the common/high traces and joint readiness-TTFT/mean-TPOT SLO (11.7 s/435 ms). The 24 main fresh-server cells produce 8,640 business requests and 3,888 future Raw/Contract pairs. Readiness starts at scheduled arrival; all first-use witnesses, failed qualification, queues, idle intervals and drain remain on the service clock. It is distinct from both Fig.~5's deployment trace and the earlier partial 5/54-cell pilot.
++
++\begin{table}[t]
++\centering\footnotesize
++\setlength{\tabcolsep}{2.5pt}
++\caption{Completed independent fixed-arrival main cohort: three paired processes/group. Goodput is joint-SLO-compliant business requests/s. Intervals describe source/process composition sensitivity on retained clocks.}
++\label{tab:s-task-arrivals}
++\begin{tabular}{@{}lrrP{1.24in}@{}}
++\toprule
++Group & Raw & CKV & $\Delta$ Goodput 95\% interval\\
++\midrule
++Qwen, common & .126074 & .126569 & [$-.012404$,$.012423$]\\
++Qwen, high & .013178 & .023277 & [$-.000593$,$.026079$]\\
++Mistral, common & .051099 & .051990 & [$-.001098$,$.004392$]\\
++Llama, common & .074209 & .074630 & [$-.000335$,$.002163$]\\
++\bottomrule
++\end{tabular}
++\end{table}
++
++Compiled future counts are 54/972, 54/972, 54/972 and 48/972, respectively; all 210 agree with their paired raw output IDs/finish. Full-wall ratios are 0.999986, 0.990905, 0.999372 and 0.999568. All four absolute Goodput-change intervals cross zero. The Qwen-high ratio has a small baseline (46 compliant responses); 241/10,000 bootstrap baseline draws are zero, so no ratio interval is reported. The source/process sensitivity retains observed clocks and is not a simulated queueing counterfactual.
++
++Qwen admits one HotpotQA source with positive raw F1 (54/54); Mistral/Llama admit another with zero raw F1 (0/54 and 0/48). This limits useful-task coverage. Qwen's 54 decisions/load contain three PASS, 24 exact-observation restrictions, 18 candidate/EOS margin failures and nine output-contract failures. In six additional gate ON/OFF cells, 54 matched decisions are identical, both policies make 21 verifier RPCs with 18 failures, and no Goodput advantage is observed. The four main groups' 96 p99 requests all route L0; only one directly overlaps preceding-wave qualification, so immediate failed verification does not explain all tails. Calibration, main and gate cells total 37 cells/11,640 business requests, independently recomputed from the archived package.
++
++\section{Bounded Fusion and Residency Exploration}
++\label{sec:s-fusion-residency}
++A subsequent 12-cell, 384-business-request development experiment evaluates six arms on two models and four known task sources. It retains exact Raw/candidate admission, the original margin/EOS floors and PSTP, while separately probing fused execution evidence and revocable certified-prefix priority in the native eviction queue. Priority is capped at 75\% of pool capacity with a 120-s lifetime; it neither changes reference counts nor promises permanent residency.
++
++\begin{table}[t]
++\centering\footnotesize
++\caption{Bounded known-source exploration: full workflow wall relative to each model's raw arm. One fresh process/arm/model; no source-level generalization interval.}
++\label{tab:s-fusion-residency}
++\begin{tabular}{@{}lrr@{}}
++\toprule
++Arm & Qwen $\times$ & Mistral $\times$\\
++\midrule
++Strict exact & .910 & .947\\
++Teacher-forced & .966 & .938\\
++Fused evidence & 1.023 & .939\\
++Fused + residency priority & 1.078 & .970\\
++Raw + residency priority & .993 & 1.289\\
++\bottomrule
++\end{tabular}
++\end{table}
++
++For matched compiled arms, full hits rise from 9/18 to 18/18 under priority; compiled output IDs/EOS remain unchanged. Across all four certificate arms, 72 compiled requests show no ID/EOS changes. Actual reclamation hooks explain the nine strict-arm misses. Fused/residency execution improves Qwen's full workflow but leaves Mistral slower than raw, while Mistral's raw-priority arm improves markedly. Thus the data do not establish a generally beneficial default or a uniquely certified-residency performance effect. The experiment remains a mechanism appendix, with all L0 output variations and failed controls retained.
++
++\section{Evidence Register and Version Boundaries}
++\label{sec:s-evidence-register}
++The accompanying artifact includes a machine-readable protocol register, selected source summaries and SHA256 digests. Main performance cohorts use the archived implementation at \texttt{84dd0366}; independent authorization, growing-history, original RULER rechecks, fixed-arrival and exploratory studies retain their own freezes and source records. The added integration is not assigned retroactively to older measurements. The public evidence snapshot through \texttt{bd449251} contains these experiment records; manuscript source and figure revisions have a separate delivery commit. Reproduction scripts rebuild the manuscripts and measured-data figure without invoking a model.
+--- V5a/sections/supplement_behavior_scope_exploration.tex
++++ V5b/sections/supplement_behavior_scope_exploration.tex
+@@ -1,4 +1,4 @@
+-\section{Post-Review Mechanism Exploration: Exact Raw Behavior Scope}
++\section{Exploratory Exact Raw Behavior Scope}
+ \label{sec:s-strict-exploration}
+ After freezing the primary evaluation, we separately probed how an exact Raw-witness behavioral gate changes deployment-template economics. \emph{This is exploratory evidence and is not part of the primary query-qualified or deployment-qualified service estimates.} The existing deployment policy attests a representative compiled trajectory and authorizes later metadata-varying requests within the declared schema; such a registration does not establish exact Raw equivalence. In a separate 27-cell deployment study (10,368 successful business requests), 3,456 compiled strategy--Raw pairs showed 1,178 output-ID/finish differences and 36 $>0.03$ task-score decreases. The decreases repeat six distinct tenant/turn conditions in one Mistral HotpotQA source across three processes and both qualification granularities; all outcomes remain archived. They are not falsely treated as 36 independent source failures.
+ 
+@@ -21,4 +21,4 @@
+ 
+ The strict successor compiles 56/128 Qwen and 28/128 Mistral requests; its 84 compiled strategy--Raw executions (not 84 independent task sources) show zero output-ID/EOS changes and zero score drops. The deployment comparator compiles 96/128 and 64/128 and retains output divergences. The stricter route reduces eligible coverage and adds controller work: Qwen saves 53.462 s of business HTTP time but spends 36.467 s in registration plus 5.775 s other added work (net saving 11.220 s); Mistral saves 14.608 s but spends 19.070 s plus 2.132 s (net loss 6.594 s). All 954 generated HTTP and 34 verifier HTTP requests across development and independent cells are accounted for in the repository.
+ 
+-A native cache audit finds 42 full and 42 zero hits among 84 strictly compiled requests; every zero hit is the first tenant of a repeated source pair, while the immediately following second tenant hits the legal prefix. No pinning or eviction counterfactual was executed, so a prospective residency benefit is not counted as measured improvement. This bounded exercise demonstrates correct exact-scope enforcement at a significant economic cost. It cannot be combined with the original deployment Goodput to assert strict zero-degradation and high Goodput simultaneously, and it does not establish equivalence for arbitrary new queries or observations. Source-level raw evidence, failed conditions, actual identities and complete fees are archived in \url{https://github.com/zhouz4884-coder/contractkv/tree/main/results/tsc_behavior_scope_repair_20261020}.
++A native cache audit finds 42 full and 42 zero hits among 84 strictly compiled requests; every zero hit is the first tenant of a repeated source pair, while the immediately following second tenant hits the legal prefix. That eight-access experiment has no pinning/eviction counterfactual. A later, separately bounded residency/fusion study is reported below. This bounded exercise demonstrates correct exact-scope enforcement at a significant economic cost. It cannot be combined with the original deployment Goodput to assert strict zero-degradation and high Goodput simultaneously, and it does not establish equivalence for arbitrary new queries or observations. Source-level raw evidence, failed conditions, actual identities and complete fees are archived in \url{https://github.com/zhouz4884-coder/contractkv/tree/main/results/tsc_behavior_scope_repair_20261020}.
+--- V5a/sections/supplement_evaluation.tex
++++ V5b/sections/supplement_evaluation.tex
+@@ -11,7 +11,7 @@
+ 
+ \emph{Raw} uses the original prompt order and native APC. \emph{ContractKV} uses the same task content, frozen candidate policy, query-scope eligibility, token/EOS floors, output contract, and service clock. Mistral and Llama retain the previously frozen RepoBench L0 route. A separate cost-adapted variant changes only the cost profile and waiting-budget gate. In the deployment study, D1 uses an already qualified frozen layout without online registration, while D2 adds in-engine verification and transactional registration to that deployment route.
+ 
+-For every request pair, we retain actual prompt/output IDs, task scores, route, qualification identity, timing, and cache counters. LongBench-derived QA uses the frozen token-F1 scorer. RepoBench uses the pre-existing SequenceMatcher-based edit-similarity adapter, while RULER uses its frozen substring-match criterion. We report upward and downward task-score changes using the preregistered 0.03 material-change threshold, and evaluate exact output-ID agreement separately. RepoBench results therefore describe this declared next-line task adaptation, rather than a reproduction of every official evaluation component.
++For every request pair, we retain actual prompt/output IDs, task scores, route, qualification identity, timing, and cache counters. LongBench-derived QA uses the frozen token-F1 scorer. RepoBench uses the pre-existing SequenceMatcher-based edit-similarity adapter, while RULER uses its frozen substring-match criterion. We report upward and downward task-score changes using the fixed 0.03 material-change reporting threshold, and evaluate exact output-ID agreement separately. RepoBench results therefore describe this declared next-line task adaptation, rather than a reproduction of every official evaluation component.
+ 
+ Each primary model has 1,620 future-request pairs across three repetitions, giving 4,860 future pairs and 10,800 total business generations. The six source templates are the independent content units; tenants and rounds are nested repetitions. Reported min/max throughput ranges summarize process repetitions, while confidence intervals resample source-template clusters and repetitions. Separate cohorts and comparisons sharing a raw control are not pooled as independent trials.
+ 
+--- V5a/sections/supplement_f1_replay.tex
++++ V5b/sections/supplement_f1_replay.tex
+@@ -1,4 +1,4 @@
+-\section{Original Table III: Independent Full-Cost Replay}
++\section{Four-Configuration Complete-Cost Replay}
+ \label{sec:s-f1-replay}
+ The original deployment Table III reports residual-verification mean-TTFT under 2-s (6-s Llama) slack. An independent three-repeat replay of the frozen original configurations instead records all 525 controller decisions and 453 real verifier RPCs over 24 fresh-server cells and 4,725 future pairs. It includes 155 non-PASS attempts, 30 exceptions and 60 warmups without verifier RPCs; missing original timestamps are \emph{not} imputed. The full controller includes reference generation, planning and failed/aborted work. Zero-slack mean-TTFT amortization is a component accounting estimand, whereas raw/ContractKV complete-wall ratios are direct time measurements.
+ \begin{table}[t]
+@@ -18,3 +18,6 @@
+ \end{table}
+ 
+ The earlier historical record lacks 33 Llama intermediate/failure RPC timings and other full-controller fields, a separate lineage issue preserved in Table~\ref{tab:s-matched-original-cost}. Those absent historical timings are not the independently remeasured full-cost values above. Both tables are retained to distinguish archive reconstruction from an actual new same-configuration experiment.
++
++
++The replay also retains benchmark-aligned post hoc quality diagnostics, distinct from its unchanged driver sanity proxy. Across 4,725 future pairs, Qwen8B has one material increase and three decreases; Mistral has six increases and zero decreases; Llama and Qwen14B have neither. One Qwen8B decrease is compiled (RepoBench sample 389, repetition three, score 0.72 to 0.38); the other two are raw-order routes. These archived-client diagnostics retain paired output text but lack complete output IDs, so text agreement is not promoted to token-ID equivalence. They belong to the deployment replay, not the primary cohort's 1,296 identical-ID compiled pairs.
+--- V5a/sections/table_deployment_width.tex
++++ V5b/sections/table_deployment_width.tex
+@@ -1,7 +1,7 @@
+ \begin{table}[t]
+ \centering\footnotesize
+ \setlength{\tabcolsep}{3.0pt}
+-\caption{Reviewer-requested original Table III configurations and independent frozen-input, three-repeat complete-cost replay. \emph{Recorded} mean-TTFT reductions use the original residual-verifier convention (2-s slack; Llama 6 s). \emph{Full} charges measured complete Controller cost with zero slack; \emph{wall} is direct full-service wall (raw/CKV). Replays are new fresh processes, not retroactive timestamps for the original runs.}
++\caption{Four deployment configurations: recorded residual-slack accounting and a frozen-input, three-repeat complete-cost replay. \emph{Recorded} mean-TTFT reductions use the original residual-verifier convention (2-s slack; Llama 6 s). \emph{Full} charges measured complete Controller cost with zero slack; \emph{wall} is direct full-service wall (raw/CKV). Each replay uses a fresh server process; recorded and replayed columns retain their own clocks.}
+ \label{tab:deployment-width}
+ \begin{tabular}{@{}lrrrr@{}}
+ \toprule
+--- V5a/sections/table_qualification_protocols.tex
++++ V5b/sections/table_qualification_protocols.tex
+@@ -9,7 +9,7 @@
+ \midrule
+ Witness & Compiled trajectory on a development-qualified route & First real raw business reply in the selected scope\\
+ Admission & Client checks HMAC template binding and lifecycle & Controlled-client lookup at $(\mathrm{namespace},q)$\\
+-Identity & Model/runtime, version, layout, policy, authorization, epoch & Exact bound inputs/settings and policy; prefix association at $(\mathrm{namespace},H_s)$\\
++Identity & Model/runtime, version, layout, policy, authorization, epoch & Bound query/stable fields, execution settings and policy; prefix association at $(\mathrm{namespace},H_s)$\\
+ Cost unit & $O(1)$ attestation per registered template & $O(U)$ decisions for $U$ scopes; at most one GPU attempt per selected scope\\
+ Evidence & Registration, amortization, open arrival and density & Free-running task pairs and complete service wall\\
+ \bottomrule

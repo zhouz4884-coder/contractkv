@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3.0pt}
+\caption{Four deployment configurations: recorded residual-slack accounting and a frozen-input, three-repeat complete-cost replay. \emph{Recorded} mean-TTFT reductions use the original residual-verifier convention (2-s slack; Llama 6 s). \emph{Full} charges measured complete Controller cost with zero slack; \emph{wall} is direct full-service wall (raw/CKV). Each replay uses a fresh server process; recorded and replayed columns retain their own clocks.}
+\label{tab:deployment-width}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Configuration & \shortstack{Recorded\\TTFT $\downarrow$} & \shortstack{Full-cost\\TTFT $\downarrow$} & \shortstack{Direct\\wall $\times$} & \shortstack{Recorded\\prefill $\downarrow$}\\
+\midrule
+Qwen3-8B & 37.81\% & 10.82\% & 1.020 & 59.13\%\\
+Qwen3-14B TP2 & 44.69\% & 20.93\% & 1.109 & 60.57\%\\
+Mistral-7B & 31.72\% & 2.00\% & 0.994 & 39.46\%\\
+Llama-3.1-8B & 29.41\% & $-0.20$\% & 1.012 & 30.97\%\\
+\bottomrule
+\end{tabular}
+\end{table}

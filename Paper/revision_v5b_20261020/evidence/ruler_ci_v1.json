@@ -1,0 +1,57 @@
+{
+  "original_points_and_intervals_reproduced": true,
+  "models": [
+    {
+      "model": "Qwen3-8B",
+      "point_pct": 86.63940046555379,
+      "historical95_pct": [
+        86.15933847585555,
+        87.09980505922333
+      ]
+    },
+    {
+      "model": "Mistral-7B-Instruct-v0.3",
+      "point_pct": 87.40557969138551,
+      "historical95_pct": [
+        87.06406028333564,
+        87.78980862538461
+      ]
+    },
+    {
+      "model": "Llama-3.1-8B-Instruct",
+      "point_pct": 85.97192961630954,
+      "historical95_pct": [
+        85.6308060230573,
+        86.29308476142539
+      ]
+    }
+  ],
+  "macro_point_pct": 86.6723032577496,
+  "historical_macro95_pct": [
+    86.43686658419585,
+    86.89530498460697
+  ],
+  "historical_estimand": "Fixed three-model macro, process then session resampling independently within model/repeat; no model resampling.",
+  "historical_limit": "The same 30 sessions recur across models/repeats, but original draws did not synchronize those source identities. 90 process-session clusters per model are not 90 unique sources.",
+  "posthoc_synchronized_source_process95_pct": [
+    86.3204074321047,
+    86.99105669273989
+  ],
+  "sensitivity_seed": 20261018,
+  "sensitivity_iterations": 10000,
+  "sensitivity_unit": "30 common session IDs shared across all process/model draws; fixed models; preserve all nine future turns together",
+  "session_records": 30,
+  "session_record_keys": [
+    "dataset",
+    "task",
+    "sample_id",
+    "total_prompt_tokens",
+    "segments",
+    "answer",
+    "metadata",
+    "phase19b_session_id",
+    "submission_extension"
+  ],
+  "new_GPU_requests": 0,
+  "interpretation": "Conditional finite-scope precision, not model-population variation or non-RULER generality. A mean CI need not contain the three component means."
+}

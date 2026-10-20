@@ -1,0 +1,19 @@
+\section{Actual-Behavior Rejection Matrix}
+\label{sec:s-mechanism}
+\begin{table}[!htb]
+\centering\small
+\caption{Independent three-model, five-challenge mechanism study. The labels describe \emph{observed} free-running output-ID/finish differences. Eighteen no-verifier-RPC early rejections remain in the total decision ledger.}
+\label{tab:s-mechanism}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Observed candidate & Total & Admitted & Rejected\\
+\midrule
+Changed output IDs/finish & 102 & 0 & 102\\
+Unchanged output IDs/finish & 78 & 78 & 0\\
+\midrule
+All actual candidates & 180 & 78 & 102\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The recorded $>0.03$ task-score-drop subset has 30 candidates, all among the 102 changed and rejected. No rejected candidate contributes newly published shared candidate KV tokens. The test is a controlled mechanism study rather than an estimate of population failure probability; synthesized code-context challenges are distinct from the separate real-repository code task evaluation. The frozen case matrix, actual outputs, rejection reasons, registrar costs and PSTP/native hooks are provided in the repository experiment record.

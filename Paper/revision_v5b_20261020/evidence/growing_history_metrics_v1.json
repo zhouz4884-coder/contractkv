@@ -1,0 +1,1038 @@
+{
+  "schema": "contractkv.independent-structural-survey.results.v1",
+  "execution_complete": true,
+  "freeze_sha256": "a9a1788b6745a194a29c6c1a1edfea679fbe9351c6b8e06483bc59741c5d4bf3",
+  "source_logs": [
+    {
+      "repeat": 1,
+      "raw_sha256": "8094638e6c495bfe75f16ec363c097248d3c4bcaaf26281a9280124eccfa1ba8",
+      "completion_sha256": "f70b4a44b0ee0a42d4a0ac2ab5d46d5b6f2c166f023a998088a8bf79617268b7"
+    },
+    {
+      "repeat": 2,
+      "raw_sha256": "fd14c97b856c26cc62519f2d13682b3f2e47aef6a497df620d7676d94b4c6c15",
+      "completion_sha256": "cc7884c7d6f6a3b2fe5392d867922950653c0c0ed0d37a8e918bef5308e6160a"
+    },
+    {
+      "repeat": 3,
+      "raw_sha256": "19d1d959f284ed7b69a8e71c3c97bbd40a3b7fc32d9e86162e30c1686f57be46",
+      "completion_sha256": "19e4731f6c2634bf179a56d17bb24577b802bd04fbb0dc162ac79aaff8e58a9c"
+    }
+  ],
+  "selected_sources": 125,
+  "eligible_sources": 125,
+  "capacity_exclusions": [],
+  "all_requests": 3750,
+  "future_requests": 3375,
+  "all_actual_prompt_IDs_independently_checked": true,
+  "unique_prompt_and_span_checks": 1250,
+  "summaries": [
+    {
+      "population": "future",
+      "family": "RULER",
+      "sources": 25,
+      "requests": 675,
+      "prompt_tokens": 934599,
+      "stable_tokens": 779355,
+      "native_cached_tokens": 115152,
+      "stable_cached_tokens": 16875,
+      "history_tokens": 87720,
+      "query_tokens": 13524,
+      "framing_tokens": 54000,
+      "stable_ratio_pct": 83.38923966321384,
+      "stable_native_recovery_pct": 2.165252035336913,
+      "all_native_hit_pct": 12.321006121341881,
+      "source_macro_pct": {
+        "stable_ratio_pct": 83.38999589068194,
+        "stable_native_recovery_pct": 2.165467407171401,
+        "all_native_hit_pct": 12.32084774472952
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          83.36504606607548,
+          83.41851294138891
+        ],
+        "stable_native_recovery_pct": [
+          2.1577766269635767,
+          2.1742911810749694
+        ],
+        "all_native_hit_pct": [
+          12.314875422807928,
+          12.32607298299025
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 83.38923966321384,
+          "stable_native_recovery_pct": 2.165252035336913,
+          "all_native_hit_pct": 12.321006121341881
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 83.38923966321384,
+          "stable_native_recovery_pct": 2.165252035336913,
+          "all_native_hit_pct": 12.321006121341881
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 83.38923966321384,
+          "stable_native_recovery_pct": 2.165252035336913,
+          "all_native_hit_pct": 12.321006121341881
+        }
+      ]
+    },
+    {
+      "population": "future",
+      "family": "HotpotQA",
+      "sources": 25,
+      "requests": 675,
+      "prompt_tokens": 9081498,
+      "stable_tokens": 8901414,
+      "native_cached_tokens": 127536,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 112101,
+      "query_tokens": 16683,
+      "framing_tokens": 51300,
+      "stable_ratio_pct": 98.01702318273924,
+      "stable_native_recovery_pct": 0.118801349987766,
+      "all_native_hit_pct": 1.4043498110113553,
+      "source_macro_pct": {
+        "stable_ratio_pct": 97.93910204557221,
+        "stable_native_recovery_pct": 0.12426863237513615,
+        "all_native_hit_pct": 1.4567233737086633
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          97.79425298437997,
+          98.21675832206522
+        ],
+        "stable_native_recovery_pct": [
+          0.11180753726921021,
+          0.12814075374465636
+        ],
+        "all_native_hit_pct": [
+          1.2563413314349459,
+          1.5731724465507995
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 98.01702318273924,
+          "stable_native_recovery_pct": 0.118801349987766,
+          "all_native_hit_pct": 1.4043498110113553
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 98.01702318273924,
+          "stable_native_recovery_pct": 0.118801349987766,
+          "all_native_hit_pct": 1.4043498110113553
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 98.01702318273924,
+          "stable_native_recovery_pct": 0.118801349987766,
+          "all_native_hit_pct": 1.4043498110113553
+        }
+      ]
+    },
+    {
+      "population": "future",
+      "family": "NarrativeQA",
+      "sources": 25,
+      "requests": 675,
+      "prompt_tokens": 9451128,
+      "stable_tokens": 9274770,
+      "native_cached_tokens": 129120,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 114315,
+      "query_tokens": 10743,
+      "framing_tokens": 51300,
+      "stable_ratio_pct": 98.13400051295464,
+      "stable_native_recovery_pct": 0.11401899993207379,
+      "all_native_hit_pct": 1.3661861314332004,
+      "source_macro_pct": {
+        "stable_ratio_pct": 98.0802983285041,
+        "stable_native_recovery_pct": 0.1165028850491421,
+        "all_native_hit_pct": 1.4064289373306176
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          97.79603228810521,
+          98.43164489451055
+        ],
+        "stable_native_recovery_pct": [
+          0.10858028942803168,
+          0.1205601265552928
+        ],
+        "all_native_hit_pct": [
+          1.13842792650293,
+          1.631181501916961
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 98.13400051295464,
+          "stable_native_recovery_pct": 0.11401899993207379,
+          "all_native_hit_pct": 1.3661861314332004
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 98.13400051295464,
+          "stable_native_recovery_pct": 0.11401899993207379,
+          "all_native_hit_pct": 1.3661861314332004
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 98.13400051295464,
+          "stable_native_recovery_pct": 0.11401899993207379,
+          "all_native_hit_pct": 1.3661861314332004
+        }
+      ]
+    },
+    {
+      "population": "future",
+      "family": "Qasper",
+      "sources": 25,
+      "requests": 675,
+      "prompt_tokens": 3209646,
+      "stable_tokens": 3036528,
+      "native_cached_tokens": 127296,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 111750,
+      "query_tokens": 10068,
+      "framing_tokens": 51300,
+      "stable_ratio_pct": 94.60632107092184,
+      "stable_native_recovery_pct": 0.3482595912173377,
+      "all_native_hit_pct": 3.9660448535445965,
+      "source_macro_pct": {
+        "stable_ratio_pct": 93.85039365899763,
+        "stable_native_recovery_pct": 0.40432678893626756,
+        "all_native_hit_pct": 4.515454902214412
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          93.53219358300178,
+          95.53959687108369
+        ],
+        "stable_native_recovery_pct": [
+          0.30369891071804045,
+          0.40220390752256036
+        ],
+        "all_native_hit_pct": [
+          3.2620534117016944,
+          4.782629174554018
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 94.60632107092184,
+          "stable_native_recovery_pct": 0.3482595912173377,
+          "all_native_hit_pct": 3.9660448535445965
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 94.60632107092184,
+          "stable_native_recovery_pct": 0.3482595912173377,
+          "all_native_hit_pct": 3.9660448535445965
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 94.60632107092184,
+          "stable_native_recovery_pct": 0.3482595912173377,
+          "all_native_hit_pct": 3.9660448535445965
+        }
+      ]
+    },
+    {
+      "population": "future",
+      "family": "RepoBench",
+      "sources": 25,
+      "requests": 675,
+      "prompt_tokens": 5886480,
+      "stable_tokens": 5684796,
+      "native_cached_tokens": 152880,
+      "stable_cached_tokens": 12975,
+      "history_tokens": 139209,
+      "query_tokens": 7125,
+      "framing_tokens": 55350,
+      "stable_ratio_pct": 96.57377583887144,
+      "stable_native_recovery_pct": 0.22824038012973552,
+      "all_native_hit_pct": 2.597137848085783,
+      "source_macro_pct": {
+        "stable_ratio_pct": 95.49194009237603,
+        "stable_native_recovery_pct": 0.3130246951798047,
+        "all_native_hit_pct": 3.40922070148864
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          95.64780549498231,
+          97.17039173770412
+        ],
+        "stable_native_recovery_pct": [
+          0.18968859022545118,
+          0.2882310298101985
+        ],
+        "all_native_hit_pct": [
+          2.137223151152668,
+          3.298040420024644
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 96.57377583887144,
+          "stable_native_recovery_pct": 0.22824038012973552,
+          "all_native_hit_pct": 2.597137848085783
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 96.57377583887144,
+          "stable_native_recovery_pct": 0.22824038012973552,
+          "all_native_hit_pct": 2.597137848085783
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 96.57377583887144,
+          "stable_native_recovery_pct": 0.22824038012973552,
+          "all_native_hit_pct": 2.597137848085783
+        }
+      ]
+    },
+    {
+      "population": "future",
+      "family": "ALL",
+      "sources": 125,
+      "requests": 3375,
+      "prompt_tokens": 28563351,
+      "stable_tokens": 27676863,
+      "native_cached_tokens": 651984,
+      "stable_cached_tokens": 61575,
+      "history_tokens": 565095,
+      "query_tokens": 58143,
+      "framing_tokens": 263250,
+      "stable_ratio_pct": 96.89641456984512,
+      "stable_native_recovery_pct": 0.2224782483477264,
+      "all_native_hit_pct": 2.2825893222402374,
+      "source_macro_pct": {
+        "stable_ratio_pct": 93.75034600322644,
+        "stable_native_recovery_pct": 0.6247180817423504,
+        "all_native_hit_pct": 4.621735131894369
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          96.48762170681886,
+          97.22557361700846
+        ],
+        "stable_native_recovery_pct": [
+          0.19378806814174906,
+          0.25857589449976714
+        ],
+        "all_native_hit_pct": [
+          2.0357020185819223,
+          2.585929565125207
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 96.89641456984512,
+          "stable_native_recovery_pct": 0.2224782483477264,
+          "all_native_hit_pct": 2.2825893222402374
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 96.89641456984512,
+          "stable_native_recovery_pct": 0.2224782483477264,
+          "all_native_hit_pct": 2.2825893222402374
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 96.89641456984512,
+          "stable_native_recovery_pct": 0.2224782483477264,
+          "all_native_hit_pct": 2.2825893222402374
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "RULER",
+      "sources": 25,
+      "requests": 75,
+      "prompt_tokens": 90006,
+      "stable_tokens": 86595,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 1161,
+      "framing_tokens": 2250,
+      "stable_ratio_pct": 96.21025264982335,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 96.21035133793231,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          96.20686219151692,
+          96.21435265765163
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 96.21025264982335,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 96.21025264982335,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 96.21025264982335,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "HotpotQA",
+      "sources": 25,
+      "requests": 75,
+      "prompt_tokens": 992511,
+      "stable_tokens": 989046,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 1515,
+      "framing_tokens": 1950,
+      "stable_ratio_pct": 99.65088548136998,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 99.63075720763578,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          99.61528033006249,
+          99.68049532729454
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 99.65088548136998,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 99.65088548136998,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 99.65088548136998,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "NarrativeQA",
+      "sources": 25,
+      "requests": 75,
+      "prompt_tokens": 1033332,
+      "stable_tokens": 1030530,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 852,
+      "framing_tokens": 1950,
+      "stable_ratio_pct": 99.72883835979144,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 99.72250683839333,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          99.70622404369716,
+          99.74908983240708
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 99.72883835979144,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 99.72883835979144,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 99.72883835979144,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "Qasper",
+      "sources": 25,
+      "requests": 75,
+      "prompt_tokens": 340119,
+      "stable_tokens": 337392,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 777,
+      "framing_tokens": 1950,
+      "stable_ratio_pct": 99.19822179884099,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 99.06035158622093,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          99.0616168616414,
+          99.31137032966726
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 99.19822179884099,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 99.19822179884099,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 99.19822179884099,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "RepoBench",
+      "sources": 25,
+      "requests": 75,
+      "prompt_tokens": 634494,
+      "stable_tokens": 631644,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 450,
+      "framing_tokens": 2400,
+      "stable_ratio_pct": 99.55082317563287,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 99.38612586487585,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          99.43343054176489,
+          99.62640961441844
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 99.55082317563287,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 99.55082317563287,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 99.55082317563287,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "warm",
+      "family": "ALL",
+      "sources": 125,
+      "requests": 375,
+      "prompt_tokens": 3090462,
+      "stable_tokens": 3075207,
+      "native_cached_tokens": 0,
+      "stable_cached_tokens": 0,
+      "history_tokens": 0,
+      "query_tokens": 4755,
+      "framing_tokens": 10500,
+      "stable_ratio_pct": 99.50638448232012,
+      "stable_native_recovery_pct": 0.0,
+      "all_native_hit_pct": 0.0,
+      "source_macro_pct": {
+        "stable_ratio_pct": 98.80201856701166,
+        "stable_native_recovery_pct": 0.0,
+        "all_native_hit_pct": 0.0
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          99.43811037642485,
+          99.55908572570243
+        ],
+        "stable_native_recovery_pct": [
+          0.0,
+          0.0
+        ],
+        "all_native_hit_pct": [
+          0.0,
+          0.0
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 99.50638448232012,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 99.50638448232012,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 99.50638448232012,
+          "stable_native_recovery_pct": 0.0,
+          "all_native_hit_pct": 0.0
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "RULER",
+      "sources": 25,
+      "requests": 750,
+      "prompt_tokens": 1024605,
+      "stable_tokens": 865950,
+      "native_cached_tokens": 115152,
+      "stable_cached_tokens": 16875,
+      "history_tokens": 87720,
+      "query_tokens": 14685,
+      "framing_tokens": 56250,
+      "stable_ratio_pct": 84.5154962156148,
+      "stable_native_recovery_pct": 1.9487268318032218,
+      "all_native_hit_pct": 11.238672464022722,
+      "source_macro_pct": {
+        "stable_ratio_pct": 84.51619924464013,
+        "stable_native_recovery_pct": 1.9489206664542609,
+        "all_native_hit_pct": 11.238521051571912
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          84.49286776931828,
+          84.54287436949457
+        ],
+        "stable_native_recovery_pct": [
+          1.941998964267219,
+          1.9568620629674727
+        ],
+        "all_native_hit_pct": [
+          11.232775988588402,
+          11.243545987573292
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 84.5154962156148,
+          "stable_native_recovery_pct": 1.9487268318032218,
+          "all_native_hit_pct": 11.238672464022722
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 84.5154962156148,
+          "stable_native_recovery_pct": 1.9487268318032218,
+          "all_native_hit_pct": 11.238672464022722
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 84.5154962156148,
+          "stable_native_recovery_pct": 1.9487268318032218,
+          "all_native_hit_pct": 11.238672464022722
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "HotpotQA",
+      "sources": 25,
+      "requests": 750,
+      "prompt_tokens": 10074009,
+      "stable_tokens": 9890460,
+      "native_cached_tokens": 127536,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 112101,
+      "query_tokens": 18198,
+      "framing_tokens": 53250,
+      "stable_ratio_pct": 98.17799448064817,
+      "stable_native_recovery_pct": 0.10692121498898939,
+      "all_native_hit_pct": 1.2659905306814794,
+      "source_macro_pct": {
+        "stable_ratio_pct": 98.1053465125994,
+        "stable_native_recovery_pct": 0.11184176913762255,
+        "all_native_hit_pct": 1.3135600253840023
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          97.97511372103799,
+          98.35962671826924
+        ],
+        "stable_native_recovery_pct": [
+          0.10062678354228918,
+          0.11532667837019073
+        ],
+        "all_native_hit_pct": [
+          1.1323560704333917,
+          1.4184809087873116
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 98.17799448064817,
+          "stable_native_recovery_pct": 0.10692121498898939,
+          "all_native_hit_pct": 1.2659905306814794
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 98.17799448064817,
+          "stable_native_recovery_pct": 0.10692121498898939,
+          "all_native_hit_pct": 1.2659905306814794
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 98.17799448064817,
+          "stable_native_recovery_pct": 0.10692121498898939,
+          "all_native_hit_pct": 1.2659905306814794
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "NarrativeQA",
+      "sources": 25,
+      "requests": 750,
+      "prompt_tokens": 10484460,
+      "stable_tokens": 10305300,
+      "native_cached_tokens": 129120,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 114315,
+      "query_tokens": 11595,
+      "framing_tokens": 53250,
+      "stable_ratio_pct": 98.2911852398693,
+      "stable_native_recovery_pct": 0.1026170999388664,
+      "all_native_hit_pct": 1.231536960415701,
+      "source_macro_pct": {
+        "stable_ratio_pct": 98.24149829779377,
+        "stable_native_recovery_pct": 0.10485259654422789,
+        "all_native_hit_pct": 1.268349635788642
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          97.98404360899414,
+          98.56130560672756
+        ],
+        "stable_native_recovery_pct": [
+          0.0977222604852285,
+          0.10850411389976351
+        ],
+        "all_native_hit_pct": [
+          1.0259386198883809,
+          1.4708888762556798
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 98.2911852398693,
+          "stable_native_recovery_pct": 0.1026170999388664,
+          "all_native_hit_pct": 1.231536960415701
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 98.2911852398693,
+          "stable_native_recovery_pct": 0.1026170999388664,
+          "all_native_hit_pct": 1.231536960415701
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 98.2911852398693,
+          "stable_native_recovery_pct": 0.1026170999388664,
+          "all_native_hit_pct": 1.231536960415701
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "Qasper",
+      "sources": 25,
+      "requests": 750,
+      "prompt_tokens": 3549765,
+      "stable_tokens": 3373920,
+      "native_cached_tokens": 127296,
+      "stable_cached_tokens": 10575,
+      "history_tokens": 111750,
+      "query_tokens": 10845,
+      "framing_tokens": 53250,
+      "stable_ratio_pct": 95.04629179678092,
+      "stable_native_recovery_pct": 0.31343363209560393,
+      "all_native_hit_pct": 3.586040202661303,
+      "source_macro_pct": {
+        "stable_ratio_pct": 94.33961725139642,
+        "stable_native_recovery_pct": 0.3638941100426407,
+        "all_native_hit_pct": 4.091295867885404
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          94.05962606531435,
+          95.90435167622948
+        ],
+        "stable_native_recovery_pct": [
+          0.2733290196462364,
+          0.36198351677030427
+        ],
+        "all_native_hit_pct": [
+          2.946978856079854,
+          4.3287239803811985
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 95.04629179678092,
+          "stable_native_recovery_pct": 0.31343363209560393,
+          "all_native_hit_pct": 3.586040202661303
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 95.04629179678092,
+          "stable_native_recovery_pct": 0.31343363209560393,
+          "all_native_hit_pct": 3.586040202661303
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 95.04629179678092,
+          "stable_native_recovery_pct": 0.31343363209560393,
+          "all_native_hit_pct": 3.586040202661303
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "RepoBench",
+      "sources": 25,
+      "requests": 750,
+      "prompt_tokens": 6520974,
+      "stable_tokens": 6316440,
+      "native_cached_tokens": 152880,
+      "stable_cached_tokens": 12975,
+      "history_tokens": 139209,
+      "query_tokens": 7575,
+      "framing_tokens": 57750,
+      "stable_ratio_pct": 96.86344401925234,
+      "stable_native_recovery_pct": 0.20541634211676196,
+      "all_native_hit_pct": 2.3444350491199626,
+      "source_macro_pct": {
+        "stable_ratio_pct": 95.86248666294424,
+        "stable_native_recovery_pct": 0.28172222566182425,
+        "all_native_hit_pct": 3.084703551652171
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          96.00663802540564,
+          97.40746182266852
+        ],
+        "stable_native_recovery_pct": [
+          0.1707197312029061,
+          0.2594079268291787
+        ],
+        "all_native_hit_pct": [
+          1.9282164135398232,
+          2.979606802066976
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 96.86344401925234,
+          "stable_native_recovery_pct": 0.20541634211676196,
+          "all_native_hit_pct": 2.3444350491199626
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 96.86344401925234,
+          "stable_native_recovery_pct": 0.20541634211676196,
+          "all_native_hit_pct": 2.3444350491199626
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 96.86344401925234,
+          "stable_native_recovery_pct": 0.20541634211676196,
+          "all_native_hit_pct": 2.3444350491199626
+        }
+      ]
+    },
+    {
+      "population": "all_business",
+      "family": "ALL",
+      "sources": 125,
+      "requests": 3750,
+      "prompt_tokens": 31653813,
+      "stable_tokens": 30752070,
+      "native_cached_tokens": 651984,
+      "stable_cached_tokens": 61575,
+      "history_tokens": 565095,
+      "query_tokens": 62898,
+      "framing_tokens": 273750,
+      "stable_ratio_pct": 97.15123419728296,
+      "stable_native_recovery_pct": 0.20023042351295375,
+      "all_native_hit_pct": 2.0597328985294756,
+      "source_macro_pct": {
+        "stable_ratio_pct": 94.21302959387484,
+        "stable_native_recovery_pct": 0.5622462735681149,
+        "all_native_hit_pct": 4.199286026456426
+      },
+      "source_cluster_95pct": {
+        "stable_ratio_pct": [
+          96.77441850518662,
+          97.45230155268926
+        ],
+        "stable_native_recovery_pct": [
+          0.17440926132757414,
+          0.23271830504979046
+        ],
+        "all_native_hit_pct": [
+          1.8364485505507577,
+          2.3342391364994106
+        ]
+      },
+      "per_repeat": [
+        {
+          "repeat": 1,
+          "stable_ratio_pct": 97.15123419728296,
+          "stable_native_recovery_pct": 0.20023042351295375,
+          "all_native_hit_pct": 2.0597328985294756
+        },
+        {
+          "repeat": 2,
+          "stable_ratio_pct": 97.15123419728296,
+          "stable_native_recovery_pct": 0.20023042351295375,
+          "all_native_hit_pct": 2.0597328985294756
+        },
+        {
+          "repeat": 3,
+          "stable_ratio_pct": 97.15123419728296,
+          "stable_native_recovery_pct": 0.20023042351295375,
+          "all_native_hit_pct": 2.0597328985294756
+        }
+      ]
+    }
+  ],
+  "unweighted_five_family_future_mean_pct": {
+    "stable_ratio_pct": 94.14407205374019,
+    "stable_native_recovery_pct": 0.5949144713207652,
+    "all_native_hit_pct": 4.330944953083363
+  },
+  "finish_reasons": {
+    "stop": 3525,
+    "length": 225
+  },
+  "original_TableI_measurement_lineage_recovered": false,
+  "post_forward_parameter_changes": false,
+  "limits": [
+    "Controlled source-backed repeated-task trajectories, not natural ten-question dialogues or a production frequency survey",
+    "Structural native-APC measurement, not a quality-preservation, ContractKV speedup, or SLO-capacity experiment",
+    "Does not authenticate the old 85.0%/2.4% or identify the old measurement cohort"
+  ],
+  "new_GPU_experiments": "Native raw APC only; no ContractKV speed or quality certification claim"
+}

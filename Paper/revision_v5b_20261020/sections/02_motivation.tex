@@ -1,0 +1,72 @@
+% Changed: argument and layout integration; measured claims retained.
+% Protected: existing citations, equations and labels unless explicitly documented.
+% Meaning-Check: PRESERVED
+% Risk-Flags: none
+\section{Background and Motivation}
+\label{sec:background}
+
+\subsection{The Gap Between Repetition and Prefix Reuse}
+A causal language model first computes prompt states during prefill, then generates output autoregressively. Native prefix caching reuses a leading sequence whose tokens and cache identity match a resident entry~\cite{vllm2023,sglang2024}. For fully rendered prompt $\mathbf{t}$, let $\mathcal P(\mathcal R)$ be the token prefixes represented by resident state under the matching cache identity. The block-aligned reuse opportunity is
+\begin{equation}
+\begin{aligned}
+ k^*&=\max\{k:\mathbf{t}_{1:k}\in\mathcal P(\mathcal R)\},\\
+ k_B(\mathbf{t},\mathcal R)&=B\left\lfloor k^*/B\right\rfloor,
+\end{aligned}
+\label{eq:native}
+\end{equation}
+where $B$ is the block size. Byte-identical text outside that leading sequence offers a layout opportunity. Its KV state also depends on preceding tokens and positions~\cite{vllm2023}.
+
+The Azure template in Section~\ref{sec:introduction} establishes a realizable prefix-breaking order~\cite{azuretemplate}. The following controlled traces independently measure the reuse gap; they do not estimate that application's traffic or sharing frequency.
+
+\subsection{Measuring the Structural Opportunity}
+We reconstruct stability and native reuse from actual API prompt IDs, the frozen renderer's segment spans, and scheduler-recorded prefix hits. Let $n_r$ be the prompt length, $S_r$ the set of token positions fully contained in manifest-declared stable body segments, and $h_r$ the measured native hit length. Three distinct token-weighted quantities are
+\begin{equation}
+\begin{aligned}
+ \rho_s&=\frac{\sum_r |S_r|}{\sum_r n_r},\qquad
+ \rho_h=\frac{\sum_r h_r}{\sum_r n_r},\\
+ \rho_{s\mid h}&=\frac{\sum_r|S_r\cap\{1,\ldots,h_r\}|}{\sum_r|S_r|}.
+\end{aligned}
+\label{eq:ratios}
+\end{equation}
+The first describes stable content, the second all native hits, and the third recovery of the stable body itself. The full-prompt denominator includes chat-control tokens and headings; the stable body excludes wrappers and cross-boundary tokens. Source-macro averages are calculated separately.
+
+\begin{table}[t]
+\centering\small
+\caption{Measured structural opportunity in the six-template, task-preserving cohort. Each row contains 1,620 future raw requests across three repetitions. Ratios are token-weighted and use Eq.~\eqref{eq:ratios}.}
+\label{tab:motivation}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & Stable body $\rho_s$ & Native hits $\rho_h$ & $\rho_{s\mid h}$\\
+\midrule
+Qwen3-8B & 98.520\% & 0.950\% & 0.030\%\\
+Mistral-7B & 98.477\% & 0.985\% & 0.034\%\\
+Llama-3.1-8B & 98.357\% & 1.114\% & 0.031\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:motivation} shows substantial stable content but little native recovery in these controlled traces. An independent five-family, growing-history trace contains 3,750 actual requests and 3,375 future requests; its equal-family stable-body ratio is 94.144\% and stable-body native recovery is 0.595\%. The supplement reports its actual message orders, separate bounded controls and a matched four-source input comparison. Tables~S-I/S-II give prepared/serving orders and measured token displacement for their declared input cohort.
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Closest mechanisms organized by their primary reuse decision.}
+\label{tab:closest-work}
+\begin{tabular}{@{}P{.83in}P{2.39in}@{}}
+\toprule
+Mechanism & Primary decision\\
+\midrule
+Native APC / Radix & Does a request share a contiguous physical prefix?~\cite{vllm2023,sglang2024}\\
+Prompt Cache / cross-position & Which context modules or distant content can be reused or recomputed?~\cite{promptcache2024,cacheblend2025,epic2025}\\
+Application scheduling & Which ordering, placement or dataflow exposes more reusable computation?~\cite{parrot2024,llmqueries2025}\\
+\textbf{ContractKV} & \textbf{When may a transformed prefix become authorized shared state, and how is its evidence cost repaid?}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The separately frozen input-position ledger contains 4,695 segment-marker observations over 240 model/session inputs. Compilation moves 64.9\% of markers in ordinal order, with a segment-weighted mean absolute displacement of 118.10 tokens (Supplementary Table~S-II). These are measured header-marker offsets, not a causal attribution of RoPE or attention changes.
+
+\subsection{From a Layout Opportunity to a Shared Service Object}
+Continuity leaves two service decisions: which legal layouts have evidence for the intended behavior, and which candidate blocks may become atomically visible to authorized consumers. An overbroad qualification or stale identity can affect tenants beyond the request that created the state.
+
+The same layout is only a candidate until its behavior has applicable evidence. The service contract therefore distinguishes \emph{admission}, which authorizes a qualified path, from \emph{publication}, which makes eligible blocks visible, and from \emph{residency}, which determines whether authorized requests realize a physical hit.

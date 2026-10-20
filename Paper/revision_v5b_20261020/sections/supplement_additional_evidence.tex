@@ -1,0 +1,123 @@
+\section{All-Route Physical Authorization}
+\label{sec:s-authorization}
+The all-route integration is a distinct correctness regression, not a rerun of the performance figures. A trusted authority validates membership and active epoch, then HMAC-binds engine, policy, template, domain and epoch to a request identity. All raw, L0/fallback, verifier and compiled dispatches recheck identity; native cache salt is incorporated into the first block hash and propagates through its parent-hash chain. An expired request is denied before backend submission. A current identity holding an incompatible compiled binding uses its own authorized raw namespace.
+
+The frozen matrix has three models, three fresh-process repetitions and seven contexts per cell (six real tasks and one synthetic marker). All 828 business requests complete, and actual prompt IDs match the frozen tokenizer results. With each engine/cache retained throughout, legacy cross-domain and old-binding/new-epoch raw requests each hit the earlier namespace in 63/63 controls. Under the repaired identity, both first cross-domain and first new-epoch requests have zero hit tokens in all 63 controls. Same-domain/epoch own repeats, a second authorized principal, and each new domain/epoch's own repeats all retain hits (63/63 each). Actual block hashes and marker coverage are logged. The controls share seven contexts across repeated models/processes.
+
+There are 135 qualification decisions, 75 actual verifier RPCs and 93 rejected/abstained decisions with zero newly published candidate tokens. All 63 stale request identities are blocked before dispatch. The 42 admitted free-running pairs comprise 24 real-task and 18 marker pairs; their output IDs and finish states agree. The 24 real-task compiled requests hit the complete committed prefix. Mistral admits no real-task candidate in this matrix. No performance ratio is formed between its unequal legacy and repaired phases. Operator semantic mislabels and authorized-domain timing inference remain separate trust boundaries.
+
+\section{Five-Family Growing-History Structural Trace}
+\label{sec:s-growing-history}
+An independently frozen raw-only trace contains 125 registered records from 114 original-text clusters, with 3,750 actual business requests and 3,375 future requests. Some source texts appeared in other studies; they are not 125 independent unseen documents. Each family has 25 registered records and three process repetitions. Future history grows by one actual question/answer pair per round, giving 2--18 prior messages. Table~\ref{tab:s-growing-orders} is extracted from saved messages and character spans, rather than inferred from source-file storage order. Each family has 675 future requests, all with stable content after the first declared mutable history block.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Actual future message/body order in the growing-history trace. HISTORY denotes preceding user/assistant messages; the other fields occur in the current request.}
+\label{tab:s-growing-orders}
+\begin{tabular}{@{}lP{2.64in}@{}}
+\toprule
+Family & Actual future order\\
+\midrule
+RULER & SYS $\to$ HISTORY $\to$ SYNTHETIC CONTEXT $\to$ QUERY\\
+HotpotQA & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
+NarrativeQA & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
+Qasper & SYS $\to$ HISTORY $\to$ RAG CHUNKS $\to$ QUERY\\
+RepoBench & SYS $\to$ HISTORY $\to$ QUERY $\to$ REPO $\to$ CODE PREFIX\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Growing-history trace: actual future requests, Qwen3-8B, 16K, one active request. Each family has 25 registered records and 675 future requests. Percentages are token-weighted within family; the last row weights families equally.}
+\label{tab:s-growing-structure}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Family & Stable/all & Stable recovered & All native hits\\
+\midrule
+RULER & 83.389 & 2.165 & 12.321\\
+HotpotQA & 98.017 & .119 & 1.404\\
+NarrativeQA & 98.134 & .114 & 1.366\\
+Qasper & 94.606 & .348 & 3.966\\
+RepoBench & 96.574 & .228 & 2.597\\
+Equal-family mean & 94.144 & .595 & 4.331\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The equal-family stable-body ratio is 94.144\%, and stable-body native recovery is 0.595\%. Global token-pooled and source-macro estimators are retained separately in the ledger. These structural measurements use actual prompt IDs/native hits and establish repetition beyond the contiguous prefix; they measure neither compiled qualification nor SLO gain. The controlled TOOL\_OBS layouts in Table~\ref{tab:s-raw-orders}, the growing-history trace and the six-source primary serving cohort retain separate identities and denominators.
+
+\section{Fixed-Model RULER Confidence Intervals}
+\label{sec:s-ruler-ci}
+The common RULER cohort contains 30 shared source sessions, three fixed models and three paired fresh-process repetitions, with nine future turns/session: 2,430 future pairs. It uses its archived 8K, qualified L3 and 6-s tool-slack net mean-TTFT protocol. The equal-model point estimate is 86.6723\%. Table~\ref{tab:s-ruler-ci} separates model heterogeneity from precision of their fixed-model mean.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Original common RULER TTFT-reduction estimates (\%). The last two rows estimate the same fixed-three-model mean using different recorded resampling schemes.}
+\label{tab:s-ruler-ci}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Estimand / method & Point & 95\% interval\\
+\midrule
+Qwen3-8B & 86.6394 & [86.1593,87.0998]\\
+Mistral-7B & 87.4056 & [87.0641,87.7898]\\
+Llama-3.1-8B & 85.9719 & [85.6308,86.2931]\\
+Fixed-model mean, original draws & 86.6723 & [86.4369,86.8953]\\
+Fixed-model mean, synchronized sources & 86.6723 & [86.3204,86.9911]\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both analyses retain Raw/Contract pairs and all nine turns per sampled session. Original draws resample processes and sessions independently within model/repetition. The recorded post hoc sensitivity uses one shared 30-session draw across models/repetitions, then resamples three paired processes within each fixed model; seed 20261018 and 10,000 draws preserve common-source dependence. The wider synchronized interval is retained. A mean interval need not cover all three model estimates (range 85.9719--87.4056\%). These fixed models supply no prediction interval for unseen architectures. The RULER mean interval, RULER coverage strip and HotpotQA zero-slack interval concern different quantities.
+
+\section{Independent Fixed-Arrival Task Serving}
+\label{sec:s-task-arrivals}
+This six-source cohort uses source-disjoint HotpotQA/RepoBench content, faithful 16K packing, six registered tenants/template, ten rounds and a frozen external two-request wave protocol. Seven raw-only calibration cells precede freezing of the common/high traces and joint readiness-TTFT/mean-TPOT SLO (11.7 s/435 ms). The 24 main fresh-server cells produce 8,640 business requests and 3,888 future Raw/Contract pairs. Readiness starts at scheduled arrival; all first-use witnesses, failed qualification, queues, idle intervals and drain remain on the service clock. It is distinct from both Fig.~5's deployment trace and the earlier partial 5/54-cell pilot.
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\caption{Completed independent fixed-arrival main cohort: three paired processes/group. Goodput is joint-SLO-compliant business requests/s. Intervals describe source/process composition sensitivity on retained clocks.}
+\label{tab:s-task-arrivals}
+\begin{tabular}{@{}lrrP{1.24in}@{}}
+\toprule
+Group & Raw & CKV & $\Delta$ Goodput 95\% interval\\
+\midrule
+Qwen, common & .126074 & .126569 & [$-.012404$,$.012423$]\\
+Qwen, high & .013178 & .023277 & [$-.000593$,$.026079$]\\
+Mistral, common & .051099 & .051990 & [$-.001098$,$.004392$]\\
+Llama, common & .074209 & .074630 & [$-.000335$,$.002163$]\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Compiled future counts are 54/972, 54/972, 54/972 and 48/972, respectively; all 210 agree with their paired raw output IDs/finish. Full-wall ratios are 0.999986, 0.990905, 0.999372 and 0.999568. All four absolute Goodput-change intervals cross zero. The Qwen-high ratio has a small baseline (46 compliant responses); 241/10,000 bootstrap baseline draws are zero, so no ratio interval is reported. The source/process sensitivity retains observed clocks and is not a simulated queueing counterfactual.
+
+Qwen admits one HotpotQA source with positive raw F1 (54/54); Mistral/Llama admit another with zero raw F1 (0/54 and 0/48). This limits useful-task coverage. Qwen's 54 decisions/load contain three PASS, 24 exact-observation restrictions, 18 candidate/EOS margin failures and nine output-contract failures. In six additional gate ON/OFF cells, 54 matched decisions are identical, both policies make 21 verifier RPCs with 18 failures, and no Goodput advantage is observed. The four main groups' 96 p99 requests all route L0; only one directly overlaps preceding-wave qualification, so immediate failed verification does not explain all tails. Calibration, main and gate cells total 37 cells/11,640 business requests, independently recomputed from the archived package.
+
+\section{Bounded Fusion and Residency Exploration}
+\label{sec:s-fusion-residency}
+A subsequent 12-cell, 384-business-request development experiment evaluates six arms on two models and four known task sources. It retains exact Raw/candidate admission, the original margin/EOS floors and PSTP, while separately probing fused execution evidence and revocable certified-prefix priority in the native eviction queue. Priority is capped at 75\% of pool capacity with a 120-s lifetime; it neither changes reference counts nor promises permanent residency.
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Bounded known-source exploration: full workflow wall relative to each model's raw arm. One fresh process/arm/model; no source-level generalization interval.}
+\label{tab:s-fusion-residency}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Arm & Qwen $\times$ & Mistral $\times$\\
+\midrule
+Strict exact & .910 & .947\\
+Teacher-forced & .966 & .938\\
+Fused evidence & 1.023 & .939\\
+Fused + residency priority & 1.078 & .970\\
+Raw + residency priority & .993 & 1.289\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For matched compiled arms, full hits rise from 9/18 to 18/18 under priority; compiled output IDs/EOS remain unchanged. Across all four certificate arms, 72 compiled requests show no ID/EOS changes. Actual reclamation hooks explain the nine strict-arm misses. Fused/residency execution improves Qwen's full workflow but leaves Mistral slower than raw, while Mistral's raw-priority arm improves markedly. Thus the data do not establish a generally beneficial default or a uniquely certified-residency performance effect. The experiment remains a mechanism appendix, with all L0 output variations and failed controls retained.
+
+\section{Evidence Register and Version Boundaries}
+\label{sec:s-evidence-register}
+The accompanying artifact includes a machine-readable protocol register, selected source summaries and SHA256 digests. Main performance cohorts use the archived implementation at \texttt{84dd0366}; independent authorization, growing-history, original RULER rechecks, fixed-arrival and exploratory studies retain their own freezes and source records. The added integration is not assigned retroactively to older measurements. The public evidence snapshot through \texttt{bd449251} contains these experiment records; manuscript source and figure revisions have a separate delivery commit. Reproduction scripts rebuild the manuscripts and measured-data figure without invoking a model.

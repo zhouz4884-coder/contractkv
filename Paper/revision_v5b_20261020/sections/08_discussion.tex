@@ -1,0 +1,19 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+\subsection{Behavioral Evidence and Reuse Density}
+Token-path certification supplies execution-scoped behavioral evidence. Figure~\ref{fig:behavior} reports output agreement and raw-reference task utility separately. Query-qualified sharing assumes a repeated authorized directory and the declared metadata-only observation class; evolving histories and new tool evidence require additional qualification. With many unique queries, qualification has little opportunity to amortize; production query-repeat frequencies remain unmeasured.
+
+\subsection{Trust Model and Manifest Registration}
+\label{sec:trust}
+The operator defines template ownership, segment types, dependencies, sharing domains and versions. The trusted controller validates authority and lifecycle, and the engine enforces the associated cache identity and PSTP publication boundary. The all-route integration carries this identity through raw fallback (Table~\ref{tab:physical-authorization}); engine access must be mediated by the trusted application.
+
+The registration helper checks issuer/role, segment identity, authentication tags, content hashes, version/domain fields and consistency between declared stability, visibility and publication. Its nine-case CPU audit rejects seven malformed or unauthorized declarations, accepts a valid case, and accepts a trusted semantic mislabel. A separate 19-case client-binding audit rejects 17 malformed, expired or mismatched bindings. These are declaration and client checks; the helper itself is not integrated into the live endpoint. The tested internal authority does not constitute a public tenant-IAM gateway.
+
+The remaining semantic trust is concrete. If an operator labels tenant A's private \texttt{TOOL\_OBS} as stable and domain-shared, a valid hash and HMAC authenticate the erroneous declaration. A live marker control publishes that declared prefix in 9/9 cases. Hashes establish byte identity, and HMACs establish binding authority; confidentiality classification remains the operator's responsibility. Epoch separation denies stale identities without erasing all old blocks or retracting in-flight requests.
+
+Authorized sharing can also reveal cache-hit timing within a domain~\cite{iknow2025,auditing2025}. ContractKV does not implement a timing-channel defense. P4 governs cache-state authorization; comprehensive application confidentiality requires additional controls.
+
+\subsection{Service and Platform Conditions}
+Residency and queueing determine whether qualification becomes service benefit. The independent fixed-arrival task cohort in the supplement has 24 completed main cells and low compiled coverage; its four Goodput-change intervals cross zero. Its neutral results define a measured operating limit alongside the positive deployment operating points in Fig.~\ref{fig:service}. The earlier 5/54-cell arrival pilot remains a separate partial record.
+
+The inherited Python guard can exclude legal next-line fragments; RepoBench scores use the declared adapter. Native probes diagnose specific reclamation events, and the vLLM 0.25.1 interface audit is not a port. Distributed services need coordinated lifecycle/publication. Qualification is economical where authorized reuse and resident state repay its service-clock cost.

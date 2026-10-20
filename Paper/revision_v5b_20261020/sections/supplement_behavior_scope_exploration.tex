@@ -1,0 +1,24 @@
+\section{Exploratory Exact Raw Behavior Scope}
+\label{sec:s-strict-exploration}
+After freezing the primary evaluation, we separately probed how an exact Raw-witness behavioral gate changes deployment-template economics. \emph{This is exploratory evidence and is not part of the primary query-qualified or deployment-qualified service estimates.} The existing deployment policy attests a representative compiled trajectory and authorizes later metadata-varying requests within the declared schema; such a registration does not establish exact Raw equivalence. In a separate 27-cell deployment study (10,368 successful business requests), 3,456 compiled strategy--Raw pairs showed 1,178 output-ID/finish differences and 36 $>0.03$ task-score decreases. The decreases repeat six distinct tenant/turn conditions in one Mistral HotpotQA source across three processes and both qualification granularities; all outcomes remain archived. They are not falsely treated as 36 independent source failures.
+
+The exploratory successor binds an actual Raw witness, exact Raw and candidate prompt IDs, model/runtime and generation settings, and an independently checked candidate stable-prefix hash to a strict request-level admission record. An unseen exact input stays raw; successful candidate free-generation, unchanged output IDs/stop, the original Raw/Candidate/EOS margins, and PSTP are required. It does not relax qualification floors or repurpose the compiled deployment witness as a Raw witness.
+
+\begin{table}[t]
+\centering\footnotesize
+\setlength{\tabcolsep}{3pt}
+\caption{Separate strict-exact \emph{closed-backlog}, eight-access experiment: two models, two fresh-process repeats per model. The ratios charge full business, reference, verification and registration wall; they are not fixed-arrival SLO goodput.}
+\label{tab:s-strict-exploration}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Model & Raw wall (s) & Deploy. $\times$ & Strict $\times$\\
+\midrule
+Qwen3-8B & 422.135 & 1.310 & 1.027\\
+Mistral-7B & 517.612 & 1.338 & 0.987\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The strict successor compiles 56/128 Qwen and 28/128 Mistral requests; its 84 compiled strategy--Raw executions (not 84 independent task sources) show zero output-ID/EOS changes and zero score drops. The deployment comparator compiles 96/128 and 64/128 and retains output divergences. The stricter route reduces eligible coverage and adds controller work: Qwen saves 53.462 s of business HTTP time but spends 36.467 s in registration plus 5.775 s other added work (net saving 11.220 s); Mistral saves 14.608 s but spends 19.070 s plus 2.132 s (net loss 6.594 s). All 954 generated HTTP and 34 verifier HTTP requests across development and independent cells are accounted for in the repository.
+
+A native cache audit finds 42 full and 42 zero hits among 84 strictly compiled requests; every zero hit is the first tenant of a repeated source pair, while the immediately following second tenant hits the legal prefix. That eight-access experiment has no pinning/eviction counterfactual. A later, separately bounded residency/fusion study is reported below. This bounded exercise demonstrates correct exact-scope enforcement at a significant economic cost. It cannot be combined with the original deployment Goodput to assert strict zero-degradation and high Goodput simultaneously, and it does not establish equivalence for arbitrary new queries or observations. Source-level raw evidence, failed conditions, actual identities and complete fees are archived in \url{https://github.com/zhouz4884-coder/contractkv/tree/main/results/tsc_behavior_scope_repair_20261020}.
